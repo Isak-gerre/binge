@@ -1,6 +1,6 @@
  <!-- 
-    Hämta alla aktiviteter som de du följer har 
-    gjort,
+    Hämta alla aktiviteter från
+    de IDn som skickas till denna,
     Sortera efter datum 
-    Skicka tillbaka aktiviterterna till makeFeed.js
+    Skicka tillbaka
  -->

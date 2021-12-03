@@ -1,4 +1,4 @@
-// Hämta data om filen från LOCALSTORAGE, 
+// Hämta data om filmen från SESSIONSTORAGE 
 // SKAPA hela sidan
 // 1. MOVIE description (including buttons)
 // 2. Streaming Services (Kalla på endpoint - skicka med
