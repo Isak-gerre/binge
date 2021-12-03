@@ -1,9 +1,7 @@
 <!-- 
     Inkludera head.php 
     Script:
-    - makeTrending
-    - FriendsRecentlyWatched
-    - MakeGenreBanners
+    - search
 
     Inkludera footer.php
  -->
