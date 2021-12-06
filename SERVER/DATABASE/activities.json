@@ -1,0 +1,11 @@
+"activities":{
+    "act_id":{
+        "id": int,
+        "userID": int,
+        "movieID": int,
+        "type": string,
+        "date": string,
+        "comment": string, 
+        "rate": string,
+    }
+}
