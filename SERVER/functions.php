@@ -67,21 +67,20 @@ function getUsers()
 function getUsersById($id)
 {
     $users = loadJSON("DATABAS/users.json");
-    if(!is_numeric($id)){
-        send(
+    if (!is_numeric($id)) {
+        sendJSON(
             ["message" => "Error: Id needs to be a number"],
             400
         );
         exit();
     }
-    if(!isset($users["users"][$id])){
-        send(
+    if (!isset($users["users"][$id])) {
+        sendJSON(
             ["message" => "Error: user not found"],
             404
         );
         exit();
-    }
-    else{
+    } else {
         return $users["users"][$id];
     }
 }
@@ -89,8 +88,8 @@ function getUsersById($id)
 // Returnerar antalet användare efter argumentet(antal) du skickat med
 function getUsersByLimit($limit)
 {
-    if(!is_numeric($limit) && $limit >= 0){
-        send(
+    if (!is_numeric($limit) && $limit >= 0) {
+        sendJSON(
             ["message" => "Error: limit must be a positive number"],
             400
         );
@@ -129,14 +128,14 @@ function getImage($id)
 {
     $posts = loadJSON("DATABAS/posts.json");
     if (preg_match("/[\W]/", $id)) {
-        send(
+        sendJSON(
             ["message" => "Error: Only word charachters are allowed"],
             400
         );
         exit();
     }
     if (!isset($posts["posts"][$id])) {
-        send(
+        sendJSON(
             ["message" => "Error: post not found"],
             404
         );
@@ -150,7 +149,7 @@ function getImageByIds($ids)
 {
     $posts = loadJSON("DATABAS/posts.json");
     if (preg_match("/[^,\w]/", $ids)) {
-        send(
+        sendJSON(
             ["message" => "Error: Only word charachters are allowed (and using commas as seperator)"],
             400
         );
@@ -174,8 +173,8 @@ function getImageByIds($ids)
 
 function getImagesByLimit($limit)
 {
-    if(!is_numeric($limit) && $limit >= 0){
-        send(
+    if (!is_numeric($limit) && $limit >= 0) {
+        sendJSON(
             ["message" => "Error: limit must be a positive number"],
             400
         );
@@ -192,13 +191,13 @@ function getImagesByUser($userID)
     $users = loadJSON("DATABAS/users.json");
     $posts = loadJSON("DATABAS/posts.json");
     if (preg_match("/\D/", $userID)) {
-        send(
+        sendJSON(
             ["message" => "Error: Only numbers are allowed"],
             400
         );
     }
     if (!isset($users["users"][$userID])) {
-        send(
+        sendJSON(
             ["message" => "Error: User not found"],
             404
         );
