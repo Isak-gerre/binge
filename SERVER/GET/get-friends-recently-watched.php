@@ -5,4 +5,12 @@
     Tar emot en POST parameter med array = användarens following
     Hämta datan med aktivitet (vad) och användare (vem som gjort) 
     Plocka ut namn från användare
+
+    getFriendsActivitieIDs(){
+
+    }
+    getFriendsRecentlyWatched(getFriendsActivitieIDs()){
+        
+    }
+    
  -->

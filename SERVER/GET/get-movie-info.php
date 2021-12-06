@@ -33,3 +33,9 @@ if ($contents !== false) {
     //Print out the contents.
     send($contents);
 }
+
+/*
+getMovie(){
+
+}
+*/ 
