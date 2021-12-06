@@ -10,13 +10,13 @@ if ($method === "GET") {
     if (isset($_GET["movieID"])) {
         getMovie();
     } else {
-        send(
+        sendJSON(
             ["message" => "MovieID was not sent"],
             400
         );
     };
 } else {
-    send(
+    sendJSON(
         ["message" => "Method not allowed"],
         400
     );
@@ -34,7 +34,7 @@ function getMovie()
 
     //If $contents is not a boolean FALSE value.
     if ($contents !== false) {        //Print out the contents.
-        send(
+        sendJSON(
             ["message" => json_decode($contents, true)]
         );
     };
