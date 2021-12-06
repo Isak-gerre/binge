@@ -15,6 +15,15 @@
 // 1. Watched: skickar till servern
 // 2. Watch later: skickar till servern
 // 3. Review: skickar till servern
+
+/*
+
+makeMovieProfile([movieID]){
+
+}
+
+*/
+
 "use strict";
 async function getMovieInfo() {
   try {
