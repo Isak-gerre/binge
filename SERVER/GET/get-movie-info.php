@@ -34,3 +34,9 @@ if ($contents !== false) {
         ["message" => json_decode($contents, true)]
     );
 }
+
+/*
+getMovie(){
+
+}
+*/ 

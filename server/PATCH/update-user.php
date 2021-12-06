@@ -5,4 +5,12 @@
     Ta emot data och kontrollerar ändringar en gång till
     Kolla metod 
 
+    follow(POST){
+
+    }
+
+    removeFollow(POST){
+
+    }
+    
  -->
