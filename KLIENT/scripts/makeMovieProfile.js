@@ -18,18 +18,13 @@
 "use strict";
 async function getMovieInfo() {
   try {
-    let response = await fetch(`http://localhost:7000/get-movie-info.php`, {
-      credentials: "include",
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    let response = await fetch(`http://localhost:7001/get-movie-info.php`);
     let data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.error(error);
   }
 }
 
-console.log(getMovieInfo());
+getMovieInfo();
