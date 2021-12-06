@@ -1,4 +1,5 @@
-"activities":{
+{
+"activities": {
     "1":{
         "id": 1,
         "userID": 6,
@@ -161,4 +162,5 @@
         "comment": "", 
         "rate": ""
     }
+}
 }
