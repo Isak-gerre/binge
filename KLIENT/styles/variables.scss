@@ -1,0 +1,45 @@
+// COLORS - ska ändras till rätt senare
+$backgroundColor: white;
+$mainColor: #361986;
+$accentColor: #ffb700;
+$fontColor: black;
+
+// FUNCTIONS
+
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+
+// FONTS
+    
+@mixin bigTitleFont() {
+    font-family: 'Arial';
+    font-size: 1.5rem;
+}
+
+@mixin smallTitleFont() {
+    font-family: 'Arial';
+    font-size: 1.2rem;
+}
+
+@mixin bodyFont() {
+    font-family: 'Arial';
+    font-size: 0.9rem;
+}
+
+@mixin postFont() {
+    font-family: 'Arial';
+    font-size: 0.7rem;
+}
+
+@mixin smallFont() {
+
+}
+
+@mixin xSmallFont() {
+
+}
