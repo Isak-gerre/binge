@@ -7,14 +7,7 @@ $method = $_SERVER["REQUEST_METHOD"];
 
 
 if ($method === "GET") {
-    if (isset($_GET["movieID"])) {
-        getMovie();
-    } else {
-        sendJSON(
-            ["message" => "MovieID was not sent"],
-            400
-        );
-    };
+    getPopular();
 } else {
     sendJSON(
         ["message" => "Method not allowed"],
@@ -24,18 +17,24 @@ if ($method === "GET") {
 
 
 
-function getMovie()
+function getPopular()
 {
-    $movieID = $_GET["movieID"];
-    $url = "https://api.themoviedb.org/3/movie/$movieID?api_key=f5c0e0db147d0e6434391f3ff153b6a8";
+    $page1 = "https://api.themoviedb.org/3/movie/popular?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US&page=1";
+    $page2 = "https://api.themoviedb.org/3/movie/popular?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US&page=2";
 
     //Use file_get_contents to GET the URL in question.
-    $contents = file_get_contents($url);
+    $contentsPage1 = file_get_contents($page1);
+    $contentsPage2 = file_get_contents($page2);
+
+    $allpages = [
+        "page1" => json_decode($contentsPage1, true),
+        "page2" => json_decode($contentsPage2, true)
+    ];
 
     //If $contents is not a boolean FALSE value.
-    if ($contents !== false) {        //Print out the contents.
+    if ($contentsPage1 !== false || $contentsPage2 !== false) {        //Print out the contents.
         sendJSON(
-            ["message" => json_decode($contents, true)]
+            $allpages
         );
     };
 };
