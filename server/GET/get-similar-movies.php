@@ -6,7 +6,7 @@
 
 */
 
-require_once "access-control.php";
+require_once "../access-control.php";
 require_once "../functions.php";
 
 if($method === "GET" && isset($_GET["movieID"])){
