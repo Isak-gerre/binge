@@ -1,4 +1,5 @@
-"users":{
+{
+    "users": {
     "1":{
         "id": 1,
         "firstname": "Isak",
@@ -8,8 +9,8 @@
         "password": "hejhopp",
         "birthday": "hejhopp",
         "profile_picture":{
-            "url": string,
-            "filepath": string,
+            "url": "string",
+            "filepath": "string"
         },
         "region": "SE",
         "active_streaming_services":["netflix", "disney plus", "YouTube Premium", "hbo max", "viaplay", "svt"],
@@ -25,8 +26,8 @@
         "password": "sleepster",
         "birthday": "sleepster",
         "profile_picture":{
-            "url": string,
-            "filepath": string,
+            "url": "string",
+            "filepath": "string"
         },
         "region": "SE",
         "active_streaming_services":["netflix", "disney plus", "amazon prime video", "hbo max", "svt"],
@@ -42,8 +43,8 @@
         "password": "listenbro",
         "birthday": "listenbro",
         "profile_picture":{
-            "url": string,
-            "filepath": string,
+            "url": "string",
+            "filepath": "string"
         },
         "region": "SE",
         "active_streaming_services":["netflix", "disney plus", "hbo max", "svt", "Viafree"],
@@ -59,8 +60,8 @@
         "password": "nickokick",
         "birthday": "nickokick",
         "profile_picture":{
-            "url": string,
-            "filepath": string,
+            "url": "string",
+            "filepath": "string"
         },
         "region": "SE",
         "active_streaming_services":["netflix", "hbo max", "svt"],
@@ -76,8 +77,8 @@
         "password": "mattis",
         "birthday": "mattis",
         "profile_picture":{
-            "url": string,
-            "filepath": string,
+            "url": "string",
+            "filepath": "string"
         },
         "region": "SE",
         "active_streaming_services":["netflix", "disney plus", "YouTube Premium", "hbo max", "svt"],
@@ -93,8 +94,8 @@
         "password": "gohardorgohome",
         "birthday": "gohardorgohome",
         "profile_picture":{
-            "url": string,
-            "filepath": string,
+            "url": "string",
+            "filepath": "string"
         },
         "region": "SE",
         "active_streaming_services":["netflix", "hbo max", "svt", "c more", "viaplay"],
@@ -142,5 +143,6 @@
     "WOW Presents Plus",
     "DOCSVILLE",
     "Spamflix",
-    "Curiosity Stream",
+    "Curiosity Stream"
 ]
+}
