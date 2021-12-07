@@ -1,11 +1,14 @@
-<!-- ELSA -->
 
 <?php
-require_once "access-control.php";
+// Elsa
+
+require_once "../GET/access-control.php";
 require_once "../functions.php";
 
 $method = $_SERVER["REQUEST_METHOD"];
 $activityData = loadJson("../DATABASE/activities.json");
+
+error_reporting(-1);
 
 
 if($method === "DELETE"){
@@ -14,24 +17,32 @@ if($method === "DELETE"){
 
     //Kolla så ett id skickats med
     if(isset($requestData["id"])) {
-        $id = $requestData["id"];
+        $activityID = $requestData["id"];
         $found = false;
 
-        foreach($activityData["activities"] as $index => $activity){
-            //FRÅGA: Såhär har jag ju alltid gjort innan,
-            //men då har vi inte haft id't som "namn" på objektet.
-            //Ska det se annorlunda ut då? Behöver jag ens göra 
-            //foreachen såhär då?
-            if($activity["id"] == $id){
-                $found = true;
-                array_splice($activityData["activities"], $index, 1);
-                break;
-            }
+        $placement = array_search($activityID, $activityData["activities"]);
+
+        if(in_array($activityID, $activityData["activities"])){
+            $found = true;
+            array_splice($activityData["activities"], $placement, 1);
+            
         }
 
-        //Borde jag göra såhär istället??
-        // foreach($activityData["activities"] as $index => $activity) {
-        //     if(in_array("$id", $activityData["activities"])){
+        // foreach($activityData["activities"] as $index => $activity){
+        //     //FRÅGA: Såhär har jag ju alltid gjort innan,
+        //     //men då har vi inte haft id't som "namn" på objektet.
+        //     //Ska det se annorlunda ut då? Behöver jag ens göra 
+        //     //foreachen såhär då?
+        //     if($activity == $activityID){
+        //         $found = true;
+        //         array_splice($activityData["activities"], $index, 1);
+        //         break;
+        //     }
+        // }
+
+        // Borde jag göra såhär istället??
+        // foreach($activityData["activities"] as $index) {
+        //     if(in_array($id, $activityData["activities"])){
         //         $found = true;
         //         array_splice($activityData["activities"], $index, 1);
         //         break;
@@ -47,8 +58,8 @@ if($method === "DELETE"){
         }
 
         // Spara ändringar + felmeddelanden
-        saveJson("../DATABASE/activities.json", $activityData);
-        sendJson("Removed activity $id.");
+        saveJson("../DATABASE/activities.json", $activityData["activities"]);
+        sendJson("Removed activity $activityID.");
     } else {
         //Om inget id skickats med
         sendJson([
