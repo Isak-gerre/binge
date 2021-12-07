@@ -28,7 +28,7 @@ function getFiendsActivities($IDarr) {
   // SORT enligt datum? väl? Gör detta sen
 
   // Skicka tilllbaka array med aktiviter
-  sendJson($friendsActivities);
+  sendJSON($friendsActivities);
 }
 
 
@@ -57,10 +57,10 @@ function getMovieReviews($movieID) {
 
   // SORT
   // Skicka tillbaka
-  sendJson($movieReviews);
+  sendJSON($movieReviews);
 }
 
-if($method = "GET") {
+if($method == "GET") {
 
   // If ids of people the user´s following => get the activities of following
   if(isset($_GET["followingIDs"])) {
