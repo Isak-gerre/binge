@@ -19,22 +19,19 @@ if ($method === "GET") {
 
 function getPopular()
 {
-    $page1 = "https://api.themoviedb.org/3/movie/popular?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US&page=1";
-    $page2 = "https://api.themoviedb.org/3/movie/popular?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US&page=2";
+    $page = 1;
+    if (isset($_GET["page"]) && intval($_GET["page"]) > 0) {
+        $page = intval($_GET["page"]);
+    }
+    $url = "https://api.themoviedb.org/3/movie/popular?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US&page=$page";
 
     //Use file_get_contents to GET the URL in question.
-    $contentsPage1 = file_get_contents($page1);
-    $contentsPage2 = file_get_contents($page2);
-
-    $allpages = [
-        "page1" => json_decode($contentsPage1, true),
-        "page2" => json_decode($contentsPage2, true)
-    ];
+    $contents = json_decode(file_get_contents($url), true);
 
     //If $contents is not a boolean FALSE value.
-    if ($contentsPage1 !== false || $contentsPage2 !== false) {        //Print out the contents.
+    if ($contents !== false) {        //Print out the contents.
         sendJSON(
-            $allpages
+            $contents
         );
     };
 };
