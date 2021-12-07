@@ -46,7 +46,7 @@ function nextHighestId($filename)
 // Returnerar en array av en eller flera användare
 function getUsersByIDs($arrayOfIDs)
 {
-    $users = loadJSON("DATABAS/users.json");
+    $users = loadJSON("../DATABASE/user.json");
     $newArray = [];
     foreach ($users["users"] as $key => $user) {
         foreach ($arrayOfIDs as $id) {
@@ -60,13 +60,14 @@ function getUsersByIDs($arrayOfIDs)
 
 function getUsers()
 {
-    $users = loadJSON("DATABAS/users.json");
+    $users = loadJSON("../DATABASE/user.json");
     return $users["users"];
 }
 
+
 function getUsersById($id)
 {
-    $users = loadJSON("DATABAS/users.json");
+    $users = loadJSON("../DATABASE/user.json");
     if (!is_numeric($id)) {
         sendJSON(
             ["message" => "Error: Id needs to be a number"],
