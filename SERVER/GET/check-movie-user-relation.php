@@ -28,13 +28,13 @@
         "review" => false
     ];
 
-    foreach($activities as $activite){
+    foreach($activities as $activity){
 
-        $currentMovieID = $activite["movieID"];
-        $currentUserID = $activite["userID"];
-        $type = $activite["type"];
+        $currentMovieID = $activity["movieID"];
+        $currentUserID = $activity["userID"];
+        $type = $activity["type"];
 
-        if($userID == $currentUserID & $movieID == $currentMovieID){
+        if($userID == $currentUserID && $movieID == $currentMovieID){
             if($type == "watchlist"){
                 $message["watchlist"] = true;       
             };
