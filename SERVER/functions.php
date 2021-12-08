@@ -291,9 +291,11 @@ function alreadyTaken($array, $key, $newVariable)
 {
     $taken = false;
     foreach ($array as $arritem) {
-        if ($arritem[$key] === $newVariable) {
-            $taken = true;
-            break;
+        if(isset($arritem[$key])){
+            if ($arritem[$key] == $newVariable) {
+                $taken = true;
+                break;
+            }
         }
         return $taken;
     }
