@@ -1,30 +1,4 @@
 <?php
-// * OM profilbilden är en avatar ta INTE bort, måste
-// kollas innan. 
-
-// Ta emot data och kontrollerar ändringar en gång till
-// Kolla metod 
-
-// follow(POST){
-
-// }
-
-// removeFollow(POST){
-
-// }
-
-// editReview(){
-
-// }
-
-require_once "../access-control.php";
-require_once "../functions.php";
-
-checkMethod("PATCH");
-checkContentType();
-
-
-
 // If changing your profile this will be sent by the client
 // {
 //     "userID": "5",
@@ -33,9 +7,13 @@ checkContentType();
 // {
 //     "userID": "5",
 //     "otherUserID": "2",
-//     "changeType": "follow/unfollow"
 // }
 
+require_once "../access-control.php";
+require_once "../functions.php";
+
+checkMethod("PATCH");
+checkContentType();
 
 // Data that was sent to us by the client
 $data = file_get_contents("php://input");
@@ -44,59 +22,34 @@ $requestData = json_decode($data, true);
 // Loading data - activities
 $usersDB = loadJSON("../DATABASE/user.json");
 $users = $usersDB["users"];
-$userID = $requestData["userID"];
 
 
-if (isset($requestData["userID"], $requestData["otherUserID"])) {
+if (isset($requestData["userID"], $requestData["friendsUserID"])) {
     // Changes the one you followed and otherwise
-    $otherUserID = $requestData["otherUserID"];
-    $changeType = $requestData["changeType"];
+    $userID = $requestData["userID"];
+    $friendsUserID = $requestData["friendsUserID"];
 
-    //behöver du verkl kolla change type? 
-    //Räcker det inte med att kolla, om otherID finns i userIDs "following", då ska otherID tas bort(unfollow)
-    // Om otherID INTE finns i userIDs "following", då ska det läggas till (follow)
-    if ($changeType == "follow") {
-        // Checks if the person already exists
-        if (!in_array(intval($userID), $users[$otherUserID]["followers"])) {
-            // Adds to the person you followed 
-            $users[$otherUserID]["followers"][] = intval($userID);
-        } else {
-            $message = [
-                "message" => "User already in array"
-            ];
-            sendJSON($message, 405);
-        }
-        // Checks if the person already exists
-        if (!in_array(intval($otherUserID), $users[$userID]["following"])) {
-            // Adds to your followings
-            $users[$userID]["following"][] = intval($otherUserID);
-        } else {
-            $message = [
-                "message" => "User already in array"
-            ];
-            sendJSON($message, 405);
-        }
-    } elseif ($changeType == "unfollow") {
-
-        if (array_search($otherUserID, $users[$userID]["following"]) != false) {
-            $index = array_search($otherUserID, $users[$userID]["following"]);
-            array_splice($users[$userID]["following"], $index, 1);
-        } else {
-            $message = [
-                "message" => "User does not exist"
-            ];
-            sendJSON($message, 405);
-        }
-
-        if (array_search($userID, $users[$otherUserID]["followers"]) != false) {
-            $index = array_search($userID, $users[$otherUserID]["followers"]);
-            array_splice($users[$otherUserID]["followers"], $index, 1);
-        } else {
-            $message = [
-                "message" => "User does not exist"
-            ];
-            sendJSON($message, 405);
-        }
+    echo "hej";
+   
+    // Om vännen följer mig, ta bort. Ta bort mig själv från "vännens" array
+    // Om jag finns i vännens followers = jag följer vännen (jag vill då avfölja vännen)
+    if (in_array(intval($userID), $users[$friendsUserID]["followers"])) {
+        $index = array_search($userID, $users[$friendsUserID]["followers"]);
+        array_splice($users[$friendsUserID]["followers"], $index, 1);
+        
+        // Om vännen inte följer mig, lägg till (follow)    
+    } else {
+        $users[$friendsUserID]["followers"][] = intval($userID);
+    }   
+    
+    // Om jag följer vännen. Ta bort "vännen" från min array
+    if (in_array(intval($friendsUserID), $users[$userID]["following"])) {
+        $index = array_search($friendsUserID, $users[$userID]["following"]);
+        array_splice($users[$userID]["following"], $index, 1);  
+        
+        // Om jag inte följer vännen, lägg till vänne i min array
+    } else {
+        $users[$userID]["following"][] = intval($friendsUserID);  
     }
 
     // Saves the update
@@ -106,11 +59,10 @@ if (isset($requestData["userID"], $requestData["otherUserID"])) {
         "message" => "SUCCESS"
     ];
     sendJSON($message);
-} else {
 
-    // Allt detta under behöver inte ligga i en else, du kan bara ha två separata if
-    // Changes your own profile 
-    // firstname, lastname, username, email, birthday, location, bio, streaming services 
+
+} else {
+    // Changes your own profile, firstname, lastname, username, email, birthday, location, bio, streaming services 
     $executing = true;
     $message = [];
 
@@ -122,7 +74,6 @@ if (isset($requestData["userID"], $requestData["otherUserID"])) {
         // Kollar så att användarnamnet inte är upptaget
         if ($alreadyTaken) {
             $message["username"] = "Username already taken";
-            sendJSON($message, 404);
             $executing = false;
         }
         // Kollar så att användarnamnet är längre än 2 bokstäver
@@ -166,27 +117,27 @@ if (isset($requestData["userID"], $requestData["otherUserID"])) {
         saveJSON("DATABAS/users.json", $usersDB);
     }
 
+    // Fortsätter på birthday om tid finns sen
     // Om BIRTHDAY är ifyllt och inte tomt
-    if (isset($requestData["birthday"]) && !empty($requestData["birthday"])) {
-        $birthday = $requestData["birthday"];
-
-        $birthdayInteger = intval($birthday);
-        // Kollar så att det är en siffra 
-        if (!is_int($birthdayInteger) || $birthdayInteger === 1 || $birthdayInteger === 0) {
-            $message["birthday_first"] = "It has to be an integer";
-            $executing = false;
-        }
-        // Kollar så att det är ett rimligt år
-        if ($birthdayInteger < 1850 && $birthdayInteger < 2002) {
-            $message["birthday"] = "Insert a valid birthday";
-            $executing = false;
-        }
-        // Om inget fel upptäckts så ändra vi nyckeln
-        if ($executing) {
-            $users[$userID]["birthday"] = $requestData["birthday"];
-            $message["birthday"] = "You succeded changing your birthday";
-        }
-    }
+    // if (isset($requestData["birthday"]) && !empty($requestData["birthday"])) {
+    //     $birthday = $requestData["birthday"];
+    //     $birthdayInteger = intval($birthday);
+    //     // Kollar så att det är en siffra 
+    //     if (!is_int($birthdayInteger) || $birthdayInteger === 1 || $birthdayInteger === 0) {
+    //         $message["birthday_first"] = "It has to be an integer";
+    //         $executing = false;
+    //     }
+    //     // Kollar så att det är ett rimligt år
+    //     if ($birthdayInteger < 1850 && $birthdayInteger < 2002) {
+    //         $message["birthday"] = "Insert a valid birthday";
+    //         $executing = false;
+    //     }
+    //     // Om inget fel upptäckts så ändra vi nyckeln
+    //     if ($executing) {
+    //         $users[$userID]["birthday"] = $requestData["birthday"];
+    //         $message["birthday"] = "You succeded changing your birthday";
+    //     }
+    // }
 
     // Om FIRSTNAME är ifyllt och inte tomt
     if (isset($requestData["firstname"]) || isset($requestData["lastname"])) {
@@ -199,21 +150,24 @@ if (isset($requestData["userID"], $requestData["otherUserID"])) {
         }
     }
 
-    // Om BIO är ifyllt och inte tomt
-    if (isset($requestData["bio"]) && !empty($requestData["bio"])) {
+    // Om LOCATION är ifyllt och inte tomt
+    if (isset($requestData["region"])) {
         if ($executing) {
-            $users[$userID]["bio"] = $requestData["bio"];
-            $message["bio"] = "You succeded changing your bio";
+            $users[$userID]["region"] = $requestData["region"];
+            $message["region"] = "You succeded changing your region";
         }
     }
 
-    // Om LOCATION är ifyllt och inte tomt
-    if (isset($requestData["location"])) {
+    // Om active_streaming_services finns, uppdatera
+    if(isset($requestData["active_streaming_services"])) {
         if ($executing) {
-            $users[$userID]["location"] = $requestData["location"];
-            $message["location"] = "You succeded changing your location";
+            $users[$userID]["active_streaming_services"] = $requestData["active_streaming_services"];
+            $message["active_streaming_services"] = "You succeded changing your active streamingservices";
         }
+
     }
+
+    
 
     // Om inte executing har ändrats till FALSE
     // kommer den att utföra ändringarna
