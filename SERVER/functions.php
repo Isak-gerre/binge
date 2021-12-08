@@ -13,7 +13,7 @@ function checkMethod($method) {
     }
 }
 
-function checkConentType() {
+function checkContentType() {
     $contentType = $_SERVER["CONTENT_TYPE"];
 
     if ($contentType !== "application/json") {

@@ -3,18 +3,8 @@
     require_once "../access-control.php";
     require_once "../functions.php";
 
-    // HTTP-metod
-    // Content-Type
-    $method = $_SERVER["REQUEST_METHOD"];
-    $contentType = $_SERVER["CONTENT_TYPE"];
-
-
-    if($method != "GET") {
-        $message = [
-            "message" => "Method Not Allowed"
-        ];    
-        sendJSON($message, 405);
-    } 
+    checkMethod("GET");
+    checkContentType();
    
 
     // GET - parameters
@@ -41,7 +31,7 @@
                 $message["watchlist"] = true;       
             };
 
-            if($type == "watchlist"){
+            if($type == "watched"){
                 $message["watched"] = true;         
             };
 
