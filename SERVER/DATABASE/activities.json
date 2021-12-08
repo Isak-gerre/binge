@@ -7,7 +7,8 @@
         "type": "watchlist",
         "date": "20211206",
         "comment": "", 
-        "rate": ""
+        "rate": "",
+        "updated": false
     },
     "2":{
         "id": 2,
@@ -16,16 +17,18 @@
         "type": "review",
         "date": "20211203",
         "comment": "Så spännande och samtidigt den roligaste filmen jag någonsin sett! Älskar hela storyn och njör under hela filmens gång. Underbar.", 
-        "rate": "4"
+        "rate": "4",
+        "updated": false
     },
     "3":{
         "id": 3,
         "userID": 4,
         "movieID": 101,
-        "type": "rating",
+        "type": "review",
         "date": "20211203",
         "comment": "", 
-        "rate": "3"
+        "rate": "3",
+        "updated": false
     }, 
     "4":{
         "id": 4,
@@ -34,7 +37,8 @@
         "type": "watched",
         "date": "20211206",
         "comment": "", 
-        "rate": ""
+        "rate": "",
+        "updated": false
     },
     "5":{
         "id": 5,
@@ -43,7 +47,8 @@
         "type": "watchlist",
         "date": "20211113",
         "comment": "", 
-        "rate": ""
+        "rate": "",
+        "updated": false
     }, 
     "6":{
         "id": 6,
@@ -52,7 +57,8 @@
         "type": "review",
         "date": "20211203",
         "comment": "Otroliga skådespelare! Supermysig film. Inget märkvärdigt i övrigt.", 
-        "rate": "3"
+        "rate": "3",
+        "updated": false
     },
     "7":{
         "id": 7,
@@ -61,7 +67,8 @@
         "type": "review",
         "date": "20211203",
         "comment": "Världens mysigase film. Passar för hela familjen och är både skojjig och spännande.", 
-        "rate": "5"
+        "rate": "5",
+        "updated": false
     },
     "8":{
         "id": 8,
@@ -70,7 +77,8 @@
         "type": "watchlist",
         "date": "20211113",
         "comment": "", 
-        "rate": ""
+        "rate": "",
+        "updated": false
     },
     "9":{
         "id": 9,
@@ -79,7 +87,8 @@
         "type": "review",
         "date": "20211206",
         "comment": "Loved it!", 
-        "rate": "5"
+        "rate": "5",
+        "updated": false
     }, 
     "10":{
         "id": 10,
@@ -88,16 +97,18 @@
         "type": "watchlist",
         "date": "20210930",
         "comment": "", 
-        "rate": ""
+        "rate": "",
+        "updated": false
     },
     "11":{
         "id": 11,
         "userID": 2,
         "movieID": 14,
-        "type": "rated",
+        "type": "review",
         "date": "20211113",
         "comment": "", 
-        "rate": "2"
+        "rate": "2",
+        "updated": false
     }, 
     "12":{
         "id": 12,
@@ -106,16 +117,18 @@
         "type": "watchlist",
         "date": "20211020",
         "comment": "", 
-        "rate": ""
+        "rate": "",
+        "updated": false
     },
     "13":{
         "id": 13,
         "userID": 6,
         "movieID": 123,
-        "type": "rating",
+        "type": "review",
         "date": "20211201",
         "comment": "", 
-        "rate": "5"
+        "rate": "5",
+        "updated": false
     },
     "14":{
         "id": 14,
@@ -124,7 +137,8 @@
         "type": "watched",
         "date": "20211002",
         "comment": "", 
-        "rate": ""
+        "rate": "",
+        "updated": false
     },
     "15":{
         "id": 15,
@@ -133,16 +147,18 @@
         "type": "watchlist",
         "date": "20211206",
         "comment": "", 
-        "rate": ""
+        "rate": "",
+        "updated": false
     }, 
     "16":{
         "id": 16,
         "userID": 3,
         "movieID": 457,
-        "type": "rating",
+        "type": "review",
         "date": "20210930",
         "comment": "", 
-        "rate": "4"
+        "rate": "4",
+        "updated": false
     },
     "17":{
         "id": 17,
@@ -151,7 +167,8 @@
         "type": "watched",
         "date": "20211204",
         "comment": "", 
-        "rate": ""
+        "rate": "",
+        "updated": false
     }, 
     "18":{
         "id": 18,
@@ -160,7 +177,8 @@
         "type": "watched",
         "date": "20211020",
         "comment": "", 
-        "rate": ""
+        "rate": "",
+        "updated": false
     }
 }
 }

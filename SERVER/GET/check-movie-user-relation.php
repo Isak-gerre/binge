@@ -8,12 +8,14 @@
     $method = $_SERVER["REQUEST_METHOD"];
     $contentType = $_SERVER["CONTENT_TYPE"];
 
+
     if($method != "GET") {
         $message = [
             "message" => "Method Not Allowed"
         ];    
         sendJSON($message, 405);
     } 
+   
 
     // GET - parameters
     $userID = $_GET["userID"];
@@ -44,7 +46,7 @@
             };
 
             if($type == "review"){
-                $message["review"] = $activite; 
+                $message["review"] = $activity; 
             };
         }
     }
