@@ -17,28 +17,7 @@
     $rawUserData = file_get_contents("php://input");
     $userData = json_decode($rawUserData, true);
 
-
-    if(isset($_FILES["fileToUpload"]["name"])){
-        $target_dir = "uploads/";
-        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-        $target_file = explode(" ", $target_file);
-        var_dump($target_file);
-        var_dump(strtolower(pathinfo($target_file,PATHINFO_EXTENSION)));
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-        // Check if image file is a actual image or fake image
-        if(isset($_POST["submit"])) {
-          $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-          if($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
-            $uploadOk = 1;
-          } else {
-            echo "File is not an image.";
-            $uploadOk = 0;
-          }
-        }
-    }
-
+    
     $db = loadJSON("../DATABASE/user.json");
 
         if(alreadyTaken($db["users"], "username", $userData["username"])){
@@ -50,10 +29,27 @@
             exit();
         }
         else{
-        
-            $db["users"][nextHighestId($db["users"])][] = $userData;
+            if(isset($_FILES["fileToUpload"])){
 
-            saveJSON("../DATABASE/user.json", $db["users"]);
+                $imgName = $_FILES["fileToUpload"]["name"];
+                $imgName = hash("sha256", $imgName + time());
+
+                //OBS!!!!: INTE SÄKERT SÄTT ATT KOLLA FIL MEN BÄTTRE ÄN INGET
+                if($_FILES["fileToUpload"]["type"] === "image/jpeg"){
+                    move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "../DATABASE/IMAGES/PROFILE/$imgName.jpg");
+                    $userData["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/$imgName.jpg";
+                }
+            }
+              
+            $nextID = nextHighestId($db["users"]);
+            
+            foreach($userData as $key => $value){
+                $db["users"]["$nextID"][$key] = $value;
+            }
+
+            $db["users"]["$nextID"]["id"] = $nextID; 
+
+            saveJSON("../DATABASE/user.json", $db);
             sendJSON(["message" => "User has been created"], 200);
         }
     
