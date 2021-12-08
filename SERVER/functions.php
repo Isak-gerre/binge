@@ -4,7 +4,7 @@ function checkMethod($method) {
     $requestMethod = $_SERVER["REQUEST_METHOD"];
 
     if ($requestMethod !== $method) {
-        sendJson(
+        sendJSON(
             [
                 "message" => "This method is not allowed!"
             ],
@@ -17,7 +17,7 @@ function checkConentType() {
     $contentType = $_SERVER["CONTENT_TYPE"];
 
     if ($contentType !== "application/json") {
-        sendJson(
+        sendJSON(
             [
                 "error" => "The API only accepts JSON!",
                 "message" => "Bad request!"
