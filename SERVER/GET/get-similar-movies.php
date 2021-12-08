@@ -11,7 +11,7 @@ require_once "../functions.php";
 
 if($method === "GET" && isset($_GET["movieID"])){
     if(!is_numeric($_GET["movieID"])){
-        send(["message" => "Wrong method"], 400);
+        sendJSON(["message" => "Wrong method"], 400);
         exit();
     }
     else{
@@ -32,17 +32,13 @@ function getSimilarMovies(){
 
     if ($contents !== false) {
         //Print out the contents.
-        send(
+        sendJSON(
             ["message" => json_decode($contents, true)]
         );
     }
     else{
-        send(
+        sendJSON(
             ["message" => "something went wrong"], 404
         ); 
     }
 }
-
-
-
-?>
