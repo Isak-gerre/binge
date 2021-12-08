@@ -21,6 +21,7 @@
                 "svt"
             ],
             "followers": [
+                2,
                 3,
                 4,
                 5,
@@ -43,7 +44,7 @@
             "password": "sleepster",
             "birthday": "sleepster",
             "profile_picture": {
-                "filepath": "SERVER\/DATABASE\/IMAGES\/PROFILE\/ivankaa.jpg"
+                "filepath": "DATABASE\/IMAGES\/PROFILE\/ivankaa.jpg"
             },
             "region": "SE",
             "active_streaming_services": [
@@ -61,6 +62,7 @@
                 6
             ],
             "following": [
+                1,
                 3,
                 4,
                 5,
@@ -200,64 +202,6 @@
                 4,
                 5
             ]
-        },
-        "": {
-            "username": "Izaki",
-            "email": "Isak.gerre@hotmail.com",
-            "password": "hejhopp",
-            "firstname": "Isak",
-            "lastname": "Gerre",
-            "region": "SE",
-            "active_streaming_services": [
-                "netflix",
-                "disney plus",
-                "YouTube Premium",
-                "hbo max",
-                "viaplay",
-                "svt"
-            ]
         }
-    },
-    "streaming_services": [
-        "netflix",
-        "amazon prime video",
-        "disney plus",
-        "apple itunes",
-        "google play movies",
-        "viaplay",
-        "mubi",
-        "c more",
-        "Guidedoc",
-        "Paramount plus",
-        "netflix kids",
-        "hbo max",
-        "acorn tv",
-        "rakuten tv",
-        "apple tv plus",
-        "SF Anytime",
-        "SVT",
-        "Viafree",
-        "Comhem Play",
-        "YouTube Premium",
-        "HBO",
-        "Microsoft Store",
-        "Classix",
-        "Cineasterna",
-        "TriArt Play",
-        "Argo",
-        "Hoichoi",
-        "DocAlliance Films",
-        "Kirjastokino",
-        "True Story",
-        "Dekkoo",
-        "Blockbuster",
-        "Draken Films",
-        "Filmzie",
-        "Magellan TV",
-        "BroadwayHD",
-        "WOW Presents Plus",
-        "DOCSVILLE",
-        "Spamflix",
-        "Curiosity Stream"
-    ]
+    }
 }
