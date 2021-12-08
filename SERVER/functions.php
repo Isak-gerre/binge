@@ -59,13 +59,12 @@ function inspect($variable)
     echo "</pre>";
 }
 // Returnerar näst kommande högsta ID:t
-function nextHighestId($filename)
+function nextHighestId($array)
 {
-    $users = loadJSON($filename);
     $highestId = 0;
-    foreach ($users as $key => $user) {
-        if ($user["id"] > $highestId) {
-            $highestId = $user["id"];
+    foreach ($array as $object) {
+        if ($object["id"] > $highestId) {
+            $highestId = $object["id"];
         }
     }
     return $highestId + 1;
@@ -292,9 +291,11 @@ function alreadyTaken($array, $key, $newVariable)
 {
     $taken = false;
     foreach ($array as $arritem) {
-        if ($arritem[$key] === $newVariable) {
-            $taken = true;
-            break;
+        if(isset($arritem[$key])){
+            if ($arritem[$key] == $newVariable) {
+                $taken = true;
+                break;
+            }
         }
     }
     return $taken;
