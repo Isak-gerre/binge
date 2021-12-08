@@ -5,7 +5,7 @@
 // movieID)
 // 3. Cast + Directory (Kalla på endpoint - skicka med
 // movieID) kolla vilka streaming tjänster som användaren har
-// 4. Review
+// 4. Hämtar reviews från get-activitys.php
 // 5. Similar Movies (Kalla på endpoint - skicka me MovieID)
 
 // Kolla om användaren har gjort en aktivitet först,

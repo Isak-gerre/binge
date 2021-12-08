@@ -25,9 +25,6 @@ function getFiendsActivities($IDarr) {
     }
   }
 
-  // SORT enligt datum? väl? Gör detta sen
-
-  // Skicka tilllbaka array med aktiviter
   sendJSON($friendsActivities);
 }
 
@@ -55,8 +52,6 @@ function getMovieReviews($movieID) {
     }
   }
 
-  // SORT
-  // Skicka tillbaka
   sendJSON($movieReviews);
 }
 
