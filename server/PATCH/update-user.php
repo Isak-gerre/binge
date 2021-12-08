@@ -20,14 +20,10 @@
 require_once "../access-control.php";
 require_once "../functions.php";
 
-// HTTP-metod
-// Content-Type
-$method = $_SERVER["REQUEST_METHOD"];
-$contentType = $_SERVER["CONTENT_TYPE"];
+checkMethod("PATCH");
+checkContentType();
 
-// Data that was sent to us by the client
-$data = file_get_contents("php://input");
-$requestData = json_decode($data, true);
+
 
 // If changing your profile this will be sent by the client
 // {
@@ -41,13 +37,9 @@ $requestData = json_decode($data, true);
 // }
 
 
-// Checks the method
-if ($method !== "PATCH") {
-    $message = [
-        "message" => "Method Not Allowed"
-    ];
-    sendJSON($message, 405);
-}
+// Data that was sent to us by the client
+$data = file_get_contents("php://input");
+$requestData = json_decode($data, true);
 
 // Loading data - activities
 $usersDB = loadJSON("../DATABASE/user.json");
@@ -60,6 +52,9 @@ if (isset($requestData["userID"], $requestData["otherUserID"])) {
     $otherUserID = $requestData["otherUserID"];
     $changeType = $requestData["changeType"];
 
+    //behöver du verkl kolla change type? 
+    //Räcker det inte med att kolla, om otherID finns i userIDs "following", då ska otherID tas bort(unfollow)
+    // Om otherID INTE finns i userIDs "following", då ska det läggas till (follow)
     if ($changeType == "follow") {
         // Checks if the person already exists
         if (!in_array(intval($userID), $users[$otherUserID]["followers"])) {
@@ -112,6 +107,8 @@ if (isset($requestData["userID"], $requestData["otherUserID"])) {
     ];
     sendJSON($message);
 } else {
+
+    // Allt detta under behöver inte ligga i en else, du kan bara ha två separata if
     // Changes your own profile 
     // firstname, lastname, username, email, birthday, location, bio, streaming services 
     $executing = true;
