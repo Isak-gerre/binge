@@ -1,38 +1,36 @@
 <?php
 
-require_once "access-control.php";
+require_once "../access-control.php";
 require_once "../functions.php";
 
 $method = $_SERVER["REQUEST_METHOD"];
 
 // FUNCTIONS //
 
-// Tar emot en array av userIDs
-function getFiendsActivities($IDs) {
+// // Tar emot en array av userIDs
+// function getFiendsActivities($IDs) {
 
-  $IDarr = explode(",", $IDs);
+//   $IDarr = explode(",", $IDs);
 
-  // Hämtar alla aktiviteter
-  $activities = json_decode(file_get_contents("../DATABASE/activities.json"), true)["activities"];
+//   // Hämtar alla aktiviteter
+//   $activities = json_decode(file_get_contents("../DATABASE/activities.json"), true)["activities"];
 
-  // Ny array som sks skickas tilllbaka
-  $friendsActivities = [];
+//   // Ny array som sks skickas tilllbaka
+//   $friendsActivities = [];
 
-  // Går igenom alla aktiviteter
-  foreach($activities as $activity) {
+//   // Går igenom alla aktiviteter
+//   foreach($activities as $activity) {
 
-    // Om AKTIVITETENsss userID finns i $IDArr(som skickats med)
-    // pusha in den aktuella aktiviteten i friendsActivities[]
-    if(in_array($activity["userID"], $IDarr)) {
-      array_push($friendsActivities, $activity);
-    }
-  }
+//     // Om AKTIVITETENsss userID finns i $IDArr(som skickats med)
+//     // pusha in den aktuella aktiviteten i friendsActivities[]
+//     if(in_array($activity["userID"], $IDarr)) {
+//       array_push($friendsActivities, $activity);
+//     }
+//   }
 
-  sendJSON($friendsActivities);
-
-  return $friendsActivities;
-}
-
+  
+//   return $friendsActivities;
+// }
 
 // Tar emot ett filmID
 // Det är väl bara en films id åt gången?
@@ -66,7 +64,7 @@ if($method == "GET") {
   if(isset($_GET["followingIDs"])) {
     $followingIDs = $_GET["followingIDs"];
 
-    getFiendsActivities($followingIDs);
+    sendJSON(getFiendsActivities($followingIDs));
   }
 
   // If movie ids => get reviews for the movie
