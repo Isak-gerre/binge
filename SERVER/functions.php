@@ -1,5 +1,32 @@
 <?php
 
+function checkMethod($method) {
+    $requestMethod = $_SERVER["REQUEST_METHOD"];
+
+    if ($requestMethod !== $method) {
+        sendJSON(
+            [
+                "message" => "This method is not allowed!"
+            ],
+            405
+        );
+    }
+}
+
+function checkContentType() {
+    $contentType = $_SERVER["CONTENT_TYPE"];
+
+    if ($contentType !== "application/json") {
+        sendJSON(
+            [
+                "error" => "The API only accepts JSON!",
+                "message" => "Bad request!"
+            ],
+            400
+        );
+    }
+}
+
 // Skickar data
 function sendJSON($data, $statusCode = 200)
 {
@@ -270,7 +297,32 @@ function alreadyTaken($array, $key, $newVariable)
                 break;
             }
         }
-        
     }
     return $taken;
 }
+
+
+// Tar emot en array av userIDs
+function getFiendsActivities($IDs) {
+
+    $IDarr = explode(",", $IDs);
+  
+    // Hämtar alla aktiviteter
+    $activities = json_decode(file_get_contents("../DATABASE/activities.json"), true)["activities"];
+  
+    // Ny array som sks skickas tilllbaka
+    $friendsActivities = [];
+  
+    // Går igenom alla aktiviteter
+    foreach($activities as $activity) {
+  
+      // Om AKTIVITETENsss userID finns i $IDArr(som skickats med)
+      // pusha in den aktuella aktiviteten i friendsActivities[]
+      if(in_array($activity["userID"], $IDarr)) {
+        array_push($friendsActivities, $activity);
+      }
+    }
+  
+    
+    return $friendsActivities;
+  }
