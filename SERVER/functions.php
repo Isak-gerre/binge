@@ -59,13 +59,12 @@ function inspect($variable)
     echo "</pre>";
 }
 // Returnerar näst kommande högsta ID:t
-function nextHighestId($filename)
+function nextHighestId($array)
 {
-    $users = loadJSON($filename);
     $highestId = 0;
-    foreach ($users as $key => $user) {
-        if ($user["id"] > $highestId) {
-            $highestId = $user["id"];
+    foreach ($array as $object) {
+        if ($object["id"] > $highestId) {
+            $highestId = $object["id"];
         }
     }
     return $highestId + 1;
@@ -296,32 +295,6 @@ function alreadyTaken($array, $key, $newVariable)
             $taken = true;
             break;
         }
+        return $taken;
     }
-    return $taken;
 }
-
-
-// Tar emot en array av userIDs
-function getFiendsActivities($IDs) {
-
-    $IDarr = explode(",", $IDs);
-  
-    // Hämtar alla aktiviteter
-    $activities = json_decode(file_get_contents("../DATABASE/activities.json"), true)["activities"];
-  
-    // Ny array som sks skickas tilllbaka
-    $friendsActivities = [];
-  
-    // Går igenom alla aktiviteter
-    foreach($activities as $activity) {
-  
-      // Om AKTIVITETENsss userID finns i $IDArr(som skickats med)
-      // pusha in den aktuella aktiviteten i friendsActivities[]
-      if(in_array($activity["userID"], $IDarr)) {
-        array_push($friendsActivities, $activity);
-      }
-    }
-  
-    
-    return $friendsActivities;
-  }
