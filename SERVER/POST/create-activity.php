@@ -1,6 +1,18 @@
 <?php
 /*
+    Skicka med:
+    - userID
+    - movieID
+    - type
+    - comment (lämnas tom om den inte finns)
+    - rate (lämnas tom om den inte finns)
+
+    Returnerar två nycklar vid lyckad hämtning:
+    - status: success
+    - activity: tillagd aktivitet
+
     * Create an activite and adds the activite and array
+
     
     createActivite(){
 
