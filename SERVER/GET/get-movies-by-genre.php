@@ -17,7 +17,7 @@ function getMoviesByGenres($genre) {
         "page2" => json_decode($dataPage2, true)
     ];
 
-    send($allPages);
+    sendJSON($allPages);
 }
 
 if($method == "GET") {
@@ -30,8 +30,7 @@ if($method == "GET") {
 
 } else {
 
-    send(
+    sendJSON(
         ["message" => "Method not allowed"], 400
     );
 }
-?>

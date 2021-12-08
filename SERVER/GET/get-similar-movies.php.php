@@ -12,7 +12,7 @@ $method = $_SERVER["REQUEST_METHOD"];
 
 if($method == "GET" && $GET["similar-movies"]){
     if(!is_numeric($GET["similar-movies"])){
-        send(["Error" => 404]);
+        sendJSON(["Error" => 404]);
     }
 }
 
@@ -27,7 +27,7 @@ function getSimilarMovies($movie_id){
 
     if ($contents !== false) {
         //Print out the contents.
-        send(
+        sendJSON(
             ["message" => json_decode($contents, true)]
         );
     }

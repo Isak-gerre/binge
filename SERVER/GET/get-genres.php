@@ -9,13 +9,13 @@ $method = $_SERVER["REQUEST_METHOD"];
 function getGenres() {
     $url = 'https://api.themoviedb.org/3/genre/movie/list?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US';
     $data = json_decode(file_get_contents($url), true);
-    send($data);
+    sendJSON($data);
 }
 
 if($method == "GET") {
     getGenres();
 } else {
-    send(
+    sendJSON(
         ["message" => "Method not allowed"], 400
     );
 }
