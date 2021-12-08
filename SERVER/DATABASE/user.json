@@ -3,8 +3,8 @@
         "1": {
             "id": 1,
             "firstname": "Isak",
-            "lastname": "Gerre",
-            "username": "Izaki",
+            "lastname": "Gerreeeeeeeeeee",
+            "username": "Izakiiiiiiiii",
             "email": "Isak.gerre@hotmail.com",
             "password": "hejhopp",
             "birthday": "hejhopp",
@@ -199,6 +199,22 @@
                 3,
                 4,
                 5
+            ]
+        },
+        "": {
+            "username": "Izaki",
+            "email": "Isak.gerre@hotmail.com",
+            "password": "hejhopp",
+            "firstname": "Isak",
+            "lastname": "Gerre",
+            "region": "SE",
+            "active_streaming_services": [
+                "netflix",
+                "disney plus",
+                "YouTube Premium",
+                "hbo max",
+                "viaplay",
+                "svt"
             ]
         }
     },

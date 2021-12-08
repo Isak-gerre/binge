@@ -63,6 +63,7 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
 
 } else {
     // Changes your own profile, firstname, lastname, username, email, birthday, location, bio, streaming services 
+    $userID = $requestData["userID"];
     $executing = true;
     $message = [];
 
@@ -114,7 +115,7 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
     if (isset($requestData["password"]) && !empty($requestData["password"])) {
         $users[$userID]["password"] = $requestData["password"];
         $usersDB["users"] = $users;
-        saveJSON("DATABAS/users.json", $usersDB);
+        // saveJSON("DATABASE/users.json", $usersDB);
     }
 
     // Fortsätter på birthday om tid finns sen
@@ -140,7 +141,7 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
     // }
 
     // Om FIRSTNAME är ifyllt och inte tomt
-    if (isset($requestData["firstname"]) || isset($requestData["lastname"])) {
+    if (isset($requestData["firstname"]) && isset($requestData["lastname"])) {
         if ($executing) {
             $users[$userID]["firstname"] = $requestData["firstname"];
             $message["firstname"] = "You succeded changing your firstname";
@@ -164,8 +165,9 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
             $users[$userID]["active_streaming_services"] = $requestData["active_streaming_services"];
             $message["active_streaming_services"] = "You succeded changing your active streamingservices";
         }
-
     }
+
+
 
     
 
