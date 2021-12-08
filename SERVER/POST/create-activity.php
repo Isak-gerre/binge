@@ -80,11 +80,12 @@ function createActivity($userID, $movieID, $type, $comment, $rate) {
         "updated" => false
     ];
     
-    $activities[] = $newActivity;
+    $activitiesDB["activities"][] = $newActivity;
 
-    saveJSON("../DATABASE/activities.json", $activities);
+    saveJSON("../DATABASE/activities.json", $activitiesDB);
 
     return $newActivity;
+
 }
 
 ?>
