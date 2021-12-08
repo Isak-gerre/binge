@@ -1,5 +1,32 @@
 <?php
 
+function checkMethod($method) {
+    $requestMethod = $_SERVER["REQUEST_METHOD"];
+
+    if ($requestMethod !== $method) {
+        sendJson(
+            [
+                "message" => "This method is not allowed!"
+            ],
+            405
+        );
+    }
+}
+
+function checkConentType() {
+    $contentType = $_SERVER["CONTENT_TYPE"];
+
+    if ($contentType !== "application/json") {
+        sendJson(
+            [
+                "error" => "The API only accepts JSON!",
+                "message" => "Bad request!"
+            ],
+            400
+        );
+    }
+}
+
 // Skickar data
 function sendJSON($data, $statusCode = 200)
 {
