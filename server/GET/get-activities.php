@@ -26,6 +26,8 @@ function getFiendsActivities($IDarr) {
   }
 
   sendJSON($friendsActivities);
+  
+  return $friendsActivities;
 }
 
 
