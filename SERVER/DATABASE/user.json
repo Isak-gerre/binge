@@ -2,7 +2,7 @@
     "users": {
     "1":{
         "id": 1,
-        "firstname": "Isak",
+        "firstname": "Isak", 
         "lastname": "Gerre",
         "username": "Izaki",
         "email": "Isak.gerre@hotmail.com",

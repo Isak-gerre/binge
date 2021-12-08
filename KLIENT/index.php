@@ -17,7 +17,9 @@
     <div id="wrapper">
     </div>
 
-    <script src="scripts/makeMovieProfile.js"></script>
+    <script src="scripts/functions.js"></script>
+    <script src="scripts/makeMovieBanners.js"></script>
+
 
     <?php 
         require_once "footer.php";
