@@ -8,6 +8,7 @@
     }
 */
 
+include_once "../access-control.php";
 include_once "../functions.php";
 
 // Kontrollerar metod
