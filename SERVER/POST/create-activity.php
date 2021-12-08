@@ -44,7 +44,11 @@ if ($userID == "" || $movieID == "" || $type == "") {
     );
 }
 
-sendJSON(createActivity($userID, $movieID, $type, $comment, $rate));
+sendJSON([
+    "status" => "success",
+    "activity" => createActivity($userID, $movieID, $type, $comment, $rate)
+    ]
+);
 
 function createActivity($userID, $movieID, $type, $comment, $rate) {
     
