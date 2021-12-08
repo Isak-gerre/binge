@@ -27,7 +27,7 @@ if ($method === "GET") {
 function getMovie()
 {
     $movieID = $_GET["movieID"];
-    $url = "https://api.themoviedb.org/3/movie/$movieID?api_key=f5c0e0db147d0e6434391f3ff153b6a8";
+    $url = "http://api.themoviedb.org/3/movie/$movieID?api_key=f5c0e0db147d0e6434391f3ff153b6a8";
 
     //Use file_get_contents to GET the URL in question.
     $contents = file_get_contents($url);
