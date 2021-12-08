@@ -8,7 +8,10 @@ $method = $_SERVER["REQUEST_METHOD"];
 // FUNCTIONS //
 
 // Tar emot en array av userIDs
-function getFiendsActivities($IDarr) {
+function getFiendsActivities($IDs) {
+
+  $IDarr = explode(",", $IDs);
+
   // Hämtar alla aktiviteter
   $activities = json_decode(file_get_contents("../DATABASE/activities.json"), true)["activities"];
 
@@ -26,6 +29,8 @@ function getFiendsActivities($IDarr) {
   }
 
   sendJSON($friendsActivities);
+
+  return $friendsActivities;
 }
 
 
@@ -61,8 +66,7 @@ if($method == "GET") {
   if(isset($_GET["followingIDs"])) {
     $followingIDs = $_GET["followingIDs"];
 
-    $arrOfIDs = explode(",", $followingIDs);
-    getFiendsActivities($arrOfIDs);
+    getFiendsActivities($followingIDs);
   }
 
   // If movie ids => get reviews for the movie
@@ -76,4 +80,7 @@ if($method == "GET") {
     400
   );
 }
+
+ 
+ 
 ?>
