@@ -296,6 +296,6 @@ function alreadyTaken($array, $key, $newVariable)
             $taken = true;
             break;
         }
-        return $taken;
     }
+    return $taken;
 }
