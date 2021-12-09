@@ -26,8 +26,28 @@ makeMovieProfile([movieID]){
 
 "use strict";
 
-async function makeMovieProfile() {
+async function makeMovieProfile(movieID) {
+  let overlay = document.getElementById("overlay");
+  overlay.style.minHeight = "100vh";
+  let data = await getMovieInfo(movieID);
+  let movieInfo = data.message;
+    console.log(movieInfo);
+    
+    // Backdrop - Isak
+    // Poster - Isak
+    // Title - Isak
+    // Buttons - Niklas
+    // Release date - Isak
+    // Rating - Isak
+    // Description - Isak
+    // Runtime - Isak
+    // Streaming Services - Isak
+    // Cast - Niklas
+    // Directors - Niklas
+    // Reviews - Isak
+    // Similar Movies - Niklas
 
+  overlay.append();
 }
 
-getMovieInfo();
+makeMovieProfile(550);

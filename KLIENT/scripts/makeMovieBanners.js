@@ -1,38 +1,33 @@
-
 // Hämta filmbild + titel
-// skapa element 
+// skapa element
 // returnera det.
 
 "use strict";
 
-async function makeMovieBanner(movieID){
-    let movieInfo = await getMovieInfo(movieID);
-    console.log(movieInfo);
-    
-    //create elements
-    let movieBanner = document.createElement('div');
-    let titleDiv = document.createElement('div');
-    let title = document.createElement('p');
+async function makeMovieBanner(movieID) {
+  let movieInfo = await getMovieInfo(movieID);
+  console.log(movieInfo);
 
-    //classes
-    movieBanner.className = "movieBanner";
-    titleDiv.className = "titleDiv";
-    title.className = "title";
+  //create elements
+  let movieBanner = document.createElement("div");
+  let titleDiv = document.createElement("div");
+  let title = document.createElement("p");
 
-    //content
-    title.textContent= movieInfo.message.title;
-    movieBanner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["poster_path"]}')`
+  //classes
+  movieBanner.className = "movieBanner";
+  titleDiv.className = "titleDiv";
+  title.className = "title";
 
-    //append
-    movieBanner.append(title);
-    movieBanner.append(titleDiv);
-    document.getElementById("wrapper").append(movieBanner);
+  //content
+  title.textContent = movieInfo.message.title;
+  movieBanner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["poster_path"]}')`;
 
-    
-
-
+  //append
+  movieBanner.append(title);
+  movieBanner.append(titleDiv);
+  document.getElementById("wrapper").append(movieBanner);
 }
 
-makeMovieBanner(550);
-makeMovieBanner(123);
-makeMovieBanner(321);
+// makeMovieBanner(550);
+// makeMovieBanner(123);
+// makeMovieBanner(321);
