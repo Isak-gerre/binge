@@ -1,7 +1,9 @@
 /*
 
-Send an array of id on acticite 
+Send an id on activity 
 that should be deleted to
-update-activite
+delete-activity
+
+Check if actID == userID
 
 */

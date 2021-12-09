@@ -24,4 +24,8 @@ async function getMovieInfo(movieID) {
     }
 
 
-  }
+}
+
+async function makeFeedElement() {
+  
+}
