@@ -19,6 +19,7 @@
 
     <script src="scripts/functions.js"></script>
     <script src="scripts/makeMovieBanners.js"></script>
+    <script src="scripts/makeNavigation.js"></script>
 
 
     <?php 
