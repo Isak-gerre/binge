@@ -39,11 +39,11 @@
 
 <nav id="profileNav">
     <div id="watched">
-        <p>Wacthed</p>
+        <p>Watched</p>
     </div>
 
     <div id="watchlist">
-        <p>Wacthlist</p>
+        <p>Watchlist</p>
     </div>
 
     <div id="stats">
