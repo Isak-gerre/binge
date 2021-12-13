@@ -55,7 +55,7 @@
 </div>
 
 
-<script src="scripts/makeMovieProfile.js"></script>
+<script src="scripts/makeUserProfile.js"></script>
 
 <?php 
     require_once "footer.php";
