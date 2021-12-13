@@ -1,4 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
 body {
   margin: 0;
+}
+
+#wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.movieBanner {
+  background-color: aquamarine;
+  height: 150px;
+  width: 100px;
+  background-size: cover;
+  text-align: right;
+  position: relative;
+  overflow: hidden;
+}
+
+.titleDiv {
+  position: absolute;
+  bottom: -10%;
+  right: -40%;
+  height: 50%;
+  background-color: rgba(211, 211, 211, 0.7);
+  width: 150%;
+  -webkit-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+}
+
+.title {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 5px 0px;
+  margin-right: 10px;
+  color: black;
+  z-index: 10;
+  font-size: 1rem;
+}
+
+.upperNav {
+  width: 100vw;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.lowerNav {
+  width: 80%;
+  height: 50px;
+  -webkit-box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+  background-color: #f0f0f0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.navImg {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin: 10px 0px;
+}
+
+.navImg:hover {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.current > a > img {
+  -webkit-box-shadow: 0 0 1rem 0 rgba(0, 77, 177, 0.2);
+          box-shadow: 0 0 1rem 0 rgba(0, 77, 177, 0.2);
+}
+
+.upperNav > div, .lowerNav > div {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.slideshow-container {
+  width: 500px;
+  margin: auto;
+  border: 5px solid black;
+  overflow: hidden;
+}
+
+.slideshow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 500px;
+}
+
+header {
+  margin: 10px;
 }
 /*# sourceMappingURL=styles.css.map */
