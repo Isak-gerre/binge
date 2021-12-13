@@ -7,3 +7,6 @@ Suggestion:
 * Make sure number of pictures dosent matter for reusebility
 
 */
+
+"use strict";
+
