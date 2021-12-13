@@ -36,7 +36,7 @@ Om det är någon annans profil:
 // Stats:
 //
 
-// const loggedInUser = sessionStorage.userId;
+const loggedInUser = sessionStorage.userId;
 
 createProfilePage();
 
@@ -54,22 +54,13 @@ async function createProfilePage() {
 
 
 
-function checkUser() {
+function getUserFromUrl() {
     let getParams = window.location.search;
-    
-    if (getParams == "") {
-        let userId = sessionStorage.userID;
 
-        return userId
-        
-    } else {
-        
-        const urlParams = new URLSearchParams(getParams);
-        const userId = urlParams.get('userID');
+    const urlParams = new URLSearchParams(getParams);
+    const userId = urlParams.get('userID');
     
-        return userId
-    }
-    
+    return userId
 }
 
 async function getUserInfo(userId) {

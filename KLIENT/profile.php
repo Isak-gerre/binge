@@ -6,6 +6,7 @@
     Element som ska vara statiska, 
     skapas här
     
+    Kontrollera om inloggad -> Annars skicka till index.php
 
     Inkludera footer.php
  -->
