@@ -30,6 +30,15 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
     $friendsUserID = $requestData["friendsUserID"];
 
     echo "hej";
+
+    if (!$users[$friendsUserID]) {
+        sendJSON(
+            [
+                "message" => "User not found"
+            ],
+            404
+        );
+    }
    
     // Om vännen följer mig, ta bort. Ta bort mig själv från "vännens" array
     // Om jag finns i vännens followers = jag följer vännen (jag vill då avfölja vännen)
