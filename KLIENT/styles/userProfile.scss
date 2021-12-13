@@ -1,3 +1,46 @@
-header {
-    margin: 10px;
+@import "variables.scss";
+
+#topWrapperProfile {
+    @include flex(row, center, center);
+    gap: 30px;
+    
+    width: 100%;
+    padding: 20px;
+}
+
+#profilePic {
+    flex-basis: 100px;
+    height: 100px;
+    
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+}
+
+#profileInfo {
+    @include flex(column, center, flex-start);
+    gap: 5px;
+    flex-grow: 1;
+
+    #usernameDiv {
+        @include flex(row, space-between, center);
+        @include smallTitleFont();
+        p { margin: 0;}
+
+        width: 100%;
+    }
+
+    #followInfo {
+        @include bodyFont();
+        @include flex(row, space-evenly, center);
+        width: 100%;
+        // gap: 5px;
+
+        #followersDiv, #followingDiv {
+            p { margin: 0;}
+            @include flex(column, center, center);
+        }
+    }
 }
