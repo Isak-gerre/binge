@@ -41,13 +41,27 @@
                 }
             }
               
-            $nextID = nextHighestId($db["users"]);
             
-            foreach($userData as $key => $value){
-                $db["users"]["$nextID"][$key] = $value;
+            $nextID = nextHighestId($db["users"]);
+
+            if ($userData["password"] != $userData["confirm_password"]){
+                sendJSON(["message" => "Passwords do not match"], 409);
+            }
+            else{
+               $hashedPassword = password_hash($userData['password'], PASSWORD_DEFAULT);
             }
 
-            $db["users"]["$nextID"]["id"] = $nextID; 
+            foreach($userData as $key => $value){
+                if($key != "confirm_password"){
+                    $db["users"]["$nextID"][$key] = $value;
+                }
+                if($key === "password"){
+                    $db["users"]["$nextID"][$key] = $hashedPassword;
+                }                
+            }
+            
+            $hashedUserId = password_hash($nextID, PASSWORD_DEFAULT);
+            $db["users"]["$nextID"]["id"] = $hashedUserId;
 
             saveJSON("../DATABASE/user.json", $db);
             sendJSON(["message" => "User has been created"], 200);
