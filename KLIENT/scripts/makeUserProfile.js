@@ -37,6 +37,7 @@ Om det är någon annans profil:
 //
 
 // Inloggad användare
+sessionStorage.setItem('userID', 5)
 const loggedInUserId = Number(sessionStorage.getItem('userID'));
 
 // Fasta html-variabler
@@ -53,6 +54,10 @@ async function createProfilePage() {
     const loggedInUserInfo = await getUserInfo(loggedInUserId);
     
     let urlUserId = getUserFromUrl();
+
+    if (loggedInUserId == urlUserId) {
+        window.location.href = "profile.php";
+    }
 
     if (urlUserId !== null) {
         let userInfo = await getUserInfo(urlUserId);
@@ -90,6 +95,7 @@ async function getUserInfo(userId) {
 }
 
 async function createProfileHeader(user, isFollowing, settings = null) {
+    console.log(user);
 
     let username = user.username.toLowerCase();
     uNameCont.textContent = "@" + username;
@@ -117,13 +123,13 @@ async function createProfileHeader(user, isFollowing, settings = null) {
     }
 
     profileButton.addEventListener('click', async function () {
+        let userId = user.id;
 
         if (profileButton.textContent == "unfollow") {
             isFollowing = false;
 
             profileButton.textContent = "follow";
-            let response = await followPatch(loggedInUserId, user.id);
-            console.log(response);
+            await followPatch(loggedInUserId, userId);
 
             nrOfFollowers -= 1;
             followersCont.textContent = nrOfFollowers;
@@ -133,17 +139,23 @@ async function createProfileHeader(user, isFollowing, settings = null) {
             isFollowing = true;
 
             profileButton.textContent = "unfollow";
-            let response = await followPatch(loggedInUserId, user.id);
-            console.log(response);
+            await followPatch(loggedInUserId, userId);
 
             nrOfFollowers += 1;
             followersCont.textContent = nrOfFollowers;
             
-
         } else if (profileButton.textContent == "settings") {
-            openSettings(user.id);
+            // openSettings(user.id);
         }
-    })
+    });
+
+    followersCont.addEventListener('click', async function () {
+        await showUsers(followers);
+    });
+
+    followingCont.addEventListener('click', async function () {
+        await showUsers(following);
+    });
     
     proPicCont.append(profilePic);
     settingOrPlus.append(profileButton);
@@ -153,29 +165,56 @@ async function createProfileHeader(user, isFollowing, settings = null) {
 }
 
 async function followPatch(mainUserID, friendsUserID) {
-    let infoToSend = {
-        userID: mainUserID, 
-        friendsUserID: friendsUserID
-    }
 
-    const response = await fetch(new Request("http://http://localhost:8001/PATCH/update-user.php", {
+    const response = await fetch(new Request("http://localhost:8001/PATCH/update-user.php", {
         method: "PATCH",
-        body: JSON.stringify(infoToSend),
         headers: {
-            "Content-type": "application/json"
-        }
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({userID: mainUserID, friendsUserID: friendsUserID})
     }));
 
-    let data = await response.json();
+    const data = await response;
     console.log(data);
+}
+
+function openSettings(userId) {
+    console.log(userId);
+}
+
+async function showUsers(ids) {
+    let usersInfo = await Promise.all(ids.map(id => getUserInfo(id)));
+    usersInfo.sort((a, b) => a.username > b.username ? 1 : -1);
+
+    let followContainer = document.createElement('div');
+    followContainer.id = "followContainer";
+
+    let closeTab = document.createElement('button');
+    closeTab.textContent = "x";
+    closeTab.addEventListener('click', () => {followContainer.remove(); })
+
+    followContainer.append(closeTab);
+
+    usersInfo.forEach(user => {
+        let userDiv = document.createElement('div');
+        let username = document.createElement('p');
+        username.textContent = "@" + user.username;
+
+        let userProfilePic = document.createElement('img');
+        userProfilePic.src = `http://localhost:8001/${user.profile_picture.filepath}`;
+
+        username.addEventListener('click', () => {
+            window.location.href = `profile.php?userID=${user.id}`;
+        });
+
+        followContainer.append(userDiv);
+        userDiv.append(userProfilePic, username);
+    });
+
+    document.querySelector('body').prepend(followContainer);
 }
 
 // async function getActivityInfo(userId) {
 
 
 // }
-
-function openSettings(userId) {
-    console.log(userId);
-}
-
