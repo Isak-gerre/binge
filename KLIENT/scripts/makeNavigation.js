@@ -18,9 +18,9 @@ function makeUpperNav(page) {
 
  
     //content
-    navLeft.textContent = "Back";
-    navMiddle.textContent = "Logo";
-    navRight.textContent = "Search";
+    navLeft.innerHTML = "<a href='index.php'>Back</a>";
+    navMiddle.innerHTML =  "<a href='index.php'>Home/logo</a>";
+    navRight.innerHTML =  "<a href='index.php'>Search</a>";
  
     //append
     upperNav.append(navLeft, navMiddle, navRight);
@@ -30,5 +30,5 @@ function makeUpperNav(page) {
 makeUpperNav();
 
 function makeLowerNav(page) {
-
+    
 }
