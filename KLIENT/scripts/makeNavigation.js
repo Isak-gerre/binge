@@ -32,12 +32,14 @@ function makeLowerNav(page) {
 
     //create elements
     let lowerNav = document.createElement('nav');
+    let backLowerNav = document.createElement('div');
     let lowerNavLeft = document.createElement('div');
     let lowerNavMiddle = document.createElement('div');
     let lowerNavRight = document.createElement('div');
     
     //classes
     lowerNav.className = "lowerNav";
+    backLowerNav.className = "backLowerNav";
     lowerNavLeft.className = "lowerNavLeft";
     lowerNavMiddle.className = "lowerNavMiddle";
     lowerNavRight.className = "lowerNavRight";
@@ -52,7 +54,7 @@ function makeLowerNav(page) {
     }
 
     //append
-    lowerNav.append(lowerNavLeft, lowerNavMiddle, lowerNavRight);
+    lowerNav.append(backLowerNav, lowerNavLeft, lowerNavMiddle, lowerNavRight);
     document.getElementById("wrapper").append(lowerNav);
 }
 

@@ -15,6 +15,7 @@ body {
 #wrapper {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .movieBanner {
@@ -55,8 +56,8 @@ body {
     justify-content: center;
 }
 
-.lowerNav {
-    width: 80%;
+.lowerNav, .backLowerNav{
+    width: 80vw;
     height: 50px;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
     border-radius: 50px;
@@ -67,11 +68,22 @@ body {
     box-sizing: border-box;
 }
 
+.lowerNav {
+  position: relative;
+}
+
+.backLowerNav {
+  width: 100%;
+  position: absolute;
+  filter: blur(10px);
+}
+
 .navImg {
   width: 30px;
   height: 30px;
   cursor: pointer;
   margin: 10px 0px;
+  position: relative;
 }
 
 .navImg:hover {
@@ -82,7 +94,7 @@ body {
 
 
 .current > a > img {
-  box-shadow: 0 0 1rem 0 rgba(0, 77, 177, 0.2);
+  fill: blue;
 }
 
 .upperNav > div, .lowerNav > div{
