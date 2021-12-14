@@ -26,3 +26,9 @@ const data = {
 
 let ctx = document.getElementById("ctx").getContext("2d");
 const myChart = new Chart(ctx, data);
+
+async function getUser() {
+  let user = await getUserInfo(1);
+  console.log(user);
+}
+getUser();
