@@ -16,7 +16,7 @@ highestID(){
 
 async function getMovieInfo(movieID) {
   try {
-    let response = await fetch(`http://localhost:7001/get-movie-info.php?movieID=${movieID}`);
+    let response = await fetch(`http://localhost:7001/GET/get-movie-info.php?movieID=${movieID}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -25,7 +25,7 @@ async function getMovieInfo(movieID) {
 }
 async function getProviders() {
   try {
-    let response = await fetch(`http://localhost:7001/get-watch-providers.php`);
+    let response = await fetch(`http://localhost:7001/GET/get-watch-providers.php`);
     let data = await response.json();
     return data;
   } catch (error) {
