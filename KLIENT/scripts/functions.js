@@ -16,16 +16,18 @@ highestID(){
 
 async function getMovieInfo(movieID) {
   try {
-    let response = await fetch(`http://localhost:7001/get-movie-info.php?movieID=${movieID}`);
+    let response = await fetch(`http://localhost:7001/GET/get-movie-info.php?movieID=${movieID}`);
     let data = await response.json();
     return data;
   } catch (error) {
     console.error(error);
   }
 }
+
+
 async function getTrending() {
   try {
-    let response = await fetch(`http://localhost:7001/get-trending.php`);
+    let response = await fetch(`http://localhost:7001/GET/get-trending.php`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -41,3 +43,26 @@ async function getUserInfo(userId) {
   
   return userInfo[0];
 }
+
+async function getFollowing(id) {
+  try {
+    let response = await fetch(`http://localhost:7001/GET/get-users.php?ids=${id}`);
+    let loggedInUser = await response.json();
+    return loggedInUser;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function getFriendsActivities() {
+  // Get the users following
+  let user = await getFollowing(3); // session stared id
+  let following = user[0].following;
+
+  // Get following activities från db
+  let response = await fetch(`http://localhost:7001/GET/get-activities.php?followingIDs=${following}`);
+  let data = await response.json();
+
+  return data;
+}
+

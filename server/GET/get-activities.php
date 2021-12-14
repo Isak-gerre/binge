@@ -64,7 +64,7 @@ if($method == "GET") {
   if(isset($_GET["followingIDs"])) {
     $followingIDs = $_GET["followingIDs"];
 
-    sendJSON(getFiendsActivities($followingIDs));
+    sendJSON(getFriendsActivities($followingIDs));
   }
 
   // If movie ids => get reviews for the movie
