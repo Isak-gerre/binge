@@ -10,10 +10,10 @@
 // let loggedInUserID = sessionStorage.getItem("loggedInUserID");
 
 
-// Hämta den inloggade användares "following" (functions.php)
+// Get the logged in userobj
 async function getFollowing(id) {
     try {
-        let response = await fetch(`http://localhost:7000/get-users.php?ids=${id}`);
+        let response = await fetch(`http://localhost:7000/GET/get-users.php?ids=${id}`);
         let loggedInUser = await response.json();
         return loggedInUser; 
     } catch (err) {
@@ -21,38 +21,66 @@ async function getFollowing(id) {
     }  
 }
 
-
-getFriendsActivities();
-
 async function getFriendsActivities(){
     // Get the users following
-    let user = await getFollowing(3);
+    let user = await getFollowing(3); // session stared id
     let following = user[0].following;
 
-    // Hämta aktiviteterna från db  (get-activitys.php)
-    let response = await fetch(`http://localhost:7000/get-activities.php?ids=${following}`);
-    console.log(response);
+    // Get following activities från db
+    let response = await fetch(`http://localhost:7000/GET/get-activities.php?followingIDs=${following}`);
     let data = await response.json();
 
-    console.log(data);
+    let friendsActivityInfo = await getFriendsActivityInfo(data);
+    console.log(friendsActivityInfo);
 
-    // createActivitieElements(data);
-
-
-    // activities.sort((a,b) => b.date > a.date);
-    // createActivitieElements(activities);
+    return friendsActivityInfo;
 }
 
-// async function createActivitieElements(data) {
-//     let activities = await data;
 
-//     console.log(activities);
+async function getFriendsActivityInfo(data) {
 
-//     // activities.forEach(acti => {
-//     //     let container = docuement.createElement("div");
+    let activitiesArray = [];
 
+    // Get info about the activity
+    await data.forEach(async function(acti){ 
+
+        let movieInfo = await getMovieInfo(acti.movieID);
+        let userInfo = await getUserInfo(acti.userID);
+
+        let activity = {
+            movie: movieInfo.message,
+            username: userInfo.username,
+            activity: acti
+        }
+
+        activitiesArray.push(activity);
+        console.log(activity);
+    });
+    console.log(activitiesArray);
+
+    return activitiesArray;
+}
+
+async function makeFeed() {
+    let activities = await getFriendsActivities();
+
+    activities.forEach(async function(obj) {
+        console.log(obj);
+    })
+    console.log(activities);
+
+    // activities.forEach(acti => {
+    //     let container = document.createElement("div");
         
-//     // });
-// }
+    //     let username = doucment.createElemnt("div");
+    //     username.innerHtml = acti.username;
+    //     container.append(username);
+    //     document.getElementById("wrapper").append(container);
+    
+
+    // });
+
+}
+makeFeed();
 
 
