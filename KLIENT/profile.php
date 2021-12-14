@@ -6,6 +6,7 @@
     Element som ska vara statiska, 
     skapas här
     
+    Kontrollera om inloggad -> Annars skicka till index.php
 
     Inkludera footer.php
  -->
@@ -38,11 +39,11 @@ require_once "head.php";
 
 <nav id="profileNav">
     <div id="watched">
-        <p>Wacthed</p>
+        <p>Watched</p>
     </div>
 
     <div id="watchlist">
-        <p>Wacthlist</p>
+        <p>Watchlist</p>
     </div>
 
     <div id="stats">
@@ -57,7 +58,9 @@ require_once "head.php";
 <script src="node_modules/chart.js/dist/chart.js"></script>
 <script src="scripts/functions.js"></script>
 <script src="scripts/stats.js"></script>
+<script src="scripts/makeUserProfile.js"></script>
 
-<?php
-require_once "footer.php";
+<?php 
+    require_once "footer.php";
 ?>
+ 

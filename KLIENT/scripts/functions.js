@@ -32,3 +32,12 @@ async function getTrending() {
     console.error(error);
   }
 }
+
+async function getUserInfo(userId) {
+    
+  const request = new Request(`http://localhost:8001/GET/get-users.php?ids=${userId}`);
+  const response = await fetch(request);
+  const userInfo = await response.json();
+  
+  return userInfo[0];
+}
