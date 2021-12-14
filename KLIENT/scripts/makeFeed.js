@@ -5,30 +5,54 @@
 
 "use strict";
 
+
 // Hämta den inloggade användares id
-let loggedInUserID = sessionStorage.getItem("loggedInUserID");
+// let loggedInUserID = sessionStorage.getItem("loggedInUserID");
+
 
 // Hämta den inloggade användares "following" (functions.php)
-async function getFollowing(loggedInUserID) {
-    let loggedInUser = await getUsersById(IDs); // returnerar en användaare
-
-    // Hämta användarens following
-    let following = loggedInUser.following;
-
-    // Kalla på funktion som skapar aktiteterna med id arr
-    makeFriendsActivities(following);
+async function getFollowing(id) {
+    try {
+        let response = await fetch(`http://localhost:7000/get-users.php?ids=${id}`);
+        let loggedInUser = await response.json();
+        return loggedInUser; 
+    } catch (err) {
+        console.log(err);
+    }  
 }
 
-async function makeFriendsActivities(loggedInUserID){
+
+getFriendsActivities();
+
+async function getFriendsActivities(){
+    // Get the users following
+    let user = await getFollowing(3);
+    let following = user[0].following;
+
     // Hämta aktiviteterna från db  (get-activitys.php)
-    let activities = await getFriendsActivities(IDs);
+    let response = await fetch(`http://localhost:7000/get-activities.php?ids=${following}`);
+    console.log(response);
+    let data = await response.json();
 
-    //stortera aktiviteterna efter datum
-    activities.sort()
+    console.log(data);
 
-    activities.forEach(a => {
-        // skapa divs
-        
-    });
-    
+    // createActivitieElements(data);
+
+
+    // activities.sort((a,b) => b.date > a.date);
+    // createActivitieElements(activities);
 }
+
+// async function createActivitieElements(data) {
+//     let activities = await data;
+
+//     console.log(activities);
+
+//     // activities.forEach(acti => {
+//     //     let container = docuement.createElement("div");
+
+        
+//     // });
+// }
+
+
