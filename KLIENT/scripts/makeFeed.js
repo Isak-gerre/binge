@@ -11,63 +11,26 @@
 
 
 // Get the logged in userobj
-async function getFollowing(id) {
-    try {
-        let response = await fetch(`http://localhost:7000/GET/get-users.php?ids=${id}`);
-        let loggedInUser = await response.json();
-        return loggedInUser; 
-    } catch (err) {
-        console.log(err);
-    }  
-}
-
-async function getFriendsActivities(){
-    // Get the users following
-    let user = await getFollowing(3); // session stared id
-    let following = user[0].following;
-
-    // Get following activities från db
-    let response = await fetch(`http://localhost:7000/GET/get-activities.php?followingIDs=${following}`);
-    let data = await response.json();
-
-    let friendsActivityInfo = await getFriendsActivityInfo(data);
-    console.log(friendsActivityInfo);
-
-    return friendsActivityInfo;
-}
-
-
-async function getFriendsActivityInfo(data) {
-
-    let activitiesArray = [];
-
-    // Get info about the activity
-    await data.forEach(async function(acti){ 
-
-        let movieInfo = await getMovieInfo(acti.movieID);
-        let userInfo = await getUserInfo(acti.userID);
-
-        let activity = {
-            movie: movieInfo.message,
-            username: userInfo.username,
-            activity: acti
-        }
-
-        activitiesArray.push(activity);
-        console.log(activity);
-    });
-    console.log(activitiesArray);
-
-    return activitiesArray;
-}
 
 async function makeFeed() {
     let activities = await getFriendsActivities();
 
-    activities.forEach(async function(obj) {
-        console.log(obj);
-    })
+
     console.log(activities);
+
+    activities.forEach(async function(obj)  {
+        let movieInfo = await getMovieInfo(obj.movieID);
+        let userInfo = await getUserInfo(obj.userID);
+
+        let p = document.createElement("p");
+        p.textContent = userInfo.username;
+        let p2 = document.createElement("p");
+        p2.textContent = movieInfo.message.title;
+
+        document.body.append(p, p2);
+
+        console.log(movieInfo);
+    })
 
     // activities.forEach(acti => {
     //     let container = document.createElement("div");
