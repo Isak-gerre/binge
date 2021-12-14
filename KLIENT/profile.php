@@ -6,6 +6,7 @@
     Element som ska vara statiska, 
     skapas här
     
+    Kontrollera om inloggad -> Annars skicka till index.php
 
     Inkludera footer.php
  -->
@@ -38,11 +39,11 @@
 
 <nav id="profileNav">
     <div id="watched">
-        <p>Wacthed</p>
+        <p>Watched</p>
     </div>
 
     <div id="watchlist">
-        <p>Wacthlist</p>
+        <p>Watchlist</p>
     </div>
 
     <div id="stats">
@@ -55,7 +56,7 @@
 </div>
 
 
-<script src="scripts/makeMovieProfile.js"></script>
+<script src="scripts/makeUserProfile.js"></script>
 
 <?php 
     require_once "footer.php";

@@ -1,10 +1,15 @@
 @import "variables.scss";
 
 // css for all files
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
+    width: 100vw;
 }
+
 
 
 // Imported css-files
