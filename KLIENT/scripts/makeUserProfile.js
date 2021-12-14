@@ -66,12 +66,13 @@ async function createProfilePage() {
         let following = loggedInUserFollow.some(e => e == urlUserId);
 
         createProfileHeader(userInfo, following);
+        createProfileFeed(userInfo);
     } else {
         createProfileHeader(loggedInUserInfo, null, true);
+        createProfileFeed(loggedInUserInfo);
     }
 
 
-    // createProfileFeed()?
 
 
 }
@@ -188,10 +189,18 @@ async function showUsers(ids) {
 
     let followContainer = document.createElement('div');
     followContainer.id = "followContainer";
+    setTimeout(() => {
+        followContainer.style.left = 0;
+    }, 50);
 
     let closeTab = document.createElement('button');
     closeTab.textContent = "x";
-    closeTab.addEventListener('click', () => {followContainer.remove(); })
+    closeTab.addEventListener('click', () => {
+        followContainer.style.left = '100vw';
+        setTimeout(() => {
+            followContainer.remove(); 
+        }, 1000);
+    })
 
     followContainer.append(closeTab);
 
