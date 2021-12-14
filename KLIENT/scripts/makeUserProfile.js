@@ -86,15 +86,6 @@ function getUserFromUrl() {
     return userId
 }
 
-async function getUserInfo(userId) {
-    
-    const request = new Request(`http://localhost:8001/GET/get-users.php?ids=${userId}`);
-    const response = await fetch(request);
-    const userInfo = await response.json();
-    
-    return userInfo[0];
-}
-
 async function createProfileHeader(user, isFollowing, settings = null) {
     console.log(user);
 
