@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 375px;
+    box-sizing: border-box;
+    margin: 2vh;
+}
+
+.userContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    padding: 1vh;
+
+}
+
+.activityContainer {
+    background-color: rgb(227, 227, 227);
+    flex-grow: 2;
+    box-shadow: .2vh .2vh .2vh grey;
+    border-radius: 2vh;
+    padding: 1vh;
+    display: flex;
+}
+
+.activityContainerLeft {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.activityContainerRight {
+    flex-grow: 2;
+    flex-basis: 0;
+    background-size: cover;
+}
