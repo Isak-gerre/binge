@@ -15,7 +15,7 @@ function checkMethod($method) {
 
 function checkContentType() {
     $contentType = $_SERVER["CONTENT_TYPE"];
-
+    
     if ($contentType !== "application/json") {
         sendJSON(
             [

@@ -21,6 +21,7 @@
     <div id="genre"></div>
 </div>
 
+<script src="scripts/functions.js"></script>
 <script src="scripts/makeMovieProfile.js"></script>
 
 <?php 
