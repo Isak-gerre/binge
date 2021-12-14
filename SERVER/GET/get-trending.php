@@ -29,7 +29,7 @@ if (isset($trendingMovies["success"]) && $trendingMovies["success"] == false) {
 sendJSON($trendingMovies);
 
 function getTrending() {
-    $url = "https://api.themoviedb.org/3/trending/movie/week?api_key=f5c0e0db147d0e6434391f3ff153b6a8";
+    $url = "http://api.themoviedb.org/3/trending/movie/week?api_key=f5c0e0db147d0e6434391f3ff153b6a8";
     $data = file_get_contents($url, true);
 
     if ($data === false) {

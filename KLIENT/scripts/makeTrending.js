@@ -18,7 +18,7 @@ async function makeTrending() {
   let counter = 0;
   slideshowImages.forEach((movie) => {
     let slideshowImage = document.createElement("img");
-    slideshowImage.setAttribute("src", `https://image.tmdb.org/t/p/w500${movie["backdrop_path"]}`);
+    slideshowImage.setAttribute("src", `http://image.tmdb.org/t/p/w500${movie["backdrop_path"]}`);
     if (counter == slideshowImages.length - 1) {
       slideshowImage.setAttribute("id", "firstClone");
     }

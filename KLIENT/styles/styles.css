@@ -16,6 +16,10 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .movieBanner {
@@ -25,6 +29,7 @@ body {
   background-size: cover;
   text-align: right;
   position: relative;
+  top: 0;
   overflow: hidden;
 }
 
@@ -61,11 +66,23 @@ body {
           justify-content: center;
 }
 
-.lowerNav {
-  width: 80%;
+.upperNav > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.lowerNav, .backLowerNav {
+  width: 80vw;
   height: 50px;
-  -webkit-box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
   border-radius: 50px;
   background-color: #f0f0f0;
   display: -webkit-box;
@@ -75,24 +92,41 @@ body {
   overflow: hidden;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin-bottom: 30px;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 1;
 }
 
-.navImg {
+.lowerNav {
+  position: fixed;
+  top: calc(100% - 65px);
+}
+
+.lowerNav > div > a {
+  width: 30px;
+  height: 30px;
+}
+
+.backLowerNav {
+  width: 100%;
+  position: absolute;
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
+}
+
+svg, .navImg {
   width: 30px;
   height: 30px;
   cursor: pointer;
   margin: 10px 0px;
+  position: relative;
 }
 
-.navImg:hover {
+svg:active, .navImg {
   width: 32px;
   height: 32px;
   cursor: pointer;
-}
-
-.current > a > img {
-  -webkit-box-shadow: 0 0 1rem 0 rgba(0, 77, 177, 0.2);
-          box-shadow: 0 0 1rem 0 rgba(0, 77, 177, 0.2);
 }
 
 .upperNav > div, .lowerNav > div {

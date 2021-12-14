@@ -18,11 +18,10 @@ require_once "head.php";
 </div>
 
     <script src="scripts/functions.js"></script>
-    <script src="scripts/makeMovieBanners.js"></script>
+    <!-- <script src="scripts/makeMovieBanners.js"></script> -->
     <script src="scripts/makeNavigation.js"></script>
 <!-- <script src="scripts/makeMovieBanners.js"></script> -->
     <script src="scripts/slideshow.js"></script>
-    <script src="scripts/makeTrending.js"></script>
 
 
 <?php

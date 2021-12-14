@@ -16,6 +16,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
+  align-items: center;
 }
 
 .movieBanner {
@@ -25,6 +26,7 @@ body {
   background-size: cover;
   text-align: right;
   position: relative;
+  top: 0;
   overflow: hidden;
 }
 
@@ -49,6 +51,7 @@ body {
   font-size: 1rem;
 }
 
+//ÖVRE NAVIGATION
 .upperNav {
     width: 100vw;
     background-color: $backgroundColor;
@@ -56,20 +59,39 @@ body {
     justify-content: center;
 }
 
+.upperNav > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // flex($row, $center, $center);
+}
+
+//NEDRE NAVIGATION
 .lowerNav, .backLowerNav{
     width: 80vw;
     height: 50px;
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, .2);
     border-radius: 50px;
     background-color: rgb(240, 240, 240);
     display: flex;
     text-align: center;
     overflow: hidden;
     box-sizing: border-box;
+    margin-bottom: 30px;
+
+    position: sticky;
+    bottom: 1;
 }
 
 .lowerNav {
-  position: relative;
+  position: fixed;
+  top: calc(100% - 65px);
+}
+
+.lowerNav > div > a {
+  width: 30px;
+  height: 30px;
 }
 
 .backLowerNav {
@@ -78,7 +100,8 @@ body {
   filter: blur(10px);
 }
 
-.navImg {
+//ICONS
+svg, .navImg {
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -86,24 +109,21 @@ body {
   position: relative;
 }
 
-.navImg:hover {
+svg:active, .navImg {
   width: 32px;
   height: 32px;
   cursor: pointer;
 }
 
 
-.current > a > img {
-  fill: blue;
-}
-
+//Flex grow
 .upperNav > div, .lowerNav > div{
     flex-grow: 1;
     box-sizing: border-box;
 
 }
 
-
+//slideshow
 .slideshow-container {
   width: 500px;
   margin: auto;
