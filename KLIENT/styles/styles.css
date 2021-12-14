@@ -183,6 +183,9 @@ body {
   width: 100%;
   position: absolute;
   z-index: 10;
+  left: 100vw;
+  -webkit-transition: left 1s;
+  transition: left 1s;
 }
 
 #followContainer div {
