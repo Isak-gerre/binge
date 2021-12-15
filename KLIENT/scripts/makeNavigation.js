@@ -41,7 +41,11 @@ function makeUpperNav() {
         searchDiv.classList.add = "search";
         upperNav.append(searchDiv);
 
+        let animation = 'searchBar .3s ease-in-out';
+        searchDiv.style.animation= animation;
+
         document.querySelector('.closeImg').addEventListener('click', ()=> {
+            animation = 'removeSearchBar .3s ease-in-out';
             searchDiv.remove()
         })
     })

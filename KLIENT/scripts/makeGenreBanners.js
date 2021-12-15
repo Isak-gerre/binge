@@ -4,44 +4,42 @@
 
 "use strict";
 
-let colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', 
-		  '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
-		  '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', 
-		  '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC'
+let colorArray = ['#361986', '#ffb700', '#2a9d8f', '#a8dadc', '#023e8a', 
+		  '#6a040f', '#4cc9f0', '#999966', '#fca311', '#006d77',
+		  '#ef233c', '#8d99ae', '#c2c5aa', '#f94144', '#118ab2', 
+		  '#06d6a0', '#ef476f', '#9e2a2b', '#9d4edd', '#ff6d00'
 ];
 
-
-
-async function makeGenreBanner(genre){
+async function makeGenreBanner(){
     let genres = await getGenres();
-    // console.log(genres);
 
-    //create elements
-    let genreBanner = document.createElement('div');
-    let divider = document.createElement('div');
-    let genreName = document.createElement('p');
+    genres['genres'].forEach(genre => {
+            //create elements
+        let genreBanner = document.createElement('div');
+        let divider = document.createElement('div');
+        let genreName = document.createElement('p');
 
-    //classes
-    genreBanner.className = "genreBanner";
-    divider.className = "divider";
-    genreName.className = "genreName";
+        //classes
+        genreBanner.className = "genreBanner";
+        divider.className = "divider";
+        genreName.className = "genreName";
 
-    console.log(genre);
-    //content
-    genreName.textContent= genre;
-    genreBanner.style.backgroundColor = colorArray[Math.floor(Math.random() * colorArray.length)];
+        //content
+        genreName.textContent= genre.name;
+        genreBanner.style.backgroundColor = colorArray[Math.floor(Math.random() * colorArray.length)];
+
+        
+        //append
+        genreBanner.append(genreName);
+        genreBanner.append(divider);
+        document.getElementById("wrapper").append(genreBanner);
+    });
 
 
-    //append
-    genreBanner.append(genreName);
-    genreBanner.append(divider);
-    document.getElementById("wrapper").append(genreBanner);
-
-    console.log(genres);
     return genres;
 }
 
-makeGenreBanner('horror');
+makeGenreBanner();
 
 // genres.forEach(genre => {
 //     makeGenreBanner(genre);
