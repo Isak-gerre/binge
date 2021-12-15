@@ -14,7 +14,7 @@ let colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
 
 async function makeGenreBanner(genre){
     let genres = await getGenres();
-    console.log(genres);
+    // console.log(genres);
 
     //create elements
     let genreBanner = document.createElement('div');
@@ -22,13 +22,13 @@ async function makeGenreBanner(genre){
     let genreName = document.createElement('p');
 
     //classes
-    genreBanner.className = "movieBanner";
-    divider.className = "titleDiv";
+    genreBanner.className = "genreBanner";
+    divider.className = "divider";
     genreName.className = "genreName";
 
-    
+    console.log(genre);
     //content
-    genreName.textContent= genre.name;
+    genreName.textContent= genre;
     genreBanner.style.backgroundColor = colorArray[Math.floor(Math.random() * colorArray.length)];
 
 
@@ -37,6 +37,7 @@ async function makeGenreBanner(genre){
     genreBanner.append(divider);
     document.getElementById("wrapper").append(genreBanner);
 
+    console.log(genres);
     return genres;
 }
 

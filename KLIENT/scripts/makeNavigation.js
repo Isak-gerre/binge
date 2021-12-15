@@ -2,27 +2,53 @@
 
 "use strict";
 
-function makeUpperNav(page) {
+function makeUpperNav() {
     //create elements
     let upperNav = document.createElement('nav');
     let navLeft = document.createElement('div');
     let navMiddle = document.createElement('div');
     let navRight = document.createElement('div');
 
+    let searchImg = document.createElement('img');
+    searchImg.src = `../styles/images/iconSearch.png`;
+
+    let searchDiv = document.createElement('div');
+    searchDiv.className = "search";
+
     //classes
     upperNav.className = "upperNav";
     navLeft.className = "navLeft";
     navMiddle.className = "navMiddle";
     navRight.className = "navRight";
+    searchImg.className = "navImg";
 
- 
     //content
     navLeft.innerHTML = `<a href='index.php'><img src='../styles/images/iconBack.png' class ='navImg' alt='Back'></a>`;
-    navMiddle.innerHTML =  `<a href='index.php'><img src='../styles/images/bForBingy.png' class ='navImg' alt='Back'></a>`;
-    navRight.innerHTML =  `<a href='index.php'><img src='../styles/images/iconSearch.png' class ='navImg' alt='Search'></a>`;
+    navMiddle.innerHTML =  `<a href='index.php'><img src='../styles/images/bForBingy.png' class ='navImg' alt='B'></a>`;
+
+    searchImg.addEventListener('click', ()=> {
+        searchDiv.innerHTML = `
+        
+        <form name="searchForm" method="get" action="search.js">
+            <input type="text" id="searchField" name="search">
+            <button class="hiddenButton"></button>
+        </form>
+
+        
+        <img src='../styles/images/iconClose.png' class ='navImg closeImg' alt='close'>
+        `;
+
+        searchDiv.classList.add = "search";
+        upperNav.append(searchDiv);
+
+        document.querySelector('.closeImg').addEventListener('click', ()=> {
+            searchDiv.remove()
+        })
+    })
 
     //append
     upperNav.append(navLeft, navMiddle, navRight);
+    navRight.append(searchImg);
     document.getElementById("wrapper").append(upperNav);
 }
 makeUpperNav();

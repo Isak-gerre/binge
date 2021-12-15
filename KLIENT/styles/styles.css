@@ -22,10 +22,10 @@ body {
           align-items: center;
 }
 
-.movieBanner {
-  background-color: aquamarine;
+.movieBanner, .genreBanner {
   height: 150px;
   width: 100px;
+  border-radius: 10px;
   background-size: cover;
   text-align: right;
   position: relative;
@@ -33,7 +33,13 @@ body {
   overflow: hidden;
 }
 
-.titleDiv {
+.genreBanner {
+  height: 100px;
+  width: 40vw;
+  border-radius: 10px;
+}
+
+.titleDiv, .divider {
   position: absolute;
   bottom: -10%;
   right: -40%;
@@ -44,7 +50,12 @@ body {
           transform: rotate(-20deg);
 }
 
-.title {
+.divider {
+  height: 80%;
+  bottom: -30%;
+}
+
+.title, .genreName {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -53,6 +64,10 @@ body {
   color: black;
   z-index: 10;
   font-size: 1rem;
+}
+
+.genreName {
+  font-size: 2rem;
 }
 
 .upperNav {
@@ -64,6 +79,9 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
+  -webkit-transition: width 1s;
+  transition: width 1s;
 }
 
 .upperNav > div {
@@ -76,6 +94,48 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.hiddenButton {
+  display: none;
+  border: none;
+}
+
+.search {
+  width: 100%;
+  height: 50px;
+  background-color: whitesmoke;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+form {
+  width: 100%;
+  height: 100%;
+}
+
+#searchField {
+  width: 85%;
+  border: none;
+  border-radius: inherit;
+  background-color: transparent;
+  height: 100%;
+  font-size: 1.1rem;
+  padding-left: 10px;
+  position: inherit;
+  left: 0;
+}
+
+.closeImg {
+  position: absolute;
+  right: 10px;
 }
 
 .lowerNav, .backLowerNav {
