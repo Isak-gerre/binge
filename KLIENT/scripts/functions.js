@@ -54,9 +54,9 @@ async function getFollowing(id) {
   }
 }
 
-async function getFriendsActivities() {
+async function getFriendsActivities(id) {
   // Get the users following
-  let user = await getFollowing(3); // session stared id
+  let user = await getFollowing(id); // session stared id
   let following = user[0].following;
 
   // Get following activities från db
@@ -64,5 +64,15 @@ async function getFriendsActivities() {
   let data = await response.json();
 
   return data;
+}
+
+async function getUserActivities(id) {
+  try {
+  let response = await fetch(`http://localhost:7001/GET/get-activities.php?followingIDs=${id}`);
+    let activities = await response.json();
+    return activities;
+  } catch (err) {
+    console.log(err);
+  }
 }
 
