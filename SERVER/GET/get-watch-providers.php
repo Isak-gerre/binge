@@ -18,7 +18,7 @@ if ($method === "GET") {
 function
 getWatchProviders()
 {
-    $watchProviders = "https://api.themoviedb.org/3/watch/providers/movie?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US";
+    $watchProviders = "http://api.themoviedb.org/3/watch/providers/movie?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US";
 
     //Use file_get_contents to GET the URL in question.
     $contents = json_decode(file_get_contents($watchProviders), true);
