@@ -15,9 +15,8 @@ body {
     display: flex;
     justify-content: space-between;
     flex-grow: 1;
-    padding: 1vh;
+    padding: 1vh 0.5vh 1vh 0.5vh;
     font-family: 'Archivo', sans-serif;
-
 }
 
 .activityContainer {
@@ -33,19 +32,68 @@ body {
     flex-grow: 1;
     flex-basis: 0;
     font-family: 'Mulish', sans-serif;
-
+    display: flex;
+    flex-direction: column;
 }
 
 .activityContainerRight {
     border-radius: 0vh 2vh 2vh 0vh;
-
     flex-grow: 1.5;
     flex-basis: 0;
     background-size: cover;
-    height: 100px;
+    background-position: center;
+    min-height: 100px;
     clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 .type {
     display: flex;
+    align-items: center;
+}
+
+.typeText {
+    font-size: 15px;
+    margin-right: .5vw;
+}
+
+.typeIcon {
+    height: 60%;
+}
+
+.title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: bold;
+}
+
+.userPic {
+    height: 4vh;
+    width: 4vh;
+    border-radius: 50%;
+    margin-right: 1.5vh;
+    background-size: cover;
+}
+
+.username {
+    flex-grow: 10;
+    display: flex;
+    align-items: center;
+}
+
+.date {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.comment {
+    font-size: 13px;
+}
+
+.rate {
+    display: flex;
+}
+
+.star {
+    height: 15px;
 }
