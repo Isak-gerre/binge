@@ -8,7 +8,6 @@ function makeUpperNav(page) {
     let navLeft = document.createElement('div');
     let navMiddle = document.createElement('div');
     let navRight = document.createElement('div');
-    
 
     //classes
     upperNav.className = "upperNav";
@@ -21,7 +20,7 @@ function makeUpperNav(page) {
     navLeft.innerHTML = `<a href='index.php'><img src='../styles/images/iconBack.png' class ='navImg' alt='Back'></a>`;
     navMiddle.innerHTML =  `<a href='index.php'><img src='../styles/images/bForBingy.png' class ='navImg' alt='Back'></a>`;
     navRight.innerHTML =  `<a href='index.php'><img src='../styles/images/iconSearch.png' class ='navImg' alt='Search'></a>`;
- 
+
     //append
     upperNav.append(navLeft, navMiddle, navRight);
     document.getElementById("wrapper").append(upperNav);
@@ -68,5 +67,5 @@ function makeLowerNav(page) {
 }
 
 makeLowerNav('home');
-makeLowerNav('explore');
-makeLowerNav('profile');
+// makeLowerNav('explore');
+// makeLowerNav('profile');
