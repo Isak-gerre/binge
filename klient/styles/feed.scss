@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap');
+
+body {
+    background-color: rgb(227, 227, 227);
+}
 .container {
     display: flex;
     flex-direction: column;
@@ -11,25 +16,36 @@
     justify-content: space-between;
     flex-grow: 1;
     padding: 1vh;
+    font-family: 'Archivo', sans-serif;
 
 }
 
 .activityContainer {
-    background-color: rgb(227, 227, 227);
+    background-color: rgb(255, 255, 255);
     flex-grow: 2;
     box-shadow: .2vh .2vh .2vh grey;
     border-radius: 2vh;
-    padding: 1vh;
     display: flex;
 }
 
 .activityContainerLeft {
+    padding: 1vh;
     flex-grow: 1;
     flex-basis: 0;
+    font-family: 'Mulish', sans-serif;
+
 }
 
 .activityContainerRight {
-    flex-grow: 2;
+    border-radius: 0vh 2vh 2vh 0vh;
+
+    flex-grow: 1.5;
     flex-basis: 0;
     background-size: cover;
+    height: 100px;
+    clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.type {
+    display: flex;
 }

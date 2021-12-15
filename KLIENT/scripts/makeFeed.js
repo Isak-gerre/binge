@@ -52,6 +52,10 @@ async function makeFeed() {
         
         
         // användarnamn
+        let profilePic = document.createElement("div");
+        profilePic.classList.add("profilePic");
+        profilePic.style.backgroundImage =
+
         let username = document.createElement("div");
         username.classList.add("username");
         username.textContent = userInfo.username;
@@ -64,9 +68,35 @@ async function makeFeed() {
         userContainer.append(username, date);
         
         
+        // type
         let type = document.createElement("div");
         type.classList.add("type");
-        type.textContent = obj.type;
+
+    
+        //type text
+        let typeText = document.createElement("div");
+        typeText.classList.add("typeText");
+        typeText.textContent = obj.type;
+
+        //Type icon
+        let typeIcon = document.createElement("img");
+        typeIcon.classList.add("typeIcon");
+
+        if(obj.type == "watchlist") {
+            typeIcon.setAttribute("src", "../icons/watchlist.svg");
+        }
+        
+        if(obj.type == "review") {
+            typeIcon.setAttribute("src", "../icons/rate.svg");
+            // stjärnor om det finns
+            //kommentar om det finns
+        }
+        
+        if(obj.type == "watched") {
+            typeIcon.setAttribute("src", "../icons/watched.svg");
+        }
+        type.append(typeText, typeIcon);
+        
         
         let title = document.createElement("div");
         title.classList.add("title");
@@ -74,25 +104,6 @@ async function makeFeed() {
         
         activityContainerLeft.append(type, title);
 
-
-        if(obj.type == "watchlist") {
-            //ikon
-
-        }
-
-        if(obj.type == "review") {
-            //ikon
-            // stjärnor om det finns
-            //kommentar om det finns
-        }
-
-        if(obj.type == "watched") {
-            //ikon
-        }
-
-
-
-        console.log(movieInfo);
     })
 
 }
