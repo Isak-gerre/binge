@@ -202,6 +202,26 @@
                 4,
                 5
             ]
+        },
+        "7": {
+            "firstname": "Test",
+            "lastname": "User",
+            "username": "user",
+            "email": "user@test.se",
+            "password": "$2y$10$NTfBGNF5IaPWL1rITAYbIeO9wfPfxRFk34m0IJsSvuiJlRpSI6dma",
+            "birthday": "hejhopp",
+            "region": "SE",
+            "active_streaming_services": [
+                "netflix",
+                "disney plus",
+                "YouTube Premium",
+                "hbo max",
+                "viaplay",
+                "svt"
+            ],
+            "followers": [],
+            "following": [],
+            "id": "$2y$10$Tkz7yDhhpIkHXd5pwGHc8ey82cc4p2dK5xJlHo.MfAtW5QCFHxlCW"
         }
     }
 }
