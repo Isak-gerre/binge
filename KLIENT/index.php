@@ -17,10 +17,13 @@ require_once "head.php";
 <div id="wrapper">
 </div>
 
-<script src="scripts/functions.js"></script>
-<!-- <script src="scripts/makeMovieBanners.js"></script> -->
-<script src="scripts/slideshow.js"></script>
-<script src="scripts/makeTrending.js"></script>
+    <script src="scripts/functions.js"></script>
+    <!-- <script src="scripts/makeMovieBanners.js"></script> -->
+    <script src="scripts/makeNavigation.js"></script>
+    <!-- <script src="scripts/makeMovieBanners.js"></script> -->
+    <!-- <script src="scripts/slideshow.js"></script> -->
+    <script src="scripts/makeGenreBanners.js"></script>
+
 
 
 <?php

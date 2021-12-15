@@ -1,4 +1,282 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
 body {
   margin: 0;
+}
+
+#wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.movieBanner, .genreBanner {
+  height: 150px;
+  width: 100px;
+  border-radius: 10px;
+  background-size: cover;
+  text-align: right;
+  position: relative;
+  top: 0;
+  overflow: hidden;
+}
+
+.genreBanner {
+  height: 100px;
+  width: 40vw;
+  border-radius: 10px;
+}
+
+.titleDiv, .divider {
+  position: absolute;
+  bottom: -10%;
+  right: -40%;
+  height: 50%;
+  background-color: rgba(211, 211, 211, 0.7);
+  width: 150%;
+  -webkit-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+}
+
+.divider {
+  height: 90%;
+  bottom: -30%;
+  -webkit-transform: rotate(-15deg);
+          transform: rotate(-15deg);
+}
+
+.title, .genreName {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 5px 0px;
+  margin-right: 10px;
+  color: black;
+  z-index: 10;
+  font-size: 1rem;
+}
+
+.genreName {
+  font-size: 1.4rem;
+}
+
+.upperNav {
+  width: 100vw;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+}
+
+.upperNav > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.hiddenButton {
+  display: none;
+  border: none;
+}
+
+.search {
+  width: 80%;
+  height: 50px;
+  background-color: whitesmoke;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+@-webkit-keyframes searchBar {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+}
+
+@keyframes searchBar {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+}
+
+@-webkit-keyframes removeSearchBar {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+}
+
+@keyframes removeSearchBar {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+}
+
+form {
+  width: 100%;
+  height: 100%;
+}
+
+#searchField {
+  width: 85%;
+  border: none;
+  border-radius: inherit;
+  background-color: transparent;
+  height: 100%;
+  font-size: 1.1rem;
+  padding-left: 10px;
+  position: inherit;
+  left: 0;
+}
+
+.closeImg {
+  position: absolute;
+  right: 10px;
+}
+
+.lowerNav, .backLowerNav {
+  width: 80vw;
+  height: 50px;
+  -webkit-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+  background-color: #f0f0f0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 30px;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 1;
+}
+
+.lowerNav {
+  position: fixed;
+  top: calc(100% - 65px);
+  z-index: 10000;
+  background-color: transparent;
+}
+
+.lowerNav > div > a {
+  width: 30px;
+  height: 30px;
+}
+
+.backLowerNav {
+  width: 100%;
+  position: absolute;
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
+}
+
+svg, .navImg {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin: 10px 0px;
+  position: relative;
+}
+
+svg:active, .navImg {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.upperNav > div, .lowerNav > div {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.slideshow-container {
+  width: 500px;
+  margin: auto;
+  border: 5px solid black;
+  overflow: hidden;
+}
+
+.slideshow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 500px;
+}
+
+header {
+  margin: 10px;
 }
 /*# sourceMappingURL=styles.css.map */

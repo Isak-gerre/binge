@@ -56,6 +56,8 @@
 
 
 <script src="scripts/makeMovieProfile.js"></script>
+<script src="scripts/makeNavigation.js"></script>
+
 
 <?php 
     require_once "footer.php";
