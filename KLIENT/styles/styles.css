@@ -161,6 +161,7 @@ body {
 }
 
 #wrapper {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -168,7 +169,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  position: relative;
+  -webkit-box-pack: none;
+      -ms-flex-pack: none;
+          justify-content: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -180,9 +183,9 @@ body {
   border-radius: 10px;
   background-size: cover;
   text-align: right;
+  overflow: hidden;
   position: relative;
   top: 0;
-  overflow: hidden;
 }
 
 .genreBanner {
@@ -230,9 +233,16 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: none;
+      -ms-flex-align: none;
+          align-items: none;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -243,12 +253,16 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .hiddenButton {
@@ -257,16 +271,16 @@ body {
 }
 
 .search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: 80%;
   height: 50px;
-  background-color: whitesmoke;
+  background-color: white;
   border-radius: 20px;
   position: absolute;
   top: 0;
   z-index: 1000;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-transition: all 1s;
   transition: all 1s;
 }
@@ -356,9 +370,10 @@ form {
 .lowerNav, .backLowerNav {
   width: 80vw;
   height: 50px;
+  margin-bottom: 30px;
   -webkit-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 50px;
+  border-radius: 20px;
   background-color: #f0f0f0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -367,9 +382,7 @@ form {
   overflow: hidden;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin-bottom: 30px;
-  position: -webkit-sticky;
-  position: sticky;
+  position: absolute;
   bottom: 1;
 }
 

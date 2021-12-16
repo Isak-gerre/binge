@@ -15,10 +15,8 @@ body {
 }
 
 #wrapper {
-  display: flex;
-  flex-direction: column;
   position: relative;
-  align-items: center;
+  @include flex(column, none, center);
 }
 
 .movieBanner, .genreBanner {
@@ -27,9 +25,10 @@ body {
   border-radius: 10px;
   background-size: cover;
   text-align: right;
+  overflow: hidden;
+  
   position: relative;
   top: 0;
-  overflow: hidden;
 }
 
 .genreBanner {
@@ -52,7 +51,6 @@ body {
   height: 90%;
   bottom: -30%;
   transform: rotate(-15deg);
-
 }
 
 .title, .genreName {
@@ -61,22 +59,22 @@ body {
   right: 0;
   padding: 5px 0px;
   margin-right: 10px;
-  color: black;
+  color: $fontColor;
   z-index: 10;
   font-size: 1rem;
 }
 
 .genreName {
   font-size: 1.4rem;
-
 }
 
 //ÖVRE NAVIGATION
 .upperNav {
     width: 100vw;
     background-color: $backgroundColor;
-    display: flex;
-    justify-content: center;
+
+    @include flex(row, center, none);
+
     position: sticky;
     top: 0;
     z-index: 10000;
@@ -84,10 +82,7 @@ body {
 }
 
 .upperNav > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  // flex($row, $center, $center);
+  @include flex(column, center, center);
 }
 
 //SÖK
@@ -97,15 +92,18 @@ body {
 }
 
 .search {
+  display: flex;
+
   width: 80%;
   height: 50px;
-  background-color: whitesmoke;
+
+  background-color: $backgroundColor;
   border-radius: 20px;
+
   position: absolute;
   top: 0;
   z-index: 1000;
 
-  display: flex;
   transition: all 1s;
 }
 
@@ -163,16 +161,19 @@ form {
 .lowerNav, .backLowerNav{
     width: 80vw;
     height: 50px;
-    box-shadow: 0 0 7px 0 rgba(0, 0, 0, .2);
-    border-radius: 50px;
-    background-color: rgb(240, 240, 240);
-    display: flex;
-    text-align: center;
-    overflow: hidden;
-    box-sizing: border-box;
     margin-bottom: 30px;
 
-    position: sticky;
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, .2);
+    border-radius: 20px;
+    background-color: rgb(240, 240, 240);
+
+    display: flex;
+    text-align: center;
+
+    overflow: hidden;
+    box-sizing: border-box;
+
+    position: absolute;
     bottom: 1;
 }
 
@@ -221,7 +222,7 @@ svg:active, .navImg {
 .slideshow-container {
   width: 500px;
   margin: auto;
-  border: 5px solid black;
+  border: 5px solid $fontColor;
   overflow: hidden;
 }
 .slideshow {
