@@ -1,6 +1,9 @@
 @import "variables.scss";
 
 // css for all files
+* {
+    box-sizing: border-box;
+}
 
 * {
     margin: 0;
@@ -10,6 +13,7 @@
 
 body {
     margin: 0;
+    width: 100vw;
 }
 
 #wrapper {
@@ -226,6 +230,7 @@ svg:active, .navImg {
   display: flex;
   width: 500px;
 }
+
 
 // Imported css-files
 @import "userProfile.scss";

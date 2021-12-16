@@ -1,3 +1,90 @@
-header {
-    margin: 10px;
+@import "variables.scss";
+
+body {
+    position: relative;
+}
+
+#topWrapperProfile {
+    @include flex(row, center, center);
+    gap: 30px;
+    
+    width: 100%;
+    padding: 20px;
+}
+
+#profilePic {
+    flex-basis: 100px;
+    height: 100px;
+    
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+}
+
+#profileInfo {
+    @include flex(column, center, flex-start);
+    gap: 5px;
+    flex-grow: 1;
+
+    #usernameDiv {
+        @include flex(row, space-between, center);
+        @include smallTitleFont();
+        p { margin: 0;}
+
+        width: 100%;
+    }
+
+    #followInfo {
+        @include bodyFont();
+        @include flex(row, space-evenly, center);
+        width: 100%;
+        // gap: 5px;
+
+        #followersDiv, #followingDiv {
+            p { margin: 0;}
+            @include flex(column, center, center);
+            cursor: pointer;
+        }
+
+    }
+}
+
+#profileNav {
+    width: 100%;
+    @include bodyFont();
+    @include flex(row, center, center);
+
+    div {
+        @include flex(row, center, center);
+        flex-grow: 1;
+    }
+}
+
+#followContainer {
+    @include flex(column, flex-start, center);
+    gap: 10px;
+    background-color: $backgroundColor;
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+    
+    left: 100vw;
+    transition: left 1s;
+    
+    div {
+        @include bodyFont();
+        @include flex(row, flex-start, center);
+        gap: 10px;
+        width: 100%;
+        height: 100px;
+
+        padding: 10px;
+        cursor: pointer;
+
+        img {
+            @include profilePicture(100px, 100px);
+        }
+    }
 }
