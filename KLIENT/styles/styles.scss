@@ -1,11 +1,9 @@
 @import "variables.scss";
+@import "feed.scss";
 
 // css for all files
 * {
     box-sizing: border-box;
-}
-
-* {
     margin: 0;
     padding: 0;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
