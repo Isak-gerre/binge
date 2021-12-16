@@ -81,7 +81,7 @@ body {
 }
 
 .upperNav > div {
-  @include flex(column, center, center);
+  @include flex(row, center, center);
 }
 
 //SÖK
