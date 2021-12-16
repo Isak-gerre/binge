@@ -6,7 +6,6 @@
 
 async function makeMovieBanner(movieID) {
   let movieInfo = await getMovieInfo(movieID);
-  console.log(movieInfo);
 
   //create elements
   let movieBanner = document.createElement("div");
@@ -25,7 +24,8 @@ async function makeMovieBanner(movieID) {
   //append
   movieBanner.append(title);
   movieBanner.append(titleDiv);
-  document.getElementById("wrapper").append(movieBanner);
+
+  return movieBanner;
 }
 
 // makeMovieBanner(550);

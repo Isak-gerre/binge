@@ -23,7 +23,7 @@ require_once "head.php";
 <script src="scripts/makeMovieProfile.js"></script>
 <!-- <script src="scripts/makeMovieBanners.js"></script> -->
 <script src="scripts/slideshow.js"></script>
-<script src="scripts/makeTrending.js"></script>
+<!-- <script src="scripts/makeTrending.js"></script> -->
 
 
 <?php

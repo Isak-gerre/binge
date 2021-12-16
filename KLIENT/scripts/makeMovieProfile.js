@@ -26,22 +26,12 @@ makeMovieProfile([movieID]){
 
 "use strict";
 
-async function getButtonRealtionStatus(userID, movieID) {
-    try {
-        let response = await fetch(`http://localhost:7001/GET/check-movie-user-relation.php?movieID=${movieID}&userID=${userID}`);
-        let data = await response.json();
-        return data;
-    } catch (error) {
-        console.error(error);
-    }
-}
-
+// Variabler för den inloggade?
+let loggedInUser = 4;
+let movieID = 550;
 
 
 async function makeMovieProfile(movieID) {
-
-    let relation = await getButtonRealtionStatus(4, 550);
-    console.log(relation);
 
     let overlay = document.getElementById("overlay");
     overlay.style.minHeight = "100vh";
@@ -84,7 +74,29 @@ async function makeMovieProfile(movieID) {
 
     // Buttons - Niklas
     let buttons = document.createElement("div");
-    buttons.className = "movie-profile-buttons";
+    buttons.setAttribute("id", "movie-profile-buttons");
+
+    let relation = await getButtonRealtionStatus(loggedInUser, movieID);
+
+    let watchList = document.createElement("button");
+    watchList.className = "watched button";
+    watchList.textContent = "watched";
+
+    let watchLater = document.createElement("button");
+    watchLater.className = "watch-later button";
+    watchLater.textContent ="watch later";
+
+    let review = document.createElement("button");
+    review.className = "review button";
+    review.textContent = "review";
+
+    if(relation.watchlist == true){
+        watchList.textContent = "remove from watchlist";
+    } else if(relation.watchLater == true){
+        watchLater.textContent ="unwatch";
+    } else if(relation.review !== false){
+        review.textContent = "update review";
+    }
 
 
     // Runtime, Rating & Release date - Isak
@@ -114,24 +126,57 @@ async function makeMovieProfile(movieID) {
     streamingservicesGrid.className = "movie-profile-streaming-services-grid";
     let allProviders = await getProviders();
     let providers = allProviders.message.providers;
-    console.log(providers);
     providers.forEach((provider) => {
         let providerDiv = document.createElement("img");
         providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w500${provider["logo_path"]}`);
         streamingservicesGrid.append(providerDiv);
     });
 
+    
+    
+
     // Credits - Niklas
     let credits = document.createElement("div");
     credits.className = "movie-profile-credits";
+    
+    let creditsInfo = await getCredits(movieID);
+    console.log(creditsInfo);
 
     // Cast - Niklas
     let cast = document.createElement("div");
     cast.className = "movie-profile-cast";
 
+    for (let i = 0; i < 5; i++) {
+        let castMember = createCreditDiv(creditsInfo.message.credits.cast[i]);
+        cast.append(castMember);
+
+
+        director.append
+    }
+
     // Directors - Niklas
     let director = document.createElement("div");
     director.className = "movie-profile-director";
+
+    
+    creditsInfo.message.credits.cast.forEach(() => {
+        
+    })
+
+
+    function createCreditDiv(person){
+        let productionPeople = document.createElement("div");
+        productionPeople.className = "production-people";
+
+        let image = document.createElement("img");
+        image.setAttribute("src", `https://image.tmdb.org/t/p/w500/${person.profile_path}`);
+
+        let name = document.createElement("p");
+        name.textContent = person.name
+
+        productionPeople.append(image, name)
+        return productionPeople;
+    }
 
     // Reviews - Isak VÄNTAR PÅ FEED
     let reviews = document.createElement("div");
@@ -140,6 +185,13 @@ async function makeMovieProfile(movieID) {
     // Similar Movies - Niklas
     let similarMovies = document.createElement("div");
     similarMovies.className = "movie-profile-similarMovies";
+
+    let similar = await getSimilar(movieID);
+
+    await similar.message.results.forEach(async function (simMovie){
+        let movie = await makeMovieBanner(simMovie.id);
+        similarMovies.append(movie);
+    })
 
     // APPENDS
     movieRsDiv.append(movieRs);
@@ -154,6 +206,102 @@ async function makeMovieProfile(movieID) {
     middle.append(description, streamingservices, credits, reviews, similarMovies);
 
     overlay.append(movieHeader, info, middle);
+
+
+    
+    buttons.append(review, watchLater, watchList);
+
+    // Event for the buttons
+    let eventButton = document.querySelectorAll(".button");
+    eventButton.forEach(button => {
+        button.addEventListener("click", (e) => {
+            let overlayFade = document.createElement("div");
+            overlayFade.setAttribute("id", "overlay-fade");
+            let messageWrapper = document.createElement("div");
+            messageWrapper.setAttribute("id", "message-wrapper");
+
+            // Position 
+            overlayFade.style.top = "0";
+            messageWrapper.style.top = "0";
+
+
+            
+
+            let object = e.target.className;
+
+            // Content depending on what button is clicked
+            if(object.includes("review")){
+                messageWrapper.innerHTML = `
+                    <div>
+                        <button class="exit"></button> 
+                        <h1>Give your honest opinion</h1> 
+                    </div>    
+                    <div> 
+                        <h3>Give stars</h3> 
+                        <div>
+                            <ul class="rating">
+                                <li class="rating-star active" data-rate="1"></li>
+                                <li class="rating-star" data-rate="2"></li>
+                                <li class="rating-star" data-rate="3"></li>
+                                <li class="rating-star" data-rate="4"></li>
+                                <li class="rating-star" data-rate="5"></li>
+                            </ul>
+                        </div> 
+                    <div>    
+                    <div> 
+                        <h3>Comment</h3> 
+                        <input type="text" id="comment" name="fname">
+                        <p>${relation.review.comment}</p> 
+                    <div>
+                    <button>Submit</button>  
+                `;
+            } else if(object.includes("watch-later")){
+                messageWrapper.innerHTML = `
+                    <div>
+                         
+                    <div>     
+                `;
+            } else if(object.includes("watched")){
+                messageWrapper.innerHTML = `
+                    <div>
+                        
+                    <div>    
+                `;
+            }
+
+            
+            overlayFade.append(messageWrapper);
+            overlay.append(overlayFade);
+
+            document.querySelector("#comment").value = relation.review.comment;
+
+            // exit click
+            document.querySelector(".exit").addEventListener("click", () => {
+                overlayFade.remove();
+            })
+
+            // star click
+
+            const container = document.querySelector(".rating");
+            const stars = container.querySelectorAll(".rating-stars");
+
+            container.addEventListener("click", (e) => {
+                const elClass = e.target.classList;
+
+                if (!elClass.contains("active")){
+                    stars.forEach( item => item.classList.remove("active"));
+                } 
+
+                elClass.add(".active");
+            })
+
+            // overlayFade.addEventListener("click", (event) => {
+               
+            //     overlayFade.remove();
+            //     // event.unbind();
+            // })
+        });
+    });
 }
 
 
