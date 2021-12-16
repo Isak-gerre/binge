@@ -58,6 +58,7 @@ require_once "head.php";
 <script src="node_modules/chart.js/dist/chart.js"></script>
 <script src="scripts/functions.js"></script>
 <script src="scripts/makeMovieProfile.js"></script>
+<script src="scripts/search.js"></script>
 <script src="scripts/makeNavigation.js"></script>
 <script src="scripts/stats.js"></script>
 <script src="scripts/makeUserProfile.js"></script>

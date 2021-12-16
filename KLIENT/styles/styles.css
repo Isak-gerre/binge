@@ -9,11 +9,25 @@
 
 body {
   margin: 0;
-  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: none;
+      -ms-flex-pack: none;
+          justify-content: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #wrapper {
   position: relative;
+  overflow-y: scroll;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -128,6 +142,7 @@ body {
   display: flex;
   width: 80%;
   height: 50px;
+  margin-top: 8px;
   background-color: lightgrey;
   border-radius: 20px;
   position: absolute;
@@ -199,13 +214,12 @@ body {
   overflow: hidden;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  position: absolute;
-  bottom: 1;
 }
 
 .lowerNav {
-  position: fixed;
-  top: calc(100% - 65px);
+  position: -webkit-sticky;
+  position: sticky;
+  top: calc(100vh - 30px);
   z-index: 10000;
   background-color: transparent;
 }
@@ -256,6 +270,47 @@ svg:active, .navImg {
   display: -ms-flexbox;
   display: flex;
   width: 500px;
+}
+
+.searchOverlay {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  background-color: white;
+  z-index: 999;
+  -webkit-animation: searchBar .3s ease-in-out;
+          animation: searchBar .3s ease-in-out;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.pillsDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px;
+}
+
+.pill {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 20px;
+  background-color: lightgrey;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+}
+
+.filtered {
+  -webkit-box-shadow: inset 0 0 7px 0 grey;
+          box-shadow: inset 0 0 7px 0 grey;
 }
 
 body {
@@ -538,10 +593,6 @@ body {
 
 .rating-star:hover ~ .rating-star::before {
   color: grey;
-}
-
-body {
-  background-color: #e3e3e3;
 }
 
 .container {

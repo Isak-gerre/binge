@@ -14,7 +14,6 @@
 require_once "head.php";
 ?>
 
-<h1>Bingy</h1>
 <div id="wrapper">
     <div id="trending">
         <div class="slideshow-container">
@@ -49,6 +48,7 @@ require_once "head.php";
 <script src="scripts/functions.js"></script>
 <script src="scripts/makeMovieProfile.js"></script>
 <script src="scripts/makeTrending.js"></script>
+<script src="scripts/search.js"></script>
 <script src="scripts/makeNavigation.js"></script>
 
 

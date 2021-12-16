@@ -35,23 +35,28 @@ function makeUpperNav() {
 
         searchDiv.classList.add = "search";
         upperNav.append(searchDiv);
-
-        let animation = 'searchBar .3s ease-in-out';
+        
+        makeSearchOverlay();
+        document.getElementById('searchField').addEventListener('keyup', searchFunction);
+        
+        let animation = 'searchBar .5s ease-in-out';
         searchDiv.style.animation= animation;
-
+        
         document.querySelector('.closeImg').addEventListener('click', ()=> {
             animation = 'removeSearchBar .3s ease-in-out';
             searchDiv.style.animation= animation;
             // searchDiv.style.transform= 'scale(0, 1)';
 
-            searchDiv.remove()
+            document.querySelector('.searchOverlay').remove();
+            searchDiv.remove();
         })
     })
 
     //append
     upperNav.append(navLeft, navMiddle, navRight);
     navRight.append(searchImg);
-    document.getElementById("wrapper").prepend(upperNav);
+    // document.getElementById("wrapper").prepend(upperNav);
+    document.body.prepend(upperNav);
 }
 makeUpperNav();
 
@@ -91,7 +96,8 @@ function makeLowerNav(page) {
 
     //append
     lowerNav.append(backLowerNav, lowerNavLeft, lowerNavMiddle, lowerNavRight);
-    document.getElementById("wrapper").append(lowerNav);
+    // document.getElementById("wrapper").append(lowerNav);
+    document.body.append(lowerNav);
 }
 
 makeLowerNav('home');
