@@ -243,7 +243,12 @@ async function makeMovieProfile(movieID) {
                 let bottomDiv = document.createElement("div");
                 commentPar.className = "bottom";
 
-                // let form = document.createElement
+                let form = document.createElement("form");
+                let label = document.createElement("label");
+                label.textContent = "Comment";
+                let input = document.createElement("input");
+                input.setAttribute("type", "text-area")
+                let button = document.createElement("button");
 
 
 
