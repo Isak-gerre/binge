@@ -66,10 +66,10 @@ async function createProfilePage() {
         let following = loggedInUserFollow.some(e => e == urlUserId);
 
         createProfileHeader(userInfo, following);
-        createProfileFeed(userInfo);
+        // createProfileFeed(userInfo);
     } else {
         createProfileHeader(loggedInUserInfo, null, true);
-        createProfileFeed(loggedInUserInfo);
+        // createProfileFeed(loggedInUserInfo);
     }
 
 
@@ -87,7 +87,7 @@ function getUserFromUrl() {
 }
 
 async function createProfileHeader(user, isFollowing, settings = null) {
-    console.log(user);
+    // console.log(user);
 
     let username = user.username.toLowerCase();
     uNameCont.textContent = "@" + username;
@@ -201,7 +201,7 @@ async function showUsers(ids) {
         username.textContent = "@" + user.username;
 
         let userProfilePic = document.createElement('img');
-        userProfilePic.src = `http://localhost:8001/${user.profile_picture.filepath}`;
+        userProfilePic.src = `http://localhost:7001/${user.profile_picture.filepath}`;
 
         username.addEventListener('click', () => {
             window.location.href = `profile.php?userID=${user.id}`;
