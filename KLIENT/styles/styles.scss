@@ -95,37 +95,38 @@ body {
   width: 80%;
   height: 50px;
 
-  background-color: $backgroundColor;
+  background-color: lightgrey;
   border-radius: 20px;
 
   position: absolute;
   top: 0;
   z-index: 1000;
 
+  // transform: scale(0, 1);
   transition: all 1s;
 }
 
 @keyframes searchBar {
   0% {
-      transform: scale(0);
+      transform: scale(0, 1);
       transform-origin: right;
   }
   100% {
-      transform: scale(1);
+      transform: scale(1, 1);
       transform-origin: right;
   }
 }
 
-@keyframes removeSearchBar {
-  0% {
-      transform: scale(1);
-      transform-origin: right;
-  }
-  100% {
-      transform: scale(0);
-      transform-origin: right;
-  }
-}
+// @keyframes removeSearchBar {
+//   0% {
+//       transform: scale(1, 1);
+//       transform-origin: right;
+//   }
+//   100% {
+//       transform: scale(0, 1);
+//       transform-origin: right;
+//   }
+// }
 
 // .search {
 //   animation: searchBar .3s ease-in-out;
