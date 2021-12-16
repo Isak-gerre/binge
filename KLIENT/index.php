@@ -20,6 +20,8 @@ require_once "head.php";
 
 <script src="scripts/functions.js"></script>
 <script src="scripts/makeNavigation.js"></script>
+<script src="scripts/makeMovieBanners.js"></script>
+<script src="scripts/makeMovieProfile.js"></script>
 
 <?php
 require_once "footer.php";

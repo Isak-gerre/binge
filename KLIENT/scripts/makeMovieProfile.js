@@ -249,6 +249,7 @@ async function makeMovieProfile(movieID) {
                 let input = document.createElement("input");
                 input.setAttribute("type", "text-area")
                 let button = document.createElement("button");
+                button.
 
 
 
