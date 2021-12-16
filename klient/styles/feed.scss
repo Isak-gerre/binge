@@ -23,7 +23,7 @@ body {
     background-color: rgb(255, 255, 255);
     flex-grow: 2;
     box-shadow: .2vh .2vh .2vh grey;
-    border-radius: 2vh;
+    border-radius: .5vh;
     display: flex;
 }
 
@@ -37,7 +37,7 @@ body {
 }
 
 .activityContainerRight {
-    border-radius: 0vh 2vh 2vh 0vh;
+    border-radius: 0vh .5vh .5vh 0vh;
     flex-grow: 1.5;
     flex-basis: 0;
     background-size: cover;
