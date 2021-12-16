@@ -72,9 +72,6 @@ async function createProfilePage() {
         // createProfileFeed(loggedInUserInfo);
     }
 
-
-
-
 }
 
 function getUserFromUrl() {
@@ -121,6 +118,9 @@ async function createProfileHeader(user, isFollowing, settings = null) {
             isFollowing = false;
 
             profileButton.textContent = "follow";
+            let userIndex = followers.findIndex(id => id == loggedInUserId);
+            followers.splice(userIndex, 1);
+
             await followPatch(loggedInUserId, userId);
 
             nrOfFollowers -= 1;
@@ -131,17 +131,21 @@ async function createProfileHeader(user, isFollowing, settings = null) {
             isFollowing = true;
 
             profileButton.textContent = "unfollow";
+            followers.push(loggedInUserId);
+
             await followPatch(loggedInUserId, userId);
 
             nrOfFollowers += 1;
             followersCont.textContent = nrOfFollowers;
             
         } else if (profileButton.textContent == "settings") {
-            // openSettings(user.id);
+            let settingsWindow = openSettings(user);
+            document.querySelector('body').prepend(settingsWindow);
         }
     });
 
     followersCont.addEventListener('click', async function () {
+        console.log(followers)
         await showUsers(followers);
     });
 
@@ -170,10 +174,6 @@ async function followPatch(mainUserID, friendsUserID) {
     console.log(data);
 }
 
-function openSettings(userId) {
-    console.log(userId);
-}
-
 async function showUsers(ids) {
     let usersInfo = await Promise.all(ids.map(id => getUserInfo(id)));
     usersInfo.sort((a, b) => a.username > b.username ? 1 : -1);
@@ -191,7 +191,7 @@ async function showUsers(ids) {
         setTimeout(() => {
             followContainer.remove(); 
         }, 1000);
-    })
+    });
 
     followContainer.append(closeTab);
 

@@ -60,6 +60,7 @@ require_once "head.php";
 <script src="scripts/makeMovieProfile.js"></script>
 <script src="scripts/makeNavigation.js"></script>
 <script src="scripts/stats.js"></script>
+<script src="scripts/updateUser.js"></script>
 <script src="scripts/makeUserProfile.js"></script>
 
 <?php 
