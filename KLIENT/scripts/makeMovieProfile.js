@@ -28,7 +28,7 @@ makeMovieProfile([movieID]){
 
 // Variabler för den inloggade?
 let loggedInUser = 4;
-let movieID = 550;
+let movieID = 35;
 
 
 async function makeMovieProfile(movieID) {
@@ -92,12 +92,13 @@ async function makeMovieProfile(movieID) {
 
     if(relation.watchlist == true){
         watchList.textContent = "remove from watchlist";
-    } else if(relation.watchLater == true){
+    } 
+    if(relation.watchLater == true){
         watchLater.textContent ="unwatch";
-    } else if(relation.review !== false){
+    } 
+    if(relation.review !== false){
         review.textContent = "update review";
     }
-
 
     // Runtime, Rating & Release date - Isak
     let movieRsDiv = document.createElement("div");
@@ -132,37 +133,31 @@ async function makeMovieProfile(movieID) {
         streamingservicesGrid.append(providerDiv);
     });
 
-    
-    
-
     // Credits - Niklas
     let credits = document.createElement("div");
     credits.className = "movie-profile-credits";
     
-    let creditsInfo = await getCredits(movieID);
-    console.log(creditsInfo);
+    let creditsData = await getCredits(movieID);
 
     // Cast - Niklas
     let cast = document.createElement("div");
     cast.className = "movie-profile-cast";
 
     for (let i = 0; i < 5; i++) {
-        let castMember = createCreditDiv(creditsInfo.message.credits.cast[i]);
+        let castMember = createCreditDiv(creditsData.message.credits.cast[i]);
         cast.append(castMember);
-
-
-        director.append
     }
 
     // Directors - Niklas
     let director = document.createElement("div");
     director.className = "movie-profile-director";
 
-    
-    creditsInfo.message.credits.cast.forEach(() => {
-        
+    creditsData.message.credits.crew.forEach((crewMember) => {
+        if(crewMember.job == "Director"){
+            let crew = createCreditDiv(crewMember);
+            director.append(crew);
+        }
     })
-
 
     function createCreditDiv(person){
         let productionPeople = document.createElement("div");
@@ -231,6 +226,27 @@ async function makeMovieProfile(movieID) {
 
             // Content depending on what button is clicked
             if(object.includes("review")){
+                let reviewWrapper = document.createElement("div");
+                reviewWrapper.className = "review-wrapper";
+
+                // Top Div - 
+                let topDiv = document.createElement("div");
+                topDiv.className.class = "top";
+
+                // topDiv
+
+                // Middle Div -
+                let middleDiv = document.createElement("div");
+                ratingPar.className = "middle";
+
+                // Bottom Div - 
+                let bottomDiv = document.createElement("div");
+                commentPar.className = "bottom";
+
+                // let form = document.createElement
+
+
+
                 messageWrapper.innerHTML = `
                     <div>
                         <button class="exit"></button> 
@@ -250,25 +266,12 @@ async function makeMovieProfile(movieID) {
                     <div>    
                     <div> 
                         <h3>Comment</h3> 
-                        <input type="text" id="comment" name="fname">
+                        <input type="text-area" id="comment" name="fname">
                         <p>${relation.review.comment}</p> 
                     <div>
                     <button>Submit</button>  
                 `;
-            } else if(object.includes("watch-later")){
-                messageWrapper.innerHTML = `
-                    <div>
-                         
-                    <div>     
-                `;
-            } else if(object.includes("watched")){
-                messageWrapper.innerHTML = `
-                    <div>
-                        
-                    <div>    
-                `;
-            }
-
+            };
             
             overlayFade.append(messageWrapper);
             overlay.append(overlayFade);
@@ -293,16 +296,12 @@ async function makeMovieProfile(movieID) {
                 } 
 
                 elClass.add(".active");
-            })
+            });
 
-            // overlayFade.addEventListener("click", (event) => {
-               
-            //     overlayFade.remove();
-            //     // event.unbind();
-            // })
+            
         });
     });
 }
 
 
-makeMovieProfile(550);
+makeMovieProfile(movieID);
