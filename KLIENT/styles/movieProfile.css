@@ -1,0 +1,73 @@
+#overlay {
+  position: relative;
+}
+
+#overlay-fade {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#message-wrapper {
+  width: 80%;
+  height: 80%;
+  background-color: white;
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+.rating {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.rating li {
+  list-style-type: none;
+}
+
+.rating-star {
+  border: 1px solid white;
+  cursor: pointer;
+  font-size: 2em;
+  color: #ffb700;
+}
+
+.rating-star::before {
+  content: "\2605";
+}
+
+.rating-star:hover {
+  color: #ffb700;
+}
+
+.rating-star.active ~ .rating-star::before {
+  color: greY;
+}
+
+.rating:hover ~ .rating-star::before {
+  content: "\2605";
+}
+
+.rating-star:hover ~ .rating-star::before {
+  color: grey;
+}
+/*# sourceMappingURL=movieProfile.css.map */

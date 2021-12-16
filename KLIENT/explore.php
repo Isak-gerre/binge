@@ -47,6 +47,7 @@ require_once "head.php";
 </div>
 
 <script src="scripts/functions.js"></script>
+<script src="scripts/makeMovieProfile.js"></script>
 <script src="scripts/makeTrending.js"></script>
 <script src="scripts/makeNavigation.js"></script>
 

@@ -4,8 +4,11 @@
     require_once "../functions.php";
 
     checkMethod("GET");
-    checkContentType();
    
+
+    // // Data that was sent to us by the client
+    // $data = file_get_contents("php://input");
+    // $requestData = json_decode($data, true);
 
     // GET - parameters
     $userID = $_GET["userID"];
@@ -20,6 +23,7 @@
         "review" => false
     ];
 
+    
     foreach($activities as $activity){
 
         $currentMovieID = $activity["movieID"];
