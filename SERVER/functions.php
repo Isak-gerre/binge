@@ -300,3 +300,29 @@ function alreadyTaken($array, $key, $newVariable)
         return $taken;
     }
 }
+
+
+// Tar emot en array av userIDs
+function getFriendsActivities($IDs) {
+
+  $IDarr = explode(",", $IDs);
+
+  // Hämtar alla aktiviteter
+  $activities = json_decode(file_get_contents("../DATABASE/activities.json"), true)["activities"];
+
+  // Ny array som sks skickas tilllbaka
+  $friendsActivities = [];
+
+  // Går igenom alla aktiviteter
+  foreach($activities as $activity) {
+
+    // Om AKTIVITETENsss userID finns i $IDArr(som skickats med)
+    // pusha in den aktuella aktiviteten i friendsActivities[]
+    if(in_array($activity["userID"], $IDarr)) {
+      array_push($friendsActivities, $activity);
+    }
+  }
+
+  
+  return $friendsActivities;
+}
