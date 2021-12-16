@@ -58,7 +58,7 @@ function makeUpperNav() {
     //append
     upperNav.append(navLeft, navMiddle, navRight);
     navRight.append(searchImg);
-    document.getElementById("wrapper").append(upperNav);
+    document.body.append(upperNav);
 }
 makeUpperNav();
 
@@ -98,7 +98,7 @@ function makeLowerNav(page) {
 
     //append
     lowerNav.append(backLowerNav, lowerNavLeft, lowerNavMiddle, lowerNavRight);
-    document.getElementById("wrapper").append(lowerNav);
+    document.body.append(lowerNav);
 }
 
 makeLowerNav('home');
