@@ -14,7 +14,8 @@ const wrapper = document.getElementById("wrapper");
 makeFeed();
 
 async function makeFeed() {
-    let activities = await getFriendsActivities();
+    // hämta id från session
+    let activities = await getFriendsActivities(1);
     activities.sort((a, b) => b.date - a.date);
     createActivities(activities, "feed");
 }
