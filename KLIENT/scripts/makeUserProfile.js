@@ -94,7 +94,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
     let profilePic = document.createElement('img');
 
     // vi behöver ett url här va
-    profilePic.src = `http://localhost:8001/${user.profile_picture.filepath}`;
+    profilePic.src = `http://localhost:7001/${user.profile_picture.filepath}`;
     
     let followers = user.followers;
     let following = user.following;
