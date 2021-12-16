@@ -201,7 +201,7 @@ async function showUsers(ids) {
         username.textContent = "@" + user.username;
 
         let userProfilePic = document.createElement('img');
-        userProfilePic.src = `http://localhost:8001/${user.profile_picture.filepath}`;
+        userProfilePic.src = `http://localhost:7001/${user.profile_picture.filepath}`;
 
         username.addEventListener('click', () => {
             window.location.href = `profile.php?userID=${user.id}`;
