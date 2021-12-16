@@ -46,6 +46,11 @@ function makeUpperNav() {
 
         document.querySelector('.closeImg').addEventListener('click', ()=> {
             animation = 'removeSearchBar .3s ease-in-out';
+            searchDiv.style.animation= animation;
+            // searchDiv.style.transform= 'scale(0, 1)';
+
+
+
             searchDiv.remove()
         })
     })

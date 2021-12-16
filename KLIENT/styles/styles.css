@@ -276,7 +276,7 @@ body {
   display: flex;
   width: 80%;
   height: 50px;
-  background-color: white;
+  background-color: lightgrey;
   border-radius: 20px;
   position: absolute;
   top: 0;
@@ -287,14 +287,14 @@ body {
 
 @-webkit-keyframes searchBar {
   0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
     -webkit-transform-origin: right;
             transform-origin: right;
   }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
     -webkit-transform-origin: right;
             transform-origin: right;
   }
@@ -302,44 +302,14 @@ body {
 
 @keyframes searchBar {
   0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
     -webkit-transform-origin: right;
             transform-origin: right;
   }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
-  }
-}
-
-@-webkit-keyframes removeSearchBar {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
-  }
-  100% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-    -webkit-transform-origin: right;
-            transform-origin: right;
-  }
-}
-
-@keyframes removeSearchBar {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
-  }
-  100% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
     -webkit-transform-origin: right;
             transform-origin: right;
   }
