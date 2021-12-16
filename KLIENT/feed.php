@@ -16,8 +16,10 @@
 <div id="wrapper"></div>
 <script src="scripts/functions.js"></script>
 
+<script src="scripts/makeMovieProfile.js"></script>
+<script src="scripts/makeNavigation.js"></script>
 <script src="scripts/makeFeed.js"></script>
-<!-- <script src="scripts/makeMovieProfile.js"></script> -->
+
 
 <?php 
     require_once "footer.php";

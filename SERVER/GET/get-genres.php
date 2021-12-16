@@ -7,7 +7,7 @@ $method = $_SERVER["REQUEST_METHOD"];
 
 // Get a list of all genres
 function getGenres() {
-    $url = 'https://api.themoviedb.org/3/genre/movie/list?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US';
+    $url = 'http://api.themoviedb.org/3/genre/movie/list?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US';
     $data = json_decode(file_get_contents($url), true);
     sendJSON($data);
 }

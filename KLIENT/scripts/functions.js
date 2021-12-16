@@ -14,6 +14,7 @@ highestID(){
 
 "use strict";
 
+
 async function getMovieInfo(movieID) {
   try {
     let response = await fetch(`http://localhost:7001/GET/get-movie-info.php?movieID=${movieID}`);
@@ -24,10 +25,39 @@ async function getMovieInfo(movieID) {
   }
 }
 
+async function getProviders() {
+  try {
+    let response = await fetch(`http://localhost:7001/GET/get-watch-providers.php`);
+    let data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function getGenres() {
+  try {
+    let response = await fetch(`http://localhost:7001/GET/get-genres.php`);
+    let data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 async function getTrending() {
   try {
     let response = await fetch(`http://localhost:7001/GET/get-trending.php`);
+    let data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function getButtonRealtionStatus(userID, movieID) {
+  try {
+    let response = await fetch(`http://localhost:7001/GET/check-movie-user-relation.php?movieID=${movieID}&userID=${userID}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -54,9 +84,10 @@ async function getFollowing(id) {
   }
 }
 
-async function getFriendsActivities() {
+async function getFriendsActivities(id) {
+  console.log(id);
   // Get the users following
-  let user = await getFollowing(3); // session stared id
+  let user = await getFollowing(id); // session stared id
   let following = user[0].following;
 
   // Get following activities från db
@@ -147,7 +178,7 @@ function createActivities(array, page) {
       activityContainerRight.classList.add("activityContainerRight");
       activityContainerRight.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["backdrop_path"]}')`;
       activityContainerRight.addEventListener("click", () => {
-          // Kalla på makeMovieProfile med obj.movieID
+        makeMovieProfile(obj.movieID);
       });
 
       //Appenda de två delarna till containern
@@ -162,8 +193,8 @@ function createActivities(array, page) {
       let title = document.createElement("div");
       title.classList.add("title");
       title.textContent = movieInfo.message.title;
-      title.addEventListener("click", {
-          // Kalla på makeMovieProfile med obj.movieID
+      title.addEventListener("click", () => {
+        makeMovieProfile(obj.movieID);      
       });
 
       activityContainerLeft.append(type, title);
@@ -221,5 +252,34 @@ function createActivities(array, page) {
       }
       type.append(typeText, typeIcon);
   })
+}
+async function getUserActivities(id) {
+  try {
+  let response = await fetch(`http://localhost:7001/GET/get-activities.php?followingIDs=${id}`);
+    let activities = await response.json();
+    return activities;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function getSimilar(movieID) {
+  try {
+    let response = await fetch(`http://localhost:7001/GET/get-similar-movies.php?movieID=${movieID}`);
+    let data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function getCredits(movieID) {
+  try {
+    let response = await fetch(`http://localhost:7001/GET/get-additional-movieInfo.php?movieID=${movieID}`);
+    let data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 }
 

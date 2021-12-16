@@ -11,9 +11,9 @@
     Inkludera footer.php
  -->
 
- 
-<?php 
-    require_once "head.php";
+
+<?php
+require_once "head.php";
 ?>
 
 <div id="topWrapperProfile">
@@ -52,10 +52,14 @@
 </nav>
 
 <div id="profileWrapper">
-    
+    <canvas id="ctx" width="400" height="400"></canvas>
 </div>
 
+<script src="node_modules/chart.js/dist/chart.js"></script>
 <script src="scripts/functions.js"></script>
+<script src="scripts/makeMovieProfile.js"></script>
+<script src="scripts/makeNavigation.js"></script>
+<script src="scripts/stats.js"></script>
 <script src="scripts/makeUserProfile.js"></script>
 
 <?php 
