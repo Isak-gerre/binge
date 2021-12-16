@@ -116,8 +116,8 @@ function createActivities(array, page) {
         userPic.classList.add("userPic");
         userPic.style.backgroundImage = `url('http://localhost:7001/${userInfo.profile_picture.filepath}')`;
   
-        userPic.addEventListener("click", {
-            // Kalla på makeUserProfile med obj.userID
+        userPic.addEventListener("click", () => {
+          window.location.href = `profile.php?userID=${obj.userID}`;
         });
   
         let username = document.createElement("div");
@@ -125,9 +125,7 @@ function createActivities(array, page) {
         username.textContent = userInfo.username;
         username.addEventListener("click", () => {
             window.location.href = `profile.php?userID=${obj.userID}`;
-            // gå till profile.php obj.userID
         });
-        
         
         userContainer.append(userPic, username);
       }
@@ -137,7 +135,6 @@ function createActivities(array, page) {
       date.classList.add("date");
       date.textContent = howManyDaysAgo(obj.date);
       userContainer.append(date);
-
 
       // Bottom av aktivitetens container, innehåller titel + aktiviteten
       let activityContainer = document.createElement("div");
