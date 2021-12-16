@@ -56,6 +56,7 @@
 </div>
 
 <script src="scripts/functions.js"></script>
+<script src="scripts/updateUser.js"></script>
 <script src="scripts/makeUserProfile.js"></script>
 
 <?php 

@@ -66,14 +66,11 @@ async function createProfilePage() {
         let following = loggedInUserFollow.some(e => e == urlUserId);
 
         createProfileHeader(userInfo, following);
-        createProfileFeed(userInfo);
+        // createProfileFeed(userInfo);
     } else {
         createProfileHeader(loggedInUserInfo, null, true);
-        createProfileFeed(loggedInUserInfo);
+        // createProfileFeed(loggedInUserInfo);
     }
-
-
-
 
 }
 
@@ -94,7 +91,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
     let profilePic = document.createElement('img');
 
     // vi behöver ett url här va
-    profilePic.src = `http://localhost:8001/${user.profile_picture.filepath}`;
+    profilePic.src = `http://localhost:7001/${user.profile_picture.filepath}`;
     
     let followers = user.followers;
     let following = user.following;
@@ -121,6 +118,9 @@ async function createProfileHeader(user, isFollowing, settings = null) {
             isFollowing = false;
 
             profileButton.textContent = "follow";
+            let userIndex = followers.findIndex(id => id == loggedInUserId);
+            followers.splice(userIndex, 1);
+
             await followPatch(loggedInUserId, userId);
 
             nrOfFollowers -= 1;
@@ -131,17 +131,21 @@ async function createProfileHeader(user, isFollowing, settings = null) {
             isFollowing = true;
 
             profileButton.textContent = "unfollow";
+            followers.push(loggedInUserId);
+
             await followPatch(loggedInUserId, userId);
 
             nrOfFollowers += 1;
             followersCont.textContent = nrOfFollowers;
             
         } else if (profileButton.textContent == "settings") {
-            // openSettings(user.id);
+            let settingsWindow = openSettings(user);
+            document.querySelector('body').prepend(settingsWindow);
         }
     });
 
     followersCont.addEventListener('click', async function () {
+        console.log(followers)
         await showUsers(followers);
     });
 
@@ -158,7 +162,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
 
 async function followPatch(mainUserID, friendsUserID) {
 
-    const response = await fetch(new Request("http://localhost:8001/PATCH/update-user.php", {
+    const response = await fetch(new Request("http://localhost:7001/PATCH/update-user.php", {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
@@ -168,10 +172,6 @@ async function followPatch(mainUserID, friendsUserID) {
 
     const data = await response;
     console.log(data);
-}
-
-function openSettings(userId) {
-    console.log(userId);
 }
 
 async function showUsers(ids) {
@@ -191,7 +191,7 @@ async function showUsers(ids) {
         setTimeout(() => {
             followContainer.remove(); 
         }, 1000);
-    })
+    });
 
     followContainer.append(closeTab);
 
@@ -201,7 +201,7 @@ async function showUsers(ids) {
         username.textContent = "@" + user.username;
 
         let userProfilePic = document.createElement('img');
-        userProfilePic.src = `http://localhost:8001/${user.profile_picture.filepath}`;
+        userProfilePic.src = `http://localhost:7001/${user.profile_picture.filepath}`;
 
         username.addEventListener('click', () => {
             window.location.href = `profile.php?userID=${user.id}`;
