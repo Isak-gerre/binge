@@ -739,7 +739,7 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  padding: 1vh 0.5vh 1vh 0.5vh;
+  padding: 0.5vh 0;
   font-family: 'Archivo', sans-serif;
 }
 
