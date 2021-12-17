@@ -1,0 +1,37 @@
+.footerContainer {
+    background-color: rgb(147, 147, 147);
+    height: 150px;
+    display: flex;
+    margin-bottom: 60px;
+}
+
+.footerContainerLeft {
+    flex-grow: 1;
+    font-size: 40px;
+    padding: 10px;
+}
+
+.footerContainerRight {
+    flex-grow: 2;
+    padding: 10px;
+
+
+    display: flex;
+    flex-direction: column;
+}
+
+.tmdb {
+    display: flex;
+    padding: 10px;
+
+}
+
+.git {
+    display: flex;
+    padding: 10px;
+
+}
+
+.tmdbLogo {
+    height: 30px;
+}
