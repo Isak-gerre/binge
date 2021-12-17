@@ -23,18 +23,13 @@ function makeUpperNav() {
     searchImg.className = "navImg";
 
     //content
-    navLeft.innerHTML = `<a href='index.php'><img src='../styles/images/iconBack.png' class ='navImg' alt='Back'></a>`;
-    navMiddle.innerHTML =  `<a href='index.php'><img src='../styles/images/bForBingy.png' class ='navImg' alt='B'></a>`;
+    navLeft.innerHTML = `<a href='feed.php'><img src='../styles/images/iconBack.png' class ='navImg' alt='Back'></a>`;
+    navMiddle.innerHTML =  `<a href='feed.php'><img src='../styles/images/bForBingy.png' class ='navImg' alt='B'></a>`;
 
     searchImg.addEventListener('click', ()=> {
         searchDiv.innerHTML = `
-        
-        <form name="searchForm" method="get" action="search.js">
-            <input type="text" id="searchField" name="search">
-            <button class="hiddenButton"></button>
-        </form>
-
-        
+        <input type="text" id="searchField" name="search">
+        <button class="hiddenButton"></button>
         <img src='../styles/images/iconClose.png' class ='navImg closeImg' alt='close'>
         `;
 
@@ -48,8 +43,6 @@ function makeUpperNav() {
             animation = 'removeSearchBar .3s ease-in-out';
             searchDiv.style.animation= animation;
             // searchDiv.style.transform= 'scale(0, 1)';
-
-
 
             searchDiv.remove()
         })
