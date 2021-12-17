@@ -4,8 +4,12 @@ Create stats
 
 */
 
-async function renderChart() {
-  let userData = await getUserActivities(1);
+async function renderChart(userId) {
+  document.getElementById('profileWrapper').innerHTML = `
+    <canvas id="ctx" width="400" height="400"></canvas>
+  `;
+
+  let userData = await getUserActivities(userId);
   let genres = [];
   let time = [];
   let data = {};
@@ -73,4 +77,4 @@ async function renderChart() {
   }, 1000);
 }
 
-renderChart();
+// renderChart();
