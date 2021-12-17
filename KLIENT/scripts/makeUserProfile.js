@@ -75,7 +75,7 @@ async function createProfilePage() {
 
         createProfileHeader(userInfo, following);
 
-        let allUserActivities = await getAllActivites(userId);
+        let allUserActivities = await getAllActivites(urlUserId);
         let watchedActivities = [];
         let watchlist = [];
 
@@ -83,11 +83,11 @@ async function createProfilePage() {
             if (obj.type == "watchlist") {
                 watchlist.push(obj);
             } else {
-                watchedActivites.push(obj);
+                watchedActivities.push(obj);
             }
         });
         
-        profileNav(watchedActivities, watchlist, userId);
+        profileNav(watchedActivities, watchlist, urlUserId);
         createActivities(watchedActivities, 'profile');
         
 
