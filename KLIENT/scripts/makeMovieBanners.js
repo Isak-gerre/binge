@@ -15,7 +15,7 @@ async function makeMovieBanner(movieID) {
   //classes
   movieBanner.className = "movieBanner";
   titleDiv.className = "titleDiv";
-  title.className = "title";
+  title.className = "movieTitle";
 
   //content
   title.textContent = movieInfo.message.title;

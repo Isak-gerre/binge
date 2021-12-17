@@ -303,6 +303,3 @@ async function makeMovieProfile(movieID) {
         });
     });
 }
-
-
-makeMovieProfile(550);
