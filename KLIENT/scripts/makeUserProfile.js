@@ -84,7 +84,7 @@ function getUserFromUrl() {
 }
 
 async function createProfileHeader(user, isFollowing, settings = null) {
-    console.log(user);
+    // console.log(user);
 
     let username = user.username.toLowerCase();
     uNameCont.textContent = "@" + username;
