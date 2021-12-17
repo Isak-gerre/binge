@@ -28,16 +28,14 @@ makeMovieProfile([movieID]){
 
 // Variabler för den inloggade?
 let loggedInUser = 4;
-let movieID = 35;
+// let movieID = 35;
 
 
 async function makeMovieProfile(movieID) {
-
     let overlay = document.getElementById("overlay");
-    overlay.style.minHeight = "100vh";
+    // overlay.style.minHeight = "100vh";
     let data = await getMovieInfo(movieID);
     let movieInfo = data.message;
-    // console.log(movieInfo);
 
     // TOP
     let movieHeader = document.createElement("div");
@@ -47,6 +45,9 @@ async function makeMovieProfile(movieID) {
     let backdrop = document.createElement("img");
     backdrop.setAttribute("src", `https://image.tmdb.org/t/p/w500${movieInfo["backdrop_path"]}`);
     backdrop.className = "movie-profile-backdrop";
+
+    let gradient = document.createElement("div");
+    gradient.className = "movie-profile-gradient";
 
     // --INFO Divs
     // infoPoster & infoText
@@ -190,7 +191,7 @@ async function makeMovieProfile(movieID) {
 
     // APPENDS
     movieRsDiv.append(movieRs);
-    movieHeader.append(backdrop);
+    movieHeader.append(backdrop, gradient);
     infoPoster.append(poster);
     infoText.append(movieRs, title, buttons);
     info.append(infoPoster, infoText);
@@ -204,7 +205,7 @@ async function makeMovieProfile(movieID) {
 
 
     
-    buttons.append(review, watchLater, watchList);
+    buttons.append(watchLater, watchList, review);
 
     // Event for the buttons
 
@@ -295,4 +296,4 @@ async function makeMovieProfile(movieID) {
 }
 
 
-makeMovieProfile(movieID);
+// makeMovieProfile(movieID);

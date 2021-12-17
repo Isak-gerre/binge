@@ -11,9 +11,93 @@
 
 // 1. movie-profile-header (omslagsbilden) - LINA
 
+
+.movie-profile-backdrop {
+    width: 100vw;
+}
+
+.movie-profile-gradient {
+    width: 100vw;
+    position: relative;
+    z-index: 11;
+    background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 71.87%, #0F0B2E 100%);
+    height: 400px;
+    top: -400px;
+}
+
+.movie-profile-header {
+    height: auto;
+}
+
+.movie-profile-info{
+    padding: $padding;
+    position: relative;
+    display: flex;
+
+    // nödlösning på höjdsituationen, kolla gärna om du fattar?
+    top: -400px;
+    z-index: 13;
+}
+
+.movie-profile-info-poster {
+    width: 35%;
+    position: relative;
+    top:-50px;
+    left:10px;
+
+}
+.movie-profile-poster{
+    width: 100%;
+    box-shadow: 5px 5px 5px black;
+}
+
+.movie-profile-info-text {
+    position: relative;
+    left: 30px;
+    top: 10px;
+    font-family: 'Archivo', sans-serif;
+    line-height: 1.4;
+}
+
+.movie-profile-info-text > p {
+    font-size: 12px;
+}
+
+.movie-profile-title {
+    font-weight: bold;
+}
 // 2. movie-profile-info (film poster, infotext - betyg, premiärs datum, tid samt knapparna) - LINA
 
 // 2.A sedan ska knapparna kodas när man tryckt på dem, framför allt review - INTE FÄRDIGT I JS, men jag kan fixa detta!
+#movie-profile-buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.watch-later {
+    grid-area: 1 / 1 / 2 / 2;
+
+}
+
+.watched {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.review {
+    grid-area: 2 / 1 / 3 / 3;
+
+}
+
+.button {
+    margin: 5px;
+    padding: 8px;
+    border-radius: 10px;
+    border: 0;
+    color: whitesmoke;
+    background: linear-gradient(40deg, #EF9D1A, #FD047C);
+    filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+}
 
 // 3. movie-profile-middle (beskrivning, streaming services, crew + director, reviews(inte klart i JS), similarmovies (elsa har börjat denna style)) - NIKLAS
 

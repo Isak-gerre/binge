@@ -14,7 +14,7 @@ async function makeTrending() {
 
   let slideshowImages = await getTrending();
   slideshowImages.push(slideshowImages[0]);
-  console.log(slideshowImages);
+  // console.log(slideshowImages);
   let counter = 0;
   slideshowImages.forEach((movie) => {
     let slideshowImage = document.createElement("img");
@@ -35,7 +35,7 @@ async function makeTrending() {
 function slide() {
   const carouselSlide = document.querySelector(".slideshow");
   const carouselImages = document.querySelectorAll(".slideshow img");
-  console.log(carouselImages);
+  // console.log(carouselImages);
   const size = carouselImages[0].clientWidth;
 
   //   const prevBtn = document.querySelector("#prevBtn");
@@ -63,7 +63,7 @@ function slide() {
       counter++;
     next(carouselSlide, counter, size);
   }, 5000);
-  console.log("test");
+  // console.log("test");
 }
 function next(carouselSlide, counter, size) {
   carouselSlide.style.transition = "transform 0.7s ease-in-out";
@@ -75,10 +75,10 @@ function prev(carouselSlide) {
   carouselSlide.style.transform = "translatex(" + -size * counter + "px)";
 }
 
-makeTrending();
-setInterval(() => {
-  if (loaded) {
-    slide();
-    loaded = false;
-  }
-}, 1000);
+// makeTrending();
+// setInterval(() => {
+//   if (loaded) {
+//     slide();
+//     loaded = false;
+//   }
+// }, 1000);

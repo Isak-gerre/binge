@@ -39,7 +39,7 @@ async function makeGenreBanner(){
     return genres;
 }
 
-makeGenreBanner();
+// makeGenreBanner();
 
 // genres.forEach(genre => {
 //     makeGenreBanner(genre);
