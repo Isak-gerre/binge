@@ -48,9 +48,12 @@ require_once "head.php";
 
 <script src="scripts/functions.js"></script>
 <script src="scripts/makeMovieBanners.js"></script>
-<script src="scripts/makeMovieProfile.js"></script>
-<script src="scripts/makeTrending.js"></script>
+<script src="scripts/search.js"></script>
 <script src="scripts/makeNavigation.js"></script>
+<script src="scripts/makeTrending.js"></script>
+<script src="scripts/friendsRecentlyWatched.js"></script>
+<script src="scripts/makeGenreBanner.js"></script>
+<script src="scripts/makeMovieProfile.js"></script>
 
 
 <?php

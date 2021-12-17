@@ -4,6 +4,9 @@ $mainColor: #361986;
 $accentColor: #ffb700;
 $fontColor: black;
 
+// Margins and stuff
+$padding: 10px;
+
 // FUNCTIONS
 
 @mixin flex($direction, $justify, $align) {
@@ -17,6 +20,16 @@ $fontColor: black;
     width: $width;
     height: $height;
     border-radius: 50%;
+}
+
+@mixin transitionFromLeft() {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 10;
+    
+    left: 100vw;
+    transition: left 1s;
 }
 
 
@@ -47,5 +60,6 @@ $fontColor: black;
 }
 
 @mixin xSmallFont() {
-
+    font-family: 'Arial';
+    font-size: 0.5rem;
 }

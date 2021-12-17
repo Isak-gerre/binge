@@ -12,9 +12,9 @@ async function renderChart() {
   let runtimes = [];
   let done = false;
   userData.forEach(async function (activity) {
-    console.log(activity);
+    // console.log(activity);
     let movieInfo = await getMovieInfo(activity.movieID);
-    console.log(movieInfo);
+    // console.log(movieInfo);
     await movieInfo.message.genres.forEach((genre, index) => {
       if (!genres.includes(genre.name)) {
         genres.push(genre.name);
@@ -25,18 +25,18 @@ async function renderChart() {
         time.push(timeAndGenre);
       } else {
         time.forEach((obj) => {
-            console.log(obj.genre);
-            console.log(genre)
-            console.log(obj.genre == genre);
+            // console.log(obj.genre);
+            // console.log(genre)
+            // console.log(obj.genre == genre);
           if (obj.genre == genre.name) {
             obj.time = obj.time + movieInfo.message.runtime;
-            console.log("test");
+            // console.log("test");
           }
         });
       }
     });
-    console.log(genres);
-    console.log(time);
+    // console.log(genres);
+    // console.log(time);
     runtimes = time.map((obj) => {
       return obj.time;
     });
@@ -60,7 +60,7 @@ async function renderChart() {
       },
     };
   });
-  console.log(genres);
+  // console.log(genres);
   let interval = setInterval(() => {
     if (data != {}) {
       let ctx = document.getElementById("ctx").getContext("2d");

@@ -19,8 +19,10 @@ require_once "head.php";
 
 <script src="scripts/functions.js"></script>
 <script src="scripts/makeNavigation.js"></script>
-<script src="scripts/makeMovieBanners.js"></script>
-<script src="scripts/makeMovieProfile.js"></script>
+<script src="scripts/stateManager.js"></script>
+<script src="scripts/createFormAPI.js"></script>
+<script src="scripts/logIn.js"></script>
+<script src="scripts/signUp.js"></script>
 
 <?php
 require_once "footer.php";

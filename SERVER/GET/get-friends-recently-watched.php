@@ -14,7 +14,7 @@
     
     if(isset($_GET["followingIDs"])) {
         $followingIDs = $_GET["followingIDs"];
-        getFriendsRecentlyWatched(getFiendsActivities($followingIDs));
+        getFriendsRecentlyWatched(getFriendsActivities($followingIDs));
     } else {
         sendJSON([
             "code" => 1,
