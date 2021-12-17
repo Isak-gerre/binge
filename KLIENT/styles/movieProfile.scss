@@ -1,69 +1,21 @@
 @import "variables.scss";
 
+// Allt innehåll ligger i denna overlay (typ som wrapper)
 #overlay {
     position: relative;
 }
 
-#overlay-fade {
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba($color: #000000, $alpha: 0.5);
-    z-index:900;
+// Barn till denna delas upp i tre sektioner
+// Alla idn och klasser hittar du om du inspekterar 
+// sedan ska overlay vara en display flex, flex-direction column
 
-    @include flex(row, center, center); 
-}
+// 1. movie-profile-header (omslagsbilden) - LINA
 
-#message-wrapper {
-    width: 80%;
-    height: 80%;
-    background-color: white;
+// 2. movie-profile-info (film poster, infotext - betyg, premiärs datum, tid samt knapparna) - LINA
 
-}
+// 2.A sedan ska knapparna kodas när man tryckt på dem, framför allt review - INTE FÄRDIGT I JS, men jag kan fixa detta!
 
-.stop-scrolling {
-    height: 100%;
-    overflow: hidden;
-}
+// 3. movie-profile-middle (beskrivning, streaming services, crew + director, reviews(inte klart i JS), similarmovies (elsa har börjat denna style)) - NIKLAS
 
-// Button 
 
-// Rating-star
-// filled star = \2605
-// empty star = \2606
 
-.rating{
-    display:flex;
-}
-
-.rating li {
-    list-style-type: none;
-}
-
-.rating-star{
-    
-    border: 1px solid white;
-    cursor: pointer;
-    font-size: 2em;
-    color: $accentColor;
-}
-
-.rating-star::before{
-    content: "\2605";
-}
-
-.rating-star:hover{
-    color: $accentColor;
-}
-
-.rating-star.active ~ .rating-star::before {
-    color: greY;
-}
-
-.rating:hover ~ .rating-star::before {
-    content: "\2605";
-}
-    
-.rating-star:hover ~ .rating-star::before {
-    color:grey;
-}

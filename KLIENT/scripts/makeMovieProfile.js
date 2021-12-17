@@ -91,10 +91,10 @@ async function makeMovieProfile(movieID) {
     review.textContent = "review";
 
     if(relation.watchlist == true){
-        watchList.textContent = "remove from watchlist";
+        watchList.classList.add = "marked";
     } 
     if(relation.watchLater == true){
-        watchLater.textContent ="unwatch";
+        watchLater.classList.add = "marked";
     } 
     if(relation.review !== false){
         review.textContent = "update review";
@@ -207,106 +207,91 @@ async function makeMovieProfile(movieID) {
     buttons.append(review, watchLater, watchList);
 
     // Event for the buttons
-    let eventButton = document.querySelectorAll(".button");
-    eventButton.forEach(button => {
-        button.addEventListener("click", (e) => {
-            let overlayFade = document.createElement("div");
-            overlayFade.setAttribute("id", "overlay-fade");
-            let messageWrapper = document.createElement("div");
-            messageWrapper.setAttribute("id", "message-wrapper");
 
-            // Position 
-            overlayFade.style.top = "0";
-            messageWrapper.style.top = "0";
+    review.addEventListener("click", (e) => {
+        let overlayFade = document.createElement("div");
+        overlayFade.setAttribute("id", "overlay-fade");
+        let messageWrapper = document.createElement("div");
+        messageWrapper.setAttribute("id", "message-wrapper");
+        // Position 
+        overlayFade.style.top = "0";
+        messageWrapper.style.top = "0";
+        let object = e.target.className;
+        // Content depending on what button is clicked
+        if(object.includes("review")){
+            // Top Div - 
+            let topDiv = document.createElement("div");
+            topDiv.className = "top";
+            let exitButton = document.createElement("img");
+            exitButton.className = "exit button";
+            exitButton.setAttribute("src", "../icons/exit.svg");
+            let title = document.createElement("h1");
+            title.className = "titleComment";
+            title.textContent = "Leave a review";
+            
+            // Middle Div -
+            let middleDiv = document.createElement("div");
+            middleDiv.className = "middle";
 
+            // FORM
+            let form = document.createElement("form");
+
+            // Rating
+            let labelRating = document.createElement("label");
+            labelRating.textContent = "rating-comment";
+
+            let stars = document.createElement("ul");
+
+            for (let i = 0; i < 5; i++) {
+                let star = document.createElement("")
+            }
+
+            // Comment
+            let labelComment = document.createElement("label");
+            labelComment.textContent = "label-comment";
+            let input = document.createElement("input");
+            input.setAttribute("type", "text-area");
+            input.setAttribute("name", "comment");
+            input.classname = "comment";
+            input.value = relation.review.comment;
+
+            // Submit-button
+            let submitButton = document.createElement("button");
+            submitButton.setAttribute("type", "submit");
+            submitButton.className = "submit button";
+            submitButton.textContent = "Submit";
+            
+            topDiv.append(exitButton, title);
+            middleDiv.append();
+            form.append(label, input);
+            messageWrapper.append(topDiv, middleDiv, form, submitButton);
+            
+        };
+        
+        overlayFade.append(messageWrapper);
+        overlay.append(overlayFade);
+
+        // exit click
+        document.querySelector(".exit").addEventListener("click", () => {
+            overlayFade.remove();
+        })
+
+        // star click
+        // const container = document.querySelector(".rating");
+        // const stars = container.querySelectorAll(".rating-stars");
+        // container.addEventListener("click", (e) => {
+        //     const elClass = e.target.classList;
+        //     if (!elClass.contains("active")){
+        //         stars.forEach( item => item.classList.remove("active"));
+        //     } 
+        //     elClass.add(".active");
+        // });
+
+        // submit click
 
             
-
-            let object = e.target.className;
-
-            // Content depending on what button is clicked
-            if(object.includes("review")){
-                let reviewWrapper = document.createElement("div");
-                reviewWrapper.className = "review-wrapper";
-
-                // Top Div - 
-                let topDiv = document.createElement("div");
-                topDiv.className.class = "top";
-
-                // topDiv
-
-                // Middle Div -
-                let middleDiv = document.createElement("div");
-                ratingPar.className = "middle";
-
-                // Bottom Div - 
-                let bottomDiv = document.createElement("div");
-                commentPar.className = "bottom";
-
-                let form = document.createElement("form");
-                let label = document.createElement("label");
-                label.textContent = "Comment";
-                let input = document.createElement("input");
-                input.setAttribute("type", "text-area")
-                let button = document.createElement("button");
-                button.
-
-
-
-                messageWrapper.innerHTML = `
-                    <div>
-                        <button class="exit"></button> 
-                        <h1>Give your honest opinion</h1> 
-                    </div>    
-                    <div> 
-                        <h3>Give stars</h3> 
-                        <div>
-                            <ul class="rating">
-                                <li class="rating-star active" data-rate="1"></li>
-                                <li class="rating-star" data-rate="2"></li>
-                                <li class="rating-star" data-rate="3"></li>
-                                <li class="rating-star" data-rate="4"></li>
-                                <li class="rating-star" data-rate="5"></li>
-                            </ul>
-                        </div> 
-                    <div>    
-                    <div> 
-                        <h3>Comment</h3> 
-                        <input type="text-area" id="comment" name="fname">
-                        <p>${relation.review.comment}</p> 
-                    <div>
-                    <button>Submit</button>  
-                `;
-            };
-            
-            overlayFade.append(messageWrapper);
-            overlay.append(overlayFade);
-
-            document.querySelector("#comment").value = relation.review.comment;
-
-            // exit click
-            document.querySelector(".exit").addEventListener("click", () => {
-                overlayFade.remove();
-            })
-
-            // star click
-
-            const container = document.querySelector(".rating");
-            const stars = container.querySelectorAll(".rating-stars");
-
-            container.addEventListener("click", (e) => {
-                const elClass = e.target.classList;
-
-                if (!elClass.contains("active")){
-                    stars.forEach( item => item.classList.remove("active"));
-                } 
-
-                elClass.add(".active");
-            });
-
-            
-        });
     });
+    
 }
 
 
