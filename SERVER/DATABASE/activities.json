@@ -179,6 +179,26 @@
         "comment": "", 
         "rate": "",
         "updated": false
+    },
+    "19":{
+        "id": 19,
+        "userID": 5,
+        "movieID": 73,
+        "type": "watchlist",
+        "date": "20211020",
+        "comment": "", 
+        "rate": "",
+        "updated": false
+    },
+    "20":{
+        "id": 20,
+        "userID": 5,
+        "movieID": 321,
+        "type": "watchlist",
+        "date": "20211206",
+        "comment": "", 
+        "rate": "",
+        "updated": false
     }
 }
 }
