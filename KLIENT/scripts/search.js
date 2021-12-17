@@ -55,11 +55,17 @@ function makeSearchOverlay(){
     pillMovie.addEventListener('click', () => {
         searchType = 'movie';
         pillMovie.classList.toggle('filtered');
+        setTimeout(() => {
+            searchFunction();
+        }, 500);
     })
 
     pillCast.addEventListener('click', () => {
         searchType = 'cast';
         pillCast.classList.toggle('filtered');
+        setTimeout(() => {
+            searchFunction();
+        }, 500);
     })
 
 }

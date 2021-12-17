@@ -46,7 +46,6 @@ body {
 
 .movieBanner, .genreBanner {
   height: 150px;
-  max-width: 100px;
   border-radius: 10px;
   background-size: cover;
   text-align: right;
@@ -320,7 +319,8 @@ svg:active, .navImg {
 }
 
 .slideshow-container {
-  width: 500px;
+  width: 100vw;
+  height: 300px;
   margin: auto;
   border: 5px solid black;
   overflow: hidden;
@@ -330,7 +330,15 @@ svg:active, .navImg {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 500px;
+  width: 100%;
+  height: 300px;
+}
+
+.slideshow div {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
 }
 
 .searchOverlay {
