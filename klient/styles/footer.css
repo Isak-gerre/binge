@@ -1,10 +1,9 @@
 .footerContainer {
+  padding-bottom: 60px;
   background-color: #939393;
-  height: 150px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 60px;
 }
 
 .footerContainerLeft {
@@ -13,6 +12,15 @@
           flex-grow: 1;
   font-size: 40px;
   padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .footerContainerRight {
@@ -20,6 +28,7 @@
       -ms-flex-positive: 2;
           flex-grow: 2;
   padding: 10px;
+  font-size: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29,21 +38,18 @@
           flex-direction: column;
 }
 
-.tmdb {
+.tmdb, .git {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   padding: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.git {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 10px;
-}
-
-.tmdbLogo {
-  height: 30px;
+.tmdbLogo, .gitLogo {
+  width: 30px;
+  margin-right: 10px;
 }
 /*# sourceMappingURL=footer.css.map */

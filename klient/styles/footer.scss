@@ -1,37 +1,37 @@
 .footerContainer {
+    padding-bottom:60px;
     background-color: rgb(147, 147, 147);
-    height: 150px;
     display: flex;
-    margin-bottom: 60px;
 }
 
 .footerContainerLeft {
     flex-grow: 1;
     font-size: 40px;
     padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footerContainerRight {
     flex-grow: 2;
     padding: 10px;
+    font-size: 10px;
 
 
     display: flex;
     flex-direction: column;
 }
 
-.tmdb {
+.tmdb, .git {
     display: flex;
     padding: 10px;
+    align-items: center;
 
 }
 
-.git {
-    display: flex;
-    padding: 10px;
 
-}
-
-.tmdbLogo {
-    height: 30px;
+.tmdbLogo, .gitLogo {
+    width: 30px;
+    margin-right: 10px;
 }

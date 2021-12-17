@@ -41,7 +41,7 @@ let git = document.createElement("div");
 git.classList.add("git");
 
 let gitLogo = document.createElement("img");
-gitLogo.setAttribute("src", "../icons/gitLogo.svg");
+gitLogo.setAttribute("src", "../icons/github.svg");
 gitLogo.classList.add("gitLogo");
 gitLogo.textContent = "gitLogo";
 
