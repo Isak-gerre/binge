@@ -28,6 +28,7 @@ body {
 #wrapper {
   position: relative;
   overflow-y: scroll;
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -45,13 +46,43 @@ body {
 
 .movieBanner, .genreBanner {
   height: 150px;
-  width: 100px;
+  max-width: 100px;
   border-radius: 10px;
   background-size: cover;
   text-align: right;
   overflow: hidden;
   position: relative;
   top: 0;
+  -webkit-animation: movieScale .5s ease-in-out;
+          animation: movieScale .5s ease-in-out;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+@-webkit-keyframes movieScale {
+  0% {
+    -webkit-transform: scale(1, 0);
+            transform: scale(1, 0);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+
+@keyframes movieScale {
+  0% {
+    -webkit-transform: scale(1, 0);
+            transform: scale(1, 0);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
 }
 
 .genreBanner {
@@ -182,6 +213,36 @@ body {
   }
 }
 
+@-webkit-keyframes removeSearchBar {
+  0% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+  100% {
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+}
+
+@keyframes removeSearchBar {
+  0% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+  100% {
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+}
+
 #searchField {
   width: 85%;
   border: none;
@@ -306,6 +367,15 @@ svg:active, .navImg {
   transition: -webkit-transform 1s;
   transition: transform 1s;
   transition: transform 1s, -webkit-transform 1s;
+}
+
+.movieList {
+  display: -ms-grid;
+  display: grid;
+  width: 100vw;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
 }
 
 .filtered {
