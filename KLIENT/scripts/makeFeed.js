@@ -14,7 +14,7 @@ const wrapper = document.getElementById("wrapper");
 // Get the logged in userobj
 
 async function makeFeed() {
-    let activities = await getFriendsActivities();
+    let activities = await getFriendsActivities(1);
 
     activities.sort((a, b) => b.date - a.date);
 

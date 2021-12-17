@@ -15,8 +15,8 @@
 <h1>Bingy</h1>
 <div id="wrapper"></div>
 <script src="scripts/functions.js"></script>
-
-<script src="scripts/makeMovieProfile.js"></script>
+<script src="scripts/makeMovieBanners.js"></script>
+<script src="scripts/search.js"></script>
 <script src="scripts/makeNavigation.js"></script>
 <script src="scripts/makeFeed.js"></script>
 
