@@ -156,27 +156,30 @@ async function createProfileHeader(user, isFollowing, settings = null) {
     let following = user.following;
     let nrOfFollowers = followers.length;
     let nrOfFollowing = following.length;
-    let profileButton = document.createElement('button');
+    let profileButton = document.createElement('img');
 
     if (isFollowing !== null) {
         if (isFollowing) {
-            profileButton.textContent = "unfollow";
+            profileButton.src = '../icons/remove_circle_black.svg';
+            profileButton.id = 'unfollow';
         } else if (!isFollowing) {
-            profileButton.textContent = "follow";
+            profileButton.src = '../icons/add_circle_black.svg';
+            profileButton.id = 'follow';
         }   
     }
     
     if (settings == true) {
-        profileButton.textContent = "settings";
+        profileButton.src = '../icons/settings_black.svg';
     }
 
     profileButton.addEventListener('click', async function () {
         let userId = user.id;
 
-        if (profileButton.textContent == "unfollow") {
+        if (profileButton.id == 'unfollow') {
+            profileButton.id = 'follow';
             isFollowing = false;
 
-            profileButton.textContent = "follow";
+            profileButton.src = '../icons/add_circle_black.svg';
             let userIndex = followers.findIndex(id => id == loggedInUserId);
             followers.splice(userIndex, 1);
 
@@ -186,10 +189,11 @@ async function createProfileHeader(user, isFollowing, settings = null) {
             followersCont.textContent = nrOfFollowers;
             
 
-        } else if (profileButton.textContent == "follow") {
+        } else if (profileButton.id == 'follow') {
+            profileButton.id = 'unfollow';
             isFollowing = true;
 
-            profileButton.textContent = "unfollow";
+            profileButton.src = '../icons/remove_circle_black.svg';
             followers.push(loggedInUserId);
 
             await followPatch(loggedInUserId, userId);
