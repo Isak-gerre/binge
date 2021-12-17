@@ -154,3 +154,11 @@ async function getCredits(movieID) {
   }
 }
 
+function getParamFromUrl(get) {
+  let getParams = window.location.search;
+
+  const urlParams = new URLSearchParams(getParams);
+  const id = urlParams.get(get);
+  
+  return id
+}

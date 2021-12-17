@@ -53,7 +53,7 @@ createProfilePage();
 async function createProfilePage() {
     const loggedInUserInfo = await getUserInfo(loggedInUserId);
     
-    let urlUserId = getUserFromUrl();
+    let urlUserId = getParamFromUrl('userID');
 
     if (loggedInUserId == urlUserId) {
         window.location.href = "profile.php";
@@ -72,15 +72,6 @@ async function createProfilePage() {
         // createProfileFeed(loggedInUserInfo);
     }
 
-}
-
-function getUserFromUrl() {
-    let getParams = window.location.search;
-
-    const urlParams = new URLSearchParams(getParams);
-    const userId = urlParams.get('userID');
-    
-    return userId
 }
 
 async function createProfileHeader(user, isFollowing, settings = null) {
