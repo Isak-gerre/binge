@@ -1,88 +1,81 @@
 <?php
 
-    require_once "includes/head.php";
+    session_start();
+
+    require "head.php";
+    require "functions.php";
+    
+    $method = $_SERVER["REQUEST_METHOD"];
+
+    if ($method === "OPTIONS") {
+    // Tillåt alla (origins) och alla headers
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Headers: *");
+    exit();
+    }
+
+    // Alla är vällkommna
+    header("Access-Control-Allow-Origin: *");
+    
     
     
     //Skapar formuläret för inlogg alternativt skapar konto 
-        ?><div class="signInWrap">
+    ?><div class="signInWrap">
+    
+    <form id="loginForm" class="signInForm" method="POST">
+        <input class="signInInput" type="text", name="username", placeholder="Username or Email">
+        <input class="signInInput" type="password", name="password", placeholder="Password">
+        <button class="signButton">Login</button>
+    </form>
+    <div>Don't have an account <a href="/createUser.php?register">Register</a></div><?php
+    if(isset($_GET["wrongPassword"])){
+        echo "<a href='/sign-in.php?forgotpassword'>Forgot your password?</a>";
+    }  
+    ?></div><?php
+
+    
+
+    echo "<script>";
+    include_once "scripts/logIn.js"; 
+    echo "</script>";
+    
+    if(isset($_GET["sessionID"])){
+        $_SESSION["sessionID"] = $_GET["sessionID"];
+    }
+
+    ?><div class="signInWrap">
+    
+    <form id="signUpForm" class="signInForm" method="POST">
+        <p>Firstname</p>
+        <input class="signInInput" type="text", name="firstname", placeholder="Firstname">
+        <p>Lastname</p>
+        <input class="signInInput" type="text", name="lastname", placeholder="Lastname">
+        <p>Username</p>
+        <input class="signInInput" type="text", name="username", placeholder="Username">
+        <p>Password</p>
+        <input class="signInInput" type="password", name="password", placeholder="Password">
+        <p>Confrim Password</p>
+        <input class="signInInput" type="password", name="confirm-password", placeholder="Confirm Password">
+        <p>Email</p>
+        <input class="signInInput" type="text", name="email", placeholder="Email">
+        <p>Birthday</p>
+        <input class="signInInput" type="date" name="birthday", placeholder="Birthday">
+        <?php
+        echo "<script>";
+        include_once "scripts/createFormAPI.js"; 
+        echo "</script>";
+        // echo "<input class='signInInput' type='date' name='birthday', placeholder='Birthday'>";
         
-        <form class="signInForm" method="POST" action="sign-in.php">
-            <input class="signInInput" type="text", name="user", placeholder="Username or Email">
-            <input class="signInInput" type="password", name="password", placeholder="Password">
-            <input class="signButton" type="submit", value="Login">
-        </form>
-        <div>Don't have an account <a href="/createUser.php?register">Register</a></div><?php
-        if(isset($_GET["wrongPassword"])){
-            echo "<a href='/sign-in.php?forgotpassword'>Forgot your password?</a>";
-        }  
-        ?></div><?php
-    }
-    // if(isset($_GET["forgotpassword"])){ //Om nyckeln för forgotpassword klickas så körs forgotpassword formuläret 
-    //     echo forgotPasswordForm();
-    // }
-    // if(isset($_GET["resetpassword"])){ //Om nyckeln för resetpassword klickas så körs forgotpassword functionen som ändrar lösenord
-    //     echo forgotPassword($dataUsers);
-    // }
+        // <!-- active services -->
+        ?>
+        <button class="signButton">Sign Up</button>
+    </form>
+    <?php
+
+    echo "<script>";
+    include_once "scripts/signUp.js"; 
+    echo "</script>";
 
 
-    //Ser till att alla fällt är ifyllda
-    if(isset($_SESSION["id"]) && $_SESSION["login"] === "key123"){
-        header("location:/index.php");
-    }
-
-    //Kollar vilket fält som inte är ifyllt för att informera användaren om vad som saknas 
-    if(isset($_POST["user"]) && isset($_POST["password"])){
-        if($_POST["user"] === "" && $_POST["password"] === ""){
-          ?><script>alert("Missing Username and Password")</script><?php
-        }
-        else if($_POST["user"] === ""){
-            ?><script>alert("Missing Username")</script><?php
-          }
-        else if($_POST["password"] === ""){
-          ?><script>alert("Missing Password")</script><?php
-        }
-        else{
-
-            // Laddar hem databasen
-            $db = getUsers();
-            $user = "";
-            // Kollar så att en användare finns basserat på om mail eller användarnamn användes
-            if(strpos($_POST["user"], "@")){
-                if(array_search($_POST["user"], array_column($users, "email")) !== false){
-                    $user = $users[array_search($_POST["user"], array_column($users, "email"))];
-                }
-            }
-            else{
-                if(array_search($_POST["user"], array_column($users, "username")) !== false){
-                    $user = $users[array_search($_POST["user"], array_column($users, "username"))];
-
-                }
-            }
-            if($user){
-                //Ser till att lösenordet är rätt och sparar id på användaren
-                if(password_verify($_POST["password"], $user["password"])){
-                    $_SESSION["user"] = $user["username"];
-                    $_SESSION["id"] = $user["id"];
-                    header("location:list.php");
-                    //Ser till att naven ändras och skickar användaren vidare
-                }
-                else{
-                    //Om lösenordet inte stämmer får använadren felmedelande
-                    ?><script>alert("The Password and Username did not Match")</script><?php
-                    header("location:/sign-in.php?wrongPassword");
-                    //Lägger till nyckeln worongPassword som används 
-                    //högre upp i koden för att lägga till länken för glömt lösenord
-                }
-            }
-            else{
-                //Om användare inte finns får använadren felmedelande
-                ?><script>alert("The Password and Username did not Match")</script><?php
-                header("location:/sign-in.php?wrongPassword"); 
-                //Lägger till nyckeln worongPassword som används 
-                //högre upp i koden för att lägga till länken för glömt lösenord
-            }
-        }
-    }
-
-    require_once "includes/footer.php";
+    require "footer.php";
 ?>
