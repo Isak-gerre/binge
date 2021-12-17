@@ -18,7 +18,7 @@ body {
           align-items: center;
   gap: 30px;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
 }
 
 #profilePic {
@@ -117,6 +117,7 @@ body {
 
 #profileNav {
   width: 100%;
+  height: 50px;
   font-family: 'Arial';
   font-size: 0.9rem;
   display: -webkit-box;
@@ -132,6 +133,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border-top: 1px solid black;
 }
 
 #profileNav div {
@@ -151,6 +153,11 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  height: 100%;
+}
+
+#profileNav .selected {
+  background-color: white;
 }
 
 #followContainer {
@@ -357,5 +364,17 @@ body {
 #closeTab {
   position: absolute;
   z-index: 100;
+}
+
+#profileWrapper {
+  padding: 10px;
+}
+
+#profileWrapper #watchlistContainer {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 /*# sourceMappingURL=userProfile.css.map */

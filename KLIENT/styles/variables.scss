@@ -4,6 +4,9 @@ $mainColor: #361986;
 $accentColor: #ffb700;
 $fontColor: black;
 
+// Margins and stuff
+$padding: 10px;
+
 // FUNCTIONS
 
 @mixin flex($direction, $justify, $align) {
