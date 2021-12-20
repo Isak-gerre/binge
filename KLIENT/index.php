@@ -64,11 +64,7 @@
         echo "<script>";
         include_once "scripts/createFormAPI.js"; 
         echo "</script>";
-        // echo "<input class='signInInput' type='date' name='birthday', placeholder='Birthday'>";
-        
-        // <!-- active services -->
         ?>
-        <button class="signButton">Sign Up</button>
     </form>
     <?php
 

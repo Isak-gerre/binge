@@ -9,31 +9,36 @@
 //
 
 
-const signUpForm = document.getElementById("signUpForm");
-
-signUpForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const rawSignUpData = new FormData(signUpForm);
-
-
-    let object = {};
-    for(let [key, value] of rawSignUpData.entries()) {
-        object[key] = value;
-    }   
-    data = JSON.stringify(object);
-    console.log(data);
-    const req = new Request("http://localhost:1005/POST/create-user.php", {
-        method: "POST",
-        body: data,
+if(signUpForm){
+    console.log(signUpForm);
+    signUpForm.addEventListener("submit", (event) => {
+    
+        event.preventDefault();
+        const rawSignUpData = new FormData(signUpForm);
+        
+        const value = Object.fromEntries(rawSignUpData.entries());
+    
+        console.log(value);
+    
+    
+        let object = {};
+        for(let [key, value] of rawSignUpData.getAll("topics")) {
+            object[key] = value;
+        }   
+        data = JSON.stringify(object);
+        const req = new Request("http://localhost:1005/POST/create-user.php", {
+            method: "POST",
+            body: data,
+        });
+    //     fetch(req)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             const req1 = new Request("../index.php", {
+    //             method: "POST",
+    //             body: data,
+    //             });
+    //         }); 
+    //     console.log("ue");
+    
     });
-//     fetch(req)
-//         .then(response => response.json())
-//         .then(data => {
-//             const req1 = new Request("../index.php", {
-//             method: "POST",
-//             body: data,
-//             });
-//         }); 
-//     console.log("ue");
-
-});
+}
