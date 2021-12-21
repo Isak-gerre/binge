@@ -11,8 +11,6 @@
 <?php 
     require_once "head.php";
 ?>
-<div class="movie-profile" id="overlay"></div>
-
 
 <div id="wrapper"></div>
 <script src="scripts/functions.js"></script>

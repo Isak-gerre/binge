@@ -14,8 +14,7 @@ async function makeTrending() {
 
   let slideshowImages = await getTrending();
   slideshowImages.push(slideshowImages[0]);
-
-
+  // console.log(slideshowImages);
   let counter = 0;
   slideshowImages.forEach((movie) => {
     let slideshowImage = document.createElement("img");
@@ -85,10 +84,10 @@ function prev(carouselSlide) {
   carouselSlide.style.transform = "translatex(" + -size * counter + "px)";
 }
 
-makeTrending();
-setInterval(() => {
-  if (loaded) {
-    slide();
-    loaded = false;
-  }
-}, 1000);
+// makeTrending();
+// setInterval(() => {
+//   if (loaded) {
+//     slide();
+//     loaded = false;
+//   }
+// }, 1000);

@@ -78,6 +78,7 @@ function isMovieSaved(movieID) {
 }
 //_______________________________________________________________________________________
 
+
 async function getMovieInfo(movieID) {
   let savedMovie = isMovieSaved(movieID);
   if (typeof savedMovie == "object") {
@@ -86,6 +87,7 @@ async function getMovieInfo(movieID) {
   try {
     let response = await fetch(`http://localhost:7001/GET/get-movie-info.php?movieID=${movieID}`);
     let data = await response.json();
+    console.log(data);
     addToMovies(data.message, "movies");
     return data;
   } catch (error) {

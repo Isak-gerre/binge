@@ -13,8 +13,12 @@
 <?php
 require_once "head.php";
 ?>
+<div class="movie-profile" id="overlay"></div>
 
 <div id="wrapper">
+
+
+
     <div id="trending">
         <div class="slideshow-container">
             <div class="slideshow">
@@ -46,13 +50,16 @@ require_once "head.php";
 </div>
 
 <script src="scripts/functions.js"></script>
+<script src="scripts/makeMovieProfile.js"></script>
+
+
 <script src="scripts/makeMovieBanners.js"></script>
-<script src="scripts/makeGenreBanners.js"></script>
 <script src="scripts/search.js"></script>
 <script src="scripts/makeNavigation.js"></script>
 <script src="scripts/makeTrending.js"></script>
 <script src="scripts/friendsRecentlyWatched.js"></script>
-<script src="scripts/makeMovieProfile.js"></script>
+<script src="scripts/makeGenreBanners.js"></script>
+<script src="scripts/makeExplore.js"></script>
 
 
 <?php
