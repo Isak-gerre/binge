@@ -81,24 +81,24 @@ async function makeMovieProfile(movieID) {
 
     let watchList = document.createElement("button");
     watchList.className = "watched button";
-    watchList.textContent = "watched";
+    watchList.textContent = "Watched";
 
     let watchLater = document.createElement("button");
     watchLater.className = "watch-later button";
-    watchLater.textContent ="watch later";
+    watchLater.textContent ="Watch later";
 
     let review = document.createElement("button");
     review.className = "review button";
-    review.textContent = "review";
+    review.textContent = "Review";
 
     if(relation.watchlist == true){
-        watchList.classList.add = "marked";
+        watchList.classList.add = "Marked";
     } 
     if(relation.watchLater == true){
-        watchLater.classList.add = "marked";
+        watchLater.classList.add = "Marked";
     } 
     if(relation.review !== false){
-        review.textContent = "update review";
+        review.textContent = "Update Review";
     }
 
     // Runtime, Rating & Release date - Isak
