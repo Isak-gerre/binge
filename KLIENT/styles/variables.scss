@@ -3,6 +3,15 @@ $backgroundColor: white;
 $mainColor: #361986;
 $accentColor: #ffb700;
 $fontColor: black;
+$headerFont: 'Archivo', sans-serif;
+$bodyFont: 'Mulish', sans-serif;
+
+// FONTS
+@import url('https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap');
+
+
+// Margins and stuff
+$padding: 10px;
 
 // FUNCTIONS
 

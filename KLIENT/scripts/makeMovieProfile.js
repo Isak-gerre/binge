@@ -28,16 +28,14 @@ makeMovieProfile([movieID]){
 
 // Variabler för den inloggade?
 let loggedInUser = 4;
-let movieID = 550;
+// let movieID = 35;
 
 
 async function makeMovieProfile(movieID) {
-
     let overlay = document.getElementById("overlay");
-    overlay.style.minHeight = "100vh";
+    // overlay.style.minHeight = "100vh";
     let data = await getMovieInfo(movieID);
     let movieInfo = data.message;
-    // console.log(movieInfo);
 
     // TOP
     let movieHeader = document.createElement("div");
@@ -47,6 +45,9 @@ async function makeMovieProfile(movieID) {
     let backdrop = document.createElement("img");
     backdrop.setAttribute("src", `https://image.tmdb.org/t/p/w500${movieInfo["backdrop_path"]}`);
     backdrop.className = "movie-profile-backdrop";
+
+    let gradient = document.createElement("div");
+    gradient.className = "movie-profile-gradient";
 
     // --INFO Divs
     // infoPoster & infoText
@@ -80,24 +81,25 @@ async function makeMovieProfile(movieID) {
 
     let watchList = document.createElement("button");
     watchList.className = "watched button";
-    watchList.textContent = "watched";
+    watchList.textContent = "Watched";
 
     let watchLater = document.createElement("button");
     watchLater.className = "watch-later button";
-    watchLater.textContent ="watch later";
+    watchLater.textContent ="Watch later";
 
     let review = document.createElement("button");
     review.className = "review button";
-    review.textContent = "review";
+    review.textContent = "Review";
 
     if(relation.watchlist == true){
-        watchList.textContent = "remove from watchlist";
-    } else if(relation.watchLater == true){
-        watchLater.textContent ="unwatch";
-    } else if(relation.review !== false){
-        review.textContent = "update review";
+        watchList.classList.add = "Marked";
+    } 
+    if(relation.watchLater == true){
+        watchLater.classList.add = "Marked";
+    } 
+    if(relation.review !== false){
+        review.textContent = "Update Review";
     }
-
 
     // Runtime, Rating & Release date - Isak
     let movieRsDiv = document.createElement("div");
@@ -132,37 +134,31 @@ async function makeMovieProfile(movieID) {
         streamingservicesGrid.append(providerDiv);
     });
 
-    
-    
-
     // Credits - Niklas
     let credits = document.createElement("div");
     credits.className = "movie-profile-credits";
     
-    let creditsInfo = await getCredits(movieID);
-    console.log(creditsInfo);
+    let creditsData = await getCredits(movieID);
 
     // Cast - Niklas
     let cast = document.createElement("div");
     cast.className = "movie-profile-cast";
 
     for (let i = 0; i < 5; i++) {
-        let castMember = createCreditDiv(creditsInfo.message.credits.cast[i]);
+        let castMember = createCreditDiv(creditsData.message.credits.cast[i]);
         cast.append(castMember);
-
-
-        director.append
     }
 
     // Directors - Niklas
     let director = document.createElement("div");
     director.className = "movie-profile-director";
 
-    
-    creditsInfo.message.credits.cast.forEach(() => {
-        
+    creditsData.message.credits.crew.forEach((crewMember) => {
+        if(crewMember.job == "Director"){
+            let crew = createCreditDiv(crewMember);
+            director.append(crew);
+        }
     })
-
 
     function createCreditDiv(person){
         let productionPeople = document.createElement("div");
@@ -195,7 +191,7 @@ async function makeMovieProfile(movieID) {
 
     // APPENDS
     movieRsDiv.append(movieRs);
-    movieHeader.append(backdrop);
+    movieHeader.append(backdrop, gradient);
     infoPoster.append(poster);
     infoText.append(movieRs, title, buttons);
     info.append(infoPoster, infoText);
@@ -209,97 +205,95 @@ async function makeMovieProfile(movieID) {
 
 
     
-    buttons.append(review, watchLater, watchList);
+    buttons.append(watchLater, watchList, review);
 
     // Event for the buttons
-    let eventButton = document.querySelectorAll(".button");
-    eventButton.forEach(button => {
-        button.addEventListener("click", (e) => {
-            let overlayFade = document.createElement("div");
-            overlayFade.setAttribute("id", "overlay-fade");
-            let messageWrapper = document.createElement("div");
-            messageWrapper.setAttribute("id", "message-wrapper");
 
-            // Position 
-            overlayFade.style.top = "0";
-            messageWrapper.style.top = "0";
-
-
+    review.addEventListener("click", (e) => {
+        let overlayFade = document.createElement("div");
+        overlayFade.setAttribute("id", "overlay-fade");
+        let messageWrapper = document.createElement("div");
+        messageWrapper.setAttribute("id", "message-wrapper");
+        // Position 
+        overlayFade.style.top = "0";
+        messageWrapper.style.top = "0";
+        let object = e.target.className;
+        // Content depending on what button is clicked
+        if(object.includes("review")){
+            // Top Div - 
+            let topDiv = document.createElement("div");
+            topDiv.className = "top";
+            let exitButton = document.createElement("img");
+            exitButton.className = "exit button";
+            exitButton.setAttribute("src", "../icons/exit.svg");
+            let title = document.createElement("h1");
+            title.className = "titleComment";
+            title.textContent = "Leave a review";
             
+            // Middle Div -
+            let middleDiv = document.createElement("div");
+            middleDiv.className = "middle";
 
-            let object = e.target.className;
+            // FORM
+            let form = document.createElement("form");
 
-            // Content depending on what button is clicked
-            if(object.includes("review")){
-                messageWrapper.innerHTML = `
-                    <div>
-                        <button class="exit"></button> 
-                        <h1>Give your honest opinion</h1> 
-                    </div>    
-                    <div> 
-                        <h3>Give stars</h3> 
-                        <div>
-                            <ul class="rating">
-                                <li class="rating-star active" data-rate="1"></li>
-                                <li class="rating-star" data-rate="2"></li>
-                                <li class="rating-star" data-rate="3"></li>
-                                <li class="rating-star" data-rate="4"></li>
-                                <li class="rating-star" data-rate="5"></li>
-                            </ul>
-                        </div> 
-                    <div>    
-                    <div> 
-                        <h3>Comment</h3> 
-                        <input type="text" id="comment" name="fname">
-                        <p>${relation.review.comment}</p> 
-                    <div>
-                    <button>Submit</button>  
-                `;
-            } else if(object.includes("watch-later")){
-                messageWrapper.innerHTML = `
-                    <div>
-                         
-                    <div>     
-                `;
-            } else if(object.includes("watched")){
-                messageWrapper.innerHTML = `
-                    <div>
-                        
-                    <div>    
-                `;
+            // Rating
+            let labelRating = document.createElement("label");
+            labelRating.textContent = "rating-comment";
+
+            let stars = document.createElement("ul");
+
+            for (let i = 0; i < 5; i++) {
+                let star = document.createElement("")
             }
 
+            // Comment
+            let labelComment = document.createElement("label");
+            labelComment.textContent = "label-comment";
+            let input = document.createElement("input");
+            input.setAttribute("type", "text-area");
+            input.setAttribute("name", "comment");
+            input.classname = "comment";
+            input.value = relation.review.comment;
+
+            // Submit-button
+            let submitButton = document.createElement("button");
+            submitButton.setAttribute("type", "submit");
+            submitButton.className = "submit button";
+            submitButton.textContent = "Submit";
             
-            overlayFade.append(messageWrapper);
-            overlay.append(overlayFade);
+            topDiv.append(exitButton, title);
+            middleDiv.append();
+            form.append(label, input);
+            messageWrapper.append(topDiv, middleDiv, form, submitButton);
+            
+        };
+        
+        overlayFade.append(messageWrapper);
+        overlay.append(overlayFade);
 
-            document.querySelector("#comment").value = relation.review.comment;
+        // exit click
+        document.querySelector(".exit").addEventListener("click", () => {
+            overlayFade.remove();
+        })
 
-            // exit click
-            document.querySelector(".exit").addEventListener("click", () => {
-                overlayFade.remove();
-            })
+        // star click
+        // const container = document.querySelector(".rating");
+        // const stars = container.querySelectorAll(".rating-stars");
+        // container.addEventListener("click", (e) => {
+        //     const elClass = e.target.classList;
+        //     if (!elClass.contains("active")){
+        //         stars.forEach( item => item.classList.remove("active"));
+        //     } 
+        //     elClass.add(".active");
+        // });
 
-            // star click
+        // submit click
 
-            const container = document.querySelector(".rating");
-            const stars = container.querySelectorAll(".rating-stars");
-
-            container.addEventListener("click", (e) => {
-                const elClass = e.target.classList;
-
-                if (!elClass.contains("active")){
-                    stars.forEach( item => item.classList.remove("active"));
-                } 
-
-                elClass.add(".active");
-            })
-
-            // overlayFade.addEventListener("click", (event) => {
-               
-            //     overlayFade.remove();
-            //     // event.unbind();
-            // })
-        });
+            
     });
+    
 }
+
+
+// makeMovieProfile(movieID);

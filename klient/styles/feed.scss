@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap');
+@import "variables.scss";
 
 body {
     // background-color: rgb(227, 227, 227);
@@ -6,16 +6,16 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
     box-sizing: border-box;
-    margin: 2vh;
+    margin-top: 5px;
 }
 
 .userContainer {
     display: flex;
     justify-content: space-between;
     flex-grow: 1;
-    padding: 1vh 0.5vh 1vh 0.5vh;
+    padding: 0.5vh 0;
     font-family: 'Archivo', sans-serif;
 }
 

@@ -18,6 +18,8 @@ async function makeMovieBanner(movieID) {
   titleDiv.className = "titleDiv";
   title.className = "movieTitle";
 
+  // console.log(movieInfo);
+
   //content
   title.textContent = movieInfo.message.title;
   movieBanner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["poster_path"]}')`;
