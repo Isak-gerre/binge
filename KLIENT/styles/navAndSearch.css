@@ -136,7 +136,7 @@
 
 .lowerNav, .backLowerNav {
   width: 80vw;
-  height: 80px;
+  height: 60px;
   margin-bottom: 30px;
   -webkit-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
@@ -152,9 +152,8 @@
 }
 
 .lowerNav {
-  position: -webkit-sticky;
-  position: sticky;
-  top: calc(100vh - 30px);
+  position: fixed;
+  top: calc(100vh - 80px);
   z-index: 10000;
   background-color: transparent;
 }

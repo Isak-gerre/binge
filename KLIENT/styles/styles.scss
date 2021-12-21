@@ -11,8 +11,10 @@
 body {
     margin: 0;
     // display: grid;
-    height: 100vh;
+    position: relative;
+    // height: 100vh;
     @include flex(column, none, center);
+    background-color: $backgroundColor;
 
 }
 
@@ -22,8 +24,8 @@ h1 {
 
 #wrapper {
   position: relative;
-  overflow-y: scroll;
-  height: 100vh;
+  // overflow-y: scroll;
+  // height: 100vh;
   @include flex(column, none, center);
   padding: $padding;
 }

@@ -14,7 +14,7 @@
 
 body {
   margin: 0;
-  height: 100vh;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,6 +28,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #0F0B2E;
 }
 
 h1 {
@@ -36,8 +37,6 @@ h1 {
 
 #wrapper {
   position: relative;
-  overflow-y: scroll;
-  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -52,10 +51,6 @@ h1 {
       -ms-flex-align: center;
           align-items: center;
   padding: 10px;
-}
-
-body {
-  position: relative;
 }
 
 #topWrapperProfile {
@@ -231,7 +226,7 @@ body {
   -webkit-transition: left 1s;
   transition: left 1s;
   gap: 10px;
-  background-color: white;
+  background-color: #0F0B2E;
   width: 100%;
 }
 
@@ -286,7 +281,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   gap: 20px;
-  background-color: white;
+  background-color: #0F0B2E;
 }
 
 #settingsWindow #settingsForm {
@@ -407,7 +402,7 @@ body {
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
-  background-color: white;
+  background-color: #0F0B2E;
 }
 
 #closeTab {
@@ -799,8 +794,14 @@ body {
   font-size: 1.4rem;
 }
 
+#footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+
 .footerContainer {
-  padding-bottom: 60px;
+  padding-bottom: 80px;
   background-color: #939393;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -856,7 +857,7 @@ body {
 
 .upperNav {
   width: 100vw;
-  background-color: white;
+  background-color: #0F0B2E;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -991,7 +992,7 @@ body {
 
 .lowerNav, .backLowerNav {
   width: 80vw;
-  height: 80px;
+  height: 60px;
   margin-bottom: 30px;
   -webkit-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
@@ -1007,9 +1008,8 @@ body {
 }
 
 .lowerNav {
-  position: -webkit-sticky;
-  position: sticky;
-  top: calc(100vh - 30px);
+  position: fixed;
+  top: calc(100vh - 80px);
   z-index: 10000;
   background-color: transparent;
 }
@@ -1053,7 +1053,7 @@ svg:active, .navImg {
   width: 100vw;
   position: absolute;
   top: 0;
-  background-color: white;
+  background-color: #0F0B2E;
   z-index: 999;
   -webkit-animation: searchBar .3s ease-in-out;
           animation: searchBar .3s ease-in-out;
