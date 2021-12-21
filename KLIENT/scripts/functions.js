@@ -71,13 +71,17 @@ function addToMovies(movie) {
 function isMovieSaved(movieID) {
   if ("movies" in sessionStorage) {
     let allMovies = getFromSession("movies");
-    let movie = allMovies.find((movie) => movie.id == movieID);
-    return { message: movie };
+    let movie = allMovies.find((movie) => Number(movie.id) == Number(movieID));
+    if (!movie == "undefined") {
+      console.log(movie);
+      return { message: movie };
+    } else {
+      return false;
+    }
   }
   return false;
 }
 //_______________________________________________________________________________________
-
 
 async function getMovieInfo(movieID) {
   let savedMovie = isMovieSaved(movieID);
