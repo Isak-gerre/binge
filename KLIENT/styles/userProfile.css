@@ -183,7 +183,7 @@ body {
   -webkit-transition: left 1s;
   transition: left 1s;
   gap: 10px;
-  background-color: white;
+  background-color: #0F0B2E;
   width: 100%;
 }
 
@@ -238,7 +238,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   gap: 20px;
-  background-color: white;
+  background-color: #0F0B2E;
 }
 
 #settingsWindow #settingsForm {
@@ -359,7 +359,7 @@ body {
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
-  background-color: white;
+  background-color: #0F0B2E;
 }
 
 #closeTab {
