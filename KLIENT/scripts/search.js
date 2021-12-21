@@ -5,26 +5,25 @@ Add filter that actiate on button press
 
 */
 
-let searchType = 'all';
+let searchType = "all";
 
+async function searchFunction() {
+  let input = document.getElementById("searchField");
 
-async function searchFunction(){
-    let input = document.getElementById('searchField');
+  if (input.value !== "") {
+    let searchResults = await getSearchResults(searchType, input.value);
+    let movieList = document.querySelector(".movieList");
+    movieList.innerHTML = "";
+    console.log(searchResults);
 
-    if (input.value !== '') {
-        let searchResults = await getSearchResults(searchType, input.value);
-        let movieList = document.querySelector('.movieList');
-        movieList.innerHTML = '';
-        // console.log(searchResults);
+    // searchResults.results.forEach(async function(result){
+    //     // getMovieDOMElement(result);
 
-        searchResults.results.forEach(async function(result){
-            // getMovieDOMElement(result);
-            
-            let movieBanner = await makeMovieBanner(result.id);
-            movieBanner.classList.add(input.value);
-            movieList.append(movieBanner);
-        });
-    }
+    //     let movieBanner = await makeMovieBanner(result.id);
+    //     movieBanner.classList.add(input.value);
+    //     movieList.append(movieBanner);
+    // });
+  }
 }
 
 function makeSearchOverlay(){
