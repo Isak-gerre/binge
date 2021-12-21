@@ -21,7 +21,7 @@ async function makeGenreBanner(){
         var randomMovie = movieByGenre.page1.results[Math.floor(Math.random()*movieByGenre.page1.results.length)];
         // console.log(randomMovie["poster_path"]);
 
-        console.log(genre);
+        // console.log(genre);
 
 
         //create elements
