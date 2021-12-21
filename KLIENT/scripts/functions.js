@@ -248,7 +248,7 @@ function howManyDaysAgo(recievedDate) {
 }
 
 // Skapat aktivteter till feed och profile
-function createActivities(array, page) {
+function createActivities(array, page, appendIn = "wrapper") {
   array.forEach(async function (obj) {
     let movieInfo = await getMovieInfo(obj.movieID);
     let userInfo = await getUserInfo(obj.userID);
@@ -256,7 +256,8 @@ function createActivities(array, page) {
     // Aktivitets containern
     let container = document.createElement("div");
     container.classList.add("container");
-    wrapper.append(container);
+    
+    document.getElementById(appendIn).append(container);
 
     // Top av aktivitets container, innehåller användarnamn + datum
     let userContainer = document.createElement("div");
@@ -394,7 +395,7 @@ async function getSimilar(movieID) {
   }
 }
 
-async function getCredits(movieID) {
+async function getAdditionalInfo(movieID) {
   try {
     let response = await fetch(`http://localhost:7001/GET/get-additional-movieInfo.php?movieID=${movieID}`);
     let data = await response.json();

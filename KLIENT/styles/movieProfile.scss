@@ -2,7 +2,10 @@
 
 // Allt innehåll ligger i denna overlay (typ som wrapper)
 #overlay {
-    position: relative;
+    // position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: $backgroundColor;
 }
 
 // Barn till denna delas upp i tre sektioner
@@ -10,69 +13,70 @@
 // sedan ska overlay vara en display flex, flex-direction column
 
 // 1. movie-profile-header (omslagsbilden) - LINA
-
-
+// BACKDROP PIC
 .movie-profile-backdrop {
     width: 100vw;
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.movie-profile-header {
+    height: auto;
+    position: relative;
 }
 
 .movie-profile-gradient {
     width: 100vw;
-    position: relative;
+    position: absolute;
+    top: 0;
     z-index: 11;
     background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 71.87%, #0F0B2E 100%);
-    height: 400px;
-    top: -400px;
+    height: 200px;
 }
 
-.movie-profile-header {
-    height: auto;
-}
-
+// MOVIE INFO
 .movie-profile-info{
     padding: $padding;
-    position: relative;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: $padding;
+    margin-top: -50px;
+    z-index: 12;
 
-    // nödlösning på höjdsituationen, kolla gärna om du fattar?
-    top: -400px;
-    z-index: 13;
+    .movie-profile-info-poster {
+        @include flex(row, flex-start, flex-end);
+
+        .movie-profile-poster{
+            width: 100%;
+            box-shadow: 5px 5px 5px black;
+        }
+    }
+    
+    .movie-profile-info-text {
+        font-family: 'Archivo', sans-serif;
+        line-height: 1.4;
+        @include flex(column, flex-end, flex-start);
+
+        p {
+            font-size: 12px;
+            color: $fontColor;
+        }
+
+        .movie-profile-title {
+            font-weight: bold;
+            color: $fontColor;
+        }
+    }
 }
 
-.movie-profile-info-poster {
-    width: 35%;
-    position: relative;
-    top:-50px;
-    left:10px;
-
-}
-.movie-profile-poster{
-    width: 100%;
-    box-shadow: 5px 5px 5px black;
-}
-
-.movie-profile-info-text {
-    position: relative;
-    left: 30px;
-    top: 10px;
-    font-family: 'Archivo', sans-serif;
-    line-height: 1.4;
-}
-
-.movie-profile-info-text > p {
-    font-size: 12px;
-}
-
-.movie-profile-title {
-    font-weight: bold;
-}
 // 2. movie-profile-info (film poster, infotext - betyg, premiärs datum, tid samt knapparna) - LINA
-
-// 2.A sedan ska knapparna kodas när man tryckt på dem, framför allt review - INTE FÄRDIGT I JS, men jag kan fixa detta!
 #movie-profile-buttons{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+    gap: $padding;
+    width: 100%;
 }
 
 .watch-later {
@@ -90,8 +94,7 @@
 }
 
 .button {
-    margin: 5px;
-    padding: 8px;
+    padding: $padding;
     border-radius: 10px;
     border: 0;
     color: whitesmoke;
@@ -99,7 +102,140 @@
     filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
 }
 
+// 2.A sedan ska knapparna kodas när man tryckt på dem, framför allt review - INTE FÄRDIGT I JS, men jag kan fixa detta!
+
 // 3. movie-profile-middle (beskrivning, streaming services, crew + director, reviews(inte klart i JS), similarmovies (elsa har börjat denna style)) - NIKLAS
+// DESCRIPTION
+.movie-profile-description {
+    padding: $padding;
+
+    p {
+        @include bodyFont();
+        color: $fontColor;
+        text-align: left;
+    }
+}
+
+// STREAMING SERVICES
+.movie-profile-streamingservices {
+    padding: $padding;
+
+    h4{
+        color: $fontColor;
+        @include smallTitleFont();
+        padding-bottom: $padding;
+    }
+    .movie-profile-streaming-services-grid {
+
+        @include flex(row, flex-start, center);
+        gap: $padding;
+
+        img{
+            border-radius: 200px;
+            height: 10vw; 
+            width: 10vw;
+            margin-right: $padding;
+            filter: grayscale(100%);
+        }
+
+        .active-streming-service{
+            filter: grayscale(0%);
+            box-shadow: 0px 0px 2px rgba(239, 157, 26, 0.58);
+        }
+
+        img:last-child {
+            margin-right: 0px;
+        }
+
+        p{
+            color: $fontColor
+        }
+    }
+}
+
+// CREDITS
+.movie-profile-credits {
+    // grid - column, 2fr
+    padding: $padding;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $padding;
+
+    .movie-profile-cast {
+        @include flex(column, flex-start, flex-start);
+        h4{
+            color: $fontColor;
+            @include smallTitleFont();
+            padding-bottom: $padding;
+        }
+    }
+
+    .movie-profile-director {
+        @include flex(column, flex-start, flex-start);
+        h4{
+            color: $fontColor;
+            @include smallTitleFont()
+            padding-bottom: $padding;
+        }
+    }
+
+    .production-people {
+        @include flex(row, flex-start, center);
+        padding-bottom: $padding;
+        
+        div {
+            border-radius: 200px;
+            width: 10vw;
+            height: 10vw;
+            background-position: top;
+            background-size: cover; 
+            margin:auto;
+            
+        }
+
+        p {
+            padding-left: $padding;
+            color: $fontColor;
+            @include bodyFont();
+        }
+    }
+
+    .production-people:last-child {
+        padding-bottom: 0px;
+    }
+}
+
+// REVIEWS - wrapper
+.movie-profile-reviews{
+    @include flex(column, center, flex-start);
+    padding: $padding;
+
+    h4{
+        color: $fontColor;
+        @include smallTitleFont()
+        padding-bottom: $padding;
+    }
+}
+
+// Similar - wrapper
+.movie-profile-similarMovies {
+    padding: $padding;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $padding;
+
+    h4 {
+        color: $fontColor;
+        @include smallTitleFont();
+        padding-bottom: $padding;
+        grid-area: 1/1/2/4;
+    }
+
+    div{
+        margin:auto;
+    }
+}
+
 
 
 
