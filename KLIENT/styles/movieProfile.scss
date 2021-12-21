@@ -2,10 +2,10 @@
 
 // Allt innehåll ligger i denna overlay (typ som wrapper)
 #overlay {
-    position: relative;
+    // position: relative;
     display: flex;
     flex-direction: column;
-    background-color: $mainColor;
+    background-color: $backgroundColor;
 }
 
 // Barn till denna delas upp i tre sektioner
@@ -33,7 +33,6 @@
     z-index: 11;
     background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 71.87%, #0F0B2E 100%);
     height: 200px;
-    // top: -400px;
 }
 
 // MOVIE INFO
@@ -61,10 +60,12 @@
 
         p {
             font-size: 12px;
+            color: $fontColor;
         }
 
         .movie-profile-title {
             font-weight: bold;
+            color: $fontColor;
         }
     }
 }
@@ -134,10 +135,20 @@
             height: 10vw; 
             width: 10vw;
             margin-right: $padding;
+            filter: grayscale(100%);
+        }
+
+        .active-streming-service{
+            filter: grayscale(0%);
+            box-shadow: 0px 0px 2px rgba(239, 157, 26, 0.58);
         }
 
         img:last-child {
             margin-right: 0px;
+        }
+
+        p{
+            color: $fontColor
         }
     }
 }
@@ -154,7 +165,7 @@
         @include flex(column, flex-start, flex-start);
         h4{
             color: $fontColor;
-            @include smallTitleFont()
+            @include smallTitleFont();
             padding-bottom: $padding;
         }
     }
@@ -176,8 +187,8 @@
             border-radius: 200px;
             width: 10vw;
             height: 10vw;
-            background-position: center;
-            background-size: contain; 
+            background-position: top;
+            background-size: cover; 
             margin:auto;
             
         }
@@ -196,8 +207,14 @@
 
 // REVIEWS - wrapper
 .movie-profile-reviews{
-    @include flex(row, center, flex-start);
+    @include flex(column, center, flex-start);
     padding: $padding;
+
+    h4{
+        color: $fontColor;
+        @include smallTitleFont()
+        padding-bottom: $padding;
+    }
 }
 
 // Similar - wrapper
@@ -206,12 +223,14 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: $padding;
+
     h4 {
         color: $fontColor;
         @include smallTitleFont();
         padding-bottom: $padding;
         grid-area: 1/1/2/4;
     }
+
     div{
         margin:auto;
     }

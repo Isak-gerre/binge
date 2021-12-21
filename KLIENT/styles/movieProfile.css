@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
 #overlay {
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8,7 +7,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #0F0B2E;
+  background-color: #181818;
 }
 
 .movie-profile-backdrop {
@@ -87,10 +86,12 @@
 
 .movie-profile-info .movie-profile-info-text p {
   font-size: 12px;
+  color: white;
 }
 
 .movie-profile-info .movie-profile-info-text .movie-profile-title {
   font-weight: bold;
+  color: white;
 }
 
 #movie-profile-buttons {
@@ -182,10 +183,23 @@
   height: 10vw;
   width: 10vw;
   margin-right: 10px;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+
+.movie-profile-streamingservices .movie-profile-streaming-services-grid .active-streming-service {
+  -webkit-filter: grayscale(0%);
+          filter: grayscale(0%);
+  -webkit-box-shadow: 0px 0px 2px rgba(239, 157, 26, 0.58);
+          box-shadow: 0px 0px 2px rgba(239, 157, 26, 0.58);
 }
 
 .movie-profile-streamingservices .movie-profile-streaming-services-grid img:last-child {
   margin-right: 0px;
+}
+
+.movie-profile-streamingservices .movie-profile-streaming-services-grid p {
+  color: white;
 }
 
 .movie-profile-credits {
@@ -264,8 +278,8 @@
   border-radius: 200px;
   width: 10vw;
   height: 10vw;
-  background-position: center;
-  background-size: contain;
+  background-position: top;
+  background-size: cover;
   margin: auto;
 }
 
@@ -284,10 +298,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -295,6 +309,13 @@
       -ms-flex-align: start;
           align-items: flex-start;
   padding: 10px;
+}
+
+.movie-profile-reviews h4 {
+  color: white;
+  font-family: 'Arial';
+  font-size: 1.2rem;
+  padding-bottom: 10px;
 }
 
 .movie-profile-similarMovies {

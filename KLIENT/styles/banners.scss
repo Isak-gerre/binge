@@ -12,8 +12,9 @@
     position: relative;
     top: 0;
   
-    animation: movieScale .5s ease-in-out ;
+    animation: movieScale .5s ease-in-out;
     transition: all 1s;
+    aspect-ratio: 1;
   }
   
   

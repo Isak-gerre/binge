@@ -26,11 +26,15 @@ makeMovieProfile([movieID]){
 
 "use strict";
 
+
+
 // Variabler för den inloggade?
 let loggedInUser = 4;
 
 
 async function makeMovieProfile(movieID) {
+    let user = await getUserInfo(1);
+    
     let overlay = document.getElementById("overlay");
     // overlay.style.minHeight = "100vh";
     let data = await getMovieInfo(movieID);
@@ -117,27 +121,59 @@ async function makeMovieProfile(movieID) {
     `;
 
     // Streaming Services - Isak
+    let additionalInfo = await getAdditionalInfo(movieID);
+    let userRegion = user.region;
+
     let streamingservices = document.createElement("div");
     streamingservices.className = "movie-profile-streamingservices";
+
     let streamingservicesText = document.createElement("h4");
     streamingservicesText.textContent = "Streaming Services";
     streamingservicesText.className = "streaming-services-text";
 
-    let streamingservicesGrid = document.createElement("div");
-    streamingservicesGrid.className = "movie-profile-streaming-services-grid";
-    let allProviders = await getProviders();
-    let providers = allProviders.message.providers;
-    providers.forEach((provider) => {
-        let providerDiv = document.createElement("img");
-        providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w500${provider["logo_path"]}`);
-        streamingservicesGrid.append(providerDiv);
-    });
+    streamingservices.append(streamingservicesText);
+
+    console.log(additionalInfo.message.providers.results[userRegion]);
+    // Checks if you can buy, rent or flatrate in your country
+    if(additionalInfo.message.providers.results[userRegion] == undefined){
+        let message = document.createElement("p");
+        message.textContent = "It's not avaible in your country :("
+        streamingservices.append(message);
+    } else {
+        // Checks if you can flatrate it
+        if (additionalInfo.message.providers.results[userRegion].flatrate == undefined){
+            let message = document.createElement("p");
+            message.textContent = "This movie isnt avaible at any streaming services, but you can hire it :("
+            streamingservices.append(message);
+        } else {
+            let movieProviders = additionalInfo.message.providers.results[userRegion].flatrate;
+            console.log(movieProviders);
+
+            let streamingservicesGrid = document.createElement("div");
+            streamingservicesGrid.className = "movie-profile-streaming-services-grid";
+            
+            movieProviders.forEach((provider) => {
+                let providerDiv = document.createElement("img");
+                let providerName = provider.provider_name;
+                let activeUserSC = user.active_streaming_services;
+                console.log(providerName.toLowerCase());
+                console.log(activeUserSC.includes(providerName.toLowerCase()));
+                if(activeUserSC.includes(providerName.toLowerCase())){
+                    providerDiv.className = "active-streming-service";
+                }
+
+                providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w500${provider["logo_path"]}`);
+                streamingservicesGrid.append(providerDiv);
+            });
+            streamingservices.append(streamingservicesGrid);
+        }
+        
+    }
 
     // Credits - Niklas
     let credits = document.createElement("div");
     credits.className = "movie-profile-credits";
-    
-    let creditsData = await getCredits(movieID);
+
 
     // Cast - Niklas
     let cast = document.createElement("div");
@@ -147,7 +183,7 @@ async function makeMovieProfile(movieID) {
     cast.append(titleCast); 
 
     for (let i = 0; i < 5; i++) {
-        let castMember = createCreditDiv(creditsData.message.credits.cast[i]);
+        let castMember = createCreditDiv(additionalInfo.message.credits.cast[i]);
         cast.append(castMember);
     }
 
@@ -158,7 +194,7 @@ async function makeMovieProfile(movieID) {
     titleDirector.textContent = "Director"; 
     director.append(titleDirector);
 
-    creditsData.message.credits.crew.forEach((crewMember) => {
+    additionalInfo.message.credits.crew.forEach((crewMember) => {
         if(crewMember.job == "Director"){
             let crew = createCreditDiv(crewMember);
             director.append(crew);
@@ -182,8 +218,10 @@ async function makeMovieProfile(movieID) {
     // Reviews - Isak VÄNTAR PÅ FEED
     let reviews = document.createElement("div");
     reviews.className = "movie-profile-reviews";
+    reviews.setAttribute("id", "movie-profile-reviews");
     let titleReview = document.createElement("h4");
-    titleReview.textContent = "Review";
+    titleReview.textContent = "Reviews";
+    reviews.append(titleReview);
 
     let activities = await getActivityByMovieID(movieID);
     console.log(activities);
@@ -221,8 +259,7 @@ async function makeMovieProfile(movieID) {
     infoText.append(movieRs, title, buttons);
     info.append(infoPoster, infoText);
 
-    streamingservices.append(streamingservicesText);
-    streamingservices.append(streamingservicesGrid);
+    
     credits.append(cast, director);
     middle.append(description, streamingservices, credits, reviews, similarMovies);
 

@@ -29,140 +29,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #0F0B2E;
+  background-color: #181818;
   overflow-x: hidden;
-}
-
-.genreBanner {
-  height: 100px;
-  width: 40vw;
-  border-radius: 10px;
-}
-
-.titleDiv, .divider {
-  position: absolute;
-  bottom: -10%;
-  right: -40%;
-  height: 50%;
-  background-color: rgba(211, 211, 211, 0.7);
-  width: 150%;
-  -webkit-transform: rotate(-20deg);
-          transform: rotate(-20deg);
-}
-
-.divider {
-  height: 90%;
-  bottom: -30%;
-  -webkit-transform: rotate(-15deg);
-          transform: rotate(-15deg);
-}
-
-.movieTitle, .genreName {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 5px 0px;
-  margin-right: 10px;
-  color: black;
-  z-index: 10;
-  font-size: 1rem;
-}
-
-.genreName {
-  font-size: 1.4rem;
-}
-
-.upperNav {
-  width: 100vw;
-  background-color: #0F0B2E;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: none;
-      -ms-flex-align: none;
-          align-items: none;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 10000;
-}
-
-.upperNav > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.hiddenButton {
-  display: none;
-  border: none;
-}
-
-.search {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 80%;
-  height: 50px;
-  background-color: lightgrey;
-  border-radius: 20px;
-  position: absolute;
-  top: 0;
-  z-index: 1000;
-  -webkit-transition: all 1s;
-  transition: all 1s;
-}
-
-@-webkit-keyframes searchBar {
-  0% {
-    -webkit-transform: scale(0, 1);
-            transform: scale(0, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
-  }
-  100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
-  }
-}
-
-@keyframes searchBar {
-  0% {
-    -webkit-transform: scale(0, 1);
-            transform: scale(0, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
-  }
-  100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
-  }
-}
-
-h1 {
-  font-family: "Archivo", sans-serif;
-  color: white;
 }
 
 #wrapper {
@@ -180,7 +48,6 @@ h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 10px;
   overflow-x: hidden;
 }
 
@@ -361,7 +228,7 @@ body {
   -webkit-transition: left 1s;
   transition: left 1s;
   gap: 10px;
-  background-color: #0F0B2E;
+  background-color: #181818;
   width: 100%;
 }
 
@@ -416,7 +283,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   gap: 20px;
-  background-color: #0F0B2E;
+  background-color: #181818;
 }
 
 #settingsWindow #settingsForm {
@@ -537,7 +404,7 @@ body {
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
-  background-color: #0F0B2E;
+  background-color: #181818;
 }
 
 #closeTab {
@@ -546,7 +413,6 @@ body {
 }
 
 #overlay {
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -554,7 +420,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #361986;
+  background-color: #181818;
 }
 
 .movie-profile-backdrop {
@@ -633,10 +499,12 @@ body {
 
 .movie-profile-info .movie-profile-info-text p {
   font-size: 12px;
+  color: white;
 }
 
 .movie-profile-info .movie-profile-info-text .movie-profile-title {
   font-weight: bold;
+  color: white;
 }
 
 #movie-profile-buttons {
@@ -691,7 +559,7 @@ body {
 .movie-profile-description p {
   font-family: 'Arial';
   font-size: 0.9rem;
-  color: black;
+  color: white;
   text-align: left;
 }
 
@@ -700,7 +568,7 @@ body {
 }
 
 .movie-profile-streamingservices h4 {
-  color: black;
+  color: white;
   font-family: 'Arial';
   font-size: 1.2rem;
   padding-bottom: 10px;
@@ -728,6 +596,15 @@ body {
   height: 10vw;
   width: 10vw;
   margin-right: 10px;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+
+.movie-profile-streamingservices .movie-profile-streaming-services-grid .active-streming-service {
+  -webkit-filter: grayscale(0%);
+          filter: grayscale(0%);
+  -webkit-box-shadow: 0px 0px 2px rgba(239, 157, 26, 0.58);
+          box-shadow: 0px 0px 2px rgba(239, 157, 26, 0.58);
 }
 
 .movie-profile-streamingservices .movie-profile-streaming-services-grid img:last-child {
@@ -760,7 +637,7 @@ body {
 }
 
 .movie-profile-credits .movie-profile-cast h4 {
-  color: black;
+  color: white;
   font-family: 'Arial';
   font-size: 1.2rem;
   padding-bottom: 10px;
@@ -783,7 +660,7 @@ body {
 }
 
 .movie-profile-credits .movie-profile-director h4 {
-  color: black;
+  color: white;
   font-family: 'Arial';
   font-size: 1.2rem;
   padding-bottom: 10px;
@@ -810,14 +687,14 @@ body {
   border-radius: 200px;
   width: 10vw;
   height: 10vw;
-  background-position: center;
-  background-size: contain;
+  background-position: top;
+  background-size: cover;
   margin: auto;
 }
 
 .movie-profile-credits .production-people p {
   padding-left: 10px;
-  color: black;
+  color: white;
   font-family: 'Arial';
   font-size: 0.9rem;
 }
@@ -830,10 +707,10 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -841,6 +718,13 @@ body {
       -ms-flex-align: start;
           align-items: flex-start;
   padding: 10px;
+}
+
+.movie-profile-reviews h4 {
+  color: white;
+  font-family: 'Arial';
+  font-size: 1.2rem;
+  padding-bottom: 10px;
 }
 
 .movie-profile-similarMovies {
@@ -853,7 +737,7 @@ body {
 }
 
 .movie-profile-similarMovies h4 {
-  color: black;
+  color: white;
   font-family: 'Arial';
   font-size: 1.2rem;
   padding-bottom: 10px;
@@ -1073,6 +957,7 @@ body {
           animation: movieScale .5s ease-in-out;
   -webkit-transition: all 1s;
   transition: all 1s;
+  aspect-ratio: 1;
 }
 
 @-webkit-keyframes movieScale {
@@ -1135,7 +1020,7 @@ body {
   right: 0;
   padding: 5px 0px;
   margin-right: 10px;
-  color: black;
+  color: white;
   z-index: 10;
   font-size: 1rem;
 }
@@ -1212,7 +1097,7 @@ body {
 
 .upperNav {
   width: 100vw;
-  background-color: #0F0B2E;
+  background-color: #181818;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1272,6 +1157,21 @@ body {
   z-index: 1000;
   -webkit-transition: all 1s;
   transition: all 1s;
+}
+
+@-webkit-keyframes searchBar {
+  0% {
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
+  }
 }
 
 @keyframes searchBar {
@@ -1393,7 +1293,7 @@ svg:active, .navImg {
   width: 100vw;
   position: absolute;
   top: 0;
-  background-color: #0F0B2E;
+  background-color: #181818;
   z-index: 999;
   -webkit-animation: searchBar .3s ease-in-out;
           animation: searchBar .3s ease-in-out;

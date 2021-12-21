@@ -405,7 +405,7 @@ async function getSimilar(movieID) {
   }
 }
 
-async function getCredits(movieID) {
+async function getAdditionalInfo(movieID) {
   try {
     let response = await fetch(`http://localhost:7001/GET/get-additional-movieInfo.php?movieID=${movieID}`);
     let data = await response.json();
