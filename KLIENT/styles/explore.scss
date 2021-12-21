@@ -1,16 +1,16 @@
+@import "variables.scss";
 
 //slideshow
 .slideshow-container {
     width: 100vw;
     height: 250px;
-    margin: auto;
-    border: none;
+    // margin: auto;
     overflow: hidden;
 }
   
 .slideshow {
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     width: 100vw;
     height: inherit;
     position: relative;
@@ -22,11 +22,13 @@
     }
 }
 
-.movieNameTr {
-    width: 0;
+.slideMovieDiv {
     position: relative;
+}
+
+.movieNameTr {
+    position: absolute;
     top: calc(250px - 40px);
-    right: 110vw;
 
     p{
         color: white;
@@ -41,6 +43,6 @@
     width: 100vw;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: auto;
-    gap: 5px;
-    padding: 5px;
+    gap: $padding;
+    padding: $padding;
 }

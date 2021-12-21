@@ -14,23 +14,31 @@ async function makeTrending() {
 
   let slideshowImages = await getTrending();
   slideshowImages.push(slideshowImages[0]);
-  // console.log(slideshowImages);
   let counter = 0;
   slideshowImages.forEach((movie) => {
+    let movieID = movie.id;
+
+    let slideMovieDiv = document.createElement("div");
+    slideMovieDiv.className = "slideMovieDiv";
+
     let slideshowImage = document.createElement("img");
     slideshowImage.setAttribute("src", `http://image.tmdb.org/t/p/w500${movie["backdrop_path"]}`);
+    slideshowImage.addEventListener('click', ()=>{
+      window.location.href = `explore.php?movieID=${movieID}`;
+    });
 
     let movieNameTr = document.createElement("div");
     movieNameTr.className = "movieNameTr";
     movieNameTr.innerHTML = `<p>${movie.title}</p>`;
-    movieNameTr.style.color = "white";
+    movieNameTr.style.color = "black";
 
     if (counter == slideshowImages.length - 1) {
       slideshowImage.setAttribute("id", "firstClone");
     }
 
     counter++;
-    slideshowSlider.append(slideshowImage, movieNameTr);
+    slideMovieDiv.append(slideshowImage, movieNameTr);
+    slideshowSlider.append(slideMovieDiv)
   });
 
   slideshowDiv.append(slideshowSlider);
@@ -42,8 +50,8 @@ async function makeTrending() {
 
 function slide() {
   const carouselSlide = document.querySelector(".slideshow");
-  const carouselImages = document.querySelectorAll(".slideshow img"); // div
-  console.log(carouselImages);
+  const carouselImages = document.querySelectorAll(".slideshow div img"); // div
+  // console.log(carouselImages);
   const size = carouselImages[0].clientWidth;
 
   //   const prevBtn = document.querySelector("#prevBtn");
@@ -75,7 +83,7 @@ function slide() {
 }
 function next(carouselSlide, counter, size) {
   carouselSlide.style.transition = "transform 0.7s ease-in-out";
-      console.log(-size * counter);
+      // console.log(-size * counter);
 
   carouselSlide.style.transform = "translatex(" + -size * counter + "px)";
 }

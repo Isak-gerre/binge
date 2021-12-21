@@ -1,13 +1,20 @@
+#footer {
+    position: relative;
+    bottom: 0;
+    left:0;
+}
+
 .footerContainer {
-    padding-bottom:60px;
-    background-color: rgb(147, 147, 147);
+    padding-bottom:80px;
+    background-color: #1d1656;
+    color: #f5f5f5;
     display: flex;
 }
 
 .footerContainerLeft {
     flex-grow: 1;
     font-size: 40px;
-    padding: 10px;
+    padding: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,4 +41,7 @@
 .tmdbLogo, .gitLogo {
     width: 30px;
     margin-right: 10px;
+}
+.gitText > a {
+    color: whitesmoke;
 }

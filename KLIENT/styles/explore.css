@@ -1,8 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
 .slideshow-container {
   width: 100vw;
   height: 250px;
-  margin: auto;
-  border: none;
   overflow: hidden;
 }
 
@@ -10,9 +9,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   width: 100vw;
   height: inherit;
   position: relative;
@@ -25,11 +21,13 @@
      object-position: center top;
 }
 
-.movieNameTr {
-  width: 0;
+.slideMovieDiv {
   position: relative;
+}
+
+.movieNameTr {
+  position: absolute;
   top: calc(250px - 40px);
-  right: 110vw;
 }
 
 .movieNameTr p {
@@ -46,7 +44,7 @@
   -ms-grid-columns: (1fr)[2];
       grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: auto;
-  gap: 5px;
-  padding: 5px;
+  gap: 10px;
+  padding: 10px;
 }
 /*# sourceMappingURL=explore.css.map */

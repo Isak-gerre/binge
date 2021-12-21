@@ -165,6 +165,16 @@ async function getGenres() {
   }
 }
 
+async function getMoviesByGenre(genre) {
+  try {
+    let response = await fetch(`http://localhost:7001/GET/get-movies-by-genre.php?genre=${genre}`);
+    let data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 async function getTrending() {
   try {
     let response = await fetch(`http://localhost:7001/GET/get-trending.php`);
