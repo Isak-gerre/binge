@@ -54,7 +54,6 @@ require_once "head.php";
 
 
 <script src="scripts/makeMovieBanners.js"></script>
-<script src="scripts/makeGenreBanners.js"></script>
 <script src="scripts/search.js"></script>
 <script src="scripts/makeNavigation.js"></script>
 <script src="scripts/makeTrending.js"></script>
