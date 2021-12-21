@@ -174,7 +174,7 @@
         @include flex(column, flex-start, flex-start);
         h4{
             color: $fontColor;
-            @include smallTitleFont()
+            @include smallTitleFont();
             padding-bottom: $padding;
         }
     }
@@ -212,7 +212,7 @@
 
     h4{
         color: $fontColor;
-        @include smallTitleFont()
+        @include smallTitleFont();
         padding-bottom: $padding;
     }
 }

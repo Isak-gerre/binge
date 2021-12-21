@@ -1,18 +1,16 @@
-<!-- 
-    Inkludera head.php 
-    Script:
-    - makeUserProfile
-
-    Element som ska vara statiska, 
-    skapas här
-    
-    Kontrollera om inloggad -> Annars skicka till index.php
-
-    Inkludera footer.php
- -->
-
 
 <?php
+    // Inkludera head.php 
+    // Script:
+    // - makeUserProfile
+
+    // Element som ska vara statiska, 
+    // skapas här
+    
+    // Kontrollera om inloggad -> Annars skicka till index.php
+
+    // Inkludera footer.php
+
 require_once "head.php";
 ?>
 
