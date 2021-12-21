@@ -11,9 +11,8 @@
 <?php 
     require_once "head.php";
 ?>
-<div class="movie-profile" id="overlay"></div>
 
-
+<h1>Bingy</h1>
 <div id="wrapper"></div>
 <script src="scripts/functions.js"></script>
 <script src="scripts/makeMovieBanners.js"></script>

@@ -12,9 +12,19 @@ let colorArray = ['#361986', '#ffb700', '#2a9d8f', '#a8dadc', '#023e8a',
 
 async function makeGenreBanner(){
     let genres = await getGenres();
+    
+    
+    genres['genres'].forEach(async function (genre){
+        let movieByGenre = await getMoviesByGenre(`${genre.name}`);
+        // console.log(movieByGenre.page1.results.length);
+        // console.log(movieByGenre);
+        var randomMovie = movieByGenre.page1.results[Math.floor(Math.random()*movieByGenre.page1.results.length)];
+        // console.log(randomMovie["poster_path"]);
 
-    genres['genres'].forEach(genre => {
-            //create elements
+        // console.log(genre);
+
+
+        //create elements
         let genreBanner = document.createElement('div');
         let divider = document.createElement('div');
         let genreName = document.createElement('p');
@@ -26,20 +36,22 @@ async function makeGenreBanner(){
 
         //content
         genreName.textContent= genre.name;
-        genreBanner.style.backgroundColor = colorArray[Math.floor(Math.random() * colorArray.length)];
+        genreBanner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${randomMovie["backdrop_path"]}')`;
+        // movieBanner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["poster_path"]}')`;
+
 
         
         //append
         genreBanner.append(genreName);
         genreBanner.append(divider);
-        document.getElementById("wrapper").append(genreBanner);
+        document.getElementById("genre").append(genreBanner);
     });
 
 
     return genres;
 }
 
-makeGenreBanner();
+// makeGenreBanner();
 
 // genres.forEach(genre => {
 //     makeGenreBanner(genre);

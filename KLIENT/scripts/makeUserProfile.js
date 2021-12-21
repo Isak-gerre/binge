@@ -47,10 +47,18 @@ const settingOrPlus = document.getElementById('settingOrPlus');
 const followersCont = document.getElementById('followers');
 const followingCont = document.getElementById('following');
 
+const watchedBtn = document.getElementById('watched');
+const watchlistBtn = document.getElementById('watchlist');
+const statsBtn = document.getElementById('stats');
 
+const wrapper = document.getElementById('profileWrapper');
+
+watchedBtn.click();
 createProfilePage();
 
+
 async function createProfilePage() {
+    watchedBtn.classList.add('selected');
     const loggedInUserInfo = await getUserInfo(loggedInUserId);
     
     let urlUserId = getParamFromUrl('userID');
@@ -66,12 +74,72 @@ async function createProfilePage() {
         let following = loggedInUserFollow.some(e => e == urlUserId);
 
         createProfileHeader(userInfo, following);
-        // createProfileFeed(userInfo);
+
+        let allUserActivities = await getAllActivites(urlUserId);
+        let watchedActivities = [];
+        let watchlist = [];
+
+        allUserActivities.forEach(obj => {
+            if (obj.type == "watchlist") {
+                watchlist.push(obj);
+            } else {
+                watchedActivities.push(obj);
+            }
+        });
+        
+        profileNav(watchedActivities, watchlist, urlUserId);
+        createActivities(watchedActivities, 'profile');
+        
+
     } else {
         createProfileHeader(loggedInUserInfo, null, true);
-        // createProfileFeed(loggedInUserInfo);
+
+        let allUserActivities = await getAllActivites(loggedInUserId);
+        // console.log(allUserActivities);
+        let watchedActivities = [];
+        let watchlist = [];
+
+        allUserActivities.forEach(obj => {
+            if (obj.type == "watchlist") {
+                watchlist.push(obj);
+            } else {
+                watchedActivities.push(obj);
+            }
+        });
+
+        profileNav(watchedActivities, watchlist, loggedInUserId);
+        createActivities(watchedActivities, 'profile');
     }
 
+}
+
+function profileNav(watchedActivities, watchlist, userId) {
+    watchedBtn.addEventListener('click', () => {
+        if (watchedBtn.className !== 'selected') {
+            wrapper.innerHTML = "";
+            document.querySelector('.selected').classList.remove('selected');
+            watchedBtn.classList.add('selected');
+            createActivities(watchedActivities, 'profile');
+        }
+    });
+
+    watchlistBtn.addEventListener('click', () => {
+        if (watchlistBtn.className !== 'selected') {
+            wrapper.innerHTML = "";
+            document.querySelector('.selected').classList.remove('selected');
+            watchlistBtn.classList.add('selected');
+            createWatchlist(watchlist);
+        }
+    });
+
+    statsBtn.addEventListener('click', () => {
+        if (statsBtn.className !== 'selected') {
+            wrapper.innerHTML = "";
+            document.querySelector('.selected').classList.remove('selected');
+            statsBtn.classList.add('selected');
+            renderChart(userId);
+        }
+    });
 }
 
 async function createProfileHeader(user, isFollowing, settings = null) {
@@ -88,27 +156,30 @@ async function createProfileHeader(user, isFollowing, settings = null) {
     let following = user.following;
     let nrOfFollowers = followers.length;
     let nrOfFollowing = following.length;
-    let profileButton = document.createElement('button');
+    let profileButton = document.createElement('img');
 
     if (isFollowing !== null) {
         if (isFollowing) {
-            profileButton.textContent = "unfollow";
+            profileButton.src = '../icons/remove_circle_black.svg';
+            profileButton.id = 'unfollow';
         } else if (!isFollowing) {
-            profileButton.textContent = "follow";
+            profileButton.src = '../icons/add_circle_black.svg';
+            profileButton.id = 'follow';
         }   
     }
     
     if (settings == true) {
-        profileButton.textContent = "settings";
+        profileButton.src = '../icons/settings_black.svg';
     }
 
     profileButton.addEventListener('click', async function () {
         let userId = user.id;
 
-        if (profileButton.textContent == "unfollow") {
+        if (profileButton.id == 'unfollow') {
+            profileButton.id = 'follow';
             isFollowing = false;
 
-            profileButton.textContent = "follow";
+            profileButton.src = '../icons/add_circle_black.svg';
             let userIndex = followers.findIndex(id => id == loggedInUserId);
             followers.splice(userIndex, 1);
 
@@ -118,10 +189,11 @@ async function createProfileHeader(user, isFollowing, settings = null) {
             followersCont.textContent = nrOfFollowers;
             
 
-        } else if (profileButton.textContent == "follow") {
+        } else if (profileButton.id == 'follow') {
+            profileButton.id = 'unfollow';
             isFollowing = true;
 
-            profileButton.textContent = "unfollow";
+            profileButton.src = '../icons/remove_circle_black.svg';
             followers.push(loggedInUserId);
 
             await followPatch(loggedInUserId, userId);
@@ -205,7 +277,29 @@ async function showUsers(ids) {
     document.querySelector('body').prepend(followContainer);
 }
 
-// async function getActivityInfo(userId) {
+async function getAllActivites(userId) {
+    // console.log(userId);
+    let response = await fetch(`http://localhost:7001/GET/get-activities.php?followingIDs=${userId}`);
+    let userActivites = await response.json();
+    userActivites.sort((a, b) => b.date - a.date);
 
+    return userActivites;
+}
 
-// }
+async function createWatchlist(watchlist) {
+    let container = document.createElement('div');
+    container.id = 'watchlistContainer';
+
+    watchlist.forEach(async function (activity) {
+        let movieId = activity.movieID;
+
+        let movieBanner = await makeMovieBanner(movieId);
+
+        movieBanner.addEventListener('click', () => {
+            window.location.href = `explore.php?movieID=${movieId}`;
+        })
+        container.append(movieBanner);   
+    });
+
+    wrapper.append(container);
+}

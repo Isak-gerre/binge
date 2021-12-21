@@ -16,6 +16,12 @@ highestID(){
 // SESSION FUNCTIONS
 //_______________________________________________________________________________________
 
+function checkSessionStorageSize() {
+  var limit = 1024 * 1024 * 5; // 5 MB
+  var remSpace = limit - unescape(encodeURIComponent(JSON.stringify(sessionStorage))).length;
+  return remSpace;
+}
+
 function makeState(movieID, page, scrollHeight = 0) {
   return {
     movie: movieID,
@@ -57,6 +63,10 @@ function addToState(movieID, page, scrollHeight = 0) {
 }
 
 function addToMovies(movie) {
+  let isSaved = isMovieSaved(movie.id);
+  if (isSaved) {
+    return true;
+  }
   if ("movies" in sessionStorage) {
     let allMovies = getFromSession("movies");
     allMovies.unshift(movie);
@@ -67,26 +77,68 @@ function addToMovies(movie) {
     saveToSession(allMovies, "movies");
   }
 }
+async function saveMultipleMovies(array) {
+  let fetches = array.map((id) => fetch(`http://localhost:7001/GET/get-movie-info.php?movieID=${id}`));
+  const resultArray = await Promise.all(fetches);
+  resultArray.map(async function (resp) {
+    let movie = await resp.json();
+    addToMovies(movie.message);
+  });
+}
 
 function isMovieSaved(movieID) {
   if ("movies" in sessionStorage) {
     let allMovies = getFromSession("movies");
-    let movie = allMovies.find((movie) => movie.id == movieID);
-    return { message: movie };
+    let movie = allMovies.find((movie) => Number(movie.id) == Number(movieID));
+    if (typeof movie == "object") {
+      return movie;
+    } else {
+      return false;
+    }
   }
   return false;
 }
 //_______________________________________________________________________________________
 
 async function getMovieInfo(movieID) {
-  let savedMovie = isMovieSaved(movieID);
-  if (typeof savedMovie == "object") {
-    return savedMovie;
+  if (typeof movieID === "object") {
+    let savedMovies = [];
+    let notSavedMovies = [];
+    movieID.forEach((id) => {
+      let movie = isMovieSaved(id);
+      if (!movie) {
+        notSavedMovies.push(id);
+      }
+    });
+    await saveMultipleMovies(notSavedMovies);
+    console.log(notSavedMovies);
+    movieID.forEach((id) => {
+      savedMovies.push(isMovieSaved(id));
+    });
+    return savedMovies;
+  } else {
+    let savedMovie = isMovieSaved(movieID);
+    if (typeof savedMovie == "object") {
+      return { message: savedMovie };
+    }
+    try {
+      let response = await fetch(`http://localhost:7001/GET/get-movie-info.php?movieID=${movieID}`);
+      let data = await response.json();
+      addToMovies(data.message, "movies");
+      return data;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
   }
+}
+
+async function getSearchResults(searchType, query, page = 1) {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-movie-info.php?movieID=${movieID}`);
+    let response = await fetch(
+      `http://localhost:7001/GET/get-search-results.php?searchtype=${searchType}&query=${query}&page=${page}`
+    );
     let data = await response.json();
-    addToMovies(data.message, "movies");
     return data;
   } catch (error) {
     console.error(error);

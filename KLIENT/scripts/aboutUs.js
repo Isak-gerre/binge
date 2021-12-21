@@ -47,7 +47,7 @@ gitLogo.textContent = "gitLogo";
 
 let gitText = document.createElement("div");
 gitText.classList.add("gitText");
-gitText.textContent = "Follow this product on github.";
+gitText.innerHTML = `<a href="https://github.com/Isak-gerre/binge" target=”_blank”> Follow this product on github.</a>`;
 
 footerContainerRight.append(git);
 git.append(gitLogo, gitText);

@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -9,7 +12,27 @@
 
 body {
   margin: 0;
-  width: 100vw;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: none;
+      -ms-flex-pack: none;
+          justify-content: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #0F0B2E;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-family: "Archivo", sans-serif;
+  color: white;
 }
 
 #wrapper {
@@ -28,11 +51,11 @@ body {
       -ms-flex-align: center;
           align-items: center;
   padding: 10px;
+  overflow-x: hidden;
 }
 
 .movieBanner, .genreBanner {
   height: 150px;
-  width: 100px;
   border-radius: 10px;
   background-size: cover;
   text-align: right;
@@ -82,7 +105,7 @@ body {
 
 .upperNav {
   width: 100vw;
-  background-color: white;
+  background-color: #0F0B2E;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -279,7 +302,7 @@ body {
           align-items: center;
   gap: 30px;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
 }
 
 #profilePic {
@@ -378,6 +401,7 @@ body {
 
 #profileNav {
   width: 100%;
+  height: 50px;
   font-family: 'Arial';
   font-size: 0.9rem;
   display: -webkit-box;
@@ -393,6 +417,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border-top: 1px solid black;
 }
 
 #profileNav div {
@@ -412,6 +437,11 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  height: 100%;
+}
+
+#profileNav .selected {
+  background-color: white;
 }
 
 #followContainer {
@@ -436,7 +466,7 @@ body {
   -webkit-transition: left 1s;
   transition: left 1s;
   gap: 10px;
-  background-color: white;
+  background-color: #0F0B2E;
   width: 100%;
 }
 
@@ -491,7 +521,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   gap: 20px;
-  background-color: white;
+  background-color: #0F0B2E;
 }
 
 #settingsWindow #settingsForm {
@@ -612,7 +642,7 @@ body {
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
-  background-color: white;
+  background-color: #0F0B2E;
 }
 
 #closeTab {
@@ -620,81 +650,121 @@ body {
   z-index: 100;
 }
 
+#profileWrapper {
+  padding: 10px;
+}
+
+#profileWrapper #watchlistContainer {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
 #overlay {
   position: relative;
 }
 
-#overlay-fade {
-  position: fixed;
-  height: 100vh;
+.movie-profile-backdrop {
   width: 100vw;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 900;
+}
+
+.movie-profile-gradient {
+  width: 100vw;
+  position: relative;
+  z-index: 11;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(15, 123, 161, 0)), color-stop(71.87%, rgba(15, 11, 46, 0)), to(#0F0B2E));
+  background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 71.87%, #0F0B2E 100%);
+  height: 400px;
+  top: -400px;
+}
+
+.movie-profile-header {
+  height: auto;
+}
+
+.movie-profile-info {
+  padding: 10px;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  top: -400px;
+  z-index: 13;
 }
 
-#message-wrapper {
-  width: 80%;
-  height: 80%;
-  background-color: white;
+.movie-profile-info-poster {
+  width: 35%;
+  position: relative;
+  top: -50px;
+  left: 10px;
 }
 
-.stop-scrolling {
-  height: 100%;
-  overflow: hidden;
+.movie-profile-poster {
+  width: 100%;
+  -webkit-box-shadow: 5px 5px 5px black;
+          box-shadow: 5px 5px 5px black;
 }
 
-.rating {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.movie-profile-info-text {
+  position: relative;
+  left: 30px;
+  top: 10px;
+  font-family: 'Archivo', sans-serif;
+  line-height: 1.4;
 }
 
-.rating li {
-  list-style-type: none;
+.movie-profile-info-text > p {
+  font-size: 12px;
 }
 
-.rating-star {
-  border: 1px solid white;
-  cursor: pointer;
-  font-size: 2em;
-  color: #ffb700;
+.movie-profile-title {
+  font-weight: bold;
 }
 
-.rating-star::before {
-  content: "\2605";
+#movie-profile-buttons {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
 }
 
-.rating-star:hover {
-  color: #ffb700;
+.watch-later {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-area: 1 / 1 / 2 / 2;
 }
 
-.rating-star.active ~ .rating-star::before {
-  color: greY;
+.watched {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-area: 1 / 2 / 2 / 3;
 }
 
-.rating:hover ~ .rating-star::before {
-  content: "\2605";
+.review {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: 2 / 1 / 3 / 3;
 }
 
-.rating-star:hover ~ .rating-star::before {
-  color: grey;
-}
-
-body {
-  background-color: #e3e3e3;
+.button {
+  margin: 5px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 0;
+  color: whitesmoke;
+  background: linear-gradient(40deg, #EF9D1A, #FD047C);
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+          filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
 }
 
 .container {
@@ -721,7 +791,7 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  padding: 1vh 0.5vh 1vh 0.5vh;
+  padding: 0.5vh 0;
   font-family: 'Archivo', sans-serif;
 }
 
@@ -839,60 +909,5 @@ body {
 
 .star {
   height: 15px;
-}
-
-.footerContainer {
-  padding-bottom: 60px;
-  background-color: #939393;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.footerContainerLeft {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  font-size: 40px;
-  padding: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.footerContainerRight {
-  -webkit-box-flex: 2;
-      -ms-flex-positive: 2;
-          flex-grow: 2;
-  padding: 10px;
-  font-size: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.tmdb, .git {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 10px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.tmdbLogo, .gitLogo {
-  width: 30px;
-  margin-right: 10px;
 }
 /*# sourceMappingURL=styles.css.map */

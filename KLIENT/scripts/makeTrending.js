@@ -14,28 +14,44 @@ async function makeTrending() {
 
   let slideshowImages = await getTrending();
   slideshowImages.push(slideshowImages[0]);
-  console.log(slideshowImages);
   let counter = 0;
   slideshowImages.forEach((movie) => {
+    let movieID = movie.id;
+
+    let slideMovieDiv = document.createElement("div");
+    slideMovieDiv.className = "slideMovieDiv";
+
     let slideshowImage = document.createElement("img");
     slideshowImage.setAttribute("src", `http://image.tmdb.org/t/p/w500${movie["backdrop_path"]}`);
+    slideshowImage.addEventListener('click', ()=>{
+      window.location.href = `explore.php?movieID=${movieID}`;
+    });
+
+    let movieNameTr = document.createElement("div");
+    movieNameTr.className = "movieNameTr";
+    movieNameTr.innerHTML = `<p>${movie.title}</p>`;
+    movieNameTr.style.color = "black";
+
     if (counter == slideshowImages.length - 1) {
       slideshowImage.setAttribute("id", "firstClone");
     }
+
     counter++;
-    slideshowSlider.append(slideshowImage);
+    slideMovieDiv.append(slideshowImage, movieNameTr);
+    slideshowSlider.append(slideMovieDiv)
   });
 
   slideshowDiv.append(slideshowSlider);
   document.querySelector("#trending").innerHTML = "";
+  document.querySelector("#trending").innerHTML = "<h1>Now trending</h1>";
   document.querySelector("#trending").append(slideshowDiv);
   loaded = true;
 }
 
 function slide() {
   const carouselSlide = document.querySelector(".slideshow");
-  const carouselImages = document.querySelectorAll(".slideshow img");
-  console.log(carouselImages);
+  const carouselImages = document.querySelectorAll(".slideshow div img"); // div
+  // console.log(carouselImages);
   const size = carouselImages[0].clientWidth;
 
   //   const prevBtn = document.querySelector("#prevBtn");
@@ -60,13 +76,15 @@ function slide() {
   });
 
   setInterval(() => {
-      counter++;
+    counter++;
     next(carouselSlide, counter, size);
   }, 5000);
-  console.log("test");
+  // console.log("test");
 }
 function next(carouselSlide, counter, size) {
   carouselSlide.style.transition = "transform 0.7s ease-in-out";
+      // console.log(-size * counter);
+
   carouselSlide.style.transform = "translatex(" + -size * counter + "px)";
 }
 function prev(carouselSlide) {
@@ -75,10 +93,10 @@ function prev(carouselSlide) {
   carouselSlide.style.transform = "translatex(" + -size * counter + "px)";
 }
 
-makeTrending();
-setInterval(() => {
-  if (loaded) {
-    slide();
-    loaded = false;
-  }
-}, 1000);
+// makeTrending();
+// setInterval(() => {
+//   if (loaded) {
+//     slide();
+//     loaded = false;
+//   }
+// }, 1000);

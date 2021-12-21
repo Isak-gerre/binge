@@ -21,7 +21,6 @@
     
     //Skapar formuläret för inlogg alternativt skapar konto 
 ?>
-<div class="movie-profile" id="overlay"></div>
 
 <div class="signInWrap">
 
@@ -36,6 +35,8 @@
             echo "<a href='/sign-in.php?forgotpassword'>Forgot your password?</a>";
         }  
     ?>
+<!-- Vad är det'ta? -->
+<div id="wrapper">
 </div>
 
 

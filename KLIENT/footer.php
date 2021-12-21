@@ -1,5 +1,5 @@
 
-<footer id="footer"></footer>
+<footer></footer>
 <script src="scripts/aboutUs.js"></script>
 </body>
 </html>
