@@ -14,14 +14,18 @@ async function makeTrending() {
 
   let slideshowImages = await getTrending();
   slideshowImages.push(slideshowImages[0]);
-  // console.log(slideshowImages);
   let counter = 0;
   slideshowImages.forEach((movie) => {
+    let movieID = movie.id;
+
     let slideMovieDiv = document.createElement("div");
     slideMovieDiv.className = "slideMovieDiv";
 
     let slideshowImage = document.createElement("img");
     slideshowImage.setAttribute("src", `http://image.tmdb.org/t/p/w500${movie["backdrop_path"]}`);
+    slideshowImage.addEventListener('click', ()=>{
+      window.location.href = `explore.php?movieID=${movieID}`;
+    });
 
     let movieNameTr = document.createElement("div");
     movieNameTr.className = "movieNameTr";
@@ -79,7 +83,7 @@ function slide() {
 }
 function next(carouselSlide, counter, size) {
   carouselSlide.style.transition = "transform 0.7s ease-in-out";
-      console.log(-size * counter);
+      // console.log(-size * counter);
 
   carouselSlide.style.transform = "translatex(" + -size * counter + "px)";
 }

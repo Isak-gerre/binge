@@ -15,11 +15,14 @@ body {
     // height: 100vh;
     @include flex(column, none, center);
     background-color: $backgroundColor;
+    overflow-x: hidden;
+
 
 }
 
 h1 {
   font-family: $headerFont;
+  color: white;
 }
 
 #wrapper {
@@ -28,6 +31,7 @@ h1 {
   // height: 100vh;
   @include flex(column, none, center);
   padding: $padding;
+  overflow-x: hidden;
 }
 
 

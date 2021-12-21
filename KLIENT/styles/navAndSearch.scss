@@ -11,10 +11,12 @@
     position: sticky;
     top: 0;
     z-index: 10000;
-}
 
-.upperNav > div {
-  @include flex(row, center, center);
+    div {
+      flex-grow: 1;
+      box-sizing: border-box;
+      @include flex(row, center, center);
+    }
 }
 
 //SÖK
@@ -92,18 +94,19 @@
 //NEDRE NAVIGATION
 .lowerNav, .backLowerNav{
     width: 80vw;
-    height: 60px;
+    height: 50px;
     margin-bottom: 30px;
 
     box-shadow: 0 0 7px 0 rgba(0, 0, 0, .2);
     border-radius: 20px;
-    background-color: rgb(240, 240, 240);
+    background-color: lightgrey;
 
     display: flex;
     text-align: center;
 
     overflow: hidden;
     box-sizing: border-box;
+  
 }
 
 .lowerNav {
@@ -111,17 +114,17 @@
   top: calc(100vh - 80px);
   z-index: 10000;
   background-color: transparent;
-}
 
-.lowerNav > div > a {
-  width: 30px;
-  height: 30px;
+  div {
+    flex-grow: 1;
+    box-sizing: border-box;
+  }
 }
 
 .backLowerNav {
   width: 100%;
   position: absolute;
-  filter: blur(10px);
+  filter: blur(8px);
 }
 
 //ICONS
@@ -134,19 +137,10 @@ svg, .navImg {
 }
 
 svg:active, .navImg {
-  width: 32px;
-  height: 32px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
 }
-
-
-//Flex grow
-.upperNav > div, .lowerNav > div{
-    flex-grow: 1;
-    box-sizing: border-box;
-
-}
-
 
 .searchOverlay {
   height: inherit;

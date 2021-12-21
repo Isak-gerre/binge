@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
 .upperNav {
   width: 100vw;
-  background-color: white;
+  background-color: #0F0B2E;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,7 +21,12 @@
   z-index: 10000;
 }
 
-.upperNav > div {
+.upperNav div {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -136,12 +141,12 @@
 
 .lowerNav, .backLowerNav {
   width: 80vw;
-  height: 60px;
+  height: 50px;
   margin-bottom: 30px;
   -webkit-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  background-color: #f0f0f0;
+  background-color: lightgrey;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -158,16 +163,19 @@
   background-color: transparent;
 }
 
-.lowerNav > div > a {
-  width: 30px;
-  height: 30px;
+.lowerNav div {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .backLowerNav {
   width: 100%;
   position: absolute;
-  -webkit-filter: blur(10px);
-          filter: blur(10px);
+  -webkit-filter: blur(8px);
+          filter: blur(8px);
 }
 
 svg, .navImg {
@@ -179,17 +187,9 @@ svg, .navImg {
 }
 
 svg:active, .navImg {
-  width: 32px;
-  height: 32px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
-}
-
-.upperNav > div, .lowerNav > div {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 .searchOverlay {
@@ -197,7 +197,7 @@ svg:active, .navImg {
   width: 100vw;
   position: absolute;
   top: 0;
-  background-color: white;
+  background-color: #0F0B2E;
   z-index: 999;
   -webkit-animation: searchBar .3s ease-in-out;
           animation: searchBar .3s ease-in-out;

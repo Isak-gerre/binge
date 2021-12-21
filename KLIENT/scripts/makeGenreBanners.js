@@ -13,8 +13,13 @@ let colorArray = ['#361986', '#ffb700', '#2a9d8f', '#a8dadc', '#023e8a',
 async function makeGenreBanner(){
     let genres = await getGenres();
 
+    
+    let movieByGenre = await getMoviesByGenre('horror');
+    console.log(movieByGenre.page1.results);
+   
+
     genres['genres'].forEach(genre => {
-            //create elements
+        //create elements
         let genreBanner = document.createElement('div');
         let divider = document.createElement('div');
         let genreName = document.createElement('p');
