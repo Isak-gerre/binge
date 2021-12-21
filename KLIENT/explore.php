@@ -14,7 +14,6 @@
 require_once "head.php";
 ?>
 
-<h1>Bingy</h1>
 <div id="wrapper">
     <div id="trending">
         <div class="slideshow-container">

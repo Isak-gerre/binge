@@ -19,6 +19,8 @@ async function makeTrending() {
   slideshowImages.forEach((movie) => {
     let slideshowImage = document.createElement("img");
     slideshowImage.setAttribute("src", `http://image.tmdb.org/t/p/w500${movie["backdrop_path"]}`);
+    // let slideshowImage = document.createElement("div");
+    // slideshowImage.style.backgroundImage = `url('http://image.tmdb.org/t/p/w500${movie["backdrop_path"]})`;
     if (counter == slideshowImages.length - 1) {
       slideshowImage.setAttribute("id", "firstClone");
     }
@@ -35,7 +37,7 @@ async function makeTrending() {
 function slide() {
   const carouselSlide = document.querySelector(".slideshow");
   const carouselImages = document.querySelectorAll(".slideshow img");
-  console.log(carouselImages);
+  // console.log(carouselImages);
   const size = carouselImages[0].clientWidth;
 
   //   const prevBtn = document.querySelector("#prevBtn");
