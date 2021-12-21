@@ -12,9 +12,7 @@
 <?php
 require_once "head.php";
 ?>
-<div class="movie-profile" id="overlay"></div>
 
-<h1>Bingy</h1>
 <div id="wrapper">
 </div>
 
