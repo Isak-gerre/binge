@@ -71,24 +71,39 @@ function addToMovies(movie) {
 function isMovieSaved(movieID) {
   if ("movies" in sessionStorage) {
     let allMovies = getFromSession("movies");
-    let movie = allMovies.find((movie) => movie.id == movieID);
-    return { message: movie };
+    let movie = allMovies.find((movie) => Number(movie.id) == Number(movieID));
+    if (!movie == "undefined") {
+      console.log(movie);
+      return { message: movie };
+    } else {
+      return false;
+    }
   }
   return false;
 }
 //_______________________________________________________________________________________
 
-
 async function getMovieInfo(movieID) {
   let savedMovie = isMovieSaved(movieID);
   if (typeof savedMovie == "object") {
-    return savedMovie;
+    return {message: savedMovie};
   }
   try {
     let response = await fetch(`http://localhost:7001/GET/get-movie-info.php?movieID=${movieID}`);
     let data = await response.json();
     console.log(data);
     addToMovies(data.message, "movies");
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+async function getSearchResults(searchType, query, page = 1) {
+  try {
+    let response = await fetch(`http://localhost:7001/GET/get-search-results.php?searchtype=${searchType}&query=${query}&page=${page}`);
+    let data = await response.json();
     return data;
   } catch (error) {
     console.error(error);

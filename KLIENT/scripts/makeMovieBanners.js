@@ -6,6 +6,7 @@
 
 async function makeMovieBanner(movieID) {
   let movieInfo = await getMovieInfo(movieID);
+  // console.log(movieInfo);
 
   //create elements
   let movieBanner = document.createElement("div");
@@ -17,7 +18,7 @@ async function makeMovieBanner(movieID) {
   titleDiv.className = "titleDiv";
   title.className = "movieTitle";
 
-  console.log(movieInfo);
+  // console.log(movieInfo);
 
   //content
   title.textContent = movieInfo.message.title;
