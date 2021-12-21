@@ -23,7 +23,7 @@ async function makeTrending() {
     let movieNameTr = document.createElement("div");
     movieNameTr.className = "movieNameTr";
     movieNameTr.innerHTML = `<p>${movie.title}</p>`;
-    movieNameTr.style.color = 'white';
+    movieNameTr.style.color = "white";
 
     if (counter == slideshowImages.length - 1) {
       slideshowImage.setAttribute("id", "firstClone");
@@ -31,7 +31,6 @@ async function makeTrending() {
 
     counter++;
     slideshowSlider.append(slideshowImage, movieNameTr);
-
   });
 
   slideshowDiv.append(slideshowSlider);
@@ -43,8 +42,8 @@ async function makeTrending() {
 
 function slide() {
   const carouselSlide = document.querySelector(".slideshow");
-  const carouselImages = document.querySelectorAll(".slideshow img");
-  // console.log(carouselImages);
+  const carouselImages = document.querySelectorAll(".slideshow img"); // div
+  console.log(carouselImages);
   const size = carouselImages[0].clientWidth;
 
   //   const prevBtn = document.querySelector("#prevBtn");
@@ -69,13 +68,15 @@ function slide() {
   });
 
   setInterval(() => {
-      counter++;
+    counter++;
     next(carouselSlide, counter, size);
   }, 5000);
   // console.log("test");
 }
 function next(carouselSlide, counter, size) {
   carouselSlide.style.transition = "transform 0.7s ease-in-out";
+      console.log(-size * counter);
+
   carouselSlide.style.transform = "translatex(" + -size * counter + "px)";
 }
 function prev(carouselSlide) {
