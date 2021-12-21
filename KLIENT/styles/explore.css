@@ -1,0 +1,52 @@
+.slideshow-container {
+  width: 100vw;
+  height: 250px;
+  margin: auto;
+  border: none;
+  overflow: hidden;
+}
+
+.slideshow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100vw;
+  height: inherit;
+  position: relative;
+}
+
+.slideshow img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center top;
+     object-position: center top;
+}
+
+.movieNameTr {
+  width: 0;
+  position: relative;
+  top: calc(250px - 40px);
+  right: 110vw;
+}
+
+.movieNameTr p {
+  color: white;
+  width: 105vw;
+  background-color: rgba(128, 128, 128, 0.5);
+  padding: 10px;
+}
+
+#genre {
+  display: -ms-grid;
+  display: grid;
+  width: 100vw;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  gap: 5px;
+  padding: 5px;
+}
+/*# sourceMappingURL=explore.css.map */
