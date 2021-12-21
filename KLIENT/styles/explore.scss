@@ -1,0 +1,46 @@
+
+//slideshow
+.slideshow-container {
+    width: 100vw;
+    height: 250px;
+    margin: auto;
+    border: none;
+    overflow: hidden;
+}
+  
+.slideshow {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: inherit;
+    position: relative;
+
+  
+    img{
+      object-fit: cover;
+      object-position: center top;
+    }
+}
+
+.movieNameTr {
+    width: 0;
+    position: relative;
+    top: calc(250px - 40px);
+    right: 110vw;
+
+    p{
+        color: white;
+        width: 105vw;
+        background-color: rgba(128, 128, 128, .5);
+        padding: 10px;
+    }
+}
+
+#genre {
+    display: grid;
+    width: 100vw;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    gap: 5px;
+    padding: 5px;
+}

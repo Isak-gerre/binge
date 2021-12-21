@@ -19,15 +19,24 @@ async function makeTrending() {
   slideshowImages.forEach((movie) => {
     let slideshowImage = document.createElement("img");
     slideshowImage.setAttribute("src", `http://image.tmdb.org/t/p/w500${movie["backdrop_path"]}`);
+
+    let movieNameTr = document.createElement("div");
+    movieNameTr.className = "movieNameTr";
+    movieNameTr.innerHTML = `<p>${movie.title}</p>`;
+    movieNameTr.style.color = 'white';
+
     if (counter == slideshowImages.length - 1) {
       slideshowImage.setAttribute("id", "firstClone");
     }
+
     counter++;
-    slideshowSlider.append(slideshowImage);
+    slideshowSlider.append(slideshowImage, movieNameTr);
+
   });
 
   slideshowDiv.append(slideshowSlider);
   document.querySelector("#trending").innerHTML = "";
+  document.querySelector("#trending").innerHTML = "<h1>Now trending</h1>";
   document.querySelector("#trending").append(slideshowDiv);
   loaded = true;
 }

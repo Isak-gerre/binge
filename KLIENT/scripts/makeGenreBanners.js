@@ -32,7 +32,7 @@ async function makeGenreBanner(){
         //append
         genreBanner.append(genreName);
         genreBanner.append(divider);
-        document.getElementById("wrapper").append(genreBanner);
+        document.getElementById("genre").append(genreBanner);
     });
 
 
