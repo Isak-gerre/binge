@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
 .movieBanner, .genreBanner {
   height: 150px;
   border-radius: 10px;
@@ -78,6 +79,6 @@
 }
 
 .genreName {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 /*# sourceMappingURL=banners.css.map */

@@ -10,13 +10,28 @@
 
 body {
     margin: 0;
-    width: 100vw;
+    // display: grid;
+    position: relative;
+    // height: 100vh;
+    @include flex(column, none, center);
+    background-color: $backgroundColor;
+    overflow-x: hidden;
+
+
+}
+
+h1 {
+  font-family: $headerFont;
+  color: white;
 }
 
 #wrapper {
   position: relative;
+  // overflow-y: scroll;
+  // height: 100vh;
   @include flex(column, none, center);
   padding: $padding;
+  overflow-x: hidden;
 }
 
 .movieBanner, .genreBanner {
