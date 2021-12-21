@@ -91,10 +91,14 @@ async function makeMovieProfile(movieID) {
     review.textContent = "review";
 
     if(relation.watchlist == true){
-        watchList.textContent = "remove from watchlist";
-    } else if(relation.watchLater == true){
-        watchLater.textContent ="unwatch";
-    } else if(relation.review !== false){
+        watchLater.classList.add = "marked";
+
+    }
+    if(relation.watchLater == true){
+        watchLater.classList.add = "marked";
+
+    } 
+    if(relation.review !== false){
         review.textContent = "update review";
     }
 
