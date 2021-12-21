@@ -28,7 +28,6 @@ makeMovieProfile([movieID]){
 
 // Variabler för den inloggade?
 let loggedInUser = 4;
-// let movieID = 35;
 
 
 async function makeMovieProfile(movieID) {
@@ -42,8 +41,8 @@ async function makeMovieProfile(movieID) {
     movieHeader.className = "movie-profile-header";
 
     // Backdrop - Isak
-    let backdrop = document.createElement("img");
-    backdrop.setAttribute("src", `https://image.tmdb.org/t/p/w500${movieInfo["backdrop_path"]}`);
+    let backdrop = document.createElement("div");
+    backdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${movieInfo["backdrop_path"]})`;
     backdrop.className = "movie-profile-backdrop";
 
     let gradient = document.createElement("div");
@@ -143,6 +142,9 @@ async function makeMovieProfile(movieID) {
     // Cast - Niklas
     let cast = document.createElement("div");
     cast.className = "movie-profile-cast";
+    let titleCast = document.createElement("h4");
+    titleCast.textContent = "Cast";
+    cast.append(titleCast); 
 
     for (let i = 0; i < 5; i++) {
         let castMember = createCreditDiv(creditsData.message.credits.cast[i]);
@@ -152,6 +154,9 @@ async function makeMovieProfile(movieID) {
     // Directors - Niklas
     let director = document.createElement("div");
     director.className = "movie-profile-director";
+    let titleDirector = document.createElement("h4");
+    titleDirector.textContent = "Director"; 
+    director.append(titleDirector);
 
     creditsData.message.credits.crew.forEach((crewMember) => {
         if(crewMember.job == "Director"){
@@ -164,9 +169,9 @@ async function makeMovieProfile(movieID) {
         let productionPeople = document.createElement("div");
         productionPeople.className = "production-people";
 
-        let image = document.createElement("img");
-        image.setAttribute("src", `https://image.tmdb.org/t/p/w500/${person.profile_path}`);
-
+        let image = document.createElement("div");
+        image.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${person.profile_path})`;
+    
         let name = document.createElement("p");
         name.textContent = person.name
 
@@ -177,10 +182,30 @@ async function makeMovieProfile(movieID) {
     // Reviews - Isak VÄNTAR PÅ FEED
     let reviews = document.createElement("div");
     reviews.className = "movie-profile-reviews";
+    let titleReview = document.createElement("h4");
+    titleReview.textContent = "Review";
+
+    let activities = await getActivityByMovieID(movieID);
+    console.log(activities);
+    console.log(movieID);
+
+
+    async function getActivityByMovieID(movieID){
+        try {
+            let response = await fetch(`http://localhost:7001/GET/get-activities.php?movieID=${movieID}`);
+            let data = await response.json();
+            return data;
+          } catch (error) {
+            console.error(error);
+          }
+    }
 
     // Similar Movies - Niklas
     let similarMovies = document.createElement("div");
     similarMovies.className = "movie-profile-similarMovies";
+    let titleSimilar = document.createElement("h4");
+    titleSimilar.textContent = "Similar Movies";
+    similarMovies.append(titleSimilar);
 
     let similar = await getSimilar(movieID);
 
@@ -206,6 +231,8 @@ async function makeMovieProfile(movieID) {
 
     
     buttons.append(watchLater, watchList, review);
+
+    createActivities(activities, "feed", "movie-profile-reviews");
 
     // Event for the buttons
 
