@@ -807,7 +807,8 @@ body {
 
 .footerContainer {
   padding-bottom: 80px;
-  background-color: #939393;
+  background-color: #1d1656;
+  color: #f5f5f5;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -858,6 +859,10 @@ body {
 .tmdbLogo, .gitLogo {
   width: 30px;
   margin-right: 10px;
+}
+
+.gitText > a {
+  color: whitesmoke;
 }
 
 .upperNav {
