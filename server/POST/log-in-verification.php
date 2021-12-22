@@ -20,10 +20,16 @@
     foreach($db["users"] as $user => $key){
         if($loginTry["username"] === $key["username"] || $loginTry["username"] === $key["email"]){
             if(password_verify($loginTry["password"], $key["password"])){
+                // Spara i sessions.json
+                // "SessionId" => spara $key["id"]
+                // userID => spara userID
+                // password => spara hashed password
                 sendJSON(
                     [
                     "message" => "Login was a success",
                     "SessionId" => $key["id"]
+                    // userID => send userID
+                    // password => send hashed password
                     ], 200);
             }
             else{
