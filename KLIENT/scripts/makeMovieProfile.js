@@ -26,342 +26,329 @@ makeMovieProfile([movieID]){
 
 "use strict";
 
-
-
 // Variabler för den inloggade?
 let loggedInUser = 4;
 
-
 async function makeMovieProfile(movieID) {
-    let user = await getUserInfo(1);
-    
-    let overlay = document.getElementById("overlay");
-    let data = await getMovieInfo(movieID);
-    let movieInfo = data.message;
+  let user = await getUserInfo(1);
 
-    // ______________________________________________________________________________________________________
-    // HEADER 
-    let movieHeader = document.createElement("div");
-    movieHeader.className = "movie-profile-header";
+  let overlay = document.getElementById("overlay");
+  let data = await getMovieInfo(movieID);
+  let movieInfo = data.message;
 
-    // backdrop
-    let backdrop = document.createElement("div");
-    backdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${movieInfo["backdrop_path"]})`;
-    backdrop.className = "movie-profile-backdrop";
+  // ______________________________________________________________________________________________________
+  // HEADER
+  let movieHeader = document.createElement("div");
+  movieHeader.className = "movie-profile-header";
 
-    // gradient
-    let gradient = document.createElement("div");
-    gradient.className = "movie-profile-gradient";
+  // backdrop
+  let backdrop = document.createElement("div");
+  backdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${movieInfo["backdrop_path"]})`;
+  backdrop.className = "movie-profile-backdrop";
 
-    // Appends HEADER part
-    movieHeader.append(backdrop, gradient);
-    // ______________________________________________________________________________________________________
-    // INFO 
-    let info = document.createElement("div");
-    info.className = "movie-profile-info";
+  // gradient
+  let gradient = document.createElement("div");
+  gradient.className = "movie-profile-gradient";
 
-    // info-poster
-    let infoPoster = document.createElement("div");
-    infoPoster.className = "movie-profile-info-poster";
+  // Appends HEADER part
+  movieHeader.append(backdrop, gradient);
+  // ______________________________________________________________________________________________________
+  // INFO
+  let info = document.createElement("div");
+  info.className = "movie-profile-info";
 
-    let poster = document.createElement("img");
-    poster.setAttribute("src", `https://image.tmdb.org/t/p/w500${movieInfo["poster_path"]}`);
-    poster.className = "movie-profile-poster";
-    
-    infoPoster.append(poster);
+  // info-poster
+  let infoPoster = document.createElement("div");
+  infoPoster.className = "movie-profile-info-poster";
 
-    // info-text  (Title, Buttons, Release, Rating, Runtime)
-    let infoText = document.createElement("div");
-    infoText.className = "movie-profile-info-text";
-    
-    // p (Runtime, Rating & Release date) - Isak
-    let movieRsDiv = document.createElement("div");
-    let movieRs = document.createElement("p");
-    movieRs.textContent = `${movieInfo["vote_average"]} | ${movieInfo["release_date"]} | ${movieInfo["runtime"]} min`;
-    
-    movieRsDiv.append(movieRs);
+  let poster = document.createElement("img");
+  poster.setAttribute("src", `https://image.tmdb.org/t/p/w500${movieInfo["poster_path"]}`);
+  poster.className = "movie-profile-poster";
 
-    // title - Isak
-    let title = document.createElement("h3");
-    title.textContent = movieInfo.title;
-    title.className = "movie-profile-title";
+  infoPoster.append(poster);
 
-    // buttons - Niklas
-    let buttons = document.createElement("div");
-    buttons.setAttribute("id", "movie-profile-buttons");
+  // info-text  (Title, Buttons, Release, Rating, Runtime)
+  let infoText = document.createElement("div");
+  infoText.className = "movie-profile-info-text";
 
-    let relation = await getButtonRealtionStatus(loggedInUser, movieID);
+  // p (Runtime, Rating & Release date) - Isak
+  let movieRsDiv = document.createElement("div");
+  let movieRs = document.createElement("p");
+  movieRs.textContent = `${movieInfo["vote_average"]} | ${movieInfo["release_date"]} | ${movieInfo["runtime"]} min`;
 
-    let watchList = document.createElement("button");
-    watchList.className = "watched button";
-    watchList.textContent = "Watched";
+  movieRsDiv.append(movieRs);
 
-    let watchLater = document.createElement("button");
-    watchLater.className = "watch-later button";
-    watchLater.textContent ="Watch later";
+  // title - Isak
+  let title = document.createElement("h3");
+  title.textContent = movieInfo.title;
+  title.className = "movie-profile-title";
 
-    let review = document.createElement("button");
-    review.className = "review button";
-    review.textContent = "Review";
+  // buttons - Niklas
+  let buttons = document.createElement("div");
+  buttons.setAttribute("id", "movie-profile-buttons");
 
-    if(relation.watchlist == true){
-        watchList.classList.add = "Marked";
-    } 
-    if(relation.watchLater == true){
-        watchLater.classList.add = "Marked";
-    } 
-    if(relation.review !== false){
-        review.textContent = "Update Review";
-    }   
-    
-    infoText.append(movieRs, title, buttons);
+  let relation = await getButtonRealtionStatus(loggedInUser, movieID);
 
-    // Appends INFO part
-    info.append(infoPoster, infoText);
-    // ______________________________________________________________________________________________________
-    // MIDDLE
-    let middle = document.createElement("div");
-    middle.className = "movie-profile-middle";
+  let watchList = document.createElement("button");
+  watchList.className = "watched button";
+  watchList.textContent = "Watched";
 
-    // Description - Isak
-    let description = document.createElement("div");
-    description.className = "movie-profile-description";
-    description.innerHTML = `
+  let watchLater = document.createElement("button");
+  watchLater.className = "watch-later button";
+  watchLater.textContent = "Watch later";
+
+  let review = document.createElement("button");
+  review.className = "review button";
+  review.textContent = "Review";
+
+  if (relation.watchlist == true) {
+    watchList.classList.add = "Marked";
+  }
+  if (relation.watchLater == true) {
+    watchLater.classList.add = "Marked";
+  }
+  if (relation.review !== false) {
+    review.textContent = "Update Review";
+  }
+
+  infoText.append(movieRs, title, buttons);
+
+  // Appends INFO part
+  info.append(infoPoster, infoText);
+  // ______________________________________________________________________________________________________
+  // MIDDLE
+  let middle = document.createElement("div");
+  middle.className = "movie-profile-middle";
+
+  // Description - Isak
+  let description = document.createElement("div");
+  description.className = "movie-profile-description";
+  description.innerHTML = `
     <p>${movieInfo.overview}</p>
     `;
 
-    // Streaming Services - Isak
-    let additionalInfo = await getAdditionalInfo(movieID);
-    let userRegion = user.region;
+  // Streaming Services - Isak
+  let additionalInfo = await getAdditionalInfo(movieID);
+  let userRegion = user.region;
 
-    let streamingservices = document.createElement("div");
-    streamingservices.className = "movie-profile-streamingservices";
+  let streamingservices = document.createElement("div");
+  streamingservices.className = "movie-profile-streamingservices";
 
-    let streamingservicesText = document.createElement("h4");
-    streamingservicesText.textContent = "Streaming Services";
-    streamingservicesText.className = "streaming-services-text";
+  let streamingservicesText = document.createElement("h4");
+  streamingservicesText.textContent = "Streaming Services";
+  streamingservicesText.className = "streaming-services-text";
 
-    streamingservices.append(streamingservicesText);
+  streamingservices.append(streamingservicesText);
 
-    console.log(additionalInfo.message.providers.results[userRegion]);
-    // Checks if you can buy, rent or flatrate in your country
-    if(additionalInfo.message.providers.results[userRegion] == undefined){
-        let message = document.createElement("p");
-        message.textContent = "It's not avaible in your country :("
-        streamingservices.append(message);
+  console.log(additionalInfo.message.providers.results[userRegion]);
+  // Checks if you can buy, rent or flatrate in your country
+  if (additionalInfo.message.providers.results[userRegion] == undefined) {
+    let message = document.createElement("p");
+    message.textContent = "It's not avaible in your country :(";
+    streamingservices.append(message);
+  } else {
+    // Checks if you can flatrate it
+    if (additionalInfo.message.providers.results[userRegion].flatrate == undefined) {
+      let message = document.createElement("p");
+      message.textContent = "This movie isnt avaible at any streaming services";
+      streamingservices.append(message);
     } else {
-        // Checks if you can flatrate it
-        if (additionalInfo.message.providers.results[userRegion].flatrate == undefined){
-            let message = document.createElement("p");
-            message.textContent = "This movie isnt avaible at any streaming services, but you can hire it :("
-            streamingservices.append(message);
-        } else {
-            let movieProviders = additionalInfo.message.providers.results[userRegion].flatrate;
-            console.log(movieProviders);
+      let movieProviders = additionalInfo.message.providers.results[userRegion].flatrate;
+      console.log(movieProviders);
 
-            let streamingservicesGrid = document.createElement("div");
-            streamingservicesGrid.className = "movie-profile-streaming-services-grid";
-            
-            movieProviders.forEach((provider) => {
-                let providerDiv = document.createElement("img");
-                let providerName = provider.provider_name;
-                let activeUserSC = user.active_streaming_services;
-                console.log(providerName.toLowerCase());
-                console.log(activeUserSC.includes(providerName.toLowerCase()));
-                if(activeUserSC.includes(providerName.toLowerCase())){
-                    providerDiv.className = "active-streming-service";
-                }
+      let streamingservicesGrid = document.createElement("div");
+      streamingservicesGrid.className = "movie-profile-streaming-services-grid";
 
-                providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w500${provider["logo_path"]}`);
-                streamingservicesGrid.append(providerDiv);
-            });
-            streamingservices.append(streamingservicesGrid);
+      movieProviders.forEach((provider) => {
+        let providerDiv = document.createElement("img");
+        let providerName = provider.provider_name;
+        let activeUserSC = user.active_streaming_services;
+        console.log(providerName.toLowerCase());
+        console.log(activeUserSC.includes(providerName.toLowerCase()));
+        if (activeUserSC.includes(providerName.toLowerCase())) {
+          providerDiv.className = "active-streming-service";
         }
+
+        providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w500${provider["logo_path"]}`);
+        streamingservicesGrid.append(providerDiv);
+      });
+      streamingservices.append(streamingservicesGrid);
+    }
+  }
+
+  // Credits - Niklas
+  let credits = document.createElement("div");
+  credits.className = "movie-profile-credits";
+
+  // Cast - Niklas
+  let cast = document.createElement("div");
+  cast.className = "movie-profile-cast";
+  let titleCast = document.createElement("h4");
+  titleCast.textContent = "Cast";
+  cast.append(titleCast);
+
+  for (let i = 0; i < 5; i++) {
+    let castMember = createCreditDiv(additionalInfo.message.credits.cast[i]);
+    cast.append(castMember);
+  }
+
+  // Directors - Niklas
+  let director = document.createElement("div");
+  director.className = "movie-profile-director";
+  let titleDirector = document.createElement("h4");
+  titleDirector.textContent = "Director";
+  director.append(titleDirector);
+
+  additionalInfo.message.credits.crew.forEach((crewMember) => {
+    if (crewMember.job == "Director") {
+      let crew = createCreditDiv(crewMember);
+      director.append(crew);
+    }
+  });
+
+  function createCreditDiv(person) {
+    let productionPeople = document.createElement("div");
+    productionPeople.className = "production-people";
+
+    let image = document.createElement("div");
+    image.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${person.profile_path})`;
+
+    let name = document.createElement("p");
+    name.textContent = person.name;
+
+    productionPeople.append(image, name);
+    return productionPeople;
+  }
+
+  credits.append(cast, director);
+
+  // Reviews - Isak VÄNTAR PÅ FEED
+  let reviews = document.createElement("div");
+  reviews.className = "movie-profile-reviews";
+  reviews.setAttribute("id", "movie-profile-reviews");
+  let titleReview = document.createElement("h4");
+  titleReview.textContent = "Reviews";
+  reviews.append(titleReview);
+
+  let activities = await getActivityByMovieID(movieID);
+  console.log(activities);
+  console.log(movieID);
+
+  async function getActivityByMovieID(movieID) {
+    try {
+      let response = await fetch(`http://localhost:7001/GET/get-activities.php?movieID=${movieID}`);
+      let data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // Similar Movies - Niklas
+  let similarMovies = document.createElement("div");
+  similarMovies.className = "movie-profile-similarMovies";
+  let titleSimilar = document.createElement("h4");
+  titleSimilar.textContent = "Similar Movies";
+  similarMovies.append(titleSimilar);
+
+  let similar = await getSimilar(movieID);
+
+  await similar.message.results.forEach(async function (simMovie) {
+    let movie = await makeMovieBanner(simMovie.id);
+    similarMovies.append(movie);
+  });
+
+  middle.append(description, streamingservices, credits, reviews, similarMovies);
+  // ______________________________________________________________________________________________________
+  // Appends in overlay
+  overlay.append(movieHeader, info, middle);
+
+  buttons.append(watchLater, watchList, review);
+
+  createActivities(activities, "feed", "movie-profile-reviews");
+
+  // Event for the buttons
+
+  review.addEventListener("click", (e) => {
+    let overlayFade = document.createElement("div");
+    overlayFade.setAttribute("id", "overlay-fade");
+    let messageWrapper = document.createElement("div");
+    messageWrapper.setAttribute("id", "message-wrapper");
+    // Position
+    overlayFade.style.top = "0";
+    messageWrapper.style.top = "0";
+    let object = e.target.className;
+    // Content depending on what button is clicked
+    if (object.includes("review")) {
+      // Top Div -
+      let topDiv = document.createElement("div");
+      topDiv.className = "top";
+      let exitButton = document.createElement("img");
+      exitButton.className = "exit button";
+      exitButton.setAttribute("src", "../icons/exit.svg");
+      let title = document.createElement("h1");
+      title.className = "titleComment";
+      title.textContent = "Leave a review";
+
+      // Middle Div -
+      let middleDiv = document.createElement("div");
+      middleDiv.className = "middle";
+
+      // FORM
+      let form = document.createElement("form");
+
+      // Rating
+      let labelRating = document.createElement("label");
+      labelRating.textContent = "rating-comment";
+
+      let stars = document.createElement("ul");
+
+      for (let i = 0; i < 5; i++) {
+        let star = document.createElement("");
+      }
+
+      // Comment
+      let labelComment = document.createElement("label");
+      labelComment.textContent = "label-comment";
+      let input = document.createElement("input");
+      input.setAttribute("type", "text-area");
+      input.setAttribute("name", "comment");
+      input.classname = "comment";
+      input.value = relation.review.comment;
+
+      // Submit-button
+      let submitButton = document.createElement("button");
+      submitButton.setAttribute("type", "submit");
+      submitButton.className = "submit button";
+      submitButton.textContent = "Submit";
+
+      topDiv.append(exitButton, title);
+      middleDiv.append();
+      form.append(label, input);
+      messageWrapper.append(topDiv, middleDiv, form, submitButton);
     }
 
-    // Credits - Niklas
-    let credits = document.createElement("div");
-    credits.className = "movie-profile-credits";
+    overlayFade.append(messageWrapper);
+    overlay.append(overlayFade);
 
-
-    // Cast - Niklas
-    let cast = document.createElement("div");
-    cast.className = "movie-profile-cast";
-    let titleCast = document.createElement("h4");
-    titleCast.textContent = "Cast";
-    cast.append(titleCast); 
-
-    for (let i = 0; i < 5; i++) {
-        let castMember = createCreditDiv(additionalInfo.message.credits.cast[i]);
-        cast.append(castMember);
-    }
-
-    // Directors - Niklas
-    let director = document.createElement("div");
-    director.className = "movie-profile-director";
-    let titleDirector = document.createElement("h4");
-    titleDirector.textContent = "Director"; 
-    director.append(titleDirector);
-
-    additionalInfo.message.credits.crew.forEach((crewMember) => {
-        if(crewMember.job == "Director"){
-            let crew = createCreditDiv(crewMember);
-            director.append(crew);
-        }
-    })
-
-    function createCreditDiv(person){
-        let productionPeople = document.createElement("div");
-        productionPeople.className = "production-people";
-
-        let image = document.createElement("div");
-        image.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${person.profile_path})`;
-    
-        let name = document.createElement("p");
-        name.textContent = person.name
-
-        productionPeople.append(image, name)
-        return productionPeople;
-    }
-
-    credits.append(cast, director);
-
-    // Reviews - Isak VÄNTAR PÅ FEED
-    let reviews = document.createElement("div");
-    reviews.className = "movie-profile-reviews";
-    reviews.setAttribute("id", "movie-profile-reviews");
-    let titleReview = document.createElement("h4");
-    titleReview.textContent = "Reviews";
-    reviews.append(titleReview);
-
-    let activities = await getActivityByMovieID(movieID);
-    console.log(activities);
-    console.log(movieID);
-
-
-    async function getActivityByMovieID(movieID){
-        try {
-            let response = await fetch(`http://localhost:7001/GET/get-activities.php?movieID=${movieID}`);
-            let data = await response.json();
-            return data;
-          } catch (error) {
-            console.error(error);
-          }
-    }
-
-    // Similar Movies - Niklas
-    let similarMovies = document.createElement("div");
-    similarMovies.className = "movie-profile-similarMovies";
-    let titleSimilar = document.createElement("h4");
-    titleSimilar.textContent = "Similar Movies";
-    similarMovies.append(titleSimilar);
-
-    let similar = await getSimilar(movieID);
-
-    await similar.message.results.forEach(async function (simMovie){
-        let movie = await makeMovieBanner(simMovie.id);
-        similarMovies.append(movie);
+    // exit click
+    document.querySelector(".exit").addEventListener("click", () => {
+      overlayFade.remove();
     });
 
+    // star click
+    // const container = document.querySelector(".rating");
+    // const stars = container.querySelectorAll(".rating-stars");
+    // container.addEventListener("click", (e) => {
+    //     const elClass = e.target.classList;
+    //     if (!elClass.contains("active")){
+    //         stars.forEach( item => item.classList.remove("active"));
+    //     }
+    //     elClass.add(".active");
+    // });
 
-    middle.append(description, streamingservices, credits, reviews, similarMovies);
-    // ______________________________________________________________________________________________________
-    // Appends in overlay
-    overlay.append(movieHeader, info, middle);
-
-
-    
-    buttons.append(watchLater, watchList, review);
-
-    createActivities(activities, "feed", "movie-profile-reviews");
-
-    // Event for the buttons
-
-    review.addEventListener("click", (e) => {
-        let overlayFade = document.createElement("div");
-        overlayFade.setAttribute("id", "overlay-fade");
-        let messageWrapper = document.createElement("div");
-        messageWrapper.setAttribute("id", "message-wrapper");
-        // Position 
-        overlayFade.style.top = "0";
-        messageWrapper.style.top = "0";
-        let object = e.target.className;
-        // Content depending on what button is clicked
-        if(object.includes("review")){
-            // Top Div - 
-            let topDiv = document.createElement("div");
-            topDiv.className = "top";
-            let exitButton = document.createElement("img");
-            exitButton.className = "exit button";
-            exitButton.setAttribute("src", "../icons/exit.svg");
-            let title = document.createElement("h1");
-            title.className = "titleComment";
-            title.textContent = "Leave a review";
-            
-            // Middle Div -
-            let middleDiv = document.createElement("div");
-            middleDiv.className = "middle";
-
-            // FORM
-            let form = document.createElement("form");
-
-            // Rating
-            let labelRating = document.createElement("label");
-            labelRating.textContent = "rating-comment";
-
-            let stars = document.createElement("ul");
-
-            for (let i = 0; i < 5; i++) {
-                let star = document.createElement("")
-            }
-
-            // Comment
-            let labelComment = document.createElement("label");
-            labelComment.textContent = "label-comment";
-            let input = document.createElement("input");
-            input.setAttribute("type", "text-area");
-            input.setAttribute("name", "comment");
-            input.classname = "comment";
-            input.value = relation.review.comment;
-
-            // Submit-button
-            let submitButton = document.createElement("button");
-            submitButton.setAttribute("type", "submit");
-            submitButton.className = "submit button";
-            submitButton.textContent = "Submit";
-            
-            topDiv.append(exitButton, title);
-            middleDiv.append();
-            form.append(label, input);
-            messageWrapper.append(topDiv, middleDiv, form, submitButton);
-            
-        };
-        
-        overlayFade.append(messageWrapper);
-        overlay.append(overlayFade);
-
-        // exit click
-        document.querySelector(".exit").addEventListener("click", () => {
-            overlayFade.remove();
-        })
-
-        // star click
-        // const container = document.querySelector(".rating");
-        // const stars = container.querySelectorAll(".rating-stars");
-        // container.addEventListener("click", (e) => {
-        //     const elClass = e.target.classList;
-        //     if (!elClass.contains("active")){
-        //         stars.forEach( item => item.classList.remove("active"));
-        //     } 
-        //     elClass.add(".active");
-        // });
-
-        // submit click
-
-            
-    });
-    
+    // submit click
+  });
 }
-
 
 // makeMovieProfile(movieID);

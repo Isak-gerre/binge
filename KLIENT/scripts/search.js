@@ -25,27 +25,31 @@ async function searchFunction() {
     let allMovies = getFromSession("movies");
     allMovies.forEach((movie) => {
       let movieElement = makeMovieBannerFromMovie(movie);
-      //   movieElement.style.display = "none";
+      movieElement.setAttribute("name", movie.title);
       document.querySelector("#search-results").prepend(movieElement);
       let title = movie.title || movie.name;
-      myFunction(inputValue);
     });
+
+    myFunction(inputValue);
   }
 }
 
 function myFunction(searchResults) {
   var movie, text, i, txtValue;
   filter = searchResults.toUpperCase();
-    movie = document.querySelectorAll("#search-results .movieBanner");
+  movie = document.querySelectorAll("#search-results .movieBanner");
+  console.log(movie);
   for (i = 0; i < movie.length; i++) {
-    text = movie[i];
+    text = movie[i].getAttribute("name");
+    console.log(text);
     // txtValue = text.textContent || text.innerText;
-    if (text.textContent.toUpperCase().indexOf(filter) > -1) {
+    if (text.toUpperCase().indexOf(filter) > -1) {
       movie[i].style.display = "";
     } else {
       movie[i].style.display = "none";
+      console.log(movie[i]);
     }
-    if (text.innerText.toUpperCase().indexOf(filter) > -1) {
+    if (text.toUpperCase().indexOf(filter) > -1) {
       movie[i].style.display = "";
     } else {
       movie[i].style.display = "none";

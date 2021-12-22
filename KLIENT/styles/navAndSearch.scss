@@ -18,7 +18,9 @@
     @include flex(row, center, center);
   }
 }
-
+input:focus {
+  outline: none;
+}
 //SÖK
 .hiddenButton {
   display: none;
@@ -32,8 +34,8 @@
   height: 50px;
   margin-top: 8px;
 
-  background-color: lightgrey;
-  border-radius: 20px;
+  background-color: #eee;
+  border-radius: 8px;
 
   position: absolute;
   top: 0;
@@ -78,7 +80,7 @@
   height: 100%;
   font-size: 1.1rem;
   padding-left: 10px;
-
+  color: $darkFont;
   left: 0;
 }
 
@@ -148,7 +150,7 @@ svg:active,
 
 .searchOverlay {
   height: inherit;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
@@ -175,10 +177,12 @@ svg:active,
 }
 
 .movieList {
+  margin: 0 auto;
   display: grid;
-  width: 100vw;
+  width: 90%;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
+  gap: 10px;
 }
 
 .filtered {

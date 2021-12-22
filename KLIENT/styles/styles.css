@@ -979,7 +979,8 @@ body {
   padding: 10px;
 }
 
-.movieBanner, .genreBanner {
+.movieBanner,
+.genreBanner {
   height: 150px;
   border-radius: 8px;
   background-size: cover;
@@ -987,8 +988,8 @@ body {
   overflow: hidden;
   position: relative;
   top: 0;
-  -webkit-animation: movieScale .5s ease-in-out;
-          animation: movieScale .5s ease-in-out;
+  -webkit-animation: movieScale 0.3s ease-out;
+          animation: movieScale 0.3s ease-out;
   -webkit-transition: all 1s;
   transition: all 1s;
   aspect-ratio: 1;
@@ -996,27 +997,19 @@ body {
 
 @-webkit-keyframes movieScale {
   0% {
-    -webkit-transform: scale(1, 0);
-            transform: scale(1, 0);
-    -webkit-transform-origin: top;
-            transform-origin: top;
+    opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
+    opacity: 1;
   }
 }
 
 @keyframes movieScale {
   0% {
-    -webkit-transform: scale(1, 0);
-            transform: scale(1, 0);
-    -webkit-transform-origin: top;
-            transform-origin: top;
+    opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
+    opacity: 1;
   }
 }
 
@@ -1032,7 +1025,8 @@ body {
   width: 100%;
 }
 
-.titleDiv, .divider {
+.titleDiv,
+.divider {
   position: absolute;
   bottom: -10%;
   right: -40%;
@@ -1171,6 +1165,10 @@ body {
           align-items: center;
 }
 
+input:focus {
+  outline: none;
+}
+
 .hiddenButton {
   display: none;
   border: none;
@@ -1183,7 +1181,7 @@ body {
   width: 80%;
   height: 50px;
   margin-top: 8px;
-  background-color: lightgrey;
+  background-color: #eee;
   border-radius: 8px;
   position: absolute;
   top: 0;
@@ -1231,11 +1229,12 @@ body {
 #searchField {
   width: 85%;
   border: none;
-  border-radius: 8px;
+  border-radius: relative;
   background-color: transparent;
   height: 100%;
   font-size: 1.1rem;
   padding-left: 10px;
+  color: black;
   left: 0;
 }
 
@@ -1310,7 +1309,7 @@ svg:active,
 
 .searchOverlay {
   height: inherit;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
@@ -1335,7 +1334,7 @@ svg:active,
 .pill {
   padding: 10px;
   margin: 5px;
-  border-radius: 8px;
+  border-radius: 20px;
   background-color: lightgrey;
   -webkit-transform: scale(1);
           transform: scale(1);
@@ -1346,12 +1345,14 @@ svg:active,
 }
 
 .movieList {
+  margin: 0 auto;
   display: -ms-grid;
   display: grid;
-  width: 100vw;
+  width: 90%;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
+  gap: 10px;
 }
 
 .filtered {
