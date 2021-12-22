@@ -2,20 +2,20 @@
 
 // css for all files
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: $bodyFont;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: $bodyFont;
+}
 
 body {
-    margin: 0;
-    // display: grid;
-    position: relative;
-    // height: 100vh;
-    @include flex(column, none, center);
-    background-color: $backgroundColor;
-    overflow-x: hidden;
+  margin: 0;
+  // display: grid;
+  position: relative;
+  // height: 100vh;
+  @include flex(column, none, center);
+  background-color: $backgroundColor;
+  overflow-x: hidden;
 }
 
 #wrapper {
@@ -25,7 +25,6 @@ body {
   @include flex(column, none, center);
   overflow-x: hidden;
 }
-
 
 // Imported css-files
 

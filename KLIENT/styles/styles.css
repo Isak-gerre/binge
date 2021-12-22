@@ -1124,6 +1124,7 @@ body {
 
 .upperNav {
   width: 100vw;
+  height: 60px;
   background-color: #0F0B2E;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1182,67 +1183,43 @@ body {
   position: absolute;
   top: 0;
   z-index: 1000;
-  -webkit-transition: all 1s;
-  transition: all 1s;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
 }
 
 @-webkit-keyframes searchBar {
   0% {
-    -webkit-transform: scale(0, 1);
-            transform: scale(0, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 1;
   }
 }
 
 @keyframes searchBar {
   0% {
-    -webkit-transform: scale(0, 1);
-            transform: scale(0, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 1;
   }
 }
 
 @-webkit-keyframes removeSearchBar {
   0% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 1;
   }
   100% {
-    -webkit-transform: scale(0, 1);
-            transform: scale(0, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 0;
   }
 }
 
 @keyframes removeSearchBar {
   0% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 1;
   }
   100% {
-    -webkit-transform: scale(0, 1);
-            transform: scale(0, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 0;
   }
 }
 
@@ -1262,13 +1239,14 @@ body {
   right: 10px;
 }
 
-.lowerNav, .backLowerNav {
+.lowerNav,
+.backLowerNav {
   width: 80vw;
   height: 50px;
   margin-bottom: 30px;
   -webkit-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
+  border-radius: 8px;
   background-color: lightgrey;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1295,13 +1273,22 @@ body {
 }
 
 .backLowerNav {
-  width: 100%;
+  width: 110%;
   position: absolute;
-  -webkit-filter: blur(8px);
-          filter: blur(8px);
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  opacity: 0.9;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-backdrop-filter: blur(0px);
+          backdrop-filter: blur(0px);
+  border-radius: 2px;
+  -webkit-transform: translateX(-1%);
+          transform: translateX(-1%);
 }
 
-svg, .navImg {
+svg,
+.navImg {
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -1309,7 +1296,8 @@ svg, .navImg {
   position: relative;
 }
 
-svg:active, .navImg {
+svg:active,
+.navImg {
   width: 25px;
   height: 25px;
   cursor: pointer;
@@ -1318,12 +1306,13 @@ svg:active, .navImg {
 .searchOverlay {
   height: inherit;
   width: 100vw;
+  height: 100%;
   position: absolute;
   top: 0;
   background-color: #0F0B2E;
   z-index: 999;
-  -webkit-animation: searchBar .3s ease-in-out;
-          animation: searchBar .3s ease-in-out;
+  -webkit-animation: searchBar 0.2s ease-out;
+          animation: searchBar 0.2s ease-out;
   -webkit-transition: all 1s;
   transition: all 1s;
 }
