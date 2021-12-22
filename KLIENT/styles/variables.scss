@@ -6,6 +6,7 @@ $backgroundColor: #0F0B2E;
 $mainColor: #361986;
 $accentColor: #ffb700;
 $fontColor: black;
+$tempFont: white;
 $gradientPeach: linear-gradient(63.8deg, #EF9D1A 10.76%, #FD047C 94.55%);
 $headerFont: 'Archivo', sans-serif;
 $bodyFont: 'Mulish', sans-serif;
@@ -37,7 +38,7 @@ $titlePadding: 5px;
     width: 100vw;
     height: 100vh;
     position: absolute;
-    z-index: 10;
+    z-index: 10001;
     
     left: 100vw;
     transition: left 1s;
