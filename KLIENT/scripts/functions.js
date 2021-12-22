@@ -266,7 +266,7 @@ function createActivities(array, page, appendIn = "wrapper") {
     // Aktivitets containern
     let container = document.createElement("div");
     container.classList.add("container");
-    
+
     document.getElementById(appendIn).append(container);
 
     // Top av aktivitets container, innehåller användarnamn + datum
@@ -311,7 +311,7 @@ function createActivities(array, page, appendIn = "wrapper") {
     activityContainerRight.classList.add("activityContainerRight");
     activityContainerRight.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["backdrop_path"]}')`;
     activityContainerRight.addEventListener("click", () => {
-      makeMovieProfile(obj.movieID);
+      window.location.href = `explore.php?movieID=${obj.movieID}`;
     });
 
     //Appenda de två delarna till containern

@@ -26,7 +26,7 @@ async function searchFunction() {
     allMovies.forEach((movie) => {
       let movieElement = makeMovieBannerFromMovie(movie);
       //   movieElement.style.display = "none";
-      document.querySelector("#search-results").append(movieElement);
+      document.querySelector("#search-results").prepend(movieElement);
       let title = movie.title || movie.name;
       myFunction(inputValue);
     });
