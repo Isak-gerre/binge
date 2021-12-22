@@ -30,6 +30,7 @@ async function makeMovieBanner(movieID) {
   
     return movieBanner;
 }
+
 function makeMovieBannerFromMovie(movie) {
   
     //create elements
