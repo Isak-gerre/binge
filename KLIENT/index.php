@@ -35,7 +35,10 @@
             echo "<a href='/sign-in.php?forgotpassword'>Forgot your password?</a>";
         }  
     ?>
+<!-- Vad är det'ta? -->
+<div id="wrapper">
 </div>
+
 
 <?php
     echo "<script>";
@@ -71,6 +74,13 @@
         echo "</script>";
     ?>
 </form>
+
+<script src="scripts/functions.js"></script>
+<script src="scripts/makeNavigation.js"></script>
+<script src="scripts/stateManager.js"></script>
+<script src="scripts/createFormAPI.js"></script>
+<script src="scripts/logIn.js"></script>
+<script src="scripts/signUp.js"></script>
 <?php
     echo "<script>";
     include_once "scripts/signUp.js"; 

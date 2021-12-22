@@ -25,9 +25,10 @@ function getSimilarMovies(){
     $movieID = $_GET["movieID"];
     
     // The URL that we want to GET.
-    $url = "https://api.themoviedb.org/3/movie/$movieID/similar?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US&page=1";
+    $url = "http://api.themoviedb.org/3/movie/$movieID/similar?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US&page=1";
 
     //Use file_get_contents to GET the URL in question.
+    
     $contents = file_get_contents($url);
 
     if ($contents !== false) {

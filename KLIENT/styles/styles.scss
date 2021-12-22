@@ -1,11 +1,46 @@
 @import "variables.scss";
 
 // css for all files
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: $bodyFont;
+    color: $lightFont;
+  }
 
 body {
     margin: 0;
+    // display: grid;
+    position: relative;
+    // height: 100vh;
+    @include flex(column, none, center);
+    background-color: $backgroundColor;
+    overflow-x: hidden;
+}
+
+#wrapper {
+  position: relative;
+  // overflow-y: scroll;
+  // height: 100vh;
+  @include flex(column, none, center);
+  overflow-x: hidden;
+  color: $darkFont;
 }
 
 
 // Imported css-files
+
 @import "userProfile.scss";
+
+@import "movieProfile.scss";
+
+@import "feed.scss";
+
+@import "explore.scss";
+
+@import "banners.scss";
+
+@import "footer.scss";
+
+@import "navAndSearch.scss";

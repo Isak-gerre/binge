@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
+.movieBanner, .genreBanner {
+  height: 150px;
+  border-radius: 8px;
+  background-size: cover;
+  text-align: right;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  -webkit-animation: movieScale .5s ease-in-out;
+          animation: movieScale .5s ease-in-out;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  aspect-ratio: 1;
+}
+
+@-webkit-keyframes movieScale {
+  0% {
+    -webkit-transform: scale(1, 0);
+            transform: scale(1, 0);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+
+@keyframes movieScale {
+  0% {
+    -webkit-transform: scale(1, 0);
+            transform: scale(1, 0);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+
+.movieBanner {
+  max-width: 100px;
+}
+
+.genreBanner {
+  height: 100px;
+  width: 100%;
+}
+
+.titleDiv, .divider {
+  position: absolute;
+  bottom: -10%;
+  right: -40%;
+  height: 50%;
+  background-color: rgba(211, 211, 211, 0.7);
+  width: 150%;
+  -webkit-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+}
+
+.divider {
+  height: 90%;
+  bottom: -30%;
+  -webkit-transform: rotate(-15deg);
+          transform: rotate(-15deg);
+}
+
+.movieTitle, .genreName {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 5px 0px;
+  margin-right: 10px;
+  color: black;
+  z-index: 10;
+  font-size: 1rem;
+}
+
+.genreName {
+  font-size: 1.2rem;
+}
+/*# sourceMappingURL=banners.css.map */

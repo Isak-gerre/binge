@@ -25,7 +25,7 @@
         "userID": 4,
         "movieID": 101,
         "type": "review",
-        "date": "20211203",
+        "date": "20211215",
         "comment": "", 
         "rate": "3",
         "updated": false
@@ -85,7 +85,7 @@
         "userID": 4,
         "movieID": 550,
         "type": "review",
-        "date": "20211206",
+        "date": "20211213",
         "comment": "Loved it!", 
         "rate": "5",
         "updated": false
@@ -176,6 +176,26 @@
         "movieID": 73,
         "type": "watched",
         "date": "20211020",
+        "comment": "", 
+        "rate": "",
+        "updated": false
+    },
+    "19":{
+        "id": 19,
+        "userID": 5,
+        "movieID": 73,
+        "type": "watchlist",
+        "date": "20211020",
+        "comment": "", 
+        "rate": "",
+        "updated": false
+    },
+    "20":{
+        "id": 20,
+        "userID": 5,
+        "movieID": 321,
+        "type": "watchlist",
+        "date": "20211206",
         "comment": "", 
         "rate": "",
         "updated": false

@@ -1,3 +1,182 @@
-header {
-    margin: 10px;
+@import "variables.scss";
+
+body {
+    position: relative;
+}
+
+#topWrapperProfile {
+    @include flex(row, center, center);
+    gap: 30px;
+    
+    width: 100%;
+    padding: $wrapperPadding;
+}
+
+#profilePic {
+    @include profilePicture(100px, 100px);
+    overflow: hidden;
+    
+    img {
+        width: 100%;
+    }
+}
+
+#profileInfo {
+    @include flex(column, center, flex-start);
+    gap: 5px;
+    flex-grow: 1;
+
+    #usernameDiv {
+        @include flex(row, space-between, center);
+        @include smallTitleFont();
+        p { margin: 0;}
+
+        width: 100%;
+    }
+
+    #followInfo {
+        @include bodyFont();
+        @include flex(row, space-evenly, center);
+        width: 100%;
+        // gap: 5px;
+
+        #followersDiv, #followingDiv {
+            p { margin: 0;}
+            @include flex(column, center, center);
+            cursor: pointer;
+        }
+
+    }
+}
+
+#profileNav {
+    width: 100%;
+    height: 50px;
+    @include bodyFont();
+    @include flex(row, center, center);
+    border-top: 1px solid black;
+
+    div {
+        @include flex(row, center, center);
+        flex-grow: 1;
+        height: 100%;
+    }
+
+    .selected {
+        background-color: white;
+    }
+}
+
+#followContainer {
+    @include flex(column, flex-start, center);
+    @include transitionFromLeft();
+    gap: 10px;
+    background-color: $backgroundColor;
+    width: 100%;
+    
+    div {
+        @include bodyFont();
+        @include flex(row, flex-start, center);
+        gap: 10px;
+        width: 100%;
+        height: 100px;
+
+        padding: $wrapperPadding;
+        cursor: pointer;
+
+        img {
+            @include profilePicture(100px, 100px);
+        }
+    }
+}
+
+#settingsWindow {
+    @include transitionFromLeft();
+    @include flex(column, flex-start, center);
+    gap: 20px;
+    background-color: $backgroundColor;
+
+    #settingsForm {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(8, 35px);
+        gap: 5px;
+        width: 100%;
+        padding: $wrapperPadding;
+
+        div:nth-child(1) { grid-column: 1 / span 1;}
+        div:nth-child(2) { grid-column: 2 / span 1;}
+
+        div {
+            @include flex(column, center, flex-start);
+            width: 100%;
+            padding: 2px;
+            grid-column: 1 / span 2;
+
+            border: 1px solid black;
+            border-radius: 5px;
+            
+            label {
+                @include xSmallFont();
+            }
+
+            input {
+                border: none;
+                width: 100%;
+                padding: 0;
+            }
+        }
+
+    }
+
+}
+
+#settingsChangePic {
+    @include flex(row, center, center);
+    width: 100%;
+    position: relative;
+
+    img {
+        @include profilePicture(100px, 100px);
+    }
+
+    div {
+        position: absolute;
+        margin-left: 70px;
+        margin-top: 75px;
+
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: $accentColor;
+
+        @include flex(row, center, center);
+        
+        img {
+            width: 50%;
+            height: 50%;
+        }
+    }
+}
+
+#changeProfileWindow {
+    @include transitionFromLeft();
+    background-color: $backgroundColor;
+}
+
+#closeTab {
+    position: absolute;
+    z-index: 100;
+}
+
+#profileWrapper {
+    padding: $wrapperPadding;
+
+    #watchlistContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $wrapperPadding;
+
+        
+    }
 }

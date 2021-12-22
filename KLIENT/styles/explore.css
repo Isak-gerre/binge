@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
+.slideshow-container {
+  width: 100vw;
+  height: 250px;
+  overflow: hidden;
+}
+
+.slideshow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100vw;
+  height: inherit;
+  position: relative;
+}
+
+.slideshow div {
+  width: 100vw;
+}
+
+.slideshow div div {
+  height: 100%;
+  width: 100vw;
+  background-position: center;
+  background-size: cover;
+}
+
+.slideMovieDiv {
+  position: relative;
+}
+
+.movieNameTr {
+  position: absolute;
+  top: calc(250px - 40px);
+}
+
+.movieNameTr p {
+  color: white;
+  width: 105vw;
+  background-color: rgba(128, 128, 128, 0.5);
+  padding: 10px;
+}
+
+#genre {
+  display: -ms-grid;
+  display: grid;
+  width: 100vw;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  gap: 10px;
+  padding: 10px;
+}
+/*# sourceMappingURL=explore.css.map */
