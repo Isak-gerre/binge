@@ -11,6 +11,7 @@
   margin: 0;
   padding: 0;
   font-family: "Mulish", sans-serif;
+  color: #eeeeee;
 }
 
 body {
@@ -49,6 +50,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   overflow-x: hidden;
+  color: black;
 }
 
 body {
@@ -518,12 +520,12 @@ body {
 
 .movie-profile-info .movie-profile-info-text p {
   font-size: 12px;
-  color: black;
+  color: #eeeeee;
 }
 
 .movie-profile-info .movie-profile-info-text .movie-profile-title {
   font-weight: bold;
-  color: black;
+  color: #eeeeee;
 }
 
 #movie-profile-buttons {
@@ -578,7 +580,7 @@ body {
 .movie-profile-description p {
   font-family: 'Arial';
   font-size: 0.9rem;
-  color: black;
+  color: #eeeeee;
   text-align: left;
 }
 
@@ -587,7 +589,7 @@ body {
 }
 
 .movie-profile-streamingservices h4 {
-  color: black;
+  color: #eeeeee;
   font-family: 'Arial';
   font-size: 1.2rem;
   padding-bottom: 10px;
@@ -611,7 +613,7 @@ body {
 }
 
 .movie-profile-streamingservices .movie-profile-streaming-services-grid img {
-  border-radius: 200px;
+  border-radius: 50%;
   height: 10vw;
   width: 10vw;
   margin-right: 10px;
@@ -631,7 +633,7 @@ body {
 }
 
 .movie-profile-streamingservices .movie-profile-streaming-services-grid p {
-  color: black;
+  color: #eeeeee;
 }
 
 .movie-profile-credits {
@@ -660,7 +662,7 @@ body {
 }
 
 .movie-profile-credits .movie-profile-cast h4 {
-  color: black;
+  color: #eeeeee;
   font-family: 'Arial';
   font-size: 1.2rem;
   padding-bottom: 10px;
@@ -683,7 +685,7 @@ body {
 }
 
 .movie-profile-credits .movie-profile-director h4 {
-  color: black;
+  color: #eeeeee;
   font-family: 'Arial';
   font-size: 1.2rem;
   padding-bottom: 10px;
@@ -707,7 +709,7 @@ body {
 }
 
 .movie-profile-credits .production-people div {
-  border-radius: 200px;
+  border-radius: 50%;
   width: 10vw;
   height: 10vw;
   background-position: top;
@@ -717,7 +719,7 @@ body {
 
 .movie-profile-credits .production-people p {
   padding-left: 10px;
-  color: black;
+  color: #eeeeee;
   font-family: 'Arial';
   font-size: 0.9rem;
 }
@@ -744,7 +746,7 @@ body {
 }
 
 .movie-profile-reviews h4 {
-  color: black;
+  color: #eeeeee;
   font-family: 'Arial';
   font-size: 1.2rem;
   padding-bottom: 10px;
@@ -760,7 +762,7 @@ body {
 }
 
 .movie-profile-similarMovies h4 {
-  color: black;
+  color: #eeeeee;
   font-family: 'Arial';
   font-size: 1.2rem;
   padding-bottom: 10px;
@@ -810,7 +812,7 @@ body {
           flex-grow: 2;
   -webkit-box-shadow: .2vh .2vh .2vh grey;
           box-shadow: .2vh .2vh .2vh grey;
-  border-radius: .5vh;
+  border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -834,7 +836,7 @@ body {
 }
 
 .activityContainerRight {
-  border-radius: 0vh .5vh .5vh 0vh;
+  border-radius: 0vh 10px;
   -webkit-box-flex: 1.5;
       -ms-flex-positive: 1.5;
           flex-grow: 1.5;
@@ -854,11 +856,13 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  color: black;
 }
 
 .typeText {
   font-size: 15px;
   margin-right: .5vw;
+  color: black;
 }
 
 .typeIcon {
@@ -868,6 +872,7 @@ body {
 .title {
   font-family: 'Archivo', sans-serif;
   font-weight: bold;
+  color: black;
 }
 
 .userPic {
@@ -907,6 +912,7 @@ body {
 
 .comment {
   font-size: 13px;
+  color: black;
 }
 
 .rate {
@@ -974,7 +980,7 @@ body {
 
 .movieBanner, .genreBanner {
   height: 150px;
-  border-radius: 10px;
+  border-radius: 8px;
   background-size: cover;
   text-align: right;
   overflow: hidden;
@@ -1015,12 +1021,14 @@ body {
 
 .movieBanner {
   max-width: 100px;
+  background-size: cover;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);
+          box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);
 }
 
 .genreBanner {
   height: 100px;
   width: 100%;
-  border-radius: 10px;
 }
 
 .titleDiv, .divider {
@@ -1041,7 +1049,7 @@ body {
           transform: rotate(-15deg);
 }
 
-.movieTitle, .genreName {
+.genreName {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -1049,10 +1057,6 @@ body {
   margin-right: 10px;
   color: black;
   z-index: 10;
-  font-size: 1rem;
-}
-
-.genreName {
   font-size: 1.2rem;
 }
 
@@ -1179,7 +1183,7 @@ body {
   height: 50px;
   margin-top: 8px;
   background-color: lightgrey;
-  border-radius: 20px;
+  border-radius: 8px;
   position: absolute;
   top: 0;
   z-index: 1000;
@@ -1226,7 +1230,7 @@ body {
 #searchField {
   width: 85%;
   border: none;
-  border-radius: relative;
+  border-radius: 8px;
   background-color: transparent;
   height: 100%;
   font-size: 1.1rem;
@@ -1330,7 +1334,7 @@ svg:active,
 .pill {
   padding: 10px;
   margin: 5px;
-  border-radius: 20px;
+  border-radius: 8px;
   background-color: lightgrey;
   -webkit-transform: scale(1);
           transform: scale(1);

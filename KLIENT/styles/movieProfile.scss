@@ -60,12 +60,12 @@
 
         p {
             font-size: 12px;
-            color: $fontColor;
+            color: $lightFont;
         }
 
         .movie-profile-title {
             font-weight: bold;
-            color: $fontColor;
+            color: $lightFont;
         }
     }
 }
@@ -95,7 +95,7 @@
 
 .button {
     padding: $wrapperPadding;
-    border-radius: 10px;
+    border-radius: $borderRadiusButtons;
     border: 0;
     color: whitesmoke;
     background: linear-gradient(40deg, #EF9D1A, #FD047C);
@@ -111,7 +111,7 @@
 
     p {
         @include bodyFont();
-        color: $fontColor;
+        color: $lightFont;
         text-align: left;
     }
 }
@@ -121,7 +121,7 @@
     padding: $wrapperPadding;
 
     h4{
-        color: $fontColor;
+        color: $lightFont;
         @include smallTitleFont();
         padding-bottom: $wrapperPadding;
     }
@@ -131,7 +131,7 @@
         gap: $wrapperPadding;
 
         img{
-            border-radius: 200px;
+            border-radius: 50%;
             height: 10vw; 
             width: 10vw;
             margin-right: $wrapperPadding;
@@ -148,7 +148,7 @@
         }
 
         p{
-            color: $fontColor
+            color: $lightFont
         }
     }
 }
@@ -164,7 +164,7 @@
     .movie-profile-cast {
         @include flex(column, flex-start, flex-start);
         h4{
-            color: $fontColor;
+            color: $lightFont;
             @include smallTitleFont();
             padding-bottom: $wrapperPadding;
         }
@@ -173,7 +173,7 @@
     .movie-profile-director {
         @include flex(column, flex-start, flex-start);
         h4{
-            color: $fontColor;
+            color: $lightFont;
             @include smallTitleFont();
             padding-bottom: $wrapperPadding;
         }
@@ -184,7 +184,7 @@
         padding-bottom: $wrapperPadding;
         
         div {
-            border-radius: 200px;
+            border-radius: 50%;
             width: 10vw;
             height: 10vw;
             background-position: top;
@@ -195,7 +195,7 @@
 
         p {
             padding-left: $wrapperPadding;
-            color: $fontColor;
+            color: $lightFont;
             @include bodyFont();
         }
     }
@@ -211,7 +211,7 @@
     padding: $wrapperPadding;
 
     h4{
-        color: $fontColor;
+        color: $lightFont;
         @include smallTitleFont();
         padding-bottom: $wrapperPadding;
     }
@@ -225,7 +225,7 @@
     gap: $wrapperPadding;
 
     h4 {
-        color: $fontColor;
+        color: $lightFont;
         @include smallTitleFont();
         padding-bottom: $wrapperPadding;
         grid-area: 1/1/2/4;

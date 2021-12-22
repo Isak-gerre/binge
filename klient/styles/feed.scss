@@ -21,7 +21,7 @@
     background-color: rgb(255, 255, 255);
     flex-grow: 2;
     box-shadow: .2vh .2vh .2vh grey;
-    border-radius: .5vh;
+    border-radius: $borderRadiusObjects;
     display: flex;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .activityContainerRight {
-    border-radius: 0vh .5vh .5vh 0vh;
+    border-radius: 0vh $borderRadiusObjects;
     flex-grow: 1.5;
     flex-basis: 0;
     background-size: cover;
@@ -47,11 +47,17 @@
 .type {
     display: flex;
     align-items: center;
+
+    color: $darkFont;
+
 }
 
 .typeText {
     font-size: 15px;
     margin-right: .5vw;
+
+    color: $darkFont;
+
 }
 
 .typeIcon {
@@ -61,6 +67,9 @@
 .title {
     font-family: 'Archivo', sans-serif;
     font-weight: bold;
+
+    color: $darkFont;
+
 }
 
 .userPic {
@@ -86,6 +95,8 @@
 
 .comment {
     font-size: 13px;
+    color: $darkFont;
+
 }
 
 .rate {
