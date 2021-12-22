@@ -37,10 +37,10 @@
 
 // MOVIE INFO
 .movie-profile-info{
-    padding: $padding;
+    padding: $wrapperPadding;
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: $padding;
+    gap: $wrapperPadding;
     margin-top: -50px;
     z-index: 12;
 
@@ -75,7 +75,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: $padding;
+    gap: $wrapperPadding;
     width: 100%;
 }
 
@@ -94,7 +94,7 @@
 }
 
 .button {
-    padding: $padding;
+    padding: $wrapperPadding;
     border-radius: 10px;
     border: 0;
     color: whitesmoke;
@@ -107,7 +107,7 @@
 // 3. movie-profile-middle (beskrivning, streaming services, crew + director, reviews(inte klart i JS), similarmovies (elsa har börjat denna style)) - NIKLAS
 // DESCRIPTION
 .movie-profile-description {
-    padding: $padding;
+    padding: $wrapperPadding;
 
     p {
         @include bodyFont();
@@ -118,23 +118,23 @@
 
 // STREAMING SERVICES
 .movie-profile-streamingservices {
-    padding: $padding;
+    padding: $wrapperPadding;
 
     h4{
         color: $fontColor;
         @include smallTitleFont();
-        padding-bottom: $padding;
+        padding-bottom: $wrapperPadding;
     }
     .movie-profile-streaming-services-grid {
 
         @include flex(row, flex-start, center);
-        gap: $padding;
+        gap: $wrapperPadding;
 
         img{
             border-radius: 200px;
             height: 10vw; 
             width: 10vw;
-            margin-right: $padding;
+            margin-right: $wrapperPadding;
             filter: grayscale(100%);
         }
 
@@ -156,17 +156,17 @@
 // CREDITS
 .movie-profile-credits {
     // grid - column, 2fr
-    padding: $padding;
+    padding: $wrapperPadding;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: $padding;
+    gap: $wrapperPadding;
 
     .movie-profile-cast {
         @include flex(column, flex-start, flex-start);
         h4{
             color: $fontColor;
             @include smallTitleFont();
-            padding-bottom: $padding;
+            padding-bottom: $wrapperPadding;
         }
     }
 
@@ -175,13 +175,13 @@
         h4{
             color: $fontColor;
             @include smallTitleFont();
-            padding-bottom: $padding;
+            padding-bottom: $wrapperPadding;
         }
     }
 
     .production-people {
         @include flex(row, flex-start, center);
-        padding-bottom: $padding;
+        padding-bottom: $wrapperPadding;
         
         div {
             border-radius: 200px;
@@ -194,7 +194,7 @@
         }
 
         p {
-            padding-left: $padding;
+            padding-left: $wrapperPadding;
             color: $fontColor;
             @include bodyFont();
         }
@@ -208,26 +208,26 @@
 // REVIEWS - wrapper
 .movie-profile-reviews{
     @include flex(column, center, flex-start);
-    padding: $padding;
+    padding: $wrapperPadding;
 
     h4{
         color: $fontColor;
         @include smallTitleFont();
-        padding-bottom: $padding;
+        padding-bottom: $wrapperPadding;
     }
 }
 
 // Similar - wrapper
 .movie-profile-similarMovies {
-    padding: $padding;
+    padding: $wrapperPadding;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: $padding;
+    gap: $wrapperPadding;
 
     h4 {
         color: $fontColor;
         @include smallTitleFont();
-        padding-bottom: $padding;
+        padding-bottom: $wrapperPadding;
         grid-area: 1/1/2/4;
     }
 

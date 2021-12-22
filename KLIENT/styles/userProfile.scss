@@ -9,7 +9,7 @@ body {
     gap: 30px;
     
     width: 100%;
-    padding: $padding;
+    padding: $wrapperPadding;
 }
 
 #profilePic {
@@ -81,7 +81,7 @@ body {
         width: 100%;
         height: 100px;
 
-        padding: $padding;
+        padding: $wrapperPadding;
         cursor: pointer;
 
         img {
@@ -102,7 +102,7 @@ body {
         grid-template-rows: repeat(8, 35px);
         gap: 5px;
         width: 100%;
-        padding: $padding;
+        padding: $wrapperPadding;
 
         div:nth-child(1) { grid-column: 1 / span 1;}
         div:nth-child(2) { grid-column: 2 / span 1;}
@@ -170,12 +170,12 @@ body {
 }
 
 #profileWrapper {
-    padding: $padding;
+    padding: $wrapperPadding;
 
     #watchlistContainer {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: $padding;
+        gap: $wrapperPadding;
 
         
     }

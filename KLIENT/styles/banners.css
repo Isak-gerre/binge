@@ -11,6 +11,7 @@
           animation: movieScale .5s ease-in-out;
   -webkit-transition: all 1s;
   transition: all 1s;
+  aspect-ratio: 1;
 }
 
 @-webkit-keyframes movieScale {
