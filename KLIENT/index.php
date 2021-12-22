@@ -44,6 +44,7 @@
     
     if(isset($_GET["sessionID"])){
         $_SESSION["sessionID"] = $_GET["sessionID"];
+        echo "test";
     }
 
 ?>
