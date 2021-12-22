@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
     font-family: $bodyFont;
+    color: $lightFont;
   }
 
 body {
@@ -24,6 +25,7 @@ body {
   // height: 100vh;
   @include flex(column, none, center);
   overflow-x: hidden;
+  color: $darkFont;
 }
 
 

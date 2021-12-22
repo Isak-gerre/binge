@@ -4,7 +4,7 @@
 
 .movieBanner, .genreBanner {
     height: 150px;
-    border-radius: 10px;
+    border-radius: $borderRadiusNav;
     background-size: cover;
     text-align: right;
     overflow: hidden;
@@ -36,7 +36,6 @@
   .genreBanner {
     height: 100px;
     width: 100%;
-    border-radius: 10px;
   }
   
   .titleDiv, .divider {
@@ -61,7 +60,7 @@
     right: 0;
     padding: 5px 0px;
     margin-right: 10px;
-    color: $fontColor;
+    color: $darkFont;
     z-index: 10;
     font-size: 1rem;
   }

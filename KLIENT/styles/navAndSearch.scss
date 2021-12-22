@@ -33,7 +33,7 @@
   margin-top: 8px;
 
   background-color: lightgrey;
-  border-radius: 20px;
+  border-radius: $borderRadiusNav;
 
   position: absolute;
   top: 0;
@@ -77,7 +77,7 @@
 #searchField {
   width: 85%;
   border: none;
-  border-radius: relative;
+  border-radius: $borderRadiusNav;
   background-color: transparent;
   height: 100%;
   font-size: 1.1rem;
@@ -98,7 +98,7 @@
     margin-bottom: 30px;
 
     box-shadow: 0 0 7px 0 rgba(0, 0, 0, .2);
-    border-radius: 20px;
+    border-radius: $borderRadiusNav;
     background-color: lightgrey;
 
     display: flex;
@@ -163,7 +163,7 @@ svg:active, .navImg {
 .pill {
   padding: 10px;
   margin: 5px;
-  border-radius: 20px;
+  border-radius: $borderRadiusNav;
   background-color: lightgrey;
   transform: scale(1);
   transition: transform 1s;
