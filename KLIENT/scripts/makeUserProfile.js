@@ -108,7 +108,7 @@ async function createProfilePage() {
         });
 
         profileNav(watchedActivities, watchlist, loggedInUserId);
-        createActivities(watchedActivities, 'profile');
+        createActivities(watchedActivities, 'profile', "profileWrapper");
     }
 
 }

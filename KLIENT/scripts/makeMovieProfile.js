@@ -36,47 +36,57 @@ async function makeMovieProfile(movieID) {
     let user = await getUserInfo(1);
     
     let overlay = document.getElementById("overlay");
-    // overlay.style.minHeight = "100vh";
     let data = await getMovieInfo(movieID);
     let movieInfo = data.message;
 
-    // TOP
+    // ______________________________________________________________________________________________________
+    // HEADER 
     let movieHeader = document.createElement("div");
     movieHeader.className = "movie-profile-header";
 
-    // Backdrop - Isak
+    // backdrop
     let backdrop = document.createElement("div");
     backdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${movieInfo["backdrop_path"]})`;
     backdrop.className = "movie-profile-backdrop";
 
+    // gradient
     let gradient = document.createElement("div");
     gradient.className = "movie-profile-gradient";
 
-    // --INFO Divs
-    // infoPoster & infoText
+    // Appends HEADER part
+    movieHeader.append(backdrop, gradient);
+    // ______________________________________________________________________________________________________
+    // INFO 
     let info = document.createElement("div");
     info.className = "movie-profile-info";
 
-    // info > Poster
+    // info-poster
     let infoPoster = document.createElement("div");
     infoPoster.className = "movie-profile-info-poster";
 
-    // info > Title, Buttons, Release, Rating, Runtime
-
-    let infoText = document.createElement("div");
-    infoText.className = "movie-profile-info-text";
-
-    // Poster - Isak
     let poster = document.createElement("img");
     poster.setAttribute("src", `https://image.tmdb.org/t/p/w500${movieInfo["poster_path"]}`);
     poster.className = "movie-profile-poster";
+    
+    infoPoster.append(poster);
 
-    // Title - Isak
+    // info-text  (Title, Buttons, Release, Rating, Runtime)
+    let infoText = document.createElement("div");
+    infoText.className = "movie-profile-info-text";
+    
+    // p (Runtime, Rating & Release date) - Isak
+    let movieRsDiv = document.createElement("div");
+    let movieRs = document.createElement("p");
+    movieRs.textContent = `${movieInfo["vote_average"]} | ${movieInfo["release_date"]} | ${movieInfo["runtime"]} min`;
+    
+    movieRsDiv.append(movieRs);
+
+    // title - Isak
     let title = document.createElement("h3");
     title.textContent = movieInfo.title;
     title.className = "movie-profile-title";
 
-    // Buttons - Niklas
+    // buttons - Niklas
     let buttons = document.createElement("div");
     buttons.setAttribute("id", "movie-profile-buttons");
 
@@ -102,13 +112,13 @@ async function makeMovieProfile(movieID) {
     } 
     if(relation.review !== false){
         review.textContent = "Update Review";
-    }
+    }   
+    
+    infoText.append(movieRs, title, buttons);
 
-    // Runtime, Rating & Release date - Isak
-    let movieRsDiv = document.createElement("div");
-    let movieRs = document.createElement("p");
-    movieRs.textContent = `${movieInfo["vote_average"]} | ${movieInfo["release_date"]} | ${movieInfo["runtime"]} min`;
-
+    // Appends INFO part
+    info.append(infoPoster, infoText);
+    // ______________________________________________________________________________________________________
     // MIDDLE
     let middle = document.createElement("div");
     middle.className = "movie-profile-middle";
@@ -167,7 +177,6 @@ async function makeMovieProfile(movieID) {
             });
             streamingservices.append(streamingservicesGrid);
         }
-        
     }
 
     // Credits - Niklas
@@ -215,6 +224,8 @@ async function makeMovieProfile(movieID) {
         return productionPeople;
     }
 
+    credits.append(cast, director);
+
     // Reviews - Isak VÄNTAR PÅ FEED
     let reviews = document.createElement("div");
     reviews.className = "movie-profile-reviews";
@@ -250,19 +261,12 @@ async function makeMovieProfile(movieID) {
     await similar.message.results.forEach(async function (simMovie){
         let movie = await makeMovieBanner(simMovie.id);
         similarMovies.append(movie);
-    })
+    });
 
-    // APPENDS
-    movieRsDiv.append(movieRs);
-    movieHeader.append(backdrop, gradient);
-    infoPoster.append(poster);
-    infoText.append(movieRs, title, buttons);
-    info.append(infoPoster, infoText);
 
-    
-    credits.append(cast, director);
     middle.append(description, streamingservices, credits, reviews, similarMovies);
-
+    // ______________________________________________________________________________________________________
+    // Appends in overlay
     overlay.append(movieHeader, info, middle);
 
 
