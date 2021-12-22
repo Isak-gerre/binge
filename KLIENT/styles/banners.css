@@ -42,6 +42,9 @@
 
 .movieBanner {
   max-width: 100px;
+  background-size: cover;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);
+          box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);
 }
 
 .genreBanner {
@@ -67,7 +70,7 @@
           transform: rotate(-15deg);
 }
 
-.movieTitle, .genreName {
+.genreName {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -75,10 +78,6 @@
   margin-right: 10px;
   color: black;
   z-index: 10;
-  font-size: 1rem;
-}
-
-.genreName {
   font-size: 1.2rem;
 }
 /*# sourceMappingURL=banners.css.map */

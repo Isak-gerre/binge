@@ -6,53 +6,40 @@
 
 async function makeMovieBanner(movieID) {
     let movieInfo = await getMovieInfo(movieID);
-    // console.log(movieInfo);
   
     //create elements
     let movieBanner = document.createElement("div");
-    let titleDiv = document.createElement("div");
-    let title = document.createElement("p");
   
     //classes
     movieBanner.className = "movieBanner";
-    titleDiv.className = "titleDiv";
-    title.className = "movieTitle";
-  
-    // console.log(movieInfo);
-  
-    //content
-    title.textContent = movieInfo.message.title;
+
+    //the background image
     movieBanner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["poster_path"]}')`;
-  
-    //append
-    movieBanner.append(title);
-    movieBanner.append(titleDiv);
-  
+
+    //send to movieProfile
+    movieBanner.addEventListener('click', ()=>{
+      window.location.href = `explore.php?movieID=${movieID}`;
+    });
+
     return movieBanner;
 }
+
 function makeMovieBannerFromMovie(movie) {
-  
     //create elements
     let movieBanner = document.createElement("div");
-    let titleDiv = document.createElement("div");
-    let title = document.createElement("p");
   
     //classes
     movieBanner.className = "movieBanner";
-    titleDiv.className = "titleDiv";
-    title.className = "movieTitle";
-  
-    // console.log(movieInfo);
-  
+    
     //content
-  movieBanner.setAttribute("title", movie.title || movie.name)
-    title.textContent = movie.name || movie.title;
     movieBanner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movie["poster_path"]}')`;
+
+    // send to movieProfile
+    movieBanner.addEventListener('click', ()=>{
+      window.location.href = `explore.php?movieID=${movie.id}`;
+    });
   
-    //append
-    movieBanner.append(title);
-    movieBanner.append(titleDiv);
-  
+    //return it
     return movieBanner;
 }
 
