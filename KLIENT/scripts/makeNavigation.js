@@ -37,8 +37,10 @@ function makeUpperNav() {
     upperNav.append(searchDiv);
 
     makeSearchOverlay();
-    document.getElementById("searchField").addEventListener("keyup", () => {
-      searchFunction();
+    document.getElementById("searchField").addEventListener("keyup", (e) => {
+      if (e.key === "Enter") {
+        searchFunction();
+      }
     });
     let searchOverlay = document.querySelector(".searchOverlay");
 
