@@ -5,19 +5,15 @@
 "use strict";
 
 async function makeGenreBanner(){
+    // let genres = await getGenres();
     let genres = await getGenres();
-    
-    
-    genres['genres'].forEach(async function (genre){
-        let movieByGenre = await getMoviesByGenre(`${genre.name}`);
-        // console.log(movieByGenre.page1.results.length);
-        // console.log(movieByGenre);
-        var randomMovie = movieByGenre.page1.results[Math.floor(Math.random()*movieByGenre.page1.results.length)];
-        // console.log(randomMovie["poster_path"]);
+    let movieByGenre = await getMoviesByGenre();
 
-        // console.log(movieByGenre);
 
-        
+    // console.log(movieByGenre);
+
+    genres["genres"].forEach(async function (genre) {
+
         //create elements
         let genreBanner = document.createElement('div');
         let divider = document.createElement('div');
@@ -30,28 +26,39 @@ async function makeGenreBanner(){
         
         //content
         genreName.textContent= genre.name;
-        genreBanner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${randomMovie["backdrop_path"]}')`;
-        
-        // movieByGenre.page1.results.forEach((genre)=>{
-        //     // console.log(genre);
-        //     genreBanner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${genre["backdrop_path"]}')`;
-        // })
+
+        // console.log(allGenreDivs);
+        // console.log(genres);
+
+        let genreID = genre.id;
+
+        movieByGenre.forEach(async function (movie) {    
+            movie.results.forEach((movie) => {
+                let posterPath = movie["poster_path"];
+                
+                if(movie.genre_ids.includes(genreID)){
+                    genreBanner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${posterPath}')`;
+                } 
+            })
+        });
+      
 
         
         //append
         genreBanner.append(genreName);
         genreBanner.append(divider);
         document.getElementById("genre").append(genreBanner);
+
+        // getBackground(genreID, genreBanner);
     });
-
-
-    return genres;
 }
 
-// makeGenreBanner();
 
-// genres.forEach(genre => {
-//     makeGenreBanner(genre);
-// });
+// async function getBackground(genreID, div){
+//     let movieByGenre = await getMoviesByGenre();
+    
 
+//     // console.log(movieByGenre);
+    
+// }
 
