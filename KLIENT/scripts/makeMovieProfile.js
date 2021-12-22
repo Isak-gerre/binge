@@ -86,7 +86,8 @@ async function makeMovieProfile(movieID) {
     title.textContent = movieInfo.title;
     title.className = "movie-profile-title";
 
-    // buttons - Niklas
+    // ---------------------------------------------------------------------------------------------------------------------
+    // BUTTONS
     let buttons = document.createElement("div");
     buttons.setAttribute("id", "movie-profile-buttons");
 
@@ -95,7 +96,7 @@ async function makeMovieProfile(movieID) {
 
     let watchLater = document.createElement("button");
     watchLater.className = "watch-later button";
-    watchLater.textContent ="Watch later";
+    watchLater.textContent ="Watchlist";
     
     let watched = document.createElement("button");
     watched.className = "watched button";
@@ -270,15 +271,12 @@ async function makeMovieProfile(movieID) {
     // Appends in overlay
     overlay.append(movieHeader, info, middle);
 
-
-    
-    
     createActivities(activities, "feed", "movie-profile-reviews");
-    
-    // Event for the buttons
-    
-    watchLater.addEventListener("click", async function() {
 
+    
+    // ------------------------------------------------------------------------------------------------------
+    // EVENT for the buttons
+    watchLater.addEventListener("click", async function() {
         relation = await getButtonRealtionStatus(loggedInUser, movieID);
 
         // om personen inte har filmen i sin watchlist => lägg till den 
@@ -291,19 +289,34 @@ async function makeMovieProfile(movieID) {
         if(relation.watchlist !== false) {
             deleteteActivity(relation.watchlist);
             watchLater.classList.remove("marked");
+        }        
+    })
 
+    watched.addEventListener("click", async function() {
+        relation = await getButtonRealtionStatus(loggedInUser, movieID);
+
+        // om personen INTE har filmen i sin watched => lägg till den 
+        if(relation.watched == false) {
+            postNewActivity(movieID, loggedInUser, "watched");
+            watched.classList.add("marked");
+
+            review.style.display = "block";
+
+
+            // VISA REVIEW knapp
         }
-
-        // Kolla om loggedInUser har denna filmen i sin watchlater
-
-        // Om den inte har, lägg till i dens array &
-        //create activity?
-        // watchLater.classList.add("marked");
-
-        //Om den har, ta bort från deras array och
-        //remove activity?
-        // watchLater.classList.remove("marked");
         
+        // om personen HAR ifilmen i sin watched => ta bort den
+        if(relation.watched !== false) {
+            deleteteActivity(relation.watched);
+            watched.classList.remove("marked");
+
+            // TA BORT REVIEW knapp
+            review.style.display = "none";
+
+            // vill man då ta bort markeringen från watchlist?
+        }  
+
     })
     
     review.addEventListener("click", (e) => {
@@ -311,10 +324,12 @@ async function makeMovieProfile(movieID) {
         overlayFade.setAttribute("id", "overlay-fade");
         let messageWrapper = document.createElement("div");
         messageWrapper.setAttribute("id", "message-wrapper");
+
         // Position 
         overlayFade.style.top = "0";
         messageWrapper.style.top = "0";
         let object = e.target.className;
+
         // Content depending on what button is clicked
         if(object.includes("review")){
             // Top Div - 
@@ -388,9 +403,9 @@ async function makeMovieProfile(movieID) {
                 // submit click
                 
                 
-            });
+    });
             
-            buttons.append(watchLater, watched, review);
+    buttons.append(watchLater, watched, review);
 }
 
 

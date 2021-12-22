@@ -80,16 +80,6 @@
             "rate": "",
             "updated": false
         },
-        "9": {
-            "id": 9,
-            "userID": 4,
-            "movieID": 550,
-            "type": "review",
-            "date": "20211213",
-            "comment": "Loved it!",
-            "rate": "5",
-            "updated": false
-        },
         "10": {
             "id": 10,
             "userID": 3,
@@ -205,6 +195,36 @@
             "userID": 4,
             "movieID": "550",
             "type": "watchlist",
+            "date": "20211222",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "22": {
+            "id": 22,
+            "userID": 4,
+            "movieID": "123",
+            "type": "watchlist",
+            "date": "20211222",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "23": {
+            "id": 23,
+            "userID": 4,
+            "movieID": "123",
+            "type": "watched",
+            "date": "20211222",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "24": {
+            "id": 24,
+            "userID": 4,
+            "movieID": "550",
+            "type": "watched",
             "date": "20211222",
             "comment": "",
             "rate": "",
