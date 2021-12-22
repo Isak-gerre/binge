@@ -36,7 +36,7 @@ async function searchFunction() {
 function myFunction(searchResults) {
   var movie, text, i, txtValue;
   filter = searchResults.toUpperCase();
-    movie = document.querySelectorAll(".movieBanner");
+    movie = document.querySelectorAll("#search-results .movieBanner");
   for (i = 0; i < movie.length; i++) {
     text = movie[i];
     // txtValue = text.textContent || text.innerText;
