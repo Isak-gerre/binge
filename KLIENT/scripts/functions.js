@@ -423,3 +423,50 @@ function getParamFromUrl(get) {
 
   return id;
 }
+
+async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
+  let msg = {
+    userID: userID,
+    movieID: movieID,
+    type: type,
+    comment: comment,
+    rate: rate
+  }
+  
+
+  let rqst = new Request("http://localhost:7001/POST/create-activity.php", 
+    {
+      method: "POST",
+      body: JSON.stringify(msg),
+      headers: {"Content-type": "application/json"},
+    }
+  );
+
+  try {
+    let response = await fetch(rqst);
+    let data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function deleteteActivity(activityID) {
+  let rqst = new Request("http://localhost:7001/DELETE/delete-activity.php", 
+    {
+      method: "DELETE",
+      body: JSON.stringify({id: activityID}),
+      headers: {"Content-type": "application/json"},
+    }
+  );
+
+  try {
+    let response = await fetch(rqst);
+    let data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
