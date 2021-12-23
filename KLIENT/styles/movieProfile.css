@@ -67,20 +67,12 @@
           align-items: center;
 }
 
-#overlay-fade .movie-profile-backdrop {
-  width: 100vw;
-  height: 400px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-#overlay-fade .movie-profile-header {
+.movie-profile-header {
   height: auto;
   position: relative;
 }
 
-#overlay-fade .movie-profile-gradient {
+.movie-profile-header .movie-profile-gradient {
   width: 100vw;
   position: absolute;
   top: 0;
@@ -90,8 +82,18 @@
   height: 400px;
 }
 
-#overlay-fade .movie-profile-info {
-  padding: 25px;
+.movie-profile-header .movie-profile-backdrop {
+  width: 100vw;
+  height: 400px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.movie-profile-info {
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 10px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 2fr;
@@ -101,7 +103,7 @@
   z-index: 12;
 }
 
-#overlay-fade .movie-profile-info .movie-profile-info-poster {
+.movie-profile-info .movie-profile-info-poster {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -117,13 +119,13 @@
           align-items: flex-end;
 }
 
-#overlay-fade .movie-profile-info .movie-profile-info-poster .movie-profile-poster {
+.movie-profile-info .movie-profile-info-poster .movie-profile-poster {
   width: 100%;
   -webkit-box-shadow: 5px 5px 5px black;
           box-shadow: 5px 5px 5px black;
 }
 
-#overlay-fade .movie-profile-info .movie-profile-info-text {
+.movie-profile-info .movie-profile-info-text {
   font-family: "Archivo", sans-serif;
   line-height: 1.4;
   display: -webkit-box;
@@ -141,30 +143,7 @@
           align-items: flex-start;
 }
 
-#overlay-fade .movie-profile-info .movie-profile-info-text p {
-  font-size: 12px;
-  color: #eeeeee;
-}
-
-#overlay-fade .movie-profile-info .movie-profile-info-text .movie-profile-info-text {
-  font-family: "Archivo", sans-serif;
-  line-height: 1.4;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-}
-
-#overlay-fade .movie-profile-info .movie-profile-info-text .movie-profile-info-text p {
+.movie-profile-info .movie-profile-info-text p {
   letter-spacing: 0.07em;
   font-size: 11px;
   color: #eeeeee;
@@ -172,14 +151,14 @@
   padding-top: 10px;
 }
 
-#overlay-fade .movie-profile-info .movie-profile-info-text .movie-profile-info-text .movie-profile-title {
+.movie-profile-info .movie-profile-info-text .movie-profile-title {
   font-size: 14px;
   font-weight: bold;
   color: #eeeeee;
   padding-bottom: 10px;
 }
 
-#overlay-fade .movie-profile-info .movie-profile-info-text .movie-profile-info-text #movie-profile-buttons {
+.movie-profile-info .movie-profile-info-text #movie-profile-buttons {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
@@ -190,7 +169,7 @@
   width: 100%;
 }
 
-#overlay-fade .movie-profile-info .movie-profile-info-text .movie-profile-info-text #movie-profile-buttons .watch-later {
+.movie-profile-info .movie-profile-info-text #movie-profile-buttons .watch-later {
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   -ms-grid-column: 1;
@@ -198,7 +177,7 @@
   grid-area: 1 / 1 / 2 / 2;
 }
 
-#overlay-fade .movie-profile-info .movie-profile-info-text .movie-profile-info-text #movie-profile-buttons .watched {
+.movie-profile-info .movie-profile-info-text #movie-profile-buttons .watched {
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   -ms-grid-column: 2;
@@ -206,7 +185,7 @@
   grid-area: 1 / 2 / 2 / 3;
 }
 
-#overlay-fade .movie-profile-info .movie-profile-info-text .movie-profile-info-text #movie-profile-buttons .review {
+.movie-profile-info .movie-profile-info-text #movie-profile-buttons .review {
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   -ms-grid-column: 1;
@@ -214,7 +193,7 @@
   grid-area: 2 / 1 / 3 / 3;
 }
 
-#overlay-fade .movie-profile-info .movie-profile-info-text .movie-profile-info-text #movie-profile-buttons .button {
+.movie-profile-info .movie-profile-info-text #movie-profile-buttons .button {
   border-radius: 10px;
   border: 0;
   padding: 5px;
@@ -237,7 +216,7 @@
           align-items: center;
 }
 
-#overlay-fade .movie-profile-info .movie-profile-info-text .movie-profile-info-text #movie-profile-buttons .marked {
+.movie-profile-info .movie-profile-info-text #movie-profile-buttons .marked {
   border-radius: 10px;
   border: 0;
   color: whitesmoke;
@@ -246,15 +225,15 @@
           filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
 }
 
-#overlay-fade .movie-profile-middle {
+.movie-profile-middle {
   padding: 25px;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-description {
+.movie-profile-middle .movie-profile-description {
   padding-bottom: 25px;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-description p {
+.movie-profile-middle .movie-profile-description p {
   font-family: "Arial";
   font-size: 0.9rem;
   color: #eeeeee;
@@ -262,18 +241,18 @@
   font-size: 14px;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-streamingservices {
+.movie-profile-middle .movie-profile-streamingservices {
   padding-bottom: 25px;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-streamingservices h4 {
+.movie-profile-middle .movie-profile-streamingservices h4 {
   color: #eeeeee;
   font-family: "Arial";
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-streamingservices .movie-profile-streaming-services-grid {
+.movie-profile-middle .movie-profile-streamingservices .movie-profile-streaming-services-grid {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -290,7 +269,7 @@
   gap: 10px;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-streamingservices .movie-profile-streaming-services-grid img {
+.movie-profile-middle .movie-profile-streamingservices .movie-profile-streaming-services-grid img {
   border-radius: 50%;
   height: 10vw;
   width: 10vw;
@@ -299,22 +278,22 @@
           filter: grayscale(100%);
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-streamingservices .movie-profile-streaming-services-grid .active-streming-service {
+.movie-profile-middle .movie-profile-streamingservices .movie-profile-streaming-services-grid .active-streming-service {
   -webkit-filter: grayscale(0%);
           filter: grayscale(0%);
   -webkit-box-shadow: 0px 0px 2px rgba(239, 157, 26, 0.58);
           box-shadow: 0px 0px 2px rgba(239, 157, 26, 0.58);
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-streamingservices .movie-profile-streaming-services-grid img:last-child {
+.movie-profile-middle .movie-profile-streamingservices .movie-profile-streaming-services-grid img:last-child {
   margin-right: 0px;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-streamingservices .movie-profile-streaming-services-grid p {
+.movie-profile-middle .movie-profile-streamingservices .movie-profile-streaming-services-grid p {
   color: #eeeeee;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-credits {
+.movie-profile-middle .movie-profile-credits {
   padding-bottom: 25px;
   display: -ms-grid;
   display: grid;
@@ -323,7 +302,7 @@
   gap: 10px;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-credits .movie-profile-cast {
+.movie-profile-middle .movie-profile-credits .movie-profile-cast {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -339,14 +318,14 @@
           align-items: flex-start;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-credits .movie-profile-cast h4 {
+.movie-profile-middle .movie-profile-credits .movie-profile-cast h4 {
   color: #eeeeee;
   font-family: "Arial";
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-credits .movie-profile-director {
+.movie-profile-middle .movie-profile-credits .movie-profile-director {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -362,14 +341,14 @@
           align-items: flex-start;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-credits .movie-profile-director h4 {
+.movie-profile-middle .movie-profile-credits .movie-profile-director h4 {
   color: #eeeeee;
   font-family: "Arial";
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-credits .production-people {
+.movie-profile-middle .movie-profile-credits .production-people {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -386,7 +365,7 @@
   padding-bottom: 10px;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-credits .production-people div {
+.movie-profile-middle .movie-profile-credits .production-people div {
   border-radius: 50%;
   width: 10vw;
   height: 10vw;
@@ -395,7 +374,7 @@
   margin: auto;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-credits .production-people p {
+.movie-profile-middle .movie-profile-credits .production-people p {
   padding-left: 25px;
   color: #eeeeee;
   font-family: "Arial";
@@ -403,11 +382,11 @@
   max-width: 130px;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-credits .production-people:last-child {
+.movie-profile-middle .movie-profile-credits .production-people:last-child {
   padding-bottom: 0px;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-reviews {
+.movie-profile-middle .movie-profile-reviews {
   padding-bottom: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -424,14 +403,14 @@
           align-items: flex-start;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-reviews h4 {
+.movie-profile-middle .movie-profile-reviews h4 {
   color: #eeeeee;
   font-family: "Arial";
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-similarMovies {
+.movie-profile-middle .movie-profile-similarMovies {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
@@ -439,7 +418,7 @@
   gap: 10px;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-similarMovies h4 {
+.movie-profile-middle .movie-profile-similarMovies h4 {
   color: #eeeeee;
   font-family: "Arial";
   font-size: 1.2rem;
@@ -451,148 +430,7 @@
   grid-area: 1/1/2/4;
 }
 
-#overlay-fade .movie-profile-middle .movie-profile-similarMovies div {
-  margin: auto;
-}
-
-#overlay-fade .movie-profile-credits {
-  padding: 25px;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  gap: 25px;
-}
-
-#overlay-fade .movie-profile-credits .movie-profile-cast {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-}
-
-#overlay-fade .movie-profile-credits .movie-profile-cast h4 {
-  color: #eeeeee;
-  font-family: "Arial";
-  font-size: 1.2rem;
-  padding-bottom: 25px;
-}
-
-#overlay-fade .movie-profile-credits .movie-profile-director {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-}
-
-#overlay-fade .movie-profile-credits .movie-profile-director h4 {
-  color: #eeeeee;
-  font-family: "Arial";
-  font-size: 1.2rem;
-  padding-bottom: 25px;
-}
-
-#overlay-fade .movie-profile-credits .production-people {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding-bottom: 25px;
-}
-
-#overlay-fade .movie-profile-credits .production-people div {
-  border-radius: 50%;
-  width: 10vw;
-  height: 10vw;
-  background-position: top;
-  background-size: cover;
-  margin: auto;
-}
-
-#overlay-fade .movie-profile-credits .production-people p {
-  padding-left: 25px;
-  color: #eeeeee;
-  font-family: "Arial";
-  font-size: 0.9rem;
-}
-
-#overlay-fade .movie-profile-credits .production-people:last-child {
-  padding-bottom: 0px;
-}
-
-#overlay-fade .movie-profile-reviews {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  padding: 25px;
-}
-
-#overlay-fade .movie-profile-reviews h4 {
-  color: #eeeeee;
-  font-family: "Arial";
-  font-size: 1.2rem;
-  padding-bottom: 25px;
-}
-
-#overlay-fade .movie-profile-similarMovies {
-  padding: 25px;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-}
-
-#overlay-fade .movie-profile-similarMovies h4 {
-  color: #eeeeee;
-  font-family: "Arial";
-  font-size: 1.2rem;
-  padding-bottom: 25px;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 1;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
-  grid-area: 1/1/2/4;
-}
-
-#overlay-fade .movie-profile-similarMovies div {
+.movie-profile-middle .movie-profile-similarMovies div {
   margin: auto;
 }
 /*# sourceMappingURL=movieProfile.css.map */

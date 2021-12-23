@@ -442,6 +442,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   background-color: #0f0b2e;
+  position: relative;
 }
 
 #overlay-fade {
@@ -481,7 +482,7 @@ body {
       -ms-flex-align: start;
           align-items: flex-start;
   width: 80%;
-  background-color: white;
+  background-color: #361986;
 }
 
 #overlay-fade #message-wrapper .top {
@@ -513,6 +514,14 @@ body {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(15, 123, 161, 0)), color-stop(71.87%, rgba(15, 11, 46, 0)), to(#0f0b2e));
   background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 71.87%, #0f0b2e 100%);
   height: 400px;
+}
+
+.movie-profile-header .movie-profile-backdrop {
+  width: 100vw;
+  height: 400px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .movie-profile-info {
@@ -659,7 +668,7 @@ body {
 }
 
 .movie-profile-middle .movie-profile-description p {
-  font-family: 'Arial';
+  font-family: "Arial";
   font-size: 0.9rem;
   color: #eeeeee;
   text-align: left;
