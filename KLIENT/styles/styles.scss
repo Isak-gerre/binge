@@ -5,7 +5,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-family: $bodyFont;
+    color: $lightFont;
   }
 
 body {
@@ -16,13 +17,6 @@ body {
     @include flex(column, none, center);
     background-color: $backgroundColor;
     overflow-x: hidden;
-
-
-}
-
-h1 {
-  font-family: $headerFont;
-  color: white;
 }
 
 #wrapper {
@@ -32,223 +26,22 @@ h1 {
   @include flex(column, none, center);
   padding: $wrapperPadding;
   overflow-x: hidden;
-}
-
-.movieBanner, .genreBanner {
-  height: 150px;
-  border-radius: 10px;
-  background-size: cover;
-  text-align: right;
-  overflow: hidden;
-  
-  position: relative;
-  top: 0;
-}
-
-.genreBanner {
-  height: 100px;
-  width: 40vw;
-  border-radius: 10px;
-}
-
-.titleDiv, .divider {
-  position: absolute;
-  bottom: -10%;
-  right: -40%;
-  height: 50%;
-  background-color: rgba(211, 211, 211, 0.7);
-  width: 150%;
-  transform: rotate(-20deg);
-}
-
-.divider {
-  height: 90%;
-  bottom: -30%;
-  transform: rotate(-15deg);
-}
-
-.movieTitle, .genreName {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 5px 0px;
-  margin-right: 10px;
-  color: $fontColor;
-  z-index: 10;
-  font-size: 1rem;
-}
-
-.genreName {
-  font-size: 1.4rem;
-}
-
-//ÖVRE NAVIGATION
-.upperNav {
-    width: 100vw;
-    background-color: $backgroundColor;
-
-    @include flex(row, center, none);
-
-    position: sticky;
-    top: 0;
-    z-index: 10000;
-
-}
-
-.upperNav > div {
-  @include flex(row, center, center);
-}
-
-//SÖK
-.hiddenButton {
-  display: none;
-  border: none;
-}
-
-.search {
-  display: flex;
-
-  width: 80%;
-  height: 50px;
-
-  background-color: lightgrey;
-  border-radius: 20px;
-
-  position: absolute;
-  top: 0;
-  z-index: 1000;
-
-  // transform: scale(0, 1);
-  transition: all 1s;
-}
-
-@keyframes searchBar {
-  0% {
-      transform: scale(0, 1);
-      transform-origin: right;
-  }
-  100% {
-      transform: scale(1, 1);
-      transform-origin: right;
-  }
-}
-
-// @keyframes removeSearchBar {
-//   0% {
-//       transform: scale(1, 1);
-//       transform-origin: right;
-//   }
-//   100% {
-//       transform: scale(0, 1);
-//       transform-origin: right;
-//   }
-// }
-
-// .search {
-//   animation: searchBar .3s ease-in-out;
-// }
-
-// form {
-//   width: 100%;
-//   height: 100%;
-// }
-
-#searchField {
-  width: 85%;
-  border: none;
-  border-radius: inherit;
-  background-color: transparent;
-  height: 100%;
-  font-size: 1.1rem;
-  padding-left: 10px;
-
-  position: inherit;
-  left: 0;
-}
-
-.closeImg {
-  position: absolute;
-  right: 10px;  
-}
-
-
-//NEDRE NAVIGATION
-.lowerNav, .backLowerNav{
-    width: 80vw;
-    height: 50px;
-    margin-bottom: 30px;
-
-    box-shadow: 0 0 7px 0 rgba(0, 0, 0, .2);
-    border-radius: 20px;
-    background-color: rgb(240, 240, 240);
-
-    display: flex;
-    text-align: center;
-
-    overflow: hidden;
-    box-sizing: border-box;
-
-    position: absolute;
-    bottom: 1;
-}
-
-.lowerNav {
-  position: fixed;
-  top: calc(100% - 65px);
-  z-index: 10000;
-  background-color: transparent;
-}
-
-.lowerNav > div > a {
-  width: 30px;
-  height: 30px;
-}
-
-.backLowerNav {
-  width: 100%;
-  position: absolute;
-  filter: blur(10px);
-}
-
-//ICONS
-svg, .navImg {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  margin: 10px 0px;
-  position: relative;
-}
-
-svg:active, .navImg {
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-}
-
-
-//Flex grow
-.upperNav > div, .lowerNav > div{
-    flex-grow: 1;
-    box-sizing: border-box;
-
-}
-
-//slideshow
-.slideshow-container {
-  width: 500px;
-  margin: auto;
-  border: 5px solid $fontColor;
-  overflow: hidden;
-}
-.slideshow {
-  display: flex;
-  width: 500px;
+  color: $darkFont;
 }
 
 
 // Imported css-files
+
 @import "userProfile.scss";
 
 @import "movieProfile.scss";
 
 @import "feed.scss";
+
+@import "explore.scss";
+
+@import "banners.scss";
+
+@import "footer.scss";
+
+@import "navAndSearch.scss";

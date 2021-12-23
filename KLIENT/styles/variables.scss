@@ -5,19 +5,24 @@
 $backgroundColor: #0F0B2E;
 $mainColor: #361986;
 $accentColor: #ffb700;
-$fontColor: black;
-$tempFont: white;
+$darkFont: black;
+$lightFont: #eeeeee;
 $gradientPeach: linear-gradient(63.8deg, #EF9D1A 10.76%, #FD047C 94.55%);
 $headerFont: 'Archivo', sans-serif;
 $bodyFont: 'Mulish', sans-serif;
 
 
 // Margins and stuff
-$wrapperPadding: 10px;
+$wrapperPadding: 19px;
 $buttonPadding: 5px;
 $innerPadding: 5px;
 $betweenPadding: 10px;
 $titlePadding: 5px;
+
+//Borders and radius
+$borderRadiusButtons: 10px;
+$borderRadiusObjects: 10px;
+$borderRadiusNav: 8px;
 
 // FUNCTIONS
 
@@ -48,30 +53,31 @@ $titlePadding: 5px;
 // FONTS
     
 @mixin bigTitleFont() {
-    font-family: 'Arial';
+    font-family: $headerFont;
     font-size: 1.5rem;
 }
 
 @mixin smallTitleFont() {
-    font-family: 'Arial';
+    font-family: $headerFont;
     font-size: 1.2rem;
 }
 
 @mixin bodyFont() {
-    font-family: 'Arial';
+    font-family: $bodyFont;
     font-size: 0.9rem;
 }
 
 @mixin postFont() {
-    font-family: 'Arial';
+    font-family: $bodyFont;
     font-size: 0.7rem;
 }
 
 @mixin smallFont() {
-
+    font-family: $bodyFont;
+    font-size: 0.6rem;
 }
 
 @mixin xSmallFont() {
-    font-family: 'Arial';
+    font-family: $bodyFont;
     font-size: 0.5rem;
 }

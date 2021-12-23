@@ -17,10 +17,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 30px;
   width: 100%;
-  padding: 10px;
-  color: white;
+  padding: 10px 19px;
+  color: #eeeeee;
 }
 
 #profilePic {
@@ -30,8 +29,11 @@ body {
   overflow: hidden;
 }
 
-#profilePic img {
+#profilePic div {
+  height: 100%;
   width: 100%;
+  background-position: center;
+  background-size: cover;
 }
 
 #profileInfo {
@@ -68,18 +70,46 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: 'Arial';
+  gap: 10px;
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   width: 100%;
-  padding: 10px;
+  padding: 10px 19px;
 }
 
 #profileInfo #usernameDiv p {
-  margin: 0;
+  padding: 0;
+}
+
+#profileInfo #usernameDiv #settingOrPlus {
+  background: linear-gradient(63.8deg, #EF9D1A 10.76%, #FD047C 94.55%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 4px;
+  width: 100px;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+#profileInfo #usernameDiv #settingOrPlus p {
+  font-family: "Mulish", sans-serif;
+  font-size: 0.9rem;
+  padding: 0;
 }
 
 #profileInfo #followInfo {
-  font-family: 'Arial';
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -119,11 +149,11 @@ body {
 }
 
 #profileNav {
-  padding: 0 10px;
-  color: white;
+  padding: 0 19px;
+  color: #eeeeee;
   width: 100%;
   height: 50px;
-  font-family: 'Arial';
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -138,8 +168,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 5px;
-  border-top: 1px solid black;
+  border-radius: 5px;
 }
 
 #profileNav div {
@@ -156,20 +185,21 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #1C1452;
   width: 33%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   height: 100%;
-  border-radius: 5px;
 }
 
 #profileNav .selected {
   background: linear-gradient(63.8deg, #EF9D1A 10.76%, #FD047C 94.55%);
+  border-radius: 5px;
 }
 
 #followContainer {
-  color: white;
+  color: #eeeeee;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -196,7 +226,7 @@ body {
 }
 
 #followContainer div {
-  font-family: 'Arial';
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -214,14 +244,18 @@ body {
   gap: 10px;
   width: 100%;
   height: 100px;
-  padding: 10px;
+  padding: 19px;
   cursor: pointer;
 }
 
 #followContainer div img {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
+}
+
+#followContainer div button {
+  color: black;
 }
 
 #settingsWindow {
@@ -258,7 +292,7 @@ body {
       grid-template-rows: repeat(8, 35px);
   gap: 5px;
   width: 100%;
-  padding: 10px;
+  padding: 19px;
 }
 
 #settingsWindow #settingsForm div:nth-child(1) {
@@ -297,7 +331,7 @@ body {
 }
 
 #settingsWindow #settingsForm div label {
-  font-family: 'Arial';
+  font-family: "Mulish", sans-serif;
   font-size: 0.5rem;
 }
 
@@ -377,7 +411,7 @@ body {
 
 #profileWrapper {
   width: 100%;
-  padding: 10px;
+  padding: 19px;
 }
 
 #profileWrapper #watchlistContainer {
@@ -385,6 +419,6 @@ body {
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 19px;
 }
 /*# sourceMappingURL=userProfile.css.map */

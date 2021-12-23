@@ -6,19 +6,21 @@ body {
 
 #topWrapperProfile {
     @include flex(row, center, center);
-    gap: 30px;
     
     width: 100%;
-    padding: $wrapperPadding;
-    color: $tempFont;
+    padding: $betweenPadding $wrapperPadding;
+    color: $lightFont;
 }
 
 #profilePic {
     @include profilePicture(90px, 90px);
     overflow: hidden;
     
-    img {
+    div {
+        height: 100%;
         width: 100%;
+        background-position: center;
+        background-size: cover;
     }
 }
 
@@ -29,11 +31,27 @@ body {
 
     #usernameDiv {
         @include flex(row, space-between, center);
+        gap: $betweenPadding;
         @include smallTitleFont();
-        p { margin: 0;}
+        p { padding: 0;}
 
         width: 100%;
-        padding: $wrapperPadding;
+        padding: $betweenPadding $wrapperPadding;
+
+        #settingOrPlus {
+            background: $gradientPeach;
+            @include flex(row, center, center);
+            gap: 4px;
+            
+            width: 100px;
+            border-radius: 5px;
+            padding: 3px;
+
+            p {
+                @include bodyFont();
+                padding: 0;
+            }
+        }
     }
 
     #followInfo {
@@ -53,39 +71,40 @@ body {
 
 #profileNav {
     padding: 0 $wrapperPadding;
-    color: $tempFont;
+    color: $lightFont;
     width: 100%;
     height: 50px;
     @include bodyFont();
     @include flex(row, center, center);
-    gap: 5px;
-    border-top: 1px solid black;
-
+    border-radius: 5px;
+    
     div {
         @include flex(row, center, center);
+        background-color: #1C1452;
         width: 33%;
         flex-grow: 1;
         height: 100%;
-        border-radius: 5px;
+        // border-radius: 0px;
     }
 
     .selected {
         background: $gradientPeach;
+        border-radius: 5px;
     }
 }
 
 #followContainer {
-    color: $tempFont;
+    color: $lightFont;
     @include flex(column, flex-start, center);
     @include transitionFromLeft();
-    gap: 10px;
+    gap: $betweenPadding;
     background-color: $backgroundColor;
     width: 100%;
     
     div {
         @include bodyFont();
         @include flex(row, flex-start, center);
-        gap: 10px;
+        gap: $betweenPadding;
         width: 100%;
         height: 100px;
 
@@ -93,7 +112,11 @@ body {
         cursor: pointer;
 
         img {
-            @include profilePicture(100px, 100px);
+            @include profilePicture(90px, 90px);
+        }
+
+        button {
+            color: $darkFont;
         }
     }
 }

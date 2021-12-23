@@ -41,6 +41,8 @@ sessionStorage.setItem('userID', 5)
 const loggedInUserId = Number(sessionStorage.getItem('userID'));
 
 // Fasta html-variabler
+const body = document.querySelector('body');
+
 const proPicCont = document.getElementById('profilePic');
 const uNameCont = document.getElementById('username');
 const settingOrPlus = document.getElementById('settingOrPlus');
@@ -88,7 +90,7 @@ async function createProfilePage() {
         });
         
         profileNav(watchedActivities, watchlist, urlUserId);
-        createActivities(watchedActivities, 'profile');
+        createActivities(watchedActivities, 'profile', 'profileWrapper');
         
 
     } else {
@@ -108,7 +110,7 @@ async function createProfilePage() {
         });
 
         profileNav(watchedActivities, watchlist, loggedInUserId);
-        createActivities(watchedActivities, 'profile');
+        createActivities(watchedActivities, 'profile', "profileWrapper");
     }
 
 }
@@ -119,7 +121,7 @@ function profileNav(watchedActivities, watchlist, userId) {
             wrapper.innerHTML = "";
             document.querySelector('.selected').classList.remove('selected');
             watchedBtn.classList.add('selected');
-            createActivities(watchedActivities, 'profile');
+            createActivities(watchedActivities, 'profile', 'profileWrapper');
         }
     });
 
@@ -147,39 +149,45 @@ async function createProfileHeader(user, isFollowing, settings = null) {
 
     let username = user.username.toLowerCase();
     uNameCont.textContent = "@" + username;
-    let profilePic = document.createElement('img');
+    let profilePic = document.createElement('div');
 
     // vi behöver ett url här va
-    profilePic.src = `http://localhost:7001/${user.profile_picture.filepath}`;
+    profilePic.style.backgroundImage = `url("http://localhost:7001/${user.profile_picture.filepath}")`;
     
     let followers = user.followers;
     let following = user.following;
     let nrOfFollowers = followers.length;
     let nrOfFollowing = following.length;
-    let profileButton = document.createElement('img');
+
+    let profileButtonText = document.createElement('p');
+    let profileButtonIcon = document.createElement('img');
 
     if (isFollowing !== null) {
         if (isFollowing) {
-            profileButton.src = '../icons/remove_circle_black.svg';
-            profileButton.id = 'unfollow';
+            profileButtonText.textContent = 'Unfollow';
+            profileButtonIcon.src = '../icons/remove_circle_black.svg';
+            profileButtonIcon.id = 'unfollow';
         } else if (!isFollowing) {
-            profileButton.src = '../icons/add_circle_black.svg';
-            profileButton.id = 'follow';
+            profileButtonText.textContent = 'Follow';
+            profileButtonIcon.src = '../icons/add_circle_black.svg';
+            profileButtonIcon.id = 'follow';
         }   
     }
     
     if (settings == true) {
-        profileButton.src = '../icons/settings_black.svg';
+        profileButtonText.textContent = 'Settings';
+        profileButtonIcon.src = '../icons/settings_black.svg';
     }
 
-    profileButton.addEventListener('click', async function () {
+    profileButtonIcon.addEventListener('click', async function () {
         let userId = user.id;
 
-        if (profileButton.id == 'unfollow') {
-            profileButton.id = 'follow';
+        if (profileButtonIcon.id == 'unfollow') {
+            profileButtonText.textContent = 'Follow';
+            profileButtonIcon.id = 'follow';
             isFollowing = false;
 
-            profileButton.src = '../icons/add_circle_black.svg';
+            profileButtonIcon.src = '../icons/add_circle_black.svg';
             let userIndex = followers.findIndex(id => id == loggedInUserId);
             followers.splice(userIndex, 1);
 
@@ -189,11 +197,12 @@ async function createProfileHeader(user, isFollowing, settings = null) {
             followersCont.textContent = nrOfFollowers;
             
 
-        } else if (profileButton.id == 'follow') {
-            profileButton.id = 'unfollow';
+        } else if (profileButtonIcon.id == 'follow') {
+            profileButtonText.textContent = 'Unfollow';
+            profileButtonIcon.id = 'unfollow';
             isFollowing = true;
 
-            profileButton.src = '../icons/remove_circle_black.svg';
+            profileButtonIcon.src = '../icons/remove_circle_black.svg';
             followers.push(loggedInUserId);
 
             await followPatch(loggedInUserId, userId);
@@ -201,23 +210,47 @@ async function createProfileHeader(user, isFollowing, settings = null) {
             nrOfFollowers += 1;
             followersCont.textContent = nrOfFollowers;
             
-        } else if (profileButton.textContent == "settings") {
+        } else if (profileButtonIcon.textContent == "settings") {
             let settingsWindow = openSettings(user);
-            document.querySelector('body').prepend(settingsWindow);
+            body.prepend(settingsWindow);
         }
     });
 
     followersCont.addEventListener('click', async function () {
-        console.log(followers)
-        await showUsers(followers);
+        // console.log(followers)
+        let closeTab = document.createElement('button');
+        closeTab.textContent = "x";
+        closeTab.addEventListener('click', () => {
+            closeTab.remove();
+            followContainer.style.left = '100vw';
+            setTimeout(() => {
+                followContainer.remove(); 
+            }, 1000);
+        });
+
+        let followContainer = await showUsers(followers);
+        followContainer.prepend(closeTab);
+        body.prepend(followContainer);
     });
 
     followingCont.addEventListener('click', async function () {
-        await showUsers(following);
+        let closeTab = document.createElement('button');
+        closeTab.textContent = "x";
+        closeTab.addEventListener('click', () => {
+            closeTab.remove();
+            followContainer.style.left = '100vw';
+            setTimeout(() => {
+                followContainer.remove(); 
+            }, 1000);
+        });
+        
+        let followContainer = await showUsers(following);
+        followContainer.prepend(closeTab);
+        body.prepend(followContainer);
     });
     
     proPicCont.append(profilePic);
-    settingOrPlus.append(profileButton);
+    settingOrPlus.append(profileButtonText, profileButtonIcon);
     followersCont.append(nrOfFollowers);
     followingCont.append(nrOfFollowing);
 
@@ -234,7 +267,6 @@ async function followPatch(mainUserID, friendsUserID) {
     }));
 
     const data = await response;
-    console.log(data);
 }
 
 async function showUsers(ids) {
@@ -247,34 +279,62 @@ async function showUsers(ids) {
         followContainer.style.left = 0;
     }, 50);
 
-    let closeTab = document.createElement('button');
-    closeTab.textContent = "x";
-    closeTab.addEventListener('click', () => {
-        followContainer.style.left = '100vw';
-        setTimeout(() => {
-            followContainer.remove(); 
-        }, 1000);
-    });
-
-    followContainer.append(closeTab);
-
     usersInfo.forEach(user => {
         let userDiv = document.createElement('div');
         let username = document.createElement('p');
         username.textContent = "@" + user.username;
 
-        let userProfilePic = document.createElement('img');
-        userProfilePic.src = `http://localhost:7001/${user.profile_picture.filepath}`;
-
         username.addEventListener('click', () => {
             window.location.href = `profile.php?userID=${user.id}`;
         });
 
+        let userProfilePic = document.createElement('img');
+        userProfilePic.src = `http://localhost:7001/${user.profile_picture.filepath}`;
+
+        let followOrUnfollow = document.createElement('button');
+
+        let userFollowers = user.followers;
+        let isFollowed = userFollowers.some(e => e == loggedInUserId);
+
+        if (isFollowed) {
+            followOrUnfollow.textContent = 'Unfollow';  
+        } else if (!isFollowed) {
+            followOrUnfollow.textContent = 'Follow';
+        }
+
+        let followingCont = document.getElementById('following');
+        let followersCont = document.getElementById('following');
+        
+        followOrUnfollow.addEventListener('click',  async function () {
+            if (!isFollowed) {
+
+                isFollowed = true;
+                followOrUnfollow.textContent = 'Unfollow';
+                await followPatch(loggedInUserId, user.id);
+
+                ids.push(user.id);
+                
+
+            } else if (isFollowed) {
+
+                isFollowed = false;
+                followOrUnfollow.textContent = 'Follow'
+                await followPatch(loggedInUserId, user.id);
+                
+                let userIndex = ids.findIndex(id => id == user.id);
+                ids.splice(userIndex, 1);
+            }
+            
+        });
+
         followContainer.append(userDiv);
         userDiv.append(userProfilePic, username);
+        if (user.id !== loggedInUserId) {
+            userDiv.append(followOrUnfollow);
+        }
     });
 
-    document.querySelector('body').prepend(followContainer);
+    return followContainer;
 }
 
 async function getAllActivites(userId) {

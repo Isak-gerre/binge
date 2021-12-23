@@ -21,8 +21,10 @@ async function makeTrending() {
     let slideMovieDiv = document.createElement("div");
     slideMovieDiv.className = "slideMovieDiv";
 
-    let slideshowImage = document.createElement("img");
-    slideshowImage.setAttribute("src", `http://image.tmdb.org/t/p/w500${movie["backdrop_path"]}`);
+    // let slideshowImage = document.createElement("img");
+    // slideshowImage.setAttribute("src", `http://image.tmdb.org/t/p/w500${movie["backdrop_path"]}`);
+    let slideshowImage = document.createElement("div");
+    slideshowImage.style.backgroundImage = `url('http://image.tmdb.org/t/p/w500${movie["backdrop_path"]}')`;
     slideshowImage.addEventListener('click', ()=>{
       window.location.href = `explore.php?movieID=${movieID}`;
     });
@@ -50,7 +52,7 @@ async function makeTrending() {
 
 function slide() {
   const carouselSlide = document.querySelector(".slideshow");
-  const carouselImages = document.querySelectorAll(".slideshow div img"); // div
+  const carouselImages = document.querySelectorAll(".slideshow div div"); // div
   // console.log(carouselImages);
   const size = carouselImages[0].clientWidth;
 

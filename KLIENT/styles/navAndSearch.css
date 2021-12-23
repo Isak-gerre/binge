@@ -55,7 +55,7 @@
   height: 50px;
   margin-top: 8px;
   background-color: lightgrey;
-  border-radius: 20px;
+  border-radius: 8px;
   position: absolute;
   top: 0;
   z-index: 1000;
@@ -126,7 +126,7 @@
 #searchField {
   width: 85%;
   border: none;
-  border-radius: relative;
+  border-radius: 8px;
   background-color: transparent;
   height: 100%;
   font-size: 1.1rem;
@@ -145,7 +145,7 @@
   margin-bottom: 30px;
   -webkit-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
+  border-radius: 8px;
   background-color: lightgrey;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -218,7 +218,7 @@ svg:active, .navImg {
 .pill {
   padding: 10px;
   margin: 5px;
-  border-radius: 20px;
+  border-radius: 8px;
   background-color: lightgrey;
   -webkit-transform: scale(1);
           transform: scale(1);
