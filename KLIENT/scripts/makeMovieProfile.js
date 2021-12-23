@@ -217,7 +217,7 @@ async function makeMovieProfile(movieID) {
         productionPeople.className = "production-people";
 
         let image = document.createElement("div");
-        image.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500/${person.profile_path})`;
+        image.style.backgroundImage = `url(https://image.tmdb.org/t/p/w200/${person.profile_path})`;
     
         let name = document.createElement("p");
         name.textContent = person.name
@@ -320,6 +320,10 @@ async function makeMovieProfile(movieID) {
     })
     
     review.addEventListener("click", (e) => {
+        // Prevent scrolling
+        document.body.style.overflow = "hidden";
+
+        // $('body').css('overflow', 'hidden');
         let overlayFade = document.createElement("div");
         overlayFade.setAttribute("id", "overlay-fade");
         let messageWrapper = document.createElement("div");
@@ -355,9 +359,9 @@ async function makeMovieProfile(movieID) {
             
             let stars = document.createElement("ul");
             
-            for (let i = 0; i < 5; i++) {
-                let star = document.createElement("")
-            }
+            // for (let i = 0; i < 5; i++) {
+            //     let star = document.createElement(".")
+            // }
             
             // Comment
             let labelComment = document.createElement("label");
@@ -376,17 +380,18 @@ async function makeMovieProfile(movieID) {
             
             topDiv.append(exitButton, title);
             middleDiv.append();
-            form.append(label, input);
+            form.append(labelComment, input);
             messageWrapper.append(topDiv, middleDiv, form, submitButton);
             
         };
         
         overlayFade.append(messageWrapper);
-        overlay.append(overlayFade);
+        document.body.append(overlayFade);
         
         // exit click
         document.querySelector(".exit").addEventListener("click", () => {
             overlayFade.remove();
+            document.body.style.overflow = "visible";
         })
         
         // star click

@@ -6,8 +6,32 @@
     display: flex;
     flex-direction: column;
     background-color: $backgroundColor;
+    position: relative;
 }
+// Pop-up
+#overlay-fade {
+    position: absolute;
+    top:0px;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10000;
+    @include flex(row, center, center);
+    background-color:rgba(0, 0, 0, 0.5);
 
+    #message-wrapper {
+        @include flex(column, flex-start, flex-start);
+        width:80%;
+        background-color: $mainColor;
+
+        .top {
+            @include flex(row, flex-start, center);
+        }
+
+        .middle {
+
+        }
+    }
+}
 // HEADER wrapper för => backdrop pic, gradient
 .movie-profile-header {
     height: auto;
@@ -19,12 +43,12 @@
         top: 0;
         z-index: 11;
         background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 71.87%, #0F0B2E 100%);
-        height: 200px;
+        height: 250px;
     }
     
     .movie-profile-backdrop {
         width: 100vw;
-        height: 200px;
+        height: 250px;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -61,6 +85,7 @@
 
         // SHORT INFO
         p {
+            letter-spacing: 0.07em;
             font-size: 11px;
             color: $lightFont;
             padding-bottom: $betweenPadding;
@@ -227,6 +252,7 @@
                 padding-left: $wrapperPadding;
                 color: $lightFont;
                 @include bodyFont();
+                max-width: 130px;
             }
         }
     

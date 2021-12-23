@@ -37,8 +37,10 @@
     @include flex(column, center, flex-start);
     width: 100vw;
     padding: $wrapperPadding;
+    padding-bottom:0px;
+
     h3 {
-        padding: $wrapperPadding 0px;
+        padding-bottom: $titlePadding;
     }
 
     .friends-recently-watched{
@@ -50,11 +52,11 @@
     }
 
     .friends-recently-watched > div {
-        margin-right: $wrapperPadding;
+        margin-right: $betweenPadding;
         
         .profile-box{
             @include flex(row, flex-start, center);
-            padding-bottom: $wrapperPadding;
+            padding: $betweenPadding 0px;
 
                 .profile-image{
                     height: 3vh;
@@ -69,6 +71,10 @@
                     @include bodyFont();
                 } 
         }
+    }
+
+    .friends-recently-watched > div:last-child{
+        margin-right: 0px;
     }
 }
 
@@ -90,6 +96,13 @@
     width: 100vw;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: auto;
-    gap: $wrapperPadding;
+    gap: $betweenPadding;
     padding: $wrapperPadding;
+    padding-bottom:0px;
+
+    h3 {
+        grid-area: 1/1/2/3;
+        padding-bottom: $titlePadding;
+        
+    }
 }

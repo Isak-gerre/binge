@@ -6,7 +6,6 @@
 // User Variable
 let userID = 1;
 
-executeFriendsActivities();
 
 // Activity Variable
 async function executeFriendsActivities(){

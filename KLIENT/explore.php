@@ -49,7 +49,9 @@ require_once "head.php";
         <h3> Friends recently watched</h3>
         <div class="friends-recently-watched"></div>
     </div>
-    <div id="genre"></div>
+    <div id="genre">
+        <h3> Genres</h3>
+    </div>
 </div>
 
 <script src="scripts/functions.js"></script>

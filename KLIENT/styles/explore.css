@@ -44,11 +44,12 @@
       -ms-flex-align: start;
           align-items: flex-start;
   width: 100vw;
-  padding: 10px;
+  padding: 25px;
+  padding-bottom: 0px;
 }
 
 #frw h3 {
-  padding: 10px 0px;
+  padding-bottom: 5px;
 }
 
 #frw .friends-recently-watched {
@@ -88,7 +89,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-bottom: 10px;
+  padding: 10px 0px;
 }
 
 #frw .friends-recently-watched > div .profile-box .profile-image {
@@ -103,6 +104,10 @@
   color: "Mulish", sans-serif;
   font-family: 'Arial';
   font-size: 0.9rem;
+}
+
+#frw .friends-recently-watched > div:last-child {
+  margin-right: 0px;
 }
 
 .movieNameTr {
@@ -125,6 +130,16 @@
       grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: auto;
   gap: 10px;
-  padding: 10px;
+  padding: 25px;
+  padding-bottom: 0px;
+}
+
+#genre h3 {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: 1/1/2/3;
+  padding-bottom: 5px;
 }
 /*# sourceMappingURL=explore.css.map */

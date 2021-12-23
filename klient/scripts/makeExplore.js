@@ -17,7 +17,9 @@ if(getParamFromUrl("movieID")){
     //FRIENDS RECENTLY WATCHED
 
     //GENRED
+    executeFriendsActivities();
     makeGenreBanner();
+
 
 
 }
