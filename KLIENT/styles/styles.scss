@@ -13,10 +13,10 @@ body {
   margin: 0;
   // display: grid;
   position: relative;
-  // height: 100vh;
+  min-height: 100vh;
   @include flex(column, none, center);
   background-color: $backgroundColor;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 }
 
 #wrapper {

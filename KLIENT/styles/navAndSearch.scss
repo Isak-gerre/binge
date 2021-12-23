@@ -4,18 +4,24 @@
 .upperNav {
   width: 100vw;
   height: 60px;
-  background-color: $backgroundColor;
+  background-color: transparent;
 
   @include flex(row, center, none);
 
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 10000;
+
+  transition: all 0.2s ease-out;
 
   div {
     flex-grow: 1;
     box-sizing: border-box;
-    @include flex(row, center, center);
+    @include flex(row, space-around, center);
+
+    a {
+      margin: 0 130px;
+    }
   }
 }
 input:focus {
@@ -94,10 +100,8 @@ input:focus {
 .backLowerNav {
   width: 80vw;
   height: 50px;
-  margin-bottom: 30px;
 
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
   background-color: lightgrey;
 
   display: flex;
@@ -109,9 +113,11 @@ input:focus {
 
 .lowerNav {
   position: fixed;
-  top: calc(100vh - 80px);
+  width: 100%;
+  bottom: 0;
   z-index: 10000;
-  background-color: transparent;
+  background-color: black;
+  // background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
 
   div {
     flex-grow: 1;
@@ -120,15 +126,16 @@ input:focus {
 }
 
 .backLowerNav {
-  width: 110%;
-  position: absolute;
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  opacity: 0.9;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-sizing: border-box;
-  backdrop-filter: blur(0px);
-  border-radius: 2px;
-  transform: translateX(-1%);
+  display: none;
+  // width: 0%;
+  // position: absolute;
+  // background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  // opacity: 0.9;
+  // border: 1px solid rgba(255, 255, 255, 0.3);
+  // box-sizing: border-box;
+  // backdrop-filter: blur(0px);
+  // border-radius: 2px;
+  // transform: translateX(-1%);
 }
 
 //ICONS
@@ -143,8 +150,8 @@ svg,
 
 svg:active,
 .navImg {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 

@@ -43,7 +43,7 @@ async function makeMovieProfile(movieID) {
 
   // backdrop
   let backdrop = document.createElement("div");
-  backdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${movieInfo["backdrop_path"]})`;
+  backdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${movieInfo["backdrop_path"]})`;
   backdrop.className = "movie-profile-backdrop";
 
   // gradient
@@ -140,7 +140,6 @@ async function makeMovieProfile(movieID) {
 
   streamingservices.append(streamingservicesText);
 
-  console.log(additionalInfo.message.providers.results[userRegion]);
   // Checks if you can buy, rent or flatrate in your country
   if (additionalInfo.message.providers.results[userRegion] == undefined) {
     let message = document.createElement("p");
@@ -154,7 +153,6 @@ async function makeMovieProfile(movieID) {
       streamingservices.append(message);
     } else {
       let movieProviders = additionalInfo.message.providers.results[userRegion].flatrate;
-      console.log(movieProviders);
 
       let streamingservicesGrid = document.createElement("div");
       streamingservicesGrid.className = "movie-profile-streaming-services-grid";
@@ -163,13 +161,11 @@ async function makeMovieProfile(movieID) {
         let providerDiv = document.createElement("img");
         let providerName = provider.provider_name;
         let activeUserSC = user.active_streaming_services;
-        console.log(providerName.toLowerCase());
-        console.log(activeUserSC.includes(providerName.toLowerCase()));
         if (activeUserSC.includes(providerName.toLowerCase())) {
           providerDiv.className = "active-streming-service";
         }
 
-        providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w500${provider["logo_path"]}`);
+        providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
         streamingservicesGrid.append(providerDiv);
       });
       streamingservices.append(streamingservicesGrid);
@@ -231,8 +227,6 @@ async function makeMovieProfile(movieID) {
   reviews.append(titleReview);
 
   let activities = await getActivityByMovieID(movieID);
-  console.log(activities);
-  console.log(movieID);
 
   async function getActivityByMovieID(movieID) {
     try {

@@ -7,12 +7,12 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: #0F0B2E;
+  background-color: #0f0b2e;
 }
 
 .movie-profile-backdrop {
   width: 100vw;
-  height: 200px;
+  height: 300px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -28,9 +28,9 @@
   position: absolute;
   top: 0;
   z-index: 11;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(15, 123, 161, 0)), color-stop(71.87%, rgba(15, 11, 46, 0)), to(#0F0B2E));
-  background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 71.87%, #0F0B2E 100%);
-  height: 200px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(15, 123, 161, 0)), color-stop(71.87%, rgba(15, 11, 46, 0)), to(#0f0b2e));
+  background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 71.87%, #0f0b2e 100%);
+  height: 300px;
 }
 
 .movie-profile-info {
@@ -67,7 +67,7 @@
 }
 
 .movie-profile-info .movie-profile-info-text {
-  font-family: 'Archivo', sans-serif;
+  font-family: "Archivo", sans-serif;
   line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -134,7 +134,7 @@
   border-radius: 10px;
   border: 0;
   color: whitesmoke;
-  background: linear-gradient(40deg, #EF9D1A, #FD047C);
+  background: linear-gradient(40deg, #ef9d1a, #fd047c);
   -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
           filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
 }
@@ -144,7 +144,7 @@
 }
 
 .movie-profile-description p {
-  font-family: 'Arial';
+  font-family: "Arial";
   font-size: 0.9rem;
   color: #eeeeee;
   text-align: left;
@@ -156,7 +156,7 @@
 
 .movie-profile-streamingservices h4 {
   color: #eeeeee;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -229,7 +229,7 @@
 
 .movie-profile-credits .movie-profile-cast h4 {
   color: #eeeeee;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -252,7 +252,7 @@
 
 .movie-profile-credits .movie-profile-director h4 {
   color: #eeeeee;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -286,7 +286,7 @@
 .movie-profile-credits .production-people p {
   padding-left: 10px;
   color: #eeeeee;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-size: 0.9rem;
 }
 
@@ -313,7 +313,7 @@
 
 .movie-profile-reviews h4 {
   color: #eeeeee;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -329,7 +329,7 @@
 
 .movie-profile-similarMovies h4 {
   color: #eeeeee;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-size: 1.2rem;
   padding-bottom: 10px;
   -ms-grid-row: 1;

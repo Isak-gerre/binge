@@ -2,7 +2,7 @@
 .upperNav {
   width: 100vw;
   height: 60px;
-  background-color: #0F0B2E;
+  background-color: transparent;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,10 +16,11 @@
   -webkit-box-align: none;
       -ms-flex-align: none;
           align-items: none;
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 10000;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 .upperNav div {
@@ -35,12 +36,15 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.upperNav div a {
+  margin: 0 130px;
 }
 
 input:focus {
@@ -125,10 +129,8 @@ input:focus {
 .backLowerNav {
   width: 80vw;
   height: 50px;
-  margin-bottom: 30px;
   -webkit-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
   background-color: lightgrey;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -141,9 +143,10 @@ input:focus {
 
 .lowerNav {
   position: fixed;
-  top: calc(100vh - 80px);
+  width: 100%;
+  bottom: 0;
   z-index: 10000;
-  background-color: transparent;
+  background-color: black;
 }
 
 .lowerNav div {
@@ -155,18 +158,7 @@ input:focus {
 }
 
 .backLowerNav {
-  width: 110%;
-  position: absolute;
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  opacity: 0.9;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  -webkit-backdrop-filter: blur(0px);
-          backdrop-filter: blur(0px);
-  border-radius: 2px;
-  -webkit-transform: translateX(-1%);
-          transform: translateX(-1%);
+  display: none;
 }
 
 svg,
@@ -180,8 +172,8 @@ svg,
 
 svg:active,
 .navImg {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 
@@ -191,7 +183,7 @@ svg:active,
   height: 100%;
   position: absolute;
   top: 0;
-  background-color: #0F0B2E;
+  background-color: #0f0b2e;
   z-index: 999;
   -webkit-animation: searchBar 0.2s ease-out;
           animation: searchBar 0.2s ease-out;
