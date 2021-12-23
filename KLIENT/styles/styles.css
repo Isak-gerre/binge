@@ -1055,7 +1055,8 @@ body {
   padding: 10px;
 }
 
-.movieBanner, .genreBanner {
+.movieBanner,
+.genreBanner {
   height: 150px;
   border-radius: 8px;
   background-size: cover;
@@ -1063,8 +1064,8 @@ body {
   overflow: hidden;
   position: relative;
   top: 0;
-  -webkit-animation: movieScale .5s ease-in-out;
-          animation: movieScale .5s ease-in-out;
+  -webkit-animation: movieScale 0.3s ease-out;
+          animation: movieScale 0.3s ease-out;
   -webkit-transition: all 1s;
   transition: all 1s;
   aspect-ratio: 1;
@@ -1072,32 +1073,27 @@ body {
 
 @-webkit-keyframes movieScale {
   0% {
-    -webkit-transform: scale(1, 0);
-            transform: scale(1, 0);
-    -webkit-transform-origin: top;
-            transform-origin: top;
+    opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
+    opacity: 1;
   }
 }
 
 @keyframes movieScale {
   0% {
-    -webkit-transform: scale(1, 0);
-            transform: scale(1, 0);
-    -webkit-transform-origin: top;
-            transform-origin: top;
+    opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
+    opacity: 1;
   }
 }
 
 .movieBanner {
   max-width: 100px;
+  background-size: cover;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);
+          box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);
 }
 
 .genreBanner {
@@ -1105,7 +1101,8 @@ body {
   width: 100%;
 }
 
-.titleDiv, .divider {
+.titleDiv,
+.divider {
   position: absolute;
   bottom: -10%;
   right: -40%;
@@ -1123,7 +1120,7 @@ body {
           transform: rotate(-15deg);
 }
 
-.movieTitle, .genreName {
+.genreName {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -1131,10 +1128,6 @@ body {
   margin-right: 10px;
   color: black;
   z-index: 10;
-  font-size: 1rem;
-}
-
-.genreName {
   font-size: 1.2rem;
 }
 
@@ -1206,6 +1199,7 @@ body {
 
 .upperNav {
   width: 100vw;
+  height: 60px;
   background-color: #0F0B2E;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1247,6 +1241,10 @@ body {
           align-items: center;
 }
 
+input:focus {
+  outline: none;
+}
+
 .hiddenButton {
   display: none;
   border: none;
@@ -1259,83 +1257,60 @@ body {
   width: 80%;
   height: 50px;
   margin-top: 8px;
-  background-color: lightgrey;
+  background-color: #eee;
   border-radius: 8px;
   position: absolute;
   top: 0;
   z-index: 1000;
-  -webkit-transition: all 1s;
-  transition: all 1s;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
 }
 
 @-webkit-keyframes searchBar {
   0% {
-    -webkit-transform: scale(0, 1);
-            transform: scale(0, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 1;
   }
 }
 
 @keyframes searchBar {
   0% {
-    -webkit-transform: scale(0, 1);
-            transform: scale(0, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 1;
   }
 }
 
 @-webkit-keyframes removeSearchBar {
   0% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 1;
   }
   100% {
-    -webkit-transform: scale(0, 1);
-            transform: scale(0, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 0;
   }
 }
 
 @keyframes removeSearchBar {
   0% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 1;
   }
   100% {
-    -webkit-transform: scale(0, 1);
-            transform: scale(0, 1);
-    -webkit-transform-origin: right;
-            transform-origin: right;
+    opacity: 0;
   }
 }
 
 #searchField {
   width: 85%;
   border: none;
-  border-radius: 8px;
+  border-radius: relative;
   background-color: transparent;
   height: 100%;
   font-size: 1.1rem;
   padding-left: 10px;
+  color: black;
   left: 0;
 }
 
@@ -1344,7 +1319,8 @@ body {
   right: 10px;
 }
 
-.lowerNav, .backLowerNav {
+.lowerNav,
+.backLowerNav {
   width: 80vw;
   height: 50px;
   margin-bottom: 30px;
@@ -1377,15 +1353,22 @@ body {
 }
 
 .backLowerNav {
-  width: 100%;
+  width: 110%;
   position: absolute;
-  -webkit-box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
-          box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
-  -webkit-filter: blur(10px);
-          filter: blur(10px);
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  opacity: 0.9;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-backdrop-filter: blur(0px);
+          backdrop-filter: blur(0px);
+  border-radius: 2px;
+  -webkit-transform: translateX(-1%);
+          transform: translateX(-1%);
 }
 
-svg, .navImg {
+svg,
+.navImg {
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -1393,7 +1376,8 @@ svg, .navImg {
   position: relative;
 }
 
-svg:active, .navImg {
+svg:active,
+.navImg {
   width: 25px;
   height: 25px;
   cursor: pointer;
@@ -1401,13 +1385,14 @@ svg:active, .navImg {
 
 .searchOverlay {
   height: inherit;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   background-color: #0F0B2E;
   z-index: 999;
-  -webkit-animation: searchBar .3s ease-in-out;
-          animation: searchBar .3s ease-in-out;
+  -webkit-animation: searchBar 0.2s ease-out;
+          animation: searchBar 0.2s ease-out;
   -webkit-transition: all 1s;
   transition: all 1s;
 }
@@ -1425,7 +1410,7 @@ svg:active, .navImg {
 .pill {
   padding: 10px;
   margin: 5px;
-  border-radius: 8px;
+  border-radius: 20px;
   background-color: lightgrey;
   -webkit-transform: scale(1);
           transform: scale(1);
@@ -1436,12 +1421,14 @@ svg:active, .navImg {
 }
 
 .movieList {
+  margin: 0 auto;
   display: -ms-grid;
   display: grid;
-  width: 100vw;
+  width: 90%;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
+  gap: 10px;
 }
 
 .filtered {
