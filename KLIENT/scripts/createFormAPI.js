@@ -1,6 +1,5 @@
 "use strict"
 
-console.log("hej");
 // Ta bort API-nyckel, lägg den i APIn
 
 const region = new Request("https://api.themoviedb.org/3/watch/providers/regions?api_key=f5c0e0db147d0e6434391f3ff153b6a8");
@@ -71,20 +70,24 @@ fetch(region)
             filterArray.forEach(provider => {
                 let selectProvider = document.createElement("input");
                 let selectProviderLabel = document.createElement("label");
-                selectProvider.setAttribute("id", `${provider.provider_name}`);
+
                 selectProvider.setAttribute("type", "checkbox");
-                selectProvider.setAttribute("name", `${provider.provider_name}`);
+                selectProvider.setAttribute("value", `${provider.provider_name}`);
                 selectProvider.setAttribute("class", "selectProvider");
+
                 selectProviderLabel.setAttribute("for", `${provider.provider_name}`);
                 selectProviderLabel.innerHTML = `${provider.provider_name}`;
+
                 providers.append(selectProvider);
                 providers.append(selectProviderLabel);
     
             });
 
             if(!document.getElementById("signInButton")){
-                let button = document.createElement("button");
+                let button = document.createElement("input");
                 button.setAttribute("id", "signInButton");
+                button.setAttribute("form", "signUpForm");
+                button.setAttribute("type", "submit");
                 button.innerHTML = "Sign Up";
                 document.getElementById("signUpForm").append(button);
 
@@ -97,11 +100,4 @@ fetch(region)
             showProviders ();
         });
 
-        // let selectProvider = document.createElement("checkbox");
-        // data.results.forEach(provider => {
-        //     let opt = document.createElement("option");
-        //     opt.innerHTML = `${provider.english_name}`
-        //     selectRegion.append(opt);
-        // });
-        // document.getElementById("signUpForm").append(selectRegion);
-});
+    });

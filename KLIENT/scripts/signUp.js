@@ -15,30 +15,33 @@ if(signUpForm){
     
         event.preventDefault();
         const rawSignUpData = new FormData(signUpForm);
-        
-        const value = Object.fromEntries(rawSignUpData.entries());
-    
-        console.log(value);
-    
     
         let object = {};
-        for(let [key, value] of rawSignUpData.getAll("topics")) {
+        for(let [key, value] of rawSignUpData.entries()) {
             object[key] = value;
         }   
         data = JSON.stringify(object);
+
+        var array = [];
+        var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+
+        for (var i = 0; i < checkboxes.length; i++) {
+            array.push(checkboxes[i].value)
+          }
+        
+        object["active_streaming_services"] = array;
+
+        data = JSON.stringify(object);
+
         const req = new Request("http://localhost:1005/POST/create-user.php", {
             method: "POST",
             body: data,
         });
-    //     fetch(req)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             const req1 = new Request("../index.php", {
-    //             method: "POST",
-    //             body: data,
-    //             });
-    //         }); 
-    //     console.log("ue");
-    
+
+        fetch(req)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                });    
     });
 }

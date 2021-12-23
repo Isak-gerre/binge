@@ -1,5 +1,4 @@
 <?php
-
     session_start();
 
     require "head.php";
@@ -49,11 +48,10 @@
         $_SESSION["sessionID"] = $_GET["sessionID"];
         echo "test";
     }
-
 ?>
 <div class="signInWrap">
 
-<form id="signUpForm" class="signInForm" method="POST">
+<form id="signUpForm" class="signInForm" action="index.php" method="POST">
     <p>Firstname</p>
     <input class="signInInput" type="text", name="firstname", placeholder="Firstname">
     <p>Lastname</p>
@@ -74,6 +72,11 @@
         echo "</script>";
     ?>
 </form>
+<?php
+
+inspect($_POST);
+
+?>
 
 <script src="scripts/functions.js"></script>
 <script src="scripts/makeNavigation.js"></script>
