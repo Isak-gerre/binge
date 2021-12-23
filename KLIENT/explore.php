@@ -15,6 +15,7 @@ require_once "head.php";
 ?>
 <div class="movie-profile" id="overlay"></div>
 
+<div class="movie-profile-background"></div>
 <div id="wrapper">
 
 

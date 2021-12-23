@@ -2,6 +2,7 @@
   position: relative;
   bottom: 0;
   left: 0;
+  z-index: 100;
 }
 
 .footerContainer {
@@ -45,7 +46,8 @@
           flex-direction: column;
 }
 
-.tmdb, .git {
+.tmdb,
+.git {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -55,7 +57,8 @@
           align-items: center;
 }
 
-.tmdbLogo, .gitLogo {
+.tmdbLogo,
+.gitLogo {
   width: 30px;
   margin-right: 10px;
 }

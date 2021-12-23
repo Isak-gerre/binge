@@ -108,16 +108,33 @@ input:focus {
   }
 }
 
-#searchField {
-  width: 85%;
-  border: none;
-  border-radius: relative;
+input[type="text"] {
+  outline: none;
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 80%;
+  background-color: white;
+  background-image: url("../icons/search.svg");
+  background-position: 95% 50%;
+  background-repeat: no-repeat;
   background-color: transparent;
-  height: 100%;
-  font-size: 1.1rem;
-  padding-left: 10px;
-  color: black;
-  left: 0;
+  padding: 5px;
+  padding-left: 1em;
+  z-index: 1000;
+  position: absolute;
+  top: 70px;
+  font-family: "Mulish";
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid white;
+  border-radius: 0;
 }
 
 .closeImg {
@@ -143,6 +160,8 @@ input:focus {
 
 .lowerNav {
   position: fixed;
+  height: 70px;
+  padding-bottom: 20px;
   width: 100%;
   bottom: 0;
   z-index: 10000;
@@ -228,5 +247,74 @@ svg:active,
 .filtered {
   -webkit-box-shadow: inset 0 0 7px 0 grey;
           box-shadow: inset 0 0 7px 0 grey;
+}
+
+.search-container {
+  position: absolute;
+  top: -2px;
+  z-index: 100;
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: none;
+      -ms-flex-pack: none;
+          justify-content: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#search-results {
+  width: 100%;
+  padding: 10px 25px;
+  margin-top: 150px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  z-index: 100;
+}
+
+.placeholder {
+  -webkit-animation-duration: 1.8s;
+          animation-duration: 1.8s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: placeHolderShimmer;
+          animation-name: placeHolderShimmer;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  background: transparent;
+  background: -webkit-gradient(linear, left top, right top, color-stop(8%, #3c3c3c00), color-stop(38%, #f4f4f40d), color-stop(54%, #fafafa00));
+  background: linear-gradient(to right, #3c3c3c00 8%, #f4f4f40d 38%, #fafafa00 54%);
+  background-size: 1000px 640px;
+  position: relative;
+}
+
+@-webkit-keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
 }
 /*# sourceMappingURL=navAndSearch.css.map */

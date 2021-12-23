@@ -1,8 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
+#trending,
+#frw,
+#genre {
+  z-index: 100;
+}
+
+#wrapper {
+  margin-top: 50px;
+  z-index: 100;
+}
+
 .slideshow-container {
   width: 100vw;
   height: 250px;
-  overflow: hidden;
 }
 
 .slideshow {
@@ -19,10 +29,11 @@
 }
 
 .slideshow div div {
-  height: 100%;
+  height: 85%;
   width: 100vw;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .slideMovieDiv {
@@ -102,7 +113,7 @@
 
 #frw .friends-recently-watched > div .profile-box .profile-name {
   color: "Mulish", sans-serif;
-  font-family: 'Arial';
+  font-family: "Arial";
   font-size: 0.9rem;
 }
 
@@ -110,16 +121,10 @@
   margin-right: 0px;
 }
 
-.movieNameTr {
-  position: absolute;
-  top: calc(250px - 40px);
-}
-
 .movieNameTr p {
   color: white;
-  width: 105vw;
-  background-color: rgba(128, 128, 128, 0.5);
-  padding: 10px;
+  width: 100%;
+  padding: 10px 25px;
 }
 
 #genre {

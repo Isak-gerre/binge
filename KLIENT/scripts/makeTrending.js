@@ -24,8 +24,9 @@ async function makeTrending() {
     // let slideshowImage = document.createElement("img");
     // slideshowImage.setAttribute("src", `http://image.tmdb.org/t/p/w500${movie["backdrop_path"]}`);
     let slideshowImage = document.createElement("div");
+    slideshowImage.className = "trending-movie-picture";
     slideshowImage.style.backgroundImage = `url('http://image.tmdb.org/t/p/w500${movie["backdrop_path"]}')`;
-    slideshowImage.addEventListener('click', ()=>{
+    slideshowImage.addEventListener("click", () => {
       window.location.href = `explore.php?movieID=${movieID}`;
     });
 
@@ -40,7 +41,7 @@ async function makeTrending() {
 
     counter++;
     slideMovieDiv.append(slideshowImage, movieNameTr);
-    slideshowSlider.append(slideMovieDiv)
+    slideshowSlider.append(slideMovieDiv);
   });
 
   slideshowDiv.append(slideshowSlider);
@@ -52,7 +53,7 @@ async function makeTrending() {
 
 function slide() {
   const carouselSlide = document.querySelector(".slideshow");
-  const carouselImages = document.querySelectorAll(".slideshow div div"); // div
+  const carouselImages = document.querySelectorAll(".slideshow .trending-movie-picture"); // div
   // console.log(carouselImages);
   const size = carouselImages[0].clientWidth;
 
@@ -85,7 +86,7 @@ function slide() {
 }
 function next(carouselSlide, counter, size) {
   carouselSlide.style.transition = "transform 0.7s ease-in-out";
-      // console.log(-size * counter);
+  // console.log(-size * counter);
 
   carouselSlide.style.transform = "translatex(" + -size * counter + "px)";
 }

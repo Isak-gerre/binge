@@ -51,22 +51,22 @@ $borderRadiusNav: 8px;
 // FONTS
 
 @mixin bigTitleFont() {
-  font-family: "Arial";
+  font-family: "Archivo";
   font-size: 1.5rem;
 }
 
 @mixin smallTitleFont() {
-  font-family: "Arial";
+  font-family: "Archivo";
   font-size: 1.2rem;
 }
 
 @mixin bodyFont() {
-  font-family: "Arial";
+  font-family: "Mulish";
   font-size: 0.9rem;
 }
 
 @mixin postFont() {
-  font-family: "Arial";
+  font-family: "Mulish";
   font-size: 0.7rem;
 }
 
@@ -74,6 +74,6 @@ $borderRadiusNav: 8px;
 }
 
 @mixin xSmallFont() {
-  font-family: "Arial";
+  font-family: "Mulish";
   font-size: 0.5rem;
 }

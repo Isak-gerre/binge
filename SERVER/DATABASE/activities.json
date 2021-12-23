@@ -239,6 +239,36 @@
             "comment": "",
             "rate": "",
             "updated": false
+        },
+        "27": {
+            "id": 27,
+            "userID": 4,
+            "movieID": "438631",
+            "type": "watchlist",
+            "date": "20211223",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "28": {
+            "id": 28,
+            "userID": 4,
+            "movieID": "438631",
+            "type": "watched",
+            "date": "20211223",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "29": {
+            "id": 29,
+            "userID": 4,
+            "movieID": "634649",
+            "type": "watchlist",
+            "date": "20211223",
+            "comment": "",
+            "rate": "",
+            "updated": false
         }
     }
 }

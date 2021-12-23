@@ -1,47 +1,47 @@
 #footer {
-    position: relative;
-    bottom: 0;
-    left:0;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
 }
 
 .footerContainer {
-    padding-bottom:80px;
-    background-color: #1d1656;
-    color: #f5f5f5;
-    display: flex;
+  padding-bottom: 80px;
+  background-color: #1d1656;
+  color: #f5f5f5;
+  display: flex;
 }
 
 .footerContainerLeft {
-    flex-grow: 1;
-    font-size: 40px;
-    padding: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  flex-grow: 1;
+  font-size: 40px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footerContainerRight {
-    flex-grow: 2;
-    padding: 10px;
-    font-size: 10px;
+  flex-grow: 2;
+  padding: 10px;
+  font-size: 10px;
 
-
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.tmdb, .git {
-    display: flex;
-    padding: 10px;
-    align-items: center;
-
+.tmdb,
+.git {
+  display: flex;
+  padding: 10px;
+  align-items: center;
 }
 
-
-.tmdbLogo, .gitLogo {
-    width: 30px;
-    margin-right: 10px;
+.tmdbLogo,
+.gitLogo {
+  width: 30px;
+  margin-right: 10px;
 }
 .gitText > a {
-    color: whitesmoke;
+  color: whitesmoke;
 }

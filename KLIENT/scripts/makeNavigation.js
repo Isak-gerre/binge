@@ -8,9 +8,6 @@ function makeUpperNav() {
   // let navLeft = document.createElement("div");
   let navMiddle = document.createElement("div");
 
-  let searchDiv = document.createElement("div");
-  searchDiv.className = "search";
-
   //classes
   upperNav.className = "upperNav";
   // navLeft.className = "navLeft";
@@ -26,7 +23,6 @@ function makeUpperNav() {
 }
 window.addEventListener("scroll", () => {
   let winheight = window.scrollY;
-  console.log(winheight);
   if (winheight > 10) {
     document.querySelector(".upperNav").style.backgroundColor = "#0F0B2E";
   } else {
@@ -42,6 +38,8 @@ function makeLowerNav() {
   navRight.className = "navRight";
   searchImg.className = "navImg";
 
+  let searchDiv = document.createElement("div");
+  searchDiv.className = "search";
   navRight.append(searchImg);
   //create elements
   let lowerNav = document.createElement("nav");
@@ -62,37 +60,15 @@ function makeLowerNav() {
   lowerNavMiddle.innerHTML = `<img class="navImg" src="../icons/explore.svg">`;
   lowerNavRight.innerHTML = `<img class="navImg" src="../icons/profile.svg">`;
   searchImg.addEventListener("click", () => {
-    searchDiv.innerHTML = `
-        <input type="text" id="searchField" name="search">
-        <button class="hiddenButton"></button>
-        <img src='../icons/exit.svg' class ='navImg closeImg' alt='close'>
-        `;
-
-    searchDiv.classList.add = "search";
-    upperNav.append(searchDiv);
-
-    makeSearchOverlay();
-    document.getElementById("searchField").addEventListener("keyup", (e) => {
-      if (e.key === "Enter") {
-        searchFunction();
-      }
-    });
-    let searchOverlay = document.querySelector(".searchOverlay");
-
-    //Animations and closing
-    let animation = "searchBar .2s ease-out";
-    searchDiv.style.animation = animation;
-
-    document.querySelector(".closeImg").addEventListener("click", () => {
-      animation = "removeSearchBar .5s ease-out";
-      searchDiv.style.animation = animation;
-      searchOverlay.style.animation = animation;
-
+    if (document.querySelector(".search-container") == null) {
+      makeSearchOverlay();
+      document.querySelector(".search-container").style.animation = "searchBar 0.2s ease-out";
+    } else {
+      document.querySelector(".search-container").style.animation = "removeSearchBar 0.2s ease-out";
       setTimeout(() => {
-        searchOverlay.remove();
-        searchDiv.remove();
-      }, 500);
-    });
+        document.querySelector(".search-container").remove();
+      }, 200);
+    }
   });
   lowerNavLeft.addEventListener("click", () => {
     window.location.href = `feed.php`;
@@ -120,6 +96,6 @@ function makeLowerNav() {
   lowerNav.append(backLowerNav, lowerNavLeft, lowerNavMiddle, navRight, lowerNavRight);
 }
 
-makeLowerNav("home");
+makeLowerNav();
 // makeLowerNav('explore');
 // makeLowerNav('profile');
