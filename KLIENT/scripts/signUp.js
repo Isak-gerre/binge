@@ -33,7 +33,7 @@ if(signUpForm){
 
         data = JSON.stringify(object);
 
-        const req = new Request("http://localhost:1005/POST/create-user.php", {
+        const req = new Request("http://localhost:7001/POST/create-user.php", {
             method: "POST",
             body: data,
         });

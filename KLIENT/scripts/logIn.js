@@ -39,7 +39,7 @@ form.addEventListener("submit", (event) => {
         data = JSON.stringify(object);
         console.log(data);
 
-        const req = new Request("http://localhost:1005/POST/log-in-verification.php", {
+        const req = new Request("http://localhost:7001/POST/log-in-verification.php", {
             method: "POST",
             body: data,
         });
