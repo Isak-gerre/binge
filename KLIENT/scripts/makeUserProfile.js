@@ -88,7 +88,7 @@ async function createProfilePage() {
         });
         
         profileNav(watchedActivities, watchlist, urlUserId);
-        createActivities(watchedActivities, 'profile');
+        createActivities(watchedActivities, 'profile', "profileWrapper");
         
 
     } else {
@@ -119,7 +119,8 @@ function profileNav(watchedActivities, watchlist, userId) {
             wrapper.innerHTML = "";
             document.querySelector('.selected').classList.remove('selected');
             watchedBtn.classList.add('selected');
-            createActivities(watchedActivities, 'profile');
+        createActivities(watchedActivities, "profile", "profileWrapper");
+
         }
     });
 
@@ -258,7 +259,7 @@ async function showUsers(ids) {
 
     followContainer.append(closeTab);
 
-    usersInfo.forEach(user => {
+    usersInfo.forEach(user => {''
         let userDiv = document.createElement('div');
         let username = document.createElement('p');
         username.textContent = "@" + user.username;

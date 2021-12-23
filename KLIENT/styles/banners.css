@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
-.movieBanner, .genreBanner {
+.movieBanner,
+.genreBanner {
   height: 150px;
   border-radius: 8px;
   background-size: cover;
@@ -7,8 +8,8 @@
   overflow: hidden;
   position: relative;
   top: 0;
-  -webkit-animation: movieScale .5s ease-in-out;
-          animation: movieScale .5s ease-in-out;
+  -webkit-animation: movieScale 0.3s ease-out;
+          animation: movieScale 0.3s ease-out;
   -webkit-transition: all 1s;
   transition: all 1s;
   aspect-ratio: 1;
@@ -16,32 +17,27 @@
 
 @-webkit-keyframes movieScale {
   0% {
-    -webkit-transform: scale(1, 0);
-            transform: scale(1, 0);
-    -webkit-transform-origin: top;
-            transform-origin: top;
+    opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
+    opacity: 1;
   }
 }
 
 @keyframes movieScale {
   0% {
-    -webkit-transform: scale(1, 0);
-            transform: scale(1, 0);
-    -webkit-transform-origin: top;
-            transform-origin: top;
+    opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
+    opacity: 1;
   }
 }
 
 .movieBanner {
   max-width: 100px;
+  background-size: cover;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);
+          box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);
 }
 
 .genreBanner {
@@ -49,7 +45,8 @@
   width: 100%;
 }
 
-.titleDiv, .divider {
+.titleDiv,
+.divider {
   position: absolute;
   bottom: -10%;
   right: -40%;
@@ -67,7 +64,7 @@
           transform: rotate(-15deg);
 }
 
-.movieTitle, .genreName {
+.genreName {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -75,10 +72,6 @@
   margin-right: 10px;
   color: black;
   z-index: 10;
-  font-size: 1rem;
-}
-
-.genreName {
   font-size: 1.2rem;
 }
 /*# sourceMappingURL=banners.css.map */

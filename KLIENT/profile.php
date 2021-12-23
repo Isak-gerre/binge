@@ -1,18 +1,18 @@
-
 <?php
-    // Inkludera head.php 
-    // Script:
-    // - makeUserProfile
+// Inkludera head.php 
+// Script:
+// - makeUserProfile
 
-    // Element som ska vara statiska, 
-    // skapas här
-    
-    // Kontrollera om inloggad -> Annars skicka till index.php
+// Element som ska vara statiska, 
+// skapas här
 
-    // Inkludera footer.php
+// Kontrollera om inloggad -> Annars skicka till index.php
+
+// Inkludera footer.php
 
 require_once "head.php";
 ?>
+<div class="movie-profile-background"></div>
 
 <div id="topWrapperProfile">
     <div id="profilePic"></div>
@@ -63,7 +63,6 @@ require_once "head.php";
 <script src="scripts/updateUser.js"></script>
 <script src="scripts/makeUserProfile.js"></script>
 
-<?php 
-    require_once "footer.php";
+<?php
+require_once "footer.php";
 ?>
- 

@@ -266,7 +266,7 @@ function createActivities(array, page, appendIn = "wrapper") {
     // Aktivitets containern
     let container = document.createElement("div");
     container.classList.add("container");
-    
+
     document.getElementById(appendIn).append(container);
 
     // Top av aktivitets container, innehåller användarnamn + datum
@@ -311,7 +311,7 @@ function createActivities(array, page, appendIn = "wrapper") {
     activityContainerRight.classList.add("activityContainerRight");
     activityContainerRight.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["backdrop_path"]}')`;
     activityContainerRight.addEventListener("click", () => {
-      makeMovieProfile(obj.movieID);
+      window.location.href = `explore.php?movieID=${obj.movieID}`;
     });
 
     //Appenda de två delarna till containern
@@ -423,3 +423,50 @@ function getParamFromUrl(get) {
 
   return id;
 }
+
+async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
+  let msg = {
+    userID: userID,
+    movieID: movieID,
+    type: type,
+    comment: comment,
+    rate: rate
+  }
+  
+
+  let rqst = new Request("http://localhost:7001/POST/create-activity.php", 
+    {
+      method: "POST",
+      body: JSON.stringify(msg),
+      headers: {"Content-type": "application/json"},
+    }
+  );
+
+  try {
+    let response = await fetch(rqst);
+    let data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function deleteteActivity(activityID) {
+  let rqst = new Request("http://localhost:7001/DELETE/delete-activity.php", 
+    {
+      method: "DELETE",
+      body: JSON.stringify({id: activityID}),
+      headers: {"Content-type": "application/json"},
+    }
+  );
+
+  try {
+    let response = await fetch(rqst);
+    let data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+

@@ -1,19 +1,18 @@
 // FONTS
-@import url('https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
 
 // COLORS - ska ändras till rätt senare
-$backgroundColor: #0F0B2E;
+$backgroundColor: #0f0b2e;
 $mainColor: #361986;
 $accentColor: #ffb700;
 $darkFont: black;
 $lightFont: #eeeeee;
-$gradientPeach: linear-gradient(63.8deg, #EF9D1A 10.76%, #FD047C 94.55%);
-$headerFont: 'Archivo', sans-serif;
-$bodyFont: 'Mulish', sans-serif;
-
+$gradientPeach: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+$headerFont: "Archivo", sans-serif;
+$bodyFont: "Mulish", sans-serif;
 
 // Margins and stuff
-$wrapperPadding: 10px;
+$wrapperPadding: 25px;
 $buttonPadding: 5px;
 $innerPadding: 5px;
 $betweenPadding: 10px;
@@ -27,56 +26,54 @@ $borderRadiusNav: 8px;
 // FUNCTIONS
 
 @mixin flex($direction, $justify, $align) {
-    display: flex;
-    flex-direction: $direction;
-    justify-content: $justify;
-    align-items: $align;
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
 }
 
 @mixin profilePicture($height, $width) {
-    width: $width;
-    height: $height;
-    border-radius: 50%;
+  width: $width;
+  height: $height;
+  border-radius: 50%;
 }
 
 @mixin transitionFromLeft() {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    z-index: 10;
-    
-    left: 100vw;
-    transition: left 1s;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 10;
+
+  left: 100vw;
+  transition: left 1s;
 }
 
-
 // FONTS
-    
+
 @mixin bigTitleFont() {
-    font-family: 'Arial';
-    font-size: 1.5rem;
+  font-family: "Archivo";
+  font-size: 1.5rem;
 }
 
 @mixin smallTitleFont() {
-    font-family: 'Arial';
-    font-size: 1.2rem;
+  font-family: "Archivo";
+  font-size: 1.2rem;
 }
 
 @mixin bodyFont() {
-    font-family: 'Arial';
-    font-size: 0.9rem;
+  font-family: "Mulish";
+  font-size: 0.9rem;
 }
 
 @mixin postFont() {
-    font-family: 'Arial';
-    font-size: 0.7rem;
+  font-family: "Mulish";
+  font-size: 0.7rem;
 }
 
 @mixin smallFont() {
-
 }
 
 @mixin xSmallFont() {
-    font-family: 'Arial';
-    font-size: 0.5rem;
+  font-family: "Mulish";
+  font-size: 0.5rem;
 }

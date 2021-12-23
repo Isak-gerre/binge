@@ -15,6 +15,7 @@ require_once "head.php";
 ?>
 <div class="movie-profile" id="overlay"></div>
 
+<div class="movie-profile-background"></div>
 <div id="wrapper">
 
 
@@ -45,8 +46,13 @@ require_once "head.php";
             </div>
         </div>
     </div>
-    <div id="frw"></div>
-    <div id="genre"></div>
+    <div id="frw">
+        <h3> Friends recently watched</h3>
+        <div class="friends-recently-watched"></div>
+    </div>
+    <div id="genre">
+        <h3> Genres</h3>
+    </div>
 </div>
 
 <script src="scripts/functions.js"></script>

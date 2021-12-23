@@ -11,12 +11,15 @@ let searches = {};
 async function searchFunction() {
   let input = document.getElementById("searchField");
   document.getElementById("search-results").innerHTML = "";
+  for (let i = 0; i < 20; i++) {
+    document.querySelector("#search-results").append(makePlaceholderMovieBanner());
+  }
   let savedMovies = [];
   let inputValue = input.value.toLowerCase();
 
   if (input.value !== "") {
     let searchResults = await getSearchResults(searchType, inputValue);
-    let movieList = document.querySelector(".movieList");
+    let movieList = document.querySelector("#search-results");
     movieList.innerHTML = "";
 
     searchResults.results.forEach(async function (result) {
@@ -25,27 +28,29 @@ async function searchFunction() {
     let allMovies = getFromSession("movies");
     allMovies.forEach((movie) => {
       let movieElement = makeMovieBannerFromMovie(movie);
-      //   movieElement.style.display = "none";
-      document.querySelector("#search-results").append(movieElement);
+      movieElement.setAttribute("name", movie.title);
+      document.querySelector("#search-results").prepend(movieElement);
       let title = movie.title || movie.name;
-      myFunction(inputValue);
     });
+
+    myFunction(inputValue);
   }
 }
 
 function myFunction(searchResults) {
   var movie, text, i, txtValue;
   filter = searchResults.toUpperCase();
-    movie = document.querySelectorAll("#search-results .movieBanner");
+  movie = document.querySelectorAll("#search-results .movieBanner");
+  console.log(movie);
   for (i = 0; i < movie.length; i++) {
-    text = movie[i];
+    text = movie[i].getAttribute("name");
     // txtValue = text.textContent || text.innerText;
-    if (text.textContent.toUpperCase().indexOf(filter) > -1) {
+    if (text.toUpperCase().indexOf(filter) > -1) {
       movie[i].style.display = "";
     } else {
       movie[i].style.display = "none";
     }
-    if (text.innerText.toUpperCase().indexOf(filter) > -1) {
+    if (text.toUpperCase().indexOf(filter) > -1) {
       movie[i].style.display = "";
     } else {
       movie[i].style.display = "none";
@@ -54,42 +59,28 @@ function myFunction(searchResults) {
 }
 
 function makeSearchOverlay() {
-  let searchOverlay = document.createElement("div");
-  let movieList = document.createElement("div");
-  let pillsDiv = document.createElement("div");
-  let pillMovie = document.createElement("div");
-  let pillCast = document.createElement("div");
+  let searchContainer = document.createElement("div");
+  searchContainer.className = "search-container";
 
-  searchOverlay.className = "searchOverlay";
-  movieList.className = "movieList";
-  movieList.setAttribute("id", "search-results");
-  pillsDiv.className = "pillsDiv";
-  pillMovie.className = "pill pillMovie";
-  pillCast.className = "pill pillCast";
+  // // Background
+  let overlayBackground = document.createElement("div");
+  overlayBackground.className = "movie-profile-background";
 
-  // searchOverlay.innerHTML = 'search by:'
-  pillsDiv.innerHTML = "search by:";
-  pillMovie.innerHTML = "Movies";
-  pillCast.innerHTML = "Cast";
+  let searchField = document.createElement("input");
+  searchField.setAttribute("id", "searchField");
+  searchField.setAttribute("type", "text");
+  searchField.setAttribute("placeholder", "Search");
+  searchField.className = "searchField";
+  let searchResults = document.createElement("div");
+  searchResults.setAttribute("id", "search-results");
+  searchResults.className = "search-results";
 
-  searchOverlay.prepend(pillsDiv);
-  pillsDiv.append(pillMovie, pillCast);
-  searchOverlay.append(movieList);
-  document.body.append(searchOverlay);
+  searchContainer.append(overlayBackground, searchField, searchResults);
+  document.body.append(searchContainer);
 
-  pillMovie.addEventListener("click", () => {
-    searchType = "movie";
-    pillMovie.classList.toggle("filtered");
-    setTimeout(() => {
+  searchField.addEventListener("keyup", (e) => {
+    if (e.key == "Enter") {
       searchFunction();
-    }, 500);
-  });
-
-  pillCast.addEventListener("click", () => {
-    searchType = "cast";
-    pillCast.classList.toggle("filtered");
-    setTimeout(() => {
-      searchFunction();
-    }, 500);
+    }
   });
 }
