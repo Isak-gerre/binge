@@ -18,12 +18,21 @@
 }
 
 .activityContainer {
-    background-color: rgb(255, 255, 255);
+    background-color: $activityColor;
     flex-grow: 2;
-    box-shadow: .2vh .2vh .2vh grey;
+    box-shadow: .2vh .2vh .2vh black;
     border-radius: $borderRadiusObjects;
+    min-height: 100px;
+    max-height: 200px;
+    overflow: hidden;
     display: flex;
+    
+    transition: all 0.5s;
 }
+
+// .activityContainer.open {
+//     transition: max-height 1s;
+// }
 
 .activityContainerLeft {
     padding: 1vh;
@@ -35,12 +44,11 @@
 }
 
 .activityContainerRight {
-    border-radius: 0vh $borderRadiusObjects;
+    // border-radius: 0vh $borderRadiusObjects;
     flex-grow: 1.5;
     flex-basis: 0;
     background-size: cover;
     background-position: center;
-    min-height: 100px;
     clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
 }
 
@@ -98,6 +106,11 @@
     font-size: 13px;
     color: $darkFont;
 
+}
+
+#expandComment {
+    width: 40px;
+    margin: auto;
 }
 
 .rate {

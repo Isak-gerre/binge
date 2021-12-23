@@ -374,8 +374,34 @@ function createActivities(array, page, appendIn = "wrapper") {
       if (obj.comment !== "") {
         let comment = document.createElement("div");
         comment.classList.add("comment");
-        comment.textContent = `" ${obj.comment} " `;
+        comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
         activityContainerLeft.append(comment);
+        
+        if (obj.comment.length > 30) {
+          let expandComment = document.createElement("img");
+          expandComment.setAttribute("src", "../icons/expand_more.svg");
+          expandComment.id = "expandComment";
+
+          
+          expandComment.addEventListener('click', () => {
+            activityContainer.classList.toggle('open');
+
+            if (activityContainer.classList.contains('open')) {
+              // console.log(activityContainer.scrollHeight);
+              expandComment.setAttribute("src", "../icons/expand_less.svg");
+              comment.textContent = `" ${obj.comment} " `;
+              let expandHeight = activityContainer.scrollHeight;
+              activityContainer.style.maxHeight = `${expandHeight}px`;
+            } else {
+              activityContainer.removeAttribute('style');
+              expandComment.setAttribute("src", "../icons/expand_more.svg");
+              comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
+              activityContainer.style.maxHeight = '200px';
+            }
+          });
+          
+          activityContainerLeft.append(expandComment);
+        }
       }
     }
 
