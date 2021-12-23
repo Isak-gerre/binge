@@ -259,7 +259,7 @@ async function showUsers(ids) {
 
     followContainer.append(closeTab);
 
-    usersInfo.forEach(user => {
+    usersInfo.forEach(user => {''
         let userDiv = document.createElement('div');
         let username = document.createElement('p');
         username.textContent = "@" + user.username;
