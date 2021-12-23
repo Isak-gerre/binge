@@ -372,6 +372,8 @@ function createActivities(array, page, appendIn = "wrapper") {
 
       //kommentar om det finns
       if (obj.comment !== "") {
+        activityContainer.style.height = '200px';
+        
         let comment = document.createElement("div");
         comment.classList.add("comment");
         comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
@@ -391,12 +393,12 @@ function createActivities(array, page, appendIn = "wrapper") {
               expandComment.setAttribute("src", "../icons/expand_less.svg");
               comment.textContent = `" ${obj.comment} " `;
               let expandHeight = activityContainer.scrollHeight;
-              activityContainer.style.maxHeight = `${expandHeight}px`;
+              activityContainer.style.height = `${expandHeight}px`;
             } else {
               activityContainer.removeAttribute('style');
               expandComment.setAttribute("src", "../icons/expand_more.svg");
               comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
-              activityContainer.style.maxHeight = '200px';
+              activityContainer.style.height = '200px';
             }
           });
           

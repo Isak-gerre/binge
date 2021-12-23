@@ -36,7 +36,6 @@
           box-shadow: .2vh .2vh .2vh black;
   border-radius: 10px;
   min-height: 100px;
-  max-height: 200px;
   overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
