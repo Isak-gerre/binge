@@ -205,7 +205,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
             profileButtonIcon.src = '../icons/remove_circle_black.svg';
             followers.push(loggedInUserId);
 
-            await followPatch(loggedInUserId, userId);
+            await followPatch(loggedInUserId, user.id);
 
             nrOfFollowers += 1;
             followersCont.textContent = nrOfFollowers;
@@ -219,32 +219,34 @@ async function createProfileHeader(user, isFollowing, settings = null) {
     followersCont.addEventListener('click', async function () {
         // console.log(followers)
         let closeTab = document.createElement('button');
+        closeTab.id = 'closeTab';
         closeTab.textContent = "x";
         closeTab.addEventListener('click', () => {
-            closeTab.remove();
             followContainer.style.left = '100vw';
             setTimeout(() => {
+                closeTab.remove();
                 followContainer.remove(); 
             }, 1000);
         });
 
-        let followContainer = await showUsers(followers);
+        let followContainer = await showUsers(user.id, 'followers');
         followContainer.prepend(closeTab);
         body.prepend(followContainer);
     });
 
     followingCont.addEventListener('click', async function () {
         let closeTab = document.createElement('button');
+        closeTab.id = 'closeTab';
         closeTab.textContent = "x";
         closeTab.addEventListener('click', () => {
-            closeTab.remove();
             followContainer.style.left = '100vw';
             setTimeout(() => {
+                closeTab.remove();
                 followContainer.remove(); 
             }, 1000);
         });
         
-        let followContainer = await showUsers(following);
+        let followContainer = await showUsers(user.id, 'following');
         followContainer.prepend(closeTab);
         body.prepend(followContainer);
     });
@@ -269,16 +271,31 @@ async function followPatch(mainUserID, friendsUserID) {
     const data = await response;
 }
 
-async function showUsers(ids) {
+async function showUsers(userId, type) {
+    let userInfo = await getUserInfo(userId);
+
+    let ids = [];
+    if (type == 'followers') {
+        ids = userInfo.followers;
+    } else if (type == 'following') {
+        ids = userInfo.following;
+    }
+    
+    let following = userInfo.following;
+
     let usersInfo = await Promise.all(ids.map(id => getUserInfo(id)));
     usersInfo.sort((a, b) => a.username > b.username ? 1 : -1);
 
+    
     let followContainer = document.createElement('div');
     followContainer.id = "followContainer";
     setTimeout(() => {
         followContainer.style.left = 0;
     }, 50);
 
+    let usersWrapper = document.createElement('div');
+    usersWrapper.id = 'usersWrapper';
+    
     usersInfo.forEach(user => {
         let userDiv = document.createElement('div');
         let username = document.createElement('p');
@@ -298,36 +315,40 @@ async function showUsers(ids) {
 
         if (isFollowed) {
             followOrUnfollow.textContent = 'Unfollow';  
+            followOrUnfollow.id = "noGradient";
         } else if (!isFollowed) {
             followOrUnfollow.textContent = 'Follow';
         }
 
         let followingCont = document.getElementById('following');
-        let followersCont = document.getElementById('following');
         
         followOrUnfollow.addEventListener('click',  async function () {
             if (!isFollowed) {
 
                 isFollowed = true;
                 followOrUnfollow.textContent = 'Unfollow';
+                followOrUnfollow.id = "noGradient";
                 await followPatch(loggedInUserId, user.id);
 
-                ids.push(user.id);
-                
+                following.push(user.id);
+                followingCont.textContent = ids.length;
 
             } else if (isFollowed) {
 
                 isFollowed = false;
-                followOrUnfollow.textContent = 'Follow'
+                followOrUnfollow.textContent = 'Follow';
+                followOrUnfollow.removeAttribute('id');
                 await followPatch(loggedInUserId, user.id);
                 
                 let userIndex = ids.findIndex(id => id == user.id);
-                ids.splice(userIndex, 1);
+                following.splice(userIndex, 1);
+                followingCont.textContent = following.length;
             }
             
         });
 
-        followContainer.append(userDiv);
+        followContainer.append(usersWrapper);
+        usersWrapper.append(userDiv);
         userDiv.append(userProfilePic, username);
         if (user.id !== loggedInUserId) {
             userDiv.append(followOrUnfollow);

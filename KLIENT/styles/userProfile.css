@@ -168,7 +168,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 5px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 #profileNav div {
@@ -199,7 +200,40 @@ body {
 }
 
 #followContainer {
-  color: #eeeeee;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 10001;
+  left: 100vw;
+  -webkit-transition: left 1s;
+  transition: left 1s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+  background-color: #0F0B2E;
+  width: 100%;
+  padding: 19px;
+}
+
+#followContainer button {
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(63.8deg, #EF9D1A 10.76%, #FD047C 94.55%);
+  padding: 5px;
+}
+
+#followContainer #usersWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -213,19 +247,15 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: 10001;
-  left: 100vw;
-  -webkit-transition: left 1s;
-  transition: left 1s;
-  gap: 10px;
-  background-color: #0F0B2E;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   width: 100%;
+  color: #eeeeee;
+  gap: 10px;
 }
 
-#followContainer div {
+#followContainer #usersWrapper div {
   font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
   display: -webkit-box;
@@ -235,27 +265,32 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
   width: 100%;
   height: 100px;
-  padding: 19px;
   cursor: pointer;
 }
 
-#followContainer div img {
+#followContainer #usersWrapper div img {
   width: 90px;
   height: 90px;
   border-radius: 50%;
 }
 
-#followContainer div button {
-  color: black;
+#followContainer #usersWrapper div button {
+  width: 70px;
+  -webkit-transition: background 0.5s ease-in;
+  transition: background 0.5s ease-in;
+}
+
+#followContainer #usersWrapper div button#noGradient {
+  background: #1C1452;
 }
 
 #settingsWindow {
@@ -405,8 +440,8 @@ body {
 }
 
 #closeTab {
-  position: absolute;
-  z-index: 100;
+  width: 30px;
+  height: 30px;
 }
 
 #profileWrapper {

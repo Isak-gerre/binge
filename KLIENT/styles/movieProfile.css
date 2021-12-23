@@ -34,12 +34,12 @@
 }
 
 .movie-profile-info {
-  padding: 10px;
+  padding: 19px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 2fr;
       grid-template-columns: 1fr 2fr;
-  gap: 10px;
+  gap: 19px;
   margin-top: -50px;
   z-index: 12;
 }
@@ -101,7 +101,7 @@
       grid-template-columns: 1fr 1fr;
   -ms-grid-rows: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-  gap: 10px;
+  gap: 19px;
   width: 100%;
 }
 
@@ -130,7 +130,7 @@
 }
 
 .button {
-  padding: 10px;
+  padding: 19px;
   border-radius: 10px;
   border: 0;
   color: whitesmoke;
@@ -140,25 +140,25 @@
 }
 
 .movie-profile-description {
-  padding: 10px;
+  padding: 19px;
 }
 
 .movie-profile-description p {
-  font-family: 'Arial';
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
   color: #eeeeee;
   text-align: left;
 }
 
 .movie-profile-streamingservices {
-  padding: 10px;
+  padding: 19px;
 }
 
 .movie-profile-streamingservices h4 {
   color: #eeeeee;
-  font-family: 'Arial';
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
-  padding-bottom: 10px;
+  padding-bottom: 19px;
 }
 
 .movie-profile-streamingservices .movie-profile-streaming-services-grid {
@@ -175,14 +175,14 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 10px;
+  gap: 19px;
 }
 
 .movie-profile-streamingservices .movie-profile-streaming-services-grid img {
   border-radius: 50%;
   height: 10vw;
   width: 10vw;
-  margin-right: 10px;
+  margin-right: 19px;
   -webkit-filter: grayscale(100%);
           filter: grayscale(100%);
 }
@@ -203,12 +203,12 @@
 }
 
 .movie-profile-credits {
-  padding: 10px;
+  padding: 19px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 19px;
 }
 
 .movie-profile-credits .movie-profile-cast {
@@ -229,9 +229,9 @@
 
 .movie-profile-credits .movie-profile-cast h4 {
   color: #eeeeee;
-  font-family: 'Arial';
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
-  padding-bottom: 10px;
+  padding-bottom: 19px;
 }
 
 .movie-profile-credits .movie-profile-director {
@@ -252,9 +252,9 @@
 
 .movie-profile-credits .movie-profile-director h4 {
   color: #eeeeee;
-  font-family: 'Arial';
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
-  padding-bottom: 10px;
+  padding-bottom: 19px;
 }
 
 .movie-profile-credits .production-people {
@@ -271,7 +271,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-bottom: 10px;
+  padding-bottom: 19px;
 }
 
 .movie-profile-credits .production-people div {
@@ -284,9 +284,9 @@
 }
 
 .movie-profile-credits .production-people p {
-  padding-left: 10px;
+  padding-left: 19px;
   color: #eeeeee;
-  font-family: 'Arial';
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
 }
 
@@ -308,30 +308,30 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  padding: 10px;
+  padding: 19px;
 }
 
 .movie-profile-reviews h4 {
   color: #eeeeee;
-  font-family: 'Arial';
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
-  padding-bottom: 10px;
+  padding-bottom: 19px;
 }
 
 .movie-profile-similarMovies {
-  padding: 10px;
+  padding: 19px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 19px;
 }
 
 .movie-profile-similarMovies h4 {
   color: #eeeeee;
-  font-family: 'Arial';
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
-  padding-bottom: 10px;
+  padding-bottom: 19px;
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   -ms-grid-column: 1;

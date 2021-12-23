@@ -76,7 +76,8 @@ body {
     height: 50px;
     @include bodyFont();
     @include flex(row, center, center);
-    border-radius: 5px;
+    border-radius: $borderRadiusButtons;
+    overflow: hidden;
     
     div {
         @include flex(row, center, center);
@@ -84,7 +85,6 @@ body {
         width: 33%;
         flex-grow: 1;
         height: 100%;
-        // border-radius: 0px;
     }
 
     .selected {
@@ -94,31 +94,51 @@ body {
 }
 
 #followContainer {
-    color: $lightFont;
-    @include flex(column, flex-start, center);
     @include transitionFromLeft();
+    @include flex(column, flex-start, flex-start);
     gap: $betweenPadding;
     background-color: $backgroundColor;
     width: 100%;
+    padding: $wrapperPadding;
+
+    button {
+        border: none;
+        border-radius: $borderRadiusButtons;
+        background: $gradientPeach;
+        padding: $buttonPadding;
+    }
     
-    div {
-        @include bodyFont();
-        @include flex(row, flex-start, center);
-        gap: $betweenPadding;
+    #usersWrapper {
+        @include flex(column, flex-start, center);
+        flex-grow: 1;
         width: 100%;
-        height: 100px;
+        color: $lightFont;
+        gap: $betweenPadding;
 
-        padding: $wrapperPadding;
-        cursor: pointer;
+        div {
+            @include bodyFont();
+            @include flex(row, space-between, center);
+            gap: $betweenPadding;
+            width: 100%;
+            height: 100px;
+    
+            // padding: $wrapperPadding;
+            cursor: pointer;
+    
+            img {
+                @include profilePicture(90px, 90px);
+            }
 
-        img {
-            @include profilePicture(90px, 90px);
-        }
-
-        button {
-            color: $darkFont;
+            button {
+                width: 70px;
+                transition: background 0.5s ease-in;
+            }
+            button#noGradient {
+                background:#1C1452;
+            }
         }
     }
+    
 }
 
 #settingsWindow {
@@ -196,8 +216,8 @@ body {
 }
 
 #closeTab {
-    position: absolute;
-    z-index: 100;
+    width: 30px;
+    height: 30px;
 }
 
 #profileWrapper {
