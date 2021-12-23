@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
 .upperNav {
   width: 100vw;
-  height: 60px;
-  background-color: transparent;
+  background-color: #0F0B2E;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,11 +15,10 @@
   -webkit-box-align: none;
       -ms-flex-align: none;
           align-items: none;
-  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
   top: 0;
   z-index: 10000;
-  -webkit-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
 }
 
 .upperNav div {
@@ -36,19 +34,12 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.upperNav div a {
-  margin: 0 130px;
-}
-
-input:focus {
-  outline: none;
 }
 
 .hiddenButton {
@@ -63,60 +54,83 @@ input:focus {
   width: 80%;
   height: 50px;
   margin-top: 8px;
-  background-color: #eee;
+  background-color: lightgrey;
   border-radius: 8px;
   position: absolute;
   top: 0;
   z-index: 1000;
-  -webkit-transition: all 0.1s;
-  transition: all 0.1s;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 @-webkit-keyframes searchBar {
   0% {
-    opacity: 0;
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
   }
   100% {
-    opacity: 1;
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
   }
 }
 
 @keyframes searchBar {
   0% {
-    opacity: 0;
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
   }
   100% {
-    opacity: 1;
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
   }
 }
 
 @-webkit-keyframes removeSearchBar {
   0% {
-    opacity: 1;
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
   }
   100% {
-    opacity: 0;
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
   }
 }
 
 @keyframes removeSearchBar {
   0% {
-    opacity: 1;
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
   }
   100% {
-    opacity: 0;
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
+    -webkit-transform-origin: right;
+            transform-origin: right;
   }
 }
 
 #searchField {
   width: 85%;
   border: none;
-  border-radius: relative;
+  border-radius: 8px;
   background-color: transparent;
   height: 100%;
   font-size: 1.1rem;
   padding-left: 10px;
-  color: black;
   left: 0;
 }
 
@@ -125,12 +139,13 @@ input:focus {
   right: 10px;
 }
 
-.lowerNav,
-.backLowerNav {
+.lowerNav, .backLowerNav {
   width: 80vw;
   height: 50px;
+  margin-bottom: 30px;
   -webkit-box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
   background-color: lightgrey;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -143,10 +158,9 @@ input:focus {
 
 .lowerNav {
   position: fixed;
-  width: 100%;
-  bottom: 0;
+  top: calc(100vh - 80px);
   z-index: 10000;
-  background-color: black;
+  background-color: transparent;
 }
 
 .lowerNav div {
@@ -158,11 +172,15 @@ input:focus {
 }
 
 .backLowerNav {
-  display: none;
+  width: 100%;
+  position: absolute;
+  -webkit-box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+          box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
 }
 
-svg,
-.navImg {
+svg, .navImg {
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -170,23 +188,21 @@ svg,
   position: relative;
 }
 
-svg:active,
-.navImg {
-  width: 20px;
-  height: 20px;
+svg:active, .navImg {
+  width: 25px;
+  height: 25px;
   cursor: pointer;
 }
 
 .searchOverlay {
   height: inherit;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
   position: absolute;
   top: 0;
-  background-color: #0f0b2e;
+  background-color: #0F0B2E;
   z-index: 999;
-  -webkit-animation: searchBar 0.2s ease-out;
-          animation: searchBar 0.2s ease-out;
+  -webkit-animation: searchBar .3s ease-in-out;
+          animation: searchBar .3s ease-in-out;
   -webkit-transition: all 1s;
   transition: all 1s;
 }
@@ -204,7 +220,7 @@ svg:active,
 .pill {
   padding: 10px;
   margin: 5px;
-  border-radius: 20px;
+  border-radius: 8px;
   background-color: lightgrey;
   -webkit-transform: scale(1);
           transform: scale(1);
@@ -215,14 +231,12 @@ svg:active,
 }
 
 .movieList {
-  margin: 0 auto;
   display: -ms-grid;
   display: grid;
-  width: 90%;
+  width: 100vw;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
-  gap: 10px;
 }
 
 .filtered {

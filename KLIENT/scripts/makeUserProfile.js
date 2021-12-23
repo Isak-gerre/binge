@@ -88,7 +88,7 @@ async function createProfilePage() {
         });
         
         profileNav(watchedActivities, watchlist, urlUserId);
-        createActivities(watchedActivities, 'profile', "profileWrapper");
+        createActivities(watchedActivities, 'profile');
         
 
     } else {
@@ -119,8 +119,7 @@ function profileNav(watchedActivities, watchlist, userId) {
             wrapper.innerHTML = "";
             document.querySelector('.selected').classList.remove('selected');
             watchedBtn.classList.add('selected');
-        createActivities(watchedActivities, "profile", "profileWrapper");
-
+            createActivities(watchedActivities, 'profile');
         }
     });
 

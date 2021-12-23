@@ -1,32 +1,24 @@
 @import "variables.scss";
 
+
 //ÖVRE NAVIGATION
 .upperNav {
-  width: 100vw;
-  height: 60px;
-  background-color: transparent;
+    width: 100vw;
+    background-color: $backgroundColor;
 
-  @include flex(row, center, none);
+    @include flex(row, center, none);
 
-  position: fixed;
-  top: 0;
-  z-index: 10000;
+    position: sticky;
+    top: 0;
+    z-index: 10000;
 
-  transition: all 0.2s ease-out;
-
-  div {
-    flex-grow: 1;
-    box-sizing: border-box;
-    @include flex(row, space-around, center);
-
-    a {
-      margin: 0 130px;
+    div {
+      flex-grow: 1;
+      box-sizing: border-box;
+      @include flex(row, center, center);
     }
-  }
 }
-input:focus {
-  outline: none;
-}
+
 //SÖK
 .hiddenButton {
   display: none;
@@ -40,32 +32,36 @@ input:focus {
   height: 50px;
   margin-top: 8px;
 
-  background-color: #eee;
-  border-radius: 8px;
+  background-color: lightgrey;
+  border-radius: $borderRadiusNav;
 
   position: absolute;
   top: 0;
   z-index: 1000;
 
   // transform: scale(0, 1);
-  transition: all 0.1s;
+  transition: all 1s;
 }
 
 @keyframes searchBar {
   0% {
-    opacity: 0;
+      transform: scale(0, 1);
+      transform-origin: right;
   }
   100% {
-    opacity: 1;
+      transform: scale(1, 1);
+      transform-origin: right;
   }
 }
 
 @keyframes removeSearchBar {
   0% {
-    opacity: 1;
+      transform: scale(1, 1);
+      transform-origin: right;
   }
   100% {
-    opacity: 0;
+      transform: scale(0, 1);
+      transform-origin: right;
   }
 }
 
@@ -81,43 +77,43 @@ input:focus {
 #searchField {
   width: 85%;
   border: none;
-  border-radius: relative;
+  border-radius: $borderRadiusNav;
   background-color: transparent;
   height: 100%;
   font-size: 1.1rem;
   padding-left: 10px;
-  color: $darkFont;
+
   left: 0;
 }
 
 .closeImg {
   position: absolute;
-  right: 10px;
+  right: 10px;  
 }
 
 //NEDRE NAVIGATION
-.lowerNav,
-.backLowerNav {
-  width: 80vw;
-  height: 50px;
+.lowerNav, .backLowerNav{
+    width: 80vw;
+    height: 50px;
+    margin-bottom: 30px;
 
-  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.2);
-  background-color: lightgrey;
+    box-shadow: 0 0 7px 0 rgba(0, 0, 0, .2);
+    border-radius: $borderRadiusNav;
+    background-color: lightgrey;
 
-  display: flex;
-  text-align: center;
+    display: flex;
+    text-align: center;
 
-  overflow: hidden;
-  box-sizing: border-box;
+    overflow: hidden;
+    box-sizing: border-box;
+  
 }
 
 .lowerNav {
   position: fixed;
-  width: 100%;
-  bottom: 0;
+  top: calc(100vh - 80px);
   z-index: 10000;
-  background-color: black;
-  // background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  background-color: transparent;
 
   div {
     flex-grow: 1;
@@ -126,21 +122,14 @@ input:focus {
 }
 
 .backLowerNav {
-  display: none;
-  // width: 0%;
-  // position: absolute;
-  // background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  // opacity: 0.9;
-  // border: 1px solid rgba(255, 255, 255, 0.3);
-  // box-sizing: border-box;
-  // backdrop-filter: blur(0px);
-  // border-radius: 2px;
-  // transform: translateX(-1%);
+  width: 100%;
+  position: absolute;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+  filter: blur(10px);
 }
 
 //ICONS
-svg,
-.navImg {
+svg, .navImg {
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -148,23 +137,21 @@ svg,
   position: relative;
 }
 
-svg:active,
-.navImg {
-  width: 20px;
-  height: 20px;
+svg:active, .navImg {
+  width: 25px;
+  height: 25px;
   cursor: pointer;
 }
 
 .searchOverlay {
   height: inherit;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
   position: absolute;
   top: 0;
   background-color: $backgroundColor;
   z-index: 999;
 
-  animation: searchBar 0.2s ease-out;
+  animation: searchBar .3s ease-in-out;
   transition: all 1s;
 }
 
@@ -177,21 +164,20 @@ svg:active,
 .pill {
   padding: 10px;
   margin: 5px;
-  border-radius: 20px;
+  border-radius: $borderRadiusNav;
   background-color: lightgrey;
   transform: scale(1);
   transition: transform 1s;
 }
 
 .movieList {
-  margin: 0 auto;
   display: grid;
-  width: 90%;
+  width: 100vw;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
-  gap: 10px;
 }
 
 .filtered {
   box-shadow: inset 0 0 7px 0 grey;
 }
+

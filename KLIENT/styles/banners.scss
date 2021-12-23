@@ -1,75 +1,68 @@
+
 @import "variables.scss";
 
-.movieBanner,
-.genreBanner {
-  height: 150px;
-  border-radius: $borderRadiusNav;
-  background-size: cover;
-  text-align: right;
-  overflow: hidden;
 
-  position: relative;
-  top: 0;
-
-  animation: movieScale 0.3s ease-out;
-  transition: all 1s;
-  aspect-ratio: 1;
-}
-
-// @keyframes movieScale {
-//   0% {
-//       transform: scale(1, 0);
-//       transform-origin: top;
-//   }
-//   100% {
-//       transform: scale(1, 1);
-//   }
-// }
-@keyframes movieScale {
-  0% {
-    opacity: 0;
+.movieBanner, .genreBanner {
+    height: 150px;
+    border-radius: $borderRadiusNav;
+    background-size: cover;
+    text-align: right;
+    overflow: hidden;
+    
+    position: relative;
+    top: 0;
+  
+    animation: movieScale .5s ease-in-out;
+    transition: all 1s;
+    aspect-ratio: 1;
   }
-  100% {
-    opacity: 1;
+  
+  
+  @keyframes movieScale {
+    0% {
+        transform: scale(1, 0);
+        transform-origin: top;
+    }
+    100% {
+        transform: scale(1, 1);
+    }
   }
-}
+  
+  .movieBanner {
+    max-width: 100px;
+    background-size: cover;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);    
+  }
 
-.movieBanner {
-  max-width: 100px;
-  background-size: cover;
-  box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);
-}
+  .genreBanner {
+    height: 100px;
+    width: 100%;
+  }
+  
+  .titleDiv, .divider {
+    position: absolute;
+    bottom: -10%;
+    right: -40%;
+    height: 50%;
+    background-color: rgba(211, 211, 211, 0.7);
+    width: 150%;
+    transform: rotate(-20deg);
+  }
+  
+  .divider {
+    height: 90%;
+    bottom: -30%;
+    transform: rotate(-15deg);
+  }
+  
+ .genreName {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 5px 0px;
+    margin-right: 10px;
+    color: $darkFont;
+    z-index: 10;
 
-.genreBanner {
-  height: 100px;
-  width: 100%;
-}
-
-.titleDiv,
-.divider {
-  position: absolute;
-  bottom: -10%;
-  right: -40%;
-  height: 50%;
-  background-color: rgba(211, 211, 211, 0.7);
-  width: 150%;
-  transform: rotate(-20deg);
-}
-
-.divider {
-  height: 90%;
-  bottom: -30%;
-  transform: rotate(-15deg);
-}
-
-.genreName {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 5px 0px;
-  margin-right: 10px;
-  color: $darkFont;
-  z-index: 10;
-
-  font-size: 1.2rem;
-}
+    font-size: 1.2rem;
+  }

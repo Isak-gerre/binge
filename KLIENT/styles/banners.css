@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
-.movieBanner,
-.genreBanner {
+.movieBanner, .genreBanner {
   height: 150px;
   border-radius: 8px;
   background-size: cover;
@@ -8,8 +7,8 @@
   overflow: hidden;
   position: relative;
   top: 0;
-  -webkit-animation: movieScale 0.3s ease-out;
-          animation: movieScale 0.3s ease-out;
+  -webkit-animation: movieScale .5s ease-in-out;
+          animation: movieScale .5s ease-in-out;
   -webkit-transition: all 1s;
   transition: all 1s;
   aspect-ratio: 1;
@@ -17,19 +16,27 @@
 
 @-webkit-keyframes movieScale {
   0% {
-    opacity: 0;
+    -webkit-transform: scale(1, 0);
+            transform: scale(1, 0);
+    -webkit-transform-origin: top;
+            transform-origin: top;
   }
   100% {
-    opacity: 1;
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
   }
 }
 
 @keyframes movieScale {
   0% {
-    opacity: 0;
+    -webkit-transform: scale(1, 0);
+            transform: scale(1, 0);
+    -webkit-transform-origin: top;
+            transform-origin: top;
   }
   100% {
-    opacity: 1;
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
   }
 }
 
@@ -45,8 +52,7 @@
   width: 100%;
 }
 
-.titleDiv,
-.divider {
+.titleDiv, .divider {
   position: absolute;
   bottom: -10%;
   right: -40%;
