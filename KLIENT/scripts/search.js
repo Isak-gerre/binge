@@ -58,7 +58,7 @@ function myFunction(searchResults) {
   }
 }
 
-function makeSearchOverlay(searchWord) {
+function makeSearchOverlay(searchWord = "") {
   let searchContainer = document.createElement("div");
   searchContainer.className = "search-container";
 
@@ -79,7 +79,7 @@ function makeSearchOverlay(searchWord) {
   document.body.append(searchContainer);
 
   //OBS!! ELSA LAGT TILL!! om man kommer från genre på explore
-  if(searchField.value == ""){
+  if (searchField.value == "") {
     searchField.value = `${searchWord}`;
   }
 
