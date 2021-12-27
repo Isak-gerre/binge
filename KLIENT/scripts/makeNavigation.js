@@ -80,8 +80,17 @@ function makeLowerNav() {
   searchImg.addEventListener("click", () => {
     if (document.querySelector(".search-container") == null) {
       makeSearchOverlay();
+      document.querySelector(".back").setAttribute("src", "../icons/exit 2.svg");
+      document.querySelector(".back").addEventListener("click", () => {
+        document.querySelector(".back").setAttribute("src", "../icons/back.svg");
+        document.querySelector(".search-container").style.animation = "removeSearchBar 0.2s ease-out";
+        setTimeout(() => {
+          document.querySelector(".search-container").remove();
+        }, 200);
+      });
       document.querySelector(".search-container").style.animation = "searchBar 0.2s ease-out";
     } else {
+      document.querySelector(".back").setAttribute("src", "../icons/back.svg");
       document.querySelector(".search-container").style.animation = "removeSearchBar 0.2s ease-out";
       setTimeout(() => {
         document.querySelector(".search-container").remove();
