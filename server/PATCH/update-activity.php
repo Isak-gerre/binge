@@ -27,6 +27,7 @@
     $requestData = json_decode($data, true);
     $activityID = $requestData["activity"]["id"];
     $updatedActivity = $requestData["activity"];
+    inspect($updatedActivity);
     
     if(!array_key_exists($activityID, $activities)){
         $message["message"] = "$activityID does not exist";

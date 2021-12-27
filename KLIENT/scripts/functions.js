@@ -407,9 +407,13 @@ async function getSimilar(movieID) {
 
 async function getAdditionalInfo(movieID) {
   try {
+    console.log(movieID)
     let response = await fetch(`http://localhost:7001/GET/get-additional-movieInfo.php?movieID=${movieID}`);
+    console.log(response)
     let data = await response.json();
+    console.log(data);
     return data;
+    
   } catch (error) {
     console.error(error);
   }
@@ -438,6 +442,24 @@ async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
     {
       method: "POST",
       body: JSON.stringify(msg),
+      headers: {"Content-type": "application/json"},
+    }
+  );
+
+  try {
+    let response = await fetch(rqst);
+    let data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function patchActivity(activity) {
+  let rqst = new Request("http://localhost:7001/PATCH/update-activity.php", 
+    {
+      method: "PATCH",
+      body: JSON.stringify({activity: activity}),
       headers: {"Content-type": "application/json"},
     }
   );
