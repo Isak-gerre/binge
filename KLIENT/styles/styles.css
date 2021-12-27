@@ -495,7 +495,7 @@ body {
       -ms-flex-align: end;
           align-items: flex-end;
   background-color: #0f0b2e;
-  height: 300px;
+  min-height: 0px;
   display: none;
   -webkit-animation: smoothWidth 1s;
           animation: smoothWidth 1s;
@@ -1447,6 +1447,7 @@ body {
   -webkit-transition: all 1s;
   transition: all 1s;
   aspect-ratio: 1;
+  cursor: pointer;
 }
 
 @-webkit-keyframes movieScale {

@@ -72,7 +72,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: "Arial";
+  font-family: "Archivo";
   font-size: 1.2rem;
   width: 100%;
 }
@@ -82,7 +82,7 @@ body {
 }
 
 #profileInfo #followInfo {
-  font-family: "Arial";
+  font-family: "Mulish";
   font-size: 0.9rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -126,7 +126,7 @@ body {
 #profileNav {
   width: 100%;
   height: 50px;
-  font-family: "Arial";
+  font-family: "Mulish";
   font-size: 0.9rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -197,7 +197,7 @@ body {
 }
 
 #followContainer div {
-  font-family: "Arial";
+  font-family: "Mulish";
   font-size: 0.9rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -299,7 +299,7 @@ body {
 }
 
 #settingsWindow #settingsForm div label {
-  font-family: "Arial";
+  font-family: "Mulish";
   font-size: 0.5rem;
 }
 
