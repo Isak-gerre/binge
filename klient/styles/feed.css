@@ -31,16 +31,18 @@
 }
 
 .activityContainer {
-  background-color: white;
+  background-color: #6F6D82;
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
   -webkit-box-shadow: 3px 3px 3px #676767;
           box-shadow: 3px 3px 3px #676767;
   border-radius: 5px;
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  min-height: 100px;
 }
 
 .activityContainerLeft {
@@ -59,6 +61,11 @@
           flex-direction: column;
 }
 
+.activityContainerLeft #expandComment {
+  width: 35px;
+  margin: auto;
+}
+
 .activityContainerRight {
   -webkit-box-flex: 1.5;
       -ms-flex-positive: 1.5;
@@ -67,7 +74,6 @@
       flex-basis: 0;
   background-size: cover;
   background-position: center;
-  min-height: 100px;
   -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
           clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
   overflow: hidden;
@@ -146,6 +152,9 @@
   color: black;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
+  height: 50px;
+  -webkit-transition: height 1s;
+  transition: height 1s;
 }
 
 .rate {
