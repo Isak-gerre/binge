@@ -45,15 +45,12 @@ async function makeMovieProfile(movieID) {
   // let overlayBackground = document.createElement("div");
   // overlayBackground.className = "movie-profile-background";
 
-<<<<<<< HEAD
   // // Drop
   let drop1 = document.createElement("div");
   drop1.className = "drop1";
   let drop2 = document.createElement("div");
   drop2.className = "drop2";
 
-=======
->>>>>>> parent of 2af9255 (up)
   // backdrop
   let backdrop = document.createElement("div");
   backdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${movieInfo["backdrop_path"]})`;
@@ -276,11 +273,7 @@ async function makeMovieProfile(movieID) {
   middle.append(description, streamingservices, credits, reviews, similarMovies);
   // ______________________________________________________________________________________________________
   // Appends in overlay
-<<<<<<< HEAD
   overlay.append(movieHeader, info, middle, drop1, drop2);
-=======
-  overlay.append(movieHeader, info, middle);
->>>>>>> parent of 2af9255 (up)
 
   createActivities(activities, "feed", "movie-profile-reviews");
 

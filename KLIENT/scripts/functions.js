@@ -407,13 +407,9 @@ async function getSimilar(movieID) {
 
 async function getAdditionalInfo(movieID) {
   try {
-<<<<<<< HEAD
     console.log(movieID);
     let response = await fetch(`${serverURL}/GET/get-additional-movieInfo.php?movieID=${movieID}`);
     console.log(response);
-=======
-    let response = await fetch(`http://localhost:7001/GET/get-additional-movieInfo.php?movieID=${movieID}`);
->>>>>>> parent of 2af9255 (up)
     let data = await response.json();
     return data;
   } catch (error) {
@@ -454,7 +450,6 @@ async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
   }
 }
 
-<<<<<<< HEAD
 async function patchActivity(activity) {
   let rqst = new Request("${serverURL}/PATCH/update-activity.php", {
     method: "PATCH",
@@ -471,8 +466,6 @@ async function patchActivity(activity) {
   }
 }
 
-=======
->>>>>>> parent of 2af9255 (up)
 async function deleteteActivity(activityID) {
   let rqst = new Request("${serverURL}/DELETE/delete-activity.php", {
     method: "DELETE",
