@@ -100,12 +100,12 @@ fetch(region)
 
             });
         
-            if(!document.getElementById("signInButton")){
-                let button = document.createElement("button");
-                button.innerHTML = "Sign Up";
-                button.setAttribute("id", "signInButton");
-                document.getElementById("signUpForm").append(button);
-            }
+            // if(!document.getElementById("signInButton")){
+            //     let button = document.createElement("button");
+            //     button.innerHTML = "Sign Up";
+            //     button.setAttribute("id", "signInButton");
+            //     document.getElementById("signUpForm").append(button);
+            // }
 
         }     
     });

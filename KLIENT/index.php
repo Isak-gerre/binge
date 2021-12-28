@@ -82,6 +82,8 @@
         include_once "scripts/createFormAPI.js"; 
         echo "</script>";
     ?>
+    <input type="file" id="fileToUpload" name="fileToUpload">
+    <input type="submit" value="submit" id="signInButton")>
 </form>
 <form id="prfoileImgForm" action="index.php">
     <fieldset>
@@ -104,10 +106,10 @@
 
     </fieldset>
 </form>
-<form action="index.php" enctype="multipart/form-data" id="signUpFormImage" method="POST">
+<!-- <form action="index.php" enctype="multipart/form-data" id="signUpFormImage" method="POST">
     <input type="file" id="fileToUpload" name="fileToUpload">
     <input type="submit" value="upload">
-</form>
+</form> -->
 
 <script src="scripts/functions.js"></script>
 <script src="scripts/makeNavigation.js"></script>

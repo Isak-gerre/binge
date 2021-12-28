@@ -291,6 +291,8 @@ function alreadyTaken($array, $key, $newVariable)
 {
     $taken = false;
     foreach ($array as $arritem) {
+        inspect($arritem["username"]);
+        inspect($newVariable);
         if(isset($arritem[$key])){
             if ($arritem[$key] == $newVariable) {
                 $taken = true;

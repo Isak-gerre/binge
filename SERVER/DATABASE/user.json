@@ -221,23 +221,6 @@
             "followers": [],
             "following": [],
             "id": "7"
-        },
-        "8": {
-            "firstname": "Ivan",
-            "lastname": "Ke",
-            "username": "E",
-            "password": "$2y$10$.97L\/jo2q9ZtBvUujv2qL.ZHb\/tA3ocrbf1yAeR\/99ajy87O.XmF6",
-            "email": "i.",
-            "birthday": "",
-            "selectRegion": "EE",
-            "active_streaming_services": [
-                "Amazon Prime Video"
-            ],
-            "followers": [],
-            "following": [],
-            "sessionId": "$2y$10$6UV3P7IcVM1XNQvAsn7D9.\/BPPcZndi9N0Wffsby3FJQunr8kK2qu",
-            "id": 8,
-            "profile_picture": 8
         }
     }
 }

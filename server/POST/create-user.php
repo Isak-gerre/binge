@@ -29,19 +29,18 @@
     //Kollar om användaren redan finns både användarnamn och även email (denna request bör skickas vid varje keypress och inte endast vist submit)
     
     $db = loadJSON("../DATABASE/user.json");
-
-        if(alreadyTaken($db["users"], "username", $userData["username"])){
-        sendJSON(["message" => "Username is already in use"], 409);
-        exit();
-    }
-        else if(alreadyTaken($db["users"], "email", $userData["email"])){
-            sendJSON(["message" => "Email is already in use"], 409);
-            exit();
+        foreach($db["users"] as $key){
+            if($key["username"] === $userData["username"]){
+                sendJSON(["message" => "Username is already in use"], 409);
+                exit();
+            }
+            else if($key["email"] === $userData["email"]){
+                sendJSON(["message" => "Email is already in use"], 409);
+                exit();
+            }
         }
-
+    
         //Kollar om det finns en fileToUpload nyckeln finns med som är profilbilden. Om den finns skapas nyckeln. (Denna kommer ha en defult)
-
-        else{ 
             //Lägger användaren som nästa ID
             $nextID = nextHighestId($db["users"]);
             //Kollar så att det är samma lösenord mellan password och confirm password
@@ -52,6 +51,22 @@
                 //Hashar lösenordet
                 $hashedPassword = password_hash($userData['password'], PASSWORD_DEFAULT);
             }
+
+            if(isset($_FILES["fileToUpload"])){
+                //Skapar ett unikt bildnamn
+                $imgName = $_FILES["fileToUpload"]["name"];
+                $imgName = hash("sha256", $imgName + time());
+                //Kollar filtyp
+                //OBS!!!!: INTE SÄKERT SÄTT ATT KOLLA FIL MEN BÄTTRE ÄN INGET
+                if($_FILES["fileToUpload"]["type"] === "image/jpeg"){
+                    move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "../DATABASE/IMAGES/PROFILE/$imgName.jpg");
+                    $userData["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/$imgName.jpg";
+                }
+            }
+            else{
+                $userData["profile_picture"]["filepath"] = $_POST["profileImg"];
+            }
+            
 
             //Använder en foreach för att göra alla inskickade värden till ett object med användarens alla nycklar
             foreach($userData as $key => $value){
@@ -78,14 +93,10 @@
             $hashedUserId = password_hash($nextID, PASSWORD_DEFAULT);
             $db["users"]["$nextID"]["sessionId"] = $hashedUserId;
             $db["users"]["$nextID"]["id"] = $nextID;
-
             $db["users"]["$nextID"]["profile_picture"] = $nextID;
             
             //Sparar användaren det i databasen
             saveJSON("../DATABASE/user.json", $db);
-            $nextnextID = nextHighestId($db["users"]);
-            sendJSON(["pictureID" => $nextID]);
-            sendJSON(["message" => "User has been created"], 200);
-        }
+            sendJSON(["message" => "User has been created", "pictureID" => $nextID], 200);
     
 ?>

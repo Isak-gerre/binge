@@ -19,11 +19,11 @@ signUpForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const rawSignUpData = new FormData(signUpForm);
 
-    let object = {};
+    // let object = {};
     
-    for(let [key, value] of rawSignUpData.entries()) {
-        object[key] = value;
-    }   
+    // for(let [key, value] of rawSignUpData.entries()) {
+    //     object[key] = value;
+    // }   
 
     var array = [];
     var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
@@ -32,48 +32,53 @@ signUpForm.addEventListener("submit", (event) => {
         array.push(checkboxes[i].value)
     }
     
-    object["active_streaming_services"] = array;
-    data = JSON.stringify(object);
+    rawSignUpData.append("active_streaming_services", array);
+
+    // object["active_streaming_services"] = array;
+    // data = JSON.stringify(object);
 
     const req = new Request("http://localhost:7001/POST/create-user.php", {
         method: "POST",
-        body: data
+        body: rawSignUpData
     });
 
     fetch(req)
     .then(response => response.json())
     .then(data => {
         pictureID = data.pictureID;
-        });    
 
 });
 
-let signUpFormImage = document.getElementById("signUpFormImage");
 
-    signUpFormImage.addEventListener("submit", (event) => {
-        console.log("SignUpFormImage ok");
-        event.preventDefault();
-        image = new FormData(signUpFormImage);
+
+// let signUpFormImage = document.getElementById("signUpFormImage");
+
+//     data = {};
+//     data["pictureID"] = pictureID;
+
+//     signUpFormImage.addEventListener("submit", (event) => {
+//         console.log("SignUpFormImage ok");
+//         event.preventDefault();
+//         image = new FormData(signUpFormImage);
         
-        if(document.getElementById("fileToUpload").value == ""){
-            let form = document.getElementById("profileImgForm");
-            image = document.querySelector('input[name="prfoileImg"]:checked').value;
-            document.getElementById("signUpFormImage").setAttribute("enctype", "application/json");
-        }
+//         if(document.getElementById("fileToUpload").value == ""){
+//             let form = document.getElementById("profileImgForm");
+//             image = document.querySelector('input[name="prfoileImg"]:checked').value;
+//             document.getElementById("signUpFormImage").setAttribute("enctype", "application/json");
+//         }
 
-        const req1 = new Request("http://localhost:7001/POST/add-profile-picture.php", {
-            method: "POST",
-            body: pictureID
-        });
+//         data["image"] = image;
+
+//         const req1 = new Request("http://localhost:7001/POST/add-profile-picture.php", {
+//             method: "POST",
+//             body: data
+//         });
     
-        fetch(req)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            });  
- });
-
-
-    
-
+//         fetch(req1)
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log(data.pictureID);
+//         });  
+//     });
+});
 
