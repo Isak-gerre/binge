@@ -129,7 +129,8 @@ body {
           align-items: center;
   gap: 10px;
   font-family: "Archivo", sans-serif;
-  font-size: 1.2rem;
+  font-size: 16px;
+  padding-bottom: 5px;
   width: 100%;
   padding: 10px 25px;
 }
@@ -161,13 +162,13 @@ body {
 
 #profileInfo #usernameDiv #settingOrPlus p {
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
   padding: 0;
 }
 
 #followInfo {
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -213,7 +214,7 @@ body {
   width: 100%;
   height: 50px;
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -317,7 +318,7 @@ body {
 
 #followContainer #usersWrapper div {
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -798,7 +799,7 @@ body {
 
 .movie-profile-middle .movie-profile-description p {
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
   color: #eeeeee;
   text-align: left;
   font-size: 14px;
@@ -811,7 +812,8 @@ body {
 .movie-profile-middle .movie-profile-streamingservices h4 {
   color: #eeeeee;
   font-family: "Archivo", sans-serif;
-  font-size: 1.2rem;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 10px;
 }
 
@@ -884,7 +886,8 @@ body {
 .movie-profile-middle .movie-profile-credits .movie-profile-cast h4 {
   color: #eeeeee;
   font-family: "Archivo", sans-serif;
-  font-size: 1.2rem;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 10px;
 }
 
@@ -907,7 +910,8 @@ body {
 .movie-profile-middle .movie-profile-credits .movie-profile-director h4 {
   color: #eeeeee;
   font-family: "Archivo", sans-serif;
-  font-size: 1.2rem;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 10px;
 }
 
@@ -941,7 +945,7 @@ body {
   padding-left: 25px;
   color: #eeeeee;
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
   max-width: 110px;
 }
 
@@ -969,7 +973,8 @@ body {
 .movie-profile-middle .movie-profile-reviews h4 {
   color: #eeeeee;
   font-family: "Archivo", sans-serif;
-  font-size: 1.2rem;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 10px;
 }
 
@@ -984,7 +989,8 @@ body {
 .movie-profile-middle .movie-profile-similarMovies h4 {
   color: #eeeeee;
   font-family: "Archivo", sans-serif;
-  font-size: 1.2rem;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 10px;
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
@@ -1008,7 +1014,9 @@ body {
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin-top: 5px;
+  padding-top: 10px;
+  padding-right: 25px;
+  padding-left: 25px;
 }
 
 .userContainer {
@@ -1021,8 +1029,9 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  padding: 0.5vh 0;
-  font-family: 'Archivo', sans-serif;
+  padding: 0 0 5px 0;
+  font-family: "Archivo", sans-serif;
+  font-size: 15px;
 }
 
 .activityContainer {
@@ -1030,22 +1039,21 @@ body {
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
-  -webkit-box-shadow: .2vh .2vh .2vh grey;
-          box-shadow: .2vh .2vh .2vh grey;
-  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 3px #676767;
+          box-shadow: 3px 3px 3px #676767;
+  border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
 .activityContainerLeft {
-  padding: 1vh;
+  padding: 5px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   -ms-flex-preferred-size: 0;
       flex-basis: 0;
-  font-family: 'Mulish', sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1056,7 +1064,6 @@ body {
 }
 
 .activityContainerRight {
-  border-radius: 0vh 10px;
   -webkit-box-flex: 1.5;
       -ms-flex-positive: 1.5;
           flex-grow: 1.5;
@@ -1067,6 +1074,7 @@ body {
   min-height: 100px;
   -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
           clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
+  overflow: hidden;
 }
 
 .type {
@@ -1077,11 +1085,13 @@ body {
       -ms-flex-align: center;
           align-items: center;
   color: black;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
 }
 
 .typeText {
-  font-size: 15px;
-  margin-right: .5vw;
+  margin-right: 5px;
   color: black;
 }
 
@@ -1090,16 +1100,17 @@ body {
 }
 
 .title {
-  font-family: 'Archivo', sans-serif;
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
   font-weight: bold;
   color: black;
 }
 
 .userPic {
-  height: 4vh;
-  width: 4vh;
+  height: 25px;
+  width: 25px;
   border-radius: 50%;
-  margin-right: 1.5vh;
+  margin-right: 5px;
   background-size: cover;
 }
 
@@ -1123,23 +1134,29 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .comment {
-  font-size: 13px;
   color: black;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
 }
 
 .rate {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 5px 0;
 }
 
 .star {
@@ -1261,7 +1278,7 @@ body {
 #frw .friends-recently-watched > div .profile-box .profile-name {
   color: "Mulish", sans-serif;
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
 }
 
 #frw .friends-recently-watched > div:last-child {

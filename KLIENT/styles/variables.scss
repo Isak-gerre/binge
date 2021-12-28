@@ -20,8 +20,9 @@ $titlePadding: 5px;
 
 //Borders and radius
 $borderRadiusButtons: 10px;
-$borderRadiusObjects: 10px;
+$borderRadiusObjects: 5px;
 $borderRadiusNav: 8px;
+$boxShadow: 3px;
 
 // FUNCTIONS
 
@@ -52,24 +53,26 @@ $borderRadiusNav: 8px;
 
 @mixin bigTitleFont() {
     font-family: $headerFont;
-    font-size: 1.5rem;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 @mixin smallTitleFont() {
     font-family: $headerFont;
-    font-size: 1.2rem;
+    font-size: 16px;
+    padding-bottom: $innerPadding;
 }
 
 @mixin bodyFont() {
     font-family: $bodyFont;
-    font-size: 0.9rem;
+    font-size: 14px;
 }
 
 @mixin postFont() {
-    font-family: $bodyFont;
-    font-size: 0.7rem;
+  font-family: $headerFont;
+  font-size: 15px;
 }
-
+// ------------------------
 @mixin smallFont() {
     font-family: $bodyFont;
     font-size: 0.6rem;

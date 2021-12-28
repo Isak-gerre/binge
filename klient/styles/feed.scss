@@ -6,58 +6,55 @@
     flex-direction: column;
     width: 100%;
     box-sizing: border-box;
-    margin-top: 5px;
+    padding-top: $betweenPadding;
+    padding-right: $wrapperPadding;
+    padding-left: $wrapperPadding;
 }
 
 .userContainer {
     display: flex;
     justify-content: space-between;
     flex-grow: 1;
-    padding: 0.5vh 0;
-    font-family: 'Archivo', sans-serif;
+    padding: 0 0 $innerPadding 0;
+    @include postFont();
 }
 
 .activityContainer {
     background-color: rgb(255, 255, 255);
     flex-grow: 2;
-    box-shadow: .2vh .2vh .2vh grey;
+    box-shadow: $boxShadow $boxShadow $boxShadow rgb(103, 103, 103);
     border-radius: $borderRadiusObjects;
     display: flex;
 }
 
 .activityContainerLeft {
-    padding: 1vh;
+    padding: $innerPadding;
     flex-grow: 1;
     flex-basis: 0;
-    font-family: 'Mulish', sans-serif;
     display: flex;
     flex-direction: column;
 }
 
 .activityContainerRight {
-    border-radius: 0vh $borderRadiusObjects;
     flex-grow: 1.5;
     flex-basis: 0;
     background-size: cover;
     background-position: center;
     min-height: 100px;
     clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
+    overflow: hidden;
 }
 
 .type {
     display: flex;
     align-items: center;
-
     color: $darkFont;
-
+    @include smallTitleFont();
 }
 
 .typeText {
-    font-size: 15px;
-    margin-right: .5vw;
-
+    margin-right: $innerPadding;
     color: $darkFont;
-
 }
 
 .typeIcon {
@@ -65,18 +62,15 @@
 }
 
 .title {
-    font-family: 'Archivo', sans-serif;
-    font-weight: bold;
-
+    @include bigTitleFont();
     color: $darkFont;
-
 }
 
 .userPic {
-    height: 4vh;
-    width: 4vh;
+    height: 25px;
+    width: 25px;
     border-radius: 50%;
-    margin-right: 1.5vh;
+    margin-right: $innerPadding;
     background-size: cover;
 }
 
@@ -89,19 +83,17 @@
 .date {
     color: $lightFont;
     flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    @include flex(row, flex-end, center);
 }
 
 .comment {
-    font-size: 13px;
     color: $darkFont;
-
+    @include bodyFont();
 }
 
 .rate {
     display: flex;
+    padding: $innerPadding 0;
 }
 
 .star {
