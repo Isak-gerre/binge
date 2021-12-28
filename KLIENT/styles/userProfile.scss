@@ -5,35 +5,52 @@ body {
 }
 
 #topWrapperProfile {
-  @include flex(row, center, center);
-  gap: 30px;
-  z-index: 100;
-  width: 100%;
-  padding: $wrapperPadding;
-}
-#profileWrapper {
-  z-index: 100;
+    @include flex(row, center, center);
+    width: 100%;
+    padding: $betweenPadding $wrapperPadding;
+    color: $lightFont;
 }
 
 #profilePic {
-  @include profilePicture(100px, 100px);
-  overflow: hidden;
-
-  img {
-    width: 100%;
-  }
+    @include profilePicture(90px, 90px);
+    overflow: hidden;
+    
+    div {
+        height: 100%;
+        width: 100%;
+        background-position: center;
+        background-size: cover;
+    }
 }
 
 #profileInfo {
-  @include flex(column, center, flex-start);
-  gap: 5px;
-  flex-grow: 1;
+    @include flex(column, center, flex-start);
+    gap: 5px;
+    flex-grow: 1;
 
-  #usernameDiv {
-    @include flex(row, space-between, center);
-    @include smallTitleFont();
-    p {
-      margin: 0;
+    #usernameDiv {
+        @include flex(row, space-between, center);
+        gap: $betweenPadding;
+        @include smallTitleFont();
+        p { padding: 0;}
+
+        width: 100%;
+        padding: $betweenPadding $wrapperPadding;
+
+        #settingOrPlus {
+            background: $gradientPeach;
+            @include flex(row, center, center);
+            gap: 4px;
+            
+            width: 100px;
+            border-radius: 5px;
+            padding: 3px;
+
+            p {
+                @include bodyFont();
+                padding: 0;
+            }
+        }
     }
 
     width: 100%;
@@ -57,46 +74,75 @@ body {
 }
 
 #profileNav {
-  width: 100%;
-  height: 50px;
-  @include bodyFont();
-  @include flex(row, center, center);
-  border-top: 1px solid black;
-  z-index: 100;
-
-  div {
+    padding: 0 $wrapperPadding;
+    color: $lightFont;
+    width: 100%;
+    height: 50px;
+    @include bodyFont();
     @include flex(row, center, center);
-    flex-grow: 1;
-    height: 100%;
-  }
+    border-radius: $borderRadiusButtons;
+    overflow: hidden;
+    
+    div {
+        @include flex(row, center, center);
+        background-color: #1C1452;
+        width: 33%;
+        flex-grow: 1;
+        height: 100%;
+    }
 
-  .selected {
-    background-color: white;
-  }
+    .selected {
+        background: $gradientPeach;
+        border-radius: 5px;
+    }
 }
 
 #followContainer {
-  @include flex(column, flex-start, center);
-  @include transitionFromLeft();
-  gap: 10px;
-  background-color: $backgroundColor;
-  width: 100%;
-  z-index: 100;
-
-  div {
-    @include bodyFont();
-    @include flex(row, flex-start, center);
-    gap: 10px;
+    @include transitionFromLeft();
+    @include flex(column, flex-start, flex-start);
+    gap: $betweenPadding;
+    background-color: $backgroundColor;
     width: 100%;
-    height: 100px;
-
     padding: $wrapperPadding;
-    cursor: pointer;
 
-    img {
-      @include profilePicture(100px, 100px);
+    button {
+        border: none;
+        border-radius: $borderRadiusButtons;
+        background: $gradientPeach;
+        padding: $buttonPadding;
     }
-  }
+    
+    #usersWrapper {
+        @include flex(column, flex-start, center);
+        flex-grow: 1;
+        width: 100%;
+        color: $lightFont;
+        gap: $betweenPadding;
+
+        div {
+            @include bodyFont();
+            @include flex(row, space-between, center);
+            gap: $betweenPadding;
+            width: 100%;
+            height: 100px;
+    
+            // padding: $wrapperPadding;
+            cursor: pointer;
+    
+            img {
+                @include profilePicture(90px, 90px);
+            }
+
+            button {
+                width: 70px;
+                transition: background 0.5s ease-in;
+            }
+            button#noGradient {
+                background:#1C1452;
+            }
+        }
+    }
+    
 }
 
 #settingsWindow {
@@ -180,6 +226,8 @@ body {
 #closeTab {
   position: absolute;
   z-index: 100;
+    width: 30px;
+    height: 30px;
 }
 
 #profileWrapper {

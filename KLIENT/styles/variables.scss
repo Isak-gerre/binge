@@ -52,29 +52,31 @@ $borderRadiusNav: 8px;
 // FONTS
 
 @mixin bigTitleFont() {
-  font-family: "Archivo";
-  font-size: 1.5rem;
+    font-family: $headerFont;
+    font-size: 1.5rem;
 }
 
 @mixin smallTitleFont() {
-  font-family: "Archivo";
-  font-size: 1.2rem;
+    font-family: $headerFont;
+    font-size: 1.2rem;
 }
 
 @mixin bodyFont() {
-  font-family: "Mulish";
-  font-size: 0.9rem;
+    font-family: $bodyFont;
+    font-size: 0.9rem;
 }
 
 @mixin postFont() {
-  font-family: "Mulish";
-  font-size: 0.7rem;
+    font-family: $bodyFont;
+    font-size: 0.7rem;
 }
 
 @mixin smallFont() {
+    font-family: $bodyFont;
+    font-size: 0.6rem;
 }
 
 @mixin xSmallFont() {
-  font-family: "Mulish";
-  font-size: 0.5rem;
+    font-family: $bodyFont;
+    font-size: 0.5rem;
 }

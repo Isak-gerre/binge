@@ -24,6 +24,7 @@ body {
   // overflow-y: scroll;
   // height: 100vh;
   @include flex(column, none, center);
+  padding: $wrapperPadding;
   overflow-x: hidden;
   color: $darkFont;
 }
