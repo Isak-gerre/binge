@@ -10,6 +10,16 @@
             "rate": "",
             "updated": false
         },
+        "2": {
+            "id": 2,
+            "userID": 5,
+            "movieID": 100,
+            "type": "review",
+            "date": "20211203",
+            "comment": "S\u00e5 sp\u00e4nnande och samtidigt den roligaste filmen jag n\u00e5gonsin sett! \u00c4lskar hela storyn och nj\u00f6r under hela filmens g\u00e5ng. Underbar.",
+            "rate": "4",
+            "updated": false
+        },
         "3": {
             "id": 3,
             "userID": 4,
@@ -180,6 +190,16 @@
             "rate": "",
             "updated": false
         },
+        "21": {
+            "id": 21,
+            "userID": 4,
+            "movieID": "550",
+            "type": "watchlist",
+            "date": "20211222",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
         "22": {
             "id": 22,
             "userID": 4,
@@ -194,6 +214,16 @@
             "id": 23,
             "userID": 4,
             "movieID": "123",
+            "type": "watched",
+            "date": "20211222",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "24": {
+            "id": 24,
+            "userID": 4,
+            "movieID": "550",
             "type": "watched",
             "date": "20211222",
             "comment": "",
@@ -239,56 +269,6 @@
             "comment": "",
             "rate": "",
             "updated": false
-        },
-        "30": {
-            "id": 30,
-            "userID": 4,
-            "movieID": "634649",
-            "type": "watched",
-            "date": "20211223",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "31": {
-            "id": 31,
-            "userID": 4,
-            "movieID": "550",
-            "type": "watched",
-            "date": "20211223",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "32": {
-            "id": 32,
-            "userID": 4,
-            "movieID": "550",
-            "type": "watchlist",
-            "date": "20211223",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "33": {
-            "id": 33,
-            "userID": 5,
-            "movieID": "100",
-            "type": "watched",
-            "date": "20211227",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "34": {
-            "id": 34,
-            "userID": 5,
-            "movieID": "100",
-            "type": "review",
-            "date": "20211227",
-            "comment": "nja inte s\u00e5 v\u00e4rst bra!",
-            "rate": "3",
-            "updated": true
         }
     }
 }
