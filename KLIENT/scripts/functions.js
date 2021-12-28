@@ -411,7 +411,6 @@ async function getAdditionalInfo(movieID) {
     let response = await fetch(`http://localhost:7001/GET/get-additional-movieInfo.php?movieID=${movieID}`);
     console.log(response)
     let data = await response.json();
-    console.log(data);
     return data;
     
   } catch (error) {
