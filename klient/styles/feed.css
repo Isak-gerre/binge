@@ -28,20 +28,16 @@
 }
 
 .activityContainer {
-  background-color: #6F6D82;
+  background-color: white;
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
-  -webkit-box-shadow: .2vh .2vh .2vh black;
-          box-shadow: .2vh .2vh .2vh black;
+  -webkit-box-shadow: .2vh .2vh .2vh grey;
+          box-shadow: .2vh .2vh .2vh grey;
   border-radius: 10px;
-  min-height: 100px;
-  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
 }
 
 .activityContainerLeft {
@@ -62,6 +58,7 @@
 }
 
 .activityContainerRight {
+  border-radius: 0vh 10px;
   -webkit-box-flex: 1.5;
       -ms-flex-positive: 1.5;
           flex-grow: 1.5;
@@ -69,6 +66,7 @@
       flex-basis: 0;
   background-size: cover;
   background-position: center;
+  min-height: 100px;
   -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
           clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
 }
@@ -138,11 +136,6 @@
 .comment {
   font-size: 13px;
   color: black;
-}
-
-#expandComment {
-  width: 40px;
-  margin: auto;
 }
 
 .rate {
