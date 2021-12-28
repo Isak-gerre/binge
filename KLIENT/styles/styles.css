@@ -455,6 +455,7 @@ body {
           flex-direction: column;
   position: relative;
   z-index: 100;
+  min-height: 100vh;
 }
 
 .overlay-fade {

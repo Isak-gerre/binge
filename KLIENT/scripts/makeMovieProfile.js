@@ -216,6 +216,7 @@ async function makeMovieProfile(movieID) {
       let crew = createCreditDiv(crewMember);
       director.append(crew);
     }
+<<<<<<< Updated upstream
   });
 
   function createCreditDiv(person) {
@@ -287,6 +288,54 @@ async function makeMovieProfile(movieID) {
       postNewActivity(movieID, loggedInUser, "watchlist");
       watchLater.classList.add("marked");
     }
+=======
+
+    credits.append(cast, director);
+
+    // Reviews - Isak VÄNTAR PÅ FEED
+    let reviews = document.createElement("div");
+    reviews.className = "movie-profile-reviews";
+    reviews.setAttribute("id", "movie-profile-reviews");
+    let titleReview = document.createElement("h4");
+    titleReview.textContent = "Reviews";
+    reviews.append(titleReview);
+
+    let activities = await getActivityByMovieID(movieID);
+    activities.sort((a,b) => b.date - a.date);
+
+    createActivities(activities, "feed", "movie-profile-reviews");
+
+    // Similar Movies - Niklas
+    let similarMovies = document.createElement("div");
+    similarMovies.className = "movie-profile-similarMovies";
+    let titleSimilar = document.createElement("h4");
+    titleSimilar.textContent = "Similar Movies";
+    similarMovies.append(titleSimilar);
+
+    let similar = await getSimilar(movieID);
+
+    await similar.message.results.forEach(async function (simMovie) {
+        let movie = await makeMovieBanner(simMovie.id);
+        similarMovies.append(movie);
+    });
+
+    middle.append(description, streamingservices, credits, reviews, similarMovies);
+    // ______________________________________________________________________________________________________
+    // Appends in overlay
+    overlay.append(movieHeader, info, middle);
+
+
+    // ------------------------------------------------------------------------------------------------------
+    // EVENT for the buttons
+    watchLater.addEventListener("click", async function () {
+        relation = await getButtonRealtionStatus(loggedInUser, movieID);
+
+        // om personen inte har filmen i sin watchlist => lägg till den
+        if (relation.watchlist == false) {
+            postNewActivity(movieID, loggedInUser, "watchlist");
+            watchLater.classList.add("marked");
+        }
+>>>>>>> Stashed changes
 
     // om personen HAR ifilmen i sin watchlist => ta bort den
     if (relation.watchlist !== false) {
@@ -385,6 +434,7 @@ async function makeMovieProfile(movieID) {
       messageWrapper.append(topDiv, middleDiv, form, submitButton);
     }
 
+<<<<<<< Updated upstream
     overlayFade.append(messageWrapper);
     document.body.append(overlayFade);
 
@@ -392,6 +442,193 @@ async function makeMovieProfile(movieID) {
     document.querySelector(".exit").addEventListener("click", () => {
       overlayFade.remove();
       document.body.style.overflow = "visible";
+=======
+    review.addEventListener("click", (e) => {
+        // Prevent scrolling
+        document.body.style.overflow = "hidden";
+
+        // overlayFade
+        let overlayFade = document.createElement("div");
+        overlayFade.className = "overlay-fade";
+        let messageWrapper = document.createElement("div");
+        messageWrapper.className = "message-wrapper";
+
+        // Position
+        let currentTopPosition = window.pageYOffset.toFixed(0);
+        overlayFade.style.top = `${currentTopPosition}px`;
+        messageWrapper.style.top = `${currentTopPosition}px`;
+
+        document.body.append(overlayFade);
+
+        setTimeout(() => {
+            messageWrapper.style.display = "flex";
+        }, 500);
+
+
+
+
+        // the object you press with the finger/mouse
+        let object = e.target.className;
+
+        // Content depending on what button is clicked
+        if (object.includes("review")) {
+
+            // Top Div -
+            let topDiv = document.createElement("div");
+            topDiv.className = "top";
+            let exitButton = document.createElement("img");
+            exitButton.className = "exit button";
+            exitButton.setAttribute("src", "../icons/exit.svg");
+            let title = document.createElement("h1");
+            title.className = "titleComment";
+            title.textContent = "Tell your friends";
+
+            // Middle Div -
+            let middleDiv = document.createElement("div");
+            middleDiv.className = "middle";
+
+            // Rating
+            let labelRating = document.createElement("label");
+            labelRating.textContent = "label-rating";
+
+            let stars = document.createElement("section");
+            stars.setAttribute("id", "rate");
+
+            for (let i = 1; i <= 5; i++) {
+                let input = document.createElement("input");
+                input.setAttribute("type", "radio");
+                input.setAttribute("id", `star_${i}`);
+                input.setAttribute("name", "rate");
+                input.setAttribute("value", `${i}`);
+
+                if(relation.review.rate != undefined && relation.review.rate == i){
+                    input.checked = true;
+                }
+                
+                let label = document.createElement("label");
+                label.setAttribute("for", `star_${i}`);
+                label.setAttribute("title", `${i}`);
+                label.innerHTML = "&#9733;";
+
+                stars.prepend(input, label);
+            }
+            
+
+
+            // Bottom
+            let bottomDiv = document.createElement("div");
+            bottomDiv.className = "bottom";
+            let labelComment = document.createElement("label");
+            labelComment.textContent = "Review";
+
+            let textArea = document.createElement("textarea");
+            textArea.setAttribute("id", "text-area");
+            textArea.setAttribute("name", "comment");
+            textArea.setAttribute("rows", "4");
+            textArea.setAttribute("placeholder", "Leave a comment...");
+
+            if(relation.review.comment != undefined){
+                textArea.textContent = relation.review.comment;
+            }
+
+            // Submit-button
+            let submitButton = document.createElement("button");
+            submitButton.setAttribute("type", "submit");
+            submitButton.className = "submit button";
+            submitButton.textContent = "Submit";
+
+            topDiv.append(exitButton, title);
+            middleDiv.append(stars);
+            bottomDiv.append(labelComment, textArea);
+            messageWrapper.append(topDiv, middleDiv, bottomDiv, submitButton);
+
+
+            setTimeout(() => {
+                topDiv.style.display = "flex";
+                middleDiv.style.display = "flex";
+                bottomDiv.style.display = "flex";
+                submitButton.style.display = "block";
+            }, 1000);
+            
+        }
+
+        overlayFade.append(messageWrapper);
+        document.body.append(overlayFade);
+
+        // exit click
+        document.querySelector(".exit").addEventListener("click", () => {
+            overlayFade.remove();
+            document.body.style.overflow = "visible";
+        });
+
+        // submit click
+        document.querySelector(".submit").addEventListener("click", () => {
+            let comment = document.querySelector("textarea").value;
+            let starRate = 0;
+            let radioStars = document.querySelectorAll("input");
+            
+            radioStars.forEach(star => {
+                if(star.checked == true){
+                    starRate = star.value;     
+                }
+            });
+
+            let message = "";
+            // PATCH
+            if(relation.review != false){
+                relation.review.rate = starRate;
+                relation.review.comment = comment;
+                relation.review.updated = true;
+
+                patchActivity(relation.review);
+                message = "You updated your review";
+
+            // POST
+            } else {
+                postNewActivity(movieID, loggedInUser, "review", comment, starRate);
+                message = "Thanks for your review";
+            };
+
+            
+
+
+            let messageWrapper = document.querySelector(".message-wrapper");
+            let top = document.querySelector(".message-wrapper > .top");
+            let middle = document.querySelector(".message-wrapper > .middle");
+            let bottom = document.querySelector(".message-wrapper > .bottom");
+            top.style.animation = "fadeOut 1.2s";
+            middle.style.animation = "fadeOut 1.2s";
+            bottom.style.animation = "fadeOut 1.2s";
+
+            setTimeout(() => {
+                messageWrapper.innerHTML = "";
+                let p = document.createElement("p");
+                p.textContent = message;
+                p.style.animation = "fadeIn 1s";
+                messageWrapper.append(p);
+            }, 1000);
+
+            setTimeout(() => {
+                    overlayFade.style.animation = "fadeOut 1.2s";
+
+                    setTimeout( async function (){
+                        overlayFade.remove();
+                        document.body.style.overflow = "visible";
+                        
+                        // Uppdaterar review section efter du uppdaterat din review eller gjort en ny
+                        reviews.innerHTML = "";
+                        let titleReview = document.createElement("h4");
+                        titleReview.textContent = "Reviews";
+                        reviews.append(titleReview);
+                        let activities = await getActivityByMovieID(movieID);
+                        activities.sort((a,b) => b.date - a.date);
+                        console.log(activities);
+                        createActivities(activities, "feed", "movie-profile-reviews");
+                    }, 1000);
+            }, 3000);
+
+        })
+>>>>>>> Stashed changes
     });
 
     // star click
@@ -411,4 +648,12 @@ async function makeMovieProfile(movieID) {
   buttons.append(watchLater, watched, review);
 }
 
-// makeMovieProfile(movieID);
+async function getActivityByMovieID(movieID) {
+        try {
+            let response = await fetch(`http://localhost:7001/GET/get-activities.php?movieID=${movieID}`);
+            let data = await response.json();
+            return data;
+        } catch (error) {
+            console.error(error);
+        }
+    }

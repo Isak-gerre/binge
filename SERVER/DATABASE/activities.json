@@ -285,9 +285,19 @@
             "userID": 5,
             "movieID": "100",
             "type": "review",
-            "date": "20211227",
-            "comment": "nja inte s\u00e5 v\u00e4rst bra!",
-            "rate": "3",
+            "date": "20211228",
+            "comment": "GRYMT",
+            "rate": "5",
+            "updated": true
+        },
+        "35": {
+            "id": 35,
+            "userID": 5,
+            "movieID": "123",
+            "type": "review",
+            "date": "20211228",
+            "comment": "ojojojojjo",
+            "rate": "5",
             "updated": true
         }
     }

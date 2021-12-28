@@ -7,8 +7,10 @@
   flex-direction: column;
   position: relative;
   z-index: 100;
+  min-height: 100vh;
 }
-// Pop-up
+
+// WRAPPER för => overlay, review
 .overlay-fade {
   position: absolute;
   top: 0px;
@@ -17,7 +19,6 @@
   z-index: 10000;
   @include flex(row, center, center);
   background-color: rgba(0, 0, 0, 0.5);
-//   opacity: 0;
   animation: fadeIn 1s;
 
   .message-wrapper {
@@ -59,6 +60,7 @@
       }
     }
 
+    // STARS RATING
     .middle {
         display: none;
         width: 100%;
@@ -66,9 +68,6 @@
         animation: fadeIn 1s;
         flex-basis: 90px;
         position: relative;
-
-    
-        
         
         #rate {
             @include flex(row, flex-start, center);
@@ -115,6 +114,7 @@
         }
     }
 
+    // COMMENT
     .bottom{
         @include flex(column, center, flex-start);
         display: none;
@@ -140,6 +140,7 @@
         }
     }
 
+    // SUBMIT BUTTON
     .submit {
         display: none;
         border: none;
@@ -158,6 +159,7 @@
   }
 }
 
+// ANIMATION för => review pop-up
 @keyframes fadeOut {
     from {
         opacity:1;
