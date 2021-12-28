@@ -14,7 +14,7 @@ $bodyFont: "Mulish", sans-serif;
 
 // Margins and stuff
 $wrapperPadding: 25px;
-$buttonPadding: 5px;
+$buttonPadding: 3px;
 $innerPadding: 5px;
 $betweenPadding: 10px;
 $titlePadding: 5px;
@@ -50,6 +50,8 @@ $boxShadow: 3px;
   transition: left 1s;
 }
 
+
+
 // FONTS
 
 @mixin bigTitleFont() {
@@ -67,6 +69,7 @@ $boxShadow: 3px;
 @mixin bodyFont() {
     font-family: $bodyFont;
     font-size: 14px;
+    line-height: 1.4;
 }
 
 @mixin postFont() {
@@ -74,12 +77,8 @@ $boxShadow: 3px;
   font-size: 15px;
 }
 // ------------------------
-@mixin smallFont() {
-    font-family: $bodyFont;
-    font-size: 0.6rem;
-}
 
 @mixin xSmallFont() {
     font-family: $bodyFont;
-    font-size: 0.5rem;
+    font-size: 10px;
 }

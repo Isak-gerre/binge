@@ -107,20 +107,22 @@
 
     .movie-profile-poster {
       width: 100%;
-      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+      box-shadow: $boxShadow $boxShadow $boxShadow $backgroundColor;
     }
   }
 
   // INFO TEXT
   .movie-profile-info-text {
-    font-family: "Archivo", sans-serif;
-    line-height: 1.4;
+    // font-family: "Archivo", sans-serif;
+    // line-height: 1.4;
     @include flex(column, flex-end, flex-start);
+
 
     // SHORT INFO
     p {
       letter-spacing: 0.07em;
-      font-size: 11px;
+      @include bodyFont();
+      font-size: 12px;
       color: $lightFont;
       padding-bottom: $betweenPadding;
       padding-top: $betweenPadding;
@@ -128,8 +130,7 @@
 
     // TITLE
     .movie-profile-title {
-      font-size: 14px;
-      font-weight: bold;
+      @include bigTitleFont();
       color: $lightFont;
       padding-bottom: $betweenPadding;
     }
@@ -161,7 +162,7 @@
         border: 0;
         padding: $buttonPadding;
         height: 25px;
-        background: #1d155a;
+        background: #20185b;
         filter: none;
         @include flex(row, center, center);
       }
@@ -178,8 +179,8 @@
         // OPTION 2
         border-radius: $borderRadiusButtons;
         border: 0;
-        color: whitesmoke;
-        background: linear-gradient(40deg, #ef9d1a, #fd047c);
+        color: $lightFont;
+        background: $gradientPeach;
         filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
       }
     }
@@ -199,7 +200,6 @@
       @include bodyFont();
       color: $lightFont;
       text-align: left;
-      font-size: 14px;
     }
   }
 

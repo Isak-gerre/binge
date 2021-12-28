@@ -1,110 +1,109 @@
 @import "variables.scss";
 
-
 .container {
     display: flex;
     flex-direction: column;
     width: 100%;
     box-sizing: border-box;
     padding-top: $betweenPadding;
-    padding-right: $wrapperPadding;
-    padding-left: $wrapperPadding;
+
 }
 
+// USERNAME AND DATE
 .userContainer {
     display: flex;
     justify-content: space-between;
     flex-grow: 1;
     padding: 0 0 $innerPadding 0;
     @include postFont();
+
+    .userPic {
+        @include profilePicture(25px, 25px);
+        margin-right: $innerPadding;
+        background-size: cover;
+    }
+    
+    .username {
+        flex-grow: 10;
+        display: flex;
+        align-items: center;
+    }
+    
+    .date {
+        color: $lightFont;
+        flex-grow: 1;
+        @include flex(row, flex-end, center);
+    }
 }
 
+// THE ACTIVITY
 .activityContainer {
     background-color: $activityColor;
     flex-grow: 2;
-    box-shadow: $boxShadow $boxShadow $boxShadow rgb(103, 103, 103);
+    box-shadow: $boxShadow $boxShadow $boxShadow $backgroundColor;
     border-radius: $borderRadiusObjects;
     overflow: hidden;
     display: flex;
     min-height: 100px;
-}
 
-.activityContainerLeft {
-    padding: $innerPadding;
-    flex-grow: 1;
-    flex-basis: 0;
-    display: flex;
-    flex-direction: column;
 
-    #expandComment {
-        width: 35px;
-        margin: auto;
+    .activityContainerLeft {
+        padding: $innerPadding $innerPadding $innerPadding $betweenPadding;
+        flex-grow: 1;
+        flex-basis: 0;
+        display: flex;
+        flex-direction: column;
+
+        .type {
+            display: flex;
+            align-items: center;
+            color: $darkFont;
+            @include smallTitleFont();
+        }
+        
+        .typeText {
+            margin-right: $innerPadding;
+            color: $darkFont;
+        }
+        
+        .typeIcon {
+            height: 60%;
+        }
+        
+        .title {
+            @include bigTitleFont();
+            color: $darkFont;
+        }
+        
+        .comment {
+            color: $darkFont;
+            @include bodyFont();
+            height: 50px;
+            transition: height 1s;
+        }
+        
+        .rate {
+            display: flex;
+            padding: $innerPadding 0;
+        }
+        
+        .star {
+            height: 15px;
+        }
+    
+        #expandComment {
+            width: 35px;
+            margin: auto;
+        }
     }
-}
-
-.activityContainerRight {
-    flex-grow: 1.5;
-    flex-basis: 0;
-    background-size: cover;
-    background-position: center;
-    clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
-    overflow: hidden;
-}
-
-.type {
-    display: flex;
-    align-items: center;
-    color: $darkFont;
-    @include smallTitleFont();
-}
-
-.typeText {
-    margin-right: $innerPadding;
-    color: $darkFont;
-}
-
-.typeIcon {
-    height: 60%;
-}
-
-.title {
-    @include bigTitleFont();
-    color: $darkFont;
-}
-
-.userPic {
-    height: 25px;
-    width: 25px;
-    border-radius: 50%;
-    margin-right: $innerPadding;
-    background-size: cover;
-}
-
-.username {
-    flex-grow: 10;
-    display: flex;
-    align-items: center;
-}
-
-.date {
-    color: $lightFont;
-    flex-grow: 1;
-    @include flex(row, flex-end, center);
-}
-
-.comment {
-    color: $darkFont;
-    @include bodyFont();
-    height: 50px;
-
-    transition: height 1s;
-}
-
-.rate {
-    display: flex;
-    padding: $innerPadding 0;
-}
-
-.star {
-    height: 15px;
+    
+    // MOVIE IMAGE
+    .activityContainerRight {
+        flex-grow: 1.5;
+        flex-basis: 0;
+        background-size: cover;
+        background-position: center;
+        clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
+        overflow: hidden;
+    }
 }
