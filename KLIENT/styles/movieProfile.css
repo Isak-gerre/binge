@@ -275,7 +275,7 @@
 }
 
 .movie-profile-middle .movie-profile-description p {
-  font-family: "Arial";
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
   color: #eeeeee;
   text-align: left;
@@ -288,7 +288,7 @@
 
 .movie-profile-middle .movie-profile-streamingservices h4 {
   color: #eeeeee;
-  font-family: "Arial";
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -361,7 +361,7 @@
 
 .movie-profile-middle .movie-profile-credits .movie-profile-cast h4 {
   color: #eeeeee;
-  font-family: "Arial";
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -384,7 +384,7 @@
 
 .movie-profile-middle .movie-profile-credits .movie-profile-director h4 {
   color: #eeeeee;
-  font-family: "Arial";
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -418,7 +418,7 @@
 .movie-profile-middle .movie-profile-credits .production-people p {
   padding-left: 25px;
   color: #eeeeee;
-  font-family: "Arial";
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
   max-width: 110px;
 }
@@ -446,7 +446,7 @@
 
 .movie-profile-middle .movie-profile-reviews h4 {
   color: #eeeeee;
-  font-family: "Arial";
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -461,7 +461,7 @@
 
 .movie-profile-middle .movie-profile-similarMovies h4 {
   color: #eeeeee;
-  font-family: "Arial";
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 10px;
   -ms-grid-row: 1;
