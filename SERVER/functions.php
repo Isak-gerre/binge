@@ -60,7 +60,7 @@ function inspect($variable)
 }
 // Returnerar näst kommande högsta ID:t
 function nextHighestId($array)
-{
+{   
     $highestId = 0;
     foreach ($array as $object) {
         if ($object["id"] > $highestId) {

@@ -8,40 +8,72 @@
 // * Hämta fyra random AVATARER
 //
 
+let data;
+let image;
+let pictureID;
 
-if(signUpForm){
-    console.log(signUpForm);
-    signUpForm.addEventListener("submit", (event) => {
+let signUpForm = document.getElementById("signUpForm");
+
+signUpForm.addEventListener("submit", (event) => {
+    console.log("SignUpForm ok");
+    event.preventDefault();
+    const rawSignUpData = new FormData(signUpForm);
+
+    let object = {};
     
-        event.preventDefault();
-        const rawSignUpData = new FormData(signUpForm);
+    for(let [key, value] of rawSignUpData.entries()) {
+        object[key] = value;
+    }   
+
+    var array = [];
+    var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        array.push(checkboxes[i].value)
+    }
     
-        let object = {};
-        for(let [key, value] of rawSignUpData.entries()) {
-            object[key] = value;
-        }   
-        data = JSON.stringify(object);
+    object["active_streaming_services"] = array;
+    data = JSON.stringify(object);
 
-        var array = [];
-        var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
-
-        for (var i = 0; i < checkboxes.length; i++) {
-            array.push(checkboxes[i].value)
-          }
-        
-        object["active_streaming_services"] = array;
-
-        data = JSON.stringify(object);
-
-        const req = new Request("http://localhost:7001/POST/create-user.php", {
-            method: "POST",
-            body: data,
-        });
-
-        fetch(req)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                });    
+    const req = new Request("http://localhost:7001/POST/create-user.php", {
+        method: "POST",
+        body: data
     });
-}
+
+    fetch(req)
+    .then(response => response.json())
+    .then(data => {
+        pictureID = data.pictureID;
+        });    
+
+});
+
+let signUpFormImage = document.getElementById("signUpFormImage");
+
+    signUpFormImage.addEventListener("submit", (event) => {
+        console.log("SignUpFormImage ok");
+        event.preventDefault();
+        image = new FormData(signUpFormImage);
+        
+        if(document.getElementById("fileToUpload").value == ""){
+            let form = document.getElementById("profileImgForm");
+            image = document.querySelector('input[name="prfoileImg"]:checked').value;
+            document.getElementById("signUpFormImage").setAttribute("enctype", "application/json");
+        }
+
+        const req1 = new Request("http://localhost:7001/POST/add-profile-picture.php", {
+            method: "POST",
+            body: pictureID
+        });
+    
+        fetch(req)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            });  
+ });
+
+
+    
+
+
