@@ -524,7 +524,12 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+<<<<<<< HEAD
   background-color: #0F0B2E;
+=======
+  position: relative;
+  z-index: 100;
+>>>>>>> parent of 22ca407 (up)
 }
 
 .movie-profile-backdrop {
