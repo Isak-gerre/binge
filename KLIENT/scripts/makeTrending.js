@@ -46,7 +46,7 @@ async function makeTrending() {
 
   slideshowDiv.append(slideshowSlider);
   document.querySelector("#trending").innerHTML = "";
-  document.querySelector("#trending").innerHTML = "<h1>Now trending</h1>";
+  document.querySelector("#trending").innerHTML = "<h3>Now trending</h3>";
   document.querySelector("#trending").append(slideshowDiv);
   loaded = true;
 }

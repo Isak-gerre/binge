@@ -13,6 +13,10 @@ async function executeFriendsActivities() {
   let actArray = await getFriendsActivities(userID);
   let filteredActArray = actArray.filter((activity) => activity.type === "watched");
 
+  let title = document.createElement("h3");
+  title.textContent = "Friends recently watched";
+  document.querySelector("#frw").prepend(title);
+
   // For every Activity that was filtered
   filteredActArray.forEach((activity) => {
     getFriendsRecentlyWatched(activity.movieID, activity.userID);
@@ -24,6 +28,10 @@ async function getFriendsRecentlyWatched(movieID, user) {
 
   let profileBox = document.createElement("div");
   profileBox.className = "profile-box";
+  console.log(user);
+  profileBox.addEventListener("click", () => {
+    window.location.href = `profile.php?userID=${user}`;
+  });
 
   let userInfo = await getUserInfo(user);
 

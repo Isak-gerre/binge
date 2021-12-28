@@ -9,6 +9,12 @@
   margin-top: 50px;
   z-index: 100;
 }
+#trending {
+  h3 {
+    padding: $betweenPadding $wrapperPadding;
+  }
+}
+
 //slideshow
 .slideshow-container {
   width: 100vw;
@@ -29,7 +35,7 @@
       height: 85%;
       width: 100vw;
       background-position: center;
-      background-size: contain;
+      background-size: cover;
       background-repeat: no-repeat;
     }
   }

@@ -5,6 +5,7 @@
 "use strict";
 
 async function makeGenreBanner(){
+
     let genres = await getGenres();
     genres["genres"].forEach(async function (genre) {
 
@@ -32,6 +33,10 @@ async function makeGenreBanner(){
         document.getElementById("genre").append(genreBanner);
 
     });
+
+    let title = document.createElement("h3");
+    title.textContent = "Genres";
+    document.querySelector("#genre").prepend(title);
     
     //Get movies by genre
     let movieByGenre = await getMoviesByGenre();
