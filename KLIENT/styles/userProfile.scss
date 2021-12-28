@@ -96,10 +96,16 @@ body {
   height: 50px;
   @include bodyFont();
   @include flex(row, center, center);
-  background-color: #1c1452;
-  width: 33%;
-  flex-grow: 1;
-  height: 100%;
+  border-radius: $borderRadiusButtons;
+  overflow: hidden;
+    
+  div {
+    @include flex(row, center, center);
+    background-color: #1C1452;
+    width: 33%;
+    flex-grow: 1;
+    height: 100%;
+  }
 
   .selected {
     background: $gradientPeach;
