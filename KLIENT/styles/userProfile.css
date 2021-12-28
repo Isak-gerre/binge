@@ -4,6 +4,8 @@ body {
 }
 
 #topWrapperProfile {
+  margin-top: 60px;
+  z-index: 15;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,7 +20,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  padding: 10px 19px;
+  padding: 10px 25px;
   color: #eeeeee;
 }
 
@@ -74,7 +76,7 @@ body {
   font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   width: 100%;
-  padding: 10px 19px;
+  padding: 10px 25px;
 }
 
 #profileInfo #usernameDiv p {
@@ -82,7 +84,7 @@ body {
 }
 
 #profileInfo #usernameDiv #settingOrPlus {
-  background: linear-gradient(63.8deg, #EF9D1A 10.76%, #FD047C 94.55%);
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -108,7 +110,7 @@ body {
   padding: 0;
 }
 
-#profileInfo #followInfo {
+#followInfo {
   font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
   display: -webkit-box;
@@ -127,7 +129,8 @@ body {
   width: 100%;
 }
 
-#profileInfo #followInfo #followersDiv, #profileInfo #followInfo #followingDiv {
+#followInfo #followersDiv,
+#followInfo #followingDiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -144,12 +147,14 @@ body {
   cursor: pointer;
 }
 
-#profileInfo #followInfo #followersDiv p, #profileInfo #followInfo #followingDiv p {
+#followInfo #followersDiv p,
+#followInfo #followingDiv p {
   margin: 0;
 }
 
 #profileNav {
-  padding: 0 19px;
+  z-index: 15;
+  padding: 0 25px;
   color: #eeeeee;
   width: 100%;
   height: 50px;
@@ -195,7 +200,7 @@ body {
 }
 
 #profileNav .selected {
-  background: linear-gradient(63.8deg, #EF9D1A 10.76%, #FD047C 94.55%);
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   border-radius: 5px;
 }
 
@@ -203,7 +208,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10001;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -221,15 +226,15 @@ body {
       -ms-flex-align: start;
           align-items: flex-start;
   gap: 10px;
-  background-color: #0F0B2E;
+  background-color: #0f0b2e;
   width: 100%;
-  padding: 19px;
+  padding: 25px;
 }
 
 #followContainer button {
   border: none;
   border-radius: 10px;
-  background: linear-gradient(63.8deg, #EF9D1A 10.76%, #FD047C 94.55%);
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   padding: 5px;
 }
 
@@ -297,7 +302,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10001;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -315,7 +320,8 @@ body {
       -ms-flex-align: center;
           align-items: center;
   gap: 20px;
-  background-color: #0F0B2E;
+  background-color: #0f0b2e;
+  z-index: 100;
 }
 
 #settingsWindow #settingsForm {
@@ -327,7 +333,7 @@ body {
       grid-template-rows: repeat(8, 35px);
   gap: 5px;
   width: 100%;
-  padding: 19px;
+  padding: 25px;
 }
 
 #settingsWindow #settingsForm div:nth-child(1) {
@@ -392,6 +398,7 @@ body {
           align-items: center;
   width: 100%;
   position: relative;
+  z-index: 100;
 }
 
 #settingsChangePic img {
@@ -432,11 +439,11 @@ body {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10001;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
-  background-color: #0F0B2E;
+  background-color: #0f0b2e;
 }
 
 #closeTab {
@@ -445,18 +452,9 @@ body {
 }
 
 #profileWrapper {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   width: 100%;
-  padding: 19px;
-=======
-=======
->>>>>>> parent of dd50619 (Merge branch 'activities-css' into MAIN)
-=======
->>>>>>> parent of dd50619 (Merge branch 'activities-css' into MAIN)
-  padding: 25px;
->>>>>>> parent of dd50619 (Merge branch 'activities-css' into MAIN)
+  z-index: 15;
+  padding: 10px 25px;
 }
 
 #profileWrapper #watchlistContainer {
@@ -464,6 +462,6 @@ body {
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-  gap: 19px;
+  gap: 25px;
 }
 /*# sourceMappingURL=userProfile.css.map */

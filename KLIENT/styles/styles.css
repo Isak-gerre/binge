@@ -49,6 +49,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 25px;
   overflow-x: hidden;
   color: black;
 }
@@ -58,6 +59,8 @@ body {
 }
 
 #topWrapperProfile {
+  margin-top: 60px;
+  z-index: 15;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -71,25 +74,23 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 30px;
-  z-index: 100;
   width: 100%;
-  padding: 25px;
-}
-
-#profileWrapper {
-  z-index: 100;
+  padding: 10px 25px;
+  color: #eeeeee;
 }
 
 #profilePic {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   overflow: hidden;
 }
 
-#profilePic img {
+#profilePic div {
+  height: 100%;
   width: 100%;
+  background-position: center;
+  background-size: cover;
 }
 
 #profileInfo {
@@ -126,17 +127,46 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: "Archivo";
+  gap: 10px;
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   width: 100%;
+  padding: 10px 25px;
 }
 
 #profileInfo #usernameDiv p {
-  margin: 0;
+  padding: 0;
 }
 
-#profileInfo #followInfo {
-  font-family: "Mulish";
+#profileInfo #usernameDiv #settingOrPlus {
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 4px;
+  width: 100px;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+#profileInfo #usernameDiv #settingOrPlus p {
+  font-family: "Mulish", sans-serif;
+  font-size: 0.9rem;
+  padding: 0;
+}
+
+#followInfo {
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -154,8 +184,8 @@ body {
   width: 100%;
 }
 
-#profileInfo #followInfo #followersDiv,
-#profileInfo #followInfo #followingDiv {
+#followInfo #followersDiv,
+#followInfo #followingDiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -172,15 +202,18 @@ body {
   cursor: pointer;
 }
 
-#profileInfo #followInfo #followersDiv p,
-#profileInfo #followInfo #followingDiv p {
+#followInfo #followersDiv p,
+#followInfo #followingDiv p {
   margin: 0;
 }
 
 #profileNav {
+  z-index: 15;
+  padding: 0 25px;
+  color: #eeeeee;
   width: 100%;
   height: 50px;
-  font-family: "Mulish";
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -195,8 +228,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-top: 1px solid black;
-  z-index: 100;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 #profileNav div {
@@ -213,6 +246,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #1C1452;
+  width: 33%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -220,10 +255,45 @@ body {
 }
 
 #profileNav .selected {
-  background-color: white;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  border-radius: 5px;
 }
 
 #followContainer {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 100000;
+  left: 100vw;
+  -webkit-transition: left 1s;
+  transition: left 1s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+  background-color: #0f0b2e;
+  width: 100%;
+  padding: 25px;
+}
+
+#followContainer button {
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  padding: 5px;
+}
+
+#followContainer #usersWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -237,21 +307,16 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: 10;
-  left: 100vw;
-  -webkit-transition: left 1s;
-  transition: left 1s;
-  gap: 10px;
-  background-color: #0f0b2e;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   width: 100%;
-  z-index: 100;
+  color: #eeeeee;
+  gap: 10px;
 }
 
-#followContainer div {
-  font-family: "Mulish";
+#followContainer #usersWrapper div {
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -260,30 +325,39 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
   width: 100%;
   height: 100px;
-  padding: 25px;
   cursor: pointer;
 }
 
-#followContainer div img {
-  width: 100px;
-  height: 100px;
+#followContainer #usersWrapper div img {
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
+}
+
+#followContainer #usersWrapper div button {
+  width: 70px;
+  -webkit-transition: background 0.5s ease-in;
+  transition: background 0.5s ease-in;
+}
+
+#followContainer #usersWrapper div button#noGradient {
+  background: #1C1452;
 }
 
 #settingsWindow {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -353,7 +427,7 @@ body {
 }
 
 #settingsWindow #settingsForm div label {
-  font-family: "Mulish";
+  font-family: "Mulish", sans-serif;
   font-size: 0.5rem;
 }
 
@@ -420,7 +494,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -428,12 +502,14 @@ body {
 }
 
 #closeTab {
-  position: absolute;
-  z-index: 100;
+  width: 30px;
+  height: 30px;
 }
 
 #profileWrapper {
-  padding: 25px;
+  width: 100%;
+  z-index: 15;
+  padding: 10px 25px;
 }
 
 #profileWrapper #watchlistContainer {
@@ -489,20 +565,9 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-<<<<<<< HEAD
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  background-color: #0f0b2e;
-  min-height: 0px;
-  display: none;
-  -webkit-animation: smoothWidth 1s;
-          animation: smoothWidth 1s;
-=======
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
->>>>>>> parent of 2af9255 (up)
   width: 80%;
   background-color: #361986;
 }
@@ -731,7 +796,7 @@ body {
 }
 
 .movie-profile-middle .movie-profile-description p {
-  font-family: "Mulish";
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
   color: #eeeeee;
   text-align: left;
@@ -744,7 +809,7 @@ body {
 
 .movie-profile-middle .movie-profile-streamingservices h4 {
   color: #eeeeee;
-  font-family: "Archivo";
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -817,7 +882,7 @@ body {
 
 .movie-profile-middle .movie-profile-credits .movie-profile-cast h4 {
   color: #eeeeee;
-  font-family: "Archivo";
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -840,7 +905,7 @@ body {
 
 .movie-profile-middle .movie-profile-credits .movie-profile-director h4 {
   color: #eeeeee;
-  font-family: "Archivo";
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -874,7 +939,7 @@ body {
 .movie-profile-middle .movie-profile-credits .production-people p {
   padding-left: 25px;
   color: #eeeeee;
-  font-family: "Mulish";
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
   max-width: 110px;
 }
@@ -902,7 +967,7 @@ body {
 
 .movie-profile-middle .movie-profile-reviews h4 {
   color: #eeeeee;
-  font-family: "Archivo";
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -917,7 +982,7 @@ body {
 
 .movie-profile-middle .movie-profile-similarMovies h4 {
   color: #eeeeee;
-  font-family: "Archivo";
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 10px;
   -ms-grid-row: 1;
@@ -942,7 +1007,6 @@ body {
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin-top: 5px;
 }
 
 .userContainer {
@@ -960,16 +1024,18 @@ body {
 }
 
 .activityContainer {
-  background-color: white;
+  background-color: #6F6D82;
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
-  -webkit-box-shadow: .2vh .2vh .2vh grey;
-          box-shadow: .2vh .2vh .2vh grey;
+  -webkit-box-shadow: .2vh .2vh .2vh black;
+          box-shadow: .2vh .2vh .2vh black;
   border-radius: 10px;
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  min-height: 100px;
 }
 
 .activityContainerLeft {
@@ -989,8 +1055,12 @@ body {
           flex-direction: column;
 }
 
+.activityContainerLeft #expandComment {
+  width: 35px;
+  margin: auto;
+}
+
 .activityContainerRight {
-  border-radius: 0vh 10px;
   -webkit-box-flex: 1.5;
       -ms-flex-positive: 1.5;
           flex-grow: 1.5;
@@ -998,7 +1068,6 @@ body {
       flex-basis: 0;
   background-size: cover;
   background-position: center;
-  min-height: 100px;
   -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
           clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
 }
@@ -1068,6 +1137,9 @@ body {
 .comment {
   font-size: 13px;
   color: black;
+  height: 50px;
+  -webkit-transition: height 1s;
+  transition: height 1s;
 }
 
 .rate {
@@ -1194,7 +1266,7 @@ body {
 
 #frw .friends-recently-watched > div .profile-box .profile-name {
   color: "Mulish", sans-serif;
-  font-family: "Mulish";
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
 }
 
@@ -1696,7 +1768,7 @@ svg:active,
 
 .hamburger-menu {
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   background-color: black;
   width: 60%;

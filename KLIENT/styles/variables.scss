@@ -3,6 +3,7 @@
 
 // COLORS - ska ändras till rätt senare
 $backgroundColor: #0f0b2e;
+$activityColor: #6F6D82;
 $mainColor: #361986;
 $accentColor: #ffb700;
 $darkFont: black;
@@ -42,7 +43,7 @@ $borderRadiusNav: 8px;
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
 
   left: 100vw;
   transition: left 1s;
