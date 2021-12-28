@@ -9,6 +9,8 @@ body {
   width: 100%;
   padding: $betweenPadding $wrapperPadding;
   color: $lightFont;
+  z-index: 100;
+  margin-top: 50px;
 }
 
 #profilePic {
@@ -83,6 +85,7 @@ body {
   @include flex(row, center, center);
   border-radius: $borderRadiusButtons;
   overflow: hidden;
+  z-index: 100;
 
   div {
     @include flex(row, center, center);
@@ -232,6 +235,7 @@ body {
 
 #profileWrapper {
   padding: $wrapperPadding;
+  z-index: 100;
 
   #watchlistContainer {
     display: grid;

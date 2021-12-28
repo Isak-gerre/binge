@@ -20,6 +20,8 @@ body {
   width: 100%;
   padding: 10px 25px;
   color: #eeeeee;
+  z-index: 100;
+  margin-top: 50px;
 }
 
 #profilePic {
@@ -173,6 +175,7 @@ body {
           align-items: center;
   border-radius: 10px;
   overflow: hidden;
+  z-index: 100;
 }
 
 #profileNav div {
@@ -453,6 +456,7 @@ body {
 
 #profileWrapper {
   padding: 25px;
+  z-index: 100;
 }
 
 #profileWrapper #watchlistContainer {
