@@ -13,6 +13,8 @@ highestID(){
 */
 
 "use strict";
+
+let serverURL = "http://localhost:7001";
 // SESSION FUNCTIONS
 //_______________________________________________________________________________________
 
@@ -78,7 +80,7 @@ function addToMovies(movie) {
   }
 }
 async function saveMultipleMovies(array) {
-  let fetches = array.map((id) => fetch(`http://localhost:7001/GET/get-movie-info.php?movieID=${id}`));
+  let fetches = array.map((id) => fetch(`${serverURL}/GET/get-movie-info.php?movieID=${id}`));
   const resultArray = await Promise.all(fetches);
   resultArray.map(async function (resp) {
     let movie = await resp.json();
@@ -122,7 +124,7 @@ async function getMovieInfo(movieID) {
       return { message: savedMovie };
     }
     try {
-      let response = await fetch(`http://localhost:7001/GET/get-movie-info.php?movieID=${movieID}`);
+      let response = await fetch(`${serverURL}/GET/get-movie-info.php?movieID=${movieID}`);
       let data = await response.json();
       addToMovies(data.message, "movies");
       return data;
@@ -136,7 +138,7 @@ async function getMovieInfo(movieID) {
 async function getSearchResults(searchType, query, page = 1) {
   try {
     let response = await fetch(
-      `http://localhost:7001/GET/get-search-results.php?searchtype=${searchType}&query=${query}&page=${page}`
+      `${serverURL}/GET/get-search-results.php?searchtype=${searchType}&query=${query}&page=${page}`
     );
     let data = await response.json();
     return data;
@@ -147,7 +149,7 @@ async function getSearchResults(searchType, query, page = 1) {
 
 async function getProviders() {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-watch-providers.php`);
+    let response = await fetch(`${serverURL}/GET/get-watch-providers.php`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -157,7 +159,7 @@ async function getProviders() {
 
 async function getGenres() {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-genres.php`);
+    let response = await fetch(`${serverURL}/GET/get-genres.php`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -167,7 +169,7 @@ async function getGenres() {
 
 async function getMoviesByGenre(genre) {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-movies-by-genre.php?genre=${genre}`);
+    let response = await fetch(`${serverURL}/GET/get-movies-by-genre.php?genre=${genre}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -177,7 +179,7 @@ async function getMoviesByGenre(genre) {
 
 async function getTrending() {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-trending.php`);
+    let response = await fetch(`${serverURL}/GET/get-trending.php`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -187,9 +189,7 @@ async function getTrending() {
 
 async function getButtonRealtionStatus(userID, movieID) {
   try {
-    let response = await fetch(
-      `http://localhost:7001/GET/check-movie-user-relation.php?movieID=${movieID}&userID=${userID}`
-    );
+    let response = await fetch(`${serverURL}/GET/check-movie-user-relation.php?movieID=${movieID}&userID=${userID}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -198,7 +198,7 @@ async function getButtonRealtionStatus(userID, movieID) {
 }
 
 async function getUserInfo(userId) {
-  const request = new Request(`http://localhost:7001/GET/get-users.php?ids=${userId}`);
+  const request = new Request(`${serverURL}/GET/get-users.php?ids=${userId}`);
   const response = await fetch(request);
   const userInfo = await response.json();
 
@@ -207,7 +207,7 @@ async function getUserInfo(userId) {
 
 async function getFollowing(id) {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-users.php?ids=${id}`);
+    let response = await fetch(`${serverURL}/GET/get-users.php?ids=${id}`);
     let loggedInUser = await response.json();
     return loggedInUser;
   } catch (err) {
@@ -222,7 +222,7 @@ async function getFriendsActivities(id) {
   let following = user[0].following;
 
   // Get following activities från db
-  let response = await fetch(`http://localhost:7001/GET/get-activities.php?followingIDs=${following}`);
+  let response = await fetch(`${serverURL}/GET/get-activities.php?followingIDs=${following}`);
   let data = await response.json();
 
   return data;
@@ -278,7 +278,7 @@ function createActivities(array, page, appendIn = "wrapper") {
       // användarnamn
       let userPic = document.createElement("div");
       userPic.classList.add("userPic");
-      userPic.style.backgroundImage = `url('http://localhost:7001/${userInfo.profile_picture.filepath}')`;
+      userPic.style.backgroundImage = `url('${serverURL}/${userInfo.profile_picture.filepath}')`;
 
       userPic.addEventListener("click", () => {
         window.location.href = `profile.php?userID=${obj.userID}`;
@@ -387,7 +387,7 @@ function createActivities(array, page, appendIn = "wrapper") {
 }
 async function getUserActivities(id) {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-activities.php?followingIDs=${id}`);
+    let response = await fetch(`${serverURL}/GET/get-activities.php?followingIDs=${id}`);
     let activities = await response.json();
     return activities;
   } catch (err) {
@@ -397,7 +397,7 @@ async function getUserActivities(id) {
 
 async function getSimilar(movieID) {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-similar-movies.php?movieID=${movieID}`);
+    let response = await fetch(`${serverURL}/GET/get-similar-movies.php?movieID=${movieID}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -407,13 +407,12 @@ async function getSimilar(movieID) {
 
 async function getAdditionalInfo(movieID) {
   try {
-    console.log(movieID)
-    let response = await fetch(`http://localhost:7001/GET/get-additional-movieInfo.php?movieID=${movieID}`);
-    console.log(response)
+    console.log(movieID);
+    let response = await fetch(`${serverURL}/GET/get-additional-movieInfo.php?movieID=${movieID}`);
+    console.log(response);
     let data = await response.json();
     console.log(data);
     return data;
-    
   } catch (error) {
     console.error(error);
   }
@@ -434,17 +433,14 @@ async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
     movieID: movieID,
     type: type,
     comment: comment,
-    rate: rate
-  }
-  
+    rate: rate,
+  };
 
-  let rqst = new Request("http://localhost:7001/POST/create-activity.php", 
-    {
-      method: "POST",
-      body: JSON.stringify(msg),
-      headers: {"Content-type": "application/json"},
-    }
-  );
+  let rqst = new Request("${serverURL}/POST/create-activity.php", {
+    method: "POST",
+    body: JSON.stringify(msg),
+    headers: { "Content-type": "application/json" },
+  });
 
   try {
     let response = await fetch(rqst);
@@ -456,13 +452,11 @@ async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
 }
 
 async function patchActivity(activity) {
-  let rqst = new Request("http://localhost:7001/PATCH/update-activity.php", 
-    {
-      method: "PATCH",
-      body: JSON.stringify({activity: activity}),
-      headers: {"Content-type": "application/json"},
-    }
-  );
+  let rqst = new Request("${serverURL}/PATCH/update-activity.php", {
+    method: "PATCH",
+    body: JSON.stringify({ activity: activity }),
+    headers: { "Content-type": "application/json" },
+  });
 
   try {
     let response = await fetch(rqst);
@@ -474,13 +468,11 @@ async function patchActivity(activity) {
 }
 
 async function deleteteActivity(activityID) {
-  let rqst = new Request("http://localhost:7001/DELETE/delete-activity.php", 
-    {
-      method: "DELETE",
-      body: JSON.stringify({id: activityID}),
-      headers: {"Content-type": "application/json"},
-    }
-  );
+  let rqst = new Request("${serverURL}/DELETE/delete-activity.php", {
+    method: "DELETE",
+    body: JSON.stringify({ id: activityID }),
+    headers: { "Content-type": "application/json" },
+  });
 
   try {
     let response = await fetch(rqst);
@@ -490,5 +482,3 @@ async function deleteteActivity(activityID) {
     console.log(err);
   }
 }
-
-
