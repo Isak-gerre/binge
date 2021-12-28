@@ -5,12 +5,12 @@ body {
 }
 
 #topWrapperProfile {
+  margin-top: 60px;
+  z-index: 15;
   @include flex(row, center, center);
   width: 100%;
   padding: $betweenPadding $wrapperPadding;
   color: $lightFont;
-  z-index: 100;
-  margin-top: 50px;
 }
 
 #profilePic {
@@ -57,7 +57,19 @@ body {
     }
   }
 
-  width: 100%;
+  #followInfo {
+    @include bodyFont();
+    @include flex(row, space-evenly, center);
+    width: 100%;
+    // gap: 5px;
+
+    #followersDiv,
+    #followingDiv {
+      p {margin: 0;}
+      @include flex(column, center, center);
+      cursor: pointer;
+    }
+  } 
 }
 
 #followInfo {
@@ -77,23 +89,17 @@ body {
 }
 
 #profileNav {
+  z-index: 15;
   padding: 0 $wrapperPadding;
   color: $lightFont;
   width: 100%;
   height: 50px;
   @include bodyFont();
   @include flex(row, center, center);
-  border-radius: $borderRadiusButtons;
-  overflow: hidden;
-  z-index: 100;
-
-  div {
-    @include flex(row, center, center);
-    background-color: #1c1452;
-    width: 33%;
-    flex-grow: 1;
-    height: 100%;
-  }
+  background-color: #1c1452;
+  width: 33%;
+  flex-grow: 1;
+  height: 100%;
 
   .selected {
     background: $gradientPeach;
@@ -227,15 +233,14 @@ body {
 }
 
 #closeTab {
-  position: absolute;
-  z-index: 100;
-  width: 30px;
-  height: 30px;
+    width: 30px;
+    height: 30px;
 }
 
 #profileWrapper {
-  padding: $wrapperPadding;
-  z-index: 100;
+  width: 100%;
+  z-index: 15;
+  padding: $betweenPadding $wrapperPadding;
 
   #watchlistContainer {
     display: grid;

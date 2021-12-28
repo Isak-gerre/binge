@@ -58,6 +58,8 @@ body {
 }
 
 #topWrapperProfile {
+  margin-top: 60px;
+  z-index: 15;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -74,8 +76,6 @@ body {
   width: 100%;
   padding: 10px 25px;
   color: #eeeeee;
-  z-index: 100;
-  margin-top: 50px;
 }
 
 #profilePic {
@@ -110,7 +110,6 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  width: 100%;
 }
 
 #profileInfo #usernameDiv {
@@ -165,6 +164,48 @@ body {
   padding: 0;
 }
 
+#profileInfo #followInfo {
+  font-family: "Mulish", sans-serif;
+  font-size: 0.9rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+#profileInfo #followInfo #followersDiv,
+#profileInfo #followInfo #followingDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+#profileInfo #followInfo #followersDiv p,
+#profileInfo #followInfo #followingDiv p {
+  margin: 0;
+}
+
 #followInfo {
   font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
@@ -208,31 +249,13 @@ body {
 }
 
 #profileNav {
+  z-index: 15;
   padding: 0 25px;
   color: #eeeeee;
   width: 100%;
   height: 50px;
   font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 10px;
-  overflow: hidden;
-  z-index: 100;
-}
-
-#profileNav div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -263,7 +286,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -357,7 +380,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -494,7 +517,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -502,15 +525,14 @@ body {
 }
 
 #closeTab {
-  position: absolute;
-  z-index: 100;
   width: 30px;
   height: 30px;
 }
 
 #profileWrapper {
-  padding: 25px;
-  z-index: 100;
+  width: 100%;
+  z-index: 15;
+  padding: 10px 25px;
 }
 
 #profileWrapper #watchlistContainer {
@@ -1008,7 +1030,6 @@ body {
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin-top: 5px;
 }
 
 .userContainer {
@@ -1026,16 +1047,18 @@ body {
 }
 
 .activityContainer {
-  background-color: white;
+  background-color: #6F6D82;
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
-  -webkit-box-shadow: .2vh .2vh .2vh grey;
-          box-shadow: .2vh .2vh .2vh grey;
+  -webkit-box-shadow: .2vh .2vh .2vh black;
+          box-shadow: .2vh .2vh .2vh black;
   border-radius: 10px;
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  min-height: 100px;
 }
 
 .activityContainerLeft {
@@ -1055,8 +1078,12 @@ body {
           flex-direction: column;
 }
 
+.activityContainerLeft #expandComment {
+  width: 35px;
+  margin: auto;
+}
+
 .activityContainerRight {
-  border-radius: 0vh 10px;
   -webkit-box-flex: 1.5;
       -ms-flex-positive: 1.5;
           flex-grow: 1.5;
@@ -1064,7 +1091,6 @@ body {
       flex-basis: 0;
   background-size: cover;
   background-position: center;
-  min-height: 100px;
   -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
           clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
 }
@@ -1134,6 +1160,9 @@ body {
 .comment {
   font-size: 13px;
   color: black;
+  height: 50px;
+  -webkit-transition: height 1s;
+  transition: height 1s;
 }
 
 .rate {
