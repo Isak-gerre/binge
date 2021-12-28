@@ -43,7 +43,7 @@
           align-items: center;
 }
 
-.upperNav div a {
+.upperNav div img {
   margin: 0 130px;
 }
 
@@ -315,6 +315,125 @@ svg:active,
   }
   100% {
     background-position: 468px 0;
+  }
+}
+
+.hamburger-menu {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background-color: black;
+  width: 60%;
+  z-index: 1000;
+  right: 0;
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.hamburger-background {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: black;
+  width: 100%;
+  z-index: 900;
+  opacity: 0.6;
+}
+
+.hamburger-text {
+  opacity: 0;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+@-webkit-keyframes hamburgerScale {
+  0% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+}
+
+@keyframes hamburgerScale {
+  0% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+}
+
+@-webkit-keyframes removeHamburgerMenu {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes removeHamburgerMenu {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes hamburgerBackground {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes hamburgerBackground {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@-webkit-keyframes removeHamburgerBackground {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes removeHamburgerBackground {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
   }
 }
 /*# sourceMappingURL=navAndSearch.css.map */

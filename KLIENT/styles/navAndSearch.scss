@@ -19,7 +19,7 @@
     box-sizing: border-box;
     @include flex(row, space-around, center);
 
-    a {
+    img {
       margin: 0 130px;
     }
   }
@@ -78,8 +78,8 @@ input:focus {
 //   height: 100%;
 // }
 
-#searchField {
-}
+// #searchField {
+// }
 input[type="text"] {
   outline: none;
   border: 1px solid white;
@@ -249,5 +249,64 @@ svg:active,
   }
   100% {
     background-position: 468px 0;
+  }
+}
+.hamburger-menu {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background-color: black;
+  width: 60%;
+  z-index: 1000;
+  right: 0;
+  transform: translateX(0%);
+  transform-origin: right;
+  @include flex(column, space-evenly, flex-start);
+}
+.hamburger-background {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: black;
+  width: 100%;
+  z-index: 900;
+  opacity: 0.6;
+}
+.hamburger-text {
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+@keyframes hamburgerScale {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes removeHamburgerMenu {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes hamburgerBackground {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes removeHamburgerBackground {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
   }
 }

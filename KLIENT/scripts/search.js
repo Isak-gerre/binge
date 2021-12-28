@@ -58,7 +58,7 @@ function myFunction(searchResults) {
   }
 }
 
-function makeSearchOverlay() {
+function makeSearchOverlay(searchWord = "") {
   let searchContainer = document.createElement("div");
   searchContainer.className = "search-container";
 
@@ -77,6 +77,12 @@ function makeSearchOverlay() {
 
   searchContainer.append(overlayBackground, searchField, searchResults);
   document.body.append(searchContainer);
+
+  //OBS!! ELSA LAGT TILL!! om man kommer från genre på explore
+  // scroll till top och displaya det vi får från keywords istället
+  if (searchField.value == "") {
+    searchField.value = `${searchWord}`;
+  }
 
   searchField.addEventListener("keyup", (e) => {
     if (e.key == "Enter") {

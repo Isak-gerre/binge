@@ -78,6 +78,34 @@
   width: 100%;
 }
 
+.drop1 {
+  background-image: url("../icons/drop.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 400px;
+  z-index: 100;
+  width: 120px;
+  left: 13%;
+  height: 135px;
+}
+
+.drop2 {
+  background-image: url("../icons/drop.svg");
+  background-position: -40px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 360px;
+  z-index: 100;
+  width: 120px;
+  right: 0px;
+  height: 135px;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
 .movie-profile-header {
   height: auto;
   position: relative;
@@ -133,8 +161,8 @@
 
 .movie-profile-info .movie-profile-info-poster .movie-profile-poster {
   width: 100%;
-  -webkit-box-shadow: 5px 5px 5px black;
-          box-shadow: 5px 5px 5px black;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .movie-profile-info .movie-profile-info-text {
@@ -247,7 +275,7 @@
 }
 
 .movie-profile-middle .movie-profile-description p {
-  font-family: "Arial";
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
   color: #eeeeee;
   text-align: left;
@@ -260,7 +288,7 @@
 
 .movie-profile-middle .movie-profile-streamingservices h4 {
   color: #eeeeee;
-  font-family: "Arial";
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -333,7 +361,7 @@
 
 .movie-profile-middle .movie-profile-credits .movie-profile-cast h4 {
   color: #eeeeee;
-  font-family: "Arial";
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -356,7 +384,7 @@
 
 .movie-profile-middle .movie-profile-credits .movie-profile-director h4 {
   color: #eeeeee;
-  font-family: "Arial";
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -390,7 +418,7 @@
 .movie-profile-middle .movie-profile-credits .production-people p {
   padding-left: 25px;
   color: #eeeeee;
-  font-family: "Arial";
+  font-family: "Mulish", sans-serif;
   font-size: 0.9rem;
   max-width: 110px;
 }
@@ -418,7 +446,7 @@
 
 .movie-profile-middle .movie-profile-reviews h4 {
   color: #eeeeee;
-  font-family: "Arial";
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 10px;
 }
@@ -433,7 +461,7 @@
 
 .movie-profile-middle .movie-profile-similarMovies h4 {
   color: #eeeeee;
-  font-family: "Arial";
+  font-family: "Archivo", sans-serif;
   font-size: 1.2rem;
   padding-bottom: 10px;
   -ms-grid-row: 1;

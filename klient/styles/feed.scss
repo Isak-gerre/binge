@@ -6,7 +6,6 @@
     flex-direction: column;
     width: 100%;
     box-sizing: border-box;
-    margin-top: 5px;
 }
 
 .userContainer {
@@ -18,11 +17,13 @@
 }
 
 .activityContainer {
-    background-color: rgb(255, 255, 255);
+    background-color: $activityColor;
     flex-grow: 2;
-    box-shadow: .2vh .2vh .2vh grey;
+    box-shadow: .2vh .2vh .2vh black;
     border-radius: $borderRadiusObjects;
+    overflow: hidden;
     display: flex;
+    min-height: 100px;
 }
 
 .activityContainerLeft {
@@ -32,15 +33,18 @@
     font-family: 'Mulish', sans-serif;
     display: flex;
     flex-direction: column;
+
+    #expandComment {
+        width: 35px;
+        margin: auto;
+    }
 }
 
 .activityContainerRight {
-    border-radius: 0vh $borderRadiusObjects;
     flex-grow: 1.5;
     flex-basis: 0;
     background-size: cover;
     background-position: center;
-    min-height: 100px;
     clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
 }
 
@@ -97,7 +101,9 @@
 .comment {
     font-size: 13px;
     color: $darkFont;
+    height: 50px;
 
+    transition: height 1s;
 }
 
 .rate {
