@@ -183,7 +183,8 @@ body {
 }
 
 #profileWrapper {
-  padding: $wrapperPadding;
+    width: 100%;
+    padding: $wrapperPadding;
 
   #watchlistContainer {
     display: grid;
