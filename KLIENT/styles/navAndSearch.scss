@@ -19,7 +19,7 @@
     box-sizing: border-box;
     @include flex(row, space-around, center);
 
-    a {
+    img {
       margin: 0 130px;
     }
   }
@@ -78,8 +78,8 @@ input:focus {
 //   height: 100%;
 // }
 
-#searchField {
-}
+// #searchField {
+// }
 input[type="text"] {
   outline: none;
   border: 1px solid white;
@@ -187,19 +187,24 @@ svg:active,
   transition: all 1s;
 }
 
-.pillsDiv {
-  display: flex;
-  align-items: center;
-  margin: 10px;
-}
-
 .pill {
-  padding: 10px;
-  margin: 5px;
-  border-radius: 20px;
-  background-color: lightgrey;
+  padding: 8px;
+  margin-right: 5px;
+  border-radius: 10px;
+  width: 90px;
+  background: #1d155a;
   transform: scale(1);
   transition: transform 1s;
+
+  .pill-text {
+    font-family: $bodyFont;
+    text-align: center;
+  }
+}
+.active {
+  color: whitesmoke;
+  background: linear-gradient(40deg, #ef9d1a, #fd047c);
+  filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
 }
 
 .movieList {
@@ -216,7 +221,7 @@ svg:active,
 }
 
 .search-container {
-  position: absolute;
+  position: fixed;
   top: -2px;
   z-index: 100;
   width: 100%;
@@ -231,6 +236,9 @@ svg:active,
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   z-index: 100;
+  overflow: scroll;
+  height: 80vh;
+  padding-bottom: 70px;
 }
 .placeholder {
   animation-duration: 1.8s;
@@ -250,4 +258,70 @@ svg:active,
   100% {
     background-position: 468px 0;
   }
+}
+.hamburger-menu {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background-color: black;
+  width: 60%;
+  z-index: 1000;
+  right: 0;
+  transform: translateX(0%);
+  transform-origin: right;
+  @include flex(column, space-evenly, flex-start);
+}
+.hamburger-background {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: black;
+  width: 100%;
+  z-index: 900;
+  opacity: 0.6;
+}
+.hamburger-text {
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+@keyframes hamburgerScale {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes removeHamburgerMenu {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes hamburgerBackground {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes removeHamburgerBackground {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.pill-container {
+  z-index: 1000;
+  @include flex(row, flex-start, center);
+  position: absolute;
+  top: 120px;
+  width: 80%;
 }

@@ -3,6 +3,7 @@
 
 // COLORS - ska ändras till rätt senare
 $backgroundColor: #0f0b2e;
+$activityColor: #6F6D82;
 $mainColor: #361986;
 $accentColor: #ffb700;
 $darkFont: black;
@@ -13,15 +14,16 @@ $bodyFont: "Mulish", sans-serif;
 
 // Margins and stuff
 $wrapperPadding: 25px;
-$buttonPadding: 5px;
+$buttonPadding: 3px;
 $innerPadding: 5px;
 $betweenPadding: 10px;
 $titlePadding: 5px;
 
 //Borders and radius
 $borderRadiusButtons: 10px;
-$borderRadiusObjects: 10px;
+$borderRadiusObjects: 5px;
 $borderRadiusNav: 8px;
+$boxShadow: 3px;
 
 // FUNCTIONS
 
@@ -42,38 +44,41 @@ $borderRadiusNav: 8px;
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
 
   left: 100vw;
   transition: left 1s;
 }
 
+
+
 // FONTS
 
 @mixin bigTitleFont() {
-  font-family: "Archivo";
-  font-size: 1.5rem;
+    font-family: $headerFont;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 @mixin smallTitleFont() {
-  font-family: "Archivo";
-  font-size: 1.2rem;
+    font-family: $headerFont;
+    font-size: 16px;
+    padding-bottom: $innerPadding;
 }
 
 @mixin bodyFont() {
-  font-family: "Mulish";
-  font-size: 0.9rem;
+    font-family: $bodyFont;
+    font-size: 14px;
+    line-height: 1.4;
 }
 
 @mixin postFont() {
-  font-family: "Mulish";
-  font-size: 0.7rem;
+  font-family: $headerFont;
+  font-size: 15px;
 }
-
-@mixin smallFont() {
-}
+// ------------------------
 
 @mixin xSmallFont() {
-  font-family: "Mulish";
-  font-size: 0.5rem;
+    font-family: $bodyFont;
+    font-size: 10px;
 }

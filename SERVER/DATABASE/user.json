@@ -24,8 +24,9 @@
                 2,
                 3,
                 4,
+                6,
                 5,
-                6
+                7
             ],
             "following": [
                 2,
@@ -58,8 +59,9 @@
                 1,
                 3,
                 4,
+                6,
                 5,
-                6
+                7
             ],
             "following": [
                 1,
@@ -92,8 +94,9 @@
                 1,
                 2,
                 4,
+                6,
                 5,
-                6
+                7
             ],
             "following": [
                 1,
@@ -125,7 +128,8 @@
                 2,
                 3,
                 5,
-                6
+                6,
+                7
             ],
             "following": [
                 1,
@@ -159,13 +163,14 @@
                 2,
                 3,
                 4,
-                6
+                6,
+                7
             ],
             "following": [
+                4,
+                3,
                 1,
                 2,
-                3,
-                4,
                 6
             ]
         },
@@ -193,7 +198,8 @@
                 2,
                 3,
                 4,
-                5
+                5,
+                7
             ],
             "following": [
                 1,
@@ -204,24 +210,20 @@
             ]
         },
         "7": {
-            "firstname": "Test",
-            "lastname": "User",
-            "username": "user",
-            "email": "user@test.se",
-            "password": "$2y$10$NTfBGNF5IaPWL1rITAYbIeO9wfPfxRFk34m0IJsSvuiJlRpSI6dma",
-            "birthday": "hejhopp",
-            "region": "SE",
-            "active_streaming_services": [
-                "netflix",
-                "disney plus",
-                "YouTube Premium",
-                "hbo max",
-                "viaplay",
-                "svt"
-            ],
+            "firstname": "test",
+            "lastname": "test",
+            "username": "test",
+            "password": "$2y$10$zeYJaB..CEmgz8oNoAvt\/.XLLdWwIdZJIGO1WOKqT5uHq65fqkEM6",
+            "email": "test",
+            "birthday": "",
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_1.png"
+            },
+            "active_streaming_services": [],
             "followers": [],
             "following": [],
-            "id": "$2y$10$Tkz7yDhhpIkHXd5pwGHc8ey82cc4p2dK5xJlHo.MfAtW5QCFHxlCW"
+            "sessionId": "$2y$10$On18pJtOnDXoEql5y5w5BeaYrCIlNBo7J7NocCMEne02zycNb0B2O",
+            "id": 7
         }
     }
 }

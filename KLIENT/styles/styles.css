@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -17,7 +18,6 @@
 body {
   margin: 0;
   position: relative;
-  min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,13 +51,14 @@ body {
           align-items: center;
   overflow-x: hidden;
   color: black;
-}
-
-body {
-  position: relative;
+  margin-bottom: 90px;
+  padding-right: 25px;
+  padding-left: 25px;
 }
 
 #topWrapperProfile {
+  margin-top: 60px;
+  z-index: 15;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -71,25 +72,23 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 30px;
-  z-index: 100;
   width: 100%;
-  padding: 25px;
-}
-
-#profileWrapper {
-  z-index: 100;
+  padding: 10px 25px;
+  color: #eeeeee;
 }
 
 #profilePic {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   overflow: hidden;
 }
 
-#profilePic img {
+#profilePic div {
+  height: 100%;
   width: 100%;
+  background-position: center;
+  background-size: cover;
 }
 
 #profileInfo {
@@ -106,7 +105,7 @@ body {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  gap: 5px;
+  gap: 10px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -126,18 +125,50 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: "Archivo";
-  font-size: 1.2rem;
+  gap: 10px;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
   width: 100%;
+  padding: 10px 25px;
 }
 
 #profileInfo #usernameDiv p {
-  margin: 0;
+  padding: 0;
+}
+
+#profileInfo #usernameDiv #settingOrPlus {
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 4px;
+  width: 100px;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+#profileInfo #usernameDiv #settingOrPlus p {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 0;
 }
 
 #profileInfo #followInfo {
-  font-family: "Mulish";
-  font-size: 0.9rem;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -177,11 +208,58 @@ body {
   margin: 0;
 }
 
+#followInfo {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+#followInfo #followersDiv,
+#followInfo #followingDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+#followInfo #followersDiv p,
+#followInfo #followingDiv p {
+  margin: 0;
+}
+
 #profileNav {
+  z-index: 15;
+  padding: 0 25px;
+  color: #eeeeee;
   width: 100%;
   height: 50px;
-  font-family: "Mulish";
-  font-size: 0.9rem;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -195,8 +273,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-top: 1px solid black;
-  z-index: 100;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 #profileNav div {
@@ -213,6 +291,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #1C1452;
+  width: 33%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -220,10 +300,45 @@ body {
 }
 
 #profileNav .selected {
-  background-color: white;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  border-radius: 10px;
 }
 
 #followContainer {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 100000;
+  left: 100vw;
+  -webkit-transition: left 1s;
+  transition: left 1s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+  background-color: #0f0b2e;
+  width: 100%;
+  padding: 25px;
+}
+
+#followContainer button {
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  padding: 3px;
+}
+
+#followContainer #usersWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -237,22 +352,18 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: 10;
-  left: 100vw;
-  -webkit-transition: left 1s;
-  transition: left 1s;
-  gap: 10px;
-  background-color: #0f0b2e;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   width: 100%;
-  z-index: 100;
+  color: #eeeeee;
+  gap: 10px;
 }
 
-#followContainer div {
-  font-family: "Mulish";
-  font-size: 0.9rem;
+#followContainer #usersWrapper div {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -260,30 +371,39 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
   width: 100%;
   height: 100px;
-  padding: 25px;
   cursor: pointer;
 }
 
-#followContainer div img {
-  width: 100px;
-  height: 100px;
+#followContainer #usersWrapper div img {
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
+}
+
+#followContainer #usersWrapper div button {
+  width: 70px;
+  -webkit-transition: background 0.5s ease-in;
+  transition: background 0.5s ease-in;
+}
+
+#followContainer #usersWrapper div button#noGradient {
+  background: #1c1452;
 }
 
 #settingsWindow {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -353,8 +473,8 @@ body {
 }
 
 #settingsWindow #settingsForm div label {
-  font-family: "Mulish";
-  font-size: 0.5rem;
+  font-family: "Mulish", sans-serif;
+  font-size: 10px;
 }
 
 #settingsWindow #settingsForm div input {
@@ -420,7 +540,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -428,12 +548,15 @@ body {
 }
 
 #closeTab {
-  position: absolute;
-  z-index: 100;
+  width: 30px;
+  height: 30px;
 }
 
 #profileWrapper {
-  padding: 25px;
+  width: 100%;
+  z-index: 15;
+  padding: 10px 25px;
+  padding-bottom: 90px;
 }
 
 #profileWrapper #watchlistContainer {
@@ -454,6 +577,34 @@ body {
           flex-direction: column;
   position: relative;
   z-index: 100;
+}
+
+.drop1 {
+  background-image: url("../icons/drop.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 400px;
+  z-index: 100;
+  width: 120px;
+  left: 13%;
+  height: 135px;
+}
+
+.drop2 {
+  background-image: url("../icons/drop.svg");
+  background-position: -40px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 360px;
+  z-index: 100;
+  width: 120px;
+  right: 0px;
+  height: 135px;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
 }
 
 .overlay-fade {
@@ -539,8 +690,9 @@ body {
   height: 100%;
   color: "Mulish", sans-serif;
   padding: 5px;
-  font-family: "Archivo";
-  font-size: 1.5rem;
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -641,8 +793,9 @@ body {
 
 .overlay-fade .message-wrapper .bottom label {
   color: "Mulish", sans-serif;
-  font-family: "Archivo";
-  font-size: 1.2rem;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
   margin: 0px 10px;
 }
 
@@ -660,7 +813,7 @@ body {
   border: none;
   background: linear-gradient(40deg, #ef9d1a, #fd047c);
   border-radius: 10px;
-  padding: 5px 10px;
+  padding: 3px 10px;
   height: 25px;
   -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
           filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
@@ -738,34 +891,6 @@ body {
   width: 100%;
 }
 
-.drop1 {
-  background-image: url("../icons/drop.svg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 400px;
-  z-index: 100;
-  width: 120px;
-  left: 13%;
-  height: 135px;
-}
-
-.drop2 {
-  background-image: url("../icons/drop.svg");
-  background-position: -40px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 360px;
-  z-index: 100;
-  width: 120px;
-  right: 0px;
-  height: 135px;
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
-}
-
 .movie-profile-header {
   height: auto;
   position: relative;
@@ -821,13 +946,11 @@ body {
 
 .movie-profile-info .movie-profile-info-poster .movie-profile-poster {
   width: 100%;
-  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 3px 3px 3px #0f0b2e;
+          box-shadow: 3px 3px 3px #0f0b2e;
 }
 
 .movie-profile-info .movie-profile-info-text {
-  font-family: "Archivo", sans-serif;
-  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -845,14 +968,18 @@ body {
 
 .movie-profile-info .movie-profile-info-text p {
   letter-spacing: 0.07em;
-  font-size: 11px;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  font-size: 12px;
   color: #eeeeee;
   padding-bottom: 10px;
   padding-top: 10px;
 }
 
 .movie-profile-info .movie-profile-info-text .movie-profile-title {
-  font-size: 14px;
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
   font-weight: bold;
   color: #eeeeee;
   padding-bottom: 10px;
@@ -896,9 +1023,9 @@ body {
 .movie-profile-info .movie-profile-info-text #movie-profile-buttons .button {
   border-radius: 10px;
   border: 0;
-  padding: 5px;
+  padding: 3px;
   height: 25px;
-  background: #1d155a;
+  background: #20185b;
   -webkit-filter: none;
           filter: none;
   display: -webkit-box;
@@ -919,8 +1046,8 @@ body {
 .movie-profile-info .movie-profile-info-text #movie-profile-buttons .marked {
   border-radius: 10px;
   border: 0;
-  color: whitesmoke;
-  background: linear-gradient(40deg, #ef9d1a, #fd047c);
+  color: #eeeeee;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
           filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
 }
@@ -935,11 +1062,11 @@ body {
 }
 
 .movie-profile-middle .movie-profile-description p {
-  font-family: "Mulish";
-  font-size: 0.9rem;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
   color: #eeeeee;
   text-align: left;
-  font-size: 14px;
 }
 
 .movie-profile-middle .movie-profile-streamingservices {
@@ -948,8 +1075,9 @@ body {
 
 .movie-profile-middle .movie-profile-streamingservices h4 {
   color: #eeeeee;
-  font-family: "Archivo";
-  font-size: 1.2rem;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 10px;
 }
 
@@ -1025,8 +1153,9 @@ body {
 
 .movie-profile-middle .movie-profile-credits .movie-profile-cast h4 {
   color: #eeeeee;
-  font-family: "Archivo";
-  font-size: 1.2rem;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 10px;
 }
 
@@ -1048,8 +1177,9 @@ body {
 
 .movie-profile-middle .movie-profile-credits .movie-profile-director h4 {
   color: #eeeeee;
-  font-family: "Archivo";
-  font-size: 1.2rem;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 10px;
 }
 
@@ -1082,8 +1212,9 @@ body {
 .movie-profile-middle .movie-profile-credits .production-people p {
   padding-left: 25px;
   color: #eeeeee;
-  font-family: "Mulish";
-  font-size: 0.9rem;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
   max-width: 110px;
 }
 
@@ -1110,9 +1241,178 @@ body {
 
 .movie-profile-middle .movie-profile-reviews h4 {
   color: #eeeeee;
-  font-family: "Archivo";
-  font-size: 1.2rem;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 10px;
+}
+
+.movie-profile-middle .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-top: 10px;
+}
+
+.movie-profile-middle .userContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 0 0 5px 0;
+  font-family: "Archivo", sans-serif;
+  font-size: 15px;
+}
+
+.movie-profile-middle .userContainer .userPic {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 5px;
+  background-size: cover;
+}
+
+.movie-profile-middle .userContainer .username {
+  -webkit-box-flex: 10;
+      -ms-flex-positive: 10;
+          flex-grow: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.movie-profile-middle .userContainer .date {
+  color: #eeeeee;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.movie-profile-middle .activityContainer {
+  background-color: #6F6D82;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  -webkit-box-shadow: 3px 3px 3px #0f0b2e;
+          box-shadow: 3px 3px 3px #0f0b2e;
+  border-radius: 5px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100px;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft {
+  padding: 5px 5px 5px 10px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft .type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: black;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft .typeText {
+  margin-right: 5px;
+  color: black;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft .typeIcon {
+  height: 60%;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft .title {
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft .comment {
+  color: black;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  height: 50px;
+  -webkit-transition: height 1s;
+  transition: height 1s;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft .rate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 0;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft .star {
+  height: 15px;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft #expandComment {
+  width: 35px;
+  margin: auto;
+}
+
+.movie-profile-middle .activityContainer .activityContainerRight {
+  -webkit-box-flex: 1.5;
+      -ms-flex-positive: 1.5;
+          flex-grow: 1.5;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  background-size: cover;
+  background-position: center;
+  -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
+  overflow: hidden;
 }
 
 .movie-profile-middle .movie-profile-similarMovies {
@@ -1125,8 +1425,9 @@ body {
 
 .movie-profile-middle .movie-profile-similarMovies h4 {
   color: #eeeeee;
-  font-family: "Archivo";
-  font-size: 1.2rem;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 10px;
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
@@ -1150,7 +1451,7 @@ body {
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin-top: 5px;
+  padding-top: 10px;
 }
 
 .userContainer {
@@ -1163,89 +1464,20 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  padding: 0.5vh 0;
-  font-family: 'Archivo', sans-serif;
-}
-
-.activityContainer {
-  background-color: white;
-  -webkit-box-flex: 2;
-      -ms-flex-positive: 2;
-          flex-grow: 2;
-  -webkit-box-shadow: .2vh .2vh .2vh grey;
-          box-shadow: .2vh .2vh .2vh grey;
-  border-radius: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.activityContainerLeft {
-  padding: 1vh;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -ms-flex-preferred-size: 0;
-      flex-basis: 0;
-  font-family: 'Mulish', sans-serif;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.activityContainerRight {
-  border-radius: 0vh 10px;
-  -webkit-box-flex: 1.5;
-      -ms-flex-positive: 1.5;
-          flex-grow: 1.5;
-  -ms-flex-preferred-size: 0;
-      flex-basis: 0;
-  background-size: cover;
-  background-position: center;
-  min-height: 100px;
-  -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
-          clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
-}
-
-.type {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: black;
-}
-
-.typeText {
+  padding: 0 0 5px 0;
+  font-family: "Archivo", sans-serif;
   font-size: 15px;
-  margin-right: .5vw;
-  color: black;
 }
 
-.typeIcon {
-  height: 60%;
-}
-
-.title {
-  font-family: 'Archivo', sans-serif;
-  font-weight: bold;
-  color: black;
-}
-
-.userPic {
-  height: 4vh;
-  width: 4vh;
+.userContainer .userPic {
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
-  margin-right: 1.5vh;
+  margin-right: 5px;
   background-size: cover;
 }
 
-.username {
+.userContainer .username {
   -webkit-box-flex: 10;
       -ms-flex-positive: 10;
           flex-grow: 10;
@@ -1257,7 +1489,7 @@ body {
           align-items: center;
 }
 
-.date {
+.userContainer .date {
   color: #eeeeee;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -1265,27 +1497,115 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.comment {
-  font-size: 13px;
-  color: black;
-}
-
-.rate {
+.activityContainer {
+  background-color: #6F6D82;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  -webkit-box-shadow: 3px 3px 3px #0f0b2e;
+          box-shadow: 3px 3px 3px #0f0b2e;
+  border-radius: 5px;
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  min-height: 100px;
 }
 
-.star {
+.activityContainer .activityContainerLeft {
+  padding: 5px 5px 5px 10px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.activityContainer .activityContainerLeft .type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: black;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+
+.activityContainer .activityContainerLeft .typeText {
+  margin-right: 5px;
+  color: black;
+}
+
+.activityContainer .activityContainerLeft .typeIcon {
+  height: 60%;
+}
+
+.activityContainer .activityContainerLeft .title {
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.activityContainer .activityContainerLeft .comment {
+  color: black;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  height: 50px;
+  -webkit-transition: height 1s;
+  transition: height 1s;
+}
+
+.activityContainer .activityContainerLeft .rate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 0;
+}
+
+.activityContainer .activityContainerLeft .star {
   height: 15px;
+}
+
+.activityContainer .activityContainerLeft #expandComment {
+  width: 35px;
+  margin: auto;
+}
+
+.activityContainer .activityContainerRight {
+  -webkit-box-flex: 1.5;
+      -ms-flex-positive: 1.5;
+          flex-grow: 1.5;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  background-size: cover;
+  background-position: center;
+  -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
+  overflow: hidden;
 }
 
 #trending,
@@ -1297,6 +1617,13 @@ body {
 #wrapper {
   margin-top: 50px;
   z-index: 100;
+}
+
+#trending h3 {
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
+  margin: 0 25px 0 25px;
 }
 
 .slideshow-container {
@@ -1321,12 +1648,21 @@ body {
   height: 85%;
   width: 100vw;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
 .slideMovieDiv {
   position: relative;
+}
+
+.movieNameTr p {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #eeeeee;
+  width: 100%;
+  padding: 10px 25px;
 }
 
 #frw {
@@ -1349,6 +1685,9 @@ body {
 }
 
 #frw h3 {
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 5px;
 }
 
@@ -1393,8 +1732,8 @@ body {
 }
 
 #frw .friends-recently-watched > div .profile-box .profile-image {
-  height: 3vh;
-  width: 3vh;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   margin-right: 1.5vh;
   background-size: cover;
@@ -1402,18 +1741,13 @@ body {
 
 #frw .friends-recently-watched > div .profile-box .profile-name {
   color: "Mulish", sans-serif;
-  font-family: "Mulish";
-  font-size: 0.9rem;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 #frw .friends-recently-watched > div:last-child {
   margin-right: 0px;
-}
-
-.movieNameTr p {
-  color: white;
-  width: 100%;
-  padding: 10px 25px;
 }
 
 #genre {
@@ -1429,6 +1763,9 @@ body {
 }
 
 #genre h3 {
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   -ms-grid-column: 1;
@@ -1627,7 +1964,7 @@ body {
           align-items: center;
 }
 
-.upperNav div a {
+.upperNav div img {
   margin: 0 130px;
 }
 
@@ -1794,27 +2131,30 @@ svg:active,
   transition: all 1s;
 }
 
-.pillsDiv {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 10px;
-}
-
 .pill {
-  padding: 10px;
-  margin: 5px;
-  border-radius: 20px;
-  background-color: lightgrey;
+  padding: 8px;
+  margin-right: 5px;
+  border-radius: 10px;
+  width: 90px;
+  background: #1d155a;
   -webkit-transform: scale(1);
           transform: scale(1);
   -webkit-transition: -webkit-transform 1s;
   transition: -webkit-transform 1s;
   transition: transform 1s;
   transition: transform 1s, -webkit-transform 1s;
+}
+
+.pill .pill-text {
+  font-family: "Mulish", sans-serif;
+  text-align: center;
+}
+
+.active {
+  color: whitesmoke;
+  background: linear-gradient(40deg, #ef9d1a, #fd047c);
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+          filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
 }
 
 .movieList {
@@ -1834,7 +2174,7 @@ svg:active,
 }
 
 .search-container {
-  position: absolute;
+  position: fixed;
   top: -2px;
   z-index: 100;
   width: 100%;
@@ -1864,6 +2204,9 @@ svg:active,
       grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   z-index: 100;
+  overflow: scroll;
+  height: 80vh;
+  padding-bottom: 70px;
 }
 
 .placeholder {
@@ -1900,5 +2243,144 @@ svg:active,
   100% {
     background-position: 468px 0;
   }
+}
+
+.hamburger-menu {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background-color: black;
+  width: 60%;
+  z-index: 1000;
+  right: 0;
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.hamburger-background {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: black;
+  width: 100%;
+  z-index: 900;
+  opacity: 0.6;
+}
+
+.hamburger-text {
+  opacity: 0;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+@-webkit-keyframes hamburgerScale {
+  0% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+}
+
+@keyframes hamburgerScale {
+  0% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+}
+
+@-webkit-keyframes removeHamburgerMenu {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes removeHamburgerMenu {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes hamburgerBackground {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes hamburgerBackground {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@-webkit-keyframes removeHamburgerBackground {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes removeHamburgerBackground {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.pill-container {
+  z-index: 1000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 120px;
+  width: 80%;
 }
 /*# sourceMappingURL=styles.css.map */
