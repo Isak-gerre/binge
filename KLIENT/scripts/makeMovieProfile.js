@@ -41,6 +41,12 @@ async function makeMovieProfile(movieID) {
   let movieHeader = document.createElement("div");
   movieHeader.className = "movie-profile-header";
 
+  // // Drop
+  let drop1 = document.createElement("div");
+  drop1.className = "drop1";
+  let drop2 = document.createElement("div");
+  drop2.className = "drop2";
+
   // // Background
   // let overlayBackground = document.createElement("div");
   // overlayBackground.className = "movie-profile-background";
@@ -266,8 +272,7 @@ async function makeMovieProfile(movieID) {
   middle.append(description, streamingservices, credits, reviews, similarMovies);
   // ______________________________________________________________________________________________________
   // Appends in overlay
-  overlay.append(movieHeader, info, middle);
-
+  overlay.append(movieHeader, info, middle, drop1, drop2);
 
   // ------------------------------------------------------------------------------------------------------
   // EVENT for the buttons
@@ -333,15 +338,11 @@ async function makeMovieProfile(movieID) {
       messageWrapper.style.display = "flex";
     }, 500);
 
-
-
-
     // the object you press with the finger/mouse
     let object = e.target.className;
 
     // Content depending on what button is clicked
     if (object.includes("review")) {
-
       // Top Div -
       let topDiv = document.createElement("div");
       topDiv.className = "top";
@@ -382,8 +383,6 @@ async function makeMovieProfile(movieID) {
         stars.prepend(input, label);
       }
 
-
-
       // Bottom
       let bottomDiv = document.createElement("div");
       bottomDiv.className = "bottom";
@@ -411,14 +410,12 @@ async function makeMovieProfile(movieID) {
       bottomDiv.append(labelComment, textArea);
       messageWrapper.append(topDiv, middleDiv, bottomDiv, submitButton);
 
-
       setTimeout(() => {
         topDiv.style.display = "flex";
         middleDiv.style.display = "flex";
         bottomDiv.style.display = "flex";
         submitButton.style.display = "block";
       }, 1500);
-
     }
 
     overlayFade.append(messageWrapper);
@@ -436,7 +433,7 @@ async function makeMovieProfile(movieID) {
       let starRate = 0;
       let radioStars = document.querySelectorAll("input");
 
-      radioStars.forEach(star => {
+      radioStars.forEach((star) => {
         if (star.checked == true) {
           starRate = star.value;
         }
@@ -456,8 +453,7 @@ async function makeMovieProfile(movieID) {
       } else {
         postNewActivity(movieID, loggedInUser, "review", comment, starRate);
         message = "Thanks for your review";
-      };
-
+      }
 
       let messageWrapper = document.querySelector(".message-wrapper");
       let top = document.querySelector(".message-wrapper > .top");
@@ -488,11 +484,9 @@ async function makeMovieProfile(movieID) {
 
           let activities = await getActivityByMovieID(movieID);
           createActivities(activities, "feed", "movie-profile-reviews");
-
         }, 1000);
       }, 2500);
-
-    })
+    });
   });
 
   buttons.append(watchLater, watched, review);
