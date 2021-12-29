@@ -42,32 +42,39 @@ function getFromSession(getter) {
   return JSON.parse(sessionStorage.getItem(getter));
 }
 
-function getLoggedInUserID()
-{if(userVarification()) {
-  let userID = getFromSession("session").session.userID;
-  return userID;
-} else {
-  sessionStorage.clear();
-  window.href = "/index.php";
-}
+function getLoggedInUserID() {
+  if (getFromSession("session") != undefined) { 
+    if (userVarification()) {
+      let userID = getFromSession("session").session.userID;
+      console.log(userID);
+      return userID;
+    } else {
+      sessionStorage.clear();
+      window.href = "/index.php";
+    }
+  } else {
+    sessionStorage.clear();
+    console.log("hej")
+    window.location.replace("http://localhost:2000");
+  }
 }
 
-async function userVarification(){
-let userSession = getFromSession("session").session;
-let userID =  userSession.userID;
-let sessionID = userSession.sessionID;
-try {
-  let response = await fetch(`http://localhost:7001/GET/get-users.php?sessionID=${sessionID}&userID=${userID}`);
-  let data = await response.json();
-  if(data.ok) {
-    return true;
+async function userVarification() {
+  let userSession = getFromSession("session").session;
+  let userID = userSession.userID;
+  let sessionID = userSession.sessionID;
+  try {
+    let response = await fetch(`http://localhost:7001/GET/get-users.php?sessionID=${sessionID}&userID=${userID}`);
+    let data = await response.json();
+    if (data.ok) {
+      return true;
+    }
+    else {
+      return false
+    }
+  } catch (error) {
+    console.error(error);
   }
-  else {
-    return false
-  }
-} catch (error) {
-  console.error(error);
-}
 
 }
 
@@ -348,7 +355,7 @@ function createActivities(array, page, appendIn = "wrapper") {
     //Appenda de två delarna till containern
     container.append(activityContainer);
 
-    if(page !== "movie") {
+    if (page !== "movie") {
       activityContainer.append(activityContainerLeft, activityContainerRight);
     } else {
       activityContainer.append(activityContainerLeft);
@@ -408,38 +415,38 @@ function createActivities(array, page, appendIn = "wrapper") {
 
       //kommentar om det finns
       if (obj.comment !== "") {
-        
+
         let comment = document.createElement("div");
         // comment.style.height = '200px';
         comment.classList.add("comment");
         comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
         activityContainerLeft.append(comment);
-    
-        if (obj.comment.length > 30) {
-        let expandComment = document.createElement("img");
-        expandComment.setAttribute("src", "../icons/expand_more.svg");
-        expandComment.id = "expandComment";
 
-      
-        expandComment.addEventListener('click', () => {
+        if (obj.comment.length > 30) {
+          let expandComment = document.createElement("img");
+          expandComment.setAttribute("src", "../icons/expand_more.svg");
+          expandComment.id = "expandComment";
+
+
+          expandComment.addEventListener('click', () => {
             activityContainer.classList.toggle('open');
 
             if (activityContainer.classList.contains('open')) {
-            // console.log(activityContainer.scrollHeight);
-            expandComment.setAttribute("src", "../icons/expand_less.svg");
-            comment.textContent = `" ${obj.comment} " `;
-            let expandHeight = comment.scrollHeight;
-            comment.style.height = `${expandHeight}px`;
+              // console.log(activityContainer.scrollHeight);
+              expandComment.setAttribute("src", "../icons/expand_less.svg");
+              comment.textContent = `" ${obj.comment} " `;
+              let expandHeight = comment.scrollHeight;
+              comment.style.height = `${expandHeight}px`;
             } else {
-            comment.removeAttribute('style');
-            expandComment.setAttribute("src", "../icons/expand_more.svg");
-            comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
-            // comment.style.height = '200px';
+              comment.removeAttribute('style');
+              expandComment.setAttribute("src", "../icons/expand_more.svg");
+              comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
+              // comment.style.height = '200px';
             }
-        });
-      
-        activityContainerLeft.append(expandComment);
-    }
+          });
+
+          activityContainerLeft.append(expandComment);
+        }
       }
     }
 
@@ -476,7 +483,7 @@ async function getAdditionalInfo(movieID) {
     console.log(response)
     let data = await response.json();
     return data;
-    
+
   } catch (error) {
     console.error(error);
   }
@@ -499,13 +506,13 @@ async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
     comment: comment,
     rate: rate
   }
-  
 
-  let rqst = new Request("http://localhost:7001/POST/create-activity.php", 
+
+  let rqst = new Request("http://localhost:7001/POST/create-activity.php",
     {
       method: "POST",
       body: JSON.stringify(msg),
-      headers: {"Content-type": "application/json"},
+      headers: { "Content-type": "application/json" },
     }
   );
 
@@ -519,11 +526,11 @@ async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
 }
 
 async function patchActivity(activity) {
-  let rqst = new Request("http://localhost:7001/PATCH/update-activity.php", 
+  let rqst = new Request("http://localhost:7001/PATCH/update-activity.php",
     {
       method: "PATCH",
-      body: JSON.stringify({activity: activity}),
-      headers: {"Content-type": "application/json"},
+      body: JSON.stringify({ activity: activity }),
+      headers: { "Content-type": "application/json" },
     }
   );
 
@@ -537,11 +544,11 @@ async function patchActivity(activity) {
 }
 
 async function deleteteActivity(activityID) {
-  let rqst = new Request("http://localhost:7001/DELETE/delete-activity.php", 
+  let rqst = new Request("http://localhost:7001/DELETE/delete-activity.php",
     {
       method: "DELETE",
-      body: JSON.stringify({id: activityID}),
-      headers: {"Content-type": "application/json"},
+      body: JSON.stringify({ id: activityID }),
+      headers: { "Content-type": "application/json" },
     }
   );
 
