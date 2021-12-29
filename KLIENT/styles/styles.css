@@ -579,6 +579,34 @@ body {
   z-index: 100;
 }
 
+.drop1 {
+  background-image: url("../icons/drop.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 400px;
+  z-index: 100;
+  width: 120px;
+  left: 13%;
+  height: 135px;
+}
+
+.drop2 {
+  background-image: url("../icons/drop.svg");
+  background-position: -40px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 360px;
+  z-index: 100;
+  width: 120px;
+  right: 0px;
+  height: 135px;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
 .overlay-fade {
   position: absolute;
   top: 0px;
@@ -2139,7 +2167,7 @@ svg:active,
 }
 
 .search-container {
-  position: absolute;
+  position: fixed;
   top: -2px;
   z-index: 100;
   width: 100%;
@@ -2169,6 +2197,9 @@ svg:active,
       grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   z-index: 100;
+  overflow: scroll;
+  height: 80vh;
+  padding-bottom: 70px;
 }
 
 .placeholder {
