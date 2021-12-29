@@ -274,7 +274,7 @@ function createActivities(array, page, appendIn = "wrapper") {
     userContainer.classList.add("userContainer");
     container.append(userContainer);
 
-    if (page == "feed") {
+    if (page == "feed" || page == "movie") {
       // användarnamn
       let userPic = document.createElement("div");
       userPic.classList.add("userPic");
@@ -316,7 +316,12 @@ function createActivities(array, page, appendIn = "wrapper") {
 
     //Appenda de två delarna till containern
     container.append(activityContainer);
-    activityContainer.append(activityContainerLeft, activityContainerRight);
+
+    if(page !== "movie") {
+      activityContainer.append(activityContainerLeft, activityContainerRight);
+    } else {
+      activityContainer.append(activityContainerLeft);
+    }
 
     // type
     let type = document.createElement("div");
@@ -372,10 +377,38 @@ function createActivities(array, page, appendIn = "wrapper") {
 
       //kommentar om det finns
       if (obj.comment !== "") {
+        
         let comment = document.createElement("div");
+        // comment.style.height = '200px';
         comment.classList.add("comment");
-        comment.textContent = `" ${obj.comment} " `;
+        comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
         activityContainerLeft.append(comment);
+    
+        if (obj.comment.length > 30) {
+        let expandComment = document.createElement("img");
+        expandComment.setAttribute("src", "../icons/expand_more.svg");
+        expandComment.id = "expandComment";
+
+      
+        expandComment.addEventListener('click', () => {
+            activityContainer.classList.toggle('open');
+
+            if (activityContainer.classList.contains('open')) {
+            // console.log(activityContainer.scrollHeight);
+            expandComment.setAttribute("src", "../icons/expand_less.svg");
+            comment.textContent = `" ${obj.comment} " `;
+            let expandHeight = comment.scrollHeight;
+            comment.style.height = `${expandHeight}px`;
+            } else {
+            comment.removeAttribute('style');
+            expandComment.setAttribute("src", "../icons/expand_more.svg");
+            comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
+            // comment.style.height = '200px';
+            }
+        });
+      
+        activityContainerLeft.append(expandComment);
+    }
       }
     }
 

@@ -144,6 +144,7 @@ function makeHamburgerMenu() {
     }, 0);
   });
 }
+
 function hamburgerText(text) {
   let hamburgerText = document.createElement("p");
   hamburgerText.textContent = text;
@@ -153,5 +154,3 @@ function hamburgerText(text) {
 }
 
 makeLowerNav();
-// makeLowerNav('explore');
-// makeLowerNav('profile');

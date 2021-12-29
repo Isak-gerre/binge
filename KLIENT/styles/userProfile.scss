@@ -1,16 +1,12 @@
 @import "variables.scss";
 
-body {
-  position: relative;
-}
-
 #topWrapperProfile {
+  margin-top: 60px;
+  z-index: 15;
   @include flex(row, center, center);
   width: 100%;
   padding: $betweenPadding $wrapperPadding;
   color: $lightFont;
-  z-index: 100;
-  margin-top: 50px;
 }
 
 #profilePic {
@@ -25,9 +21,10 @@ body {
   }
 }
 
+//  USER PROFILE
 #profileInfo {
   @include flex(column, center, flex-start);
-  gap: 5px;
+  gap: $betweenPadding;
   flex-grow: 1;
 
   #usernameDiv {
@@ -47,8 +44,8 @@ body {
       gap: 4px;
 
       width: 100px;
-      border-radius: 5px;
-      padding: 3px;
+      border-radius: $borderRadiusButtons;
+      padding: $buttonPadding;
 
       p {
         @include bodyFont();
@@ -57,7 +54,19 @@ body {
     }
   }
 
-  width: 100%;
+  #followInfo {
+    @include bodyFont();
+    @include flex(row, space-evenly, center);
+    width: 100%;
+    // gap: 5px;
+
+    #followersDiv,
+    #followingDiv {
+      p {margin: 0;}
+      @include flex(column, center, center);
+      cursor: pointer;
+    }
+  } 
 }
 
 #followInfo {
@@ -77,6 +86,7 @@ body {
 }
 
 #profileNav {
+  z-index: 15;
   padding: 0 $wrapperPadding;
   color: $lightFont;
   width: 100%;
@@ -85,11 +95,10 @@ body {
   @include flex(row, center, center);
   border-radius: $borderRadiusButtons;
   overflow: hidden;
-  z-index: 100;
-
+    
   div {
     @include flex(row, center, center);
-    background-color: #1c1452;
+    background-color: #1C1452;
     width: 33%;
     flex-grow: 1;
     height: 100%;
@@ -97,7 +106,7 @@ body {
 
   .selected {
     background: $gradientPeach;
-    border-radius: 5px;
+    border-radius: $borderRadiusButtons;
   }
 }
 
@@ -148,6 +157,7 @@ body {
   }
 }
 
+//  SETTINGS 
 #settingsWindow {
   @include transitionFromLeft();
   @include flex(column, flex-start, center);
@@ -227,15 +237,15 @@ body {
 }
 
 #closeTab {
-  position: absolute;
-  z-index: 100;
-  width: 30px;
-  height: 30px;
+    width: 30px;
+    height: 30px;
 }
 
 #profileWrapper {
-  padding: $wrapperPadding;
-  z-index: 100;
+  width: 100%;
+  z-index: 15;
+  padding: $betweenPadding $wrapperPadding;
+  padding-bottom: 90px;
 
   #watchlistContainer {
     display: grid;

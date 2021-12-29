@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
-body {
-  position: relative;
-}
-
 #topWrapperProfile {
+  margin-top: 60px;
+  z-index: 15;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20,8 +18,6 @@ body {
   width: 100%;
   padding: 10px 25px;
   color: #eeeeee;
-  z-index: 100;
-  margin-top: 50px;
 }
 
 #profilePic {
@@ -52,11 +48,10 @@ body {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  gap: 5px;
+  gap: 10px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  width: 100%;
 }
 
 #profileInfo #usernameDiv {
@@ -75,7 +70,8 @@ body {
           align-items: center;
   gap: 10px;
   font-family: "Archivo", sans-serif;
-  font-size: 1.2rem;
+  font-size: 16px;
+  padding-bottom: 5px;
   width: 100%;
   padding: 10px 25px;
 }
@@ -101,19 +97,64 @@ body {
           align-items: center;
   gap: 4px;
   width: 100px;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 3px;
 }
 
 #profileInfo #usernameDiv #settingOrPlus p {
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
   padding: 0;
+}
+
+#profileInfo #followInfo {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+#profileInfo #followInfo #followersDiv,
+#profileInfo #followInfo #followingDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+#profileInfo #followInfo #followersDiv p,
+#profileInfo #followInfo #followingDiv p {
+  margin: 0;
 }
 
 #followInfo {
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -154,12 +195,14 @@ body {
 }
 
 #profileNav {
+  z-index: 15;
   padding: 0 25px;
   color: #eeeeee;
   width: 100%;
   height: 50px;
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -175,7 +218,6 @@ body {
           align-items: center;
   border-radius: 10px;
   overflow: hidden;
-  z-index: 100;
 }
 
 #profileNav div {
@@ -192,7 +234,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #1c1452;
+  background-color: #1C1452;
   width: 33%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -202,14 +244,14 @@ body {
 
 #profileNav .selected {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 #followContainer {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -236,7 +278,7 @@ body {
   border: none;
   border-radius: 10px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  padding: 5px;
+  padding: 3px;
 }
 
 #followContainer #usersWrapper {
@@ -263,7 +305,8 @@ body {
 
 #followContainer #usersWrapper div {
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -303,7 +346,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -374,7 +417,7 @@ body {
 
 #settingsWindow #settingsForm div label {
   font-family: "Mulish", sans-serif;
-  font-size: 0.5rem;
+  font-size: 10px;
 }
 
 #settingsWindow #settingsForm div input {
@@ -440,7 +483,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -448,15 +491,15 @@ body {
 }
 
 #closeTab {
-  position: absolute;
-  z-index: 100;
   width: 30px;
   height: 30px;
 }
 
 #profileWrapper {
-  padding: 25px;
-  z-index: 100;
+  width: 100%;
+  z-index: 15;
+  padding: 10px 25px;
+  padding-bottom: 90px;
 }
 
 #profileWrapper #watchlistContainer {

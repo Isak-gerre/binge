@@ -269,6 +269,36 @@
             "comment": "",
             "rate": "",
             "updated": false
+        },
+        "30": {
+            "id": 30,
+            "userID": 5,
+            "movieID": "9323",
+            "type": "watchlist",
+            "date": "20211228",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "31": {
+            "id": 31,
+            "userID": 5,
+            "movieID": "871",
+            "type": "watched",
+            "date": "20211228",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "32": {
+            "id": 32,
+            "userID": 5,
+            "movieID": "871",
+            "type": "review",
+            "date": "20211228",
+            "comment": "Wow vilket film! \u00c4lskar den av hela mitt hj\u00e4rta!",
+            "rate": "3",
+            "updated": true
         }
     }
 }

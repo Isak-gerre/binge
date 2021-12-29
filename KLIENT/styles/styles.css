@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -17,7 +18,6 @@
 body {
   margin: 0;
   position: relative;
-  min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,13 +51,14 @@ body {
           align-items: center;
   overflow-x: hidden;
   color: black;
-}
-
-body {
-  position: relative;
+  margin-bottom: 90px;
+  padding-right: 25px;
+  padding-left: 25px;
 }
 
 #topWrapperProfile {
+  margin-top: 60px;
+  z-index: 15;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -74,8 +75,6 @@ body {
   width: 100%;
   padding: 10px 25px;
   color: #eeeeee;
-  z-index: 100;
-  margin-top: 50px;
 }
 
 #profilePic {
@@ -106,11 +105,10 @@ body {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  gap: 5px;
+  gap: 10px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  width: 100%;
 }
 
 #profileInfo #usernameDiv {
@@ -129,7 +127,8 @@ body {
           align-items: center;
   gap: 10px;
   font-family: "Archivo", sans-serif;
-  font-size: 1.2rem;
+  font-size: 16px;
+  padding-bottom: 5px;
   width: 100%;
   padding: 10px 25px;
 }
@@ -155,19 +154,64 @@ body {
           align-items: center;
   gap: 4px;
   width: 100px;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 3px;
 }
 
 #profileInfo #usernameDiv #settingOrPlus p {
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
   padding: 0;
+}
+
+#profileInfo #followInfo {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+#profileInfo #followInfo #followersDiv,
+#profileInfo #followInfo #followingDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+#profileInfo #followInfo #followersDiv p,
+#profileInfo #followInfo #followingDiv p {
+  margin: 0;
 }
 
 #followInfo {
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -208,12 +252,14 @@ body {
 }
 
 #profileNav {
+  z-index: 15;
   padding: 0 25px;
   color: #eeeeee;
   width: 100%;
   height: 50px;
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -229,7 +275,6 @@ body {
           align-items: center;
   border-radius: 10px;
   overflow: hidden;
-  z-index: 100;
 }
 
 #profileNav div {
@@ -246,7 +291,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #1c1452;
+  background-color: #1C1452;
   width: 33%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -256,14 +301,14 @@ body {
 
 #profileNav .selected {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 #followContainer {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -290,7 +335,7 @@ body {
   border: none;
   border-radius: 10px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  padding: 5px;
+  padding: 3px;
 }
 
 #followContainer #usersWrapper {
@@ -317,7 +362,8 @@ body {
 
 #followContainer #usersWrapper div {
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -357,7 +403,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -428,7 +474,7 @@ body {
 
 #settingsWindow #settingsForm div label {
   font-family: "Mulish", sans-serif;
-  font-size: 0.5rem;
+  font-size: 10px;
 }
 
 #settingsWindow #settingsForm div input {
@@ -494,7 +540,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -502,15 +548,15 @@ body {
 }
 
 #closeTab {
-  position: absolute;
-  z-index: 100;
   width: 30px;
   height: 30px;
 }
 
 #profileWrapper {
-  padding: 25px;
-  z-index: 100;
+  width: 100%;
+  z-index: 15;
+  padding: 10px 25px;
+  padding-bottom: 90px;
 }
 
 #profileWrapper #watchlistContainer {
@@ -531,73 +577,6 @@ body {
           flex-direction: column;
   position: relative;
   z-index: 100;
-}
-
-#overlay-fade {
-  position: absolute;
-  top: 0px;
-  height: 100vh;
-  width: 100vw;
-  z-index: 10000;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-#overlay-fade #message-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  width: 80%;
-  background-color: #361986;
-}
-
-#overlay-fade #message-wrapper .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.movie-profile-background {
-  background-image: url("../icons/background-m-profile.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
-  position: fixed;
-  z-index: 10;
-  width: 100%;
 }
 
 .drop1 {
@@ -626,6 +605,290 @@ body {
   height: 135px;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
+}
+
+.overlay-fade {
+  position: absolute;
+  top: 0px;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s;
+}
+
+.overlay-fade .message-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  background-color: #0f0b2e;
+  min-height: 0px;
+  display: none;
+  -webkit-animation: smoothWidth 1s;
+          animation: smoothWidth 1s;
+  width: 80%;
+}
+
+.overlay-fade .message-wrapper div {
+  width: 100%;
+}
+
+.overlay-fade .message-wrapper .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: none;
+  height: 50px;
+  padding: 5px;
+  -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s;
+}
+
+.overlay-fade .message-wrapper .top img {
+  width: 3vh;
+  height: 3vh;
+  padding: 5px;
+  cursor: pointer;
+  margin: 0px 5px;
+}
+
+.overlay-fade .message-wrapper .top h1 {
+  height: 100%;
+  color: "Mulish", sans-serif;
+  padding: 5px;
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.overlay-fade .message-wrapper .middle {
+  display: none;
+  width: 100%;
+  padding: 5px;
+  -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s;
+  -ms-flex-preferred-size: 90px;
+      flex-basis: 90px;
+  position: relative;
+}
+
+.overlay-fade .message-wrapper .middle #rate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0px 10px;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+.overlay-fade .message-wrapper .middle #rate:not(:checked) > input {
+  display: none;
+}
+
+.overlay-fade .message-wrapper .middle #rate:not(:checked) > label {
+  cursor: pointer;
+  float: right;
+  width: 30px;
+  color: rgba(0, 135, 211, 0.4);
+  font-size: 30px;
+}
+
+.overlay-fade .message-wrapper .middle #rate:not(:checked) > label:hover,
+.overlay-fade .message-wrapper .middle #rate:not(:checked) > label:hover ~ label {
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.overlay-fade .message-wrapper .middle #rate > input:checked + label:hover,
+.overlay-fade .message-wrapper .middle #rate > input:checked + label:hover ~ label,
+.overlay-fade .message-wrapper .middle #rate > input:checked ~ label:hover,
+.overlay-fade .message-wrapper .middle #rate > input:checked ~ label:hover ~ label,
+.overlay-fade .message-wrapper .middle #rate > label:hover ~ input:checked ~ label {
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.overlay-fade .message-wrapper .middle #rate > input:checked ~ label {
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.overlay-fade .message-wrapper .bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  display: none;
+  position: relative;
+  padding: 5px;
+  -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding-bottom: 0px;
+}
+
+.overlay-fade .message-wrapper .bottom label {
+  color: "Mulish", sans-serif;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
+  margin: 0px 10px;
+}
+
+.overlay-fade .message-wrapper .bottom #text-area {
+  width: calc(100% - 20px);
+  border: none;
+  padding: 10px;
+  color: black;
+  margin: 10px;
+  margin-bottom: 0px;
+}
+
+.overlay-fade .message-wrapper .submit {
+  display: none;
+  border: none;
+  background: linear-gradient(40deg, #ef9d1a, #fd047c);
+  border-radius: 10px;
+  padding: 3px 10px;
+  height: 25px;
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+          filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+  margin: 10px;
+  margin-right: 15px;
+  cursor: pointer;
+  -webkit-animation: fadeIn 1s;
+          animation: fadeIn 1s;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes smoothWidth {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 80%;
+  }
+}
+
+@keyframes smoothWidth {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 80%;
+  }
+}
+
+.movie-profile-background {
+  background-image: url("../icons/background-m-profile.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
 }
 
 .movie-profile-header {
@@ -683,13 +946,11 @@ body {
 
 .movie-profile-info .movie-profile-info-poster .movie-profile-poster {
   width: 100%;
-  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
-          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 3px 3px 3px #0f0b2e;
+          box-shadow: 3px 3px 3px #0f0b2e;
 }
 
 .movie-profile-info .movie-profile-info-text {
-  font-family: "Archivo", sans-serif;
-  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -707,14 +968,18 @@ body {
 
 .movie-profile-info .movie-profile-info-text p {
   letter-spacing: 0.07em;
-  font-size: 11px;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  font-size: 12px;
   color: #eeeeee;
   padding-bottom: 10px;
   padding-top: 10px;
 }
 
 .movie-profile-info .movie-profile-info-text .movie-profile-title {
-  font-size: 14px;
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
   font-weight: bold;
   color: #eeeeee;
   padding-bottom: 10px;
@@ -758,9 +1023,9 @@ body {
 .movie-profile-info .movie-profile-info-text #movie-profile-buttons .button {
   border-radius: 10px;
   border: 0;
-  padding: 5px;
+  padding: 3px;
   height: 25px;
-  background: #1d155a;
+  background: #20185b;
   -webkit-filter: none;
           filter: none;
   display: -webkit-box;
@@ -781,8 +1046,8 @@ body {
 .movie-profile-info .movie-profile-info-text #movie-profile-buttons .marked {
   border-radius: 10px;
   border: 0;
-  color: whitesmoke;
-  background: linear-gradient(40deg, #ef9d1a, #fd047c);
+  color: #eeeeee;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
           filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
 }
@@ -798,10 +1063,10 @@ body {
 
 .movie-profile-middle .movie-profile-description p {
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
   color: #eeeeee;
   text-align: left;
-  font-size: 14px;
 }
 
 .movie-profile-middle .movie-profile-streamingservices {
@@ -811,7 +1076,8 @@ body {
 .movie-profile-middle .movie-profile-streamingservices h4 {
   color: #eeeeee;
   font-family: "Archivo", sans-serif;
-  font-size: 1.2rem;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 10px;
 }
 
@@ -884,7 +1150,8 @@ body {
 .movie-profile-middle .movie-profile-credits .movie-profile-cast h4 {
   color: #eeeeee;
   font-family: "Archivo", sans-serif;
-  font-size: 1.2rem;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 10px;
 }
 
@@ -907,7 +1174,8 @@ body {
 .movie-profile-middle .movie-profile-credits .movie-profile-director h4 {
   color: #eeeeee;
   font-family: "Archivo", sans-serif;
-  font-size: 1.2rem;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 10px;
 }
 
@@ -941,7 +1209,8 @@ body {
   padding-left: 25px;
   color: #eeeeee;
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
   max-width: 110px;
 }
 
@@ -969,8 +1238,177 @@ body {
 .movie-profile-middle .movie-profile-reviews h4 {
   color: #eeeeee;
   font-family: "Archivo", sans-serif;
-  font-size: 1.2rem;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 10px;
+}
+
+.movie-profile-middle .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-top: 10px;
+}
+
+.movie-profile-middle .userContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 0 0 5px 0;
+  font-family: "Archivo", sans-serif;
+  font-size: 15px;
+}
+
+.movie-profile-middle .userContainer .userPic {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 5px;
+  background-size: cover;
+}
+
+.movie-profile-middle .userContainer .username {
+  -webkit-box-flex: 10;
+      -ms-flex-positive: 10;
+          flex-grow: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.movie-profile-middle .userContainer .date {
+  color: #eeeeee;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.movie-profile-middle .activityContainer {
+  background-color: #6F6D82;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  -webkit-box-shadow: 3px 3px 3px #0f0b2e;
+          box-shadow: 3px 3px 3px #0f0b2e;
+  border-radius: 5px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100px;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft {
+  padding: 5px 5px 5px 10px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft .type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: black;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft .typeText {
+  margin-right: 5px;
+  color: black;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft .typeIcon {
+  height: 60%;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft .title {
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft .comment {
+  color: black;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  height: 50px;
+  -webkit-transition: height 1s;
+  transition: height 1s;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft .rate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 0;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft .star {
+  height: 15px;
+}
+
+.movie-profile-middle .activityContainer .activityContainerLeft #expandComment {
+  width: 35px;
+  margin: auto;
+}
+
+.movie-profile-middle .activityContainer .activityContainerRight {
+  -webkit-box-flex: 1.5;
+      -ms-flex-positive: 1.5;
+          flex-grow: 1.5;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  background-size: cover;
+  background-position: center;
+  -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
+  overflow: hidden;
 }
 
 .movie-profile-middle .movie-profile-similarMovies {
@@ -984,7 +1422,8 @@ body {
 .movie-profile-middle .movie-profile-similarMovies h4 {
   color: #eeeeee;
   font-family: "Archivo", sans-serif;
-  font-size: 1.2rem;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 10px;
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
@@ -1008,7 +1447,7 @@ body {
   width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin-top: 5px;
+  padding-top: 10px;
 }
 
 .userContainer {
@@ -1021,89 +1460,20 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  padding: 0.5vh 0;
-  font-family: 'Archivo', sans-serif;
-}
-
-.activityContainer {
-  background-color: white;
-  -webkit-box-flex: 2;
-      -ms-flex-positive: 2;
-          flex-grow: 2;
-  -webkit-box-shadow: .2vh .2vh .2vh grey;
-          box-shadow: .2vh .2vh .2vh grey;
-  border-radius: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.activityContainerLeft {
-  padding: 1vh;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -ms-flex-preferred-size: 0;
-      flex-basis: 0;
-  font-family: 'Mulish', sans-serif;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.activityContainerRight {
-  border-radius: 0vh 10px;
-  -webkit-box-flex: 1.5;
-      -ms-flex-positive: 1.5;
-          flex-grow: 1.5;
-  -ms-flex-preferred-size: 0;
-      flex-basis: 0;
-  background-size: cover;
-  background-position: center;
-  min-height: 100px;
-  -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
-          clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
-}
-
-.type {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: black;
-}
-
-.typeText {
+  padding: 0 0 5px 0;
+  font-family: "Archivo", sans-serif;
   font-size: 15px;
-  margin-right: .5vw;
-  color: black;
 }
 
-.typeIcon {
-  height: 60%;
-}
-
-.title {
-  font-family: 'Archivo', sans-serif;
-  font-weight: bold;
-  color: black;
-}
-
-.userPic {
-  height: 4vh;
-  width: 4vh;
+.userContainer .userPic {
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
-  margin-right: 1.5vh;
+  margin-right: 5px;
   background-size: cover;
 }
 
-.username {
+.userContainer .username {
   -webkit-box-flex: 10;
       -ms-flex-positive: 10;
           flex-grow: 10;
@@ -1115,7 +1485,7 @@ body {
           align-items: center;
 }
 
-.date {
+.userContainer .date {
   color: #eeeeee;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -1123,27 +1493,115 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.comment {
-  font-size: 13px;
-  color: black;
-}
-
-.rate {
+.activityContainer {
+  background-color: #6F6D82;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  -webkit-box-shadow: 3px 3px 3px #0f0b2e;
+          box-shadow: 3px 3px 3px #0f0b2e;
+  border-radius: 5px;
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  min-height: 100px;
 }
 
-.star {
+.activityContainer .activityContainerLeft {
+  padding: 5px 5px 5px 10px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.activityContainer .activityContainerLeft .type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: black;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+
+.activityContainer .activityContainerLeft .typeText {
+  margin-right: 5px;
+  color: black;
+}
+
+.activityContainer .activityContainerLeft .typeIcon {
+  height: 60%;
+}
+
+.activityContainer .activityContainerLeft .title {
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.activityContainer .activityContainerLeft .comment {
+  color: black;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  height: 50px;
+  -webkit-transition: height 1s;
+  transition: height 1s;
+}
+
+.activityContainer .activityContainerLeft .rate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 0;
+}
+
+.activityContainer .activityContainerLeft .star {
   height: 15px;
+}
+
+.activityContainer .activityContainerLeft #expandComment {
+  width: 35px;
+  margin: auto;
+}
+
+.activityContainer .activityContainerRight {
+  -webkit-box-flex: 1.5;
+      -ms-flex-positive: 1.5;
+          flex-grow: 1.5;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  background-size: cover;
+  background-position: center;
+  -webkit-clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
+  overflow: hidden;
 }
 
 #trending,
@@ -1155,6 +1613,13 @@ body {
 #wrapper {
   margin-top: 50px;
   z-index: 100;
+}
+
+#trending h3 {
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
+  margin: 0 25px 0 25px;
 }
 
 .slideshow-container {
@@ -1179,12 +1644,21 @@ body {
   height: 85%;
   width: 100vw;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
 .slideMovieDiv {
   position: relative;
+}
+
+.movieNameTr p {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #eeeeee;
+  width: 100%;
+  padding: 10px 25px;
 }
 
 #frw {
@@ -1207,6 +1681,9 @@ body {
 }
 
 #frw h3 {
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
   padding-bottom: 5px;
 }
 
@@ -1251,8 +1728,8 @@ body {
 }
 
 #frw .friends-recently-watched > div .profile-box .profile-image {
-  height: 3vh;
-  width: 3vh;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   margin-right: 1.5vh;
   background-size: cover;
@@ -1261,17 +1738,12 @@ body {
 #frw .friends-recently-watched > div .profile-box .profile-name {
   color: "Mulish", sans-serif;
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 #frw .friends-recently-watched > div:last-child {
   margin-right: 0px;
-}
-
-.movieNameTr p {
-  color: white;
-  width: 100%;
-  padding: 10px 25px;
 }
 
 #genre {
@@ -1287,6 +1759,9 @@ body {
 }
 
 #genre h3 {
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   -ms-grid-column: 1;
@@ -1695,7 +2170,7 @@ svg:active,
 }
 
 .search-container {
-  position: absolute;
+  position: fixed;
   top: -2px;
   z-index: 100;
   width: 100%;
@@ -1725,6 +2200,9 @@ svg:active,
       grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   z-index: 100;
+  overflow: scroll;
+  height: 80vh;
+  padding-bottom: 70px;
 }
 
 .placeholder {

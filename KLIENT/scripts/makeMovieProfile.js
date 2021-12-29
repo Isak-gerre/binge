@@ -27,7 +27,7 @@ makeMovieProfile([movieID]){
 "use strict";
 
 // Variabler för den inloggade?
-let loggedInUser = 4;
+let loggedInUser = 5;
 
 async function makeMovieProfile(movieID) {
   let user = await getUserInfo(1);
@@ -41,15 +41,15 @@ async function makeMovieProfile(movieID) {
   let movieHeader = document.createElement("div");
   movieHeader.className = "movie-profile-header";
 
-  // // Background
-  // let overlayBackground = document.createElement("div");
-  // overlayBackground.className = "movie-profile-background";
-
   // // Drop
   let drop1 = document.createElement("div");
   drop1.className = "drop1";
   let drop2 = document.createElement("div");
   drop2.className = "drop2";
+
+  // // Background
+  // let overlayBackground = document.createElement("div");
+  // overlayBackground.className = "movie-profile-background";
 
   // backdrop
   let backdrop = document.createElement("div");
@@ -121,6 +121,7 @@ async function makeMovieProfile(movieID) {
   }
   if (relation.review !== false) {
     review.textContent = "Update Review";
+    review.classList.add("marked");
   }
 
   infoText.append(movieRs, title, buttons);
@@ -243,8 +244,6 @@ async function makeMovieProfile(movieID) {
   reviews.append(titleReview);
 
   let activities = await getActivityByMovieID(movieID);
-  console.log(activities);
-  console.log(movieID);
 
   async function getActivityByMovieID(movieID) {
     try {
@@ -255,6 +254,7 @@ async function makeMovieProfile(movieID) {
       console.error(error);
     }
   }
+  createActivities(activities, "movie", "movie-profile-reviews");
 
   // Similar Movies - Niklas
   let similarMovies = document.createElement("div");
@@ -274,8 +274,6 @@ async function makeMovieProfile(movieID) {
   // ______________________________________________________________________________________________________
   // Appends in overlay
   overlay.append(movieHeader, info, middle, drop1, drop2);
-
-  createActivities(activities, "feed", "movie-profile-reviews");
 
   // ------------------------------------------------------------------------------------------------------
   // EVENT for the buttons
@@ -324,15 +322,24 @@ async function makeMovieProfile(movieID) {
     // Prevent scrolling
     document.body.style.overflow = "hidden";
 
-    // $('body').css('overflow', 'hidden');
+    // overlayFade
     let overlayFade = document.createElement("div");
-    overlayFade.setAttribute("id", "overlay-fade");
+    overlayFade.className = "overlay-fade";
     let messageWrapper = document.createElement("div");
-    messageWrapper.setAttribute("id", "message-wrapper");
+    messageWrapper.className = "message-wrapper";
 
     // Position
-    overlayFade.style.top = "0";
-    messageWrapper.style.top = "0";
+    let currentTopPosition = window.pageYOffset.toFixed(0);
+    overlayFade.style.top = `${currentTopPosition}px`;
+    messageWrapper.style.top = `${currentTopPosition}px`;
+
+    document.body.append(overlayFade);
+
+    setTimeout(() => {
+      messageWrapper.style.display = "flex";
+    }, 500);
+
+    // the object you press with the finger/mouse
     let object = e.target.className;
 
     // Content depending on what button is clicked
@@ -345,33 +352,53 @@ async function makeMovieProfile(movieID) {
       exitButton.setAttribute("src", "../icons/exit.svg");
       let title = document.createElement("h1");
       title.className = "titleComment";
-      title.textContent = "Leave a review";
+      title.textContent = "Tell your friends";
 
       // Middle Div -
       let middleDiv = document.createElement("div");
       middleDiv.className = "middle";
 
-      // FORM
-      let form = document.createElement("form");
-
       // Rating
       let labelRating = document.createElement("label");
-      labelRating.textContent = "rating-comment";
+      labelRating.textContent = "label-rating";
 
-      let stars = document.createElement("ul");
+      let stars = document.createElement("section");
+      stars.setAttribute("id", "rate");
 
-      // for (let i = 0; i < 5; i++) {
-      //     let star = document.createElement(".")
-      // }
+      for (let i = 1; i <= 5; i++) {
+        let input = document.createElement("input");
+        input.setAttribute("type", "radio");
+        input.setAttribute("id", `star_${i}`);
+        input.setAttribute("name", "rate");
+        input.setAttribute("value", `${i}`);
 
-      // Comment
+        if (relation.review.rate != undefined && relation.review.rate == i) {
+          input.checked = true;
+        }
+
+        let label = document.createElement("label");
+        label.setAttribute("for", `star_${i}`);
+        label.setAttribute("title", `${i}`);
+        label.innerHTML = "&#9733;";
+
+        stars.prepend(input, label);
+      }
+
+      // Bottom
+      let bottomDiv = document.createElement("div");
+      bottomDiv.className = "bottom";
       let labelComment = document.createElement("label");
-      labelComment.textContent = "label-comment";
-      let input = document.createElement("input");
-      input.setAttribute("type", "text-area");
-      input.setAttribute("name", "comment");
-      input.classname = "comment";
-      input.value = relation.review.comment;
+      labelComment.textContent = "Review";
+
+      let textArea = document.createElement("textarea");
+      textArea.setAttribute("id", "text-area");
+      textArea.setAttribute("name", "comment");
+      textArea.setAttribute("rows", "4");
+      textArea.setAttribute("placeholder", "Leave a comment...");
+
+      if (relation.review.comment != undefined) {
+        textArea.textContent = relation.review.comment;
+      }
 
       // Submit-button
       let submitButton = document.createElement("button");
@@ -380,9 +407,16 @@ async function makeMovieProfile(movieID) {
       submitButton.textContent = "Submit";
 
       topDiv.append(exitButton, title);
-      middleDiv.append();
-      form.append(labelComment, input);
-      messageWrapper.append(topDiv, middleDiv, form, submitButton);
+      middleDiv.append(stars);
+      bottomDiv.append(labelComment, textArea);
+      messageWrapper.append(topDiv, middleDiv, bottomDiv, submitButton);
+
+      setTimeout(() => {
+        topDiv.style.display = "flex";
+        middleDiv.style.display = "flex";
+        bottomDiv.style.display = "flex";
+        submitButton.style.display = "block";
+      }, 1500);
     }
 
     overlayFade.append(messageWrapper);
@@ -394,21 +428,67 @@ async function makeMovieProfile(movieID) {
       document.body.style.overflow = "visible";
     });
 
-    // star click
-    // const container = document.querySelector(".rating");
-    // const stars = container.querySelectorAll(".rating-stars");
-    // container.addEventListener("click", (e) => {
-    //     const elClass = e.target.classList;
-    //     if (!elClass.contains("active")){
-    //         stars.forEach( item => item.classList.remove("active"));
-    //     }
-    //     elClass.add(".active");
-    // });
-
     // submit click
+    document.querySelector(".submit").addEventListener("click", () => {
+      let comment = document.querySelector("textarea").value;
+      let starRate = 0;
+      let radioStars = document.querySelectorAll("input");
+
+      radioStars.forEach((star) => {
+        if (star.checked == true) {
+          starRate = star.value;
+        }
+      });
+
+      let message = "";
+      // PATCH
+      if (relation.review != false) {
+        relation.review.rate = starRate;
+        relation.review.comment = comment;
+        relation.review.updated = true;
+
+        patchActivity(relation.review);
+        message = "You updated your review";
+
+        // POST
+      } else {
+        postNewActivity(movieID, loggedInUser, "review", comment, starRate);
+        message = "Thanks for your review";
+      }
+
+      let messageWrapper = document.querySelector(".message-wrapper");
+      let top = document.querySelector(".message-wrapper > .top");
+      let middle = document.querySelector(".message-wrapper > .middle");
+      let bottom = document.querySelector(".message-wrapper > .bottom");
+      top.style.animation = "fadeOut 1.2s";
+      middle.style.animation = "fadeOut 1.2s";
+      bottom.style.animation = "fadeOut 1.2s";
+
+      setTimeout(() => {
+        messageWrapper.innerHTML = "";
+        let p = document.createElement("p");
+        p.textContent = message;
+        p.style.animation = "fadeIn 1s";
+        messageWrapper.append(p);
+      }, 1000);
+
+      setTimeout(() => {
+        overlayFade.style.animation = "fadeOut 1.2s";
+
+        setTimeout(async function () {
+          reviews.innerHTML = "";
+          overlayFade.remove();
+          document.body.style.overflow = "visible";
+          let titleReview = document.createElement("h4");
+          titleReview.textContent = "Reviews";
+          reviews.append(titleReview);
+
+          let activities = await getActivityByMovieID(movieID);
+          createActivities(activities, "feed", "movie-profile-reviews");
+        }, 1000);
+      }, 2500);
+    });
   });
 
   buttons.append(watchLater, watched, review);
 }
-
-// makeMovieProfile(movieID);
