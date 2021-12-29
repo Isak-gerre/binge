@@ -42,6 +42,25 @@ function getFromSession(getter) {
   return JSON.parse(sessionStorage.getItem(getter));
 }
 
+async function userVarification(){
+let userSession = getFromSession("session");
+let userID =  userSession.userID;
+let sessionID = userSession.sessionID;
+try {
+  let response = await fetch(`http://localhost:7001/GET/get-users.php?sessionID=${sessionID}&userID=${userID}`);
+  let data = await response.json();
+  if(data.ok) {
+    return true;
+  }
+  else {
+    return false
+  }
+} catch (error) {
+  console.error(error);
+}
+
+}
+
 function removeLatestState() {
   let allStates = getFromSession("state");
   allStates.splice(0, 1);
@@ -260,7 +279,7 @@ function howManyDaysAgo(recievedDate) {
 // Skapat aktivteter till feed och profile
 function createActivities(array, page, appendIn = "wrapper") {
   array.sort((a, b) => b.date - a.date);
-  
+
   array.forEach(async function (obj) {
     let movieInfo = await getMovieInfo(obj.movieID);
     let userInfo = await getUserInfo(obj.userID);
@@ -524,5 +543,6 @@ async function deleteteActivity(activityID) {
     console.log(err);
   }
 }
+
 
 

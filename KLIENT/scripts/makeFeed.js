@@ -10,6 +10,7 @@
 
 const wrapper = document.getElementById("wrapper");
 
+
 // Get the logged in userobj
 makeFeed();
 

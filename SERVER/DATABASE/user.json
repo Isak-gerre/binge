@@ -202,6 +202,30 @@
                 4,
                 5
             ]
+        },
+        "7": {
+            "firstname": "cool",
+            "lastname": "boy",
+            "username": "nikokicken",
+            "password": "$2y$10$.LK7lSa9Y2AEFT55LyPKKu9WqesLj3AaS1KExwC39BAYfPDNn3pHG",
+            "email": "nikthapimp@gmail.com",
+            "birthday": "2006-12-15",
+            "selectRegion": "SE",
+            "prfoileImg": "profileImg2",
+            "fileToUpload": "profileImg2",
+            "active_streaming_services": [
+                "Netflix",
+                "Amazon Prime Video",
+                "Disney Plus",
+                "HBO Max"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_2.png"
+            },
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$1aicvyTAS9AyrvA3aUoLYe2NqwohsN45CoSuZ4Abeb\/j10SLuREyC",
+            "id": 7
         }
     }
 }
