@@ -366,6 +366,12 @@
       @include smallTitleFont();
       padding-bottom: $betweenPadding;
     }
+
+    .allProviders{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
     .your-streaming-services-grid, .other-streaming-services-grid {
       @include flex(row, flex-start, center);
       gap: $betweenPadding;

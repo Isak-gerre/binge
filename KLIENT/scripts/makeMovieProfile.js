@@ -146,6 +146,11 @@ async function makeMovieProfile(movieID) {
 
     streamingservices.append(streamingservicesText);
 
+    let allProvidersGrid = document.createElement("div");
+    allProvidersGrid.className = "allProviders";
+
+    streamingservices.append(allProvidersGrid);
+
     // console.log(additionalInfo.message.providers.results[userRegion]);
     // Checks if you can buy, rent or flatrate in your country
     if (additionalInfo.message.providers.results[userRegion] == undefined) {
@@ -186,7 +191,7 @@ async function makeMovieProfile(movieID) {
                      } 
                 })
                 yourStreamingServices.append(yourStreamingservicesGrid);
-                streamingservices.append(yourStreamingServices);
+                allProvidersGrid.append(yourStreamingServices);
 
             }
 
@@ -204,7 +209,7 @@ async function makeMovieProfile(movieID) {
                     otherProvidersDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
                 })
                 otherStreamingServices.append(otherStreamingservicesGrid)
-                streamingservices.append(otherStreamingServices);
+                allProvidersGrid.append(otherStreamingServices);
 
             }
 
