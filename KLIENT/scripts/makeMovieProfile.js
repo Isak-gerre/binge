@@ -115,6 +115,7 @@ async function makeMovieProfile(movieID) {
   }
   if (relation.review !== false) {
     review.textContent = "Update Review";
+    review.classList.add("marked");
   }
 
   infoText.append(movieRs, title, buttons);
@@ -247,7 +248,7 @@ async function makeMovieProfile(movieID) {
       console.error(error);
     }
   }
-  createActivities(activities, "feed", "movie-profile-reviews");
+  createActivities(activities, "movie", "movie-profile-reviews");
 
   // Similar Movies - Niklas
   let similarMovies = document.createElement("div");
