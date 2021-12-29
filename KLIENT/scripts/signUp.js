@@ -52,9 +52,21 @@ signUpForm.addEventListener("submit", (event) => {
   });
 
   fetch(req)
-    .then((response) => response.json())
+    .then((response) =>{
+        if(response.ok){
+            return response.json();
+        }
+        else{
+            throw new Error("Something went wrong!")
+        }
+       
+    })
     .then((data) => {
         saveToSession(data, "session");
         window.location.replace("http://localhost:2000/explore.php");
+    })
+    .catch(error => {
+        console.log(error);
+        sessionStorage.clear();
     });
 });

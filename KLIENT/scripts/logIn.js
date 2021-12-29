@@ -2,7 +2,9 @@
 // Skicka data(POST) till log-in-verification.php
 // data kontrolleras(om fält är ifyllda) innan den skickas för att
 // Ex. kolla om fälten är ifyllda, om mailen har tecken som @ och . osv.
-console.log("hejhej");
+
+sessionStorage.clear();
+
 const form = document.getElementById("loginForm");
 
 form.addEventListener("submit", (event) => {
@@ -35,7 +37,7 @@ form.addEventListener("submit", (event) => {
         for(let [key, value] of formData.entries()) {
             object[key] = value;
         }   
-        
+
         const req2 = new Request("http://localhost:7001/POST/log-in-verification.php", {
             method: "POST",
             body: formData
@@ -44,20 +46,20 @@ form.addEventListener("submit", (event) => {
         fetch(req2)
             .then(response => {
                 if(response.ok){
-                    response.json();
+                    return response.json()
                 }
                 else{
-                    throw new Error(response.statusText);
+                    throw new Error("Password or username is wrong");
                 }
-                    
-            })
-            .then(data => {
+                })
+            .then(data => { 
                 saveToSession(data,'session');
                 window.location.replace("http://localhost:2000/feed.php");
             })
             .catch(error => {
+                sessionStorage.clear();
                 console.log(error);
-            }) 
+            });
     }
 });
 

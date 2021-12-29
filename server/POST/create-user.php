@@ -63,12 +63,27 @@ if (isset($_FILES["fileToUpload"])) {
 } else {
     if ($_POST["fileToUpload"] === "profileImg1") {
         $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_1.png";
-    } else if ($_POST["fileToUpload"] === "profileImg2") {
+    } 
+    else if ($_POST["fileToUpload"] === "profileImg2") {
         $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_2.png";
-    } else if ($_POST["fileToUpload"] === "profileImg3") {
+    } 
+    else if ($_POST["fileToUpload"] === "profileImg3") {
         $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_3.png";
-    } else if ($_POST["fileToUpload"] === "profileImg4") {
+    } 
+    else if ($_POST["fileToUpload"] === "profileImg4") {
         $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_4.png";
+    } 
+    else if ($_POST["fileToUpload"] === "profileImg5") {
+        $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_5.png";
+    } 
+    else if ($_POST["fileToUpload"] === "profileImg6") {
+        $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_6.png";
+    } 
+    else if ($_POST["fileToUpload"] === "profileImg7") {
+        $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_7.png";
+    } 
+    else if ($_POST["fileToUpload"] === "profileImg8") {
+        $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_8.png";
     }
 }
 
