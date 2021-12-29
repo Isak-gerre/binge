@@ -36,6 +36,7 @@ async function searchFunction(searchBy) {
 
     myFunction(inputValue);
   }
+
   // ACTORS
   if (input.value !== "" && searchBy == "Actors") {
     searchType = "cast";
@@ -62,6 +63,7 @@ async function searchFunction(searchBy) {
 
     myFunction(inputValue, "actor");
   }
+
   // USERS
   if (input.value !== "" && searchBy == "Users") {
     let searchResults = await getSearchResults(searchType, inputValue);
@@ -79,7 +81,7 @@ async function searchFunction(searchBy) {
       let title = movie.title || movie.name;
     });
 
-    myFunction(inputValue);
+    myFunction(inputValue, "users");
   }
 }
 
