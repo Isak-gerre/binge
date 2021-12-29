@@ -332,10 +332,14 @@ svg:active,
   width: 60%;
   z-index: 1000;
   right: 0;
+  padding: 60px 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   -webkit-transform: translateX(0%);
           transform: translateX(0%);
   -webkit-transform-origin: right;
           transform-origin: right;
+  overflow: scroll;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -343,12 +347,6 @@ svg:active,
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
 }
 
 .hamburger-background {
@@ -361,10 +359,38 @@ svg:active,
   opacity: 0.6;
 }
 
-.hamburger-text {
+.pages-container {
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.pages-container .hamburger-text {
   opacity: 0;
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
+  padding-bottom: 10px;
+}
+
+.genres-container {
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.genres-container .genre-link {
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
+  padding-bottom: 10px;
+}
+
+.about-container {
+  font-family: "Mulish", sans-serif;
+  font-size: 10px;
 }
 
 @-webkit-keyframes hamburgerScale {

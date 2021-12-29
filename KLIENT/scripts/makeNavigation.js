@@ -123,19 +123,71 @@ function makeLowerNav() {
   lowerNav.append(backLowerNav, lowerNavLeft, lowerNavMiddle, navRight, lowerNavRight);
 }
 
-function makeHamburgerMenu() {
-  console.log(true);
-  let test = ["Home", "Profile", "Genres"];
+async function makeHamburgerMenu() {
+  let pages = ["Home", "Explore", "Profile"];
+  let genres = await getGenres();
+
+  // Black overlay
   let hamburgerBackground = document.createElement("div");
   hamburgerBackground.className = "hamburger-background";
+
+  // Menu container
   let hamburgerMenu = document.createElement("div");
   hamburgerMenu.className = "hamburger-menu";
+  document.body.append(hamburgerMenu, hamburgerBackground);
 
-  test.forEach((text) => {
-    hamburgerMenu.append(hamburgerText(text));
+  // Create PAGE-links-and-container
+  let pagesContainer = document.createElement("div");
+  pagesContainer.className = "pages-container";
+
+  pages.forEach((text) => {
+    pagesContainer.append(hamburgerText(text));
   });
 
-  document.body.append(hamburgerMenu, hamburgerBackground);
+  // Create GENRE-links-and-container
+  let genresContainer = document.createElement("div");
+  genresContainer.className = "genres-container";
+  
+  genres.genres.forEach((genre) => {
+    genresContainer.append(createGenreLinks(genre.name));
+  })
+
+  // Create ABOUT-links-and-container
+  let aboutContainer = document.createElement("div");
+  aboutContainer.className = "about-container";
+
+  let tmdb = document.createElement("div");
+  tmdb.className = "tmdb";
+
+  let tmdbLogo = document.createElement("img");
+  tmdbLogo.setAttribute("src", "../icons/tmdb.svg");
+  tmdbLogo.classList.add("tmdbLogo");
+  tmdbLogo.textContent = "tmdbLogo";
+
+  let tmdbText = document.createElement("div");
+  tmdbText.classList.add("tmdbText");
+  tmdbText.textContent = "This product uses the TMDB API but is not endorsed or certified by TMDB.";
+
+  tmdb.append(tmdbLogo, tmdbText);
+
+  let git = document.createElement("div");
+  git.classList.add("git");
+
+  let gitLogo = document.createElement("img");
+  gitLogo.setAttribute("src", "../icons/github.svg");
+  gitLogo.classList.add("gitLogo");
+  gitLogo.textContent = "gitLogo";
+
+  let gitText = document.createElement("div");
+  gitText.classList.add("gitText");
+  gitText.textContent = "Follow this product on github.";
+
+  aboutContainer.append(tmdb, git);
+  git.append(gitLogo, gitText);
+
+  // Append containers in main container
+  hamburgerMenu.append(pagesContainer, genresContainer, aboutContainer);
+
 
   document.querySelectorAll(".hamburger-text").forEach((element, index) => {
     setTimeout(() => {
@@ -150,7 +202,37 @@ function hamburgerText(text) {
   hamburgerText.textContent = text;
   hamburgerText.className = "hamburger-text";
 
+  let page = text.toLowerCase();
+  let url = window.location.href;
+
+  // Makrera den sidan som användaren är på
+  if(url.includes(page)) {
+    hamburgerText.style.fontWeight = "bold"; // vf funkar ej detta?
+  }
+
+  hamburgerText.addEventListener("click", () => {
+    if(page == "home"){
+      page = "feed";
+    }
+
+    window.location.href = `${page}.php`;
+  });
+
   return hamburgerText;
+}
+
+function createGenreLinks(genre) {
+  let genreLink = document.createElement("p");
+  genreLink.textContent = genre;
+  genreLink.className = "genre-link";
+
+  genreLink.addEventListener("click", () => {
+    makeSearchOverlay(genre);
+
+    // Här vill man även dölja själva menyn
+  });
+
+  return genreLink;
 }
 
 makeLowerNav();

@@ -267,9 +267,13 @@ svg:active,
   width: 60%;
   z-index: 1000;
   right: 0;
+  padding: 60px 20px;
+  box-sizing: border-box;
   transform: translateX(0%);
   transform-origin: right;
-  @include flex(column, space-evenly, flex-start);
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
 }
 .hamburger-background {
   height: 100%;
@@ -280,10 +284,39 @@ svg:active,
   z-index: 900;
   opacity: 0.6;
 }
-.hamburger-text {
-  opacity: 0;
-  transition: all 1s ease;
+
+.pages-container {
+  border-bottom: 1px solid $lightFont;
+  margin-bottom: 10px;
+  width: 100%;
+
+  .hamburger-text {
+    opacity: 0;
+    transition: all 1s ease;
+    @include smallTitleFont();
+    padding-bottom: $betweenPadding;
+  }
 }
+
+.genres-container {
+  border-bottom: 1px solid $lightFont;
+  margin-bottom: 10px;
+  width: 100%;
+
+  .genre-link {
+  //   opacity: 0;
+  //   transition: all 1s ease;
+    @include smallTitleFont();
+    padding-bottom: $betweenPadding;
+  }
+}
+
+.about-container {
+  @include xSmallFont();
+}
+
+
+
 
 @keyframes hamburgerScale {
   0% {
