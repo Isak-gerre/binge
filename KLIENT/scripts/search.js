@@ -66,29 +66,38 @@ async function searchFunction(searchBy) {
 
   // USERS
   if (input.value !== "" && searchBy == "Users") {
-    let searchResults = await getSearchResults(searchType, inputValue);
-    let movieList = document.querySelector("#search-results");
-    movieList.innerHTML = "";
+    document.querySelector("#search-results").innerHTML = "";
+    let users = await getUsers();
+    console.log(users);
+    users.forEach((user) => {
+      let userDiv = document.createElement("div");
+      userDiv.className = "userDiv";
 
-    searchResults.results.forEach(async function (result) {
-      addToMovies(result);
-    });
-    let allMovies = getFromSession("movies");
-    allMovies.forEach((movie) => {
-      let movieElement = makeMovieBannerFromMovie(movie);
-      movieElement.setAttribute("name", movie.title);
-      document.querySelector("#search-results").prepend(movieElement);
-      let title = movie.title || movie.name;
-    });
+      let userImage = document.createElement("div");
+      userImage.className = "userImage";
+      console.log(user["profile_picture"].filepath);
+      userImage.style.backgroundImage = `url('http://localhost:7001/${user["profile_picture"].filepath}')`;
 
-    myFunction(inputValue, "users");
+      userImage.addEventListener("click", () => {
+        window.location.href = `profile.php?userID=${user.id}`;
+      });
+
+      let userInfoDiv = document.createElement("div");
+      userInfoDiv.className = "userInfoDiv";
+
+      let followDiv = document.createElement("div");
+      followDiv.className = "followDiv";
+
+      userDiv.append(userImage, userInfoDiv, followDiv);
+      document.querySelector("#search-results").append(userDiv);
+    });
   }
 }
 
 function myFunction(searchResults, searchAttribute = "name") {
   var movie, text, i, txtValue;
   filter = searchResults.toUpperCase();
-  movie = document.querySelectorAll("#search-results .movieBanner");
+  movie = document.querySelectorAll("#search-results > div");
   console.log(movie);
   for (i = 0; i < movie.length; i++) {
     text = movie[i].getAttribute(searchAttribute);

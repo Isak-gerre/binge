@@ -325,3 +325,14 @@ svg:active,
   top: 120px;
   width: 80%;
 }
+.userDiv {
+  @include flex(column, center, center);
+  max-width: 100px;
+}
+.userImage {
+  width: 75px;
+  height: 75px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+}

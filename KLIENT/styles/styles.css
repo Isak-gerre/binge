@@ -52,8 +52,6 @@ body {
   overflow-x: hidden;
   color: black;
   margin-bottom: 90px;
-  padding-right: 25px;
-  padding-left: 25px;
 }
 
 #topWrapperProfile {
@@ -291,7 +289,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #1C1452;
+  background-color: #1c1452;
   width: 33%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -1771,7 +1769,8 @@ body {
 }
 
 .movieBanner,
-.genreBanner {
+.genreBanner,
+.userDiv {
   height: 150px;
   border-radius: 8px;
   background-size: cover;
@@ -2378,5 +2377,30 @@ svg:active,
   position: absolute;
   top: 120px;
   width: 80%;
+}
+
+.userDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 100px;
+}
+
+.userImage {
+  width: 75px;
+  height: 75px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
 }
 /*# sourceMappingURL=styles.css.map */
