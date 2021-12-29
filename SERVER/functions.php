@@ -62,7 +62,7 @@ function inspect($variable)
 }
 // Returnerar näst kommande högsta ID:t
 function nextHighestId($array)
-{   
+{
     $highestId = 0;
     foreach ($array as $object) {
         if ($object["id"] > $highestId) {
@@ -89,11 +89,13 @@ function getUsersByIDs($arrayOfIDs)
 function getUsers()
 {
     $users = loadJSON("../DATABASE/user.json");
+    $newUserArray = [];
     foreach ($users as $user) {
         unset($user["password"]);
         unset($user["active_streaming_services"]);
         unset($user["email"]);
         // unset($user["sessionID"]);
+        // $user[] = 
     }
     return $users["users"];
 }
