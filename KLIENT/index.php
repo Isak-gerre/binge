@@ -82,19 +82,19 @@
     <fieldset id="createUserP3">
         <label>
             <input name="prfoileImg" id="profileImg1" type="radio" value="profileImg1" checked>
-            <img src="http://localhost:7001/DATABASE/IMAGES/PROFILE/ivankaa.jpg"  width="100" height="100" alt="">
+            <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_1.png"  width="100" height="100" alt="">
         </label>
         <label>
             <input name="prfoileImg" id="profileImg2" type="radio" value="profileImg2">
-            <img src="http://localhost:7001/DATABASE/IMAGES/PROFILE/izakiii.jpg"   width="100" height="100" alt="">
+            <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_2.png"   width="100" height="100" alt="">
         </label>
         <label>
             <input name="prfoileImg" id="profileImg3" type="radio" value="profileImg3">
-            <img src="http://localhost:7001/DATABASE/IMAGES/PROFILE/enismattis.jpg"  width="100" height="100" alt="">
+            <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_3.png"  width="100" height="100" alt="">
         </label>
         <label>
             <input name="prfoileImg" id="profileImg4" type="radio" value="profileImg4">
-            <img src="http://localhost:7001/DATABASE/IMAGES/PROFILE/nikokick.jpg"   width="100" height="100" alt="">
+            <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_4.png"   width="100" height="100" alt="">
         </label>
         
         <input type="file" id="fileToUpload" name="fileToUpload">

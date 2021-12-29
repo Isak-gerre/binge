@@ -65,16 +65,16 @@
             }
             else{
                 if($_POST["fileToUpload"] === "profileImg1"){
-                    $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/ivankaa.jpg";
+                    $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_1.png";
                 }
                 else if($_POST["fileToUpload"] === "profileImg2"){
-                    $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/izakiii.jpg";
+                    $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_2.png";
                 }
                 else if($_POST["fileToUpload"] === "profileImg3"){
-                    $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/enismattis.jpg";
+                    $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_3.png";
                 }
                 else if($_POST["fileToUpload"] === "profileImg4"){
-                    $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/nikokick.jpg";
+                    $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_4.png";
                 }
             }
             
