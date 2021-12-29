@@ -1,9 +1,5 @@
 @import "variables.scss";
 
-body {
-  position: relative;
-}
-
 #topWrapperProfile {
   margin-top: 60px;
   z-index: 15;
@@ -25,9 +21,10 @@ body {
   }
 }
 
+//  USER PROFILE
 #profileInfo {
   @include flex(column, center, flex-start);
-  gap: 5px;
+  gap: $betweenPadding;
   flex-grow: 1;
 
   #usernameDiv {
@@ -47,8 +44,8 @@ body {
       gap: 4px;
 
       width: 100px;
-      border-radius: 5px;
-      padding: 3px;
+      border-radius: $borderRadiusButtons;
+      padding: $buttonPadding;
 
       p {
         @include bodyFont();
@@ -109,7 +106,7 @@ body {
 
   .selected {
     background: $gradientPeach;
-    border-radius: 5px;
+    border-radius: $borderRadiusButtons;
   }
 }
 
@@ -160,6 +157,7 @@ body {
   }
 }
 
+//  SETTINGS 
 #settingsWindow {
   @include transitionFromLeft();
   @include flex(column, flex-start, center);

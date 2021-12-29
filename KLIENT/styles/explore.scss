@@ -9,13 +9,15 @@
   margin-top: 50px;
   z-index: 100;
 }
+// TREDNING SLIDESHOW
+
 #trending {
   h3 {
-    padding: $betweenPadding $wrapperPadding;
+    @include smallTitleFont();
+    margin: 0 $wrapperPadding 0 $wrapperPadding;
   }
 }
 
-//slideshow
 .slideshow-container {
   width: 100vw;
   height: 250px;
@@ -23,7 +25,6 @@
 
 .slideshow {
   display: flex;
-  // justify-content: center;
   width: 100vw;
   height: inherit;
   position: relative;
@@ -45,6 +46,15 @@
   position: relative;
 }
 
+.movieNameTr {
+  p {
+    @include bodyFont();
+    color: $lightFont;
+    width: 100%;
+    padding: $betweenPadding $wrapperPadding;
+  }
+}
+
 // FRIENDS RECENTLY WATCHED
 #frw {
   @include flex(column, center, flex-start);
@@ -53,6 +63,7 @@
   padding-bottom: 0px;
 
   h3 {
+    @include smallTitleFont();
     padding-bottom: $titlePadding;
   }
 
@@ -60,7 +71,6 @@
     width: 100%;
     overflow-x: scroll;
     scroll-behavior: smooth;
-
     @include flex(row, flex-start, center);
   }
 
@@ -72,9 +82,7 @@
       padding: $betweenPadding 0px;
 
       .profile-image {
-        height: 3vh;
-        width: 3vh;
-        border-radius: 50%;
+        @include profilePicture(25px, 25px);
         margin-right: 1.5vh;
         background-size: cover;
       }
@@ -91,14 +99,8 @@
   }
 }
 
-.movieNameTr {
-  p {
-    color: white;
-    width: 100%;
-    padding: $betweenPadding $wrapperPadding;
-  }
-}
 
+//  GENRES
 #genre {
   display: grid;
   width: 100vw;
@@ -109,7 +111,10 @@
   padding-bottom: 0px;
 
   h3 {
+    @include smallTitleFont();
     grid-area: 1/1/2/3;
     padding-bottom: $titlePadding;
   }
 }
+
+
