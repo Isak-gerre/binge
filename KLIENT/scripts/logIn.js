@@ -44,7 +44,7 @@ form.addEventListener("submit", (event) => {
         fetch(req2)
             .then(response => response.json())
             .then(data => {
-                sessionStorage.setItem('sessionId', data.SessionId);
+                sessionStorage.setItem('session', data);
                 window.location.replace("http://localhost:5000/feed.php");
             }); 
     }
