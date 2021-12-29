@@ -3,12 +3,8 @@
 // skapar hela elementent ((avändare + makeMovieBanner) x antal)
 // appendar
 
-// User Variable
-let userID = 1;
-
-
 // Activity Variable
-async function executeFriendsActivities() {
+async function executeFriendsActivities(userID) {
   // Filtered by watched
   let actArray = await getFriendsActivities(userID);
   let filteredActArray = actArray.filter((activity) => activity.type === "watched");

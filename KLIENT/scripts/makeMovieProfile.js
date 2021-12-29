@@ -16,21 +16,14 @@
 // 2. Watch later: skickar till servern
 // 3. Review: skickar till servern
 
-/*
-
-makeMovieProfile([movieID]){
-
-}
-
-*/
 
 "use strict";
 
 // Variabler för den inloggade?
-let loggedInUser = 5;
+let loggedInUser = getLoggedInUserID();
 
 async function makeMovieProfile(movieID) {
-  let user = await getUserInfo(1);
+  let user = await getUserInfo(loggedInUser);
 
   let overlay = document.getElementById("overlay");
   let data = await getMovieInfo(movieID);

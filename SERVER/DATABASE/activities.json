@@ -299,6 +299,36 @@
             "comment": "hej",
             "rate": "5",
             "updated": false
+        },
+        "34": {
+            "id": 34,
+            "userID": 7,
+            "movieID": "624860",
+            "type": "watchlist",
+            "date": "20211229",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "35": {
+            "id": 35,
+            "userID": 7,
+            "movieID": "624860",
+            "type": "watched",
+            "date": "20211229",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "36": {
+            "id": 36,
+            "userID": 7,
+            "movieID": "624860",
+            "type": "review",
+            "date": "20211229",
+            "comment": "Denna va s\u00e5 bra, vad roligt! Jag s\u00e5g den med en kompis som hatade den, mindre kul, men kolla g\u00e4rna p\u00e5 den, den \u00e4r guld. Vill g\u00e4rna snakca om den s\u00e5 ring mig p\u00e5 0763083587 puss :*",
+            "rate": "5",
+            "updated": true
         }
     }
 }

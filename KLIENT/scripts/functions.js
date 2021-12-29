@@ -42,8 +42,18 @@ function getFromSession(getter) {
   return JSON.parse(sessionStorage.getItem(getter));
 }
 
+function getLoggedInUserID()
+{if(userVarification()) {
+  let userID = getFromSession("session").session.userID;
+  return userID;
+} else {
+  sessionStorage.clear();
+  window.href = "/index.php";
+}
+}
+
 async function userVarification(){
-let userSession = getFromSession("session");
+let userSession = getFromSession("session").session;
 let userID =  userSession.userID;
 let sessionID = userSession.sessionID;
 try {

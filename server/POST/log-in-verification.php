@@ -29,7 +29,7 @@
                 sendJSON(
                     [
                     "message" => "Login was a success",
-                    "SessionId" => [$key["sessionID"], $key["userID"]]
+                    "session" => [ "sessionID" => $key['sessionId'], "userID" => $key['id']],
                     ], 200);
             }
             //Error om det inte funkar

@@ -1,5 +1,7 @@
 "user strict";
 
+const userID = getLoggedInUserID();
+
 if(getParamFromUrl("movieID")){
     document.querySelector("#wrapper").innerHTML = "";
     makeMovieProfile(getParamFromUrl("movieID"));
@@ -15,8 +17,8 @@ if(getParamFromUrl("movieID")){
     }, 1000);
 
     //FRIENDS RECENTLY WATCHED
-    executeFriendsActivities();
-    
+    executeFriendsActivities(userID);
+
     //GENRED
     makeGenreBanner();
 
