@@ -55,7 +55,8 @@ signUpForm.addEventListener("submit", (event) => {
     fetch(req)
     .then(response => response.json())
     .then(data => {
-        pictureID = data.pictureID;
+        sessionStorage.setItem('session', data);
+        window.location.replace("http://localhost:5000/explore.php");
     });
 });
 
