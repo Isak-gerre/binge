@@ -13,8 +13,16 @@ async function makeMovieBanner(movieID) {
   //classes
   movieBanner.className = "movieBanner";
 
+  let movieImgPath = ``;
+
+  if(movieInfo.message["poster_path"] == null){
+    movieImgPath = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["backdrop_path"]}')`;
+  } else {
+    movieImgPath = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["poster_path"]}')`;
+  }
+
   //the background image
-  movieBanner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["poster_path"]}')`;
+  movieBanner.style.backgroundImage = movieImgPath;
 
   //send to movieProfile
   movieBanner.addEventListener("click", () => {
