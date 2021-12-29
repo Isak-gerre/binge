@@ -202,25 +202,6 @@
                 4,
                 5
             ]
-        },
-        "7": {
-            "firstname": "Test",
-            "lastname": "User",
-            "username": "Test",
-            "email": "test@user.se",
-            "password": "$2y$10$BYcXZR26noNtaJy9fuAb9.MY98KaErbMwLCQUQyLD.zzAWNvZkDpa",
-            "birthday": "test",
-            "region": "SE",
-            "active_streaming_services": [
-                "netflix",
-                "hbo max",
-                "svt",
-                "c more",
-                "viaplay"
-            ],
-            "followers": [],
-            "following": [],
-            "id": "7"
         }
     }
 }

@@ -30,8 +30,44 @@ fetch(region)
 
         selectRegion.prepend(opt);
 
-        //Skapar en sign up form
-        document.getElementById("signUpForm").append(selectRegion);
+        //Skapar en slect för region
+        document.getElementById("createUserP2").append(selectRegion);
+
+        //Skapar knapparna
+        let button = document.createElement("button");
+        button.innerHTML = "Skip";
+        button.setAttribute("id", "skip2");
+        button.setAttribute("type", "button");
+        document.getElementById("createUserP2").append(button);
+
+        let button1 = document.createElement("button");
+        button1.innerHTML = "Next";
+        button1.setAttribute("id", "next2");
+        button1.setAttribute("type", "button");
+        document.getElementById("createUserP2").append(button1);
+
+        
+        document.getElementById("next2").addEventListener("click", () => {
+            let checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+            console.log(checkboxes.length);
+            if(filter.value == ""){
+                console.log("please choose a region");
+            }
+            else if(checkboxes.length == 0){
+                console.log("please choose at least one provider");
+            }
+            else{
+                console.log("Event Click 2");
+                document.getElementById("createUserP2").style.visibility = "hidden";
+                document.getElementById("createUserP3").style.visibility = "visible";
+            }
+            
+        });
+        document.getElementById("skip2").addEventListener("click", () => {
+            console.log("Event Click 2");
+            document.getElementById("createUserP2").style.visibility = "hidden";
+            document.getElementById("createUserP3").style.visibility = "visible";
+        });
 
         //Selectar värdet som kommer finnas på select region.
         let filter = document.getElementById("selectRegion");
@@ -52,24 +88,27 @@ fetch(region)
 
             //Gör en sökning efter varje provider från apin och laddar hem dem som är specifika till den regionen
             providerArray = [];
-            providers.innerHTML = "";
             // Ta bort API-nyckel, lägg den i APIn
             const provider = new Request(`https://api.themoviedb.org/3/watch/providers/movie?watch_region=${filter.value}&api_key=f5c0e0db147d0e6434391f3ff153b6a8`);
             fetch(provider)
             .then(response => response.json())
             .then(data => { 
                 providerArray = data.results;
-                showProviders ();
+                showProviders();
             });
-            document.getElementById("signUpForm").append(searchProvider);
-            document.getElementById("signUpForm").append(providers);
+            document.getElementById("createUserP2").insertBefore(searchProvider, button);
+            document.getElementById("createUserP2").insertBefore(providers, button);
+        });
+
+        searchProvider.addEventListener("keyup", () => {
+            showProviders()
         });
 
         function showProviders(){
-
+            console.log("hej");
+            providers.innerHTML = "";
             let filterArray = [];
             if(searchProvider.value != ""){
-                console.log("route 1");
                 providerArray.forEach(e => {
                     let check = e.provider_name.toLowerCase();
                     if(check.includes(`${searchProvider.value.toLowerCase()}`)){
@@ -99,14 +138,6 @@ fetch(region)
                 providers.append(selectProviderLabel);
 
             });
-        
-            // if(!document.getElementById("signInButton")){
-            //     let button = document.createElement("button");
-            //     button.innerHTML = "Sign Up";
-            //     button.setAttribute("id", "signInButton");
-            //     document.getElementById("signUpForm").append(button);
-            // }
-
         }     
     });
 

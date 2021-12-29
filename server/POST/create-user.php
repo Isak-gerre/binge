@@ -30,11 +30,11 @@
     
     $db = loadJSON("../DATABASE/user.json");
         foreach($db["users"] as $key){
-            if($key["username"] === $userData["username"]){
+            if($key["username"] === $_POST["username"]){
                 sendJSON(["message" => "Username is already in use"], 409);
                 exit();
             }
-            else if($key["email"] === $userData["email"]){
+            else if($key["email"] === $_POST["email"]){
                 sendJSON(["message" => "Email is already in use"], 409);
                 exit();
             }
@@ -44,12 +44,12 @@
             //Lägger användaren som nästa ID
             $nextID = nextHighestId($db["users"]);
             //Kollar så att det är samma lösenord mellan password och confirm password
-            if ($userData["password"] != $userData["confirm_password"]){
+            if ($_POST["password"] != $_POST["confirm_password"]){
                 sendJSON(["message" => "Passwords do not match"], 409);
             }
             else{
                 //Hashar lösenordet
-                $hashedPassword = password_hash($userData['password'], PASSWORD_DEFAULT);
+                $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
             }
 
             if(isset($_FILES["fileToUpload"])){
@@ -60,16 +60,26 @@
                 //OBS!!!!: INTE SÄKERT SÄTT ATT KOLLA FIL MEN BÄTTRE ÄN INGET
                 if($_FILES["fileToUpload"]["type"] === "image/jpeg"){
                     move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "../DATABASE/IMAGES/PROFILE/$imgName.jpg");
-                    $userData["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/$imgName.jpg";
+                    $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/$imgName.jpg";
                 }
             }
             else{
-                $userData["profile_picture"]["filepath"] = $_POST["profileImg"];
+                if($_POST["fileToUpload"] === "profileImg1"){
+                    $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/ivankaa.jpg";
+                }
+                else if($_POST["fileToUpload"] === "profileImg2"){
+                    $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/izakiii.jpg";
+                }
+                else if($_POST["fileToUpload"] === "profileImg3"){
+                    $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/enismattis.jpg";
+                }
+                else if($_POST["fileToUpload"] === "profileImg4"){
+                    $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/nikokick.jpg";
+                }
             }
             
-
             //Använder en foreach för att göra alla inskickade värden till ett object med användarens alla nycklar
-            foreach($userData as $key => $value){
+            foreach($_POST as $key => $value){
                 if($key === "firstname" || $key === "lastname" || $key === "email" || $key === "username"){
                     if(empty($value)){
                         sendJSON(["message" => "All requiered fields have not been filled in"], 409);
@@ -82,7 +92,12 @@
                 //Ändrar lösen till det hashade
                 if($key === "password"){
                     $db["users"]["$nextID"][$key] = $hashedPassword;
-                }                
+                } 
+            }
+
+            if(!isset($_POST["active_streaming_services"])){
+                inspect("hej");
+                $db["users"]["$nextID"]["active_streaming_services"] = [];
             }
 
             //Skapar nycklarna followers och following
@@ -93,7 +108,6 @@
             $hashedUserId = password_hash($nextID, PASSWORD_DEFAULT);
             $db["users"]["$nextID"]["sessionId"] = $hashedUserId;
             $db["users"]["$nextID"]["id"] = $nextID;
-            $db["users"]["$nextID"]["profile_picture"] = $nextID;
             
             //Sparar användaren det i databasen
             saveJSON("../DATABASE/user.json", $db);
