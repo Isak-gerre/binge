@@ -90,7 +90,6 @@ foreach ($_POST as $key => $value) {
 }
 
 if (!isset($_POST["active_streaming_services"])) {
-    inspect("hej");
     $db["users"]["$nextID"]["active_streaming_services"] = [];
 }
 
