@@ -141,7 +141,7 @@ async function makeMovieProfile(movieID) {
     streamingservices.className = "movie-profile-streamingservices";
 
     let streamingservicesText = document.createElement("h4");
-    streamingservicesText.textContent = "Streaming Services";
+    streamingservicesText.textContent = "Available on";
     streamingservicesText.className = "streaming-services-text";
 
     streamingservices.append(streamingservicesText);
@@ -156,29 +156,59 @@ async function makeMovieProfile(movieID) {
         // Checks if you can flatrate it
         if (additionalInfo.message.providers.results[userRegion].flatrate == undefined) {
             let message = document.createElement("p");
-            message.textContent = "This movie isnt avaible at any streaming services, but you can hire it :(";
+            message.textContent = "This movie isnt avaible at any streaming services.";
             streamingservices.append(message);
         } else {
             let movieProviders = additionalInfo.message.providers.results[userRegion].flatrate;
-            console.log(movieProviders);
 
-            let streamingservicesGrid = document.createElement("div");
-            streamingservicesGrid.className = "movie-profile-streaming-services-grid";
+            let activeUserSC = user.active_streaming_services;
+            let yourProviders= movieProviders.filter(prov => activeUserSC.includes(prov.provider_name.toLowerCase()));
+            let otherProviders= movieProviders.filter(prov => !activeUserSC.includes(prov.provider_name.toLowerCase()));
 
-            movieProviders.forEach((provider) => {
-                let providerDiv = document.createElement("img");
-                let providerName = provider.provider_name;
-                let activeUserSC = user.active_streaming_services;
-                console.log(providerName.toLowerCase());
-                console.log(activeUserSC.includes(providerName.toLowerCase()));
-                if (activeUserSC.includes(providerName.toLowerCase())) {
-                    providerDiv.className = "active-streming-service";
-                }
+            // console.log(yourProviders.length);
+            // console.log(otherProviders.length);
 
-                providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
-                streamingservicesGrid.append(providerDiv);
-            });
-            streamingservices.append(streamingservicesGrid);
+            if(yourProviders.length > 0){
+                let yourStreamingservicesGrid = document.createElement("div");
+                yourStreamingservicesGrid.className = "your-streaming-services-grid";
+
+                let yourStreamingServices = document.createElement("div");
+                yourStreamingServices.className = "movie-profile-your-streaming-services"
+                yourStreamingServices.innerHTML = "<p>Your streaming services</p>"
+                
+                yourProviders.forEach((provider) => {
+                     let providerName = provider.provider_name;
+                     if (activeUserSC.includes(providerName.toLowerCase())) {
+                         let yourProvidersDiv = document.createElement("img");
+     
+                         yourStreamingservicesGrid.append(yourProvidersDiv);
+                         yourProvidersDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
+                     } 
+                })
+                yourStreamingServices.append(yourStreamingservicesGrid);
+                streamingservices.append(yourStreamingServices);
+
+            }
+
+            if(otherProviders.length > 0){
+                let otherStreamingservicesGrid = document.createElement("div");
+                otherStreamingservicesGrid.className = "other-streaming-services-grid";
+
+                let otherStreamingServices = document.createElement("div");
+                otherStreamingServices.className = "movie-profile-other-streaming-services"
+                otherStreamingServices.innerHTML = "<p>Other streaming services</p>"
+                
+                otherProviders.forEach((provider) => {
+                    let otherProvidersDiv = document.createElement("img");
+                    otherStreamingservicesGrid.append(otherProvidersDiv);
+                    otherProvidersDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
+                })
+                otherStreamingServices.append(otherStreamingservicesGrid)
+                streamingservices.append(otherStreamingServices);
+
+            }
+
+
         }
     }
 
