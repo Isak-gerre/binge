@@ -187,19 +187,24 @@ svg:active,
   transition: all 1s;
 }
 
-.pillsDiv {
-  display: flex;
-  align-items: center;
-  margin: 10px;
-}
-
 .pill {
-  padding: 10px;
-  margin: 5px;
-  border-radius: 20px;
-  background-color: lightgrey;
+  padding: 8px;
+  margin-right: 5px;
+  border-radius: 10px;
+  width: 90px;
+  background: #1d155a;
   transform: scale(1);
   transition: transform 1s;
+
+  .pill-text {
+    font-family: $bodyFont;
+    text-align: center;
+  }
+}
+.active {
+  color: whitesmoke;
+  background: linear-gradient(40deg, #ef9d1a, #fd047c);
+  filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
 }
 
 .movieList {
@@ -312,4 +317,11 @@ svg:active,
   100% {
     opacity: 0;
   }
+}
+.pill-container {
+  z-index: 1000;
+  @include flex(row, flex-start, center);
+  position: absolute;
+  top: 120px;
+  width: 80%;
 }
