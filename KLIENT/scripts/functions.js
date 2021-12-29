@@ -274,7 +274,7 @@ function createActivities(array, page, appendIn = "wrapper") {
     userContainer.classList.add("userContainer");
     container.append(userContainer);
 
-    if (page == "feed") {
+    if (page == "feed" || page == "movie") {
       // användarnamn
       let userPic = document.createElement("div");
       userPic.classList.add("userPic");
@@ -316,7 +316,12 @@ function createActivities(array, page, appendIn = "wrapper") {
 
     //Appenda de två delarna till containern
     container.append(activityContainer);
-    activityContainer.append(activityContainerLeft, activityContainerRight);
+
+    if(page !== "movie") {
+      activityContainer.append(activityContainerLeft, activityContainerRight);
+    } else {
+      activityContainer.append(activityContainerLeft);
+    }
 
     // type
     let type = document.createElement("div");
