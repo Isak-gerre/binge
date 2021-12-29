@@ -10,8 +10,8 @@ fetch(region)
         console.log(data);
         //Skapar en select
         let selectRegion = document.createElement("select");
-        selectRegion.setAttribute("id", "selectRegion");
-        selectRegion.setAttribute("name", "selectRegion")
+        selectRegion.setAttribute("id", "region");
+        selectRegion.setAttribute("name", "region")
         data.results.forEach(region => {
             //Varje option fylls med alla regions
             let opt = document.createElement("option");
@@ -58,19 +58,19 @@ fetch(region)
             }
             else{
                 console.log("Event Click 2");
-                document.getElementById("createUserP2").style.visibility = "hidden";
-                document.getElementById("createUserP3").style.visibility = "visible";
+                document.getElementById("createUserP2").style.display = "none";
+                document.getElementById("createUserP3").style.display = "";
             }
             
         });
         document.getElementById("skip2").addEventListener("click", () => {
             console.log("Event Click 2");
-            document.getElementById("createUserP2").style.visibility = "hidden";
-            document.getElementById("createUserP3").style.visibility = "visible";
+            document.getElementById("createUserP2").style.display = "none";
+            document.getElementById("createUserP3").style.display = "";
         });
 
         //Selectar värdet som kommer finnas på select region.
-        let filter = document.getElementById("selectRegion");
+        let filter = document.getElementById("region");
 
         //Skapar ett fieldset
         let providers = document.createElement("fieldset");
@@ -105,38 +105,49 @@ fetch(region)
         });
 
         function showProviders(){
-            console.log("hej");
-            providers.innerHTML = "";
+            let pro = document.querySelectorAll(".providersLabel");
+
+            pro.forEach(e => {
+                e.style.display = "";
+            });
+
             let filterArray = [];
             if(searchProvider.value != ""){
                 providerArray.forEach(e => {
                     let check = e.provider_name.toLowerCase();
-                    if(check.includes(`${searchProvider.value.toLowerCase()}`)){
+                    if(!check.includes(`${searchProvider.value.toLowerCase()}`)){
                         filterArray.push(e);
+                        console.log(e);
                     }
                 });
             }
-            else
-            {
-                console.log("route 2");
-                filterArray = providerArray;
-            }
 
-            filterArray.forEach(provider => {
-                let selectProvider = document.createElement("input");
-                let selectProviderLabel = document.createElement("label");
+            providerArray.forEach(provider => {
+                if(!document.getElementById(`${provider.provider_name}`)){
+                    let selectProvider = document.createElement("input");
+                    let providerDiv = document.createElement("img")
+                    let selectProviderLabel = document.createElement("label");
+                    
+                    selectProviderLabel.setAttribute("id", `label${provider.provider_name}`);
+                    selectProviderLabel.setAttribute("class", "providersLabel")
+                    
+                    providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`)
 
-                selectProvider.setAttribute("type", "checkbox");
-                selectProvider.setAttribute("value", `${provider.provider_name}`);
-                selectProvider.setAttribute("id", `${provider.provider_name}`);
-                selectProvider.setAttribute("class", "selectProvider");
+                    selectProvider.setAttribute("type", "checkbox");
+                    selectProvider.setAttribute("value", `${provider.provider_name}`);
+                    selectProvider.style.display = "none";
+                    selectProvider.setAttribute("id", `${provider.provider_name}`);
+                    
+                    selectProviderLabel.innerHTML = `${provider.provider_name}`;
+    
+                    selectProviderLabel.append(selectProvider);
+                    selectProviderLabel.append(providerDiv);
+                    providers.append(selectProviderLabel);
+                }
+            });
 
-                selectProviderLabel.setAttribute("for", `${provider.provider_name}`);
-                selectProviderLabel.innerHTML = `${provider.provider_name}`;
-
-                providers.append(selectProvider);
-                providers.append(selectProviderLabel);
-
+            filterArray.forEach(e => {
+                document.getElementById(`label${e.provider_name}`).style.display = "none";
             });
         }     
     });

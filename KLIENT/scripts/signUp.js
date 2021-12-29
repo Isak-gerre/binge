@@ -54,7 +54,7 @@ signUpForm.addEventListener("submit", (event) => {
   fetch(req)
     .then((response) => response.json())
     .then((data) => {
-      saveToSession(data.session, "session");
-      window.location.replace("http://localhost:2000/explore.php");
+        saveToSession(data, "session");
+        window.location.replace("http://localhost:2000/explore.php");
     });
 });

@@ -42,11 +42,22 @@ form.addEventListener("submit", (event) => {
         });
 
         fetch(req2)
-            .then(response => response.json())
+            .then(response => {
+                if(response.ok){
+                    response.json();
+                }
+                else{
+                    throw new Error(response.statusText);
+                }
+                    
+            })
             .then(data => {
                 saveToSession(data,'session');
                 window.location.replace("http://localhost:2000/feed.php");
-            }); 
+            })
+            .catch(error => {
+                console.log(error);
+            }) 
     }
 });
 
