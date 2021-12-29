@@ -156,7 +156,7 @@ async function makeMovieProfile(movieID) {
     // Checks if you can flatrate it
     if (additionalInfo.message.providers.results[userRegion].flatrate == undefined) {
       let message = document.createElement("p");
-      message.textContent = "This movie isnt avaible at any streaming services, but you can hire it :(";
+      message.textContent = "''There may be an issue with availability.'' - Ocean's Eleven (2001) This movie isnt avaible at any streaming services.";
       streamingservices.append(message);
     } else {
       let movieProviders = additionalInfo.message.providers.results[userRegion].flatrate;
