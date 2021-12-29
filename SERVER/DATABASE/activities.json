@@ -120,16 +120,6 @@
             "rate": "5",
             "updated": false
         },
-        "14": {
-            "id": 14,
-            "userID": 5,
-            "movieID": 123,
-            "type": "watched",
-            "date": "20211002",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
         "15": {
             "id": 15,
             "userID": 4,
@@ -299,6 +289,16 @@
             "comment": "Wow vilket film! \u00c4lskar den av hela mitt hj\u00e4rta!",
             "rate": "3",
             "updated": true
+        },
+        "33": {
+            "id": 33,
+            "userID": 5,
+            "movieID": "429617",
+            "type": "review",
+            "date": "20211229",
+            "comment": "hej",
+            "rate": "5",
+            "updated": false
         }
     }
 }

@@ -259,6 +259,8 @@ function howManyDaysAgo(recievedDate) {
 
 // Skapat aktivteter till feed och profile
 function createActivities(array, page, appendIn = "wrapper") {
+  array.sort((a, b) => b.date - a.date);
+  
   array.forEach(async function (obj) {
     let movieInfo = await getMovieInfo(obj.movieID);
     let userInfo = await getUserInfo(obj.userID);

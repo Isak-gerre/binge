@@ -16,6 +16,5 @@ makeFeed();
 async function makeFeed() {
     // hämta id från session
     let activities = await getFriendsActivities(1);
-    activities.sort((a, b) => b.date - a.date);
     createActivities(activities, "feed");
 }

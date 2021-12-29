@@ -488,7 +488,7 @@ async function makeMovieProfile(movieID) {
           reviews.append(titleReview);
 
           let activities = await getActivityByMovieID(movieID);
-          createActivities(activities, "feed", "movie-profile-reviews");
+          createActivities(activities, "movie", "movie-profile-reviews");
 
         }, 1000);
       }, 2500);
