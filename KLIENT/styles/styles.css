@@ -2167,7 +2167,7 @@ svg:active,
 }
 
 .search-container {
-  position: absolute;
+  position: fixed;
   top: -2px;
   z-index: 100;
   width: 100%;
@@ -2197,6 +2197,9 @@ svg:active,
       grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   z-index: 100;
+  overflow: scroll;
+  height: 80vh;
+  padding-bottom: 70px;
 }
 
 .placeholder {
