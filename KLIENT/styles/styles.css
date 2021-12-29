@@ -578,6 +578,34 @@ body {
   z-index: 100;
 }
 
+.drop1 {
+  background-image: url("../icons/drop.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 400px;
+  z-index: 100;
+  width: 120px;
+  left: 13%;
+  height: 135px;
+}
+
+.drop2 {
+  background-image: url("../icons/drop.svg");
+  background-position: -40px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 360px;
+  z-index: 100;
+  width: 120px;
+  right: 0px;
+  height: 135px;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
 .overlay-fade {
   position: absolute;
   top: 0px;
@@ -670,34 +698,6 @@ body {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-}
-
-.overlay-fade .message-wrapper .drop1 {
-  background-image: url("../icons/drop.svg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 400px;
-  z-index: 100;
-  width: 120px;
-  left: 13%;
-  height: 135px;
-}
-
-.overlay-fade .message-wrapper .drop2 {
-  background-image: url("../icons/drop.svg");
-  background-position: -40px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 360px;
-  z-index: 100;
-  width: 120px;
-  right: 0px;
-  height: 135px;
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
 }
 
 .overlay-fade .message-wrapper .middle {
