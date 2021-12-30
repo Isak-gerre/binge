@@ -134,7 +134,7 @@ input:focus {
   padding-bottom: 20px;
   width: 100%;
   bottom: 0;
-  z-index: 10000;
+  z-index: 11000;
   background-color: black;
   // background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
 
@@ -259,18 +259,24 @@ svg:active,
     background-position: 468px 0;
   }
 }
+
 .hamburger-menu {
   height: 100vh;
   position: fixed;
   top: 0;
   background-color: black;
   width: 60%;
-  z-index: 1000;
+  z-index: 10000;
   right: 0;
+  padding: 60px 0px 90px 20px;
+  box-sizing: border-box;
   transform: translateX(0%);
   transform-origin: right;
-  @include flex(column, space-evenly, flex-start);
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
 }
+
 .hamburger-background {
   height: 100%;
   position: absolute;
@@ -280,9 +286,49 @@ svg:active,
   z-index: 900;
   opacity: 0.6;
 }
+
+.pages-container {
+  border-bottom: 1px solid $lightFont;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
 .hamburger-text {
   opacity: 0;
   transition: all 1s ease;
+  @include smallTitleFont();
+  padding-bottom: $betweenPadding;
+  cursor: pointer;
+}
+
+.hamburger-text:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.genres-container {
+  border-bottom: 1px solid $lightFont;
+  margin-bottom: 10px;
+  width: 100%;
+
+  .genre-link {
+    opacity: 0;
+    transition: all 1s ease;
+    @include smallTitleFont();
+    padding-bottom: $betweenPadding;
+    cursor: pointer;
+  }
+
+  .genre-link:hover {
+    transform: scale(1.1, 1.1);
+  }
+}
+
+.about-container {
+  @include xSmallFont();
+}
+
+.markedPage {
+  font-weight: bold;
 }
 
 @keyframes hamburgerScale {

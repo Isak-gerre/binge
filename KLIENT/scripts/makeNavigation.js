@@ -22,11 +22,14 @@ function makeUpperNav() {
   document.body.prepend(upperNav);
   document.querySelector(".back").addEventListener("click", () => {});
   document.querySelector(".hamburger").addEventListener("click", () => {
+
     if (document.querySelector(".hamburger-menu") == null) {
+      document.body.style.overflow = "hidden";
       makeHamburgerMenu();
       document.querySelector(".hamburger-menu").style.animation = "hamburgerScale 0.4s ease-out";
       document.querySelector(".hamburger-background").style.animation = "hamburgerBackground 0.4s ease-out";
     } else {
+      document.body.style.overflow = "visible";
       document.querySelector(".hamburger-background").style.animation = "removeHamburgerBackground 0.4s ease-out";
       document.querySelector(".hamburger-menu").style.animation = "removeHamburgerMenu 0.4s ease-out";
       document.querySelectorAll(".hamburger-text").forEach((element) => {
@@ -123,25 +126,91 @@ function makeLowerNav() {
   lowerNav.append(backLowerNav, lowerNavLeft, lowerNavMiddle, navRight, lowerNavRight);
 }
 
-function makeHamburgerMenu() {
-  console.log(true);
-  let test = ["Home", "Profile", "Genres"];
+async function makeHamburgerMenu() {
+  let pages = ["Feed", "Explore", "Profile"]; // Home eller feed? ska vi döpa om hela filen, för denna blir inte markerad annars, ändrar till feed nu. / ns
+  let genres = await getGenres();
+
+  // Black overlay
   let hamburgerBackground = document.createElement("div");
   hamburgerBackground.className = "hamburger-background";
+
+  // Menu container
   let hamburgerMenu = document.createElement("div");
   hamburgerMenu.className = "hamburger-menu";
-
-  test.forEach((text) => {
-    hamburgerMenu.append(hamburgerText(text));
-  });
-
   document.body.append(hamburgerMenu, hamburgerBackground);
 
+  // Create PAGE-links-and-container
+  let pagesContainer = document.createElement("div");
+  pagesContainer.className = "pages-container";
+
+  pages.forEach((text) => {
+    pagesContainer.append(hamburgerText(text));
+  });
+
+  // Create GENRE-links-and-container
+  let genresContainer = document.createElement("div");
+  genresContainer.className = "genres-container";
+  
+  genres.genres.forEach((genre) => {
+    genresContainer.append(createGenreLinks(genre.name));
+  })
+
+  // Create ABOUT-links-and-container
+  let aboutContainer = document.createElement("div");
+  aboutContainer.className = "about-container";
+
+  let logout = hamburgerText("Log out");
+  logout.addEventListener("click", () => {
+    sessionStorage.clear();
+    window.location.replace("http://localhost:2000");
+  })
+
+  let tmdb = document.createElement("div");
+  tmdb.className = "tmdb";
+
+  let tmdbLogo = document.createElement("img");
+  tmdbLogo.setAttribute("src", "../icons/tmdb.svg");
+  tmdbLogo.classList.add("tmdbLogo");
+  tmdbLogo.textContent = "tmdbLogo";
+
+  let tmdbText = document.createElement("div");
+  tmdbText.classList.add("tmdbText");
+  tmdbText.textContent = "This product uses the TMDB API but is not endorsed or certified by TMDB.";
+
+  tmdb.append(tmdbLogo, tmdbText);
+
+  let git = document.createElement("div");
+  git.classList.add("git");
+
+  let gitLogo = document.createElement("img");
+  gitLogo.setAttribute("src", "../icons/github.svg");
+  gitLogo.classList.add("gitLogo");
+  gitLogo.textContent = "gitLogo";
+
+  let gitText = document.createElement("div");
+  gitText.classList.add("gitText");
+  gitText.textContent = "Follow this product on github.";
+
+  aboutContainer.append(logout, tmdb, git);
+  git.append(gitLogo, gitText);
+
+  // Append containers in main container
+  hamburgerMenu.append(pagesContainer, genresContainer, aboutContainer);
+
+  // Page-link fade in
   document.querySelectorAll(".hamburger-text").forEach((element, index) => {
     setTimeout(() => {
       element.style.opacity = "1";
       element.setAttribute("style", `opacity: 1; transition-delay: ${index * 0.3 + 0.6}s;`);
     }, 0);
+  });
+
+  // Genre fade in
+  document.querySelectorAll(".genre-link").forEach((element, index) => {
+    setTimeout(() => {
+      element.style.opacity = "1";
+      element.setAttribute("style", `opacity: 1; transition-delay: 0.9s;`);
+    }, 1000);
   });
 }
 
@@ -150,7 +219,52 @@ function hamburgerText(text) {
   hamburgerText.textContent = text;
   hamburgerText.className = "hamburger-text";
 
+  let page = text.toLowerCase();
+  let url = window.location.href;
+
+  // Makrera den sidan som användaren är på
+  if(url.includes(page)) {
+    hamburgerText.classList.add("markedPage");
+    // hamburgerText.style.fontWeight = "bold"; // vf funkar ej detta?
+  } else {
+    hamburgerText.classList.remove("markedPage");
+  }
+
+  hamburgerText.addEventListener("click", () => {
+    if(page == "home"){
+      page = "feed";
+    }
+
+    window.location.href = `${page}.php`;
+  });
+
   return hamburgerText;
+}
+
+function createGenreLinks(genre) {
+  let genreLink = document.createElement("p");
+  genreLink.textContent = genre;
+  genreLink.className = "genre-link";
+
+  genreLink.addEventListener("click", () => {
+    document.body.style.overflow = "visible";
+    makeSearchOverlay(genre);
+
+    // Här vill man även dölja själva menyn
+    document.querySelector(".hamburger-background").style.animation = "removeHamburgerBackground 0.4s ease-out";
+    document.querySelector(".hamburger-menu").style.animation = "removeHamburgerMenu 0.4s ease-out";
+    document.querySelectorAll(".hamburger-text").forEach((element) => {
+      element.style.opacity = "0";
+    });
+
+    setTimeout(() => {
+      document.querySelector(".hamburger-menu").remove();
+      document.querySelector(".hamburger-background").remove();
+    }, 400);
+
+  });
+
+  return genreLink;
 }
 
 makeLowerNav();
