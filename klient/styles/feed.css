@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
+#wrapper {
+  width: 100%;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
 .container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -132,6 +138,7 @@
   color: black;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
+  line-height: 1.4;
   height: 50px;
   -webkit-transition: height 1s;
   transition: height 1s;

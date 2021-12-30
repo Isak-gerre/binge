@@ -26,9 +26,7 @@ body {
   @include flex(column, none, center);
   overflow-x: hidden;
   color: $darkFont;
-  margin-bottom: 90px;
-  padding-right: $wrapperPadding;
-  padding-left: $wrapperPadding;
+  padding-bottom: 90px;
 }
 
 // Imported css-files

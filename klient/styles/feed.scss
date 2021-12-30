@@ -1,5 +1,11 @@
 @import "variables.scss";
 
+#wrapper {
+    width:100%;
+    padding-right: $wrapperPadding;
+    padding-left: $wrapperPadding;
+}
+
 .container {
     display: flex;
     flex-direction: column;

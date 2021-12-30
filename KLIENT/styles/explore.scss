@@ -5,8 +5,9 @@
 #genre {
   z-index: 100;
 }
+
 #wrapper {
-  margin-top: 50px;
+  margin-top: 60px;
   z-index: 100;
 }
 // TREDNING SLIDESHOW
@@ -72,6 +73,7 @@
     overflow-x: scroll;
     scroll-behavior: smooth;
     @include flex(row, flex-start, center);
+    padding-bottom: 5px;
   }
 
   .friends-recently-watched > div {

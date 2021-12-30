@@ -194,7 +194,8 @@
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_4.png"
             },
             "followers": [
-                8
+                8,
+                10
             ],
             "following": [
                 8
@@ -220,7 +221,8 @@
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_6.png"
             },
             "followers": [
-                7
+                7,
+                10
             ],
             "following": [
                 7
@@ -246,6 +248,51 @@
             "following": [],
             "sessionId": "$2y$10$KGWhg4hgRa4bhdbMxTAv\/.kLn.liQk5Po43IQaiOu5h10mMC9QxNu",
             "id": 9
+        },
+        "10": {
+            "firstname": "Niklas",
+            "lastname": "Stavnjak",
+            "username": "nickokicken",
+            "password": "$2y$10$5n6aTq5ABdgoHmBc5xYXA.vu6GFzgUquA3i70zK1ji\/idXWyLr9tG",
+            "email": "niklasstavnjak@gmail.com",
+            "birthday": "1996-08-12",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "Amazon Prime Video",
+                "HBO Max",
+                "HBO"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_2.png"
+            },
+            "followers": [],
+            "following": [
+                7,
+                8
+            ],
+            "sessionId": "$2y$10$ovQLNrITq0LJ0LOau0S5auIgwZ8dAwYk5JXalFW\/MG3hVo0O5Vhti",
+            "id": 10
+        },
+        "11":{
+            "firstname": "Lina",
+            "lastname": "Andersson",
+            "username": "linkan",
+            "password": "$2y$10$1alySK1po6XNPrepbuJ0SOfg6SY99ZeZVlyQooOm4AQlSjOcdrPTe",
+            "email": "lina@mau.se",
+            "birthday": "1999-06-16",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "Amazon Prime Video"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_1.png"
+            },
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$gE2kkh4JIdnsWA7Iq8DOH.YpHPQ2VLX60XjxBguoYLY4tDiW5DPne",
+            "id": 8
         }
     }
 }
