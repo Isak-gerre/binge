@@ -38,7 +38,7 @@ require "head.php";
         <button class="signButton">Login</button>
     </form>
     <div id="createAccount">
-        <p>Don't have an account? <span id="registerButton">Register</span></p>
+        <p>Don't have an account? <span id="registerButton">Sign up</span></p>
     </div>
     
     
