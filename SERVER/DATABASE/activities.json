@@ -299,6 +299,16 @@
             "comment": "hej",
             "rate": "5",
             "updated": false
+        },
+        "34": {
+            "id": 34,
+            "userID": 5,
+            "movieID": "241",
+            "type": "watched",
+            "date": "20211230",
+            "comment": "",
+            "rate": "",
+            "updated": false
         }
     }
 }

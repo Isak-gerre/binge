@@ -79,7 +79,7 @@
       -ms-flex-align: end;
           align-items: flex-end;
   background-color: #0f0b2e;
-  min-height: 0px;
+  min-height: 300px;
   display: none;
   -webkit-animation: smoothWidth 1s;
           animation: smoothWidth 1s;
@@ -111,7 +111,6 @@
   display: none;
   -webkit-animation: fadeIn 1s;
           animation: fadeIn 1s;
-  padding-bottom: 10px;
 }
 
 .overlay-fade .message-wrapper .top img {
@@ -134,7 +133,6 @@
   -webkit-animation: fadeIn 1s;
           animation: fadeIn 1s;
   position: relative;
-  padding-bottom: 10px;
 }
 
 .overlay-fade .message-wrapper .middle #rate {
@@ -162,9 +160,9 @@
 .overlay-fade .message-wrapper .middle #rate:not(:checked) > label {
   cursor: pointer;
   float: right;
-  width: 20px;
   color: rgba(0, 135, 211, 0.4);
-  font-size: 20px;
+  font-size: 30px;
+  padding-right: 5px;
 }
 
 .overlay-fade .message-wrapper .middle #rate:not(:checked) > label:hover,
@@ -255,9 +253,17 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: none;
 }
 
 .overlay-fade .message-wrapper .button {
