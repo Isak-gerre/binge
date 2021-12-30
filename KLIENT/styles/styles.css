@@ -51,9 +51,7 @@ body {
           align-items: center;
   overflow-x: hidden;
   color: black;
-  margin-bottom: 90px;
-  padding-right: 25px;
-  padding-left: 25px;
+  padding-bottom: 90px;
 }
 
 #topWrapperProfile {
@@ -2081,7 +2079,7 @@ input[type="text"]:focus {
   padding-bottom: 20px;
   width: 100%;
   bottom: 0;
-  z-index: 10000;
+  z-index: 11000;
   background-color: black;
 }
 
@@ -2247,9 +2245,9 @@ svg:active,
   top: 0;
   background-color: black;
   width: 60%;
-  z-index: 1000;
+  z-index: 10000;
   right: 0;
-  padding: 60px 20px;
+  padding: 60px 0px 90px 20px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   -webkit-transform: translateX(0%);
@@ -2278,11 +2276,11 @@ svg:active,
 
 .pages-container {
   border-bottom: 1px solid #eeeeee;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   width: 100%;
 }
 
-.pages-container .hamburger-text {
+.hamburger-text {
   opacity: 0;
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
@@ -2290,23 +2288,43 @@ svg:active,
   font-size: 16px;
   padding-bottom: 5px;
   padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.hamburger-text:hover {
+  -webkit-transform: scale(1.1, 1.1);
+          transform: scale(1.1, 1.1);
 }
 
 .genres-container {
   border-bottom: 1px solid #eeeeee;
+  margin-bottom: 10px;
   width: 100%;
 }
 
 .genres-container .genre-link {
+  opacity: 0;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
   padding-bottom: 5px;
   padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.genres-container .genre-link:hover {
+  -webkit-transform: scale(1.1, 1.1);
+          transform: scale(1.1, 1.1);
 }
 
 .about-container {
   font-family: "Mulish", sans-serif;
   font-size: 10px;
+}
+
+.markedPage {
+  font-weight: bold;
 }
 
 @-webkit-keyframes hamburgerScale {
