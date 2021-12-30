@@ -193,8 +193,12 @@
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_4.png"
             },
-            "followers": [8],
-            "following": [8],
+            "followers": [
+                8
+            ],
+            "following": [
+                8
+            ],
             "sessionId": "$2y$10$ZM3StiAJ7S\/AoaClgj26rerkw\/IcLrH53rRmAEj11GCdpqUZlJEAe",
             "id": 7
         },
@@ -215,10 +219,33 @@
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_6.png"
             },
-            "followers": [7],
-            "following": [7],
+            "followers": [
+                7
+            ],
+            "following": [
+                7
+            ],
             "sessionId": "$2y$10$1E3jEoUjUZxDKrg\/e\/IMEeJCdQCg1CUytVGzngoLODP012c0blmha",
             "id": 8
+        },
+        "9": {
+            "firstname": "Elsa",
+            "lastname": "Lindh",
+            "username": "eelsalindh",
+            "password": "$2y$10$JhSwkHB3rn1T3zKHCL4CI.z0LdbXD1MPcFhdB55Aa2YqmbtAdemYO",
+            "email": "elsalindh@gmail.com",
+            "birthday": "1999-12-14",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_5.png"
+            },
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$KGWhg4hgRa4bhdbMxTAv\/.kLn.liQk5Po43IQaiOu5h10mMC9QxNu",
+            "id": 9
         }
     }
 }

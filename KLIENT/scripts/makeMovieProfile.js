@@ -133,54 +133,93 @@ async function makeMovieProfile(movieID) {
     <p>${movieInfo.overview}</p>
     `;
 
-  // Streaming Services - Isak
-  let additionalInfo = await getAdditionalInfo(movieID);
-  let userRegion = user.region;
+    let additionalInfo = await getAdditionalInfo(movieID);
+    let userRegion = user.region;
 
-  let streamingservices = document.createElement("div");
-  streamingservices.className = "movie-profile-streamingservices";
+    let streamingservices = document.createElement("div");
+    streamingservices.className = "movie-profile-streamingservices";
 
-  let streamingservicesText = document.createElement("h4");
-  streamingservicesText.textContent = "Streaming Services";
-  streamingservicesText.className = "streaming-services-text";
+    let streamingservicesText = document.createElement("h4");
+    streamingservicesText.textContent = "Available on";
+    streamingservicesText.className = "streaming-services-text";
 
-  streamingservices.append(streamingservicesText);
+    streamingservices.append(streamingservicesText);
 
-  // console.log(additionalInfo.message.providers.results[userRegion]);
-  // Checks if you can buy, rent or flatrate in your country
-  if (additionalInfo.message.providers.results[userRegion] == undefined) {
-    let message = document.createElement("p");
-    message.textContent = "It's not avaible in your country :(";
-    streamingservices.append(message);
-  } else {
-    // Checks if you can flatrate it
-    if (additionalInfo.message.providers.results[userRegion].flatrate == undefined) {
-      let message = document.createElement("p");
-      message.textContent = "This movie isnt avaible at any streaming services, but you can hire it :(";
-      streamingservices.append(message);
+    let allProvidersGrid = document.createElement("div");
+    allProvidersGrid.className = "allProviders";
+
+    streamingservices.append(allProvidersGrid);
+
+    // console.log(additionalInfo.message.providers.results[userRegion]);
+    // Checks if you can buy, rent or flatrate in your country
+    if (additionalInfo.message.providers.results[userRegion] == undefined) {
+        let message = document.createElement("p");
+        message.textContent = "It's not avaible in your country :(";
+        streamingservices.append(message);
     } else {
-      let movieProviders = additionalInfo.message.providers.results[userRegion].flatrate;
-      console.log(movieProviders);
+        // Checks if you can flatrate it
+        if (additionalInfo.message.providers.results[userRegion].flatrate == undefined) {
+            let message = document.createElement("p");
+            message.textContent = "This movie isnt avaible at any streaming services.";
+            streamingservices.append(message);
+        } else {
+            let movieProviders = additionalInfo.message.providers.results[userRegion].flatrate;
 
-      let streamingservicesGrid = document.createElement("div");
-      streamingservicesGrid.className = "movie-profile-streaming-services-grid";
+            let activeUserSC = user.active_streaming_services;
+            let yourProviders= movieProviders.filter(prov => activeUserSC.includes(prov.provider_name.toLowerCase()));
+            let otherProviders= movieProviders.filter(prov => !activeUserSC.includes(prov.provider_name.toLowerCase()));
 
-      movieProviders.forEach((provider) => {
-        let providerDiv = document.createElement("img");
-        let providerName = provider.provider_name;
-        let activeUserSC = user.active_streaming_services;
-        console.log(providerName.toLowerCase());
-        console.log(activeUserSC.includes(providerName.toLowerCase()));
-        if (activeUserSC.includes(providerName.toLowerCase())) {
-          providerDiv.className = "active-streming-service";
+            // console.log(yourProviders.length);
+            // console.log(otherProviders.length);
+
+            if(yourProviders.length > 0){
+                let yourStreamingservicesGrid = document.createElement("div");
+                yourStreamingservicesGrid.className = "your-streaming-services-grid";
+
+                let yourStreamingServices = document.createElement("div");
+                yourStreamingServices.className = "movie-profile-your-streaming-services"
+                yourStreamingServices.innerHTML = "<p>Your streaming services</p>"
+                
+                yourProviders.forEach((provider) => {
+                     let providerName = provider.provider_name;
+                     if (activeUserSC.includes(providerName.toLowerCase())) {
+                         let yourProvidersDiv = document.createElement("img");
+     
+                         yourStreamingservicesGrid.append(yourProvidersDiv);
+                         yourProvidersDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
+                     } 
+                })
+                yourStreamingServices.append(yourStreamingservicesGrid);
+                allProvidersGrid.append(yourStreamingServices);
+
+            }
+
+            if(otherProviders.length > 0){
+                let otherStreamingservicesGrid = document.createElement("div");
+                otherStreamingservicesGrid.className = "other-streaming-services-grid";
+
+                let otherStreamingServices = document.createElement("div");
+                otherStreamingServices.className = "movie-profile-other-streaming-services"
+                otherStreamingServices.innerHTML = "<p>Other streaming services</p>"
+                
+                otherProviders.forEach((provider) => {
+                    let otherProvidersDiv = document.createElement("img");
+                    otherStreamingservicesGrid.append(otherProvidersDiv);
+                    otherProvidersDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
+                })
+                otherStreamingServices.append(otherStreamingservicesGrid)
+                allProvidersGrid.append(otherStreamingServices);
+
+            }
+
+
         }
 
         providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
-        streamingservicesGrid.append(providerDiv);
-      });
-      streamingservices.append(streamingservicesGrid);
-    }
-  }
+        streamingservices.append(providerDiv);
+    };
+      streamingservices.append(allProvidersGrid);
+
 
   // Credits - Niklas
   let credits = document.createElement("div");
@@ -235,7 +274,7 @@ async function makeMovieProfile(movieID) {
   let titleReview = document.createElement("h4");
   titleReview.textContent = "Reviews";
   reviews.append(titleReview);
-
+  
   let activities = await getActivityByMovieID(movieID);
 
   async function getActivityByMovieID(movieID) {
@@ -482,7 +521,7 @@ async function makeMovieProfile(movieID) {
         }, 1000);
       }, 2500);
     });
+    buttons.append(watchLater, watched, review);
   });
 
-  buttons.append(watchLater, watched, review);
 }
