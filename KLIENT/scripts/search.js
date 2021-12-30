@@ -107,6 +107,8 @@ function myFunction(searchResults, searchAttribute = "name") {
 }
 
 function makeSearchOverlay(searchWord = "") {
+  document.body.style.overflow = "hidden";
+
   let searchContainer = document.createElement("div");
   searchContainer.className = "search-container";
 
@@ -121,12 +123,14 @@ function makeSearchOverlay(searchWord = "") {
   searchField.setAttribute("placeholder", "Search by Movies");
   searchField.className = "searchField";
 
+
   // SEARCH by
   let searchBy = "Movies";
+
   // PILLS
   let pillContainer = document.createElement("div");
   pillContainer.className = "pill-container";
-  let pills = ["Movies", "Actors", "Users"];
+  let pills = ["Movies", "Actors", "Users", "Directors"];
   pills.forEach((pill, index) => {
     let pillDiv = document.createElement("div");
     pillDiv.className = `pill ${index == 0 ? "active" : ""}`;
@@ -176,6 +180,10 @@ function makeSearchOverlay(searchWord = "") {
   // scroll till top och displaya det vi får från keywords istället
   if (searchField.value == "") {
     searchField.value = `${searchWord}`;
+    setTimeout(()=>{
+      searchFunction(searchBy);
+    }, 1000);
+    
   }
 
   searchField.addEventListener("keyup", (e) => {

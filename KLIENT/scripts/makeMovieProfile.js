@@ -261,6 +261,10 @@ async function makeMovieProfile(movieID) {
     let name = document.createElement("p");
     name.textContent = person.name;
 
+    productionPeople.addEventListener("click", () => {
+      makeSearchOverlay(person.name);
+    });
+
     productionPeople.append(image, name);
     return productionPeople;
   }
@@ -271,6 +275,7 @@ async function makeMovieProfile(movieID) {
   let reviews = document.createElement("div");
   reviews.className = "movie-profile-reviews";
   reviews.setAttribute("id", "movie-profile-reviews");
+
   let titleReview = document.createElement("h4");
   titleReview.textContent = "Reviews";
   reviews.append(titleReview);

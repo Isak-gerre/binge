@@ -25,6 +25,7 @@ async function makeGenreBanner(){
         //clickEvent, call on search function with the genre name in the field
         genreBanner.addEventListener('click', ()=>{
             makeSearchOverlay(genre.name);
+            searchFunction(searchBy);
         })
         
         //append

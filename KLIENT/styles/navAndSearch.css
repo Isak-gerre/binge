@@ -112,7 +112,7 @@ input:focus {
   outline: none;
   border: 1px solid white;
   border-radius: 5px;
-  width: 80%;
+  width: calc(100vw - 50px);
   background-color: white;
   background-image: url("../icons/search.svg");
   background-position: 95% 50%;
@@ -187,6 +187,10 @@ svg,
   cursor: pointer;
   margin: 10px 0px;
   position: relative;
+}
+
+.navImg.hamburger {
+  z-index: 13000;
 }
 
 svg:active,
@@ -276,7 +280,7 @@ svg:active,
 #search-results {
   width: 100%;
   padding: 10px 25px;
-  margin-top: 150px;
+  margin-top: 170px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
@@ -284,8 +288,8 @@ svg:active,
   gap: 10px;
   z-index: 100;
   overflow: scroll;
-  height: 80vh;
-  padding-bottom: 70px;
+  height: calc(100vh - 170px);
+  padding-bottom: 90px;
 }
 
 .placeholder {
@@ -505,6 +509,7 @@ svg:active,
           align-items: center;
   position: absolute;
   top: 120px;
-  width: 80%;
+  width: 100%;
+  padding: 0px 25px;
 }
 /*# sourceMappingURL=navAndSearch.css.map */

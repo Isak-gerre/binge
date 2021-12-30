@@ -20,7 +20,9 @@ function makeUpperNav() {
   //append
   upperNav.append(navMiddle);
   document.body.prepend(upperNav);
-  document.querySelector(".back").addEventListener("click", () => {});
+  document.querySelector(".back").addEventListener("click", () => {
+    document.body.style.overflow = "visible";
+  });
   document.querySelector(".hamburger").addEventListener("click", () => {
 
     if (document.querySelector(".hamburger-menu") == null) {
@@ -82,6 +84,7 @@ function makeLowerNav() {
   lowerNavRight.innerHTML = `<img class="navImg" src="../icons/profile.svg">`;
   searchImg.addEventListener("click", () => {
     if (document.querySelector(".search-container") == null) {
+      document.body.style.overflow = "hidden";
       makeSearchOverlay();
       document.querySelector(".back").setAttribute("src", "../icons/exit 2.svg");
       document.querySelector(".back").addEventListener("click", () => {
@@ -93,6 +96,7 @@ function makeLowerNav() {
       });
       document.querySelector(".search-container").style.animation = "searchBar 0.2s ease-out";
     } else {
+      document.body.style.overflow = "visible";
       document.querySelector(".back").setAttribute("src", "../icons/back.svg");
       document.querySelector(".search-container").style.animation = "removeSearchBar 0.2s ease-out";
       setTimeout(() => {

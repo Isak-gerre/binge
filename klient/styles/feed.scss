@@ -1,9 +1,11 @@
 @import "variables.scss";
 
-.wrapper {
-    padding-right: $betweenPadding;
-    padding-left: $betweenPadding;
+#wrapper {
+    width:100%;
+    padding-right: $wrapperPadding;
+    padding-left: $wrapperPadding;
 }
+
 .container {
     display: flex;
     flex-direction: column;
