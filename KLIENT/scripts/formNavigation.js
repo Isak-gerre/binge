@@ -8,9 +8,18 @@ document.getElementById("createUserP3").style.display = "none";
 
 document.getElementById("registerButton").addEventListener("click", () => {
 
-    console.log("Event Click");
-    document.getElementById("login").style.display = "none";
+    // console.log("Event Click");
+    document.getElementById("login").style.opacity = "0";
+    document.getElementById("signUpForm").style.display = "flex";
     document.getElementById("createUserP1").style.display = "";
+
+    setTimeout( () => {
+        document.getElementById("signUpForm").style.top = "0";
+    }, 500);
+
+    setTimeout( () => {
+        document.getElementById("login").style.display = "none";
+    }, 1000);
 });
 
 document.getElementById("next1").addEventListener("click", () => {
@@ -24,9 +33,11 @@ document.getElementById("next1").addEventListener("click", () => {
             console.log(element);
             next = false;
 
-            let fillIn = document.createElement("p");
-            fillIn.innerHTML = "Please fill in this field";
-            element.parentElement.append(fillIn);
+            element.placeholder = "Please fill in this field";
+            element.style.color = 'Red';
+            setTimeout( () => {
+                element.removeAttribute('style');
+            }, 1000)
         }
     });
     console.log(next);
@@ -45,7 +56,7 @@ document.getElementById("next1").addEventListener("click", () => {
 let profileImgCheck = document.querySelectorAll('input[name="profileImg"]');
 console.log(profileImgCheck);
 profileImgCheck.forEach(e => {
-    console.log(e.parentElement);
+    // console.log(e.parentElement);
     e.parentElement.addEventListener("click", () => {
         if(document.querySelector(".profileImgSelected")){
             document.querySelector(".profileImgSelected").classList.remove("profileImgSelected");
