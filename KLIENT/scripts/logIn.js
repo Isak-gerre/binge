@@ -21,15 +21,16 @@ form.addEventListener("submit", (event) => {
             error += 2;
         }
     }   
-
+    let errorDiv = document.createElement("div"); 
+    errorDiv.setAttribute("id", "errorDiv");
     if(error == 1){
-        alert("Please fill in your username");
+        errorDiv.innerHTML = "Please fill in your username";
     }
     else if(error == 2){
-        alert("Please fill in your password"); 
+        errorDiv.innerHTML = "Please fill in your password"; 
     }
     else if(error == 3){
-        alert("Please fill in your password and username");
+        errorDiv.innerHTML = "Please fill in your password and username";
     }
     else if(error == 0){
 
@@ -60,6 +61,22 @@ form.addEventListener("submit", (event) => {
                 sessionStorage.clear();
                 console.log(error);
             });
+    }
+    if(error == 1 || error == 2 || error == 3){
+        if(!document.getElementById("errorDiv")){
+            document.getElementById("loginForm").append(errorDiv);
+        }
+        else{
+            if(error == 1){
+                document.getElementById("errorDiv").innerHTML = "Please fill in your username";
+            }
+            else if(error == 2){
+                document.getElementById("errorDiv").innerHTML = "Please fill in your password"; 
+            }
+            else if(error == 3){
+                document.getElementById("errorDiv").innerHTML = "Please fill in your password and username";
+            }
+        }
     }
 });
 

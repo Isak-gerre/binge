@@ -42,4 +42,19 @@ document.getElementById("next1").addEventListener("click", () => {
 });
 
 
+let profileImgCheck = document.querySelectorAll('input[name="profileImg"]');
+console.log(profileImgCheck);
+profileImgCheck.forEach(e => {
+    console.log(e.parentElement);
+    e.parentElement.addEventListener("click", () => {
+        if(document.querySelector(".profileImgSelected")){
+            document.querySelector(".profileImgSelected").classList.remove("profileImgSelected");
+        }
+        e.parentElement.classList.toggle("profileImgSelected");
+    });
+    e.addEventListener("click", (event) => {
+        event.stopPropagation();
+    })
+});
+
 
