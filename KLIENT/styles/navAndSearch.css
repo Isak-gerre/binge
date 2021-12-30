@@ -108,7 +108,7 @@ input:focus {
   }
 }
 
-input[type="text"] {
+.search-container input[type="text"] {
   outline: none;
   border: 1px solid white;
   border-radius: 5px;
@@ -130,7 +130,7 @@ input[type="text"] {
           box-sizing: border-box;
 }
 
-input[type="text"]:focus {
+.search-container input[type="text"]:focus {
   outline: none;
   border: none;
   border-bottom: 1px solid white;

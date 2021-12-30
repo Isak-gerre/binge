@@ -78,33 +78,33 @@ input:focus {
 //   height: 100%;
 // }
 
-// #searchField {
-// }
-input[type="text"] {
-  outline: none;
-  border: 1px solid white;
-  border-radius: 5px;
-  width: 80%;
-  background-color: white;
-  background-image: url("../icons/search.svg");
-  background-position: 95% 50%;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  padding: 5px;
-  padding-left: 1em;
-  z-index: 1000;
-  position: absolute;
-  top: 70px;
-  font-family: "Mulish";
-  font-size: 1.2rem;
-  letter-spacing: 0.08em;
-  box-sizing: border-box;
-}
-input[type="text"]:focus {
-  outline: none;
-  border: none;
-  border-bottom: 1px solid white;
-  border-radius: 0;
+.search-container {
+  input[type="text"] {
+    outline: none;
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 80%;
+    background-color: white;
+    background-image: url("../icons/search.svg");
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    padding: 5px;
+    padding-left: 1em;
+    z-index: 1000;
+    position: absolute;
+    top: 70px;
+    font-family: "Mulish";
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    box-sizing: border-box;
+  }
+  input[type="text"]:focus {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid white;
+    border-radius: 0;
+  }
 }
 
 .closeImg {
