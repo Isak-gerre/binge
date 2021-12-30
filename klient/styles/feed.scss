@@ -1,5 +1,9 @@
 @import "variables.scss";
 
+.wrapper {
+    padding-right: $betweenPadding;
+    padding-left: $betweenPadding;
+}
 .container {
     display: flex;
     flex-direction: column;
