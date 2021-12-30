@@ -20,21 +20,33 @@
 ?>
 
 <div class="signInWrap">
+    <div>
+        <h2>Welcome!</h2>
+        <p>Please log in.</p>
+    </div>
 
     <form id="loginForm" class="signInForm" method="POST">
-        <input class="signInInput" type="text", name="username", placeholder="Username or Email">
-        <input class="signInInput" type="password", name="password", placeholder="Password">
+        <div>
+            <label for="username">Username or Email</label>
+            <input class="signInInput" type="text", name="username">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input class="signInInput" type="password", name="password">
+        </div>
         <button class="signButton">Login</button>
     </form>
-    <div>Don't have an account <a href="/createUser.php?register">Register</a></div>
+    <div>
+        <p>Don't have an account? <span id="registerButton">Register here</span></p>
+    </div>
     <?php
         if(isset($_GET["wrongPassword"])){
             echo "<a href='/sign-in.php?forgotpassword'>Forgot your password?</a>";
         }  
     ?>
-<!-- Vad är det'ta? -->
+<!-- Vad är det'ta?
 <div id="wrapper">
-</div>
+</div> -->
 
 
 <?php
@@ -46,35 +58,35 @@
         $_SESSION["sessionID"] = $_GET["sessionID"];
     }
 ?>
-<div class="signInWrap">
+<div id="signUpWrap">
 
 <form id="signUpForm" class="signInForm" action="index.php" method="POST">
     <div>
-    <p>Firstname</p>
+    <label>Firstname</label>
     <input class="signInInput" type="text", name="firstname", placeholder="Firstname">
     </div>
     <div>
-    <p>Lastname</p>
+    <label>Lastname</label>
     <input class="signInInput" type="text", name="lastname", placeholder="Lastname">
     </div>
     <div>
-    <p>Username</p>
+    <label>Username</label>
     <input class="signInInput" type="text", name="username", placeholder="Username">
     </div>
     <div>
-    <p>Password</p>
+    <label>Password</label>
     <input class="signInInput" type="password", name="password", placeholder="Password">
     </div>
     <div>
-    <p>Confrim Password</p>
+    <label>Confrim Password</label>
     <input class="signInInput" type="password", name="confirm_password", placeholder="Confirm Password">
     </div>
     <div>
-    <p>Email</p>
+    <label>Email</label>
     <input class="signInInput" type="text", name="email", placeholder="Email">
     </div>
     <div>
-    <p>Birthday</p>
+    <label>Birthday</label>
     <input class="signInInput" type="date" name="birthday", placeholder="Birthday">
     </div>
     <?php
@@ -83,7 +95,7 @@
         echo "</script>";
     ?>
 </form>
-<form id="prfoileImgForm" action="index.php">
+<form id="profileImgForm" action="index.php">
     <fieldset>
             <label>
                 <input name="prfoileImg" id="profileImg1" type="radio" value="profileImg1" checked>
@@ -110,7 +122,7 @@
 </form>
 
 <script src="scripts/functions.js"></script>
-<script src="scripts/makeNavigation.js"></script>
+<!-- <script src="scripts/makeNavigation.js"></script> -->
 <script src="scripts/stateManager.js"></script>
 <script src="scripts/createFormAPI.js"></script>
 <script src="scripts/logIn.js"></script>

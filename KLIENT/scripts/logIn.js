@@ -2,8 +2,9 @@
 // Skicka data(POST) till log-in-verification.php
 // data kontrolleras(om fält är ifyllda) innan den skickas för att
 // Ex. kolla om fälten är ifyllda, om mailen har tecken som @ och . osv.
-console.log("hejhej");
+// console.log("hejhej");
 const form = document.getElementById("loginForm");
+const registerButton = document.getElementById('registerButton');
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -47,10 +48,19 @@ form.addEventListener("submit", (event) => {
         fetch(req)
             .then(response => response.json())
             .then(data => {
-                window.location.replace(`http://localhost:4005?sessionID=${data.SessionId}`);
-                window.location.replace("http://localhost:4005");
+                window.location.replace(`http://localhost:8000?sessionID=${data.SessionId}`);
+                window.location.replace("http://localhost:8000");
             }); 
     }
 });
 
 
+registerButton.addEventListener('click', () => {
+    // console.log(signUpWrap);
+    let signUpWrap = document.getElementById('signUpWrap');
+    signUpWrap.style.display = 'grid';
+
+    setTimeout( () => {
+        signUpWrap.style.left = "0";
+    }, 500)
+})

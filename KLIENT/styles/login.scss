@@ -1,0 +1,53 @@
+@import "variables.scss";
+
+.signInWrap {
+    @include flex(column, center, center);
+    height: 100vh;
+    width: 100vw;
+}
+
+.signInForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    width: 100%;
+    padding: $wrapperPadding;
+
+
+    div {
+        @include flex(column, center, flex-start);
+        width: 100%;
+        padding: $buttonPadding;
+        grid-column: 1 / span 2;
+
+        border: 1px solid black;
+        border-radius: $borderRadiusButtons;
+        background-color: $activityColor;
+
+        label {
+            @include xSmallFont();
+        }
+
+        input {
+            border: none;
+            width: 100%;
+            padding: 0;
+            background: none;
+        }
+    }
+
+    button {
+        background-color: $accentColor;
+        color: $darkFont;
+        padding: $buttonPadding;
+        border-radius: $borderRadiusButtons;
+        border: none;
+    }
+}
+
+#signUpWrap {
+    display: none;
+    @include transitionFromLeft();
+
+    background-color: $backgroundColor;
+}
