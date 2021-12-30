@@ -34,17 +34,20 @@ fetch(region)
         document.getElementById("createUserP2").append(selectRegion);
 
         //Skapar knapparna
+        let buttonWrapper = document.createElement('div');
+        buttonWrapper.id = "buttonWrapper";
         let button = document.createElement("button");
         button.innerHTML = "Skip";
         button.setAttribute("id", "skip2");
         button.setAttribute("type", "button");
-        document.getElementById("createUserP2").append(button);
-
+        
         let button1 = document.createElement("button");
         button1.innerHTML = "Next";
         button1.setAttribute("id", "next2");
         button1.setAttribute("type", "button");
-        document.getElementById("createUserP2").append(button1);
+        
+        buttonWrapper.append(button, button1);
+        document.getElementById("createUserP2").append(buttonWrapper);
 
         
         document.getElementById("next2").addEventListener("click", () => {
@@ -96,8 +99,8 @@ fetch(region)
                 providerArray = data.results;
                 showProviders();
             });
-            document.getElementById("createUserP2").insertBefore(searchProvider, button);
-            document.getElementById("createUserP2").insertBefore(providers, button);
+            document.getElementById("createUserP2").insertBefore(searchProvider, buttonWrapper);
+            document.getElementById("createUserP2").insertBefore(providers, buttonWrapper);
         });
 
         searchProvider.addEventListener("keyup", () => {
