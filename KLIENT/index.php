@@ -24,8 +24,11 @@ header("Access-Control-Allow-Origin: *");
         <input class="signInInput" type="password" , name="password" , placeholder="Password">
         <button class="signButton">Login</button>
     </form>
-    <div>Don't have an account <p id="registerButton">Register</p>
+    <div>
+        <p>Don't have an account</p><p id="registerButton">Register</p>
     </div>
+    
+    
 
 </div>
 
@@ -34,10 +37,6 @@ header("Access-Control-Allow-Origin: *");
 echo "<script>";
 include_once "scripts/logIn.js";
 echo "</script>";
-
-if (isset($_GET["sessionID"])) {
-    $_SESSION["sessionID"] = $_GET["sessionID"];
-}
 ?>
 
 <form id="signUpForm" class="signInForm" action="index.php" method="POST">
@@ -115,7 +114,7 @@ if (isset($_GET["sessionID"])) {
         </label>
 
         <input type="file" id="fileToUpload" name="fileToUpload">
-        <input type="submit" value="submit" id="signInButton">
+        <input type="submit" value="Submit" id="signInButton">
     </fieldset>
 
 </form>

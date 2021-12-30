@@ -57,7 +57,7 @@ signUpForm.addEventListener("submit", (event) => {
             return response.json();
         }
         else{
-            throw new Error("Something went wrong!")
+            throw new Error("Something went wrong!");
         }
        
     })

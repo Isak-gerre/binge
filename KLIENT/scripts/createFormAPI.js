@@ -129,8 +129,8 @@ fetch(region)
                     let selectProviderLabel = document.createElement("label");
                     
                     selectProviderLabel.setAttribute("id", `label${provider.provider_name}`);
-                    selectProviderLabel.setAttribute("class", "providersLabel")
-                    
+                    selectProviderLabel.setAttribute("class", "providersLabel");
+
                     providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`)
 
                     selectProvider.setAttribute("type", "checkbox");
@@ -143,6 +143,15 @@ fetch(region)
                     selectProviderLabel.append(selectProvider);
                     selectProviderLabel.append(providerDiv);
                     providers.append(selectProviderLabel);
+
+                    selectProviderLabel.addEventListener("click", () => {
+                        selectProviderLabel.classList.toggle("selectedProvider"); 
+                        
+                    });
+                    
+                    selectProvider.addEventListener("click", function(event) {
+                        event.stopPropagation();
+                    });
                 }
             });
 
@@ -150,5 +159,5 @@ fetch(region)
                 document.getElementById(`label${e.provider_name}`).style.display = "none";
             });
         }     
-    });
 
+    });
