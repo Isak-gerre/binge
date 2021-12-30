@@ -1,6 +1,7 @@
 <?php
 
-function checkMethod($method) {
+function checkMethod($method)
+{
     $requestMethod = $_SERVER["REQUEST_METHOD"];
 
     if ($requestMethod !== $method) {
@@ -13,9 +14,10 @@ function checkMethod($method) {
     }
 }
 
-function checkContentType() {
+function checkContentType()
+{
     $contentType = $_SERVER["CONTENT_TYPE"];
-    
+
     if ($contentType !== "application/json") {
         sendJSON(
             [
@@ -60,7 +62,7 @@ function inspect($variable)
 }
 // Returnerar näst kommande högsta ID:t
 function nextHighestId($array)
-{   
+{
     $highestId = 0;
     foreach ($array as $object) {
         if ($object["id"] > $highestId) {
@@ -87,6 +89,14 @@ function getUsersByIDs($arrayOfIDs)
 function getUsers()
 {
     $users = loadJSON("../DATABASE/user.json");
+    $newUserArray = [];
+    foreach ($users as $user) {
+        unset($user["password"]);
+        unset($user["active_streaming_services"]);
+        unset($user["email"]);
+        // unset($user["sessionID"]);
+        // $user[] = 
+    }
     return $users["users"];
 }
 
@@ -291,7 +301,7 @@ function alreadyTaken($array, $key, $newVariable)
 {
     $taken = false;
     foreach ($array as $arritem) {
-        if(isset($arritem[$key])){
+        if (isset($arritem[$key])) {
             if ($arritem[$key] == $newVariable) {
                 $taken = true;
                 break;
@@ -303,26 +313,27 @@ function alreadyTaken($array, $key, $newVariable)
 
 
 // Tar emot en array av userIDs
-function getFriendsActivities($IDs) {
+function getFriendsActivities($IDs)
+{
 
-  $IDarr = explode(",", $IDs);
+    $IDarr = explode(",", $IDs);
 
-  // Hämtar alla aktiviteter
-  $activities = json_decode(file_get_contents("../DATABASE/activities.json"), true)["activities"];
+    // Hämtar alla aktiviteter
+    $activities = json_decode(file_get_contents("../DATABASE/activities.json"), true)["activities"];
 
-  // Ny array som sks skickas tilllbaka
-  $friendsActivities = [];
+    // Ny array som sks skickas tilllbaka
+    $friendsActivities = [];
 
-  // Går igenom alla aktiviteter
-  foreach($activities as $activity) {
+    // Går igenom alla aktiviteter
+    foreach ($activities as $activity) {
 
-    // Om AKTIVITETENsss userID finns i $IDArr(som skickats med)
-    // pusha in den aktuella aktiviteten i friendsActivities[]
-    if(in_array($activity["userID"], $IDarr)) {
-      array_push($friendsActivities, $activity);
+        // Om AKTIVITETENsss userID finns i $IDArr(som skickats med)
+        // pusha in den aktuella aktiviteten i friendsActivities[]
+        if (in_array($activity["userID"], $IDarr)) {
+            array_push($friendsActivities, $activity);
+        }
     }
-  }
 
-  
-  return $friendsActivities;
+
+    return $friendsActivities;
 }

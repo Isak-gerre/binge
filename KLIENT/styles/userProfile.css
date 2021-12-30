@@ -1,8 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
-body {
-  position: relative;
-}
-
 #topWrapperProfile {
   margin-top: 60px;
   z-index: 15;
@@ -52,7 +48,7 @@ body {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  gap: 5px;
+  gap: 10px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -74,7 +70,8 @@ body {
           align-items: center;
   gap: 10px;
   font-family: "Archivo", sans-serif;
-  font-size: 1.2rem;
+  font-size: 16px;
+  padding-bottom: 5px;
   width: 100%;
   padding: 10px 25px;
 }
@@ -100,19 +97,21 @@ body {
           align-items: center;
   gap: 4px;
   width: 100px;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 3px;
 }
 
 #profileInfo #usernameDiv #settingOrPlus p {
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
   padding: 0;
 }
 
 #profileInfo #followInfo {
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -154,7 +153,8 @@ body {
 
 #followInfo {
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -201,7 +201,8 @@ body {
   width: 100%;
   height: 50px;
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -243,7 +244,7 @@ body {
 
 #profileNav .selected {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 #followContainer {
@@ -277,7 +278,7 @@ body {
   border: none;
   border-radius: 10px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  padding: 5px;
+  padding: 3px;
 }
 
 #followContainer #usersWrapper {
@@ -304,7 +305,8 @@ body {
 
 #followContainer #usersWrapper div {
   font-family: "Mulish", sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -415,7 +417,7 @@ body {
 
 #settingsWindow #settingsForm div label {
   font-family: "Mulish", sans-serif;
-  font-size: 0.5rem;
+  font-size: 10px;
 }
 
 #settingsWindow #settingsForm div input {
@@ -497,6 +499,7 @@ body {
   width: 100%;
   z-index: 15;
   padding: 10px 25px;
+  padding-bottom: 90px;
 }
 
 #profileWrapper #watchlistContainer {

@@ -37,8 +37,7 @@ Om det är någon annans profil:
 //
 
 // Inloggad användare
-sessionStorage.setItem('userID', 5)
-const loggedInUserId = Number(sessionStorage.getItem('userID'));
+const loggedInUserId = getLoggedInUserID();
 
 // Fasta html-variabler
 const body = document.querySelector('body');

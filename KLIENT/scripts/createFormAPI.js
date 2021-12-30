@@ -10,8 +10,8 @@ fetch(region)
         console.log(data);
         //Skapar en select
         let selectRegion = document.createElement("select");
-        selectRegion.setAttribute("id", "selectRegion");
-        selectRegion.setAttribute("name", "selectRegion")
+        selectRegion.setAttribute("id", "region");
+        selectRegion.setAttribute("name", "region")
         data.results.forEach(region => {
             //Varje option fylls med alla regions
             let opt = document.createElement("option");
@@ -30,11 +30,47 @@ fetch(region)
 
         selectRegion.prepend(opt);
 
-        //Skapar en sign up form
-        document.getElementById("signUpForm").append(selectRegion);
+        //Skapar en slect för region
+        document.getElementById("createUserP2").append(selectRegion);
+
+        //Skapar knapparna
+        let button = document.createElement("button");
+        button.innerHTML = "Skip";
+        button.setAttribute("id", "skip2");
+        button.setAttribute("type", "button");
+        document.getElementById("createUserP2").append(button);
+
+        let button1 = document.createElement("button");
+        button1.innerHTML = "Next";
+        button1.setAttribute("id", "next2");
+        button1.setAttribute("type", "button");
+        document.getElementById("createUserP2").append(button1);
+
+        
+        document.getElementById("next2").addEventListener("click", () => {
+            let checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+            console.log(checkboxes.length);
+            if(filter.value == ""){
+                console.log("please choose a region");
+            }
+            else if(checkboxes.length == 0){
+                console.log("please choose at least one provider");
+            }
+            else{
+                console.log("Event Click 2");
+                document.getElementById("createUserP2").style.display = "none";
+                document.getElementById("createUserP3").style.display = "";
+            }
+            
+        });
+        document.getElementById("skip2").addEventListener("click", () => {
+            console.log("Event Click 2");
+            document.getElementById("createUserP2").style.display = "none";
+            document.getElementById("createUserP3").style.display = "";
+        });
 
         //Selectar värdet som kommer finnas på select region.
-        let filter = document.getElementById("selectRegion");
+        let filter = document.getElementById("region");
 
         //Skapar ett fieldset
         let providers = document.createElement("fieldset");
@@ -52,61 +88,67 @@ fetch(region)
 
             //Gör en sökning efter varje provider från apin och laddar hem dem som är specifika till den regionen
             providerArray = [];
-            providers.innerHTML = "";
             // Ta bort API-nyckel, lägg den i APIn
             const provider = new Request(`https://api.themoviedb.org/3/watch/providers/movie?watch_region=${filter.value}&api_key=f5c0e0db147d0e6434391f3ff153b6a8`);
             fetch(provider)
             .then(response => response.json())
             .then(data => { 
                 providerArray = data.results;
-                showProviders ();
+                showProviders();
             });
-            document.getElementById("signUpForm").append(searchProvider);
-            document.getElementById("signUpForm").append(providers);
+            document.getElementById("createUserP2").insertBefore(searchProvider, button);
+            document.getElementById("createUserP2").insertBefore(providers, button);
+        });
+
+        searchProvider.addEventListener("keyup", () => {
+            showProviders()
         });
 
         function showProviders(){
+            let pro = document.querySelectorAll(".providersLabel");
+
+            pro.forEach(e => {
+                e.style.display = "";
+            });
 
             let filterArray = [];
             if(searchProvider.value != ""){
-                console.log("route 1");
                 providerArray.forEach(e => {
                     let check = e.provider_name.toLowerCase();
-                    if(check.includes(`${searchProvider.value.toLowerCase()}`)){
+                    if(!check.includes(`${searchProvider.value.toLowerCase()}`)){
                         filterArray.push(e);
+                        console.log(e);
                     }
                 });
             }
-            else
-            {
-                console.log("route 2");
-                filterArray = providerArray;
-            }
 
-            filterArray.forEach(provider => {
-                let selectProvider = document.createElement("input");
-                let selectProviderLabel = document.createElement("label");
+            providerArray.forEach(provider => {
+                if(!document.getElementById(`${provider.provider_name}`)){
+                    let selectProvider = document.createElement("input");
+                    let providerDiv = document.createElement("img")
+                    let selectProviderLabel = document.createElement("label");
+                    
+                    selectProviderLabel.setAttribute("id", `label${provider.provider_name}`);
+                    selectProviderLabel.setAttribute("class", "providersLabel")
+                    
+                    providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`)
 
-                selectProvider.setAttribute("type", "checkbox");
-                selectProvider.setAttribute("value", `${provider.provider_name}`);
-                selectProvider.setAttribute("id", `${provider.provider_name}`);
-                selectProvider.setAttribute("class", "selectProvider");
-
-                selectProviderLabel.setAttribute("for", `${provider.provider_name}`);
-                selectProviderLabel.innerHTML = `${provider.provider_name}`;
-
-                providers.append(selectProvider);
-                providers.append(selectProviderLabel);
-
+                    selectProvider.setAttribute("type", "checkbox");
+                    selectProvider.setAttribute("value", `${provider.provider_name}`);
+                    selectProvider.style.display = "none";
+                    selectProvider.setAttribute("id", `${provider.provider_name}`);
+                    
+                    selectProviderLabel.innerHTML = `${provider.provider_name}`;
+    
+                    selectProviderLabel.append(selectProvider);
+                    selectProviderLabel.append(providerDiv);
+                    providers.append(selectProviderLabel);
+                }
             });
-        
-            if(!document.getElementById("signInButton")){
-                let button = document.createElement("button");
-                button.innerHTML = "Sign Up";
-                button.setAttribute("id", "signInButton");
-                document.getElementById("signUpForm").append(button);
-            }
 
+            filterArray.forEach(e => {
+                document.getElementById(`label${e.provider_name}`).style.display = "none";
+            });
         }     
     });
 

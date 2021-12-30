@@ -10,12 +10,12 @@
 
 const wrapper = document.getElementById("wrapper");
 
+const userID = getLoggedInUserID();
 // Get the logged in userobj
-makeFeed();
+makeFeed(userID);
 
-async function makeFeed() {
+async function makeFeed(userID) {
     // hämta id från session
-    let activities = await getFriendsActivities(1);
-    activities.sort((a, b) => b.date - a.date);
+    let activities = await getFriendsActivities(userID);
     createActivities(activities, "feed");
 }

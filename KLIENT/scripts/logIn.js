@@ -2,17 +2,16 @@
 // Skicka data(POST) till log-in-verification.php
 // data kontrolleras(om fält är ifyllda) innan den skickas för att
 // Ex. kolla om fälten är ifyllda, om mailen har tecken som @ och . osv.
-// console.log("hejhej");
+console.log("hejhej");
 const form = document.getElementById("loginForm");
-const registerButton = document.getElementById('registerButton');
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
-    const rawData = new FormData(form);
+    const formData = new FormData(form);
 
 
     let error = 0;
-    for(let [key, value] of rawData.entries()) {
+    for(let [key, value] of formData.entries()) {
         if(key === "username" && value === ""){
             error += 1;
         }
@@ -33,34 +32,33 @@ form.addEventListener("submit", (event) => {
     else if(error == 0){
 
         let object = {};
-        for(let [key, value] of rawData.entries()) {
+        for(let [key, value] of formData.entries()) {
             object[key] = value;
         }   
-
-        data = JSON.stringify(object);
-        console.log(data);
-
-        const req = new Request("http://localhost:7001/POST/log-in-verification.php", {
+        
+        const req2 = new Request("http://localhost:7001/POST/log-in-verification.php", {
             method: "POST",
-            body: data,
+            body: formData
         });
 
-        fetch(req)
-            .then(response => response.json())
+        fetch(req2)
+            .then(response => {
+                if(response.ok){
+                    response.json();
+                }
+                else{
+                    throw new Error(response.statusText);
+                }
+                    
+            })
             .then(data => {
-                window.location.replace(`http://localhost:8000?sessionID=${data.SessionId}`);
-                window.location.replace("http://localhost:8000");
-            }); 
+                saveToSession(data,'session');
+                window.location.replace("http://localhost:2000/feed.php");
+            })
+            .catch(error => {
+                console.log(error);
+            }) 
     }
 });
 
 
-registerButton.addEventListener('click', () => {
-    // console.log(signUpWrap);
-    let signUpWrap = document.getElementById('signUpWrap');
-    signUpWrap.style.display = 'grid';
-
-    setTimeout( () => {
-        signUpWrap.style.left = "0";
-    }, 500)
-})

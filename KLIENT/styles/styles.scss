@@ -13,7 +13,7 @@ body {
   margin: 0;
   // display: grid;
   position: relative;
-  min-height: 100vh;
+  // min-height: 100vh;
   @include flex(column, none, center);
   background-color: $backgroundColor;
   // overflow-x: hidden;
@@ -26,6 +26,9 @@ body {
   @include flex(column, none, center);
   overflow-x: hidden;
   color: $darkFont;
+  margin-bottom: 90px;
+  padding-right: $wrapperPadding;
+  padding-left: $wrapperPadding;
 }
 
 // Imported css-files

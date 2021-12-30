@@ -15,7 +15,6 @@
 
     //Ladda hem alla inputs
     $rawLoginTry = file_get_contents("php://input");
-    $loginTry = json_decode($rawLoginTry, true);
 
     //Ladda hem databasen
     $db = loadJSON("../DATABASE/user.json");
@@ -23,14 +22,14 @@
 
     //Hittar användaren dy försökt logga in med användaren du laggt in
     foreach($db["users"] as $user => $key){
-        if($loginTry["username"] === $key["username"] || $loginTry["username"] === $key["email"]){
-            if(password_verify($loginTry["password"], $key["password"])){
+        if($_POST["username"] === $key["username"] || $_POST["username"] === $key["email"]){
+            if(password_verify($_POST["password"], $key["password"])){
 
                 //On sucess skickar tillbaka användarens ID
                 sendJSON(
                     [
                     "message" => "Login was a success",
-                    "SessionId" => $key["id"]
+                    "session" => [ "sessionID" => $key['sessionId'], "userID" => $key['id']],
                     ], 200);
             }
             //Error om det inte funkar

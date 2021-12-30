@@ -3,15 +3,15 @@
 // skapar hela elementent ((avändare + makeMovieBanner) x antal)
 // appendar
 
-// User Variable
-let userID = 1;
-
-
 // Activity Variable
-async function executeFriendsActivities() {
+async function executeFriendsActivities(userID) {
   // Filtered by watched
   let actArray = await getFriendsActivities(userID);
   let filteredActArray = actArray.filter((activity) => activity.type === "watched");
+
+  let title = document.createElement("h3");
+  title.textContent = "Friends recently watched";
+  document.querySelector("#frw").prepend(title);
 
   // For every Activity that was filtered
   filteredActArray.forEach((activity) => {
@@ -24,6 +24,10 @@ async function getFriendsRecentlyWatched(movieID, user) {
 
   let profileBox = document.createElement("div");
   profileBox.className = "profile-box";
+  console.log(user);
+  profileBox.addEventListener("click", () => {
+    window.location.href = `profile.php?userID=${user}`;
+  });
 
   let userInfo = await getUserInfo(user);
 

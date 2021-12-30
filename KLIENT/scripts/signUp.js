@@ -1,4 +1,4 @@
-// * Skapa formulär 
+// * Skapa formulär
 // * Skicka uppgifterna (för- & efternamn, username, email, password och birthday = KRAV) till create-user.php
 // får tillbaka id från server av den nya användaren --> skickas till feed, sparar id i session
 // * Vid skapandet av användaren ska en få live-uppdatering
@@ -15,65 +15,46 @@ let pictureID;
 let signUpForm = document.getElementById("signUpForm");
 
 signUpForm.addEventListener("submit", (event) => {
-    console.log("SignUpForm ok");
-    event.preventDefault();
-    const rawSignUpData = new FormData(signUpForm);
+  console.log("SignUpForm ok");
+  event.preventDefault();
+  const formData = new FormData(signUpForm);
 
-    let object = {};
-    
-    for(let [key, value] of rawSignUpData.entries()) {
-        object[key] = value;
-    }   
+  // let object = {};
 
-    var array = [];
-    var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+  // for(let [key, value] of rawSignUpData.entries()) {
+  //     object[key] = value;
+  // }
 
-    for (var i = 0; i < checkboxes.length; i++) {
-        array.push(checkboxes[i].value)
-    }
-    
-    object["active_streaming_services"] = array;
-    data = JSON.stringify(object);
+  let array = [];
+  let checkboxes = document.querySelectorAll("input[type=checkbox]:checked");
 
-    const req = new Request("http://localhost:7001/POST/create-user.php", {
-        method: "POST",
-        body: data
+  for (let i = 0; i < checkboxes.length; i++) {
+    array.push(checkboxes[i].value);
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    formData.append("active_streaming_services[]", array[i]);
+  }
+
+  if (document.getElementById("fileToUpload").value == "") {
+    let form = document.getElementById("profileImgForm");
+    image = document.querySelector('input[name="profileImg"]:checked').value;
+    console.log(image);
+    formData.set("fileToUpload", image);
+  }
+
+  // object["active_streaming_services"] = array;
+  // data = JSON.stringify(object);
+
+  const req = new Request("http://localhost:7001/POST/create-user.php", {
+    method: "POST",
+    body: formData,
+  });
+
+  fetch(req)
+    .then((response) => response.json())
+    .then((data) => {
+        saveToSession(data, "session");
+        window.location.replace("http://localhost:2000/explore.php");
     });
-
-    fetch(req)
-    .then(response => response.json())
-    .then(data => {
-        pictureID = data.pictureID;
-        });    
-
 });
-
-let signUpFormImage = document.getElementById("signUpFormImage");
-
-    signUpFormImage.addEventListener("submit", (event) => {
-        console.log("SignUpFormImage ok");
-        event.preventDefault();
-        image = new FormData(signUpFormImage);
-        
-        if(document.getElementById("fileToUpload").value == ""){
-            let form = document.getElementById("profileImgForm");
-            image = document.querySelector('input[name="prfoileImg"]:checked').value;
-            document.getElementById("signUpFormImage").setAttribute("enctype", "application/json");
-        }
-
-        const req1 = new Request("http://localhost:7001/POST/add-profile-picture.php", {
-            method: "POST",
-            body: pictureID
-        });
-    
-        fetch(req)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            });  
- });
-
-
-    
-
-
