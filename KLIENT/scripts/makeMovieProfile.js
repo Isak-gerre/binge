@@ -216,11 +216,10 @@ async function makeMovieProfile(movieID) {
         }
 
         providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
-        streamingservicesGrid.append(providerDiv);
-      });
-      streamingservices.append(streamingservicesGrid);
-    }
-  }
+        streamingservices.append(providerDiv);
+    };
+      streamingservices.append(allProvidersGrid);
+
 
   // Credits - Niklas
   let credits = document.createElement("div");
@@ -275,7 +274,7 @@ async function makeMovieProfile(movieID) {
   let titleReview = document.createElement("h4");
   titleReview.textContent = "Reviews";
   reviews.append(titleReview);
-
+  
   let activities = await getActivityByMovieID(movieID);
 
   async function getActivityByMovieID(movieID) {
@@ -522,7 +521,7 @@ async function makeMovieProfile(movieID) {
         }, 1000);
       }, 2500);
     });
+    buttons.append(watchLater, watched, review);
   });
 
-  buttons.append(watchLater, watched, review);
 }
