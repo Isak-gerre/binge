@@ -31,11 +31,11 @@ function makeState(movieID, page, scrollHeight = 0) {
 }
 
 function saveToSession(object, setter) {
-  if (typeof object != "object") {
-    alert("You can only save objects to sessionStorage");
-  } else {
+  // if (typeof object != "object") {
+  //   alert("You can only save objects to sessionStorage");
+  // } else {
     sessionStorage.setItem(setter, JSON.stringify(object));
-  }
+  // }
 }
 
 function getFromSession(getter) {
@@ -54,7 +54,6 @@ function getLoggedInUserID() {
     }
   } else {
     sessionStorage.clear();
-    console.log("hej")
     window.location.replace("http://localhost:2000");
   }
 }

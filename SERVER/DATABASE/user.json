@@ -177,7 +177,7 @@
         "7": {
             "firstname": "Ivan",
             "lastname": "Knezevic",
-            "username": "ivan.knezevic",
+            "username": "ivan",
             "password": "$2y$10$1IGPlzodXnZ.djQ3on9gzuuIknbW7To\/MrxGRWFATa7X3DKdKt.g6",
             "email": "ivan.k@live.se",
             "birthday": "2000-12-13",
@@ -193,10 +193,32 @@
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_4.png"
             },
-            "followers": [],
-            "following": [],
+            "followers": [8],
+            "following": [8],
             "sessionId": "$2y$10$ZM3StiAJ7S\/AoaClgj26rerkw\/IcLrH53rRmAEj11GCdpqUZlJEAe",
             "id": 7
+        },
+        "8": {
+            "firstname": "Emma",
+            "lastname": "Westman",
+            "username": "Emma",
+            "password": "$2y$10$ZmiXUwrexepFSUxXaJVFa.9wkg4gVo9meUPFewB28ILrcXcLEubeC",
+            "email": "e.w.w@live.se",
+            "birthday": "2000-08-29",
+            "region": "SE",
+            "active_streaming_services": [
+                "Disney Plus",
+                "Viaplay",
+                "HBO Max",
+                "SVT"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_6.png"
+            },
+            "followers": [7],
+            "following": [7],
+            "sessionId": "$2y$10$1E3jEoUjUZxDKrg\/e\/IMEeJCdQCg1CUytVGzngoLODP012c0blmha",
+            "id": 8
         }
     }
 }
