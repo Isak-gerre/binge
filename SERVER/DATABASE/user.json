@@ -36,41 +36,6 @@
                 6
             ]
         },
-        "2": {
-            "id": 2,
-            "firstname": "Ivan",
-            "lastname": "Knezevic",
-            "username": "Ivanka",
-            "email": "Iko.2000@hotmail.com",
-            "password": "sleepster",
-            "birthday": "sleepster",
-            "profile_picture": {
-                "filepath": "DATABASE\/IMAGES\/PROFILE\/ivankaa.jpg"
-            },
-            "region": "SE",
-            "active_streaming_services": [
-                "netflix",
-                "disney plus",
-                "amazon prime video",
-                "hbo max",
-                "svt"
-            ],
-            "followers": [
-                1,
-                3,
-                4,
-                6,
-                5,
-                7
-            ],
-            "following": [
-                1,
-                3,
-                4,
-                5,
-                6
-            ]
-        },
         "3": {
             "id": 3,
             "firstname": "Lina",
@@ -210,20 +175,50 @@
             ]
         },
         "7": {
-            "firstname": "test",
-            "lastname": "test",
-            "username": "test",
-            "password": "$2y$10$zeYJaB..CEmgz8oNoAvt\/.XLLdWwIdZJIGO1WOKqT5uHq65fqkEM6",
-            "email": "test",
-            "birthday": "",
+            "firstname": "Ivan",
+            "lastname": "Knezevic",
+            "username": "ivan",
+            "password": "$2y$10$1IGPlzodXnZ.djQ3on9gzuuIknbW7To\/MrxGRWFATa7X3DKdKt.g6",
+            "email": "ivan.k@live.se",
+            "birthday": "2000-12-13",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "Amazon Prime Video",
+                "Disney Plus",
+                "HBO Max",
+                "SVT",
+                "Viafree"
+            ],
             "profile_picture": {
-                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_1.png"
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_4.png"
             },
-            "active_streaming_services": [],
-            "followers": [],
-            "following": [],
-            "sessionId": "$2y$10$On18pJtOnDXoEql5y5w5BeaYrCIlNBo7J7NocCMEne02zycNb0B2O",
+            "followers": [8],
+            "following": [8],
+            "sessionId": "$2y$10$ZM3StiAJ7S\/AoaClgj26rerkw\/IcLrH53rRmAEj11GCdpqUZlJEAe",
             "id": 7
+        },
+        "8": {
+            "firstname": "Emma",
+            "lastname": "Westman",
+            "username": "Emma",
+            "password": "$2y$10$ZmiXUwrexepFSUxXaJVFa.9wkg4gVo9meUPFewB28ILrcXcLEubeC",
+            "email": "e.w.w@live.se",
+            "birthday": "2000-08-29",
+            "region": "SE",
+            "active_streaming_services": [
+                "Disney Plus",
+                "Viaplay",
+                "HBO Max",
+                "SVT"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_6.png"
+            },
+            "followers": [7],
+            "following": [7],
+            "sessionId": "$2y$10$1E3jEoUjUZxDKrg\/e\/IMEeJCdQCg1CUytVGzngoLODP012c0blmha",
+            "id": 8
         }
     }
 }

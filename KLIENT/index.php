@@ -43,28 +43,28 @@ if (isset($_GET["sessionID"])) {
 <form id="signUpForm" class="signInForm" action="index.php" method="POST">
     <fieldset id="createUserP1">
         <div>
-            <p>Firstname</p>
-            <input class="signInInput" type="text" name="firstname" placeholder="Firstname">
+            <p>Firstname *</p>
+            <input class="signInInput" type="text" name="firstname" placeholder="Firstname" required>
         </div>
         <div>
-            <p>Lastname</p>
-            <input class="signInInput" type="text" name="lastname" placeholder="Lastname">
+            <p>Lastname *</p>
+            <input class="signInInput" type="text" name="lastname" placeholder="Lastname" required>
         </div>
         <div>
-            <p>Username</p>
-            <input class="signInInput" type="text" name="username" placeholder="Username">
+            <p>Username *</p>
+            <input class="signInInput" type="text" name="username" placeholder="Username" required>
         </div>
         <div>
-            <p>Password</p>
-            <input class="signInInput" type="password" name="password" placeholder="Password">
+            <p>Password *</p>
+            <input class="signInInput" type="password" name="password" placeholder="Password" required>
         </div>
         <div>
-            <p>Confrim Password</p>
-            <input class="signInInput" type="password" name="confirm_password" placeholder="Confirm Password">
+            <p>Confrim Password *</p>
+            <input class="signInInput" type="password" name="confirm_password" placeholder="Confirm Password" required>
         </div>
         <div>
-            <p>Email</p>
-            <input class="signInInput" type="text" name="email" placeholder="Email">
+            <p>Email *</p>
+            <input class="signInInput" type="text" name="email" placeholder="Email" required>
         </div>
         <div>
             <p>Birthday</p>
@@ -82,20 +82,36 @@ if (isset($_GET["sessionID"])) {
     </fieldset>
     <fieldset id="createUserP3">
         <label>
-            <input name="profileImg" id="profileImg1" type="radio" value="profileImg1" checked>
+            <input style="display:none" name="profileImg" id="profileImg1" type="radio" value="profileImg1" checked>
             <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_1.png" width="100" height="100" alt="">
         </label>
         <label>
-            <input name="profileImg" id="profileImg2" type="radio" value="profileImg2">
+            <input style="display:none" name="profileImg" id="profileImg2" type="radio" value="profileImg2">
             <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_2.png" width="100" height="100" alt="">
         </label>
         <label>
-            <input name="profileImg" id="profileImg3" type="radio" value="profileImg3">
+            <input style="display:none" name="profileImg" id="profileImg3" type="radio" value="profileImg3">
             <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_3.png" width="100" height="100" alt="">
         </label>
         <label>
-            <input name="profileImg" id="profileImg4" type="radio" value="profileImg4">
+            <input style="display:none" name="profileImg" id="profileImg4" type="radio" value="profileImg4">
             <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_4.png" width="100" height="100" alt="">
+        </label>
+        <label>
+            <input style="display:none" name="profileImg" id="profileImg1" type="radio" value="profileImg5">
+            <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_5.png" width="100" height="100" alt="">
+        </label>
+        <label>
+            <input style="display:none" name="profileImg" id="profileImg2" type="radio" value="profileImg6">
+            <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_6.png" width="100" height="100" alt="">
+        </label>
+        <label>
+            <input style="display:none" name="profileImg" id="profileImg3" type="radio" value="profileImg7">
+            <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_7.png" width="100" height="100" alt="">
+        </label>
+        <label>
+            <input style="display:none" name="profileImg" id="profileImg4" type="radio" value="profileImg8">
+            <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_8.png" width="100" height="100" alt="">
         </label>
 
         <input type="file" id="fileToUpload" name="fileToUpload">
@@ -104,16 +120,8 @@ if (isset($_GET["sessionID"])) {
 
 </form>
 
-
-
-<!-- <form action="index.php" enctype="multipart/form-data" id="signUpFormImage" method="POST">
-    <input type="file" id="fileToUpload" name="fileToUpload">
-    <input type="submit" value="upload">
-</form> -->
-
 <script src="scripts/functions.js"></script>
 <script src="scripts/formNavigation.js"></script>
-<script src="scripts/makeNavigation.js"></script>
 <script src="scripts/stateManager.js"></script>
 <script src="scripts/createFormAPI.js"></script>
 <script src="scripts/logIn.js"></script>

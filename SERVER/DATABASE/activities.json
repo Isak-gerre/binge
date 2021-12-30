@@ -300,16 +300,6 @@
             "rate": "5",
             "updated": false
         },
-        "34": {
-            "id": 34,
-            "userID": 7,
-            "movieID": "624860",
-            "type": "watchlist",
-            "date": "20211229",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
         "35": {
             "id": 35,
             "userID": 7,
@@ -320,15 +310,75 @@
             "rate": "",
             "updated": false
         },
-        "36": {
-            "id": 36,
+        "37": {
+            "id": 37,
             "userID": 7,
-            "movieID": "624860",
+            "movieID": "634649",
+            "type": "watched",
+            "date": "20211229",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "38": {
+            "id": 38,
+            "userID": 7,
+            "movieID": "634649",
             "type": "review",
             "date": "20211229",
-            "comment": "Denna va s\u00e5 bra, vad roligt! Jag s\u00e5g den med en kompis som hatade den, mindre kul, men kolla g\u00e4rna p\u00e5 den, den \u00e4r guld. Vill g\u00e4rna snakca om den s\u00e5 ring mig p\u00e5 0763083587 puss :*",
+            "comment": "Den b\u00e4sta filmen jag s\u00e4tt p\u00e5 l\u00e4nge! Sinnesbra story och otroligt m\u00e5nga easter eggs f\u00f6r folk som \u00e4r n\u00f6rdiga och \u00e4lskar spiderman som jag.",
             "rate": "5",
-            "updated": true
+            "updated": false
+        },
+        "39": {
+            "id": 39,
+            "userID": 7,
+            "movieID": "438631",
+            "type": "watchlist",
+            "date": "20211229",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "40": {
+            "id": 40,
+            "userID": 7,
+            "movieID": "624860",
+            "type": "watchlist",
+            "date": "20211229",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "41": {
+            "id": 41,
+            "userID": 8,
+            "movieID": "911068",
+            "type": "watched",
+            "date": "20211229",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "42": {
+            "id": 42,
+            "userID": 8,
+            "movieID": "438631",
+            "type": "watched",
+            "date": "20211229",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "43": {
+            "id": 43,
+            "userID": 8,
+            "movieID": "506528",
+            "type": "watchlist",
+            "date": "20211229",
+            "comment": "",
+            "rate": "",
+            "updated": false
         }
     }
 }
