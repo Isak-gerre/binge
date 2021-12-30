@@ -54,7 +54,7 @@ $boxShadow: 3px;
 
 @mixin transitionFromBottom() {
   width: 100vw;
-  height: 100vh;
+  // height: 100vh;
   position: absolute;
   z-index: 100000;
 
