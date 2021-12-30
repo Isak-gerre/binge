@@ -2405,6 +2405,10 @@ svg:active,
   transition: opacity 0.5s;
 }
 
+.signInWrap div:first-child {
+  width: 100%;
+}
+
 .signInWrap div:first-child h1 {
   font-family: "Archivo", sans-serif;
   font-size: 18px;
@@ -2695,6 +2699,9 @@ svg:active,
 #createUserP3 #uploadProfilePic #fileToUpload {
   width: 100%;
   margin: auto;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 #createUserP3 #signInButton {
