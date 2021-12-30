@@ -56,24 +56,30 @@
             
             transition: color 0.5s;
         }
+        
     }
-
+    
+    
     #buttonWrapper {
         @include flex(row, center, center);
         gap: $betweenPadding;
     }
-
+    
     button {
         width: 100px;
         height: 30px;
-
+        
         @include postFont();
-
+        
         background: $gradientPeach;
         padding: $buttonPadding;
         border-radius: $borderRadiusButtons;
         border: none;
     }
+}
+
+#errorDiv {
+    @include xSmallFont();
 }
 
 // Sign up

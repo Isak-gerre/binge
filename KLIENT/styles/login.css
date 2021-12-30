@@ -134,6 +134,11 @@
   border: none;
 }
 
+#errorDiv {
+  font-family: "Mulish", sans-serif;
+  font-size: 10px;
+}
+
 #signUpForm {
   z-index: 20;
   display: none;
@@ -148,7 +153,6 @@
       -ms-flex-align: center;
           align-items: center;
   width: 100vw;
-  height: 100vh;
   position: absolute;
   z-index: 100000;
   top: 100vh;
