@@ -2071,6 +2071,10 @@ input:focus {
   border-radius: 0;
 }
 
+.search-container .movie-profile-background {
+  position: absolute;
+}
+
 .closeImg {
   position: absolute;
   right: 10px;

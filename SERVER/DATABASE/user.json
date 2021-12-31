@@ -341,6 +341,47 @@
             "following": [],
             "sessionId": "$2y$10$zgtllx3Iyqa3.SaKTMvcM.XJp.YQ7EqXoTlz7htcI2JrXEisfHKF2",
             "id": 13
+        },
+        "14": {
+            "firstname": "katta",
+            "lastname": "Kozak",
+            "username": "kattta",
+            "password": "$2y$10$z2nKZCBfOMk0flf815l66uTqbIysDIVpfO0z0NFnF5aW4AQeA8LWW",
+            "email": "kata@gms.se",
+            "birthday": "2021-12-14",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "Disney Plus"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_7.png"
+            },
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$drOhfXaX3tBtkbOBXvzjouv5vkQ.AGiKp6M.zL2jrYUDb7SjAph.i",
+            "id": 14
+        },
+        "15": {
+            "firstname": "hej",
+            "lastname": "hopp",
+            "username": "lingon",
+            "password": "$2y$10$lbyKGEJhhX4POp1oIuqLmuJQGYd3xGxTM9tHosC0OqrPqD4YIVfcK",
+            "email": "niv@gm.se",
+            "birthday": "2021-12-15",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "Amazon Prime Video",
+                "Disney Plus"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_4.png"
+            },
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$RBXZn1v.VR0LZAwbBPs68O0hGeKBabYK.mOmVXM1dluKZhcJ9OgUi",
+            "id": 15
         }
     }
 }

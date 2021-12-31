@@ -137,6 +137,10 @@ input:focus {
   border-radius: 0;
 }
 
+.search-container .movie-profile-background {
+  position: absolute;
+}
+
 .closeImg {
   position: absolute;
   right: 10px;
@@ -315,6 +319,7 @@ svg:active,
       grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   z-index: 100;
+  overflow: scroll;
   height: calc(100vh - 170px);
   padding-bottom: 90px;
 }
