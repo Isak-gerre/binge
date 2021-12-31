@@ -1092,6 +1092,7 @@ body {
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;
+  font-size: 12px;
 }
 
 .movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid {
@@ -2367,6 +2368,7 @@ svg:active,
       grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   z-index: 100;
+  overflow: scroll;
   height: calc(100vh - 170px);
   padding-bottom: 90px;
 }
