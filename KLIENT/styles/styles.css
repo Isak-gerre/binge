@@ -1083,8 +1083,15 @@ body {
 .movie-profile-middle .movie-profile-streamingservices .allProviders {
   display: -ms-grid;
   display: grid;
+  gap: 10px;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
+}
+
+.movie-profile-middle .movie-profile-streamingservices .pSC {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 .movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid {
@@ -1103,22 +1110,14 @@ body {
           align-items: center;
   gap: 10px;
   margin-bottom: 10px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid img, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid img {
   border-radius: 50%;
   height: 10vw;
   width: 10vw;
-  margin-right: 10px;
-}
-
-.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid .active-streming-service, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid .active-streming-service {
-  -webkit-box-shadow: 0px 0px 3px rgba(239, 157, 26, 0.58);
-          box-shadow: 0px 0px 3px rgba(239, 157, 26, 0.58);
-}
-
-.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid img:last-child, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid img:last-child {
-  margin-right: 0px;
 }
 
 .movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid p, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid p {

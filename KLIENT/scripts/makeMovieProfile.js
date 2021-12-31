@@ -165,23 +165,19 @@ async function makeMovieProfile(movieID) {
             streamingservices.append(message);
         } else {
             let movieProviders = additionalInfo.message.providers.results[userRegion].flatrate;
-
             let activeUserSC = user.active_streaming_services;
             
             let yourProviders= movieProviders.filter(prov => activeUserSC.includes(prov["provider_name"]));
             let otherProviders= movieProviders.filter(prov => !activeUserSC.includes(prov["provider_name"]));
 
-            // console.log(yourProviders.length);
-            // console.log(otherProviders.length);
+            let yourStreamingservicesGrid = document.createElement("div");
+            yourStreamingservicesGrid.className = "your-streaming-services-grid";
+
+            let yourStreamingServices = document.createElement("div");
+            yourStreamingServices.className = "movie-profile-your-streaming-services"
+            yourStreamingServices.innerHTML = "<p>Yours</p>"
 
             if(yourProviders.length > 0){
-                let yourStreamingservicesGrid = document.createElement("div");
-                yourStreamingservicesGrid.className = "your-streaming-services-grid";
-
-                let yourStreamingServices = document.createElement("div");
-                yourStreamingServices.className = "movie-profile-your-streaming-services"
-                yourStreamingServices.innerHTML = "<p>Yours</p>"
-                
                 yourProviders.forEach((provider) => {
                      let providerName = provider.provider_name;
                      if (activeUserSC.includes(providerName)) {
@@ -191,10 +187,15 @@ async function makeMovieProfile(movieID) {
                          yourProvidersDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
                      } 
                 })
-                yourStreamingServices.append(yourStreamingservicesGrid);
-                allProvidersGrid.append(yourStreamingServices);
-
+            } else {
+              let message = document.createElement("p");
+              message.textContent = "Not available on your streaming providers.";
+              message.className = "pSC";
+              yourStreamingServices.append(message);
             }
+
+              yourStreamingServices.append(yourStreamingservicesGrid);
+              allProvidersGrid.append(yourStreamingServices);
 
             if(otherProviders.length > 0){
                 let otherStreamingservicesGrid = document.createElement("div");
@@ -209,9 +210,9 @@ async function makeMovieProfile(movieID) {
                     otherStreamingservicesGrid.append(otherProvidersDiv);
                     otherProvidersDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
                 })
+                
                 otherStreamingServices.append(otherStreamingservicesGrid)
                 allProvidersGrid.append(otherStreamingServices);
-
             }
 
 

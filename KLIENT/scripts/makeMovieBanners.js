@@ -19,7 +19,7 @@ async function makeMovieBanner(movieID) {
     movieImgPath = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["backdrop_path"]}')`;
   } else {
     movieImgPath = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["poster_path"]}')`;
-  }
+  } 
 
   //the background image
   movieBanner.style.backgroundImage = movieImgPath;
