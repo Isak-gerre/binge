@@ -106,15 +106,18 @@ async function makeMovieProfile(movieID) {
   let review = document.createElement("button");
   review.className = "review button";
   review.textContent = "Review";
+  review.style.display = "none";
 
   if (relation.watchlist !== false) {
     watchLater.classList.add("marked");
   }
   if (relation.watched !== false) {
     watched.classList.add("marked");
+    review.style.display = "flex";
   }
+
   if (relation.review !== false) {
-    review.textContent = "Update Review";
+    review.textContent = "Update review";
     review.classList.add("marked");
   }
 
@@ -356,9 +359,9 @@ async function makeMovieProfile(movieID) {
       postNewActivity(movieID, loggedInUser, "watched");
       watched.classList.add("marked");
 
-      review.style.display = "block";
-
       // VISA REVIEW knapp
+      review.style.display = "flex";
+
     }
 
     // om personen HAR ifilmen i sin watched => ta bort den
@@ -373,7 +376,9 @@ async function makeMovieProfile(movieID) {
     }
   });
 
-  review.addEventListener("click", (e) => {
+  review.addEventListener("click", async function(e) {
+    relation = await getButtonRealtionStatus(loggedInUser, movieID);
+
     // Prevent scrolling
     document.body.style.overflow = "hidden";
 
@@ -442,8 +447,24 @@ async function makeMovieProfile(movieID) {
       // Bottom
       let bottomDiv = document.createElement("div");
       bottomDiv.className = "bottom";
+
+      let labelHolder = document.createElement("div");
+      labelHolder.classList.add("labelHolder");
+
       let labelComment = document.createElement("label");
       labelComment.textContent = "Review";
+      labelComment.classList.add("labelComment");
+      
+      if(relation.review != false){
+        let date = howManyDaysAgo(relation.review.date);
+        let labelDate = document.createElement("label");
+        labelDate.classList.add("labelDate");
+
+        labelDate.textContent = `Last updated ${date}`;
+        labelHolder.append(labelComment, labelDate);
+      } else {
+        labelHolder.append(labelComment);
+      }
 
       let textArea = document.createElement("textarea");
       textArea.setAttribute("id", "text-area");
@@ -455,36 +476,59 @@ async function makeMovieProfile(movieID) {
         textArea.textContent = relation.review.comment;
       }
 
+      let buttonHolder = document.createElement("div");
+      buttonHolder.className = "buttonHolder";
+
       // Submit-button
       let submitButton = document.createElement("button");
       submitButton.setAttribute("type", "submit");
       submitButton.className = "submit button";
       submitButton.textContent = "Submit";
 
-      topDiv.append(exitButton, title);
+      // Delete-button
+      let deleteButton = document.createElement("button");
+      deleteButton.className = "delete button";
+      deleteButton.textContent = "Delete review";
+
+      // Appends
+      topDiv.append(title, exitButton);
       middleDiv.append(stars);
-      bottomDiv.append(labelComment, textArea);
-      messageWrapper.append(topDiv, middleDiv, bottomDiv, submitButton);
+      bottomDiv.append(labelHolder, textArea);
+      buttonHolder.append(deleteButton, submitButton);
+      messageWrapper.append(topDiv, middleDiv, bottomDiv, buttonHolder);
 
       setTimeout(() => {
         topDiv.style.display = "flex";
         middleDiv.style.display = "flex";
         bottomDiv.style.display = "flex";
-        submitButton.style.display = "block";
+        buttonHolder.style.display = "flex";
       }, 1500);
     }
 
     overlayFade.append(messageWrapper);
     document.body.append(overlayFade);
 
-    // exit click
+    // Delete event - ta bort från DB, ta bort markering på reviewknapp
+    document.querySelector(".delete").addEventListener("click", () => {
+      deleteteActivity(relation.review.id);
+
+      let message = "You successfully delted your review";
+      closingMessage(message);
+
+
+      review.classList.remove("marked");
+      review.textContent = "Review";
+    });
+
+    // Exit clickevent
     document.querySelector(".exit").addEventListener("click", () => {
       overlayFade.remove();
       document.body.style.overflow = "visible";
     });
 
-    // submit click
+    // Submit click
     document.querySelector(".submit").addEventListener("click", () => {
+      
       let comment = document.querySelector("textarea").value;
       let starRate = 0;
       let radioStars = document.querySelectorAll("input");
@@ -505,11 +549,19 @@ async function makeMovieProfile(movieID) {
         patchActivity(relation.review);
         message = "You updated your review";
 
-        // POST
+      // POST
       } else {
         postNewActivity(movieID, loggedInUser, "review", comment, starRate);
         message = "Thanks for your review";
       }
+
+      closingMessage(message);
+      review.classList.add("marked");
+      review.textContent = "Update review";
+
+    });
+
+    function closingMessage(message){
 
       let messageWrapper = document.querySelector(".message-wrapper");
       let top = document.querySelector(".message-wrapper > .top");
@@ -521,6 +573,9 @@ async function makeMovieProfile(movieID) {
 
       setTimeout(() => {
         messageWrapper.innerHTML = "";
+        messageWrapper.style.display = "flex";
+        messageWrapper.style.justifyContent = "center";
+        messageWrapper.style.alignItems = "center";
         let p = document.createElement("p");
         p.textContent = message;
         p.style.animation = "fadeIn 1s";
@@ -543,7 +598,7 @@ async function makeMovieProfile(movieID) {
 
         }, 1000);
       }, 2500);
-    });
+    };
     buttons.append(watchLater, watched, review);
   });
 

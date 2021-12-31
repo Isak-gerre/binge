@@ -79,11 +79,15 @@
       -ms-flex-align: end;
           align-items: flex-end;
   background-color: #0f0b2e;
-  min-height: 0px;
+  min-height: 300px;
   display: none;
   -webkit-animation: smoothWidth 1s;
           animation: smoothWidth 1s;
   width: 80%;
+  border-radius: 5px;
+  -webkit-box-shadow: 3px 3px 3px #0f0b2e;
+          box-shadow: 3px 3px 3px #0f0b2e;
+  padding: 10px;
 }
 
 .overlay-fade .message-wrapper div {
@@ -98,50 +102,36 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   display: none;
-  height: 50px;
-  padding: 5px;
   -webkit-animation: fadeIn 1s;
           animation: fadeIn 1s;
 }
 
 .overlay-fade .message-wrapper .top img {
-  width: 3vh;
-  height: 3vh;
-  padding: 5px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
-  margin: 0px 5px;
 }
 
 .overlay-fade .message-wrapper .top h1 {
   height: 100%;
   color: "Mulish", sans-serif;
-  padding: 5px;
   font-family: "Archivo", sans-serif;
   font-size: 18px;
   font-weight: bold;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
 }
 
 .overlay-fade .message-wrapper .middle {
   display: none;
   width: 100%;
-  padding: 5px;
   -webkit-animation: fadeIn 1s;
           animation: fadeIn 1s;
-  -ms-flex-preferred-size: 90px;
-      flex-basis: 90px;
   position: relative;
 }
 
@@ -159,7 +149,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0px 10px;
   unicode-bidi: bidi-override;
   direction: rtl;
 }
@@ -171,9 +160,9 @@
 .overlay-fade .message-wrapper .middle #rate:not(:checked) > label {
   cursor: pointer;
   float: right;
-  width: 30px;
   color: rgba(0, 135, 211, 0.4);
   font-size: 30px;
+  padding-right: 5px;
 }
 
 .overlay-fade .message-wrapper .middle #rate:not(:checked) > label:hover,
@@ -215,48 +204,89 @@
           align-items: flex-start;
   display: none;
   position: relative;
-  padding: 5px;
   -webkit-animation: fadeIn 1s;
           animation: fadeIn 1s;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  padding-bottom: 0px;
+  padding-bottom: 10px;
 }
 
-.overlay-fade .message-wrapper .bottom label {
+.overlay-fade .message-wrapper .bottom .labelHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.overlay-fade .message-wrapper .bottom .labelComment {
   color: "Mulish", sans-serif;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
   padding-bottom: 5px;
-  margin: 0px 10px;
+}
+
+.overlay-fade .message-wrapper .bottom .labelDate {
+  color: "Mulish", sans-serif;
+  font-family: "Mulish", sans-serif;
+  font-size: 10px;
 }
 
 .overlay-fade .message-wrapper .bottom #text-area {
-  width: calc(100% - 20px);
+  width: 100%;
   border: none;
-  padding: 10px;
   color: black;
-  margin: 10px;
   margin-bottom: 0px;
+  padding: 5px;
 }
 
-.overlay-fade .message-wrapper .submit {
+.overlay-fade .message-wrapper .buttonHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   display: none;
+}
+
+.overlay-fade .message-wrapper .button {
   border: none;
-  background: linear-gradient(40deg, #ef9d1a, #fd047c);
   border-radius: 10px;
-  padding: 3px 10px;
-  height: 25px;
-  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
-          filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
-  margin: 10px;
-  margin-right: 15px;
+  padding: 5px;
+  height: 20px;
+  margin: 10px 10px 10px 0;
   cursor: pointer;
   -webkit-animation: fadeIn 1s;
           animation: fadeIn 1s;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
+}
+
+.overlay-fade .message-wrapper .submit {
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+          filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+}
+
+.overlay-fade .message-wrapper .delete {
+  background-color: red;
 }
 
 @-webkit-keyframes fadeOut {
@@ -455,10 +485,12 @@
 
 .movie-profile-info .movie-profile-info-text #movie-profile-buttons .button {
   border-radius: 10px;
-  border: 0;
-  padding: 3px;
-  height: 25px;
+  border: none;
+  padding: 5px;
+  height: 20px;
   background: #20185b;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   -webkit-filter: none;
           filter: none;
   display: -webkit-box;

@@ -48,52 +48,53 @@
 
   .message-wrapper {
     @include flex(column, flex-start, flex-end);
-    background-color: #0f0b2e;
-    min-height: 0px;
+    background-color: $backgroundColor;
+    min-height: 300px;
     display: none;
     animation: smoothWidth 1s;
     width: 80%;
+    border-radius: $borderRadiusObjects;
+    box-shadow: $boxShadow $boxShadow $boxShadow $backgroundColor;
+    padding: $betweenPadding;
 
     div {
       width: 100%;
     }
 
     .top {
-      @include flex(row, flex-start, center);
+      @include flex(row, space-between, center);
       display: none;
-      height: 50px;
-      padding: $innerPadding;
+      // height: 50px;
       animation: fadeIn 1s;
 
       img {
-        width: 3vh;
-        height: 3vh;
-        padding: $innerPadding;
+        width: $iconButtonSz;
+        height: $iconButtonSz;
+        // padding: $innerPadding;
         cursor: pointer;
-        margin: 0px 5px;
       }
 
       h1 {
         height: 100%;
         color: $bodyFont;
-        padding: $innerPadding;
+        // padding: $innerPadding;
         @include bigTitleFont();
-        display: flex;
-        align-items: flex-end;
+        // display: flex;
+        // align-items: flex-end;
       }
     }
 
     .middle {
       display: none;
       width: 100%;
-      padding: $innerPadding;
       animation: fadeIn 1s;
-      flex-basis: 90px;
+      // flex-basis: 90px;
       position: relative;
+
 
       #rate {
         @include flex(row, flex-start, center);
-        margin: 0px 10px;
+        // margin: 0px 10px;
 
         unicode-bidi: bidi-override;
         direction: rtl;
@@ -106,10 +107,10 @@
       #rate:not(:checked) > label {
         cursor: pointer;
         float: right;
-        width: 30px;
 
         color: rgba(0, 135, 211, 0.4);
-        font-size: 30px;
+        font-size: $starSz;
+        padding-right: 5px;
       }
 
       #rate:not(:checked) > label:hover,
@@ -140,41 +141,60 @@
       @include flex(column, center, flex-start);
       display: none;
       position: relative;
-      padding: $innerPadding;
       animation: fadeIn 1s;
       flex-grow: 1;
-      padding-bottom: 0px;
+      padding-bottom: $betweenPadding;
 
-      label {
+      .labelHolder {
+        @include flex(row, space-between,center);
+      }
+
+      .labelComment {
         color: $bodyFont;
         @include smallTitleFont();
-        margin: 0px 10px;
+      }
+
+      .labelDate{
+        color: $bodyFont;
+        @include xSmallFont();
       }
 
       #text-area {
-        width: calc(100% - 20px);
+        width: 100%;
         border: none;
-        padding: 10px;
         color: $darkFont;
-        margin: 10px;
         margin-bottom: 0px;
+        padding: $innerPadding;
       }
     }
 
-    .submit {
+    .buttonHolder { // OBS ATT DELET/SUBMIT NU LIGEGR I EN WRAPPER FÖR ATT DE SKA VARA FLEX ROW
+      @include flex(row, flex-end, center);
       display: none;
+    }
+
+    .button {
+      // display: none; // TROR DET VAR NÅT MED DETTA SOM FUCKADE ANIMATION
       border: none;
-      background: linear-gradient(40deg, #ef9d1a, #fd047c);
       border-radius: $borderRadiusButtons;
-      padding: $buttonPadding $betweenPadding;
-      height: 25px;
-      filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
-      margin: 10px;
-      margin-right: 15px;
+      padding: $innerPadding;
+      height: $iconButtonSz;
+      margin: $betweenPadding $betweenPadding $betweenPadding 0;
       cursor: pointer;
       animation: fadeIn 1s;
       box-sizing: content-box;
+
     }
+
+    .submit {
+      background: $gradientPeach;
+      filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+    }
+
+    .delete {
+      background-color: red;
+    }
+
   }
 }
 
@@ -304,26 +324,20 @@
         grid-area: 2 / 1 / 3 / 3;
       }
 
-      // BUTTON
+      // Activity-BUTTON
       .button {
         border-radius: $borderRadiusButtons;
-        border: 0;
-        padding: $buttonPadding;
-        height: 25px;
+        border: none;
+        padding: $innerPadding;
+        height: $iconButtonSz;
         background: #20185b;
+        box-sizing: border-box;
         filter: none;
         @include flex(row, center, center);
       }
 
       // MARKED BUTTON
       .marked {
-        // OPTION 1
-        // background: #0F0B2E;
-        // box-sizing: border-box;
-        // color: rgb(178, 178, 178);
-        // filter:none;
-        // box-shadow: #291a36 3px 3px 6px 0px inset, rgba(144, 129, 169, 0.5) -3px -3px 6px 1px inset;
-
         // OPTION 2
         border-radius: $borderRadiusButtons;
         border: 0;
