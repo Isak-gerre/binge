@@ -316,6 +316,31 @@
             "following": [],
             "sessionId": "$2y$10$Xsv.MY8iUQJcGBFihH8fJuWr1JTg5NGV1Kogr7Be50fl50XR0y4eq",
             "id": 12
+        },
+        "13": {
+            "firstname": "isak",
+            "lastname": "Gerre",
+            "username": "IsakGerre",
+            "password": "$2y$10$QNakBp3MFVHR2USKGrDzyefBUHj7gn8kS8Q1XosX\/W5Z2F5h7GIl.",
+            "email": "isak.gerre@gmail.com",
+            "birthday": "1998-02-20",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "Disney Plus",
+                "C More",
+                "HBO Max",
+                "SVT",
+                "Viaplay",
+                "YouTube Premium"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_8.png"
+            },
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$zgtllx3Iyqa3.SaKTMvcM.XJp.YQ7EqXoTlz7htcI2JrXEisfHKF2",
+            "id": 13
         }
     }
 }
