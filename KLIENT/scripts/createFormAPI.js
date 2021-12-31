@@ -73,7 +73,7 @@ fetch(region)
         });
 
         //Selectar värdet som kommer finnas på select region.
-        let filter = document.getElementById("region");
+        let filter = selectRegion;
 
         //Skapar ett fieldset
         let providers = document.createElement("fieldset");
@@ -88,7 +88,10 @@ fetch(region)
         
         //Filtrerar baserat på vad du sökt
         filter.addEventListener("change", () => {
-
+            if(document.getElementById("fieldSetProviders")){
+                document.getElementById("fieldSetProviders").innerHTML = "";
+            }
+            
             //Gör en sökning efter varje provider från apin och laddar hem dem som är specifika till den regionen
             providerArray = [];
             // Ta bort API-nyckel, lägg den i APIn

@@ -71,7 +71,7 @@ echo "</script>";
         </div>
         <div id="input">
             <label>Password *</label>
-            <input class="signInInput" type="password" name="password" placeholder="Password" required>
+            <input class="signInInput" type="password" id="password2" name="password" placeholder="Password" required>
         </div>
         <div id="input">
             <label>Confirm Password *</label>
@@ -98,7 +98,7 @@ echo "</script>";
     <fieldset id="createUserP3">
         <div id="avatars">
             <p>Choose an avatar</p>
-            <label>
+            <label class="profileImgSelected">
                 <input style="display:none" name="profileImg" id="profileImg1" type="radio" value="profileImg1" checked>
                 <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_1.png" width="100" height="100" alt="">
             </label>

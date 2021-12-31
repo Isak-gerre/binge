@@ -22,7 +22,7 @@
 
     //Hittar användaren dy försökt logga in med användaren du laggt in
     foreach($db["users"] as $user => $key){
-        if($_POST["username"] === $key["username"] || $_POST["username"] === $key["email"]){
+        if(strtolower($_POST["username"]) === strtolower($key["username"]) || strtolower($_POST["username"]) === strtolower($key["email"])){
             if(password_verify($_POST["password"], $key["password"])){
 
                 //On sucess skickar tillbaka användarens ID
