@@ -96,15 +96,14 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 4px;
-  width: 100px;
+  width: 85px;
   border-radius: 10px;
   padding: 3px;
 }
 
 #profileInfo #usernameDiv #settingOrPlus p {
   font-family: "Mulish", sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 12px;
   padding: 0;
 }
 
@@ -303,7 +302,7 @@
   gap: 10px;
 }
 
-#followContainer #usersWrapper div {
+#followContainer #usersWrapper #userDiv {
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;
@@ -326,19 +325,19 @@
   cursor: pointer;
 }
 
-#followContainer #usersWrapper div img {
+#followContainer #usersWrapper #userDiv img {
   width: 90px;
   height: 90px;
   border-radius: 50%;
 }
 
-#followContainer #usersWrapper div button {
+#followContainer #usersWrapper #userDiv button, #followContainer #usersWrapper #userDiv div {
   width: 70px;
   -webkit-transition: background 0.5s ease-in;
   transition: background 0.5s ease-in;
 }
 
-#followContainer #usersWrapper div button#noGradient {
+#followContainer #usersWrapper #userDiv button#noGradient {
   background: #1c1452;
 }
 
@@ -417,7 +416,7 @@
 
 #settingsWindow #settingsForm div label {
   font-family: "Mulish", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 #settingsWindow #settingsForm div input {
@@ -500,6 +499,8 @@
   z-index: 15;
   padding: 10px 25px;
   padding-bottom: 90px;
+  -webkit-transition: height 1s;
+  transition: height 1s;
 }
 
 #profileWrapper #watchlistContainer {

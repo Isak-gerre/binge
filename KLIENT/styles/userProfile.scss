@@ -43,12 +43,12 @@
       @include flex(row, center, center);
       gap: 4px;
 
-      width: 100px;
+      width: 85px;
       border-radius: $borderRadiusButtons;
       padding: $buttonPadding;
 
       p {
-        @include bodyFont();
+        @include xSmallFont();
         padding: 0;
       }
     }
@@ -134,7 +134,7 @@
     color: $lightFont;
     gap: $betweenPadding;
 
-    div {
+    #userDiv {
       @include bodyFont();
       @include flex(row, space-between, center);
       gap: $betweenPadding;
@@ -148,7 +148,7 @@
         @include profilePicture(90px, 90px);
       }
 
-      button {
+      button, div {
         width: 70px;
         transition: background 0.5s ease-in;
       }
@@ -248,6 +248,8 @@
   z-index: 15;
   padding: $betweenPadding $wrapperPadding;
   padding-bottom: 90px;
+
+  transition: height 1s;
 
   #watchlistContainer {
     display: grid;

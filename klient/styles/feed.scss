@@ -7,16 +7,21 @@
 }
 
 .container {
+    position: relative;
+    left: 0;
+
     display: flex;
     flex-direction: column;
     width: 100%;
     box-sizing: border-box;
     padding-top: $betweenPadding;
 
+    transition: left 1s;
 }
 
 // USERNAME AND DATE
 .userContainer {
+    position: relative;
     display: flex;
     justify-content: space-between;
     flex-grow: 1;
@@ -39,6 +44,23 @@
         color: $lightFont;
         flex-grow: 1;
         @include flex(row, flex-end, center);
+    }
+
+    #dropDown {
+        @include flex(row, center, center);
+        position: absolute;
+        top: 25px;
+
+        height: 30px;
+        width: 150px;
+        padding: $innerPadding;
+        border-radius: $borderRadiusObjects;
+        background-color: white;
+        
+        p {
+            @include postFont();
+            color: $darkFont;
+        }
     }
 }
 

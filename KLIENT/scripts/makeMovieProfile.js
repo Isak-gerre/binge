@@ -216,8 +216,8 @@ async function makeMovieProfile(movieID) {
 
         }
 
-        providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
-        streamingservices.append(providerDiv);
+        // providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
+        // streamingservices.append(providerDiv);
     };
       streamingservices.append(allProvidersGrid);
 

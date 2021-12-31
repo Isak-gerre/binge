@@ -195,7 +195,8 @@
             },
             "followers": [
                 8,
-                10
+                10,
+                12
             ],
             "following": [
                 8
@@ -222,7 +223,8 @@
             },
             "followers": [
                 7,
-                10
+                10,
+                12
             ],
             "following": [
                 7
@@ -266,7 +268,9 @@
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_2.png"
             },
-            "followers": [],
+            "followers": [
+                12
+            ],
             "following": [
                 7,
                 8
@@ -313,7 +317,11 @@
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_1.png"
             },
             "followers": [],
-            "following": [],
+            "following": [
+                10,
+                8,
+                7
+            ],
             "sessionId": "$2y$10$Xsv.MY8iUQJcGBFihH8fJuWr1JTg5NGV1Kogr7Be50fl50XR0y4eq",
             "id": 12
         },
@@ -341,6 +349,25 @@
             "following": [],
             "sessionId": "$2y$10$zgtllx3Iyqa3.SaKTMvcM.XJp.YQ7EqXoTlz7htcI2JrXEisfHKF2",
             "id": 13
+        },
+        "14": {
+            "firstname": "Hakuna",
+            "lastname": "Matata",
+            "username": "hakunamatata",
+            "password": "$2y$10$DiNcvTBGPQoGyDObGM\/sjOlQnK6\/U0VKaC\/58ZCXZq5yqxyOeBhFC",
+            "email": "hakuna@matata.com",
+            "birthday": "2021-12-15",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_1.png"
+            },
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$KVg4NPgbu\/DuZPem1dZJRuADUu5FpPSjzAdYe9DqGwmZmBMUmAYk.",
+            "id": 14
         }
     }
 }
