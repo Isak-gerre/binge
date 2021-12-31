@@ -175,9 +175,9 @@ async function getMoviesByGenre(genre) {
   }
 }
 
-async function getTrending() {
+async function getTrending(page) {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-trending.php`);
+    let response = await fetch(`http://localhost:7001/GET/get-trending.php?page=${page}`);
     let data = await response.json();
     return data;
   } catch (error) {

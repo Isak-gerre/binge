@@ -84,11 +84,13 @@ function makeLowerNav() {
         console.log(document.querySelectorAll(".lowerNav > div"));
       });
       document.querySelector(".navRight").style.borderBottom = "3px solid white";
+      document.querySelector("#overlay").style.display = "none";
       makeSearchOverlay();
       document.querySelector(".back").setAttribute("src", "../icons/exit 2.svg");
       document.querySelector(".back").addEventListener("click", () => {
         document.querySelector(".back").setAttribute("src", "../icons/back.svg");
         document.querySelector(".search-container").style.animation = "removeSearchBar 0.2s ease-out";
+        document.querySelector("#overlay").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".search-container").remove();
         }, 200);
@@ -108,6 +110,7 @@ function makeLowerNav() {
       }
       document.querySelector(".back").setAttribute("src", "../icons/back.svg");
       document.querySelector(".search-container").style.animation = "removeSearchBar 0.2s ease-out";
+      document.querySelector("#overlay").style.display = "flex";
       setTimeout(() => {
         document.querySelector(".search-container").remove();
       }, 200);
