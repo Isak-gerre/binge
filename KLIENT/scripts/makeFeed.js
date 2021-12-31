@@ -17,5 +17,27 @@ makeFeed(userID);
 async function makeFeed(userID) {
     // hämta id från session
     let activities = await getFriendsActivities(userID);
-    createActivities(activities, "feed");
+
+    if(activities.length < 1) {
+        let msgDiv = document.createElement("div");
+        msgDiv.classList.add("msgDiv");
+
+        let msgQuo = document.createElement("div");
+        msgQuo.textContent = "Well, like you said there's no friends on Wall Street. Right? - Wolf of Wallstreet";
+        msgQuo.classList.add("msgQuo");
+
+        let msgBtn = document.createElement("button");
+        msgBtn.textContent = "Find more friends to follow";
+        msgBtn.classList.add("msgBtn");
+        
+        msgDiv.append(msgQuo, msgBtn);
+
+        msgBtn.addEventListener("click", () => {
+            makeSearchOverlay("", "Users");
+        });
+
+        wrapper.append(msgDiv);
+    } else {
+        createActivities(activities, "feed");
+    }
 }

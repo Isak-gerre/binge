@@ -57,6 +57,10 @@
 }
 
 // FRIENDS RECENTLY WATCHED
+.explore-message {
+  @include bodyFont();
+}
+
 #frw {
   @include flex(column, center, flex-start);
   width: 100vw;

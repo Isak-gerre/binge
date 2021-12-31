@@ -13,6 +13,17 @@ async function executeFriendsActivities(userID) {
   title.textContent = "Friends recently watched";
   document.querySelector("#frw").prepend(title);
 
+  if(filteredActArray.length < 1){
+    let message = document.createElement("p");
+    message.className = "explore-message";
+    message.textContent = "Your friends don't like movies? Or do you just not have any friends?";
+    document.querySelector("#frw").append(message);
+
+    // title.style.display = "none";
+    // document.querySelector("#frw").style.display = "none";
+
+  }
+
   // For every Activity that was filtered
   filteredActArray.forEach((activity) => {
     getFriendsRecentlyWatched(activity.movieID, activity.userID);

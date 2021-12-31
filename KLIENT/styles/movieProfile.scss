@@ -351,6 +351,11 @@
     }
   }
 
+  .movie-p-message{
+    @include bodyFont();
+    font-size: 12px;
+  }
+
   // STREAMING SERVICES-wrapper
   .movie-profile-streamingservices {
     padding-bottom: $wrapperPadding;
@@ -365,11 +370,6 @@
       display: grid;
       gap: $betweenPadding;
       grid-template-columns: 1fr 1fr;
-    }
-
-    .pSC{
-      @include bodyFont();
-      font-size: 12px;
     }
 
     .your-streaming-services-grid, .other-streaming-services-grid {

@@ -192,7 +192,7 @@ async function makeMovieProfile(movieID) {
             } else {
               let message = document.createElement("p");
               message.textContent = "Not available on your streaming providers.";
-              message.className = "pSC";
+              message.className = "movie-p-message";
               yourStreamingServices.append(message);
             }
 
@@ -259,9 +259,15 @@ async function makeMovieProfile(movieID) {
   function createCreditDiv(person) {
     let productionPeople = document.createElement("div");
     productionPeople.className = "production-people";
+    // let defaultFace = "../icons/face.png"
 
     let image = document.createElement("div");
-    image.style.backgroundImage = `url(https://image.tmdb.org/t/p/w200/${person.profile_path})`;
+
+    if(person.profile_path == null) {
+      image.style.backgroundImage = `url(../icons/face.svg)`;
+    } else {
+      image.style.backgroundImage = `url(https://image.tmdb.org/t/p/w200/${person.profile_path})`;
+    }
 
     let name = document.createElement("p");
     name.textContent = person.name;
@@ -297,6 +303,13 @@ async function makeMovieProfile(movieID) {
     }
   }
   createActivities(activities, "movie", "movie-profile-reviews");
+
+  if(activities.length == 0) {
+    let message = document.createElement("p");
+    message.className = "movie-p-message";
+    message.textContent = "This movie doesn't have any reviews yet.";
+    reviews.append(message);
+  }
 
   // Similar Movies - Niklas
   let similarMovies = document.createElement("div");
