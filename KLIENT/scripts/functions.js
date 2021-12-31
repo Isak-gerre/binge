@@ -210,9 +210,9 @@ async function getMoviesByGenre(genre) {
   }
 }
 
-async function getTrending() {
+async function getTrending(page) {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-trending.php`);
+    let response = await fetch(`http://localhost:7001/GET/get-trending.php?page=${page}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -238,6 +238,13 @@ async function getUserInfo(userId) {
   const userInfo = await response.json();
 
   return userInfo[0];
+}
+async function getUsers() {
+  const request = new Request(`http://localhost:7001/GET/get-users.php`);
+  const response = await fetch(request);
+  const users = await response.json();
+
+  return users;
 }
 
 async function getFollowing(id) {
@@ -414,7 +421,6 @@ function createActivities(array, page, appendIn = "wrapper") {
 
       //kommentar om det finns
       if (obj.comment !== "") {
-
         let comment = document.createElement("div");
         // comment.style.height = '200px';
         comment.classList.add("comment");
@@ -426,11 +432,10 @@ function createActivities(array, page, appendIn = "wrapper") {
           expandComment.setAttribute("src", "../icons/expand_more.svg");
           expandComment.id = "expandComment";
 
+          expandComment.addEventListener("click", () => {
+            activityContainer.classList.toggle("open");
 
-          expandComment.addEventListener('click', () => {
-            activityContainer.classList.toggle('open');
-
-            if (activityContainer.classList.contains('open')) {
+            if (activityContainer.classList.contains("open")) {
               // console.log(activityContainer.scrollHeight);
               expandComment.setAttribute("src", "../icons/expand_less.svg");
               comment.textContent = `" ${obj.comment} " `;
@@ -477,12 +482,11 @@ async function getSimilar(movieID) {
 
 async function getAdditionalInfo(movieID) {
   try {
-    console.log(movieID)
+    console.log(movieID);
     let response = await fetch(`http://localhost:7001/GET/get-additional-movieInfo.php?movieID=${movieID}`);
-    console.log(response)
+    console.log(response);
     let data = await response.json();
     return data;
-
   } catch (error) {
     console.error(error);
   }
@@ -559,6 +563,3 @@ async function deleteteActivity(activityID) {
     console.log(err);
   }
 }
-
-
-

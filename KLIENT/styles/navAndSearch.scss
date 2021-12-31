@@ -225,12 +225,39 @@ svg:active,
 }
 
 .search-container {
-  position: fixed;
   top: -2px;
+  position: absolute;
   z-index: 100;
   width: 100%;
   min-height: 100vh;
+  padding-bottom: 100px;
   @include flex(column, none, center);
+
+  input[type="text"] {
+    margin-top: 75px;
+    outline: none;
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 80%;
+    background-color: white;
+    background-image: url("../icons/search.svg");
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    padding: 5px;
+    padding-left: 1em;
+    z-index: 1000;
+    font-family: "Mulish";
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    box-sizing: border-box;
+  }
+  input[type="text"]:focus {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid white;
+    border-radius: 0;
+  }
 }
 #search-results {
   width: 100%;
@@ -370,9 +397,50 @@ svg:active,
 }
 .pill-container {
   z-index: 1000;
+  margin-top: 20px;
   @include flex(row, flex-start, center);
   position: absolute;
   top: 120px;
   width: 100%;
   padding: 0px 25px;
+}
+.userDiv {
+  @include flex(column, space-evenly, center);
+  max-width: 140px;
+
+  .followDiv {
+    width: 70%;
+
+    #followInfo {
+      #followersDiv,
+      #followingDiv {
+        p {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
+.userImage {
+  width: 75px;
+  height: 75px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+}
+.showMoreDiv {
+  z-index: 1000;
+  width: 30%;
+
+  button {
+    width: 100%;
+    height: 100%;
+    padding: $betweenPadding;
+    border-radius: 10px;
+    border: 0;
+    color: #eeeeee;
+    background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+    -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+    filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+  }
 }

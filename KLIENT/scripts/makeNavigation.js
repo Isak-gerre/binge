@@ -86,11 +86,18 @@ function makeLowerNav() {
   searchImg.addEventListener("click", () => {
     if (document.querySelector(".search-container") == null) {
       document.body.style.overflow = "hidden";
+      document.querySelectorAll(".lowerNav > div").forEach((element) => {
+        element.style.borderBottom = "0px";
+        console.log(document.querySelectorAll(".lowerNav > div"));
+      });
+      document.querySelector(".navRight").style.borderBottom = "3px solid white";
+      document.querySelector("#overlay").style.display = "none";
       makeSearchOverlay();
       document.querySelector(".back").setAttribute("src", "../icons/exit 2.svg");
       document.querySelector(".back").addEventListener("click", () => {
         document.querySelector(".back").setAttribute("src", "../icons/back.svg");
         document.querySelector(".search-container").style.animation = "removeSearchBar 0.2s ease-out";
+        document.querySelector("#overlay").style.display = "flex";
         setTimeout(() => {
           document.querySelector(".search-container").remove();
         }, 200);
@@ -98,8 +105,20 @@ function makeLowerNav() {
       document.querySelector(".search-container").style.animation = "searchBar 0.2s ease-out";
     } else {
       document.body.style.overflow = "visible";
+      document.querySelector(".navRight").style.borderBottom = "0px";
+      if (window.location.href.indexOf("feed") > -1) {
+        // lowerNavLeft.innerHTML = `<img class="navImg navLinkFeed" src="../icons/feedCOLOR.svg">`;
+        lowerNavLeft.style.borderBottom = "3px solid white";
+      } else if (window.location.href.indexOf("explore") > -1) {
+        // lowerNavMiddle.innerHTML = `<img class="navImg navLinkExplore" src="../icons/exploreCOLOR.svg">`;
+        lowerNavMiddle.style.borderBottom = "3px solid white";
+      } else if (window.location.href.indexOf("profile") > -1) {
+        // lowerNavRight.innerHTML = `<img  class="navImg navLinkProfile" src="../icons/profileCOLOR.svg">`;
+        lowerNavRight.style.borderBottom = "3px solid white";
+      }
       document.querySelector(".back").setAttribute("src", "../icons/back.svg");
       document.querySelector(".search-container").style.animation = "removeSearchBar 0.2s ease-out";
+      document.querySelector("#overlay").style.display = "flex";
       setTimeout(() => {
         document.querySelector(".search-container").remove();
       }, 200);
