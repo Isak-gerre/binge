@@ -1780,6 +1780,12 @@ body {
   padding: 10px 25px;
 }
 
+.explore-message {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
 #frw {
   display: -webkit-box;
   display: -ms-flexbox;
