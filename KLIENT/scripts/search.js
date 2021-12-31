@@ -38,28 +38,37 @@ async function searchFunction(searchBy) {
   }
 
   // ACTORS
+  console.log(searchBy);
   if (input.value !== "" && searchBy == "Actors") {
+    console.log(inputValue);
     searchType = "cast";
+    console.log(searchType);
     let searchResults = await getSearchResults(searchType, inputValue);
+    console.log(searchResults);
     let movieList = document.querySelector("#search-results");
     movieList.innerHTML = "";
-
+    
+    let allMovies = [];
     searchResults.results.forEach(async function (result) {
       console.log(result);
       if (result["known_for"].length != 0 && result["known_for_department"] == "Acting") {
         result["known_for"].forEach((movie) => {
           movie.actor = result.name;
           addToMovies(movie);
+          allMovies.push(movie);
         });
       }
     });
-    let allMovies = getFromSession("movies");
+
     allMovies.forEach((movie) => {
+      console.log(movie);
       let movieElement = makeMovieBannerFromMovie(movie);
+      console.log(movieElement);
       movieElement.setAttribute("name", movie.title);
       movieElement.setAttribute("actor", movie.actor);
       document.querySelector("#search-results").prepend(movieElement);
     });
+
 
     myFunction(inputValue, "actor");
   }
@@ -86,22 +95,23 @@ async function searchFunction(searchBy) {
 }
 
 function myFunction(searchResults, searchAttribute = "name") {
+  console.log(searchResults);
   var movie, text, i, txtValue;
   filter = searchResults.toUpperCase();
   movie = document.querySelectorAll("#search-results .movieBanner");
-  console.log(movie);
+
   for (i = 0; i < movie.length; i++) {
     text = movie[i].getAttribute(searchAttribute);
     // txtValue = text.textContent || text.innerText;
     if (text.toUpperCase().indexOf(filter) > -1) {
       movie[i].style.display = "";
     } else {
-      movie[i].style.display = "none";
+      // movie[i].style.display = "none";
     }
     if (text.toUpperCase().indexOf(filter) > -1) {
       movie[i].style.display = "";
     } else {
-      movie[i].style.display = "none";
+      // movie[i].style.display = "none";
     }
   }
 }
