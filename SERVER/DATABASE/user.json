@@ -221,8 +221,7 @@
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_6.png"
             },
             "followers": [
-                7,
-                10
+                7
             ],
             "following": [
                 7
@@ -268,8 +267,7 @@
             },
             "followers": [],
             "following": [
-                7,
-                8
+                7
             ],
             "sessionId": "$2y$10$ovQLNrITq0LJ0LOau0S5auIgwZ8dAwYk5JXalFW\/MG3hVo0O5Vhti",
             "id": 10

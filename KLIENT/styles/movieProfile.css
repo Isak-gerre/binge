@@ -680,6 +680,16 @@
   padding-bottom: 10px;
 }
 
+.movie-profile-middle #wrapper {
+  width: 100%;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+.movie-profile-middle .empty-msg-div {
+  text-decoration: underline;
+}
+
 .movie-profile-middle .container {
   display: -webkit-box;
   display: -ms-flexbox;

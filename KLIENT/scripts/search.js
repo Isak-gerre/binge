@@ -284,11 +284,12 @@ async function searchFunction(searchBy) {
     let users = await getUsers();
     console.log(users);
     users.forEach((user) => {
+      console.log(user);
       let userDiv = document.createElement("div");
       userDiv.className = "userDiv";
       userDiv.setAttribute("user", user.username);
       userDiv.addEventListener("click", () => {
-        window.location.href = `http://localhost:2000/profile.php?id=${user.id}`;
+        window.location.href = `http://localhost:2000/profile.php?userID=${user.id}`;
       });
 
       let userImage = document.createElement("div");
