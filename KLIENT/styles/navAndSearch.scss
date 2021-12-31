@@ -234,7 +234,6 @@ svg:active,
   @include flex(column, none, center);
 
   input[type="text"] {
-    margin-top: 75px;
     outline: none;
     border: 1px solid white;
     border-radius: 5px;
@@ -267,8 +266,7 @@ svg:active,
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   z-index: 100;
-  overflow: scroll;
-  // height: calc(100vh - 170px); Funkar inte riktigt
+  height: calc(100vh - 170px);
   padding-bottom: 90px;
 }
 .placeholder {
@@ -397,7 +395,6 @@ svg:active,
 }
 .pill-container {
   z-index: 1000;
-  margin-top: 20px;
   @include flex(row, flex-start, center);
   position: absolute;
   top: 120px;

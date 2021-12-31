@@ -279,7 +279,6 @@ svg:active,
 }
 
 .search-container input[type="text"] {
-  margin-top: 75px;
   outline: none;
   border: 1px solid white;
   border-radius: 5px;
@@ -316,7 +315,7 @@ svg:active,
       grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   z-index: 100;
-  overflow: scroll;
+  height: calc(100vh - 170px);
   padding-bottom: 90px;
 }
 
@@ -522,7 +521,6 @@ svg:active,
 
 .pill-container {
   z-index: 1000;
-  margin-top: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -195,7 +195,7 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
   }
   setTimeout(() => {
     displayTrending();
-  }, 200);
+  }, 200);    
   searchField.addEventListener("keyup", (e) => {
     if (e.key == "Enter") {
       searchFunction(searchBy);
