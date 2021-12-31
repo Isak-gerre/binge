@@ -517,8 +517,16 @@
 .movie-profile-middle .movie-profile-streamingservices .allProviders {
   display: -ms-grid;
   display: grid;
+  gap: 10px;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
+}
+
+.movie-profile-middle .movie-profile-streamingservices .pSC {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  font-size: 12px;
 }
 
 .movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid {
@@ -537,22 +545,14 @@
           align-items: center;
   gap: 10px;
   margin-bottom: 10px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid img, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid img {
   border-radius: 50%;
   height: 10vw;
   width: 10vw;
-  margin-right: 10px;
-}
-
-.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid .active-streming-service, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid .active-streming-service {
-  -webkit-box-shadow: 0px 0px 3px rgba(239, 157, 26, 0.58);
-          box-shadow: 0px 0px 3px rgba(239, 157, 26, 0.58);
-}
-
-.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid img:last-child, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid img:last-child {
-  margin-right: 0px;
 }
 
 .movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid p, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid p {
@@ -686,8 +686,56 @@
   padding-left: 25px;
 }
 
-.movie-profile-middle .empty-msg-div {
-  text-decoration: underline;
+.movie-profile-middle .msgDiv {
+  text-align: center;
+  padding: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.movie-profile-middle .msgQuo {
+  font-style: italic;
+  padding: 10px;
+}
+
+.movie-profile-middle .msgBtn {
+  padding: 10px;
+  border-radius: 10px;
+  border: 0;
+  padding: 3px;
+  height: 25px;
+  -webkit-filter: none;
+          filter: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #eeeeee;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+          filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+  -webkit-box-shadow: 3px 3px 3px #0f0b2e;
+          box-shadow: 3px 3px 3px #0f0b2e;
 }
 
 .movie-profile-middle .container {

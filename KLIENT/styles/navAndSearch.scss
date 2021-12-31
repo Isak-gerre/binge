@@ -105,6 +105,9 @@ input:focus {
     border-bottom: 1px solid white;
     border-radius: 0;
   }
+  .movie-profile-background{
+    position: absolute;
+  }
 }
 
 .closeImg {
@@ -266,6 +269,7 @@ svg:active,
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   z-index: 100;
+  overflow: scroll;
   height: calc(100vh - 170px);
   padding-bottom: 90px;
 }

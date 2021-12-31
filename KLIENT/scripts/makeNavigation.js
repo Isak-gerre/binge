@@ -91,7 +91,8 @@ function makeLowerNav() {
         console.log(document.querySelectorAll(".lowerNav > div"));
       });
       document.querySelector(".navRight").style.borderBottom = "3px solid white";
-      document.querySelector("#overlay").style.display = "none";
+      
+      // document.querySelector("#overlay").style.display = "none";
       makeSearchOverlay();
       document.querySelector(".back").setAttribute("src", "../icons/exit 2.svg");
       document.querySelector(".back").addEventListener("click", () => {

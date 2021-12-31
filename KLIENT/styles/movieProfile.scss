@@ -363,37 +363,35 @@
 
     .allProviders{
       display: grid;
+      gap: $betweenPadding;
       grid-template-columns: 1fr 1fr;
+    }
+
+    .pSC{
+      @include bodyFont();
+      font-size: 12px;
     }
 
     .your-streaming-services-grid, .other-streaming-services-grid {
       @include flex(row, flex-start, center);
       gap: $betweenPadding;
       margin-bottom: $betweenPadding;
+      flex-wrap: wrap;
 
       img {
         border-radius: 50%;
         height: 10vw;
         width: 10vw;
-        margin-right: $betweenPadding;
+        // margin-right: $betweenPadding;
         // filter: grayscale(100%) blur(1px);
         // box-shadow: 5px 5px 5px #414141 inset;
 
       }
-
-      .active-streming-service {
-        // filter: grayscale(0%);
-        box-shadow: 0px 0px 3px rgba(239, 157, 26, 0.58);
-        // box-shadow: 0px 0px 5px rgba(0, 128, 0, 0.5);
-      }
-
-      img:last-child {
-        margin-right: 0px;
-      }
-
+      
       p {
         color: $lightFont;
       }
+
     }
   }
 

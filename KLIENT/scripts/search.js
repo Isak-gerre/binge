@@ -178,6 +178,10 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
   searchResults.className = "search-results";
 
   searchContainer.append(overlayBackground, searchField, pillContainer, searchResults);
+
+  let currentTopPosition = window.pageYOffset.toFixed(0);
+  searchContainer.style.top = `${currentTopPosition}px`;
+
   document.body.append(searchContainer);
 
   //OBS!! ELSA LAGT TILL!! om man kommer från genre på explore
