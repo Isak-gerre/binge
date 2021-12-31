@@ -282,31 +282,8 @@ svg:active,
           align-items: center;
 }
 
-.search-container input[type="text"] {
-  outline: none;
-  border: 1px solid white;
-  border-radius: 5px;
-  width: 80%;
-  background-color: white;
-  background-image: url("../icons/search.svg");
-  background-position: 95% 50%;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  padding: 5px;
-  padding-left: 1em;
-  z-index: 1000;
-  font-family: "Mulish";
-  font-size: 1.2rem;
-  letter-spacing: 0.08em;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.search-container input[type="text"]:focus {
-  outline: none;
-  border: none;
-  border-bottom: 1px solid white;
-  border-radius: 0;
+.search-container div {
+  margin: auto;
 }
 
 #search-results {
@@ -541,8 +518,14 @@ svg:active,
           align-items: center;
   position: absolute;
   top: 120px;
-  width: 100%;
-  padding: 0px 25px;
+  width: calc(100vw - 50px);
+  margin: auto;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.pill-container div {
+  margin-right: 10px;
 }
 
 .userDiv {
@@ -581,7 +564,10 @@ svg:active,
 
 .showMoreDiv {
   z-index: 1000;
-  width: 30%;
+  width: 40%;
+  -ms-grid-column-span: 3;
+      grid-column-end: span 3;
+  padding-top: 10px;
 }
 
 .showMoreDiv button {
@@ -594,5 +580,112 @@ svg:active,
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
   filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+}
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 73px;
+  height: 9px;
+}
+
+.lds-ellipsis div {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  -webkit-animation-timing-function: cubic-bezier(0, 1, 1, 0);
+          animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  -webkit-animation: lds-ellipsis1 0.6s infinite;
+          animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  -webkit-animation: lds-ellipsis2 0.6s infinite;
+          animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  -webkit-animation: lds-ellipsis2 0.6s infinite;
+          animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  -webkit-animation: lds-ellipsis3 0.6s infinite;
+          animation: lds-ellipsis3 0.6s infinite;
+}
+
+@-webkit-keyframes lds-ellipsis1 {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes lds-ellipsis1 {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@-webkit-keyframes lds-ellipsis3 {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+}
+
+@keyframes lds-ellipsis3 {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+}
+
+@-webkit-keyframes lds-ellipsis2 {
+  0% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  100% {
+    -webkit-transform: translate(24px, 0);
+            transform: translate(24px, 0);
+  }
+}
+
+@keyframes lds-ellipsis2 {
+  0% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  100% {
+    -webkit-transform: translate(24px, 0);
+            transform: translate(24px, 0);
+  }
 }
 /*# sourceMappingURL=navAndSearch.css.map */

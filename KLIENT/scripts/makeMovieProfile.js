@@ -21,9 +21,10 @@
 
 // Variabler för den inloggade?
 let loggedInUser = getLoggedInUserID();
-
+console.log(loggedInUser);
 async function makeMovieProfile(movieID) {
   let user = await getUserInfo(loggedInUser);
+  console.log(user);
 
   let overlay = document.getElementById("overlay");
   let data = await getMovieInfo(movieID);
@@ -135,6 +136,7 @@ async function makeMovieProfile(movieID) {
     `;
 
     let additionalInfo = await getAdditionalInfo(movieID);
+    console.log(user);
     let userRegion = user.region;
 
     let streamingservices = document.createElement("div");

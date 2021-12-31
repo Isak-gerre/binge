@@ -360,6 +360,11 @@ function myFunction(searchWord, searchAttribute = "name", selector = "#search-re
 async function displayTrending(page = 1) {
   let searchResults = await getTrending(page);
   console.log(searchResults);
+
+  if(document.getElementById("show-more-btn")){
+    document.querySelector(".showMoreDiv").remove();
+  }
+
   searchResults.forEach(async function (result) {
     addToMovies(result);
     let movieElement = makeMovieBannerFromMovie(result);
@@ -367,17 +372,19 @@ async function displayTrending(page = 1) {
     movieElement.setAttribute("actor", result.actor);
     document.querySelector("#search-results").append(movieElement);
   });
+
   if (!document.getElementById("show-more-btn")) {
     let showMoreDiv = document.createElement("div");
     showMoreDiv.className = "showMoreDiv";
     showMoreDiv.innerHTML = `
     <button id="show-more-btn">Show 20 more</button>
     `;
-    document.querySelector(".search-container").append(showMoreDiv);
+    document.querySelector(".search-results").append(showMoreDiv);
     document.getElementById("show-more-btn").addEventListener("click", () => {
-      console.log(page);
+      document.getElementById("show-more-btn").innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
       page++;
       displayTrending(page);
+      
     });
   }
 }

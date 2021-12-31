@@ -2,9 +2,9 @@
 
 // Ta bort API-nyckel, lägg den i APIn
 
-const region = new Request("https://api.themoviedb.org/3/watch/providers/regions?api_key=f5c0e0db147d0e6434391f3ff153b6a8");
+let regionRQ = new Request("https://api.themoviedb.org/3/watch/providers/regions?api_key=f5c0e0db147d0e6434391f3ff153b6a8");
 //Hämtar hem alla regions
-fetch(region)
+fetch(regionRQ)
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -66,6 +66,7 @@ fetch(region)
             }
             
         });
+
         document.getElementById("skip2").addEventListener("click", () => {
             console.log("Event Click 2");
             document.getElementById("createUserP2").style.display = "none";

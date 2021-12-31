@@ -236,9 +236,9 @@ async function getUserInfo(userId) {
   const request = new Request(`http://localhost:7001/GET/get-users.php?ids=${userId}`);
   const response = await fetch(request);
   const userInfo = await response.json();
-
   return userInfo[0];
 }
+
 async function getUsers() {
   const request = new Request(`http://localhost:7001/GET/get-users.php`);
   const response = await fetch(request);
