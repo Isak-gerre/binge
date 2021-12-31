@@ -274,7 +274,7 @@
             "sessionId": "$2y$10$ovQLNrITq0LJ0LOau0S5auIgwZ8dAwYk5JXalFW\/MG3hVo0O5Vhti",
             "id": 10
         },
-        "11":{
+        "11": {
             "firstname": "Lina",
             "lastname": "Andersson",
             "username": "linkan",
@@ -292,7 +292,30 @@
             "followers": [],
             "following": [],
             "sessionId": "$2y$10$gE2kkh4JIdnsWA7Iq8DOH.YpHPQ2VLX60XjxBguoYLY4tDiW5DPne",
-            "id": 8
+            "id": 11
+        },
+        "12": {
+            "firstname": "Matilda",
+            "lastname": "Einarsson",
+            "username": "matildaein",
+            "password": "$2y$10$r9zPsh5MJWSaa4LmyfIt0Oafcvct9uh3d4VZvRKjyW\/R6OUm1yUfO",
+            "email": "matildaeinar@gmail.com",
+            "birthday": "1997-05-20",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "Disney Plus",
+                "HBO Max",
+                "SVT",
+                "Viaplay"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_1.png"
+            },
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$Xsv.MY8iUQJcGBFihH8fJuWr1JTg5NGV1Kogr7Be50fl50XR0y4eq",
+            "id": 12
         }
     }
 }
