@@ -249,7 +249,7 @@ svg:active,
   gap: 10px;
   z-index: 100;
   overflow: scroll;
-  height: calc(100vh - 170px);
+  max-height: calc(100vh - 170px);
   padding-bottom: 90px;
 }
 .placeholder {

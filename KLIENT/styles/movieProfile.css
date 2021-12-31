@@ -561,6 +561,13 @@
       grid-template-columns: 1fr 1fr;
 }
 
+.movie-profile-middle .movie-profile-streamingservices p {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  font-size: 12px;
+}
+
 .movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -589,6 +596,10 @@
 
 .movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid p, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid p {
   color: #eeeeee;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  font-size: 12px;
 }
 
 .movie-profile-middle .movie-profile-credits {

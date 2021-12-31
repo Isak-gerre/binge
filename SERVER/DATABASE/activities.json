@@ -409,6 +409,26 @@
             "comment": "Vilken film! F\u00f6rst\u00e5r varf\u00f6r den \u00e4r s\u00e5 hypade",
             "rate": "5",
             "updated": false
+        },
+        "47": {
+            "id": 47,
+            "userID": 10,
+            "movieID": "370172",
+            "type": "watched",
+            "date": "20211231",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "48": {
+            "id": 48,
+            "userID": 10,
+            "movieID": "370172",
+            "type": "review",
+            "date": "20211231",
+            "comment": "en utav de b\u00e4ttre bond-filmerna!!!",
+            "rate": "5",
+            "updated": false
         }
     }
 }

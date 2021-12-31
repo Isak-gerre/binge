@@ -386,6 +386,11 @@
       grid-template-columns: 1fr 1fr;
     }
 
+    p {
+      @include bodyFont();
+        font-size: 12px;
+    }
+
     .your-streaming-services-grid, .other-streaming-services-grid {
       @include flex(row, flex-start, center);
       gap: $betweenPadding;
@@ -404,6 +409,8 @@
       
       p {
         color: $lightFont;
+        @include bodyFont();
+        font-size: 12px;
       }
 
     }
