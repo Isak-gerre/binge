@@ -190,7 +190,7 @@ async function makeMovieProfile(movieID) {
             } else {
               let message = document.createElement("p");
               message.textContent = "Not available on your streaming providers.";
-              message.className = "pSC";
+              message.className = "movie-p-message";
               yourStreamingServices.append(message);
             }
 
@@ -301,6 +301,13 @@ async function makeMovieProfile(movieID) {
     }
   }
   createActivities(activities, "movie", "movie-profile-reviews");
+
+  if(activities.length == 0) {
+    let message = document.createElement("p");
+    message.className = "movie-p-message";
+    message.textContent = "This movie doesn't have any reviews yet.";
+    reviews.append(message);
+  }
 
   // Similar Movies - Niklas
   let similarMovies = document.createElement("div");
