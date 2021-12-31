@@ -257,9 +257,15 @@ async function makeMovieProfile(movieID) {
   function createCreditDiv(person) {
     let productionPeople = document.createElement("div");
     productionPeople.className = "production-people";
+    // let defaultFace = "../icons/face.png"
 
     let image = document.createElement("div");
-    image.style.backgroundImage = `url(https://image.tmdb.org/t/p/w200/${person.profile_path})`;
+
+    if(person.profile_path == null) {
+      image.style.backgroundImage = `url(../icons/face.svg)`;
+    } else {
+      image.style.backgroundImage = `url(https://image.tmdb.org/t/p/w200/${person.profile_path})`;
+    }
 
     let name = document.createElement("p");
     name.textContent = person.name;
