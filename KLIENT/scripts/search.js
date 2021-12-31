@@ -47,7 +47,7 @@ async function searchFunction(searchBy) {
     console.log(searchResults);
     let movieList = document.querySelector("#search-results");
     movieList.innerHTML = "";
-    
+
     let allMovies = [];
     searchResults.results.forEach(async function (result) {
       console.log(result);
@@ -68,7 +68,6 @@ async function searchFunction(searchBy) {
       movieElement.setAttribute("actor", movie.actor);
       document.querySelector("#search-results").prepend(movieElement);
     });
-
 
     myFunction(inputValue, "actor");
   }
@@ -115,10 +114,8 @@ function myFunction(searchResults, searchAttribute = "name") {
     }
   }
 }
-  
 
 function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
-  
   document.body.style.overflow = "hidden";
   let searchContainer = document.createElement("div");
   searchContainer.className = "search-container";
@@ -137,7 +134,7 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
   // PILLS
   let pillContainer = document.createElement("div");
   pillContainer.className = "pill-container";
-  let pills = ["Movies", "Actors", "Users", "Directors"];
+  let pills = ["Movies", "Genres", "Actors", "Users", "Directors"];
   pills.forEach((pill, index) => {
     let pillDiv = document.createElement("div");
     pillDiv.className = `pill ${pill == searchBy ? "active" : ""}`;
@@ -186,16 +183,17 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
   //OBS!! ELSA LAGT TILL!! om man kommer från genre på explore
   // scroll till top och displaya det vi får från keywords istället
   if (searchField.value == "") {
-    searchField.value = `${searchWord}`;
-    setTimeout(()=>{
+    searchField.value = searchWord;
+    setTimeout(() => {
       searchResults.innerHTML = "";
       searchFunction(searchBy);
-    }, 1000);
-    
+    }, 200);
+  } else {
   }
-  setTimeout(() => {
-    displayTrending();
-  }, 200);    
+  // setTimeout(() => {
+  //   displayTrending();
+  // }, 200);
+
   searchField.addEventListener("keyup", (e) => {
     if (e.key == "Enter") {
       searchFunction(searchBy);
@@ -231,6 +229,21 @@ async function searchFunction(searchBy) {
     }
 
     myFunction(inputValue);
+  }
+  // GENRES
+  if (searchBy == "Genres") {
+    let movieList = document.querySelector("#search-results");
+    movieList.innerHTML = "";
+    let searchResults = await getMoviesByGenre(inputValue);
+    searchResults[1].results.forEach(async function (result) {
+      addToMovies(result);
+    });
+    searchResults[1].results.forEach((movie) => {
+      let movieElement = makeMovieBannerFromMovie(movie);
+      movieElement.setAttribute("genre", inputValue);
+      document.querySelector("#search-results").prepend(movieElement);
+    });
+    myFunction(inputValue, "genre");
   }
 
   // ACTORS
