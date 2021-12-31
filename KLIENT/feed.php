@@ -15,6 +15,7 @@ require_once "head.php";
 <div class="movie-profile-background"></div>
 
 <div id="wrapper"></div>
+<script src="index.umd.min.js"></script>
 <script src="scripts/functions.js"></script>
 <script src="scripts/makeMovieBanners.js"></script>
 <script src="scripts/search.js"></script>

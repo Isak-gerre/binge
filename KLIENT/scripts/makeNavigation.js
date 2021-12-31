@@ -44,6 +44,7 @@ function makeUpperNav() {
     }
   });
 }
+
 window.addEventListener("scroll", () => {
   let winheight = window.scrollY;
   if (winheight > 10) {
@@ -252,7 +253,15 @@ function createGenreLinks(genre) {
 
   genreLink.addEventListener("click", () => {
     document.body.style.overflow = "visible";
-    makeSearchOverlay(genre);
+
+    console.log(document.querySelector(".search-container"));
+    if(document.querySelector(".search-container")){
+      
+      document.querySelector(".search-container").remove();
+      makeSearchOverlay(genre);
+    } else {
+      makeSearchOverlay(genre);
+    }
 
     // Här vill man även dölja själva menyn
     document.querySelector(".hamburger-background").style.animation = "removeHamburgerBackground 0.4s ease-out";

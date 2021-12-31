@@ -106,12 +106,12 @@ function myFunction(searchResults, searchAttribute = "name") {
     if (text.toUpperCase().indexOf(filter) > -1) {
       movie[i].style.display = "";
     } else {
-      // movie[i].style.display = "none";
+      movie[i].style.display = "none";
     }
     if (text.toUpperCase().indexOf(filter) > -1) {
       movie[i].style.display = "";
     } else {
-      // movie[i].style.display = "none";
+      movie[i].style.displlay = "none";
     }
   }
 }
@@ -191,6 +191,7 @@ function makeSearchOverlay(searchWord = "") {
   if (searchField.value == "") {
     searchField.value = `${searchWord}`;
     setTimeout(()=>{
+      searchResults.innerHTML = "";
       searchFunction(searchBy);
     }, 1000);
     

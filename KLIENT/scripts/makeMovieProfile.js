@@ -117,6 +117,7 @@ async function makeMovieProfile(movieID) {
     review.classList.add("marked");
   }
 
+  buttons.append(watchLater, watched, review);
   infoText.append(movieRs, title, buttons);
 
   // Appends INFO part

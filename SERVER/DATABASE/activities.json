@@ -389,6 +389,26 @@
             "comment": "",
             "rate": "5",
             "updated": false
+        },
+        "45": {
+            "id": 45,
+            "userID": 10,
+            "movieID": "634649",
+            "type": "watched",
+            "date": "20211231",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "46": {
+            "id": 46,
+            "userID": 10,
+            "movieID": "634649",
+            "type": "review",
+            "date": "20211231",
+            "comment": "Vilken film! F\u00f6rst\u00e5r varf\u00f6r den \u00e4r s\u00e5 hypade",
+            "rate": "5",
+            "updated": false
         }
     }
 }
