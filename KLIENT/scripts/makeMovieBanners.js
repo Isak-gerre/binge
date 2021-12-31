@@ -15,7 +15,6 @@ async function makeMovieBanner(movieID) {
 
   let movieImgPath = ``;
 
-  console.log(movieInfo.message["poster_path"])
   if(movieInfo.message["poster_path"] == null){
     movieImgPath = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["backdrop_path"]}')`;
   } else {

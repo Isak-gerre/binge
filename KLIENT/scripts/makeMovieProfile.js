@@ -167,8 +167,9 @@ async function makeMovieProfile(movieID) {
             let movieProviders = additionalInfo.message.providers.results[userRegion].flatrate;
 
             let activeUserSC = user.active_streaming_services;
-            let yourProviders= movieProviders.filter(prov => activeUserSC.includes(prov.provider_name.toLowerCase()));
-            let otherProviders= movieProviders.filter(prov => !activeUserSC.includes(prov.provider_name.toLowerCase()));
+            
+            let yourProviders= movieProviders.filter(prov => activeUserSC.includes(prov["provider_name"]));
+            let otherProviders= movieProviders.filter(prov => !activeUserSC.includes(prov["provider_name"]));
 
             // console.log(yourProviders.length);
             // console.log(otherProviders.length);
@@ -179,11 +180,11 @@ async function makeMovieProfile(movieID) {
 
                 let yourStreamingServices = document.createElement("div");
                 yourStreamingServices.className = "movie-profile-your-streaming-services"
-                yourStreamingServices.innerHTML = "<p>Your streaming services</p>"
+                yourStreamingServices.innerHTML = "<p>Yours</p>"
                 
                 yourProviders.forEach((provider) => {
                      let providerName = provider.provider_name;
-                     if (activeUserSC.includes(providerName.toLowerCase())) {
+                     if (activeUserSC.includes(providerName)) {
                          let yourProvidersDiv = document.createElement("img");
      
                          yourStreamingservicesGrid.append(yourProvidersDiv);
@@ -201,7 +202,7 @@ async function makeMovieProfile(movieID) {
 
                 let otherStreamingServices = document.createElement("div");
                 otherStreamingServices.className = "movie-profile-other-streaming-services"
-                otherStreamingServices.innerHTML = "<p>Other streaming services</p>"
+                otherStreamingServices.innerHTML = "<p>Other</p>"
                 
                 otherProviders.forEach((provider) => {
                     let otherProvidersDiv = document.createElement("img");
@@ -216,10 +217,10 @@ async function makeMovieProfile(movieID) {
 
         }
 
-        providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
-        streamingservices.append(providerDiv);
+        // providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
+        // streamingservices.append(providerDiv);
     };
-      streamingservices.append(allProvidersGrid);
+      // streamingservices.append(allProvidersGrid);
 
 
   // Credits - Niklas

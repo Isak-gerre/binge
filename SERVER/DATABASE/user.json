@@ -316,6 +316,28 @@
             "following": [],
             "sessionId": "$2y$10$Xsv.MY8iUQJcGBFihH8fJuWr1JTg5NGV1Kogr7Be50fl50XR0y4eq",
             "id": 12
+        },
+        "13": {
+            "firstname": "Elsa",
+            "lastname": "Lindh",
+            "username": "elsipelsi",
+            "password": "$2y$10$UyA6SNYZB7rB3hu2oeaoVuVZx8fnIZ90hT.5dj7taVOf4hpwUwe2y",
+            "email": "elsalindh",
+            "birthday": "",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "Amazon Prime Video",
+                "Disney Plus",
+                "Google Play Movies"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_7.png"
+            },
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$XVN9n2BKQFXmm3UmthNNfeT6fo5a7jUZlYmnYq2Ge1z6l.d6uxq9O",
+            "id": 13
         }
     }
 }
