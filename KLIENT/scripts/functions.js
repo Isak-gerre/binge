@@ -282,6 +282,7 @@ function howManyDaysAgo(recievedDate) {
   const firstDate = new Date(
     `${recievedDate[0]}${recievedDate[1]}${recievedDate[2]}${recievedDate[3]}, ${recievedDate[4]}${recievedDate[5]}, ${recievedDate[6]}${recievedDate[7]}`
   );
+
   const firstDateMS = firstDate.getTime();
 
   let today = new Date();
@@ -291,7 +292,7 @@ function howManyDaysAgo(recievedDate) {
   let todayMS = today.getTime();
 
   let currentDate = `${year}${month}${day}`;
-  let daysAgo = currentDate - recievedDate;
+  let daysAgo = recievedDate - currentDate;
 
   if (daysAgo === 0) {
     return "today";
