@@ -318,7 +318,7 @@ async function searchFunction(searchBy) {
         let showMoreDiv = document.createElement("div");
         showMoreDiv.className = "showMoreDiv";
         showMoreDiv.innerHTML = `
-    <button id="show-more-btn">Show 20 more</button>
+    <button id="show-more-btn">Show more</button>
     `;
         document.querySelector(".search-container").append(showMoreDiv);
         document.getElementById("show-more-btn").addEventListener("click", () => {
@@ -417,6 +417,7 @@ async function displayTrending(page = 1) {
   }
 }
 async function getAndShowMoviesByActors(inputValue = "", page = 1) {
+  inputValue = document.getElementById("searchField").value;
   searchType = "cast";
   document.querySelector("#search-results-text").textContent = "Showing Movies by Actors";
   if (page == 1) {
@@ -425,22 +426,29 @@ async function getAndShowMoviesByActors(inputValue = "", page = 1) {
   }
 
   if (inputValue != "") {
+    console.log(page);
     let searchResults = await getSearchResults(searchType, inputValue, page);
-    console.log(searchResults);
-    searchResults.results.forEach(async function (result) {
-      if (result["known_for"].length != 0 && result["known_for_department"] == "Acting") {
+    searchResults.results.forEach(function (result) {
+      if (
+        result["known_for"].length != 0 &&
+        result["known_for_department"] == "Acting" &&
+        Array.isArray(result["known_for"])
+      ) {
+        console.log(result);
         result["known_for"].forEach((movie) => {
           movie.actor = result.name;
-          addToMovies(movie);
+          addToMovies(movie, true);
         });
       }
     });
     let allMovies = getFromSession("movies");
+    console.log(allMovies);
+    document.getElementById("search-results").innerHTML = "";
     allMovies.forEach((movie) => {
       let movieElement = makeMovieBannerFromMovie(movie);
       movieElement.setAttribute("name", movie.title);
       movieElement.setAttribute("actor", movie.actor);
-      document.querySelector("#search-results").append(movieElement);
+      document.querySelector("#search-results").prepend(movieElement);
     });
     if (document.querySelector("#show-more-btn")) {
       console.log(true);
@@ -448,13 +456,12 @@ async function getAndShowMoviesByActors(inputValue = "", page = 1) {
       let showMoreDiv = document.createElement("div");
       showMoreDiv.className = "showMoreDiv";
       showMoreDiv.innerHTML = `
-        <button id="show-more-btn-actors">Show 20 more</button>
+        <button id="show-more-btn-actors">Show more</button>
         `;
       document.querySelector(".search-container").append(showMoreDiv);
       document.getElementById("show-more-btn-actors").addEventListener("click", () => {
-        if (document.querySelectorAll(".movieBanner").length > 20) {
+        if (document.querySelectorAll(".movieBanner").length >= 20) {
           page += 1;
-          console.log(page);
           getAndShowMoviesByActors(inputValue, page);
           myFunction(inputValue, "actor");
         }
