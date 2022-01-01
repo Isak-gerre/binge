@@ -19,9 +19,15 @@ async function executeFriendsActivities(userID) {
     message.textContent = "Your friends don't like movies? Or do you just not have any friends?";
     document.querySelector("#frw").append(message);
 
-    // title.style.display = "none";
-    // document.querySelector("#frw").style.display = "none";
+    let msgBtn = document.createElement("button");
+    msgBtn.textContent = "Find some friends!";
+    msgBtn.classList.add("msgBtn");
+        
+    msgBtn.addEventListener("click", () => {
+      makeSearchOverlay("", "Users");
+    });
 
+    document.querySelector("#frw").append(msgBtn);
   }
 
   // For every Activity that was filtered
