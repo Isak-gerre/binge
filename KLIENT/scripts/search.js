@@ -416,9 +416,15 @@ async function displayTrending(page = 1) {
     });
   }
 }
+
 async function getAndShowMoviesByActors(inputValue = "", page = 1) {
   inputValue = document.getElementById("searchField").value;
   searchType = "cast";
+
+  if(document.getElementById("show-more-btn-actors")){
+    document.querySelector(".showMoreDiv").remove();
+  }
+
   document.querySelector("#search-results-text").textContent = "Showing Movies by Actors";
   if (page == 1) {
     let movieList = document.querySelector("#search-results");
@@ -441,6 +447,7 @@ async function getAndShowMoviesByActors(inputValue = "", page = 1) {
         });
       }
     });
+
     let allMovies = getFromSession("movies");
     console.log(allMovies);
     document.getElementById("search-results").innerHTML = "";
@@ -450,16 +457,19 @@ async function getAndShowMoviesByActors(inputValue = "", page = 1) {
       movieElement.setAttribute("actor", movie.actor);
       document.querySelector("#search-results").prepend(movieElement);
     });
-    if (document.querySelector("#show-more-btn")) {
+
+    if (!document.querySelector("#show-more-btn-actors")) {
       console.log(true);
-      document.querySelector("#show-more-btn").remove();
       let showMoreDiv = document.createElement("div");
       showMoreDiv.className = "showMoreDiv";
       showMoreDiv.innerHTML = `
         <button id="show-more-btn-actors">Show more</button>
         `;
-      document.querySelector(".search-container").append(showMoreDiv);
+
+      document.querySelector(".search-results").append(showMoreDiv);
+
       document.getElementById("show-more-btn-actors").addEventListener("click", () => {
+        document.getElementById("show-more-btn-actors").innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
         if (document.querySelectorAll(".movieBanner").length >= 20) {
           page += 1;
           getAndShowMoviesByActors(inputValue, page);
