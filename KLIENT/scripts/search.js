@@ -146,9 +146,15 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
 
     pillDiv.addEventListener("click", ({ target }) => {
       searchBy = pill;
-      console.log(searchBy);
+      searchFunction(pill);
+      // Ändrar grid layout från två kolumner till tre
+      document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(3, 1fr);");
+      if (pill == "Users") {
+        // Om User => 2 kolumner
+        // Ändrar grid layout från två kolumner till tre
+        document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");
+      }
       let active = document.querySelectorAll(".active");
-      console.log(active);
       if (active.length != 0) {
         active[0].classList.remove("active");
       }
@@ -173,11 +179,15 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
   });
 
   // SEARCH RESULTS
+  let resultText = document.createElement("h4");
+  resultText.setAttribute("id", "search-results-text");
+  resultText.className = "search-results-text";
+  // SEARCH RESULTS
   let searchResults = document.createElement("div");
   searchResults.setAttribute("id", "search-results");
   searchResults.className = "search-results";
 
-  searchContainer.append(overlayBackground, searchField, pillContainer, searchResults);
+  searchContainer.append(overlayBackground, searchField, pillContainer, resultText, searchResults);
 
   let currentTopPosition = window.pageYOffset.toFixed(0);
   searchContainer.style.top = `${currentTopPosition}px`;
@@ -200,6 +210,10 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
 
   searchField.addEventListener("keyup", (e) => {
     if (e.key == "Enter") {
+      // Ändrar grid layout från två kolumner till tre
+      document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(3, 1fr);");
+      document.querySelector("#search-results-text").textContent =
+        "Showing " + document.querySelector(".active").textContent;
       searchFunction(searchBy);
     }
   });
@@ -215,6 +229,7 @@ async function searchFunction(searchBy) {
 
   // MOVIES
   if (searchBy == "Movies") {
+    document.querySelector("#search-results-text").textContent = "Showing Movies";
     let movieList = document.querySelector("#search-results");
     movieList.innerHTML = "";
     if (inputValue != "") {
@@ -252,38 +267,14 @@ async function searchFunction(searchBy) {
 
   // ACTORS
   if (searchBy == "Actors") {
-    searchType = "cast";
-    let movieList = document.querySelector("#search-results");
-    movieList.innerHTML = "";
-
-    if (inputValue != "") {
-      let searchResults = await getSearchResults(searchType, inputValue);
-      searchResults.results.forEach(async function (result) {
-        console.log(result);
-        if (result["known_for"].length != 0 && result["known_for_department"] == "Acting") {
-          result["known_for"].forEach((movie) => {
-            movie.actor = result.name;
-            addToMovies(movie);
-          });
-        }
-      });
-      let allMovies = getFromSession("movies");
-      allMovies.forEach((movie) => {
-        let movieElement = makeMovieBannerFromMovie(movie);
-        movieElement.setAttribute("name", movie.title);
-        movieElement.setAttribute("actor", movie.actor);
-        document.querySelector("#search-results").prepend(movieElement);
-      });
-    } else {
-      displayTrending();
-    }
-
-    myFunction(inputValue, "actor");
+    let page = 1;
+    await getAndShowMoviesByActors(inputValue, page);
   }
 
   // USERS
   if (searchBy == "Users") {
     document.querySelector("#search-results").innerHTML = "";
+    document.querySelector("#search-results-text").textContent = "Showing Users";
     document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");
     let users = await getUsers();
     console.log(users);
@@ -323,15 +314,28 @@ async function searchFunction(searchBy) {
             </div>
         </div>`;
 
+      if (!document.getElementById("show-more-btn")) {
+        let showMoreDiv = document.createElement("div");
+        showMoreDiv.className = "showMoreDiv";
+        showMoreDiv.innerHTML = `
+    <button id="show-more-btn">Show 20 more</button>
+    `;
+        document.querySelector(".search-container").append(showMoreDiv);
+        document.getElementById("show-more-btn").addEventListener("click", () => {
+          // if (document.querySelectorAll(".trending").length == 20) {
+          // }
+        });
+      }
+
       userDiv.append(userImage, userInfoDiv, followDiv);
       document.querySelector("#search-results").append(userDiv);
     });
     myFunction(inputValue, "user");
   }
 }
-
 function myFunction(searchWord, searchAttribute = "name", selector = "#search-results > div") {
   var movie, text, i, txtValue;
+  console.log("searching");
   filter = searchWord.toUpperCase();
   movie = document.querySelectorAll(selector);
   if (searchWord == "") {
@@ -356,9 +360,24 @@ function myFunction(searchWord, searchAttribute = "name", selector = "#search-re
       }
     }
   }
+  // Check if nothing is showing
+  let noResults = true;
+  document.querySelectorAll(selector).forEach((element) => {
+    if (!element.style.display.includes("none")) {
+      noResults = false;
+    }
+  });
+  searchWord = document.getElementById("searchField").value;
+  if (!searchWord == "") {
+    if (noResults) {
+      document.querySelector("#search-results-text").textContent = "No results for: " + searchWord;
+    } else {
+      document.querySelector("#search-results-text").textContent = "Showing results for: " + searchWord;
+    }
+  }
 }
-
 async function displayTrending(page = 1) {
+  document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
   let searchResults = await getTrending(page);
   console.log(searchResults);
 
@@ -371,6 +390,7 @@ async function displayTrending(page = 1) {
     let movieElement = makeMovieBannerFromMovie(result);
     movieElement.setAttribute("name", result.title);
     movieElement.setAttribute("actor", result.actor);
+    movieElement.classList.add("trending");
     document.querySelector("#search-results").append(movieElement);
   });
 
@@ -378,14 +398,71 @@ async function displayTrending(page = 1) {
     let showMoreDiv = document.createElement("div");
     showMoreDiv.className = "showMoreDiv";
     showMoreDiv.innerHTML = `
-    <button id="show-more-btn">Show 20 more</button>
+    <button id="show-more-btn">Show more</button>
     `;
+
     document.querySelector(".search-results").append(showMoreDiv);
+    document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
     document.getElementById("show-more-btn").addEventListener("click", () => {
       document.getElementById("show-more-btn").innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
+      if (document.querySelectorAll(".trending").length == 20) {
+        console.log(true);
+        page = 2;
+      }
+      console.log(page);
       page++;
       displayTrending(page);
       
     });
   }
+}
+async function getAndShowMoviesByActors(inputValue = "", page = 1) {
+  searchType = "cast";
+  document.querySelector("#search-results-text").textContent = "Showing Movies by Actors";
+  if (page == 1) {
+    let movieList = document.querySelector("#search-results");
+    movieList.innerHTML = "";
+  }
+
+  if (inputValue != "") {
+    let searchResults = await getSearchResults(searchType, inputValue, page);
+    console.log(searchResults);
+    searchResults.results.forEach(async function (result) {
+      if (result["known_for"].length != 0 && result["known_for_department"] == "Acting") {
+        result["known_for"].forEach((movie) => {
+          movie.actor = result.name;
+          addToMovies(movie);
+        });
+      }
+    });
+    let allMovies = getFromSession("movies");
+    allMovies.forEach((movie) => {
+      let movieElement = makeMovieBannerFromMovie(movie);
+      movieElement.setAttribute("name", movie.title);
+      movieElement.setAttribute("actor", movie.actor);
+      document.querySelector("#search-results").append(movieElement);
+    });
+    if (document.querySelector("#show-more-btn")) {
+      console.log(true);
+      document.querySelector("#show-more-btn").remove();
+      let showMoreDiv = document.createElement("div");
+      showMoreDiv.className = "showMoreDiv";
+      showMoreDiv.innerHTML = `
+        <button id="show-more-btn-actors">Show 20 more</button>
+        `;
+      document.querySelector(".search-container").append(showMoreDiv);
+      document.getElementById("show-more-btn-actors").addEventListener("click", () => {
+        if (document.querySelectorAll(".movieBanner").length > 20) {
+          page += 1;
+          console.log(page);
+          getAndShowMoviesByActors(inputValue, page);
+          myFunction(inputValue, "actor");
+        }
+      });
+    }
+  } else {
+    document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
+    displayTrending();
+  }
+  myFunction(inputValue, "actor");
 }

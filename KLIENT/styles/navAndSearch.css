@@ -688,4 +688,9 @@ svg:active,
             transform: translate(24px, 0);
   }
 }
+
+#search-results-text {
+  margin-top: 20px;
+  z-index: 1000;
+}
 /*# sourceMappingURL=navAndSearch.css.map */

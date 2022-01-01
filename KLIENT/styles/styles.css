@@ -2787,6 +2787,11 @@ svg:active,
   }
 }
 
+#search-results-text {
+  margin-top: 20px;
+  z-index: 1000;
+}
+
 .signInWrap {
   display: -webkit-box;
   display: -ms-flexbox;
