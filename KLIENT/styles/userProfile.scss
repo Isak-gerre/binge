@@ -89,18 +89,17 @@
 
 #profileNav {
   z-index: 15;
-  padding: 0 $wrapperPadding;
   color: $lightFont;
-  width: 100%;
+  width: calc(100% - 50px);
   height: 50px;
   @include bodyFont();
   @include flex(row, center, center);
   border-radius: $borderRadiusButtons;
   overflow: hidden;
+  background-color: #1c1452;
 
   div {
     @include flex(row, center, center);
-    background-color: #1c1452;
     width: 33%;
     flex-grow: 1;
     height: 100%;
@@ -255,5 +254,28 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: $wrapperPadding;
+  }
+}
+
+#messageWhenEmpty {
+  @include flex(column, center, center);
+  gap: $wrapperPadding;
+
+  height: 15vh;
+  width: 100%;
+
+  p {
+    text-align: center;
+  }
+
+  button {
+    border: none;
+    @include bodyFont();
+    
+    border-radius: $borderRadiusButtons;
+    padding: $innerPadding $wrapperPadding;
+
+    background: $gradientPeach;
+    color: $lightFont;
   }
 }

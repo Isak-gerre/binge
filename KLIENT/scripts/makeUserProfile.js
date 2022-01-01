@@ -453,6 +453,7 @@ async function createWatchlist(watchlist) {
 function noActivitiesInfo(tab, name = null) {
 
     let container = document.createElement('div');
+    container.id = "messageWhenEmpty";
     let text = document.createElement('p');
     
     if (name == null) {

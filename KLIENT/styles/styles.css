@@ -251,9 +251,8 @@ body {
 
 #profileNav {
   z-index: 15;
-  padding: 0 25px;
   color: #eeeeee;
-  width: 100%;
+  width: calc(100% - 50px);
   height: 50px;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
@@ -273,6 +272,7 @@ body {
           align-items: center;
   border-radius: 10px;
   overflow: hidden;
+  background-color: #1c1452;
 }
 
 #profileNav div {
@@ -289,7 +289,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #1c1452;
   width: 33%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -565,6 +564,40 @@ body {
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   gap: 25px;
+}
+
+#messageWhenEmpty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 25px;
+  height: 15vh;
+  width: 100%;
+}
+
+#messageWhenEmpty p {
+  text-align: center;
+}
+
+#messageWhenEmpty button {
+  border: none;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 10px;
+  padding: 5px 25px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  color: #eeeeee;
 }
 
 #overlay {
