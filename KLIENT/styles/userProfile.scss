@@ -43,12 +43,12 @@
       @include flex(row, center, center);
       gap: 4px;
 
-      width: 100px;
+      width: 85px;
       border-radius: $borderRadiusButtons;
       padding: $buttonPadding;
 
       p {
-        @include bodyFont();
+        @include xSmallFont();
         padding: 0;
       }
     }
@@ -89,18 +89,17 @@
 
 #profileNav {
   z-index: 15;
-  padding: 0 $wrapperPadding;
   color: $lightFont;
-  width: 100%;
+  width: calc(100% - 50px);
   height: 50px;
   @include bodyFont();
   @include flex(row, center, center);
   border-radius: $borderRadiusButtons;
   overflow: hidden;
+  background-color: #1c1452;
 
   div {
     @include flex(row, center, center);
-    background-color: #1c1452;
     width: 33%;
     flex-grow: 1;
     height: 100%;
@@ -134,7 +133,7 @@
     color: $lightFont;
     gap: $betweenPadding;
 
-    div {
+    #userDiv {
       @include bodyFont();
       @include flex(row, space-between, center);
       gap: $betweenPadding;
@@ -148,7 +147,7 @@
         @include profilePicture(90px, 90px);
       }
 
-      button {
+      button, div {
         width: 70px;
         transition: background 0.5s ease-in;
       }
@@ -249,9 +248,34 @@
   padding: $betweenPadding $wrapperPadding;
   padding-bottom: 90px;
 
+  transition: height 1s;
+
   #watchlistContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: $wrapperPadding;
+  }
+}
+
+#messageWhenEmpty {
+  @include flex(column, center, center);
+  gap: $wrapperPadding;
+
+  height: 15vh;
+  width: 100%;
+
+  p {
+    text-align: center;
+  }
+
+  button {
+    border: none;
+    @include bodyFont();
+    
+    border-radius: $borderRadiusButtons;
+    padding: $innerPadding $wrapperPadding;
+
+    background: $gradientPeach;
+    color: $lightFont;
   }
 }

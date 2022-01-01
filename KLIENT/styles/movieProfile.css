@@ -238,7 +238,7 @@
 .overlay-fade .message-wrapper .bottom .labelDate {
   color: "Mulish", sans-serif;
   font-family: "Mulish", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .overlay-fade .message-wrapper .bottom #text-area {
@@ -782,6 +782,8 @@
 }
 
 .movie-profile-middle .container {
+  position: relative;
+  left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -793,9 +795,12 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding-top: 10px;
+  -webkit-transition: left 1s;
+  transition: left 1s;
 }
 
 .movie-profile-middle .userContainer {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -848,6 +853,35 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.movie-profile-middle .userContainer #dropDown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 25px;
+  height: 30px;
+  width: 150px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.movie-profile-middle .userContainer #dropDown p {
+  font-family: "Archivo", sans-serif;
+  font-size: 15px;
+  color: black;
 }
 
 .movie-profile-middle .activityContainer {

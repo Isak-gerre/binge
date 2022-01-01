@@ -152,15 +152,14 @@ body {
       -ms-flex-align: center;
           align-items: center;
   gap: 4px;
-  width: 100px;
+  width: 85px;
   border-radius: 10px;
   padding: 3px;
 }
 
 #profileInfo #usernameDiv #settingOrPlus p {
   font-family: "Mulish", sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 12px;
   padding: 0;
 }
 
@@ -252,9 +251,8 @@ body {
 
 #profileNav {
   z-index: 15;
-  padding: 0 25px;
   color: #eeeeee;
-  width: 100%;
+  width: calc(100% - 50px);
   height: 50px;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
@@ -274,6 +272,7 @@ body {
           align-items: center;
   border-radius: 10px;
   overflow: hidden;
+  background-color: #1c1452;
 }
 
 #profileNav div {
@@ -290,7 +289,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #1c1452;
   width: 33%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -359,7 +357,7 @@ body {
   gap: 10px;
 }
 
-#followContainer #usersWrapper div {
+#followContainer #usersWrapper #userDiv {
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;
@@ -382,19 +380,19 @@ body {
   cursor: pointer;
 }
 
-#followContainer #usersWrapper div img {
+#followContainer #usersWrapper #userDiv img {
   width: 90px;
   height: 90px;
   border-radius: 50%;
 }
 
-#followContainer #usersWrapper div button {
+#followContainer #usersWrapper #userDiv button, #followContainer #usersWrapper #userDiv div {
   width: 70px;
   -webkit-transition: background 0.5s ease-in;
   transition: background 0.5s ease-in;
 }
 
-#followContainer #usersWrapper div button#noGradient {
+#followContainer #usersWrapper #userDiv button#noGradient {
   background: #1c1452;
 }
 
@@ -473,7 +471,7 @@ body {
 
 #settingsWindow #settingsForm div label {
   font-family: "Mulish", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 #settingsWindow #settingsForm div input {
@@ -556,6 +554,8 @@ body {
   z-index: 15;
   padding: 10px 25px;
   padding-bottom: 90px;
+  -webkit-transition: height 1s;
+  transition: height 1s;
 }
 
 #profileWrapper #watchlistContainer {
@@ -564,6 +564,40 @@ body {
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   gap: 25px;
+}
+
+#messageWhenEmpty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 25px;
+  height: 15vh;
+  width: 100%;
+}
+
+#messageWhenEmpty p {
+  text-align: center;
+}
+
+#messageWhenEmpty button {
+  border: none;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 10px;
+  padding: 5px 25px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  color: #eeeeee;
 }
 
 #overlay {
@@ -804,7 +838,7 @@ body {
 .overlay-fade .message-wrapper .bottom .labelDate {
   color: "Mulish", sans-serif;
   font-family: "Mulish", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .overlay-fade .message-wrapper .bottom #text-area {
@@ -1348,6 +1382,8 @@ body {
 }
 
 .movie-profile-middle .container {
+  position: relative;
+  left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1359,9 +1395,12 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding-top: 10px;
+  -webkit-transition: left 1s;
+  transition: left 1s;
 }
 
 .movie-profile-middle .userContainer {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1414,6 +1453,35 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.movie-profile-middle .userContainer #dropDown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 25px;
+  height: 30px;
+  width: 150px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.movie-profile-middle .userContainer #dropDown p {
+  font-family: "Archivo", sans-serif;
+  font-size: 15px;
+  color: black;
 }
 
 .movie-profile-middle .activityContainer {
@@ -1599,6 +1667,8 @@ body {
 }
 
 .container {
+  position: relative;
+  left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1610,9 +1680,12 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding-top: 10px;
+  -webkit-transition: left 1s;
+  transition: left 1s;
 }
 
 .userContainer {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1665,6 +1738,35 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.userContainer #dropDown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 25px;
+  height: 30px;
+  width: 150px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.userContainer #dropDown p {
+  font-family: "Archivo", sans-serif;
+  font-size: 15px;
+  color: black;
 }
 
 .activityContainer {
@@ -2516,7 +2618,7 @@ svg:active,
 
 .about-container {
   font-family: "Mulish", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .markedPage {
@@ -2884,7 +2986,7 @@ svg:active,
 
 #loginForm #input label, #signUpForm > fieldset #input label {
   font-family: "Mulish", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 #loginForm #input input, #signUpForm > fieldset #input input {
@@ -2929,7 +3031,7 @@ svg:active,
 
 #errorDiv {
   font-family: "Mulish", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 #signUpForm {
@@ -3023,7 +3125,7 @@ svg:active,
       grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   font-family: "Mulish", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   width: 100%;
   border: none;
   max-height: 65vh;
