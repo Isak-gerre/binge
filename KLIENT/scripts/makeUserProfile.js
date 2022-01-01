@@ -439,14 +439,15 @@ async function createWatchlist(watchlist) {
     watchlist.forEach(async function (activity) {
         let movieId = activity.movieID;
 
-        let movieBanner = await makeMovieBanner(movieId);
+        let movieBanner = await makeMovieBanner(movieId, "myProfile");
 
         movieBanner.addEventListener('click', () => {
             window.location.href = `explore.php?movieID=${movieId}`;
-        })
+        });
+
         container.append(movieBanner);   
     });
-
+    
     wrapper.append(container);
 }
 

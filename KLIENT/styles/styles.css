@@ -563,7 +563,43 @@ body {
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+  gap: 10px;
+  position: relative;
+}
+
+#profileWrapper #watchlistContainer button {
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  color: #eeeeee;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-filter: none;
+          filter: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 150px;
+}
+
+#profileWrapper #watchlistContainer button:first-child {
+  bottom: -35px;
+}
+
+#profileWrapper #watchlistContainer button:last-child {
+  bottom: -70px;
 }
 
 #messageWhenEmpty {
@@ -598,6 +634,13 @@ body {
   padding: 5px 25px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   color: #eeeeee;
+}
+
+#overlay-profile {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 15000;
 }
 
 #overlay {
@@ -2104,11 +2147,36 @@ body {
   }
 }
 
+@-webkit-keyframes bannerScale {
+  0% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(1.2, 1.2);
+            transform: scale(1.2, 1.2);
+  }
+}
+
+@keyframes bannerScale {
+  0% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  100% {
+    -webkit-transform: scale(1.2, 1.2);
+            transform: scale(1.2, 1.2);
+  }
+}
+
 .movieBanner {
   max-width: 100px;
   background-size: cover;
   -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);
           box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);
+  position: relative;
+  overflow: visible;
+  margin: auto;
 }
 
 .genreBanner {

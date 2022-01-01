@@ -253,7 +253,28 @@
   #watchlistContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: $wrapperPadding;
+    gap: $betweenPadding;    
+    position: relative;
+
+    button {
+      border-radius: $borderRadiusButtons;
+      border: none;
+      padding: $innerPadding;
+      color: $lightFont;
+      background: $gradientPeach;
+      box-sizing: border-box;
+      filter: none;
+      @include flex(row, center, center);
+      position: absolute;
+      width: 150px;
+    }
+
+    button:first-child{
+      bottom: -35px;
+    }
+    button:last-child{
+      bottom: -70px;
+    }
   }
 }
 
@@ -278,4 +299,11 @@
     background: $gradientPeach;
     color: $lightFont;
   }
+}
+
+#overlay-profile {
+  position: absolute;
+  height:100vh;
+  width: 100vw;
+  z-index: 15000;
 }
