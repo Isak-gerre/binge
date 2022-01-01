@@ -119,7 +119,7 @@ function makeLowerNav() {
       }
       document.querySelector(".back").setAttribute("src", "../icons/back.svg");
       document.querySelector(".search-container").style.animation = "removeSearchBar 0.2s ease-out";
-      document.querySelector("#overlay").style.display = "flex";
+      // document.querySelector("#overlay").style.display = "flex";
       setTimeout(() => {
         document.querySelector(".search-container").remove();
       }, 200);

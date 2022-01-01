@@ -218,6 +218,7 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
     }
   });
 }
+
 async function searchFunction(searchBy) {
   let input = document.getElementById("searchField");
   document.getElementById("search-results").innerHTML = "";
@@ -333,6 +334,7 @@ async function searchFunction(searchBy) {
     myFunction(inputValue, "user");
   }
 }
+
 function myFunction(searchWord, searchAttribute = "name", selector = "#search-results > div") {
   var movie, text, i, txtValue;
   console.log("searching");
@@ -376,6 +378,7 @@ function myFunction(searchWord, searchAttribute = "name", selector = "#search-re
     }
   }
 }
+
 async function displayTrending(page = 1) {
   document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
   let searchResults = await getTrending(page);

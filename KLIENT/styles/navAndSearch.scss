@@ -250,7 +250,7 @@ svg:active,
   z-index: 100;
   overflow: scroll;
   max-height: calc(100vh - 170px);
-  padding-bottom: 90px;
+  padding-bottom: 130px;
 }
 .placeholder {
   animation-duration: 1.8s;
@@ -491,4 +491,6 @@ svg:active,
 #search-results-text {
   margin-top: 20px;
   z-index: 1000;
+  position: relative;
+  top: 156px;
 }
