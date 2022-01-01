@@ -62,9 +62,16 @@ function addToState(movieID, page, scrollHeight = 0) {
   }
 }
 
-function addToMovies(movie) {
+function addToMovies(movie, update = false) {
   let isSaved = isMovieSaved(movie.id);
   if (isSaved) {
+    if (update) {
+      let allMovies = getFromSession("movies");
+      let index = allMovies.findIndex((savedMovie) => savedMovie.id == movie.id);
+      allMovies.splice(index, 1);
+      allMovies.unshift(movie);
+      saveToSession(allMovies, "movies");
+    }
     return true;
   }
   if ("movies" in sessionStorage) {
