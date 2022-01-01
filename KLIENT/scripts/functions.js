@@ -322,6 +322,40 @@ function createActivities(array, page, appendIn = "wrapper") {
       userContainer.append(userPic, username);
     }
 
+    if (page == "myProfile") {
+      let deleteActivityDropdown = document.createElement('img');
+      deleteActivityDropdown.setAttribute('src', '../icons/expand_more_white.svg');
+
+      let dropDown = document.createElement('div');
+      dropDown.id = 'dropDown';
+      let deleteActivity = document.createElement('p');
+      deleteActivity.textContent = 'Delete activity';
+
+      deleteActivityDropdown.addEventListener('click', (event) => {
+        event.stopPropagation();
+        dropDown.append(deleteActivity);
+        
+        body.addEventListener('click', (event) => {
+          event.stopPropagation();
+          dropDown.remove();
+        });
+        
+        deleteActivity.addEventListener('click', function (event) {
+          event.stopPropagation();
+          deleteteActivity(obj.id);
+          dropDown.remove();
+          
+          container.style.left = "100vw";
+          setTimeout( () => {
+            container.remove();
+          }, 1000);
+        });
+        userContainer.append(dropDown);
+      })
+
+      userContainer.append(deleteActivityDropdown);
+    }
+
     //datum
     let date = document.createElement("div");
     date.classList.add("date");

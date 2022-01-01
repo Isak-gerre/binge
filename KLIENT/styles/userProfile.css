@@ -96,15 +96,14 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 4px;
-  width: 100px;
+  width: 85px;
   border-radius: 10px;
   padding: 3px;
 }
 
 #profileInfo #usernameDiv #settingOrPlus p {
   font-family: "Mulish", sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 12px;
   padding: 0;
 }
 
@@ -196,9 +195,8 @@
 
 #profileNav {
   z-index: 15;
-  padding: 0 25px;
   color: #eeeeee;
-  width: 100%;
+  width: calc(100% - 50px);
   height: 50px;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
@@ -218,6 +216,7 @@
           align-items: center;
   border-radius: 10px;
   overflow: hidden;
+  background-color: #1c1452;
 }
 
 #profileNav div {
@@ -234,7 +233,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #1c1452;
   width: 33%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -303,7 +301,7 @@
   gap: 10px;
 }
 
-#followContainer #usersWrapper div {
+#followContainer #usersWrapper #userDiv {
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;
@@ -326,19 +324,19 @@
   cursor: pointer;
 }
 
-#followContainer #usersWrapper div img {
+#followContainer #usersWrapper #userDiv img {
   width: 90px;
   height: 90px;
   border-radius: 50%;
 }
 
-#followContainer #usersWrapper div button {
+#followContainer #usersWrapper #userDiv button, #followContainer #usersWrapper #userDiv div {
   width: 70px;
   -webkit-transition: background 0.5s ease-in;
   transition: background 0.5s ease-in;
 }
 
-#followContainer #usersWrapper div button#noGradient {
+#followContainer #usersWrapper #userDiv button#noGradient {
   background: #1c1452;
 }
 
@@ -417,7 +415,7 @@
 
 #settingsWindow #settingsForm div label {
   font-family: "Mulish", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 #settingsWindow #settingsForm div input {
@@ -500,6 +498,8 @@
   z-index: 15;
   padding: 10px 25px;
   padding-bottom: 90px;
+  -webkit-transition: height 1s;
+  transition: height 1s;
 }
 
 #profileWrapper #watchlistContainer {
@@ -508,5 +508,39 @@
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   gap: 25px;
+}
+
+#messageWhenEmpty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 25px;
+  height: 15vh;
+  width: 100%;
+}
+
+#messageWhenEmpty p {
+  text-align: center;
+}
+
+#messageWhenEmpty button {
+  border: none;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 10px;
+  padding: 5px 25px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  color: #eeeeee;
 }
 /*# sourceMappingURL=userProfile.css.map */
