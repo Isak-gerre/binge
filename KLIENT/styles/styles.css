@@ -2192,7 +2192,7 @@ svg:active,
 #search-results {
   width: 100%;
   padding: 10px 25px;
-  margin-top: 30px;
+  margin-top: 20px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
@@ -2425,5 +2425,10 @@ svg:active,
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
   filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+}
+
+#search-results-text {
+  margin-top: 20px;
+  z-index: 1000;
 }
 /*# sourceMappingURL=styles.css.map */
