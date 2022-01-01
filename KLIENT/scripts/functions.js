@@ -278,32 +278,9 @@ async function getFriendsActivities(id) {
 }
 
 function howManyDaysAgo(recievedDate) {
-  const oneWeek = 24 * 60 * 60 * 1000 * 7; // hours*minutes*seconds*milliseconds
-  const firstDate = new Date(
-    `${recievedDate[0]}${recievedDate[1]}${recievedDate[2]}${recievedDate[3]}, ${recievedDate[4]}${recievedDate[5]}, ${recievedDate[6]}${recievedDate[7]}`
-  );
-  const firstDateMS = firstDate.getTime();
-
-  let today = new Date();
-  let year = today.getFullYear();
-  let month = today.getMonth() + 1;
-  let day = today.getDate();
-  let todayMS = today.getTime();
-
-  let currentDate = `${year}${month}${day}`;
-  let daysAgo = currentDate - recievedDate;
-
-  if (daysAgo === 0) {
-    return "today";
-  }
-
-  if (daysAgo < 7 && daysAgo !== 0) {
-    return `${daysAgo} days ago`;
-  }
-
-  if (daysAgo > 7) {
-    return Math.round(Math.abs((firstDateMS - todayMS) / oneWeek)) + " weeks ago";
-  }
+  let stringDate = recievedDate.toString();  
+  let thisMagicMoment = moment(stringDate, "YYYYMMDD").fromNow();
+  return thisMagicMoment;
 }
 
 // Skapat aktivteter till feed och profile
