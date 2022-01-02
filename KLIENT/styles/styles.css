@@ -767,7 +767,6 @@ body {
   color: "Mulish", sans-serif;
   font-family: "Archivo", sans-serif;
   font-size: 18px;
-  font-weight: bold;
 }
 
 .overlay-fade .message-wrapper .middle {
@@ -1086,7 +1085,6 @@ body {
 .movie-profile-info .movie-profile-info-text .movie-profile-title {
   font-family: "Archivo", sans-serif;
   font-size: 18px;
-  font-weight: bold;
   color: #eeeeee;
   padding-bottom: 10px;
 }
@@ -1556,6 +1554,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  color: #eeeeee;
 }
 
 .movie-profile-middle .activityContainer .activityContainerLeft .type {
@@ -1565,7 +1564,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: black;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
   padding-bottom: 5px;
@@ -1573,7 +1571,6 @@ body {
 
 .movie-profile-middle .activityContainer .activityContainerLeft .typeText {
   margin-right: 5px;
-  color: black;
 }
 
 .movie-profile-middle .activityContainer .activityContainerLeft .typeIcon {
@@ -1583,12 +1580,9 @@ body {
 .movie-profile-middle .activityContainer .activityContainerLeft .title {
   font-family: "Archivo", sans-serif;
   font-size: 18px;
-  font-weight: bold;
-  color: black;
 }
 
 .movie-profile-middle .activityContainer .activityContainerLeft .comment {
-  color: black;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;
@@ -1841,6 +1835,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  color: #eeeeee;
 }
 
 .activityContainer .activityContainerLeft .type {
@@ -1850,7 +1845,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: black;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
   padding-bottom: 5px;
@@ -1858,7 +1852,6 @@ body {
 
 .activityContainer .activityContainerLeft .typeText {
   margin-right: 5px;
-  color: black;
 }
 
 .activityContainer .activityContainerLeft .typeIcon {
@@ -1868,12 +1861,9 @@ body {
 .activityContainer .activityContainerLeft .title {
   font-family: "Archivo", sans-serif;
   font-size: 18px;
-  font-weight: bold;
-  color: black;
 }
 
 .activityContainer .activityContainerLeft .comment {
-  color: black;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;
@@ -3022,7 +3012,6 @@ svg:active,
 .signInWrap div:first-child h1 {
   font-family: "Archivo", sans-serif;
   font-size: 18px;
-  font-weight: bold;
 }
 
 .signInWrap div:first-child p {
@@ -3174,7 +3163,6 @@ svg:active,
 #signUpForm div:first-child h1 {
   font-family: "Archivo", sans-serif;
   font-size: 18px;
-  font-weight: bold;
 }
 
 #signUpForm > fieldset {

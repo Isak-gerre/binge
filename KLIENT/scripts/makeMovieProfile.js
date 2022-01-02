@@ -455,6 +455,9 @@ async function makeMovieProfile(movieID) {
       labelComment.textContent = "Review";
       labelComment.classList.add("labelComment");
       
+      let buttonHolder = document.createElement("div");
+      buttonHolder.className = "buttonHolder";
+
       if(relation.review != false){
         let date = howManyDaysAgo(relation.review.date);
         let labelDate = document.createElement("label");
@@ -462,6 +465,24 @@ async function makeMovieProfile(movieID) {
 
         labelDate.textContent = `Last updated ${date}`;
         labelHolder.append(labelComment, labelDate);
+        
+        // Delete-button
+        let deleteButton = document.createElement("button");
+        deleteButton.className = "delete button";
+        deleteButton.textContent = "Delete review";
+
+        // Delete event - ta bort från DB, ta bort markering på reviewknapp
+        document.querySelector(".delete").addEventListener("click", () => {
+          deleteteActivity(relation.review.id);
+
+          let message = "You successfully deleted your review";
+          closingMessage(message);
+
+          review.classList.remove("marked");
+          review.textContent = "Review";
+        });
+        buttonHolder.append(deleteButton);
+
       } else {
         labelHolder.append(labelComment);
       }
@@ -476,8 +497,6 @@ async function makeMovieProfile(movieID) {
         textArea.textContent = relation.review.comment;
       }
 
-      let buttonHolder = document.createElement("div");
-      buttonHolder.className = "buttonHolder";
 
       // Submit-button
       let submitButton = document.createElement("button");
@@ -485,16 +504,12 @@ async function makeMovieProfile(movieID) {
       submitButton.className = "submit button";
       submitButton.textContent = "Submit";
 
-      // Delete-button
-      let deleteButton = document.createElement("button");
-      deleteButton.className = "delete button";
-      deleteButton.textContent = "Delete review";
 
       // Appends
       topDiv.append(title, exitButton);
       middleDiv.append(stars);
       bottomDiv.append(labelHolder, textArea);
-      buttonHolder.append(deleteButton, submitButton);
+      buttonHolder.append(submitButton);
       messageWrapper.append(topDiv, middleDiv, bottomDiv, buttonHolder);
 
       setTimeout(() => {
@@ -508,17 +523,6 @@ async function makeMovieProfile(movieID) {
     overlayFade.append(messageWrapper);
     document.body.append(overlayFade);
 
-    // Delete event - ta bort från DB, ta bort markering på reviewknapp
-    document.querySelector(".delete").addEventListener("click", () => {
-      deleteteActivity(relation.review.id);
-
-      let message = "You successfully delted your review";
-      closingMessage(message);
-
-
-      review.classList.remove("marked");
-      review.textContent = "Review";
-    });
 
     // Exit clickevent
     document.querySelector(".exit").addEventListener("click", () => {

@@ -34,7 +34,9 @@
     }
 
     // Updating the activity
-    $activities[$activityID]["date"] = date("Ymd");
+    date_default_timezone_set("Europe/Stockholm");
+    
+    $activities[$activityID]["date"] = date("YmdHi");
     $activities[$activityID]["comment"] = $updatedActivity["comment"];
     $activities[$activityID]["rate"] = $updatedActivity["rate"];
     $activities[$activityID]["updated"] = true;
@@ -46,3 +48,5 @@
         "message" => "SUCCESS"
     ];
     sendJSON($message);
+
+    
