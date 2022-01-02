@@ -18,6 +18,8 @@ require_once "../functions.php";
 $method = $_SERVER["REQUEST_METHOD"];
 $db = loadJSON("../DATABASE/user.json");
 
+//Lägger användaren som nästa ID
+$nextID = nextHighestId($db["users"]);
 
 if ($method != "POST") {
     exit();
@@ -25,7 +27,6 @@ if ($method != "POST") {
 
 //Kollar om användaren redan finns både användarnamn och även email (denna request bör skickas vid varje keypress och inte endast vist submit)
 foreach ($db["users"] as $key) {
-    inspect($key["username"]);
     if (strtolower($key["username"]) === strtolower($_POST["username"])) {
         sendJSON(["message" => "Username is already in use"], 409);
     } elseif(strtolower($key["email"]) === strtolower($_POST["email"])) {
@@ -37,6 +38,13 @@ foreach ($db["users"] as $key) {
     }
 }
 
+//Kollar så att det är samma lösenord mellan password och confirm password
+if ($_POST["password"] != $_POST["confirm_password"]) {
+    sendJSON(["message" => "Passwords do not match"], 409);
+} else {
+    //Hashar lösenordet
+    $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+}
 
 //Använder en foreach för att göra alla inskickade värden till ett object med användarens alla nycklar
 foreach($_POST as $key => $value) {
@@ -56,15 +64,6 @@ foreach($_POST as $key => $value) {
 }
 
 //Kollar om det finns en fileToUpload nyckeln finns med som är profilbilden. Om den finns skapas nyckeln. (Denna kommer ha en defult)
-//Lägger användaren som nästa ID
-$nextID = nextHighestId($db["users"]);
-//Kollar så att det är samma lösenord mellan password och confirm password
-if ($_POST["password"] != $_POST["confirm_password"]) {
-    sendJSON(["message" => "Passwords do not match"], 409);
-} else {
-    //Hashar lösenordet
-    $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
-}
 
 if (isset($_FILES["fileToUpload"])) {
     //Skapar ett unikt bildnamn
@@ -74,32 +73,32 @@ if (isset($_FILES["fileToUpload"])) {
     //OBS!!!!: INTE SÄKERT SÄTT ATT KOLLA FIL MEN BÄTTRE ÄN INGET
     if ($_FILES["fileToUpload"]["type"] === "image/jpeg") {
         move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "../DATABASE/IMAGES/PROFILE/$imgName.jpg");
-        $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/$imgName.jpg";
+        $db["users"]["$nextID"]["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/$imgName.jpg";
     }
 } else {
     if ($_POST["fileToUpload"] === "profileImg1") {
-        $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_1.png";
+        $db["users"]["$nextID"]["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_1.png";
     } 
     else if ($_POST["fileToUpload"] === "profileImg2") {
-        $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_2.png";
+        $db["users"]["$nextID"]["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_2.png";
     } 
     else if ($_POST["fileToUpload"] === "profileImg3") {
-        $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_3.png";
+        $db["users"]["$nextID"]["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_3.png";
     } 
     else if ($_POST["fileToUpload"] === "profileImg4") {
-        $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_4.png";
+        $db["users"]["$nextID"]["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_4.png";
     } 
     else if ($_POST["fileToUpload"] === "profileImg5") {
-        $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_5.png";
+        $db["users"]["$nextID"]["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_5.png";
     } 
     else if ($_POST["fileToUpload"] === "profileImg6") {
-        $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_6.png";
+        $db["users"]["$nextID"]["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_6.png";
     } 
     else if ($_POST["fileToUpload"] === "profileImg7") {
-        $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_7.png";
+        $db["users"]["$nextID"]["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_7.png";
     } 
     else if ($_POST["fileToUpload"] === "profileImg8") {
-        $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_8.png";
+        $db["users"]["$nextID"]["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_8.png";
     }
 }
 
