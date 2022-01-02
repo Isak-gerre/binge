@@ -94,7 +94,6 @@ fetch(regionRQ)
       let length = e.originalTarget.options.length;
       for (let i = 1; i < length; i++) {
         if (e.originalTarget.options[i].innerHTML == selected) {
-          console.log(true);
           document.getElementById("region").selectedIndex = i;
           break;
         }
