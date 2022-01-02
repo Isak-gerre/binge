@@ -68,19 +68,20 @@ function createActivity($userID, $movieID, $type, $comment, $rate) {
     $activities = $activitiesDB["activities"];
     
     $highestId = nextHighestId($activities);
+    date_default_timezone_set("Europe/Stockholm");
 
     $newActivity = [
         "id" => $highestId,
         "userID" => $userID,
         "movieID" => $movieID,
         "type" => $type,
-        "date" => date("Ymd"),
+        "date" => date("YmdHi"),
         "comment" => $comment,
         "rate" => $rate,
         "updated" => false
     ];
     
-    $activitiesDB["activities"][] = $newActivity;
+    $activitiesDB["activities"][$newActivity['id']] = $newActivity;
 
     saveJSON("../DATABASE/activities.json", $activitiesDB);
 

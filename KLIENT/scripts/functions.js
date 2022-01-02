@@ -46,7 +46,7 @@ function getLoggedInUserID() {
   if (getFromSession("session") != undefined) { 
     if (userVarification()) {
       let userID = getFromSession("session").session.userID;
-      console.log(userID);
+      // console.log(userID);
       return userID;
     } else {
       sessionStorage.clear();
@@ -278,8 +278,9 @@ async function getFriendsActivities(id) {
 }
 
 function howManyDaysAgo(recievedDate) {
+  // console.log(moment("202201011402", "YYYYMMDDhmm").fromNow());
   let stringDate = recievedDate.toString();  
-  let thisMagicMoment = moment(stringDate, "YYYYMMDD").fromNow();
+  let thisMagicMoment = moment(stringDate, "YYYYMMDDhmm").fromNow();
   return thisMagicMoment;
 }
 
@@ -565,6 +566,7 @@ async function patchActivity(activity) {
 }
 
 async function deleteteActivity(activityID) {
+  console.log(JSON.stringify({ id: activityID }));
   let rqst = new Request("http://localhost:7001/DELETE/delete-activity.php",
     {
       method: "DELETE",

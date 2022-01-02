@@ -165,7 +165,8 @@
                 4,
                 5,
                 7,
-                10
+                10,
+                14
             ],
             "following": [
                 1,
@@ -267,7 +268,8 @@
             },
             "followers": [],
             "following": [
-                6
+                6,
+                14
             ],
             "sessionId": "$2y$10$ovQLNrITq0LJ0LOau0S5auIgwZ8dAwYk5JXalFW\/MG3hVo0O5Vhti",
             "id": 10
@@ -318,24 +320,30 @@
             "id": 13
         },
         "14": {
-            "firstname": "isak",
-            "lastname": "Gerre",
-            "username": "isak123",
-            "password": "$2y$10$Xw\/.x\/X3lIUxD9FuqkQRgeUV.lZUQ4z2IoFP5U.HD95uXZl5HINi6",
-            "email": "isak@gmail.com",
-            "birthday": "2022-01-06",
+            "firstname": "lina",
+            "lastname": "andersson",
+            "username": "linkan",
+            "password": "$2y$10$995p8xYVHwVzaS80od1WZuuHRQZaOw3WDoMDN5HNbgv30lGGLp2Zu",
+            "email": "linis@mau.se",
+            "birthday": "1999-06-16",
             "region": "SE",
             "active_streaming_services": [
                 "Netflix",
+                "Amazon Prime Video",
                 "Disney Plus",
-                "HBO Max"
+                "HBO Max",
+                "SVT",
+                "HBO"
             ],
             "profile_picture": {
-                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_3.png"
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_5.png"
             },
             "followers": [],
-            "following": [],
-            "sessionId": "$2y$10$ge0HZzU4Wl4Vo17ZUaqYrOHnC2GbN4ap6a4HqNew.CvM35.FT\/WBi",
+            "following": [
+                10,
+                6
+            ],
+            "sessionId": "$2y$10$GQPUquml7jwBrnmUHfMtiOFFCPGqLcSSpxIFuaqqACsNrjaO2zcia",
             "id": 14
         }
     }

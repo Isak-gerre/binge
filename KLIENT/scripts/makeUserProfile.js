@@ -156,7 +156,11 @@ function profileNav(watchedActivities, watchlist, userId, name = null) {
             if (watchlist.length < 1) {
                 noActivitiesInfo('watchlist', name);
             } else {
-                createWatchlist(watchlist);
+                if(userId == loggedInUserId) {
+                    createWatchlist(watchlist, "myProfile");
+                } else {
+                    createWatchlist(watchlist);
+                }
             }
         }
     });
@@ -430,14 +434,14 @@ async function getAllActivites(userId) {
     return userActivites;
 }
 
-async function createWatchlist(watchlist) {
+async function createWatchlist(watchlist, page = "profile") {
     let container = document.createElement('div');
     container.id = 'watchlistContainer';
 
     watchlist.forEach(async function (activity) {
         let movieId = activity.movieID;
 
-        let movieBanner = await makeMovieBanner(movieId, "myProfile");
+        let movieBanner = await makeMovieBanner(movieId, page);
 
         movieBanner.addEventListener('click', () => {
             window.location.href = `explore.php?movieID=${movieId}`;

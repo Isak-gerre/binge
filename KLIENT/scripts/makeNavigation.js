@@ -164,6 +164,13 @@ async function makeHamburgerMenu() {
   hamburgerMenu.className = "hamburger-menu";
   document.body.append(hamburgerMenu, hamburgerBackground);
 
+  let exit = document.createElement("div");
+  exit.textContent = "X";
+  exit.addEventListener("click", () => {
+    document.querySelector(".hamburger-menu").style.display = "none";
+
+  });
+
   // Create PAGE-links-and-container
   let pagesContainer = document.createElement("div");
   pagesContainer.className = "pages-container";
@@ -220,7 +227,7 @@ async function makeHamburgerMenu() {
   git.append(gitLogo, gitText);
 
   // Append containers in main container
-  hamburgerMenu.append(pagesContainer, genresContainer, aboutContainer);
+  hamburgerMenu.append(exit, pagesContainer, genresContainer, aboutContainer);
 
   // Page-link fade in
   document.querySelectorAll(".hamburger-text").forEach((element, index) => {
