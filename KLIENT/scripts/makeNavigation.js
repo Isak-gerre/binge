@@ -204,8 +204,11 @@ async function makeHamburgerMenu() {
     // Create ABOUT-links-and-container
     let aboutContainer = document.createElement("div");
     aboutContainer.className = "about-container";
+
+    let logout = document.createElement("button");
+    logout.textContent = "Log out";
+    logout.classList.add("log-out-btn");
   
-    let logout = hamburgerText("Log out");
     logout.addEventListener("click", () => {
       sessionStorage.clear();
       window.location.replace("http://localhost:2000");
@@ -273,7 +276,6 @@ function hamburgerText(text) {
   // Makrera den sidan som användaren är på
   if(url.includes(page)) {
     hamburgerText.classList.add("markedPage");
-    // hamburgerText.style.fontWeight = "bold"; // vf funkar ej detta?
   } else {
     hamburgerText.classList.remove("markedPage");
   }
