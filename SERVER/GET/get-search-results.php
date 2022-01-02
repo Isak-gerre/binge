@@ -42,7 +42,7 @@ function search()
         if ($_GET["searchtype"] == "movie") {
             $url = "http://api.themoviedb.org/3/search/movie?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US&page=1&include_adult=false&query=$query&page=$page";
         }
-        // if ($_GET["searchtype"] == "user") {
+        // if ($_GET["searchtype"] == "users") {
         //     $url = "http://localhost:7001/SERVER/DATABASE/user.json";
         // }
     }

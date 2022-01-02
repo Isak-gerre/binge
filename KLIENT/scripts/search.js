@@ -61,9 +61,9 @@ async function searchFunction(searchBy) {
     });
 
     allMovies.forEach((movie) => {
-      console.log(movie);
+      // console.log(movie);
       let movieElement = makeMovieBannerFromMovie(movie);
-      console.log(movieElement);
+      // console.log(movieElement);
       movieElement.setAttribute("name", movie.title);
       movieElement.setAttribute("actor", movie.actor);
       document.querySelector("#search-results").prepend(movieElement);
@@ -94,7 +94,7 @@ async function searchFunction(searchBy) {
 }
 
 function myFunction(searchResults, searchAttribute = "name") {
-  console.log(searchResults);
+  // console.log(searchResults);
   var movie, text, i, txtValue;
   filter = searchResults.toUpperCase();
   movie = document.querySelectorAll("#search-results .movieBanner");
@@ -110,7 +110,7 @@ function myFunction(searchResults, searchAttribute = "name") {
     if (text.toUpperCase().indexOf(filter) > -1) {
       movie[i].style.display = "";
     } else {
-      movie[i].style.displlay = "none";
+      movie[i].style.display = "none";
     }
   }
 }
@@ -274,75 +274,16 @@ async function searchFunction(searchBy) {
 
   // USERS
   if (searchBy == "Users") {
-    document.querySelector("#search-results").innerHTML = "";
-    document.querySelector("#search-results-text").textContent = "Showing Users";
-    document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");
-    let users = await getUsers();
-    console.log(users);
-    users.forEach((user) => {
-      console.log(user);
-      let userDiv = document.createElement("div");
-      userDiv.className = "userDiv";
-      userDiv.setAttribute("user", user.username);
-      userDiv.addEventListener("click", () => {
-        window.location.href = `http://localhost:2000/profile.php?userID=${user.id}`;
-      });
-
-      let userImage = document.createElement("div");
-      userImage.className = "userImage";
-      console.log(user["profile_picture"].filepath);
-      userImage.style.backgroundImage = `url('http://localhost:7001/${user["profile_picture"].filepath}')`;
-
-      let userInfoDiv = document.createElement("div");
-      userInfoDiv.className = "userInfoDiv";
-      userInfoDiv.innerHTML = `
-      <div id="usernameDiv">
-            <p id="username">@${user.username}</p>
-            <div id="settingOrPlus"></div>
-        </div>`;
-
-      let followDiv = document.createElement("div");
-      followDiv.className = "followDiv";
-      followDiv.innerHTML = `
-      <div id="followInfo">
-            <div id="followersDiv">
-                <p>Followers</p>
-                <p id="followers">${user.followers.length}</p>
-            </div>
-            <div id="followingDiv">
-                <p>Following</p>
-                <p id="following">${user.following.length}</p>
-            </div>
-        </div>`;
-
-      if (!document.getElementById("show-more-btn")) {
-        let showMoreDiv = document.createElement("div");
-        showMoreDiv.className = "showMoreDiv";
-        showMoreDiv.innerHTML = `
-    <button id="show-more-btn">Show more</button>
-    `;
-        document.querySelector(".search-container").append(showMoreDiv);
-        document.getElementById("show-more-btn").addEventListener("click", () => {
-          // if (document.querySelectorAll(".trending").length == 20) {
-          // }
-        });
-      }
-
-      userDiv.append(userImage, userInfoDiv, followDiv);
-      document.querySelector("#search-results").append(userDiv);
-    });
-    myFunction(inputValue, "user");
-  }
+    let page = 1;
+    await searchForUsers(inputValue, page);
 }
 
 function myFunction(searchWord, searchAttribute = "name", selector = "#search-results > div") {
   var movie, text, i, txtValue;
-  console.log("searching");
   filter = searchWord.toUpperCase();
   movie = document.querySelectorAll(selector);
   if (searchWord == "") {
     let length = movie.length > 20 ? 20 : movie.length;
-    console.log(length);
     for (i = 0; i < length; i++) {
       movie[i].style.display = "";
     }
@@ -382,7 +323,7 @@ function myFunction(searchWord, searchAttribute = "name", selector = "#search-re
 async function displayTrending(page = 1) {
   document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
   let searchResults = await getTrending(page);
-  console.log(searchResults);
+  // console.log(searchResults);
 
   if(document.getElementById("show-more-btn")){
     document.querySelector(".showMoreDiv").remove();
@@ -409,7 +350,7 @@ async function displayTrending(page = 1) {
     document.getElementById("show-more-btn").addEventListener("click", () => {
       document.getElementById("show-more-btn").innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
       if (document.querySelectorAll(".trending").length == 20) {
-        console.log(true);
+        // console.log(true);
         page = 2;
       }
       console.log(page);
@@ -462,7 +403,7 @@ async function getAndShowMoviesByActors(inputValue = "", page = 1) {
     });
 
     if (!document.querySelector("#show-more-btn-actors")) {
-      console.log(true);
+      // console.log(true);
       let showMoreDiv = document.createElement("div");
       showMoreDiv.className = "showMoreDiv";
       showMoreDiv.innerHTML = `
@@ -486,3 +427,108 @@ async function getAndShowMoviesByActors(inputValue = "", page = 1) {
   }
   myFunction(inputValue, "actor");
 }
+
+async function searchForUsers(inputValue = "") {
+  inputValue = document.getElementById("searchField").value;
+  searchType = "users";
+
+  let counter = 8;
+  let users = await getUsers();
+  makeUserSearchDivs(users, counter);
+  
+  allUserDivs = document.querySelectorAll(".userDiv");
+  let showingElements = [];
+  
+  allUserDivs.forEach((element) => {
+    if(document.getElementById("show-more-btn")){
+      document.querySelector(".showMoreDiv").remove();
+    }
+    
+    if (!element.style.display.includes("none")) {
+      showingElements.push(element);
+      console.log(showingElements);
+
+      if (showingElements.length > counter) {
+        console.log('true');
+        let showMoreDiv = document.createElement("div");
+        showMoreDiv.className = "showMoreDiv";
+        showMoreDiv.innerHTML = `
+        <button id="show-more-btn">Show more</button>
+        `;
+    
+        document.querySelector(".search-container").append(showMoreDiv);
+          
+        document.getElementById("show-more-btn").addEventListener("click", () => {
+          document.getElementById("show-more-btn").innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
+            document.getElementById("search-results").innerHTML = "";
+            if (showingElements >= counter) {
+              counter = counter + 8;
+              makeUserSearchDivs(users);
+            }
+      
+          });
+      }
+    }
+  });
+
+}
+  async function makeUserSearchDivs(users) {
+    document.querySelector("#search-results").innerHTML = "";
+      document.querySelector("#search-results-text").textContent = "Showing all users";
+      document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");    
+
+      users.forEach((user) => {
+        let userDiv = document.createElement("div");
+        userDiv.className = "userDiv";
+        userDiv.setAttribute("user", user.username);
+        userDiv.addEventListener("click", () => {
+          window.location.href = `http://localhost:2000/profile.php?userID=${user.id}`;
+        });
+
+        let userImage = document.createElement("div");
+        userImage.className = "userImage";
+        // console.log(user["profile_picture"].filepath);
+        userImage.style.backgroundImage = `url('http://localhost:7001/${user["profile_picture"].filepath}')`;
+
+        let userInfoDiv = document.createElement("div");
+        userInfoDiv.className = "userInfoDiv";
+        userInfoDiv.innerHTML = `
+        <div id="usernameDiv">
+              <p id="username">@${user.username}</p>
+              <div id="settingOrPlus"></div>
+          </div>`;
+
+        let followDiv = document.createElement("div");
+        followDiv.className = "followDiv";
+        followDiv.innerHTML = `
+        <div id="followInfo">
+              <div id="followersDiv">
+                  <p>Followers</p>
+                  <p id="followers">${user.followers.length}</p>
+              </div>
+              <div id="followingDiv">
+                  <p>Following</p>
+                  <p id="following">${user.following.length}</p>
+              </div>
+          </div>`;
+
+        userDiv.append(userImage, userInfoDiv, followDiv);
+        document.querySelector("#search-results").append(userDiv);
+
+        // if (!document.getElementById("show-more-btn")) {
+        //   let showMoreDiv = document.createElement("div");
+        //   showMoreDiv.className = "showMoreDiv";
+        //   showMoreDiv.innerHTML = `
+        //   <button id="show-more-btn">Show more</button>
+        //   `;
+        //   document.querySelector(".search-container").append(showMoreDiv);
+        //   document.getElementById("show-more-btn").addEventListener("click", () => {
+        //     if (document.querySelectorAll(".userDiv").length == 6) {
+        //     }
+        //   });
+        // }
+      });
+      myFunction(inputValue, "user");
+  }
+}
+

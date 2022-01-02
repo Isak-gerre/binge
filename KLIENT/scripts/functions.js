@@ -181,6 +181,7 @@ async function getSearchResults(searchType, query, page = 1) {
       `http://localhost:7001/GET/get-search-results.php?searchtype=${searchType}&query=${query}&page=${page}`
     );
     let data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.error(error);
@@ -279,7 +280,9 @@ async function getFriendsActivities(id) {
 
 function howManyDaysAgo(recievedDate) {
   let stringDate = recievedDate.toString();  
+  console.log(stringDate);
   let thisMagicMoment = moment(stringDate, "YYYYMMDD").fromNow();
+  console.log(thisMagicMoment);
   return thisMagicMoment;
 }
 
