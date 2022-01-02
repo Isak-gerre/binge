@@ -23,6 +23,21 @@ if ($method != "POST") {
     exit();
 }
 
+//Kollar om användaren redan finns både användarnamn och även email (denna request bör skickas vid varje keypress och inte endast vist submit)
+foreach ($db["users"] as $key) {
+    inspect($key["username"]);
+    if (strtolower($key["username"]) === strtolower($_POST["username"])) {
+        sendJSON(["message" => "Username is already in use"], 409);
+    } elseif(strtolower($key["email"]) === strtolower($_POST["email"])) {
+        //MAke sure to let user know!
+        sendJSON(["message" => "Email is already in use"], 409);
+    }
+    elseif(strlen($_POST["username"]) < 4){
+        sendJSON(["message" => "Username is too short, it needs to be atleast for characters"], 409);
+    }
+}
+
+
 //Använder en foreach för att göra alla inskickade värden till ett object med användarens alla nycklar
 foreach($_POST as $key => $value) {
     if ($key === "firstname" || $key === "lastname" || $key === "email" || $key === "username") {
@@ -37,19 +52,6 @@ foreach($_POST as $key => $value) {
     //Ändrar lösen till det hashade
     if ($key === "password") {
         $db["users"]["$nextID"][$key] = $hashedPassword;
-    }
-}
-
-
-//Kollar om användaren redan finns både användarnamn och även email (denna request bör skickas vid varje keypress och inte endast vist submit)
-foreach ($db["users"] as $key) {
-    if (strtolower($key["username"]) === strtolower($_POST["username"])) {
-        sendJSON(["message" => "Username is already in use"], 409);
-    } elseif(strtolower($key["email"]) === strtolower($_POST["email"])) {
-        sendJSON(["message" => "Email is already in use"], 409);
-    }
-    elseif(strlen($_POST["username"]) < 4){
-        sendJSON(["message" => "Username is too short, it needs to be atleast for characters"], 409);
     }
 }
 
