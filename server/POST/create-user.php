@@ -16,26 +16,40 @@ require_once "../access-control.php";
 require_once "../functions.php";
 
 $method = $_SERVER["REQUEST_METHOD"];
+$db = loadJSON("../DATABASE/user.json");
+
 
 if ($method != "POST") {
     exit();
 }
 
-//Kollar alla imputs och laddat hem databasen
+//Använder en foreach för att göra alla inskickade värden till ett object med användarens alla nycklar
+foreach($_POST as $key => $value) {
+    if ($key === "firstname" || $key === "lastname" || $key === "email" || $key === "username") {
+        if ($value == ""){
+            sendJSON(["message" => "All requiered fields have not been filled in"], 409);
+        }
+    }
+    //Ser till att confirm password inte kommer med
+    if ($key != "confirm_password" && $key != "profileImg" && $key != "fileToUpload") {
+        $db["users"]["$nextID"][$key] = $value;
+    }
+    //Ändrar lösen till det hashade
+    if ($key === "password") {
+        $db["users"]["$nextID"][$key] = $hashedPassword;
+    }
+}
 
-$rawUserData = file_get_contents("php://input");
-$userData = json_decode($rawUserData, true);
 
 //Kollar om användaren redan finns både användarnamn och även email (denna request bör skickas vid varje keypress och inte endast vist submit)
-
-$db = loadJSON("../DATABASE/user.json");
 foreach ($db["users"] as $key) {
-    if ($key["username"] === $_POST["username"]) {
+    if (strtolower($key["username"]) === strtolower($_POST["username"])) {
         sendJSON(["message" => "Username is already in use"], 409);
-        exit();
-    } else if ($key["email"] === $_POST["email"]) {
+    } elseif(strtolower($key["email"]) === strtolower($_POST["email"])) {
         sendJSON(["message" => "Email is already in use"], 409);
-        exit();
+    }
+    elseif(strlen($_POST["username"]) < 4){
+        sendJSON(["message" => "Username is too short, it needs to be atleast for characters"], 409);
     }
 }
 
@@ -84,23 +98,6 @@ if (isset($_FILES["fileToUpload"])) {
     } 
     else if ($_POST["fileToUpload"] === "profileImg8") {
         $_POST["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/AVATAR\/avatar_8.png";
-    }
-}
-
-//Använder en foreach för att göra alla inskickade värden till ett object med användarens alla nycklar
-foreach ($_POST as $key => $value) {
-    if ($key === "firstname" || $key === "lastname" || $key === "email" || $key === "username") {
-        if (empty($value)) {
-            sendJSON(["message" => "All requiered fields have not been filled in"], 409);
-        }
-    }
-    //Ser till att confirm password inte kommer med
-    if ($key != "confirm_password" && $key != "profileImg" && $key != "fileToUpload") {
-        $db["users"]["$nextID"][$key] = $value;
-    }
-    //Ändrar lösen till det hashade
-    if ($key === "password") {
-        $db["users"]["$nextID"][$key] = $hashedPassword;
     }
 }
 

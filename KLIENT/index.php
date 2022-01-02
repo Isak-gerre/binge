@@ -67,7 +67,7 @@ echo "</script>";
         </div>
         <div id="input">
             <label>Username *</label>
-            <input class="signInInput" type="text" name="username" placeholder="Username" required>
+            <input class="signInInput" type="text" id="username1" name="username" placeholder="Username" required>
         </div>
         <div id="input">
             <label>Password *</label>
