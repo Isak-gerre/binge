@@ -33,7 +33,6 @@ async function searchFunction(searchBy) {
       movieElement.setAttribute("name", movie.title);
       document.querySelector("#search-results").prepend(movieElement);
     });
-
     myFunction(inputValue);
   }
 
@@ -384,7 +383,7 @@ async function displayTrending(page = 1) {
   let searchResults = await getTrending(page);
   console.log(searchResults);
 
-  if(document.getElementById("show-more-btn")){
+  if (document.getElementById("show-more-btn")) {
     document.querySelector(".showMoreDiv").remove();
   }
 
@@ -407,7 +406,9 @@ async function displayTrending(page = 1) {
     document.querySelector(".search-results").append(showMoreDiv);
     document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
     document.getElementById("show-more-btn").addEventListener("click", () => {
-      document.getElementById("show-more-btn").innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
+      document.getElementById(
+        "show-more-btn"
+      ).innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
       if (document.querySelectorAll(".trending").length == 20) {
         console.log(true);
         page = 2;
@@ -415,7 +416,6 @@ async function displayTrending(page = 1) {
       console.log(page);
       page++;
       displayTrending(page);
-      
     });
   }
 }
@@ -424,7 +424,7 @@ async function getAndShowMoviesByActors(inputValue = "", page = 1) {
   inputValue = document.getElementById("searchField").value;
   searchType = "cast";
 
-  if(document.getElementById("show-more-btn-actors")){
+  if (document.getElementById("show-more-btn-actors")) {
     document.querySelector(".showMoreDiv").remove();
   }
 
@@ -472,7 +472,9 @@ async function getAndShowMoviesByActors(inputValue = "", page = 1) {
       document.querySelector(".search-results").append(showMoreDiv);
 
       document.getElementById("show-more-btn-actors").addEventListener("click", () => {
-        document.getElementById("show-more-btn-actors").innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
+        document.getElementById(
+          "show-more-btn-actors"
+        ).innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
         if (document.querySelectorAll(".movieBanner").length >= 20) {
           page += 1;
           getAndShowMoviesByActors(inputValue, page);

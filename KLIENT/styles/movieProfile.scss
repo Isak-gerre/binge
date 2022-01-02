@@ -7,6 +7,7 @@
   flex-direction: column;
   position: relative;
   z-index: 100;
+  width: 100vw;
 }
 
 .drop1 {
@@ -91,7 +92,6 @@
       // flex-basis: 90px;
       position: relative;
 
-
       #rate {
         @include flex(row, flex-start, center);
         // margin: 0px 10px;
@@ -146,7 +146,7 @@
       padding-bottom: $betweenPadding;
 
       .labelHolder {
-        @include flex(row, space-between,center);
+        @include flex(row, space-between, center);
       }
 
       .labelComment {
@@ -154,7 +154,7 @@
         @include smallTitleFont();
       }
 
-      .labelDate{
+      .labelDate {
         color: $bodyFont;
         @include xSmallFont();
       }
@@ -168,7 +168,8 @@
       }
     }
 
-    .buttonHolder { // OBS ATT DELET/SUBMIT NU LIGEGR I EN WRAPPER FÖR ATT DE SKA VARA FLEX ROW
+    .buttonHolder {
+      // OBS ATT DELET/SUBMIT NU LIGEGR I EN WRAPPER FÖR ATT DE SKA VARA FLEX ROW
       @include flex(row, flex-end, center);
       display: none;
     }
@@ -183,7 +184,6 @@
       cursor: pointer;
       animation: fadeIn 1s;
       box-sizing: content-box;
-
     }
 
     .submit {
@@ -194,7 +194,6 @@
     .delete {
       background-color: red;
     }
-
   }
 }
 
@@ -365,7 +364,7 @@
     }
   }
 
-  .movie-p-message{
+  .movie-p-message {
     @include bodyFont();
     font-size: 12px;
   }
@@ -380,7 +379,7 @@
       padding-bottom: $betweenPadding;
     }
 
-    .allProviders{
+    .allProviders {
       display: grid;
       gap: $betweenPadding;
       grid-template-columns: 1fr 1fr;
@@ -388,10 +387,11 @@
 
     p {
       @include bodyFont();
-        font-size: 12px;
+      font-size: 12px;
     }
 
-    .your-streaming-services-grid, .other-streaming-services-grid {
+    .your-streaming-services-grid,
+    .other-streaming-services-grid {
       @include flex(row, flex-start, center);
       gap: $betweenPadding;
       margin-bottom: $betweenPadding;
@@ -404,15 +404,13 @@
         // margin-right: $betweenPadding;
         // filter: grayscale(100%) blur(1px);
         // box-shadow: 5px 5px 5px #414141 inset;
-
       }
-      
+
       p {
         color: $lightFont;
         @include bodyFont();
         font-size: 12px;
       }
-
     }
   }
 
@@ -480,8 +478,7 @@
     }
   }
 
-  @import "feed.scss"; 
-
+  @import "feed.scss";
 
   // SIMILAR-wrapper
   .movie-profile-similarMovies {

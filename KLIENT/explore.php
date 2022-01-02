@@ -55,6 +55,7 @@ require_once "head.php";
 <script src="Lib/moment/moment.min.js"></script>
 
 <script src="scripts/functions.js"></script>
+<script src="scripts/stateManager.js"></script>
 <script src="scripts/makeMovieProfile.js"></script>
 
 

@@ -33,13 +33,12 @@ async function makeMovieBanner(movieID, page) {
       let allMovieBanner = document.querySelectorAll(".movieBanner");
       allMovieBanner.forEach((movBan) => {
         movBan.style.filter = "blur(8px)";
-      })
+      });
 
       touchstart(e);
       touchend(e);
 
       function touchstart(e) {
-        
         e.target.style.filter = "blur(0px)";
         e.target.style.transform = "scale(1.1 , 1.1)";
         onlongtouch(e);
@@ -62,11 +61,11 @@ async function makeMovieBanner(movieID, page) {
 
           allMovieBanner.forEach((movBan) => {
             movBan.style.filter = "blur(0px)";
-          })
-          
+          });
+
           e.target.style.transform = "scale(1 , 1)";
           e.target.style.zIndex = "0";
-        })
+        });
 
         // Position på overlay
         let currentTopPosition = window.pageYOffset.toFixed(0);
@@ -82,34 +81,33 @@ async function makeMovieBanner(movieID, page) {
         markedAsWatched.textContent = "Marked as watched";
         markedAsWatched.className = "button";
 
-        markedAsWatched.addEventListener("click", () =>{
+        markedAsWatched.addEventListener("click", () => {
           // Forsättning
           // det ska göras en patch på denna aktiviteten
           // Ändra type till watched samt datum till nytt
-          
-        })
+        });
 
         let removeFromList = document.createElement("button");
         removeFromList.textContent = "Remove from list";
         removeFromList.className = "button";
 
-        removeFromList.addEventListener("click", () =>{
+        removeFromList.addEventListener("click", () => {
           // Denna knappen ska radera den från aktiviteten och griden
-        })
+        });
 
         // En delay på när knapparna skapas.
         options.append(markedAsWatched, removeFromList);
         setTimeout(() => {
           e.target.append(options);
         }, 1000);
-      };
+      }
     });
   }
 
   //send to movieProfile
   movieBanner.addEventListener("click", (e) => {
     e.stopPropagation();
-    window.location.href = `explore.php?movieID=${movieID}`;
+    goToPageAndAddToState(`explore.php?movieID=${movieID}`);
   });
 
   return movieBanner;
@@ -125,7 +123,7 @@ function makePlaceholderMovieBanner() {
   return movieBanner;
 }
 
-function makeMovieBannerFromMovie(movie, page) {
+function makeMovieBannerFromMovie(movie) {
   //create elements
   let movieBanner = document.createElement("div");
 
@@ -137,7 +135,10 @@ function makeMovieBannerFromMovie(movie, page) {
 
   // send to movieProfile
   movieBanner.addEventListener("click", () => {
-    window.location.href = `explore.php?movieID=${movie.id}`;
+    let input = document.getElementById("searchField").value;
+    let searchBy = document.querySelector(".active").textContent;
+    let search = makeSearchState(input, searchBy);
+    goToPageAndAddToState(`explore.php?movieID=${movie.id}`, search);
   });
 
   //return it

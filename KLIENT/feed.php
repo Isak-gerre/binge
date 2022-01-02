@@ -19,6 +19,7 @@ require_once "head.php";
 
 <script src="index.umd.min.js"></script>
 <script src="scripts/functions.js"></script>
+<script src="scripts/stateManager.js"></script>
 <script src="scripts/makeMovieBanners.js"></script>
 <script src="scripts/search.js"></script>
 <script src="scripts/makeNavigation.js"></script>

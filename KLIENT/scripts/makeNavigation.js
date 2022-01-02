@@ -22,9 +22,10 @@ function makeUpperNav() {
   document.body.prepend(upperNav);
   document.querySelector(".back").addEventListener("click", () => {
     document.body.style.overflow = "visible";
+    // goToPageAndAddToState(window.location.href);
+    applyState();
   });
   document.querySelector(".hamburger").addEventListener("click", () => {
-
     if (document.querySelector(".hamburger-menu") == null) {
       document.body.style.overflow = "hidden";
       makeHamburgerMenu();
@@ -91,7 +92,7 @@ function makeLowerNav() {
         console.log(document.querySelectorAll(".lowerNav > div"));
       });
       document.querySelector(".navRight").style.borderBottom = "3px solid white";
-      
+
       // document.querySelector("#overlay").style.display = "none";
       makeSearchOverlay();
       document.querySelector(".back").setAttribute("src", "../icons/exit 2.svg");
@@ -175,10 +176,10 @@ async function makeHamburgerMenu() {
   // Create GENRE-links-and-container
   let genresContainer = document.createElement("div");
   genresContainer.className = "genres-container";
-  
+
   genres.genres.forEach((genre) => {
     genresContainer.append(createGenreLinks(genre.name));
-  })
+  });
 
   // Create ABOUT-links-and-container
   let aboutContainer = document.createElement("div");
@@ -188,7 +189,7 @@ async function makeHamburgerMenu() {
   logout.addEventListener("click", () => {
     sessionStorage.clear();
     window.location.replace("http://localhost:2000");
-  })
+  });
 
   let tmdb = document.createElement("div");
   tmdb.className = "tmdb";
@@ -248,7 +249,7 @@ function hamburgerText(text) {
   let url = window.location.href;
 
   // Makrera den sidan som användaren är på
-  if(url.includes(page)) {
+  if (url.includes(page)) {
     hamburgerText.classList.add("markedPage");
     // hamburgerText.style.fontWeight = "bold"; // vf funkar ej detta?
   } else {
@@ -256,7 +257,7 @@ function hamburgerText(text) {
   }
 
   hamburgerText.addEventListener("click", () => {
-    if(page == "home"){
+    if (page == "home") {
       page = "feed";
     }
 
@@ -275,8 +276,7 @@ function createGenreLinks(genre) {
     document.body.style.overflow = "visible";
 
     console.log(document.querySelector(".search-container"));
-    if(document.querySelector(".search-container")){
-      
+    if (document.querySelector(".search-container")) {
       document.querySelector(".search-container").remove();
       makeSearchOverlay(genre);
     } else {
@@ -294,7 +294,6 @@ function createGenreLinks(genre) {
       document.querySelector(".hamburger-menu").remove();
       document.querySelector(".hamburger-background").remove();
     }, 400);
-
   });
 
   return genreLink;

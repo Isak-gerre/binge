@@ -22,11 +22,22 @@ function checkSessionStorageSize() {
   return remSpace;
 }
 
-function makeState(movieID, page, scrollHeight = 0) {
+function makeState(page, scrollHeight = 0, search = null) {
   return {
-    movie: movieID,
     page: page,
     scrollHeight: scrollHeight,
+    search: search,
+  };
+}
+function makeSearchState(searchword, searchBy) {
+  let scrollDistance = document.querySelector("#search-results").scrollTop;
+  console.log(scrollDistance);
+  console.log(searchword);
+  console.log(searchBy);
+  return {
+    search_word: searchword,
+    search_by: searchBy,
+    scroll_distance: scrollDistance,
   };
 }
 
@@ -34,7 +45,7 @@ function saveToSession(object, setter) {
   // if (typeof object != "object") {
   //   alert("You can only save objects to sessionStorage");
   // } else {
-    sessionStorage.setItem(setter, JSON.stringify(object));
+  sessionStorage.setItem(setter, JSON.stringify(object));
   // }
 }
 
@@ -43,7 +54,7 @@ function getFromSession(getter) {
 }
 
 function getLoggedInUserID() {
-  if (getFromSession("session") != undefined) { 
+  if (getFromSession("session") != undefined) {
     if (userVarification()) {
       let userID = getFromSession("session").session.userID;
       console.log(userID);
@@ -67,14 +78,12 @@ async function userVarification() {
     let data = await response.json();
     if (data.ok) {
       return true;
-    }
-    else {
-      return false
+    } else {
+      return false;
     }
   } catch (error) {
     console.error(error);
   }
-
 }
 
 function removeLatestState() {
@@ -83,15 +92,15 @@ function removeLatestState() {
   saveToSession(allStates, "state");
 }
 
-function addToState(movieID, page, scrollHeight = 0) {
+function addToState(page, scrollHeight = 0, search) {
   if ("state" in sessionStorage) {
     let allStates = getFromSession("state");
-    let newState = makeState(movieID, page, (scrollHeight = 0));
+    let newState = makeState(page, scrollHeight, search);
     allStates.unshift(newState);
     saveToSession(allStates, "state");
   } else {
     let allStates = [];
-    let newState = makeState(movieID, page, (scrollHeight = 0));
+    let newState = makeState(page, scrollHeight, search);
     allStates.unshift(newState);
     saveToSession(allStates, "state");
   }
@@ -278,7 +287,7 @@ async function getFriendsActivities(id) {
 }
 
 function howManyDaysAgo(recievedDate) {
-  let stringDate = recievedDate.toString();  
+  let stringDate = recievedDate.toString();
   let thisMagicMoment = moment(stringDate, "YYYYMMDD").fromNow();
   return thisMagicMoment;
 }
@@ -323,35 +332,35 @@ function createActivities(array, page, appendIn = "wrapper") {
     }
 
     if (page == "myProfile") {
-      let deleteActivityDropdown = document.createElement('img');
-      deleteActivityDropdown.setAttribute('src', '../icons/expand_more_white.svg');
+      let deleteActivityDropdown = document.createElement("img");
+      deleteActivityDropdown.setAttribute("src", "../icons/expand_more_white.svg");
 
-      let dropDown = document.createElement('div');
-      dropDown.id = 'dropDown';
-      let deleteActivity = document.createElement('p');
-      deleteActivity.textContent = 'Delete activity';
+      let dropDown = document.createElement("div");
+      dropDown.id = "dropDown";
+      let deleteActivity = document.createElement("p");
+      deleteActivity.textContent = "Delete activity";
 
-      deleteActivityDropdown.addEventListener('click', (event) => {
+      deleteActivityDropdown.addEventListener("click", (event) => {
         event.stopPropagation();
         dropDown.append(deleteActivity);
-        
-        body.addEventListener('click', (event) => {
+
+        body.addEventListener("click", (event) => {
           event.stopPropagation();
           dropDown.remove();
         });
-        
-        deleteActivity.addEventListener('click', function (event) {
+
+        deleteActivity.addEventListener("click", function (event) {
           event.stopPropagation();
           deleteteActivity(obj.id);
           dropDown.remove();
-          
+
           container.style.left = "100vw";
-          setTimeout( () => {
+          setTimeout(() => {
             container.remove();
           }, 1000);
         });
         userContainer.append(dropDown);
-      })
+      });
 
       userContainer.append(deleteActivityDropdown);
     }
@@ -460,7 +469,7 @@ function createActivities(array, page, appendIn = "wrapper") {
               let expandHeight = comment.scrollHeight;
               comment.style.height = `${expandHeight}px`;
             } else {
-              comment.removeAttribute('style');
+              comment.removeAttribute("style");
               expandComment.setAttribute("src", "../icons/expand_more.svg");
               comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
               // comment.style.height = '200px';
@@ -525,17 +534,14 @@ async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
     movieID: movieID,
     type: type,
     comment: comment,
-    rate: rate
-  }
+    rate: rate,
+  };
 
-
-  let rqst = new Request("http://localhost:7001/POST/create-activity.php",
-    {
-      method: "POST",
-      body: JSON.stringify(msg),
-      headers: { "Content-type": "application/json" },
-    }
-  );
+  let rqst = new Request("http://localhost:7001/POST/create-activity.php", {
+    method: "POST",
+    body: JSON.stringify(msg),
+    headers: { "Content-type": "application/json" },
+  });
 
   try {
     let response = await fetch(rqst);
@@ -547,13 +553,11 @@ async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
 }
 
 async function patchActivity(activity) {
-  let rqst = new Request("http://localhost:7001/PATCH/update-activity.php",
-    {
-      method: "PATCH",
-      body: JSON.stringify({ activity: activity }),
-      headers: { "Content-type": "application/json" },
-    }
-  );
+  let rqst = new Request("http://localhost:7001/PATCH/update-activity.php", {
+    method: "PATCH",
+    body: JSON.stringify({ activity: activity }),
+    headers: { "Content-type": "application/json" },
+  });
 
   try {
     let response = await fetch(rqst);
@@ -565,13 +569,11 @@ async function patchActivity(activity) {
 }
 
 async function deleteteActivity(activityID) {
-  let rqst = new Request("http://localhost:7001/DELETE/delete-activity.php",
-    {
-      method: "DELETE",
-      body: JSON.stringify({ id: activityID }),
-      headers: { "Content-type": "application/json" },
-    }
-  );
+  let rqst = new Request("http://localhost:7001/DELETE/delete-activity.php", {
+    method: "DELETE",
+    body: JSON.stringify({ id: activityID }),
+    headers: { "Content-type": "application/json" },
+  });
 
   try {
     let response = await fetch(rqst);

@@ -653,6 +653,7 @@ body {
           flex-direction: column;
   position: relative;
   z-index: 100;
+  width: 100vw;
 }
 
 .drop1 {
@@ -1211,7 +1212,8 @@ body {
   font-size: 12px;
 }
 
-.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid {
+.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid,
+.movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1231,13 +1233,15 @@ body {
       flex-wrap: wrap;
 }
 
-.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid img, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid img {
+.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid img,
+.movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid img {
   border-radius: 50%;
   height: 10vw;
   width: 10vw;
 }
 
-.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid p, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid p {
+.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid p,
+.movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid p {
   color: #eeeeee;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
