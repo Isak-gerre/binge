@@ -164,7 +164,8 @@
                 3,
                 4,
                 5,
-                7
+                7,
+                10
             ],
             "following": [
                 1,
@@ -194,8 +195,7 @@
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_4.png"
             },
             "followers": [
-                8,
-                10
+                8
             ],
             "following": [
                 8
@@ -221,8 +221,7 @@
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_6.png"
             },
             "followers": [
-                7,
-                10
+                7
             ],
             "following": [
                 7
@@ -268,28 +267,55 @@
             },
             "followers": [],
             "following": [
-                7,
-                8
+                6
             ],
             "sessionId": "$2y$10$ovQLNrITq0LJ0LOau0S5auIgwZ8dAwYk5JXalFW\/MG3hVo0O5Vhti",
             "id": 10
         },
-        "11": {
-            "firstname": "Lina",
-            "lastname": "Andersson",
-            "username": "linkan",
-            "password": "$2y$10$1alySK1po6XNPrepbuJ0SOfg6SY99ZeZVlyQooOm4AQlSjOcdrPTe",
-            "email": "lina@mau.se",
-            "birthday": "1999-06-16",
+        "12": {
+            "firstname": "Matilda",
+            "lastname": "Einarsson",
+            "username": "matildaein",
+            "password": "$2y$10$r9zPsh5MJWSaa4LmyfIt0Oafcvct9uh3d4VZvRKjyW\/R6OUm1yUfO",
+            "email": "matildaeinar@gmail.com",
+            "birthday": "1997-05-20",
             "region": "SE",
-            "active_streaming_services": [],
+            "active_streaming_services": [
+                "Netflix",
+                "Disney Plus",
+                "HBO Max",
+                "SVT",
+                "Viaplay"
+            ],
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_1.png"
             },
             "followers": [],
             "following": [],
-            "sessionId": "$2y$10$XfFe.z1MToLpEY35wLrVtuLhGNuiKJYRfE4NXMxuCww14izevcK0m",
-            "id": 11
+            "sessionId": "$2y$10$Xsv.MY8iUQJcGBFihH8fJuWr1JTg5NGV1Kogr7Be50fl50XR0y4eq",
+            "id": 12
+        },
+        "13": {
+            "firstname": "Elsa",
+            "lastname": "Lindh",
+            "username": "elsipelsi",
+            "password": "$2y$10$UyA6SNYZB7rB3hu2oeaoVuVZx8fnIZ90hT.5dj7taVOf4hpwUwe2y",
+            "email": "elsalindh",
+            "birthday": "",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "Amazon Prime Video",
+                "Disney Plus",
+                "Google Play Movies"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_7.png"
+            },
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$XVN9n2BKQFXmm3UmthNNfeT6fo5a7jUZlYmnYq2Ge1z6l.d6uxq9O",
+            "id": 13
         }
     }
 }

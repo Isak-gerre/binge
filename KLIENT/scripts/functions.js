@@ -97,9 +97,16 @@ function addToState(movieID, page, scrollHeight = 0) {
   }
 }
 
-function addToMovies(movie) {
+function addToMovies(movie, update = false) {
   let isSaved = isMovieSaved(movie.id);
   if (isSaved) {
+    if (update) {
+      let allMovies = getFromSession("movies");
+      let index = allMovies.findIndex((savedMovie) => savedMovie.id == movie.id);
+      allMovies.splice(index, 1);
+      allMovies.unshift(movie);
+      saveToSession(allMovies, "movies");
+    }
     return true;
   }
   if ("movies" in sessionStorage) {
@@ -210,9 +217,9 @@ async function getMoviesByGenre(genre) {
   }
 }
 
-async function getTrending() {
+async function getTrending(page) {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-trending.php`);
+    let response = await fetch(`http://localhost:7001/GET/get-trending.php?page=${page}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -236,8 +243,15 @@ async function getUserInfo(userId) {
   const request = new Request(`http://localhost:7001/GET/get-users.php?ids=${userId}`);
   const response = await fetch(request);
   const userInfo = await response.json();
-
   return userInfo[0];
+}
+
+async function getUsers() {
+  const request = new Request(`http://localhost:7001/GET/get-users.php`);
+  const response = await fetch(request);
+  const users = await response.json();
+
+  return users;
 }
 
 async function getFollowing(id) {
@@ -264,32 +278,9 @@ async function getFriendsActivities(id) {
 }
 
 function howManyDaysAgo(recievedDate) {
-  const oneWeek = 24 * 60 * 60 * 1000 * 7; // hours*minutes*seconds*milliseconds
-  const firstDate = new Date(
-    `${recievedDate[0]}${recievedDate[1]}${recievedDate[2]}${recievedDate[3]}, ${recievedDate[4]}${recievedDate[5]}, ${recievedDate[6]}${recievedDate[7]}`
-  );
-  const firstDateMS = firstDate.getTime();
-
-  let today = new Date();
-  let year = today.getFullYear();
-  let month = today.getMonth() + 1;
-  let day = today.getDate();
-  let todayMS = today.getTime();
-
-  let currentDate = `${year}${month}${day}`;
-  let daysAgo = currentDate - recievedDate;
-
-  if (daysAgo === 0) {
-    return "today";
-  }
-
-  if (daysAgo < 7 && daysAgo !== 0) {
-    return `${daysAgo} days ago`;
-  }
-
-  if (daysAgo > 7) {
-    return Math.round(Math.abs((firstDateMS - todayMS) / oneWeek)) + " weeks ago";
-  }
+  let stringDate = recievedDate.toString();  
+  let thisMagicMoment = moment(stringDate, "YYYYMMDD").fromNow();
+  return thisMagicMoment;
 }
 
 // Skapat aktivteter till feed och profile
@@ -329,6 +320,40 @@ function createActivities(array, page, appendIn = "wrapper") {
       });
 
       userContainer.append(userPic, username);
+    }
+
+    if (page == "myProfile") {
+      let deleteActivityDropdown = document.createElement('img');
+      deleteActivityDropdown.setAttribute('src', '../icons/expand_more_white.svg');
+
+      let dropDown = document.createElement('div');
+      dropDown.id = 'dropDown';
+      let deleteActivity = document.createElement('p');
+      deleteActivity.textContent = 'Delete activity';
+
+      deleteActivityDropdown.addEventListener('click', (event) => {
+        event.stopPropagation();
+        dropDown.append(deleteActivity);
+        
+        body.addEventListener('click', (event) => {
+          event.stopPropagation();
+          dropDown.remove();
+        });
+        
+        deleteActivity.addEventListener('click', function (event) {
+          event.stopPropagation();
+          deleteteActivity(obj.id);
+          dropDown.remove();
+          
+          container.style.left = "100vw";
+          setTimeout( () => {
+            container.remove();
+          }, 1000);
+        });
+        userContainer.append(dropDown);
+      })
+
+      userContainer.append(deleteActivityDropdown);
     }
 
     //datum
@@ -414,7 +439,6 @@ function createActivities(array, page, appendIn = "wrapper") {
 
       //kommentar om det finns
       if (obj.comment !== "") {
-
         let comment = document.createElement("div");
         // comment.style.height = '200px';
         comment.classList.add("comment");
@@ -426,11 +450,10 @@ function createActivities(array, page, appendIn = "wrapper") {
           expandComment.setAttribute("src", "../icons/expand_more.svg");
           expandComment.id = "expandComment";
 
+          expandComment.addEventListener("click", () => {
+            activityContainer.classList.toggle("open");
 
-          expandComment.addEventListener('click', () => {
-            activityContainer.classList.toggle('open');
-
-            if (activityContainer.classList.contains('open')) {
+            if (activityContainer.classList.contains("open")) {
               // console.log(activityContainer.scrollHeight);
               expandComment.setAttribute("src", "../icons/expand_less.svg");
               comment.textContent = `" ${obj.comment} " `;
@@ -477,12 +500,11 @@ async function getSimilar(movieID) {
 
 async function getAdditionalInfo(movieID) {
   try {
-    console.log(movieID)
+    console.log(movieID);
     let response = await fetch(`http://localhost:7001/GET/get-additional-movieInfo.php?movieID=${movieID}`);
-    console.log(response)
+    console.log(response);
     let data = await response.json();
     return data;
-
   } catch (error) {
     console.error(error);
   }
@@ -559,6 +581,3 @@ async function deleteteActivity(activityID) {
     console.log(err);
   }
 }
-
-
-

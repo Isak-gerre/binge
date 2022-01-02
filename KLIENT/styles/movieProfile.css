@@ -79,11 +79,15 @@
       -ms-flex-align: end;
           align-items: flex-end;
   background-color: #0f0b2e;
-  min-height: 0px;
+  min-height: 300px;
   display: none;
   -webkit-animation: smoothWidth 1s;
           animation: smoothWidth 1s;
   width: 80%;
+  border-radius: 5px;
+  -webkit-box-shadow: 3px 3px 3px #0f0b2e;
+          box-shadow: 3px 3px 3px #0f0b2e;
+  padding: 10px;
 }
 
 .overlay-fade .message-wrapper div {
@@ -98,50 +102,36 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   display: none;
-  height: 50px;
-  padding: 5px;
   -webkit-animation: fadeIn 1s;
           animation: fadeIn 1s;
 }
 
 .overlay-fade .message-wrapper .top img {
-  width: 3vh;
-  height: 3vh;
-  padding: 5px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
-  margin: 0px 5px;
 }
 
 .overlay-fade .message-wrapper .top h1 {
   height: 100%;
   color: "Mulish", sans-serif;
-  padding: 5px;
   font-family: "Archivo", sans-serif;
   font-size: 18px;
   font-weight: bold;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
 }
 
 .overlay-fade .message-wrapper .middle {
   display: none;
   width: 100%;
-  padding: 5px;
   -webkit-animation: fadeIn 1s;
           animation: fadeIn 1s;
-  -ms-flex-preferred-size: 90px;
-      flex-basis: 90px;
   position: relative;
 }
 
@@ -159,7 +149,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0px 10px;
   unicode-bidi: bidi-override;
   direction: rtl;
 }
@@ -171,9 +160,9 @@
 .overlay-fade .message-wrapper .middle #rate:not(:checked) > label {
   cursor: pointer;
   float: right;
-  width: 30px;
   color: rgba(0, 135, 211, 0.4);
   font-size: 30px;
+  padding-right: 5px;
 }
 
 .overlay-fade .message-wrapper .middle #rate:not(:checked) > label:hover,
@@ -215,48 +204,89 @@
           align-items: flex-start;
   display: none;
   position: relative;
-  padding: 5px;
   -webkit-animation: fadeIn 1s;
           animation: fadeIn 1s;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  padding-bottom: 0px;
+  padding-bottom: 10px;
 }
 
-.overlay-fade .message-wrapper .bottom label {
+.overlay-fade .message-wrapper .bottom .labelHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.overlay-fade .message-wrapper .bottom .labelComment {
   color: "Mulish", sans-serif;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
   padding-bottom: 5px;
-  margin: 0px 10px;
+}
+
+.overlay-fade .message-wrapper .bottom .labelDate {
+  color: "Mulish", sans-serif;
+  font-family: "Mulish", sans-serif;
+  font-size: 12px;
 }
 
 .overlay-fade .message-wrapper .bottom #text-area {
-  width: calc(100% - 20px);
+  width: 100%;
   border: none;
-  padding: 10px;
   color: black;
-  margin: 10px;
   margin-bottom: 0px;
+  padding: 5px;
 }
 
-.overlay-fade .message-wrapper .submit {
+.overlay-fade .message-wrapper .buttonHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   display: none;
+}
+
+.overlay-fade .message-wrapper .button {
   border: none;
-  background: linear-gradient(40deg, #ef9d1a, #fd047c);
   border-radius: 10px;
-  padding: 3px 10px;
-  height: 25px;
-  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
-          filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
-  margin: 10px;
-  margin-right: 15px;
+  padding: 5px;
+  height: 20px;
+  margin: 10px 10px 10px 0;
   cursor: pointer;
   -webkit-animation: fadeIn 1s;
           animation: fadeIn 1s;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
+}
+
+.overlay-fade .message-wrapper .submit {
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+          filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+}
+
+.overlay-fade .message-wrapper .delete {
+  background-color: red;
 }
 
 @-webkit-keyframes fadeOut {
@@ -455,10 +485,12 @@
 
 .movie-profile-info .movie-profile-info-text #movie-profile-buttons .button {
   border-radius: 10px;
-  border: 0;
-  padding: 3px;
-  height: 25px;
+  border: none;
+  padding: 5px;
+  height: 20px;
   background: #20185b;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   -webkit-filter: none;
           filter: none;
   display: -webkit-box;
@@ -502,6 +534,13 @@
   text-align: left;
 }
 
+.movie-profile-middle .movie-p-message {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  font-size: 12px;
+}
+
 .movie-profile-middle .movie-profile-streamingservices {
   padding-bottom: 25px;
 }
@@ -517,8 +556,16 @@
 .movie-profile-middle .movie-profile-streamingservices .allProviders {
   display: -ms-grid;
   display: grid;
+  gap: 10px;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
+}
+
+.movie-profile-middle .movie-profile-streamingservices p {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  font-size: 12px;
 }
 
 .movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid {
@@ -537,26 +584,22 @@
           align-items: center;
   gap: 10px;
   margin-bottom: 10px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid img, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid img {
   border-radius: 50%;
   height: 10vw;
   width: 10vw;
-  margin-right: 10px;
-}
-
-.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid .active-streming-service, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid .active-streming-service {
-  -webkit-box-shadow: 0px 0px 3px rgba(239, 157, 26, 0.58);
-          box-shadow: 0px 0px 3px rgba(239, 157, 26, 0.58);
-}
-
-.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid img:last-child, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid img:last-child {
-  margin-right: 0px;
 }
 
 .movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid p, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid p {
   color: #eeeeee;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  font-size: 12px;
 }
 
 .movie-profile-middle .movie-profile-credits {
@@ -680,7 +723,67 @@
   padding-bottom: 10px;
 }
 
+.movie-profile-middle #wrapper {
+  width: 100%;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+.movie-profile-middle .msgDiv {
+  text-align: center;
+  padding: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.movie-profile-middle .msgQuo {
+  font-style: italic;
+  padding: 10px;
+}
+
+.movie-profile-middle .msgBtn {
+  padding: 10px;
+  border-radius: 10px;
+  border: 0;
+  padding: 3px;
+  height: 25px;
+  -webkit-filter: none;
+          filter: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #eeeeee;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+          filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+  -webkit-box-shadow: 3px 3px 3px #0f0b2e;
+          box-shadow: 3px 3px 3px #0f0b2e;
+}
+
 .movie-profile-middle .container {
+  position: relative;
+  left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -692,9 +795,12 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding-top: 10px;
+  -webkit-transition: left 1s;
+  transition: left 1s;
 }
 
 .movie-profile-middle .userContainer {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -747,6 +853,35 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.movie-profile-middle .userContainer #dropDown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 25px;
+  height: 30px;
+  width: 150px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.movie-profile-middle .userContainer #dropDown p {
+  font-family: "Archivo", sans-serif;
+  font-size: 15px;
+  color: black;
 }
 
 .movie-profile-middle .activityContainer {

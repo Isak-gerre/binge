@@ -57,17 +57,20 @@ const wrapper = document.getElementById('profileWrapper');
 watchedBtn.click();
 createProfilePage();
 
-
+// Funktion som skapar hela sidan
 async function createProfilePage() {
-    watchedBtn.classList.add('selected');
+    // Hämtar info om inloggad användare
     const loggedInUserInfo = await getUserInfo(loggedInUserId);
     
+    // Hämtar id från url, ger 'null' om det inte finns
     let urlUserId = getParamFromUrl('userID');
 
+    // Kontrollerar om id i url är samma som inloggad
     if (loggedInUserId == urlUserId) {
         window.location.href = "profile.php";
     }
 
+    // Om id i url finns ska profilsida för andra laddas
     if (urlUserId !== null) {
         let userInfo = await getUserInfo(urlUserId);
 
@@ -88,8 +91,13 @@ async function createProfilePage() {
             }
         });
         
-        profileNav(watchedActivities, watchlist, urlUserId);
-        createActivities(watchedActivities, 'profile', "profileWrapper");
+        profileNav(watchedActivities, watchlist, urlUserId, userInfo.firstname);
+
+        if (watchedActivities.length < 1) {
+            noActivitiesInfo('watched', userInfo.firstname);
+        } else {
+            createActivities(watchedActivities, 'profile', "profileWrapper");
+        }
         
 
     } else {
@@ -109,19 +117,33 @@ async function createProfilePage() {
         });
 
         profileNav(watchedActivities, watchlist, loggedInUserId);
-        createActivities(watchedActivities, 'profile', "profileWrapper");
+        
+        if (watchedActivities.length < 1) {
+            noActivitiesInfo('watched');
+        } else {
+            createActivities(watchedActivities, 'myProfile', "profileWrapper");
+        }
     }
 
 }
 
-function profileNav(watchedActivities, watchlist, userId) {
+function profileNav(watchedActivities, watchlist, userId, name = null) {
+    watchedBtn.classList.add('selected');
     watchedBtn.addEventListener('click', () => {
         if (watchedBtn.className !== 'selected') {
             wrapper.innerHTML = "";
             document.querySelector('.selected').classList.remove('selected');
             watchedBtn.classList.add('selected');
-        createActivities(watchedActivities, "profile", "profileWrapper");
 
+            if (watchedActivities.length < 1) {
+                noActivitiesInfo('watched', name);
+            } else {
+                if (userId == loggedInUserId) {
+                    createActivities(watchedActivities, "myProfile", "profileWrapper");
+                } else {
+                    createActivities(watchedActivities, "profile", "profileWrapper");
+                }
+            }
         }
     });
 
@@ -130,7 +152,12 @@ function profileNav(watchedActivities, watchlist, userId) {
             wrapper.innerHTML = "";
             document.querySelector('.selected').classList.remove('selected');
             watchlistBtn.classList.add('selected');
-            createWatchlist(watchlist);
+
+            if (watchlist.length < 1) {
+                noActivitiesInfo('watchlist', name);
+            } else {
+                createWatchlist(watchlist);
+            }
         }
     });
 
@@ -139,7 +166,12 @@ function profileNav(watchedActivities, watchlist, userId) {
             wrapper.innerHTML = "";
             document.querySelector('.selected').classList.remove('selected');
             statsBtn.classList.add('selected');
-            renderChart(userId);
+
+            if (watchedActivities.length < 1 && watchlist.length < 1) {
+                noActivitiesInfo('stats', name);
+            } else {
+                renderChart(userId);
+            }
         }
     });
 }
@@ -148,7 +180,14 @@ async function createProfileHeader(user, isFollowing, settings = null) {
     // console.log(user);
 
     let username = user.username.toLowerCase();
-    uNameCont.textContent = "@" + username;
+    if (username.length > 7) {
+        console.log('bigger');
+        uNameCont.textContent = `@${user.username.substring(0, 7)}...`;
+    } else {
+        console.log('smaller');
+        uNameCont.textContent = "@" + user.username;
+    }
+    // uNameCont.textContent = "@" + username;
     let profilePic = document.createElement('div');
 
     // vi behöver ett url här va
@@ -179,7 +218,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
         profileButtonIcon.src = '../icons/settings_black.svg';
     }
 
-    profileButtonIcon.addEventListener('click', async function () {
+    settingOrPlus.addEventListener('click', async function () {
         let userId = user.id;
 
         if (profileButtonIcon.id == 'unfollow') {
@@ -271,6 +310,7 @@ async function followPatch(mainUserID, friendsUserID) {
     const data = await response;
 }
 
+// Öppnar en sida som visar alla followers/following
 async function showUsers(userId, type) {
     let userInfo = await getUserInfo(userId);
 
@@ -298,21 +338,35 @@ async function showUsers(userId, type) {
     
     usersInfo.forEach(user => {
         let userDiv = document.createElement('div');
+        userDiv.id = "userDiv";
         let username = document.createElement('p');
-        username.textContent = "@" + user.username;
+        if (username.length > 10) {
+            console.log('bigger');
+            username.textContent = `@${user.username.substring(0, 10)}...`;
+        } else {
+            console.log('smaller');
+            username.textContent = "@" + user.username;
+        }
 
+        
+        let userProfilePic = document.createElement('img');
+        userProfilePic.src = `http://localhost:7001/${user.profile_picture.filepath}`;
+        
         username.addEventListener('click', () => {
             window.location.href = `profile.php?userID=${user.id}`;
         });
-
-        let userProfilePic = document.createElement('img');
-        userProfilePic.src = `http://localhost:7001/${user.profile_picture.filepath}`;
-
+        userProfilePic.addEventListener('click', () => {
+            window.location.href = `profile.php?userID=${user.id}`;
+        });
+        
         let followOrUnfollow = document.createElement('button');
 
         let userFollowers = user.followers;
+
+        // Kontrollerar om användaren följs av inloggad anvöndare
         let isFollowed = userFollowers.some(e => e == loggedInUserId);
 
+        // Beroende på om användaren följs av inloggad anv. eller ej visas olika texter
         if (isFollowed) {
             followOrUnfollow.textContent = 'Unfollow';  
             followOrUnfollow.id = "noGradient";
@@ -323,26 +377,34 @@ async function showUsers(userId, type) {
         let followingCont = document.getElementById('following');
         
         followOrUnfollow.addEventListener('click',  async function () {
+            // Om inloggad anv. inte följer så..
             if (!isFollowed) {
-
+                
                 isFollowed = true;
                 followOrUnfollow.textContent = 'Unfollow';
                 followOrUnfollow.id = "noGradient";
+                // Lägger till användare i followers
                 await followPatch(loggedInUserId, user.id);
 
-                following.push(user.id);
-                followingCont.textContent = ids.length;
+                if (userId == loggedInUserId) {
+                    following.push(user.id);
+                    followingCont.textContent = ids.length;
+                }
 
+                // Om inloggad anv. följer så..
             } else if (isFollowed) {
 
                 isFollowed = false;
                 followOrUnfollow.textContent = 'Follow';
                 followOrUnfollow.removeAttribute('id');
+                // Tar bort från followers
                 await followPatch(loggedInUserId, user.id);
                 
-                let userIndex = ids.findIndex(id => id == user.id);
-                following.splice(userIndex, 1);
-                followingCont.textContent = following.length;
+                if (userId == loggedInUserId) {
+                    let userIndex = ids.findIndex(id => id == user.id);
+                    following.splice(userIndex, 1);
+                    followingCont.textContent = following.length;
+                }
             }
             
         });
@@ -352,6 +414,9 @@ async function showUsers(userId, type) {
         userDiv.append(userProfilePic, username);
         if (user.id !== loggedInUserId) {
             userDiv.append(followOrUnfollow);
+        } else {
+            let emptyDiv = document.createElement('div');
+            userDiv.append(emptyDiv);
         }
     });
 
@@ -374,13 +439,50 @@ async function createWatchlist(watchlist) {
     watchlist.forEach(async function (activity) {
         let movieId = activity.movieID;
 
-        let movieBanner = await makeMovieBanner(movieId);
+        let movieBanner = await makeMovieBanner(movieId, "myProfile");
 
         movieBanner.addEventListener('click', () => {
             window.location.href = `explore.php?movieID=${movieId}`;
-        })
+        });
+
         container.append(movieBanner);   
     });
+    
+    wrapper.append(container);
+}
+
+function noActivitiesInfo(tab, name = null) {
+
+    let container = document.createElement('div');
+    container.id = "messageWhenEmpty";
+    let text = document.createElement('p');
+    
+    if (name == null) {
+        let button = document.createElement('button');
+        button.textContent = "Go explore movies";
+        button.addEventListener('click', () => {
+            window.location.href = "explore.php";
+        });
+
+        if (tab == 'watched') {
+            text.textContent = "You haven't watched any movies!";
+        } else if (tab == 'watchlist') {
+            text.textContent = "You haven't added any movies to your watchlist.";
+        } else if (tab == 'stats') {
+            text.textContent = "No stats since you have no activities on your profile.";
+        }
+        container.append(text, button);
+    } else {
+        if (tab == 'watched') {
+            text.textContent = `${name} haven't watched any movies!`;
+        } else if (tab == 'watchlist') {
+            text.textContent = `${name} haven't added any movies to your watchlist.`;
+        } else if (tab == 'stats') {
+            text.textContent = `No stats since ${name} have no activities.`;
+        }
+
+        container.append(text);
+    }
 
     wrapper.append(container);
 }

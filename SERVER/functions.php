@@ -89,15 +89,15 @@ function getUsersByIDs($arrayOfIDs)
 function getUsers()
 {
     $users = loadJSON("../DATABASE/user.json");
-    $newUserArray = [];
-    foreach ($users as $user) {
+    $usersToKlient = [];
+    foreach ($users["users"] as $user) {
         unset($user["password"]);
         unset($user["active_streaming_services"]);
         unset($user["email"]);
         // unset($user["sessionID"]);
-        // $user[] = 
+        $usersToKlient[] = $user;
     }
-    return $users["users"];
+    return $usersToKlient;
 }
 
 

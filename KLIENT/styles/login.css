@@ -91,7 +91,7 @@
 
 #loginForm #input label, #signUpForm > fieldset #input label {
   font-family: "Mulish", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 #loginForm #input input, #signUpForm > fieldset #input input {
@@ -136,7 +136,7 @@
 
 #errorDiv {
   font-family: "Mulish", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 #signUpForm {
@@ -230,7 +230,7 @@
       grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   font-family: "Mulish", sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   width: 100%;
   border: none;
   max-height: 65vh;

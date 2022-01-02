@@ -12,8 +12,10 @@ async function makeTrending() {
   let slideshowSlider = document.createElement("div");
   slideshowSlider.className = "slideshow";
 
-  let slideshowImages = await getTrending();
+  let slideshowImages = await getTrending(1); 
+  console.log(slideshowImages);
   slideshowImages.push(slideshowImages[0]);
+ 
   let counter = 0;
   slideshowImages.forEach((movie) => {
     let movieID = movie.id;
