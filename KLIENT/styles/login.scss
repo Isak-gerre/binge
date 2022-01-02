@@ -159,7 +159,7 @@
     }
 }
 
-#createUserP3 {
+#createUserP3, #updateProfilePic {
     #avatars {
         width: 100%;
         display: grid;
@@ -185,6 +185,8 @@
     #uploadProfilePic {
         @include flex(column, center, flex-start);
         gap: $betweenPadding;
+        width: 100%;
+
         margin: $wrapperPadding 0;
         p {
             margin: none;
@@ -203,6 +205,7 @@
     #signInButton {
         width: 120px;
         height: 30px;
+        margin: auto;
 
         @include postFont();
 

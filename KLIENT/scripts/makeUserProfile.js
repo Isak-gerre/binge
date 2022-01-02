@@ -181,7 +181,6 @@ async function createProfileHeader(user, isFollowing, settings = null) {
 
     let username = user.username.toLowerCase();
     if (username.length > 7) {
-        console.log('bigger');
         uNameCont.textContent = `@${user.username.substring(0, 7)}...`;
     } else {
         console.log('smaller');
@@ -251,7 +250,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
             followersCont.textContent = nrOfFollowers;
             
         } else if (profileButtonIcon.id == "settings") {
-            let settingsWindow = openSettings(user);
+            let settingsWindow = await openSettings(userId);
             body.prepend(settingsWindow);
         }
     });
@@ -342,10 +341,8 @@ async function showUsers(userId, type) {
         userDiv.id = "userDiv";
         let username = document.createElement('p');
         if (username.length > 10) {
-            console.log('bigger');
             username.textContent = `@${user.username.substring(0, 10)}...`;
         } else {
-            console.log('smaller');
             username.textContent = "@" + user.username;
         }
 

@@ -266,7 +266,7 @@
   border-radius: 5px;
 }
 
-#createUserP3 #avatars {
+#createUserP3 #avatars, #updateProfilePic #avatars {
   width: 100%;
   display: -ms-grid;
   display: grid;
@@ -275,7 +275,7 @@
   gap: 10px;
 }
 
-#createUserP3 #avatars p {
+#createUserP3 #avatars p, #updateProfilePic #avatars p {
   margin: none;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
@@ -284,16 +284,16 @@
   grid-area: 1 / span 2;
 }
 
-#createUserP3 #avatars label {
+#createUserP3 #avatars label, #updateProfilePic #avatars label {
   margin: auto;
 }
 
-#createUserP3 #avatars label.profileImgSelected {
+#createUserP3 #avatars label.profileImgSelected, #updateProfilePic #avatars label.profileImgSelected {
   background-color: #6F6D82;
   border-radius: 5px;
 }
 
-#createUserP3 #uploadProfilePic {
+#createUserP3 #uploadProfilePic, #updateProfilePic #uploadProfilePic {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -308,17 +308,18 @@
       -ms-flex-align: start;
           align-items: flex-start;
   gap: 10px;
+  width: 100%;
   margin: 25px 0;
 }
 
-#createUserP3 #uploadProfilePic p {
+#createUserP3 #uploadProfilePic p, #updateProfilePic #uploadProfilePic p {
   margin: none;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
   padding-bottom: 5px;
 }
 
-#createUserP3 #uploadProfilePic #fileToUpload {
+#createUserP3 #uploadProfilePic #fileToUpload, #updateProfilePic #uploadProfilePic #fileToUpload {
   width: 100%;
   margin: auto;
   font-family: "Mulish", sans-serif;
@@ -326,9 +327,10 @@
   line-height: 1.4;
 }
 
-#createUserP3 #signInButton {
+#createUserP3 #signInButton, #updateProfilePic #signInButton {
   width: 120px;
   height: 30px;
+  margin: auto;
   font-family: "Archivo", sans-serif;
   font-size: 15px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);

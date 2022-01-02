@@ -119,13 +119,6 @@
   width: 100%;
   padding: $wrapperPadding;
 
-  button {
-    border: none;
-    border-radius: $borderRadiusButtons;
-    background: $gradientPeach;
-    padding: $buttonPadding;
-  }
-
   #usersWrapper {
     @include flex(column, flex-start, center);
     flex-grow: 1;
@@ -158,88 +151,14 @@
   }
 }
 
-//  SETTINGS
-#settingsWindow {
-  @include transitionFromLeft();
-  @include flex(column, flex-start, center);
-  gap: 20px;
-  background-color: $backgroundColor;
-  z-index: 100;
-
-  #settingsForm {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(8, 35px);
-    gap: 5px;
-    width: 100%;
-    padding: $wrapperPadding;
-
-    div:nth-child(1) {
-      grid-column: 1 / span 1;
-    }
-    div:nth-child(2) {
-      grid-column: 2 / span 1;
-    }
-
-    div {
-      @include flex(column, center, flex-start);
-      width: 100%;
-      padding: 2px;
-      grid-column: 1 / span 2;
-
-      border: 1px solid black;
-      border-radius: 5px;
-
-      label {
-        @include xSmallFont();
-      }
-
-      input {
-        border: none;
-        width: 100%;
-        padding: 0;
-      }
-    }
-  }
-}
-
-#settingsChangePic {
-  @include flex(row, center, center);
-  width: 100%;
-  position: relative;
-  z-index: 100;
-
-  img {
-    @include profilePicture(100px, 100px);
-  }
-
-  div {
-    position: absolute;
-    margin-left: 70px;
-    margin-top: 75px;
-
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: $accentColor;
-
-    @include flex(row, center, center);
-
-    img {
-      width: 50%;
-      height: 50%;
-    }
-  }
-}
-
-#changeProfileWindow {
-  @include transitionFromLeft();
-  background-color: $backgroundColor;
-}
-
 #closeTab {
   width: 30px;
   height: 30px;
+
+  border: none;
+  border-radius: $borderRadiusButtons;
+  background: $gradientPeach;
+  padding: $buttonPadding;
 }
 
 #profileWrapper {
@@ -306,4 +225,115 @@
   height:100vh;
   width: 100vw;
   z-index: 15000;
+}
+
+//  SETTINGS
+#settingsWindow {
+  @include transitionFromLeft();
+  @include flex(column, flex-start, flex-start);
+  gap: 20px;
+
+  padding: $wrapperPadding;
+  background-color: $backgroundColor;
+  z-index: 100000;
+  
+  #settingsForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, 35px);
+    gap: 5px;
+    width: 100%;
+    padding: $wrapperPadding;
+
+    div:nth-child(1) {
+      grid-column: 1 / span 1;
+    }
+    div:nth-child(2) {
+      grid-column: 2 / span 1;
+    }
+
+    div {
+      @include flex(column, center, flex-start);
+      width: 100%;
+      padding: 2px;
+      grid-column: 1 / span 2;
+
+      border: 1px solid black;
+      border-radius: 5px;
+
+      label {
+        @include xSmallFont();
+      }
+
+      input {
+        border: none;
+        width: 100%;
+        padding: 0;
+      }
+    }
+  }
+}
+
+#settingsChangePic {
+  @include flex(row, center, flex-start);
+  gap: $betweenPadding;
+
+  width: 100%;
+  position: relative;
+  z-index: 100;
+
+  div:first-child {
+    @include profilePicture(100px, 100px);
+    background-position: center;
+    background-size: cover;
+  }
+
+  div:last-child {
+    position: absolute;
+    margin-left: 70px;
+    margin-top: 75px;
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: $gradientPeach;
+
+    @include flex(row, center, center);
+
+    img {
+      width: 50%;
+      height: 50%;
+    }
+  }
+}
+
+#changeProfilePicWindow {
+  @include transitionFromLeft();
+  @include flex(column, flex-start, flex-start);
+  gap: $betweenPadding;
+
+  padding: 0 $wrapperPadding;
+  background-color: $backgroundColor;
+
+  div:last-child {
+    width: 100%;
+  }
+
+  #responseDiv {
+    @include flex(row, center, center);
+
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+
+    background-color: rgba($backgroundColor, 0.5);
+    opacity: 0;
+    transition: opacity 0.5s;
+    
+    p {
+      background-color: $backgroundColor;
+      padding: 20px;
+      border-radius: $borderRadiusObjects;
+    }
+  }
 }

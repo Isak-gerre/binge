@@ -328,13 +328,6 @@ body {
   padding: 25px;
 }
 
-#followContainer button {
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  padding: 3px;
-}
-
 #followContainer #usersWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -396,157 +389,13 @@ body {
   background: #1c1452;
 }
 
-#settingsWindow {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: 100000;
-  left: 100vw;
-  -webkit-transition: left 1s;
-  transition: left 1s;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 20px;
-  background-color: #0f0b2e;
-  z-index: 100;
-}
-
-#settingsWindow #settingsForm {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-  -ms-grid-rows: (35px)[8];
-      grid-template-rows: repeat(8, 35px);
-  gap: 5px;
-  width: 100%;
-  padding: 25px;
-}
-
-#settingsWindow #settingsForm div:nth-child(1) {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-column: 1 / span 1;
-}
-
-#settingsWindow #settingsForm div:nth-child(2) {
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-column: 2 / span 1;
-}
-
-#settingsWindow #settingsForm div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  width: 100%;
-  padding: 2px;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-column: 1 / span 2;
-  border: 1px solid black;
-  border-radius: 5px;
-}
-
-#settingsWindow #settingsForm div label {
-  font-family: "Mulish", sans-serif;
-  font-size: 12px;
-}
-
-#settingsWindow #settingsForm div input {
-  border: none;
-  width: 100%;
-  padding: 0;
-}
-
-#settingsChangePic {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  position: relative;
-  z-index: 100;
-}
-
-#settingsChangePic img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-
-#settingsChangePic div {
-  position: absolute;
-  margin-left: 70px;
-  margin-top: 75px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: #ffb700;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-#settingsChangePic div img {
-  width: 50%;
-  height: 50%;
-}
-
-#changeProfileWindow {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: 100000;
-  left: 100vw;
-  -webkit-transition: left 1s;
-  transition: left 1s;
-  background-color: #0f0b2e;
-}
-
 #closeTab {
   width: 30px;
   height: 30px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  padding: 3px;
 }
 
 #profileWrapper {
@@ -641,6 +490,206 @@ body {
   height: 100vh;
   width: 100vw;
   z-index: 15000;
+}
+
+#settingsWindow {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 100000;
+  left: 100vw;
+  -webkit-transition: left 1s;
+  transition: left 1s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 20px;
+  padding: 25px;
+  background-color: #0f0b2e;
+  z-index: 100000;
+}
+
+#settingsWindow #settingsForm {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: (35px)[8];
+      grid-template-rows: repeat(8, 35px);
+  gap: 5px;
+  width: 100%;
+  padding: 25px;
+}
+
+#settingsWindow #settingsForm div:nth-child(1) {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / span 1;
+}
+
+#settingsWindow #settingsForm div:nth-child(2) {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / span 1;
+}
+
+#settingsWindow #settingsForm div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100%;
+  padding: 2px;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / span 2;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#settingsWindow #settingsForm div label {
+  font-family: "Mulish", sans-serif;
+  font-size: 12px;
+}
+
+#settingsWindow #settingsForm div input {
+  border: none;
+  width: 100%;
+  padding: 0;
+}
+
+#settingsChangePic {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  position: relative;
+  z-index: 100;
+}
+
+#settingsChangePic div:first-child {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+}
+
+#settingsChangePic div:last-child {
+  position: absolute;
+  margin-left: 70px;
+  margin-top: 75px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#settingsChangePic div:last-child img {
+  width: 50%;
+  height: 50%;
+}
+
+#changeProfilePicWindow {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 100000;
+  left: 100vw;
+  -webkit-transition: left 1s;
+  transition: left 1s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+  padding: 0 25px;
+  background-color: #0f0b2e;
+}
+
+#changeProfilePicWindow div:last-child {
+  width: 100%;
+}
+
+#changeProfilePicWindow #responseDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(15, 11, 46, 0.5);
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+#changeProfilePicWindow #responseDiv p {
+  background-color: #0f0b2e;
+  padding: 20px;
+  border-radius: 5px;
 }
 
 #overlay {
@@ -3258,7 +3307,7 @@ svg:active,
   border-radius: 5px;
 }
 
-#createUserP3 #avatars {
+#createUserP3 #avatars, #updateProfilePic #avatars {
   width: 100%;
   display: -ms-grid;
   display: grid;
@@ -3267,7 +3316,7 @@ svg:active,
   gap: 10px;
 }
 
-#createUserP3 #avatars p {
+#createUserP3 #avatars p, #updateProfilePic #avatars p {
   margin: none;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
@@ -3276,16 +3325,16 @@ svg:active,
   grid-area: 1 / span 2;
 }
 
-#createUserP3 #avatars label {
+#createUserP3 #avatars label, #updateProfilePic #avatars label {
   margin: auto;
 }
 
-#createUserP3 #avatars label.profileImgSelected {
+#createUserP3 #avatars label.profileImgSelected, #updateProfilePic #avatars label.profileImgSelected {
   background-color: #6F6D82;
   border-radius: 5px;
 }
 
-#createUserP3 #uploadProfilePic {
+#createUserP3 #uploadProfilePic, #updateProfilePic #uploadProfilePic {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3300,17 +3349,18 @@ svg:active,
       -ms-flex-align: start;
           align-items: flex-start;
   gap: 10px;
+  width: 100%;
   margin: 25px 0;
 }
 
-#createUserP3 #uploadProfilePic p {
+#createUserP3 #uploadProfilePic p, #updateProfilePic #uploadProfilePic p {
   margin: none;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
   padding-bottom: 5px;
 }
 
-#createUserP3 #uploadProfilePic #fileToUpload {
+#createUserP3 #uploadProfilePic #fileToUpload, #updateProfilePic #uploadProfilePic #fileToUpload {
   width: 100%;
   margin: auto;
   font-family: "Mulish", sans-serif;
@@ -3318,9 +3368,10 @@ svg:active,
   line-height: 1.4;
 }
 
-#createUserP3 #signInButton {
+#createUserP3 #signInButton, #updateProfilePic #signInButton {
   width: 120px;
   height: 30px;
+  margin: auto;
   font-family: "Archivo", sans-serif;
   font-size: 15px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
