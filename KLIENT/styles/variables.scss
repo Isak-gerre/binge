@@ -25,8 +25,10 @@ $borderRadiusObjects: 5px;
 $borderRadiusNav: 8px;
 $boxShadow: 3px;
 
-// FUNCTIONS
+$iconButtonSz: 20px;
+$starSz: 30px;
 
+// FUNCTIONS
 @mixin flex($direction, $justify, $align) {
   display: flex;
   flex-direction: $direction;
@@ -92,5 +94,5 @@ $boxShadow: 3px;
 
 @mixin xSmallFont() {
     font-family: $bodyFont;
-    font-size: 10px;
+    font-size: 12px;
 }

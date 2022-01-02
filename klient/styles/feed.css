@@ -5,7 +5,61 @@
   padding-left: 25px;
 }
 
+.msgDiv {
+  text-align: center;
+  padding: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.msgQuo {
+  font-style: italic;
+  padding: 10px;
+}
+
+.msgBtn {
+  padding: 10px;
+  border-radius: 10px;
+  border: 0;
+  padding: 3px;
+  height: 25px;
+  -webkit-filter: none;
+          filter: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #eeeeee;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+          filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+  -webkit-box-shadow: 3px 3px 3px #0f0b2e;
+          box-shadow: 3px 3px 3px #0f0b2e;
+}
+
 .container {
+  position: relative;
+  left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -17,9 +71,12 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding-top: 10px;
+  -webkit-transition: left 1s;
+  transition: left 1s;
 }
 
 .userContainer {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -72,6 +129,35 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.userContainer #dropDown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 25px;
+  height: 30px;
+  width: 150px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.userContainer #dropDown p {
+  font-family: "Archivo", sans-serif;
+  font-size: 15px;
+  color: black;
 }
 
 .activityContainer {

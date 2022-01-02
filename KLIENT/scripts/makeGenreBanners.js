@@ -11,12 +11,14 @@ async function makeGenreBanner(){
 
         //create elements
         let genreBanner = document.createElement('div');
-        let divider = document.createElement('div');
+        let genreImageDiv = document.createElement('div');
+        let genreGradient = document.createElement('div');
         let genreName = document.createElement('p');
         
         //classes
         genreBanner.className = "genreBanner";
-        divider.className = "divider";
+        genreGradient.className = "genreGradient";
+        genreImageDiv.className = "genreImageDiv";
         genreName.className = "genreName";
         
         //content
@@ -25,12 +27,11 @@ async function makeGenreBanner(){
         //clickEvent, call on search function with the genre name in the field
         genreBanner.addEventListener('click', ()=>{
             makeSearchOverlay(genre.name);
-            searchFunction(searchBy);
         })
         
         //append
+        genreBanner.append(genreImageDiv, genreGradient);
         genreBanner.append(genreName);
-        genreBanner.append(divider);
         document.getElementById("genre").append(genreBanner);
 
     });
@@ -43,7 +44,7 @@ async function makeGenreBanner(){
     let movieByGenre = await getMoviesByGenre();
 
     //Get our genreBanners
-    let allDivs = document.querySelectorAll('.genreBanner');
+    let allDivs = document.querySelectorAll('.genreImageDiv');
     
     //Create an array to fill with out picture-paths
     let pics = [];
@@ -67,5 +68,3 @@ async function makeGenreBanner(){
     }    
 
 }
-
-

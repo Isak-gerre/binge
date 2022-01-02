@@ -43,12 +43,12 @@
       @include flex(row, center, center);
       gap: 4px;
 
-      width: 100px;
+      width: 85px;
       border-radius: $borderRadiusButtons;
       padding: $buttonPadding;
 
       p {
-        @include bodyFont();
+        @include xSmallFont();
         padding: 0;
       }
     }
@@ -62,11 +62,13 @@
 
     #followersDiv,
     #followingDiv {
-      p {margin: 0;}
+      p {
+        margin: 0;
+      }
       @include flex(column, center, center);
       cursor: pointer;
     }
-  } 
+  }
 }
 
 #followInfo {
@@ -87,18 +89,17 @@
 
 #profileNav {
   z-index: 15;
-  padding: 0 $wrapperPadding;
   color: $lightFont;
-  width: 100%;
+  width: calc(100% - 50px);
   height: 50px;
   @include bodyFont();
   @include flex(row, center, center);
   border-radius: $borderRadiusButtons;
   overflow: hidden;
-    
+  background-color: #1c1452;
+
   div {
     @include flex(row, center, center);
-    background-color: #1C1452;
     width: 33%;
     flex-grow: 1;
     height: 100%;
@@ -132,7 +133,7 @@
     color: $lightFont;
     gap: $betweenPadding;
 
-    div {
+    #userDiv {
       @include bodyFont();
       @include flex(row, space-between, center);
       gap: $betweenPadding;
@@ -146,7 +147,7 @@
         @include profilePicture(90px, 90px);
       }
 
-      button {
+      button, div {
         width: 70px;
         transition: background 0.5s ease-in;
       }
@@ -157,7 +158,7 @@
   }
 }
 
-//  SETTINGS 
+//  SETTINGS
 #settingsWindow {
   @include transitionFromLeft();
   @include flex(column, flex-start, center);
@@ -237,8 +238,8 @@
 }
 
 #closeTab {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 #profileWrapper {
@@ -247,9 +248,62 @@
   padding: $betweenPadding $wrapperPadding;
   padding-bottom: 90px;
 
+  transition: height 1s;
+
   #watchlistContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: $wrapperPadding;
+    gap: $betweenPadding;    
+    position: relative;
+
+    button {
+      border-radius: $borderRadiusButtons;
+      border: none;
+      padding: $innerPadding;
+      color: $lightFont;
+      background: $gradientPeach;
+      box-sizing: border-box;
+      filter: none;
+      @include flex(row, center, center);
+      position: absolute;
+      width: 150px;
+    }
+
+    button:first-child{
+      bottom: -35px;
+    }
+    button:last-child{
+      bottom: -70px;
+    }
   }
+}
+
+#messageWhenEmpty {
+  @include flex(column, center, center);
+  gap: $wrapperPadding;
+
+  height: 15vh;
+  width: 100%;
+
+  p {
+    text-align: center;
+  }
+
+  button {
+    border: none;
+    @include bodyFont();
+    
+    border-radius: $borderRadiusButtons;
+    padding: $innerPadding $wrapperPadding;
+
+    background: $gradientPeach;
+    color: $lightFont;
+  }
+}
+
+#overlay-profile {
+  position: absolute;
+  height:100vh;
+  width: 100vw;
+  z-index: 15000;
 }

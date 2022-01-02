@@ -105,6 +105,9 @@ input:focus {
     border-bottom: 1px solid white;
     border-radius: 0;
   }
+  .movie-profile-background{
+    position: absolute;
+  }
 }
 
 .closeImg {
@@ -225,12 +228,17 @@ svg:active,
 }
 
 .search-container {
-  position: fixed;
   top: -2px;
+  position: absolute;
   z-index: 100;
   width: 100%;
   min-height: 100vh;
+  padding-bottom: 100px;
   @include flex(column, none, center);
+
+  div{
+    margin: auto;
+  }
 }
 #search-results {
   width: 100%;
@@ -241,8 +249,8 @@ svg:active,
   gap: 10px;
   z-index: 100;
   overflow: scroll;
-  height: calc(100vh - 170px);
-  padding-bottom: 90px;
+  max-height: calc(100vh - 170px);
+  padding-bottom: 130px;
 }
 .placeholder {
   animation-duration: 1.8s;
@@ -373,6 +381,116 @@ svg:active,
   @include flex(row, flex-start, center);
   position: absolute;
   top: 120px;
-  width: 100%;
-  padding: 0px 25px;
+  width: calc(100vw - 50px);
+  margin: auto;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  div {
+    margin-right: $betweenPadding;
+  }
+}
+.userDiv {
+  @include flex(column, space-evenly, center);
+  max-width: 140px;
+
+  .followDiv {
+    width: 70%;
+
+    #followInfo {
+      #followersDiv,
+      #followingDiv {
+        p {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
+.userImage {
+  width: 75px;
+  height: 75px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+}
+.showMoreDiv {
+  z-index: 1000;
+  width: 40%;
+  grid-column-end: span 3;
+  padding-top: 10px;
+
+  button {
+    width: 100%;
+    height: 100%;
+    padding: $betweenPadding;
+    border-radius: 10px;
+    border: 0;
+    color: #eeeeee;
+    background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+    -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+    filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+  }
+}
+
+// LOAD dots
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 73px;
+  height: 9px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+#search-results-text {
+  margin-top: 20px;
+  z-index: 1000;
+  position: relative;
+  top: 156px;
 }
