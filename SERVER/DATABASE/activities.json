@@ -1,64 +1,74 @@
 {
-    "activities": [
-        {
+    "activities": {
+        "1": {
             "id": 1,
-            "userID": 10,
-            "movieID": "634649",
-            "type": "watched",
-            "date": "202201021112",
+            "userID": 14,
+            "movieID": "10336",
+            "type": "watchlist",
+            "date": "202201021211",
             "comment": "",
             "rate": "",
             "updated": false
         },
-        {
+        "2": {
             "id": 2,
-            "userID": 10,
-            "movieID": "9486",
+            "userID": 14,
+            "movieID": "10336",
             "type": "watched",
-            "date": "202201021112",
+            "date": "202201021211",
             "comment": "",
             "rate": "",
             "updated": false
         },
-        {
+        "3": {
             "id": 3,
-            "userID": 10,
-            "movieID": "9486",
+            "userID": 14,
+            "movieID": "899082",
+            "type": "watched",
+            "date": "202201021227",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "4": {
+            "id": 4,
+            "userID": 14,
+            "movieID": "899082",
             "type": "review",
-            "date": "202201011113",
-            "comment": "B\u00e4sta filmen jag sett! Johnnyboi \u00e4r min nya idol",
+            "date": "202201021227",
+            "comment": "S\u00e5 mysig!",
             "rate": "5",
             "updated": false
         },
-        {
-            "id": 4,
-            "userID": 14,
-            "movieID": "1858",
-            "type": "watchlist",
-            "date": "202201021114",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        {
+        "5": {
             "id": 5,
-            "userID": 10,
-            "movieID": "634649",
-            "type": "watchlist",
-            "date": "202201021125",
+            "userID": 14,
+            "movieID": "646380",
+            "type": "watched",
+            "date": "202201021227",
             "comment": "",
             "rate": "",
             "updated": false
         },
-        {
+        "6": {
             "id": 6,
-            "userID": 10,
-            "movieID": "634649",
+            "userID": 14,
+            "movieID": "646380",
             "type": "review",
-            "date": "202201021136",
-            "comment": "s\u00e5d\u00e4r",
+            "date": "202201021228",
+            "comment": "",
             "rate": "4",
             "updated": false
+        },
+        "7": {
+            "id": 7,
+            "userID": 14,
+            "movieID": "624860",
+            "type": "watchlist",
+            "date": "202201021307",
+            "comment": "",
+            "rate": "",
+            "updated": false
         }
-    ]
+    }
 }

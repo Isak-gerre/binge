@@ -913,6 +913,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  color: #eeeeee;
 }
 
 .movie-profile-middle .activityContainer .activityContainerLeft .type {
@@ -922,7 +923,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: black;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
   padding-bottom: 5px;
@@ -930,7 +930,6 @@
 
 .movie-profile-middle .activityContainer .activityContainerLeft .typeText {
   margin-right: 5px;
-  color: black;
 }
 
 .movie-profile-middle .activityContainer .activityContainerLeft .typeIcon {
@@ -941,11 +940,9 @@
   font-family: "Archivo", sans-serif;
   font-size: 18px;
   font-weight: bold;
-  color: black;
 }
 
 .movie-profile-middle .activityContainer .activityContainerLeft .comment {
-  color: black;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;

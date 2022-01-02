@@ -165,7 +165,8 @@
                 4,
                 5,
                 7,
-                10
+                10,
+                14
             ],
             "following": [
                 1,
@@ -265,9 +266,7 @@
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_2.png"
             },
-            "followers": [
-                14
-            ],
+            "followers": [],
             "following": [
                 6,
                 14
@@ -323,26 +322,28 @@
         "14": {
             "firstname": "lina",
             "lastname": "andersson",
-            "username": "liknanhej",
-            "password": "$2y$10$D4.f5LKAYBWYEPIUD366O.SS2PWTh8axL.DgMQt6xlaTZvmxlp7sS",
-            "email": "linkan@mau.se",
-            "birthday": "1977-12-07",
+            "username": "linkan",
+            "password": "$2y$10$995p8xYVHwVzaS80od1WZuuHRQZaOw3WDoMDN5HNbgv30lGGLp2Zu",
+            "email": "linis@mau.se",
+            "birthday": "1999-06-16",
             "region": "SE",
             "active_streaming_services": [
                 "Netflix",
                 "Amazon Prime Video",
-                "Disney Plus"
+                "Disney Plus",
+                "HBO Max",
+                "SVT",
+                "HBO"
             ],
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_5.png"
             },
-            "followers": [
-                10
-            ],
+            "followers": [],
             "following": [
-                10
+                10,
+                6
             ],
-            "sessionId": "$2y$10$LVq11\/8uzR\/w9hxUkB4eSOY4iWJ5XzdOOF4MJT020PUiK6RJ4U3yS",
+            "sessionId": "$2y$10$GQPUquml7jwBrnmUHfMtiOFFCPGqLcSSpxIFuaqqACsNrjaO2zcia",
             "id": 14
         }
     }
