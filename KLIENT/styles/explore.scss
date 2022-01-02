@@ -1,0 +1,136 @@
+@import "variables.scss";
+
+#trending,
+#frw,
+#genre {
+  z-index: 100;
+}
+
+#wrapper {
+  margin-top: 60px;
+  z-index: 100;
+}
+// TREDNING SLIDESHOW
+
+#trending {
+  h3 {
+    @include smallTitleFont();
+    margin: 0 $wrapperPadding 0 $wrapperPadding;
+  }
+}
+
+.slideshow-container {
+  width: 100vw;
+  height: 250px;
+}
+
+.slideshow {
+  display: flex;
+  width: 100vw;
+  height: inherit;
+  position: relative;
+
+  div {
+    width: 100vw;
+
+    div {
+      height: 85%;
+      width: 100vw;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.slideMovieDiv {
+  position: relative;
+}
+
+.movieNameTr {
+  p {
+    @include bodyFont();
+    color: $lightFont;
+    width: 100%;
+    padding: $betweenPadding $wrapperPadding;
+  }
+}
+
+// FRIENDS RECENTLY WATCHED
+.explore-message {
+  @include bodyFont();
+}
+
+.msgBtn {
+  padding: 14px;
+  border-radius: $borderRadiusButtons;
+  border: 0;
+  height: 25px;
+  @include flex(row, center, center);
+  margin-top: 10px;
+  color: $lightFont;
+  background: $gradientPeach;
+  filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+  box-shadow: $boxShadow $boxShadow $boxShadow $backgroundColor;
+}
+
+#frw {
+  @include flex(column, center, flex-start);
+  width: 100vw;
+  padding: $wrapperPadding;
+  padding-bottom: 0px;
+
+  h3 {
+    @include smallTitleFont();
+    padding-bottom: $titlePadding;
+  }
+
+  .friends-recently-watched {
+    width: 100%;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    @include flex(row, flex-start, center);
+    padding-bottom: 5px;
+  }
+
+  .friends-recently-watched > div {
+    margin-right: $betweenPadding;
+
+    .profile-box {
+      @include flex(row, flex-start, center);
+      padding: $betweenPadding 0px;
+
+      .profile-image {
+        @include profilePicture(25px, 25px);
+        margin-right: 1.5vh;
+        background-size: cover;
+      }
+
+      .profile-name {
+        color: $bodyFont;
+        @include bodyFont();
+      }
+    }
+  }
+
+  .friends-recently-watched > div:last-child {
+    margin-right: 0px;
+  }
+}
+
+//  GENRES
+#genre {
+  display: grid;
+  width: 100vw;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  gap: $betweenPadding;
+  padding: $wrapperPadding;
+  padding-bottom: 0px;
+
+  h3 {
+    @include smallTitleFont();
+    grid-area: 1/1/2/3;
+    padding-bottom: $titlePadding;
+  }
+}

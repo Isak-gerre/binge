@@ -37,7 +37,7 @@ function openSettings(user) {
     profilePicture.src = `http://localhost:7001/${user.profile_picture.filepath}`;
     let changePicDiv = document.createElement('div');
     let changePicIcon = document.createElement('img');
-    changePicIcon.src = "../icons/edit.svg";
+    // changePicIcon.src = "../icons/edit.svg";
 
     changePicDiv.append(changePicIcon);
     changeProfilePicContainer.append(profilePicture, changePicDiv);
@@ -50,14 +50,15 @@ function openSettings(user) {
     });
 
     let form = document.createElement('form');
-    form.id = "settingsForm";
+    form.id = "loginForm";
     let info = ["firstname", "lastname", "email", "password"];
-    console.log(info);
+    // console.log(info);
 
     info.forEach(obj => {
         let field = document.createElement('div');
         let label = document.createElement('label');
         let input = document.createElement('input');
+        input.id = 'input';
         input.type = "text";
 
         if (obj == "firstname") {
@@ -126,7 +127,7 @@ function changeProfilePic(user) {
     profilePicture.src = `http://localhost:7001/${user.profile_picture.filepath}`;
     let changePicDiv = document.createElement('div');
     let changePicIcon = document.createElement('img');
-    changePicIcon.src = "../icons/edit.svg";
+    // changePicIcon.src = "../icons/edit.svg";
 
     let formDiv = document.createElement('div');
     let form = document.createElement('form');

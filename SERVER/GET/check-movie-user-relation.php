@@ -32,14 +32,16 @@
 
         if($userID == $currentUserID && $movieID == $currentMovieID){
             if($type == "watchlist"){
-                $message["watchlist"] = true;       
+                $message["watchlist"] = $activity["id"];       
             };
 
             if($type == "watched"){
-                $message["watched"] = true;         
+                $message["watched"] = $activity["id"];         
             };
 
             if($type == "review"){
+                // om man har gett en review så har man ju också sett filmen
+                $message["watched"] = $activity["id"];         
                 $message["review"] = $activity; 
             };
         }

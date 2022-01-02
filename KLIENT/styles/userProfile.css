@@ -1,8 +1,7 @@
-body {
-  position: relative;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
 #topWrapperProfile {
+  margin-top: 60px;
+  z-index: 15;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,20 +15,23 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 30px;
   width: 100%;
-  padding: 20px;
+  padding: 10px 25px;
+  color: #eeeeee;
 }
 
 #profilePic {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   overflow: hidden;
 }
 
-#profilePic img {
+#profilePic div {
+  height: 100%;
   width: 100%;
+  background-position: center;
+  background-size: cover;
 }
 
 #profileInfo {
@@ -46,7 +48,7 @@ body {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  gap: 5px;
+  gap: 10px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -66,18 +68,49 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: 'Arial';
-  font-size: 1.2rem;
+  gap: 10px;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
   width: 100%;
+  padding: 10px 25px;
 }
 
 #profileInfo #usernameDiv p {
-  margin: 0;
+  padding: 0;
+}
+
+#profileInfo #usernameDiv #settingOrPlus {
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 4px;
+  width: 85px;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+#profileInfo #usernameDiv #settingOrPlus p {
+  font-family: "Mulish", sans-serif;
+  font-size: 12px;
+  padding: 0;
 }
 
 #profileInfo #followInfo {
-  font-family: 'Arial';
-  font-size: 0.9rem;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -94,7 +127,8 @@ body {
   width: 100%;
 }
 
-#profileInfo #followInfo #followersDiv, #profileInfo #followInfo #followingDiv {
+#profileInfo #followInfo #followersDiv,
+#profileInfo #followInfo #followingDiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -111,14 +145,62 @@ body {
   cursor: pointer;
 }
 
-#profileInfo #followInfo #followersDiv p, #profileInfo #followInfo #followingDiv p {
+#profileInfo #followInfo #followersDiv p,
+#profileInfo #followInfo #followingDiv p {
+  margin: 0;
+}
+
+#followInfo {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+#followInfo #followersDiv,
+#followInfo #followingDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+#followInfo #followersDiv p,
+#followInfo #followingDiv p {
   margin: 0;
 }
 
 #profileNav {
-  width: 100%;
-  font-family: 'Arial';
-  font-size: 0.9rem;
+  z-index: 15;
+  color: #eeeeee;
+  width: calc(100% - 50px);
+  height: 50px;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -132,6 +214,9 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #1c1452;
 }
 
 #profileNav div {
@@ -148,12 +233,53 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 33%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  height: 100%;
+}
+
+#profileNav .selected {
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  border-radius: 10px;
 }
 
 #followContainer {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 100000;
+  left: 100vw;
+  -webkit-transition: left 1s;
+  transition: left 1s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+  background-color: #0f0b2e;
+  width: 100%;
+  padding: 25px;
+}
+
+#followContainer button {
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  padding: 3px;
+}
+
+#followContainer #usersWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -167,21 +293,18 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: 10;
-  left: 100vw;
-  -webkit-transition: left 1s;
-  transition: left 1s;
-  gap: 10px;
-  background-color: white;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   width: 100%;
+  color: #eeeeee;
+  gap: 10px;
 }
 
-#followContainer div {
-  font-family: 'Arial';
-  font-size: 0.9rem;
+#followContainer #usersWrapper #userDiv {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -189,30 +312,39 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
   width: 100%;
   height: 100px;
-  padding: 10px;
   cursor: pointer;
 }
 
-#followContainer div img {
-  width: 100px;
-  height: 100px;
+#followContainer #usersWrapper #userDiv img {
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
+}
+
+#followContainer #usersWrapper #userDiv button, #followContainer #usersWrapper #userDiv div {
+  width: 70px;
+  -webkit-transition: background 0.5s ease-in;
+  transition: background 0.5s ease-in;
+}
+
+#followContainer #usersWrapper #userDiv button#noGradient {
+  background: #1c1452;
 }
 
 #settingsWindow {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
@@ -230,7 +362,8 @@ body {
       -ms-flex-align: center;
           align-items: center;
   gap: 20px;
-  background-color: white;
+  background-color: #0f0b2e;
+  z-index: 100;
 }
 
 #settingsWindow #settingsForm {
@@ -242,7 +375,7 @@ body {
       grid-template-rows: repeat(8, 35px);
   gap: 5px;
   width: 100%;
-  padding: 10px;
+  padding: 25px;
 }
 
 #settingsWindow #settingsForm div:nth-child(1) {
@@ -281,8 +414,8 @@ body {
 }
 
 #settingsWindow #settingsForm div label {
-  font-family: 'Arial';
-  font-size: 0.5rem;
+  font-family: "Mulish", sans-serif;
+  font-size: 12px;
 }
 
 #settingsWindow #settingsForm div input {
@@ -307,6 +440,7 @@ body {
           align-items: center;
   width: 100%;
   position: relative;
+  z-index: 100;
 }
 
 #settingsChangePic img {
@@ -347,15 +481,109 @@ body {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  z-index: 10;
+  z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
-  background-color: white;
+  background-color: #0f0b2e;
 }
 
 #closeTab {
+  width: 30px;
+  height: 30px;
+}
+
+#profileWrapper {
+  width: 100%;
+  z-index: 15;
+  padding: 10px 25px;
+  padding-bottom: 90px;
+  -webkit-transition: height 1s;
+  transition: height 1s;
+}
+
+#profileWrapper #watchlistContainer {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  position: relative;
+}
+
+#profileWrapper #watchlistContainer button {
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  color: #eeeeee;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-filter: none;
+          filter: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: absolute;
-  z-index: 100;
+  width: 150px;
+}
+
+#profileWrapper #watchlistContainer button:first-child {
+  bottom: -35px;
+}
+
+#profileWrapper #watchlistContainer button:last-child {
+  bottom: -70px;
+}
+
+#messageWhenEmpty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 25px;
+  height: 15vh;
+  width: 100%;
+}
+
+#messageWhenEmpty p {
+  text-align: center;
+}
+
+#messageWhenEmpty button {
+  border: none;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 10px;
+  padding: 5px 25px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  color: #eeeeee;
+}
+
+#overlay-profile {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 15000;
 }
 /*# sourceMappingURL=userProfile.css.map */

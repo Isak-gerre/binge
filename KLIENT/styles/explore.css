@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
+#trending,
+#frw,
+#genre {
+  z-index: 100;
+}
+
+#wrapper {
+  margin-top: 60px;
+  z-index: 100;
+}
+
+#trending h3 {
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
+  margin: 0 25px 0 25px;
+}
+
+.slideshow-container {
+  width: 100vw;
+  height: 250px;
+}
+
+.slideshow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100vw;
+  height: inherit;
+  position: relative;
+}
+
+.slideshow div {
+  width: 100vw;
+}
+
+.slideshow div div {
+  height: 85%;
+  width: 100vw;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.slideMovieDiv {
+  position: relative;
+}
+
+.movieNameTr p {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #eeeeee;
+  width: 100%;
+  padding: 10px 25px;
+}
+
+.explore-message {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.msgBtn {
+  padding: 14px;
+  border-radius: 10px;
+  border: 0;
+  height: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10px;
+  color: #eeeeee;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+          filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+  -webkit-box-shadow: 3px 3px 3px #0f0b2e;
+          box-shadow: 3px 3px 3px #0f0b2e;
+}
+
+#frw {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100vw;
+  padding: 25px;
+  padding-bottom: 0px;
+}
+
+#frw h3 {
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+#frw .friends-recently-watched {
+  width: 100%;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 5px;
+}
+
+#frw .friends-recently-watched > div {
+  margin-right: 10px;
+}
+
+#frw .friends-recently-watched > div .profile-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 0px;
+}
+
+#frw .friends-recently-watched > div .profile-box .profile-image {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 1.5vh;
+  background-size: cover;
+}
+
+#frw .friends-recently-watched > div .profile-box .profile-name {
+  color: "Mulish", sans-serif;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+#frw .friends-recently-watched > div:last-child {
+  margin-right: 0px;
+}
+
+#genre {
+  display: -ms-grid;
+  display: grid;
+  width: 100vw;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  gap: 10px;
+  padding: 25px;
+  padding-bottom: 0px;
+}
+
+#genre h3 {
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: 1/1/2/3;
+  padding-bottom: 5px;
+}
+/*# sourceMappingURL=explore.css.map */

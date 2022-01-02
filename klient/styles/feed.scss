@@ -1,99 +1,163 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap');
+@import "variables.scss";
 
-body {
-    background-color: rgb(227, 227, 227);
+#wrapper {
+    width:100%;
+    padding-right: $wrapperPadding;
+    padding-left: $wrapperPadding;
 }
+
+.msgDiv {
+    text-align: center;
+    padding: $wrapperPadding;
+    @include flex(column, center, center);
+    
+}
+
+.msgQuo {
+    font-style: italic;
+    padding: $betweenPadding;
+}
+
+.msgBtn {
+    padding: $betweenPadding;
+    border-radius: $borderRadiusButtons;
+    border: 0;
+    padding: $buttonPadding;
+    height: 25px;
+    filter: none;
+    @include flex(row, center, center);
+    color: $lightFont;
+    background: $gradientPeach;
+    filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+    box-shadow: $boxShadow $boxShadow $boxShadow $backgroundColor;
+}
+
 .container {
+    position: relative;
+    left: 0;
+
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
     box-sizing: border-box;
-    margin: 2vh;
+    padding-top: $betweenPadding;
+
+    transition: left 1s;
 }
 
+// USERNAME AND DATE
 .userContainer {
+    position: relative;
     display: flex;
     justify-content: space-between;
     flex-grow: 1;
-    padding: 1vh 0.5vh 1vh 0.5vh;
-    font-family: 'Archivo', sans-serif;
+    padding: 0 0 $innerPadding 0;
+    @include postFont();
+
+    .userPic {
+        @include profilePicture(25px, 25px);
+        margin-right: $innerPadding;
+        background-size: cover;
+    }
+    
+    .username {
+        flex-grow: 10;
+        display: flex;
+        align-items: center;
+    }
+    
+    .date {
+        color: $lightFont;
+        flex-grow: 1;
+        @include flex(row, flex-end, center);
+    }
+
+    #dropDown {
+        @include flex(row, center, center);
+        position: absolute;
+        top: 25px;
+
+        height: 30px;
+        width: 150px;
+        padding: $innerPadding;
+        border-radius: $borderRadiusObjects;
+        background-color: white;
+        
+        p {
+            @include postFont();
+            color: $darkFont;
+        }
+    }
 }
 
+// THE ACTIVITY
 .activityContainer {
-    background-color: rgb(255, 255, 255);
+    background-color: $activityColor;
     flex-grow: 2;
-    box-shadow: .2vh .2vh .2vh grey;
-    border-radius: .5vh;
+    box-shadow: $boxShadow $boxShadow $boxShadow $backgroundColor;
+    border-radius: $borderRadiusObjects;
+    overflow: hidden;
     display: flex;
-}
-
-.activityContainerLeft {
-    padding: 1vh;
-    flex-grow: 1;
-    flex-basis: 0;
-    font-family: 'Mulish', sans-serif;
-    display: flex;
-    flex-direction: column;
-}
-
-.activityContainerRight {
-    border-radius: 0vh .5vh .5vh 0vh;
-    flex-grow: 1.5;
-    flex-basis: 0;
-    background-size: cover;
-    background-position: center;
     min-height: 100px;
-    clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
-}
 
-.type {
-    display: flex;
-    align-items: center;
-}
 
-.typeText {
-    font-size: 15px;
-    margin-right: .5vw;
-}
+    .activityContainerLeft {
+        padding: $innerPadding $innerPadding $innerPadding $betweenPadding;
+        flex-grow: 1;
+        flex-basis: 0;
+        display: flex;
+        flex-direction: column;
 
-.typeIcon {
-    height: 60%;
-}
-
-.title {
-    font-family: 'Archivo', sans-serif;
-    font-weight: bold;
-}
-
-.userPic {
-    height: 4vh;
-    width: 4vh;
-    border-radius: 50%;
-    margin-right: 1.5vh;
-    background-size: cover;
-}
-
-.username {
-    flex-grow: 10;
-    display: flex;
-    align-items: center;
-}
-
-.date {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.comment {
-    font-size: 13px;
-}
-
-.rate {
-    display: flex;
-}
-
-.star {
-    height: 15px;
+        .type {
+            display: flex;
+            align-items: center;
+            color: $darkFont;
+            @include smallTitleFont();
+        }
+        
+        .typeText {
+            margin-right: $innerPadding;
+            color: $darkFont;
+        }
+        
+        .typeIcon {
+            height: 60%;
+        }
+        
+        .title {
+            @include bigTitleFont();
+            color: $darkFont;
+        }
+        
+        .comment {
+            color: $darkFont;
+            @include bodyFont();
+            height: 50px;
+            transition: height 1s;
+        }
+        
+        .rate {
+            display: flex;
+            padding: $innerPadding 0;
+        }
+        
+        .star {
+            height: 15px;
+        }
+    
+        #expandComment {
+            width: 35px;
+            margin: auto;
+        }
+    }
+    
+    // MOVIE IMAGE
+    .activityContainerRight {
+        flex-grow: 1.5;
+        flex-basis: 0;
+        background-size: cover;
+        background-position: center;
+        clip-path: polygon(24% 0, 100% 0, 100% 100%, 0% 100%);
+        overflow: hidden;
+    }
 }

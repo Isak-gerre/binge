@@ -13,9 +13,12 @@
 <?php
 require_once "head.php";
 ?>
-
-<h1>Bingy</h1>
+<div class="movie-profile" id="overlay"></div>
+<div class="movie-profile-background"></div>
 <div id="wrapper">
+
+
+
     <div id="trending">
         <div class="slideshow-container">
             <div class="slideshow">
@@ -42,14 +45,26 @@ require_once "head.php";
             </div>
         </div>
     </div>
-    <div id="frw"></div>
-    <div id="genre"></div>
+    <div id="frw">
+        <div class="friends-recently-watched"></div>
+    </div>
+    <div id="genre">
+    </div>
 </div>
+
+<script src="Lib/moment/moment.min.js"></script>
 
 <script src="scripts/functions.js"></script>
 <script src="scripts/makeMovieProfile.js"></script>
-<script src="scripts/makeTrending.js"></script>
+
+
+<script src="scripts/makeMovieBanners.js"></script>
+<script src="scripts/search.js"></script>
 <script src="scripts/makeNavigation.js"></script>
+<script src="scripts/makeTrending.js"></script>
+<script src="scripts/friendsRecentlyWatched.js"></script>
+<script src="scripts/makeGenreBanners.js"></script>
+<script src="scripts/makeExplore.js"></script>
 
 
 <?php

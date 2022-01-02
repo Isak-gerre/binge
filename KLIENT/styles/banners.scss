@@ -1,0 +1,94 @@
+@import "variables.scss";
+
+.movieBanner,
+.genreImageDiv,
+.userDiv {
+  height: 150px;
+  border-radius: $borderRadiusNav;
+  background-size: cover;
+  text-align: right;
+  overflow: hidden;
+
+  position: relative;
+  top: 0;
+
+  animation: movieScale 0.3s ease-out;
+  transition: all 1s;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+@keyframes movieScale {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes bannerScale {
+  0% {
+    transform:scale(1,1);
+  }
+  100% {
+    transform:scale(1.2,1.2);
+  }
+}
+
+.movieBanner {
+  max-width: 100px;
+  background-size: cover;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);
+  position: relative;
+  overflow: visible;
+  margin: auto;
+}
+
+.genreBanner {
+  height: auto;
+  position: relative;
+  
+  .genreImageDiv {
+    height: 100px;
+    width: 100%;
+    box-shadow: 0px -5px 7px 0px rgba(185, 185, 185, 0.16);
+  }
+
+  .genreGradient {
+    width: 100%;
+    height: 100px;
+    border-radius: $borderRadiusNav;
+
+    position: absolute;
+    top: 0;
+    z-index: 11;
+
+    background: linear-gradient(180deg, rgba(15, 123, 161, 0) 20%, rgba(15, 11, 46, 0) 60%, #100c30 100%);
+  }
+
+  .genreName {
+    position: relative;
+    bottom: 0;
+    // right: 0;
+    padding: 5px 0px;
+    margin-right: 10px;
+    color: $lightFont;
+    z-index: 10;
+
+    @include bodyFont();
+
+  }
+
+
+}
+
+.titleDiv {
+  position: absolute;
+  bottom: -10%;
+  right: -40%;
+  height: 50%;
+  background-color: rgba(211, 211, 211, 0.7);
+  width: 150%;
+  transform: rotate(-20deg);
+}

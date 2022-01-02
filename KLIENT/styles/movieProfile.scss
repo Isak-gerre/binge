@@ -1,69 +1,503 @@
 @import "variables.scss";
 
+// WRAPPER för => hela filmporfilen
 #overlay {
-    position: relative;
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 100;
 }
 
-#overlay-fade {
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba($color: #000000, $alpha: 0.5);
-    z-index:900;
-
-    @include flex(row, center, center); 
+.drop1 {
+  background-image: url("../icons/drop.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 400px;
+  z-index: 100;
+  width: 120px;
+  left: 13%;
+  height: 135px;
 }
+.drop2 {
+  background-image: url("../icons/drop.svg");
+  background-position: -40px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 360px;
+  z-index: 100;
+  width: 120px;
+  right: 0px;
+  height: 135px;
+  transform: rotateY(180deg);
+}
+// Pop-up
+.overlay-fade {
+  position: absolute;
+  top: 0px;
+  height: 100vh;
+  width: 100vw;
+  z-index: 10000;
+  @include flex(row, center, center);
+  background-color: rgba(0, 0, 0, 0.5);
+  //   opacity: 0;
+  animation: fadeIn 1s;
 
-#message-wrapper {
+  .message-wrapper {
+    @include flex(column, flex-start, flex-end);
+    background-color: $backgroundColor;
+    min-height: 300px;
+    display: none;
+    animation: smoothWidth 1s;
     width: 80%;
-    height: 80%;
-    background-color: white;
+    border-radius: $borderRadiusObjects;
+    box-shadow: $boxShadow $boxShadow $boxShadow $backgroundColor;
+    padding: $betweenPadding;
 
+    div {
+      width: 100%;
+    }
+
+    .top {
+      @include flex(row, space-between, center);
+      display: none;
+      // height: 50px;
+      animation: fadeIn 1s;
+
+      img {
+        width: $iconButtonSz;
+        height: $iconButtonSz;
+        // padding: $innerPadding;
+        cursor: pointer;
+      }
+
+      h1 {
+        height: 100%;
+        color: $bodyFont;
+        // padding: $innerPadding;
+        @include bigTitleFont();
+        // display: flex;
+        // align-items: flex-end;
+      }
+    }
+
+    .middle {
+      display: none;
+      width: 100%;
+      animation: fadeIn 1s;
+      // flex-basis: 90px;
+      position: relative;
+
+
+      #rate {
+        @include flex(row, flex-start, center);
+        // margin: 0px 10px;
+
+        unicode-bidi: bidi-override;
+        direction: rtl;
+      }
+
+      #rate:not(:checked) > input {
+        display: none;
+      }
+
+      #rate:not(:checked) > label {
+        cursor: pointer;
+        float: right;
+
+        color: rgba(0, 135, 211, 0.4);
+        font-size: $starSz;
+        padding-right: 5px;
+      }
+
+      #rate:not(:checked) > label:hover,
+      #rate:not(:checked) > label:hover ~ label {
+        background: $gradientPeach;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      #rate > input:checked + label:hover,
+      #rate > input:checked + label:hover ~ label,
+      #rate > input:checked ~ label:hover,
+      #rate > input:checked ~ label:hover ~ label,
+      #rate > label:hover ~ input:checked ~ label {
+        background: $gradientPeach;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      #rate > input:checked ~ label {
+        background: $gradientPeach;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .bottom {
+      @include flex(column, center, flex-start);
+      display: none;
+      position: relative;
+      animation: fadeIn 1s;
+      flex-grow: 1;
+      padding-bottom: $betweenPadding;
+
+      .labelHolder {
+        @include flex(row, space-between,center);
+      }
+
+      .labelComment {
+        color: $bodyFont;
+        @include smallTitleFont();
+      }
+
+      .labelDate{
+        color: $bodyFont;
+        @include xSmallFont();
+      }
+
+      #text-area {
+        width: 100%;
+        border: none;
+        color: $darkFont;
+        margin-bottom: 0px;
+        padding: $innerPadding;
+      }
+    }
+
+    .buttonHolder { // OBS ATT DELET/SUBMIT NU LIGEGR I EN WRAPPER FÖR ATT DE SKA VARA FLEX ROW
+      @include flex(row, flex-end, center);
+      display: none;
+    }
+
+    .button {
+      // display: none; // TROR DET VAR NÅT MED DETTA SOM FUCKADE ANIMATION
+      border: none;
+      border-radius: $borderRadiusButtons;
+      padding: $innerPadding;
+      height: $iconButtonSz;
+      margin: $betweenPadding $betweenPadding $betweenPadding 0;
+      cursor: pointer;
+      animation: fadeIn 1s;
+      box-sizing: content-box;
+
+    }
+
+    .submit {
+      background: $gradientPeach;
+      filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+    }
+
+    .delete {
+      background-color: red;
+    }
+
+  }
 }
 
-.stop-scrolling {
-    height: 100%;
-    overflow: hidden;
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
-// Button 
-
-// Rating-star
-// filled star = \2605
-// empty star = \2606
-
-.rating{
-    display:flex;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.rating li {
-    list-style-type: none;
+@keyframes smoothWidth {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 80%;
+  }
 }
 
-.rating-star{
-    
-    border: 1px solid white;
-    cursor: pointer;
-    font-size: 2em;
-    color: $accentColor;
+.movie-profile-background {
+  background-image: url("../icons/background-m-profile.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+}
+// HEADER wrapper för => backdrop pic, gradient
+.movie-profile-header {
+  height: auto;
+  position: relative;
+  z-index: 100;
+
+  .movie-profile-gradient {
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    z-index: 11;
+    background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 74%, #100c30 100%);
+    height: 400px;
+  }
+
+  .movie-profile-backdrop {
+    width: 100vw;
+    height: 400px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 }
 
-.rating-star::before{
-    content: "\2605";
+// INFO wrapper för => poster, shortinfo, title, buttons
+.movie-profile-info {
+  padding-left: $wrapperPadding;
+  padding-right: $wrapperPadding;
+  padding-bottom: $betweenPadding;
+  z-index: 101;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: $wrapperPadding;
+  margin-top: -50px;
+
+  // POSTER
+  .movie-profile-info-poster {
+    @include flex(row, flex-start, flex-end);
+
+    .movie-profile-poster {
+      width: 100%;
+      box-shadow: $boxShadow $boxShadow $boxShadow $backgroundColor;
+    }
+  }
+
+  // INFO TEXT
+  .movie-profile-info-text {
+    // font-family: "Archivo", sans-serif;
+    // line-height: 1.4;
+    @include flex(column, flex-end, flex-start);
+
+    // SHORT INFO
+    p {
+      letter-spacing: 0.07em;
+      @include bodyFont();
+      font-size: 12px;
+      color: $lightFont;
+      padding-bottom: $betweenPadding;
+      padding-top: $betweenPadding;
+    }
+
+    // TITLE
+    .movie-profile-title {
+      @include bigTitleFont();
+      color: $lightFont;
+      padding-bottom: $betweenPadding;
+    }
+
+    //BUTTON-wrapper
+    #movie-profile-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: $betweenPadding;
+      width: 100%;
+
+      // ARRANGING BUTTONS
+      .watch-later {
+        grid-area: 1 / 1 / 2 / 2;
+      }
+
+      .watched {
+        grid-area: 1 / 2 / 2 / 3;
+      }
+
+      .review {
+        grid-area: 2 / 1 / 3 / 3;
+      }
+
+      // Activity-BUTTON
+      .button {
+        border-radius: $borderRadiusButtons;
+        border: none;
+        padding: $innerPadding;
+        height: $iconButtonSz;
+        background: #20185b;
+        box-sizing: border-box;
+        filter: none;
+        @include flex(row, center, center);
+      }
+
+      // MARKED BUTTON
+      .marked {
+        // OPTION 2
+        border-radius: $borderRadiusButtons;
+        border: 0;
+        color: $lightFont;
+        background: $gradientPeach;
+        filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+      }
+    }
+  }
 }
 
-.rating-star:hover{
-    color: $accentColor;
-}
+// MIDDLE wrapper för => description, streamingservices, cast, reviews, similar movies
+.movie-profile-middle {
+  z-index: 100;
+  padding: $wrapperPadding;
 
-.rating-star.active ~ .rating-star::before {
-    color: greY;
-}
+  //  DESCRIPTION-wrapper
+  .movie-profile-description {
+    padding-bottom: $wrapperPadding;
 
-.rating:hover ~ .rating-star::before {
-    content: "\2605";
-}
-    
-.rating-star:hover ~ .rating-star::before {
-    color:grey;
+    p {
+      @include bodyFont();
+      color: $lightFont;
+      text-align: left;
+    }
+  }
+
+  .movie-p-message{
+    @include bodyFont();
+    font-size: 12px;
+  }
+
+  // STREAMING SERVICES-wrapper
+  .movie-profile-streamingservices {
+    padding-bottom: $wrapperPadding;
+
+    h4 {
+      color: $lightFont;
+      @include smallTitleFont();
+      padding-bottom: $betweenPadding;
+    }
+
+    .allProviders{
+      display: grid;
+      gap: $betweenPadding;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    p {
+      @include bodyFont();
+        font-size: 12px;
+    }
+
+    .your-streaming-services-grid, .other-streaming-services-grid {
+      @include flex(row, flex-start, center);
+      gap: $betweenPadding;
+      margin-bottom: $betweenPadding;
+      flex-wrap: wrap;
+
+      img {
+        border-radius: 50%;
+        height: 10vw;
+        width: 10vw;
+        // margin-right: $betweenPadding;
+        // filter: grayscale(100%) blur(1px);
+        // box-shadow: 5px 5px 5px #414141 inset;
+
+      }
+      
+      p {
+        color: $lightFont;
+        @include bodyFont();
+        font-size: 12px;
+      }
+
+    }
+  }
+
+  // CREDITS-wrapper
+  .movie-profile-credits {
+    padding-bottom: $wrapperPadding;
+    // grid - column, 2fr
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $betweenPadding;
+
+    .movie-profile-cast {
+      @include flex(column, flex-start, flex-start);
+      h4 {
+        color: $lightFont;
+        @include smallTitleFont();
+        padding-bottom: $betweenPadding;
+      }
+    }
+
+    .movie-profile-director {
+      @include flex(column, flex-start, flex-start);
+      h4 {
+        color: $lightFont;
+        @include smallTitleFont();
+        padding-bottom: $betweenPadding;
+      }
+    }
+
+    .production-people {
+      @include flex(row, flex-start, center);
+      padding-bottom: $betweenPadding;
+
+      div {
+        border-radius: 50%;
+        width: 10vw;
+        height: 10vw;
+        background-position: top;
+        background-size: cover;
+        margin: auto;
+      }
+
+      p {
+        padding-left: $wrapperPadding;
+        color: $lightFont;
+        @include bodyFont();
+        max-width: 110px;
+      }
+    }
+
+    .production-people:last-child {
+      padding-bottom: 0px;
+    }
+  }
+
+  // REVIEWS-wrapper
+  .movie-profile-reviews {
+    padding-bottom: $wrapperPadding;
+    @include flex(column, center, flex-start);
+
+    h4 {
+      color: $lightFont;
+      @include smallTitleFont();
+      padding-bottom: $betweenPadding;
+    }
+  }
+
+  @import "feed.scss"; 
+
+
+  // SIMILAR-wrapper
+  .movie-profile-similarMovies {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $betweenPadding;
+
+    h4 {
+      color: $lightFont;
+      @include smallTitleFont();
+      padding-bottom: $betweenPadding;
+      grid-area: 1/1/2/4;
+    }
+
+    div {
+      margin: auto;
+    }
+  }
 }
