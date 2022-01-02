@@ -272,26 +272,6 @@
             "sessionId": "$2y$10$ovQLNrITq0LJ0LOau0S5auIgwZ8dAwYk5JXalFW\/MG3hVo0O5Vhti",
             "id": 10
         },
-        "11": {
-            "firstname": "Lina",
-            "lastname": "Andersson",
-            "username": "linkan",
-            "password": "$2y$10$1alySK1po6XNPrepbuJ0SOfg6SY99ZeZVlyQooOm4AQlSjOcdrPTe",
-            "email": "lina@mau.se",
-            "birthday": "1999-06-16",
-            "region": "SE",
-            "active_streaming_services": [
-                "Netflix",
-                "Amazon Prime Video"
-            ],
-            "profile_picture": {
-                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_1.png"
-            },
-            "followers": [],
-            "following": [],
-            "sessionId": "$2y$10$gE2kkh4JIdnsWA7Iq8DOH.YpHPQ2VLX60XjxBguoYLY4tDiW5DPne",
-            "id": 11
-        },
         "12": {
             "firstname": "Matilda",
             "lastname": "Einarsson",
