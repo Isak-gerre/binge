@@ -592,13 +592,5 @@ async function makeMovieProfile(movieID) {
     buttons.append(watchLater, watched, review);
   });
 
-  let stateCheck = setInterval(() => {
-    if (document.readyState === "complete") {
-      if (getParamFromUrl("scroll")) {
-        console.log(getParamFromUrl("scroll"));
-        window.scrollTo(0, getParamFromUrl("scroll"));
-      }
-      clearInterval(stateCheck);
-    }
-  }, 100);
+  toScroll();
 }

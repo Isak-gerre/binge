@@ -8,6 +8,12 @@ Add filter that actiate on button press
 let searchType = "movie";
 let searches = {};
 
+if (getParamFromUrl("search_by")) {
+  if (getParamFromUrl("open") == "true") {
+    makeSearchOverlay(getParamFromUrl("search_word"), getParamFromUrl("search_by"));
+  }
+}
+
 async function searchFunction(searchBy) {
   console.log(searchBy);
   let input = document.getElementById("searchField");

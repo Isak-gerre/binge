@@ -549,6 +549,26 @@
             "comment": "",
             "rate": "",
             "updated": false
+        },
+        "61": {
+            "id": 61,
+            "userID": 14,
+            "movieID": "10030",
+            "type": "watched",
+            "date": "20220102",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "62": {
+            "id": 62,
+            "userID": 14,
+            "movieID": "10030",
+            "type": "watchlist",
+            "date": "20220102",
+            "comment": "",
+            "rate": "",
+            "updated": false
         }
     }
 }

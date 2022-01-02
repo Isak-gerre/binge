@@ -13,6 +13,38 @@ highestID(){
 */
 
 "use strict";
+
+// State Handlers
+//_______________________________________________________________________________________
+function ifSearchInState() {
+  if ("state" in sessionStorage) {
+    let state = getFromSession("state")[0];
+    if (state.search) {
+      makeSearchOverlay(state.search.search_word, state.search.search_by);
+    }
+  }
+}
+function removeLatestState() {
+  if ("state" in sessionStorage) {
+    let allStates = getFromSession("state");
+    // Tar bort nyaste state
+    allStates.splice(0, 1);
+    saveToSession(allStates, "state");
+  }
+}
+function toScroll() {
+  let stateCheck = setInterval(() => {
+    if (document.readyState === "complete") {
+      if (getParamFromUrl("scroll")) {
+        console.log(getParamFromUrl("scroll"));
+        window.scrollTo(0, getParamFromUrl("scroll"));
+      }
+      clearInterval(stateCheck);
+    }
+  }, 100);
+}
+//_______________________________________________________________________________________
+
 // SESSION FUNCTIONS
 //_______________________________________________________________________________________
 
@@ -38,6 +70,7 @@ function makeSearchState(searchword, searchBy) {
     search_word: searchword,
     search_by: searchBy,
     scroll_distance: scrollDistance,
+    openSearch: true,
   };
 }
 
