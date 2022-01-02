@@ -510,6 +510,7 @@ async function makeMovieProfile(movieID) {
 
     // Delete event - ta bort från DB, ta bort markering på reviewknapp
     document.querySelector(".delete").addEventListener("click", () => {
+      console.log(relation.review.id);
       deleteteActivity(relation.review.id);
 
       let message = "You successfully delted your review";

@@ -278,8 +278,9 @@ async function getFriendsActivities(id) {
 }
 
 function howManyDaysAgo(recievedDate) {
+  console.log(moment("202201011402", "YYYYMMDDhmm").fromNow());
   let stringDate = recievedDate.toString();  
-  let thisMagicMoment = moment(stringDate, "YYYYMMDD").fromNow();
+  let thisMagicMoment = moment(stringDate, "YYYYMMDDhmm").fromNow();
   return thisMagicMoment;
 }
 

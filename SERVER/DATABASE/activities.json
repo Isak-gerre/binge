@@ -1,534 +1,64 @@
 {
-    "activities": {
-        "1": {
+    "activities": [
+        {
             "id": 1,
-            "userID": 6,
-            "movieID": 550,
-            "type": "watchlist",
-            "date": "20211206",
+            "userID": 10,
+            "movieID": "634649",
+            "type": "watched",
+            "date": "202201021112",
             "comment": "",
             "rate": "",
             "updated": false
         },
-        "2": {
+        {
             "id": 2,
-            "userID": 5,
-            "movieID": 100,
-            "type": "review",
-            "date": "20211203",
-            "comment": "S\u00e5 sp\u00e4nnande och samtidigt den roligaste filmen jag n\u00e5gonsin sett! \u00c4lskar hela storyn och nj\u00f6r under hela filmens g\u00e5ng. Underbar.",
-            "rate": "4",
+            "userID": 10,
+            "movieID": "9486",
+            "type": "watched",
+            "date": "202201021112",
+            "comment": "",
+            "rate": "",
             "updated": false
         },
-        "3": {
+        {
             "id": 3,
-            "userID": 4,
-            "movieID": 101,
+            "userID": 10,
+            "movieID": "9486",
             "type": "review",
-            "date": "20211215",
-            "comment": "",
-            "rate": "3",
+            "date": "202201011113",
+            "comment": "B\u00e4sta filmen jag sett! Johnnyboi \u00e4r min nya idol",
+            "rate": "5",
             "updated": false
         },
-        "4": {
+        {
             "id": 4,
-            "userID": 3,
-            "movieID": 345,
-            "type": "watched",
-            "date": "20211206",
+            "userID": 14,
+            "movieID": "1858",
+            "type": "watchlist",
+            "date": "202201021114",
             "comment": "",
             "rate": "",
             "updated": false
         },
-        "5": {
+        {
             "id": 5,
-            "userID": 2,
-            "movieID": 35,
+            "userID": 10,
+            "movieID": "634649",
             "type": "watchlist",
-            "date": "20211113",
+            "date": "202201021125",
             "comment": "",
             "rate": "",
             "updated": false
         },
-        "6": {
+        {
             "id": 6,
-            "userID": 1,
-            "movieID": 38,
+            "userID": 10,
+            "movieID": "634649",
             "type": "review",
-            "date": "20211203",
-            "comment": "Otroliga sk\u00e5despelare! Supermysig film. Inget m\u00e4rkv\u00e4rdigt i \u00f6vrigt.",
-            "rate": "3",
-            "updated": false
-        },
-        "7": {
-            "id": 7,
-            "userID": 6,
-            "movieID": 12,
-            "type": "review",
-            "date": "20211203",
-            "comment": "V\u00e4rldens mysigase film. Passar f\u00f6r hela familjen och \u00e4r b\u00e5de skojjig och sp\u00e4nnande.",
-            "rate": "5",
-            "updated": false
-        },
-        "8": {
-            "id": 8,
-            "userID": 5,
-            "movieID": 13,
-            "type": "watchlist",
-            "date": "20211113",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "10": {
-            "id": 10,
-            "userID": 3,
-            "movieID": 55,
-            "type": "watchlist",
-            "date": "20210930",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "11": {
-            "id": 11,
-            "userID": 2,
-            "movieID": 14,
-            "type": "review",
-            "date": "20211113",
-            "comment": "",
-            "rate": "2",
-            "updated": false
-        },
-        "12": {
-            "id": 12,
-            "userID": 1,
-            "movieID": 28,
-            "type": "watchlist",
-            "date": "20211020",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "13": {
-            "id": 13,
-            "userID": 6,
-            "movieID": 123,
-            "type": "review",
-            "date": "20211201",
-            "comment": "",
-            "rate": "5",
-            "updated": false
-        },
-        "15": {
-            "id": 15,
-            "userID": 4,
-            "movieID": 321,
-            "type": "watchlist",
-            "date": "20211206",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "16": {
-            "id": 16,
-            "userID": 3,
-            "movieID": 457,
-            "type": "review",
-            "date": "20210930",
-            "comment": "",
+            "date": "202201021136",
+            "comment": "s\u00e5d\u00e4r",
             "rate": "4",
-            "updated": false
-        },
-        "17": {
-            "id": 17,
-            "userID": 2,
-            "movieID": 58,
-            "type": "watched",
-            "date": "20211204",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "18": {
-            "id": 18,
-            "userID": 1,
-            "movieID": 73,
-            "type": "watched",
-            "date": "20211020",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "19": {
-            "id": 19,
-            "userID": 5,
-            "movieID": 73,
-            "type": "watchlist",
-            "date": "20211020",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "20": {
-            "id": 20,
-            "userID": 5,
-            "movieID": 321,
-            "type": "watchlist",
-            "date": "20211206",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "21": {
-            "id": 21,
-            "userID": 4,
-            "movieID": "550",
-            "type": "watchlist",
-            "date": "20211222",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "22": {
-            "id": 22,
-            "userID": 4,
-            "movieID": "123",
-            "type": "watchlist",
-            "date": "20211222",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "23": {
-            "id": 23,
-            "userID": 4,
-            "movieID": "123",
-            "type": "watched",
-            "date": "20211222",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "24": {
-            "id": 24,
-            "userID": 4,
-            "movieID": "550",
-            "type": "watched",
-            "date": "20211222",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "26": {
-            "id": 26,
-            "userID": 4,
-            "movieID": "345",
-            "type": "watched",
-            "date": "20211223",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "27": {
-            "id": 27,
-            "userID": 4,
-            "movieID": "438631",
-            "type": "watchlist",
-            "date": "20211223",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "28": {
-            "id": 28,
-            "userID": 4,
-            "movieID": "438631",
-            "type": "watched",
-            "date": "20211223",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "29": {
-            "id": 29,
-            "userID": 4,
-            "movieID": "634649",
-            "type": "watchlist",
-            "date": "20211223",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "30": {
-            "id": 30,
-            "userID": 5,
-            "movieID": "9323",
-            "type": "watchlist",
-            "date": "20211228",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "31": {
-            "id": 31,
-            "userID": 5,
-            "movieID": "871",
-            "type": "watched",
-            "date": "20211228",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "32": {
-            "id": 32,
-            "userID": 5,
-            "movieID": "871",
-            "type": "review",
-            "date": "20211228",
-            "comment": "Wow vilket film! \u00c4lskar den av hela mitt hj\u00e4rta!",
-            "rate": "3",
-            "updated": true
-        },
-        "33": {
-            "id": 33,
-            "userID": 5,
-            "movieID": "429617",
-            "type": "review",
-            "date": "20211229",
-            "comment": "hej",
-            "rate": "5",
-            "updated": false
-        },
-        "35": {
-            "id": 35,
-            "userID": 7,
-            "movieID": "624860",
-            "type": "watched",
-            "date": "20211229",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "37": {
-            "id": 37,
-            "userID": 7,
-            "movieID": "634649",
-            "type": "watched",
-            "date": "20211229",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "38": {
-            "id": 38,
-            "userID": 7,
-            "movieID": "634649",
-            "type": "review",
-            "date": "20211229",
-            "comment": "Den b\u00e4sta filmen jag s\u00e4tt p\u00e5 l\u00e4nge! Sinnesbra story och otroligt m\u00e5nga easter eggs f\u00f6r folk som \u00e4r n\u00f6rdiga och \u00e4lskar spiderman som jag.",
-            "rate": "5",
-            "updated": false
-        },
-        "39": {
-            "id": 39,
-            "userID": 7,
-            "movieID": "438631",
-            "type": "watchlist",
-            "date": "20211229",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "40": {
-            "id": 40,
-            "userID": 7,
-            "movieID": "624860",
-            "type": "watchlist",
-            "date": "20211229",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "41": {
-            "id": 41,
-            "userID": 8,
-            "movieID": "911068",
-            "type": "watched",
-            "date": "20211229",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "42": {
-            "id": 42,
-            "userID": 8,
-            "movieID": "438631",
-            "type": "watched",
-            "date": "20211229",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "43": {
-            "id": 43,
-            "userID": 8,
-            "movieID": "506528",
-            "type": "watchlist",
-            "date": "20211229",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "44": {
-            "id": 44,
-            "userID": 8,
-            "movieID": "68718",
-            "type": "review",
-            "date": "20211229",
-            "comment": "",
-            "rate": "5",
-            "updated": false
-        },
-        "45": {
-            "id": 45,
-            "userID": 10,
-            "movieID": "634649",
-            "type": "watched",
-            "date": "20211231",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "46": {
-            "id": 46,
-            "userID": 10,
-            "movieID": "634649",
-            "type": "review",
-            "date": "20211231",
-            "comment": "Vilken film! F\u00f6rst\u00e5r varf\u00f6r den \u00e4r s\u00e5 hypade",
-            "rate": "5",
-            "updated": false
-        },
-        "47": {
-            "id": 47,
-            "userID": 10,
-            "movieID": "370172",
-            "type": "watched",
-            "date": "20211231",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "48": {
-            "id": 48,
-            "userID": 10,
-            "movieID": "370172",
-            "type": "review",
-            "date": "20211231",
-            "comment": "en utav de b\u00e4ttre bond-filmerna!!!",
-            "rate": "5",
-            "updated": false
-        },
-        "49": {
-            "id": 49,
-            "userID": 10,
-            "movieID": "68718",
-            "type": "watchlist",
-            "date": "20220101",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "50": {
-            "id": 50,
-            "userID": 10,
-            "movieID": "68179",
-            "type": "watchlist",
-            "date": "20220101",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "51": {
-            "id": 51,
-            "userID": 10,
-            "movieID": "11412",
-            "type": "watchlist",
-            "date": "20220101",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "52": {
-            "id": 52,
-            "userID": 10,
-            "movieID": "437217",
-            "type": "watchlist",
-            "date": "20220101",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "53": {
-            "id": 53,
-            "userID": 10,
-            "movieID": "9708",
-            "type": "watchlist",
-            "date": "20220101",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "54": {
-            "id": 54,
-            "userID": 10,
-            "movieID": "290512",
-            "type": "watchlist",
-            "date": "20220101",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "55": {
-            "id": 55,
-            "userID": 10,
-            "movieID": "8619",
-            "type": "watchlist",
-            "date": "20220101",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "56": {
-            "id": 56,
-            "userID": 10,
-            "movieID": "12155",
-            "type": "watchlist",
-            "date": "20220101",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "57": {
-            "id": 57,
-            "userID": 10,
-            "movieID": "56903",
-            "type": "watchlist",
-            "date": "20220101",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "58": {
-            "id": 58,
-            "userID": 10,
-            "movieID": "13394",
-            "type": "watchlist",
-            "date": "20220101",
-            "comment": "",
-            "rate": "",
             "updated": false
         }
-    }
+    ]
 }

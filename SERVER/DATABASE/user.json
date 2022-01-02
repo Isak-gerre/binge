@@ -265,9 +265,12 @@
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_2.png"
             },
-            "followers": [],
+            "followers": [
+                14
+            ],
             "following": [
-                6
+                6,
+                14
             ],
             "sessionId": "$2y$10$ovQLNrITq0LJ0LOau0S5auIgwZ8dAwYk5JXalFW\/MG3hVo0O5Vhti",
             "id": 10
@@ -316,6 +319,31 @@
             "following": [],
             "sessionId": "$2y$10$XVN9n2BKQFXmm3UmthNNfeT6fo5a7jUZlYmnYq2Ge1z6l.d6uxq9O",
             "id": 13
+        },
+        "14": {
+            "firstname": "lina",
+            "lastname": "andersson",
+            "username": "liknanhej",
+            "password": "$2y$10$D4.f5LKAYBWYEPIUD366O.SS2PWTh8axL.DgMQt6xlaTZvmxlp7sS",
+            "email": "linkan@mau.se",
+            "birthday": "1977-12-07",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "Amazon Prime Video",
+                "Disney Plus"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_5.png"
+            },
+            "followers": [
+                10
+            ],
+            "following": [
+                10
+            ],
+            "sessionId": "$2y$10$LVq11\/8uzR\/w9hxUkB4eSOY4iWJ5XzdOOF4MJT020PUiK6RJ4U3yS",
+            "id": 14
         }
     }
 }

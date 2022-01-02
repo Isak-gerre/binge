@@ -9,7 +9,6 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(form);
 
-
     let error = 0;
     for(let [key, value] of formData.entries()) {
         if(key === "username" && value === ""){
@@ -19,8 +18,11 @@ form.addEventListener("submit", (event) => {
             error += 2;
         }
     }   
+
     let errorDiv = document.createElement("div"); 
     errorDiv.setAttribute("id", "errorDiv");
+    document.getElementById("loginForm").prepend(errorDiv);
+
     if(error == 1){
         errorDiv.innerHTML = "Please fill in your username";
     }
@@ -29,7 +31,7 @@ form.addEventListener("submit", (event) => {
     }
     else if(error == 3){
         errorDiv.innerHTML = "Please fill in your password and username";
-    }
+    } 
     else if(error == 0){
 
         let object = {};
@@ -45,9 +47,11 @@ form.addEventListener("submit", (event) => {
         fetch(req2)
             .then(response => {
                 if(response.ok){
-                    return response.json()
+                    console.log(response);
+                    return response.json();
                 }
                 else{
+
                     throw new Error("Password or username is wrong");
                 }
                 })
@@ -56,13 +60,14 @@ form.addEventListener("submit", (event) => {
                 window.location.replace("http://localhost:2000/feed.php");
             })
             .catch(error => {
+                document.getElementById("errorDiv").innerHTML = "Wrong combination of username and password";
                 sessionStorage.clear();
                 console.log(error);
             });
     }
     if(error == 1 || error == 2 || error == 3){
         if(!document.getElementById("errorDiv")){
-            document.getElementById("loginForm").append(errorDiv);
+            document.getElementById("loginForm").prepend(errorDiv);
         }
         else{
             if(error == 1){
@@ -72,8 +77,8 @@ form.addEventListener("submit", (event) => {
                 document.getElementById("errorDiv").innerHTML = "Please fill in your password"; 
             }
             else if(error == 3){
-                document.getElementById("errorDiv").innerHTML = "Please fill in your password and username";
-            }
+                document.getElementById("errorDiv").innerHTML = "Please fill in your username and password";
+            } 
         }
     }
 });
