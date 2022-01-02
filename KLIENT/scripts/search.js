@@ -432,11 +432,16 @@ async function searchForUsers(inputValue = "") {
   inputValue = document.getElementById("searchField").value;
   searchType = "users";
 
+  //Skapar en counter som ska börja på 8
   let counter = 8;
+
+  //Hämtar användare och skapar divvar
   let users = await getUsers();
   makeUserSearchDivs(users, counter);
   
   allUserDivs = document.querySelectorAll(".userDiv");
+
+  //Ny array för de element som syns (eftersom de som inte syns när man sökt ligger kvar annars)
   let showingElements = [];
   
   allUserDivs.forEach((element) => {
@@ -444,10 +449,18 @@ async function searchForUsers(inputValue = "") {
       document.querySelector(".showMoreDiv").remove();
     }
     
+    //Om element inte innehåller display none, alltså syns, pushar vi in det i showing elements.
     if (!element.style.display.includes("none")) {
       showingElements.push(element);
+
+      //Detta verkar funka iaf
       console.log(showingElements);
 
+      //Här vill jag göra att:
+      //- Om showing elements är fler än counter (8): visa bara så många som det finns i counter
+      //- Om man klickar på show more btn så ökar man på countern med 8 till
+      //- Detta gick inte så bra för mig så status är just nu ingenting
+      //- Tack och hej
       if (showingElements.length > counter) {
         console.log('true');
         let showMoreDiv = document.createElement("div");
