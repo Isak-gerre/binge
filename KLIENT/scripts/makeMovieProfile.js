@@ -47,8 +47,12 @@ async function makeMovieProfile(movieID) {
 
   // backdrop
   let backdrop = document.createElement("div");
-  backdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${movieInfo["backdrop_path"]})`;
   backdrop.className = "movie-profile-backdrop";
+  if(movieInfo["backdrop_path"] == null) {
+    backdrop.style.backgroundImage = "url('../icons/image.svg')";
+  } else {
+    backdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${movieInfo["backdrop_path"]})`;
+  }
 
   // gradient
   let gradient = document.createElement("div");
@@ -64,10 +68,17 @@ async function makeMovieProfile(movieID) {
   // info-poster
   let infoPoster = document.createElement("div");
   infoPoster.className = "movie-profile-info-poster";
+  console.log(movieInfo);
 
   let poster = document.createElement("img");
-  poster.setAttribute("src", `https://image.tmdb.org/t/p/w500${movieInfo["poster_path"]}`);
   poster.className = "movie-profile-poster";
+
+  if(poster["poster_path"] == null) {
+    poster.setAttribute("src", "../icons/image.svg");
+    poster.style.background = "white";
+  } else {
+    poster.setAttribute("src", `https://image.tmdb.org/t/p/w500${movieInfo["poster_path"]}`);
+  }
 
   infoPoster.append(poster);
 
@@ -265,20 +276,25 @@ async function makeMovieProfile(movieID) {
     // let defaultFace = "../icons/face.png"
 
     let image = document.createElement("div");
-
-    if(person.profile_path == null) {
-      image.style.backgroundImage = `url(../icons/face.svg)`;
-    } else {
-      image.style.backgroundImage = `url(https://image.tmdb.org/t/p/w200/${person.profile_path})`;
-    }
-
     let name = document.createElement("p");
-    name.textContent = person.name;
 
-    productionPeople.addEventListener("click", () => {
-      makeSearchOverlay(person.name);
-    });
-
+    if(person !== undefined) {
+      if(person.profile_path == null) {
+        image.style.backgroundImage = `url(../icons/face.svg)`;
+      } else {
+        image.style.backgroundImage = `url(https://image.tmdb.org/t/p/w200/${person.profile_path})`;
+      }
+  
+      name.textContent = person.name;
+  
+      productionPeople.addEventListener("click", () => {
+        makeSearchOverlay(person.name);
+      });
+  
+    } else {
+      image.style.backgroundImage = `url(../icons/face.svg)`;
+      name.textContent = "Jane Doe";
+    }
     productionPeople.append(image, name);
     return productionPeople;
   }

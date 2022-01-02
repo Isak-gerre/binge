@@ -137,7 +137,7 @@ input:focus {
   padding-bottom: 20px;
   width: 100%;
   bottom: 0;
-  z-index: 11000;
+  z-index: 9000;
   background-color: black;
   // background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
 
@@ -278,7 +278,7 @@ svg:active,
   top: 0;
   background-color: black;
   width: 60%;
-  z-index: 10000;
+  z-index: 11000;
   right: 0;
   padding: 60px 0px 90px 20px;
   box-sizing: border-box;
@@ -295,14 +295,26 @@ svg:active,
   top: 0;
   background-color: black;
   width: 100%;
-  z-index: 900;
+  z-index: 10000;
   opacity: 0.6;
+}
+
+.exitMenu {
+  height: 20px;
+  width: 20px;
+  background-image: url("../icons/exit.svg");
+  background-position: center;
+  background-size: contain;
+  // background-color: blueviolet;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .pages-container {
   border-bottom: 1px solid $lightFont;
   margin-bottom: 10px;
-  width: 100%;
+  width: 90%;
 }
 
 .hamburger-text {
@@ -320,7 +332,7 @@ svg:active,
 .genres-container {
   border-bottom: 1px solid $lightFont;
   margin-bottom: 10px;
-  width: 100%;
+  width: 90%;
 
   .genre-link {
     opacity: 0;
