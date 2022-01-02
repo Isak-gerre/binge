@@ -272,26 +272,6 @@
             "sessionId": "$2y$10$ovQLNrITq0LJ0LOau0S5auIgwZ8dAwYk5JXalFW\/MG3hVo0O5Vhti",
             "id": 10
         },
-        "11": {
-            "firstname": "Lina",
-            "lastname": "Andersson",
-            "username": "linkan",
-            "password": "$2y$10$1alySK1po6XNPrepbuJ0SOfg6SY99ZeZVlyQooOm4AQlSjOcdrPTe",
-            "email": "lina@mau.se",
-            "birthday": "1999-06-16",
-            "region": "SE",
-            "active_streaming_services": [
-                "Netflix",
-                "Amazon Prime Video"
-            ],
-            "profile_picture": {
-                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_1.png"
-            },
-            "followers": [],
-            "following": [],
-            "sessionId": "$2y$10$gE2kkh4JIdnsWA7Iq8DOH.YpHPQ2VLX60XjxBguoYLY4tDiW5DPne",
-            "id": 11
-        },
         "12": {
             "firstname": "Matilda",
             "lastname": "Einarsson",
@@ -336,6 +316,27 @@
             "following": [],
             "sessionId": "$2y$10$XVN9n2BKQFXmm3UmthNNfeT6fo5a7jUZlYmnYq2Ge1z6l.d6uxq9O",
             "id": 13
+        },
+        "14": {
+            "firstname": "isak",
+            "lastname": "Gerre",
+            "username": "isak123",
+            "password": "$2y$10$Xw\/.x\/X3lIUxD9FuqkQRgeUV.lZUQ4z2IoFP5U.HD95uXZl5HINi6",
+            "email": "isak@gmail.com",
+            "birthday": "2022-01-06",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "Disney Plus",
+                "HBO Max"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_3.png"
+            },
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$ge0HZzU4Wl4Vo17ZUaqYrOHnC2GbN4ap6a4HqNew.CvM35.FT\/WBi",
+            "id": 14
         }
     }
 }
