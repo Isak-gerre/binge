@@ -12,7 +12,6 @@
 require_once "head.php";
 ?>
 
-<h1>Bingy</h1>
 <div class="movie-profile-background"></div>
 
 <div id="wrapper"></div>
