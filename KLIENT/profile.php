@@ -10,6 +10,17 @@
 
 // Inkludera footer.php
 
+if ($method === "OPTIONS") {
+    // Tillåt alla (origins) och alla headers
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Headers: *");
+    exit();
+}
+
+// Alla är vällkommna
+header("Access-Control-Allow-Origin: *");
+
+
 require_once "head.php";
 ?>
 <div class="movie-profile-background"></div>
@@ -53,6 +64,95 @@ require_once "head.php";
     <!-- <canvas id="ctx" width="400" height="400"></canvas> -->
 </div>
 
+
+<form id="signUpForm" class="signInForm" action="index.php" method="POST">
+    <div>
+        <h1>Settings</h1>
+    </div>
+    <fieldset id="createUserP1">
+        <div id="input">
+            <label>Firstname</label>
+            <input class="signInInput" type="text" name="firstname" placeholder="Firstname" required>
+        </div>
+        <div id="input">
+            <label>Lastname</label>
+            <input class="signInInput" type="text" name="lastname" placeholder="Lastname" required>
+        </div>
+        <!-- <div id="input">
+            <label>Username</label>
+            <input class="signInInput" type="text" id="username1" name="username" placeholder="Username" required>
+        </div> -->
+        <div id="input">
+            <label>Current Password</label>
+            <input class="signInInput" type="password" id="password2" name="password" placeholder="Password" required>
+        </div>
+        <div id="input">
+            <label>New Password</label>
+            <input class="signInInput" type="password" name="confirm_password" placeholder="Confirm Password" required>
+        </div>
+        <div id="input">
+            <label>Email</label>
+            <input class="signInInput" type="text" name="email" placeholder="Email" required>
+        </div>
+        <div id="input">
+            <label>Birthday</label>
+            <input class="signInInput" type="date" name="birthday" placeholder="Birthday">
+        </div>
+    </fieldset>
+    <fieldset id="createUserP2">
+        <p>Choose your streaming providers</p>
+        <?php
+        echo "<script>";
+        include_once "scripts/createFormApiSettings.js";
+        echo "</script>";
+        ?>
+    </fieldset>
+    <fieldset id="createUserP3">
+        <div id="avatars">
+            <p>Choose an avatar</p>
+            <label class="profileImgSelected">
+                <input style="display:none" name="profileImg" id="profileImg1" type="radio" value="profileImg1" checked>
+                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_1.png" width="100" height="100" alt="">
+            </label>
+            <label>
+                <input style="display:none" name="profileImg" id="profileImg2" type="radio" value="profileImg2">
+                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_2.png" width="100" height="100" alt="">
+            </label>
+            <label>
+                <input style="display:none" name="profileImg" id="profileImg3" type="radio" value="profileImg3">
+                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_3.png" width="100" height="100" alt="">
+            </label>
+            <label>
+                <input style="display:none" name="profileImg" id="profileImg4" type="radio" value="profileImg4">
+                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_4.png" width="100" height="100" alt="">
+            </label>
+            <label>
+                <input style="display:none" name="profileImg" id="profileImg1" type="radio" value="profileImg5">
+                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_5.png" width="100" height="100" alt="">
+            </label>
+            <label>
+                <input style="display:none" name="profileImg" id="profileImg2" type="radio" value="profileImg6">
+                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_6.png" width="100" height="100" alt="">
+            </label>
+            <label>
+                <input style="display:none" name="profileImg" id="profileImg3" type="radio" value="profileImg7">
+                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_7.png" width="100" height="100" alt="">
+            </label>
+            <label>
+                <input style="display:none" name="profileImg" id="profileImg4" type="radio" value="profileImg8">
+                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_8.png" width="100" height="100" alt="">
+            </label>
+        </div>
+        <div id="uploadProfilePic">
+            <p>Or upload your own profile picture</p>
+            <input type="file" id="fileToUpload" name="fileToUpload">
+        </div>
+        <input type="submit" value="Update account" id="signInButton">
+    </fieldset>
+
+</form>
+
+
 <script src="Lib/node_modules/chart.js/dist/chart.js"></script>
 <script src="Lib/moment/moment.min.js"></script>
 <script src="Lib/pressure/pressure.min.js"></script>
@@ -61,10 +161,18 @@ require_once "head.php";
 <script src="scripts/search.js"></script>
 <script src="scripts/makeNavigation.js"></script>
 <script src="scripts/stats.js"></script>
-<!-- <script src="scripts/createFormAPI.js"></script> -->
+<script src="scripts/formNavigationSettings.js"></script> formNavigationSettings
+<script src="scripts/createFormApiSettings.js"></script>
+<script src="scripts/signUp.js"></script>
 <script src="scripts/updateUser.js"></script>
 <script src="scripts/makeUserProfile.js"></script>
 
 <?php
+
+echo "<script>";
+include_once "scripts/signUp.js";
+echo "</script>";
+
+
 require_once "footer.php";
 ?>

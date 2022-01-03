@@ -1,5 +1,6 @@
 "use strict";
 
+
 // Ta bort API-nyckel, lägg den i APIn
 
 let regionRQ = new Request(
@@ -18,6 +19,7 @@ fetch(regionRQ)
       //Varje option fylls med alla regions
       let opt = document.createElement("option");
       opt.setAttribute("name", `${region.english_name}`);
+      opt.setAttribute("id", `${region.iso_3166_1}`);
       opt.innerHTML = `${region.english_name}`;
       opt.value = `${region.iso_3166_1}`;
       selectRegion.append(opt);
@@ -31,7 +33,7 @@ fetch(regionRQ)
     opt.setAttribute("selected", "true");
 
     selectRegion.prepend(opt);
-fiel
+
     //Skapar en slect för region
     document.getElementById("createUserP2").append(selectRegion);
 
@@ -84,20 +86,20 @@ fiel
     searchProvider.setAttribute("placeholder", "Filter Providers by name");
 
     let providerArray = [];
-    //Filtrerar baserat på vad du sökt
-    filter.addEventListener("change", (e) => {
-      let startNumber = document.getElementById("region").selectedIndex == 1 ? 1 : 0;
+
+    function loadProviders(){
+      // let startNumber = document.getElementById("region").selectedIndex == 1 ? 1 : 0;
       if (document.getElementById("fieldSetProviders")) {
         document.getElementById("fieldSetProviders").innerHTML = "";
       }
-      let selected = e.target.selectedOptions[startNumber].getAttribute("name");
-      let length = e.originalTarget.options.length;
-      for (let i = 1; i < length; i++) {
-        if (e.originalTarget.options[i].innerHTML == selected) {
-          document.getElementById("region").selectedIndex = i;
-          break;
-        }
-      }
+      // let selected = e.target.selectedOptions[startNumber].getAttribute("name");
+      // let length = e.originalTarget.options.length;
+      // for (let i = 1; i < length; i++) {
+      //   if (e.originalTarget.options[i].innerHTML == selected) {
+      //     document.getElementById("region").selectedIndex = i;
+      //     break;
+      //   }
+      // }
 
       //Gör en sökning efter varje provider från apin och laddar hem dem som är specifika till den regionen
       providerArray = [];
@@ -113,7 +115,15 @@ fiel
         });
       document.getElementById("createUserP2").insertBefore(searchProvider, buttonWrapper);
       document.getElementById("createUserP2").insertBefore(providers, buttonWrapper);
+    }
+    //Filtrerar baserat på vad du sökt
+    filter.addEventListener("change", (e) => {
+      loadProviders()
     });
+
+    if(filter != ""){
+      loadProviders()
+    }
 
     searchProvider.addEventListener("keyup", () => {
       showProviders();
