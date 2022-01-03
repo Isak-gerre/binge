@@ -93,27 +93,27 @@ let searches = {};
 //   }
 // }
 
-function myFunction(searchResults, searchAttribute = "name") {
-  // console.log(searchResults);
-  var movie, text, i, txtValue;
-  filter = searchResults.toUpperCase();
-  movie = document.querySelectorAll("#search-results .movieBanner");
+// function myFunction(searchResults, searchAttribute = "name") {
+//   // console.log(searchResults);
+//   var movie, text, i, txtValue;
+//   filter = searchResults.toUpperCase();
+//   movie = document.querySelectorAll("#search-results .movieBanner");
 
-  for (i = 0; i < movie.length; i++) {
-    text = movie[i].getAttribute(searchAttribute);
-    // txtValue = text.textContent || text.innerText;
-    if (text.toUpperCase().indexOf(filter) > -1) {
-      movie[i].style.display = "";
-    } else {
-      movie[i].style.display = "none";
-    }
-    if (text.toUpperCase().indexOf(filter) > -1) {
-      movie[i].style.display = "";
-    } else {
-      movie[i].style.display = "none";
-    }
-  }
-}
+//   for (i = 0; i < movie.length; i++) {
+//     text = movie[i].getAttribute(searchAttribute);
+//     // txtValue = text.textContent || text.innerText;
+//     if (text.toUpperCase().indexOf(filter) > -1) {
+//       movie[i].style.display = "";
+//     } else {
+//       movie[i].style.display = "none";
+//     }
+//     if (text.toUpperCase().indexOf(filter) > -1) {
+//       movie[i].style.display = "";
+//     } else {
+//       movie[i].style.display = "none";
+//     }
+//   }
+// }
 
 function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
   document.body.style.overflow = "hidden";
@@ -148,11 +148,12 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
       searchBy = pill;
       searchFunction(pill);
       // Ändrar grid layout från två kolumner till tre
-      document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(3, 1fr);");
+      // document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(3, 1fr);");
       if (pill == "Users") {
+        console.log("HEJ JAG ÄR HÄR");
         // Om User => 2 kolumner
         // Ändrar grid layout från två kolumner till tre
-        document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");
+        // document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");
       }
       let active = document.querySelectorAll(".active");
       if (active.length != 0) {
@@ -211,7 +212,7 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
   searchField.addEventListener("keyup", (e) => {
     if (e.key == "Enter") {
       // Ändrar grid layout från två kolumner till tre
-      document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(3, 1fr);");
+      // document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(3, 1fr);");
       document.querySelector("#search-results-text").textContent =
         "Showing " + document.querySelector(".active").textContent;
       searchFunction(searchBy);
@@ -222,8 +223,16 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
 async function searchFunction(searchBy) {
   let input = document.getElementById("searchField");
   document.getElementById("search-results").innerHTML = "";
-  for (let i = 0; i < 20; i++) {
-    document.querySelector("#search-results").append(makePlaceholderMovieBanner());
+  // document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");
+
+
+  if(searchBy != "Users") {
+    // document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(3, 1fr);");
+
+
+    for (let i = 0; i < 20; i++) {
+      document.querySelector("#search-results").append(makePlaceholderMovieBanner());
+    }
   }
   let savedMovies = [];
   let inputValue = input.value.toLowerCase();
@@ -275,8 +284,6 @@ async function searchFunction(searchBy) {
   // USERS
   if (searchBy == "Users") {
     let page = 1;
-
-    
     await searchForUsers(inputValue, page);
 }
 
@@ -431,140 +438,203 @@ async function getAndShowMoviesByActors(inputValue = "", page = 1) {
 }
 
 async function searchForUsers(inputValue = "") {
+  // document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");    
+
   inputValue = document.getElementById("searchField").value;
   searchType = "users";
 
   //Skapar en counter som ska börja på 8
   let counter = 8;
-
-  //Hämtar användare och skapar divvar
-  document.querySelector("#search-results").innerHTML = "";
   
+  // Hämta alla användare
   let users = await getUsers();
   let newArray = [];
   
-  users.forEach(user => {
-    if(user.username.includes(inputValue)){
-      newArray.push(user);
-    } 
-  })
+  // Om något är sökt på, gör ny array med användarna som matchar sökvärdet
+  if(inputValue != "") {
+    users.forEach(user => {
+      if(user.username.includes(inputValue)){
+        newArray.push(user);
+      } 
+    });
+  }
   
+  // Loopa för att skapa element för användare
   for(let i = 0; i < counter; i++) {
-    if(inputValue == ""){
+    if(inputValue == ""){ // Om inget är sökt på, skapa element för ALLA användare
+      // Om det finns färre än vad countern är, ta bort visa mer och bryt loop
       if (i >= users.length){
-        //TA BORT SHOW MORE
+        document.getElementById("show-more-btn").remove();
         break;
       };
-
       makeUserSearchDivs(users[i]);
 
-    } else{
+    } else { // Om något är sökt på, skapa element för användarna som matchar sökn.
+      // Om det finns färre än vad countern är, ta bort visa mer och bryt loop
       if (i >= newArray.length){
-        //TA BORT SHOW MORE
+        document.getElementById("show-more-btn").remove();
         break;
       };
       makeUserSearchDivs(newArray[i]);
     }
-
   };
   
-  if(document.getElementById("show-more-btn")){
-    document.querySelector(".showMoreDiv").remove();
-  }
+  // if(document.getElementById("show-more-btn")){
+  //   document.querySelector(".showMoreDiv").remove();
+  // }
 
+  // Skapa show more knapp
   let showMoreDiv = document.createElement("div");
   showMoreDiv.className = "showMoreDiv";
-  showMoreDiv.innerHTML = `
-      <button id="show-more-btn">Show more</button>
-  `;
+  showMoreDiv.innerHTML = `<button id="show-more-btn">Show more</button>`;
+  document.querySelector("#search-results").append(showMoreDiv);
   
-  document.querySelector(".search-results").append(showMoreDiv);
-        
+  // Event för show-more-knapp
   document.getElementById("show-more-btn").addEventListener("click", () => {
+    // tar bort gamalt resultat
+    document.querySelectorAll(".userDiv").forEach(div => div.remove());
+    document.querySelectorAll(".movieBanner.placeHolder").forEach(div => div.remove());
+    
+    // ladd ikon på show more knapp
     document.getElementById("show-more-btn").innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
-    document.getElementById("search-results").innerHTML = "";
-
+    
+    // höj counter
     counter += 8;
-
+    
+    // skapa resultat på nytt fast fler (!!gör funktion??)
     for(let i = 0; i < counter; i++) {
       if(inputValue == ""){
         if (i >= users.length){
-          //TA BORT SHOW MORE
+          document.getElementById("show-more-btn").remove();       
           break;
         };
-
         makeUserSearchDivs(users[i]);
-
+        
       } else{
-        if (i >= newArray.length){
-          //TA BORT SHOW MORE
+        if (i >= newArray.length){ 
+          document.getElementById("show-more-btn").remove();
           break;
         };
         makeUserSearchDivs(newArray[i]);
       }
-
+      
     };
     
   });
-  
-
 }
-  async function makeUserSearchDivs(user) {
-      document.querySelector("#search-results-text").textContent = "Showing all users";
-      document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");    
 
-      // users.forEach((user) => {
-        let userDiv = document.createElement("div");
-        userDiv.className = "userDiv";
-        userDiv.setAttribute("user", user.username);
-        userDiv.addEventListener("click", () => {
-          window.location.href = `http://localhost:2000/profile.php?userID=${user.id}`;
-        });
+async function makeUserSearchDivs(user) {
+  const loggedInUserInfo = await getUserInfo(loggedInUserId);
+  let loggedInUserID = loggedInUserInfo.id;
+  let loggedInFollowing = loggedInUserInfo.following;
+  let relationText;
+  let relationImg;
 
-        let userImage = document.createElement("div");
-        userImage.className = "userImage";
-        // console.log(user["profile_picture"].filepath);
-        userImage.style.backgroundImage = `url('http://localhost:7001/${user["profile_picture"].filepath}')`;
-
-        let userInfoDiv = document.createElement("div");
-        userInfoDiv.className = "userInfoDiv";
-        userInfoDiv.innerHTML = `
-        <div id="usernameDiv">
-              <p id="username">@${user.username}</p>
-              <div id="settingOrPlus"></div>
-          </div>`;
-
-        let followDiv = document.createElement("div");
-        followDiv.className = "followDiv";
-        followDiv.innerHTML = `
-        <div id="followInfo">
-              <div id="followersDiv">
-                  <p>Followers</p>
-                  <p id="followers">${user.followers.length}</p>
-              </div>
-              <div id="followingDiv">
-                  <p>Following</p>
-                  <p id="following">${user.following.length}</p>
-              </div>
-          </div>`;
-
-        userDiv.append(userImage, userInfoDiv, followDiv);
-        document.querySelector("#search-results").append(userDiv);
-
-        // if (!document.getElementById("show-more-btn")) {
-        //   let showMoreDiv = document.createElement("div");
-        //   showMoreDiv.className = "showMoreDiv";
-        //   showMoreDiv.innerHTML = `
-        //   <button id="show-more-btn">Show more</button>
-        //   `;
-        //   document.querySelector(".search-container").append(showMoreDiv);
-        //   document.getElementById("show-more-btn").addEventListener("click", () => {
-        //     if (document.querySelectorAll(".userDiv").length == 6) {
-        //     }
-        //   });
-        // }
-      // });
-      myFunction(inputValue, "user");
+  if(loggedInFollowing.includes(user.id)) {
+    relationText = "Unfollow";
+    relationImg = "../icons/remove_circle_black.svg";
+  } else {
+    relationText = "Follow";
+    relationImg = "../icons/add_circle_black.svg";
   }
+
+  document.querySelector("#search-results-text").textContent = "Showing all users";
+  // document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");    
+
+  let userDiv = document.createElement("div");
+  userDiv.className = "userDiv";
+  userDiv.setAttribute("user", user.username);
+
+  let userImage = document.createElement("div");
+  userImage.className = "userImage";
+  userImage.style.backgroundImage = `url('http://localhost:7001/${user["profile_picture"].filepath}')`;
+  userImage.addEventListener("click", () => {
+    window.location.href = `http://localhost:2000/profile.php?userID=${user.id}`;
+  });
+
+  let userInfoDiv = document.createElement("div");
+  userInfoDiv.className = "userInfoDiv";
+
+  userDiv.append(userImage, userInfoDiv);
+
+  let username = document.createElement("p");
+  username.textContent = `@${user.username}`;
+  username.setAttribute("id", "usernameP");
+  username.addEventListener("click", () => {
+    window.location.href = `http://localhost:2000/profile.php?userID=${user.id}`;
+  });
+
+  let followDiv = document.createElement("div");
+  followDiv.setAttribute("id", "followDiv");
+
+  userInfoDiv.append(username, followDiv);
+
+  let followImg = document.createElement("img");
+  followImg.setAttribute("id", `${relationText.toLowerCase()}`);
+  followImg.setAttribute("src", `${relationImg}`);
+
+  let followText = document.createElement("p");
+  followText.textContent = relationText;
+
+  followDiv.append(followImg, followText);
+
+  // userInfoDiv.innerHTML = `
+  //   <p id="username">@${user.username}</p>
+  //   <div id="followDiv">
+  //     <img id="${relationText.toLowerCase()}" src="${relationImg}">
+  //     <p>${relationText}</p>
+  //   </div>`;
+        
+  document.querySelector("#search-results").append(userDiv);
+
+  // Eventlistern för att följa/avfölja folk härifrån
+  followDiv.addEventListener("click", async function(e) {
+    if (e.target.textContent == 'Unfollow') {
+      followText.textContent = 'Follow';
+      followText.setAttribute("id", "follow");
+      followImg.setAttribute("src", "../icons/add_circle_black.svg");
+
+      // redigera db
+      await followPatch(loggedInUserId, user.id);
+
+    } else if (e.target.textContent == 'Follow') {
+      followText.textContent = 'Unfollow';
+      followText.setAttribute("id", "unfollow");
+      followImg.setAttribute("src", "../icons/remove_circle_black.svg");
+
+      // redigera db
+      await followPatch(loggedInUserId, user.id);
+    }
+  });
+
+  // let followDiv = document.createElement("div");
+  // followDiv.className = "followDiv";
+  // followDiv.innerHTML = `
+  // <div id="followInfo">
+  //       <div id="followersDiv">
+  //           <p>Followers</p>
+  //           <p id="followers">${user.followers.length}</p>
+  //       </div>
+  //       <div id="followingDiv">
+  //           <p>Following</p>
+  //           <p id="following">${user.following.length}</p>
+  //       </div>
+  //   </div>`;
+
+  // if (!document.getElementById("show-more-btn")) {
+  //   let showMoreDiv = document.createElement("div");
+  //   showMoreDiv.className = "showMoreDiv";
+  //   showMoreDiv.innerHTML = `
+  //   <button id="show-more-btn">Show more</button>
+  //   `;
+  //   document.querySelector(".search-container").append(showMoreDiv);
+  //   document.getElementById("show-more-btn").addEventListener("click", () => {
+  //     if (document.querySelectorAll(".userDiv").length == 6) {
+  //     }
+  //   });
+  // }
+  // });
+  myFunction(inputValue, "user");
+}
 }
 

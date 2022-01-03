@@ -297,18 +297,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
 
 }
 
-async function followPatch(mainUserID, friendsUserID) {
 
-    const response = await fetch(new Request("http://localhost:7001/PATCH/update-user.php", {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({userID: mainUserID, friendsUserID: friendsUserID})
-    }));
-
-    const data = await response;
-}
 
 // Öppnar en sida som visar alla followers/following
 async function showUsers(userId, type) {

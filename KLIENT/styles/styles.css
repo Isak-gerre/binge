@@ -2559,9 +2559,12 @@ svg:active,
   top: -2px;
   position: absolute;
   z-index: 100;
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
+  padding: 10px 25px;
   padding-bottom: 100px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2582,8 +2585,6 @@ svg:active,
 }
 
 #search-results {
-  width: 100%;
-  padding: 10px 25px;
   margin-top: 170px;
   display: -ms-grid;
   display: grid;
@@ -2593,7 +2594,11 @@ svg:active,
   z-index: 100;
   overflow: scroll;
   max-height: calc(100vh - 170px);
+  width: 100%;
   padding-bottom: 130px;
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .placeholder {
@@ -2840,16 +2845,7 @@ svg:active,
   max-width: 140px;
 }
 
-.userDiv .followDiv {
-  width: 70%;
-}
-
-.userDiv .followDiv #followInfo #followersDiv p,
-.userDiv .followDiv #followInfo #followingDiv p {
-  font-size: 10px;
-}
-
-.userImage {
+.userDiv .userImage {
   width: 75px;
   height: 75px;
   background-position: center;
@@ -2857,8 +2853,51 @@ svg:active,
   border-radius: 50%;
 }
 
+.userDiv .userInfoDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.userDiv .userInfoDiv #usernameP {
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.userDiv .userInfoDiv #followDiv {
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 4px;
+  width: 85px;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.userDiv .userInfoDiv #followDiv p {
+  font-family: "Mulish", sans-serif;
+  font-size: 12px;
+  padding: 0;
+}
+
 .showMoreDiv {
   z-index: 1000;
+  position: relative;
   width: 40%;
   -ms-grid-column-span: 3;
       grid-column-end: span 3;

@@ -231,9 +231,11 @@ svg:active,
   top: -2px;
   position: absolute;
   z-index: 100;
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
+  padding: $betweenPadding $wrapperPadding;
   padding-bottom: 100px;
+  box-sizing: border-box;
   @include flex(column, none, center);
 
   div{
@@ -241,8 +243,6 @@ svg:active,
   }
 }
 #search-results {
-  width: 100%;
-  padding: $betweenPadding $wrapperPadding;
   margin-top: 170px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -250,7 +250,10 @@ svg:active,
   z-index: 100;
   overflow: scroll;
   max-height: calc(100vh - 170px);
+  width: 100%;
   padding-bottom: 130px;
+  position: relative;
+  box-sizing: border-box;
 }
 .placeholder {
   animation-duration: 1.8s;
@@ -393,28 +396,62 @@ svg:active,
   @include flex(column, space-evenly, center);
   max-width: 140px;
 
-  .followDiv {
-    width: 70%;
+  .userImage {
+    width: 75px;
+    height: 75px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+  }
 
-    #followInfo {
-      #followersDiv,
-      #followingDiv {
-        p {
-          font-size: 10px;
-        }
+  .userInfoDiv {
+    display: flex;
+    flex-direction: column;
+
+    #usernameP {
+      text-align: center;
+      padding-bottom: $innerPadding;
+    }
+
+    #followDiv {
+      background: $gradientPeach;
+      @include flex(row, center, center);
+      gap: 4px;
+    
+      width: 85px;
+      border-radius: $borderRadiusButtons;
+      padding: $buttonPadding;
+    
+      p {
+        @include xSmallFont();
+        padding: 0;
       }
     }
+
   }
+
+  // .followDiv {
+  //   width: 70%;
+
+  //   #followInfo {
+  //     #followersDiv,
+  //     #followingDiv {
+  //       p {
+  //         font-size: 10px;
+  //         text-align: center;
+  //       }
+  //     }
+  //   }
+  // }
 }
-.userImage {
-  width: 75px;
-  height: 75px;
-  background-position: center;
-  background-size: cover;
-  border-radius: 50%;
-}
+
+
+
+
+
 .showMoreDiv {
   z-index: 1000;
+  position: relative;
   width: 40%;
   grid-column-end: span 3;
   padding-top: 10px;
@@ -423,9 +460,9 @@ svg:active,
     width: 100%;
     height: 100%;
     padding: $betweenPadding;
-    border-radius: 10px;
+    border-radius: $borderRadiusButtons;
     border: 0;
-    color: #eeeeee;
+    color: $lightFont;
     background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
     -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
     filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
@@ -494,3 +531,5 @@ svg:active,
   position: relative;
   top: 156px;
 }
+
+
