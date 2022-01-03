@@ -88,7 +88,7 @@ function makeLowerNav() {
       document.body.style.overflow = "hidden";
       document.querySelectorAll(".lowerNav > div").forEach((element) => {
         element.style.borderBottom = "0px";
-        console.log(document.querySelectorAll(".lowerNav > div"));
+        // console.log(document.querySelectorAll(".lowerNav > div"));
       });
       document.querySelector(".navRight").style.borderBottom = "3px solid white";
       

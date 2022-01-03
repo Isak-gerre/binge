@@ -8,90 +8,90 @@ Add filter that actiate on button press
 let searchType = "movie";
 let searches = {};
 
-async function searchFunction(searchBy) {
-  console.log(searchBy);
-  let input = document.getElementById("searchField");
-  document.getElementById("search-results").innerHTML = "";
-  for (let i = 0; i < 20; i++) {
-    document.querySelector("#search-results").append(makePlaceholderMovieBanner());
-  }
-  let savedMovies = [];
-  let inputValue = input.value.toLowerCase();
+// async function searchFunction(searchBy) {
+//   console.log(searchBy);
+//   let input = document.getElementById("searchField");
+//   document.getElementById("search-results").innerHTML = "";
+//   for (let i = 0; i < 20; i++) {
+//     document.querySelector("#search-results").append(makePlaceholderMovieBanner());
+//   }
+//   let savedMovies = [];
+//   let inputValue = input.value.toLowerCase();
 
-  // MOVIES
-  if (input.value !== "" && searchBy == "Movies") {
-    let searchResults = await getSearchResults(searchType, inputValue);
-    let movieList = document.querySelector("#search-results");
-    movieList.innerHTML = "";
+//   // MOVIES
+//   if (input.value !== "" && searchBy == "Movies") {
+//     let searchResults = await getSearchResults(searchType, inputValue);
+//     let movieList = document.querySelector("#search-results");
+//     movieList.innerHTML = "";
 
-    searchResults.results.forEach(async function (result) {
-      addToMovies(result);
-    });
-    let allMovies = getFromSession("movies");
-    allMovies.forEach((movie) => {
-      let movieElement = makeMovieBannerFromMovie(movie);
-      movieElement.setAttribute("name", movie.title);
-      document.querySelector("#search-results").prepend(movieElement);
-    });
+//     searchResults.results.forEach(async function (result) {
+//       addToMovies(result);
+//     });
+//     let allMovies = getFromSession("movies");
+//     allMovies.forEach((movie) => {
+//       let movieElement = makeMovieBannerFromMovie(movie);
+//       movieElement.setAttribute("name", movie.title);
+//       document.querySelector("#search-results").prepend(movieElement);
+//     });
 
-    myFunction(inputValue);
-  }
+//     myFunction(inputValue);
+//   }
 
-  // ACTORS
-  console.log(searchBy);
-  if (input.value !== "" && searchBy == "Actors") {
-    console.log(inputValue);
-    searchType = "cast";
-    console.log(searchType);
-    let searchResults = await getSearchResults(searchType, inputValue);
-    console.log(searchResults);
-    let movieList = document.querySelector("#search-results");
-    movieList.innerHTML = "";
+//   // ACTORS
+//   console.log(searchBy);
+//   if (input.value !== "" && searchBy == "Actors") {
+//     console.log(inputValue);
+//     searchType = "cast";
+//     console.log(searchType);
+//     let searchResults = await getSearchResults(searchType, inputValue);
+//     console.log(searchResults);
+//     let movieList = document.querySelector("#search-results");
+//     movieList.innerHTML = "";
 
-    let allMovies = [];
-    searchResults.results.forEach(async function (result) {
-      console.log(result);
-      if (result["known_for"].length != 0 && result["known_for_department"] == "Acting") {
-        result["known_for"].forEach((movie) => {
-          movie.actor = result.name;
-          addToMovies(movie);
-          allMovies.push(movie);
-        });
-      }
-    });
+//     let allMovies = [];
+//     searchResults.results.forEach(async function (result) {
+//       console.log(result);
+//       if (result["known_for"].length != 0 && result["known_for_department"] == "Acting") {
+//         result["known_for"].forEach((movie) => {
+//           movie.actor = result.name;
+//           addToMovies(movie);
+//           allMovies.push(movie);
+//         });
+//       }
+//     });
 
-    allMovies.forEach((movie) => {
-      // console.log(movie);
-      let movieElement = makeMovieBannerFromMovie(movie);
-      // console.log(movieElement);
-      movieElement.setAttribute("name", movie.title);
-      movieElement.setAttribute("actor", movie.actor);
-      document.querySelector("#search-results").prepend(movieElement);
-    });
+//     allMovies.forEach((movie) => {
+//       // console.log(movie);
+//       let movieElement = makeMovieBannerFromMovie(movie);
+//       // console.log(movieElement);
+//       movieElement.setAttribute("name", movie.title);
+//       movieElement.setAttribute("actor", movie.actor);
+//       document.querySelector("#search-results").prepend(movieElement);
+//     });
 
-    myFunction(inputValue, "actor");
-  }
+//     myFunction(inputValue, "actor");
+//   }
 
-  // USERS
-  if (input.value !== "" && searchBy == "Users") {
-    let searchResults = await getSearchResults(searchType, inputValue);
-    let movieList = document.querySelector("#search-results");
-    movieList.innerHTML = "";
+//   // USERS
+//   if (input.value !== "" && searchBy == "Users") {
+//     let searchResults = await getSearchResults(searchType, inputValue);
+//     let movieList = document.querySelector("#search-results");
+//     movieList.innerHTML = "";
 
-    searchResults.results.forEach(async function (result) {
-      addToMovies(result);
-    });
-    let allMovies = getFromSession("movies");
-    allMovies.forEach((movie) => {
-      let movieElement = makeMovieBannerFromMovie(movie);
-      movieElement.setAttribute("name", movie.title);
-      document.querySelector("#search-results").prepend(movieElement);
-      let title = movie.title || movie.name;
-    });
+//     searchResults.results.forEach(async function (result) {
+//       addToMovies(result);
+//     });
+//     let allMovies = getFromSession("movies");
+//     allMovies.forEach((movie) => {
+//       let movieElement = makeMovieBannerFromMovie(movie);
+//       movieElement.setAttribute("name", movie.title);
+//       document.querySelector("#search-results").prepend(movieElement);
+//       let title = movie.title || movie.name;
+//     });
 
-    myFunction(inputValue, "users");
-  }
-}
+//     myFunction(inputValue, "users");
+//   }
+// }
 
 function myFunction(searchResults, searchAttribute = "name") {
   // console.log(searchResults);
@@ -275,6 +275,8 @@ async function searchFunction(searchBy) {
   // USERS
   if (searchBy == "Users") {
     let page = 1;
+
+    
     await searchForUsers(inputValue, page);
 }
 
@@ -436,61 +438,82 @@ async function searchForUsers(inputValue = "") {
   let counter = 8;
 
   //Hämtar användare och skapar divvar
+  document.querySelector("#search-results").innerHTML = "";
+  
   let users = await getUsers();
-  makeUserSearchDivs(users, counter);
+  let newArray = [];
   
-  allUserDivs = document.querySelectorAll(".userDiv");
+  users.forEach(user => {
+    if(user.username.includes(inputValue)){
+      newArray.push(user);
+    } 
+  })
+  
+  for(let i = 0; i < counter; i++) {
+    if(inputValue == ""){
+      if (i >= users.length){
+        //TA BORT SHOW MORE
+        break;
+      };
 
-  //Ny array för de element som syns (eftersom de som inte syns när man sökt ligger kvar annars)
-  let showingElements = [];
-  
-  allUserDivs.forEach((element) => {
-    if(document.getElementById("show-more-btn")){
-      document.querySelector(".showMoreDiv").remove();
+      makeUserSearchDivs(users[i]);
+
+    } else{
+      if (i >= newArray.length){
+        //TA BORT SHOW MORE
+        break;
+      };
+      makeUserSearchDivs(newArray[i]);
     }
-    
-    //Om element inte innehåller display none, alltså syns, pushar vi in det i showing elements.
-    if (!element.style.display.includes("none")) {
-      showingElements.push(element);
 
-      //Detta verkar funka iaf
-      console.log(showingElements);
+  };
+  
+  if(document.getElementById("show-more-btn")){
+    document.querySelector(".showMoreDiv").remove();
+  }
 
-      //Här vill jag göra att:
-      //- Om showing elements är fler än counter (8): visa bara så många som det finns i counter
-      //- Om man klickar på show more btn så ökar man på countern med 8 till
-      //- Detta gick inte så bra för mig så status är just nu ingenting
-      //- Tack och hej
-      if (showingElements.length > counter) {
-        console.log('true');
-        let showMoreDiv = document.createElement("div");
-        showMoreDiv.className = "showMoreDiv";
-        showMoreDiv.innerHTML = `
-        <button id="show-more-btn">Show more</button>
-        `;
-    
-        document.querySelector(".search-container").append(showMoreDiv);
-          
-        document.getElementById("show-more-btn").addEventListener("click", () => {
-          document.getElementById("show-more-btn").innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
-            document.getElementById("search-results").innerHTML = "";
-            if (showingElements >= counter) {
-              counter = counter + 8;
-              makeUserSearchDivs(users);
-            }
-      
-          });
+  let showMoreDiv = document.createElement("div");
+  showMoreDiv.className = "showMoreDiv";
+  showMoreDiv.innerHTML = `
+      <button id="show-more-btn">Show more</button>
+  `;
+  
+  document.querySelector(".search-results").append(showMoreDiv);
+        
+  document.getElementById("show-more-btn").addEventListener("click", () => {
+    document.getElementById("show-more-btn").innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
+    document.getElementById("search-results").innerHTML = "";
+
+    counter += 8;
+
+    for(let i = 0; i < counter; i++) {
+      if(inputValue == ""){
+        if (i >= users.length){
+          //TA BORT SHOW MORE
+          break;
+        };
+
+        makeUserSearchDivs(users[i]);
+
+      } else{
+        if (i >= newArray.length){
+          //TA BORT SHOW MORE
+          break;
+        };
+        makeUserSearchDivs(newArray[i]);
       }
-    }
+
+    };
+    
   });
+  
 
 }
-  async function makeUserSearchDivs(users) {
-    document.querySelector("#search-results").innerHTML = "";
+  async function makeUserSearchDivs(user) {
       document.querySelector("#search-results-text").textContent = "Showing all users";
       document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");    
 
-      users.forEach((user) => {
+      // users.forEach((user) => {
         let userDiv = document.createElement("div");
         userDiv.className = "userDiv";
         userDiv.setAttribute("user", user.username);
@@ -540,7 +563,7 @@ async function searchForUsers(inputValue = "") {
         //     }
         //   });
         // }
-      });
+      // });
       myFunction(inputValue, "user");
   }
 }
