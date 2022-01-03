@@ -161,10 +161,10 @@ require_once "head.php";
 <script src="scripts/search.js"></script>
 <script src="scripts/makeNavigation.js"></script>
 <script src="scripts/stats.js"></script>
-<script src="scripts/formNavigationSettings.js"></script> formNavigationSettings
+<script src="scripts/formNavigationSettings.js"></script>
 <script src="scripts/createFormApiSettings.js"></script>
-<script src="scripts/signUp.js"></script>
 <script src="scripts/updateUser.js"></script>
+<script src="scripts/signUp.js"></script>
 <script src="scripts/makeUserProfile.js"></script>
 
 <?php
