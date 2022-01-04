@@ -185,12 +185,7 @@
             "birthday": "2000-12-13",
             "region": "SE",
             "active_streaming_services": [
-                "Netflix",
-                "Amazon Prime Video",
-                "Disney Plus",
-                "HBO Max",
-                "SVT",
-                "Viafree"
+                "Netflix"
             ],
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_4.png"
@@ -345,6 +340,16 @@
             ],
             "sessionId": "$2y$10$GQPUquml7jwBrnmUHfMtiOFFCPGqLcSSpxIFuaqqACsNrjaO2zcia",
             "id": 14
+        },
+        "": {
+            "email": null,
+            "firstname": "Ivan",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "Disney Plus"
+            ],
+            "lastname": "Knezevic"
         }
     }
 }

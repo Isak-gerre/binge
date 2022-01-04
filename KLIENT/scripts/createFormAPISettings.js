@@ -1,6 +1,5 @@
 "use strict";
 
-
 // Ta bort API-nyckel, lägg den i APIn
 let regionRQ = new Request(
   "https://api.themoviedb.org/3/watch/providers/regions?api_key=f5c0e0db147d0e6434391f3ff153b6a8"
@@ -219,6 +218,33 @@ fetch(regionRQ)
                   });
                 }
               });
+              console.log(data[0].profile_picture.filepath);
+              let changeProfilePicContainer = document.createElement('div');
+              changeProfilePicContainer.id = "settingsChangePic";
+          
+              let profilePicture = document.createElement('img');
+              profilePicture.setAttribute("src", `http://localhost:7001/${data[0].profile_picture.filepath}`);
+              let changePicDiv = document.createElement('div');
+              let changePicIcon = document.createElement('img');
+              changePicIcon.src = "../icons/edit.svg";
+
+              changePicDiv.append(changePicIcon);
+              changeProfilePicContainer.append(profilePicture, changePicDiv);
+
+              document.getElementById("signUpForm").insertBefore(changeProfilePicContainer, document.getElementById("createUserP3"));
+
+              document.getElementById("settingsChangePic").addEventListener("click", () =>{
+                document.getElementById("createUserP3").style.display = "block";
+                let images = document.querySelectorAll("input[name=profileImg] + img");
+                images.forEach(element => {
+                  element.previousElementSibling.style.display = "block";
+                  if(element.getAttribute("src") === `http://localhost:7001/${data[0].profile_picture.filepath}`){
+                    element.parentElement.classList.add("profileImgSelected");
+                    element.previousElementSibling.setAttribute("checked", true);
+                  }
+                })
+              });
+
           });
     });
   });
