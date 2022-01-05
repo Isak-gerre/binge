@@ -445,9 +445,11 @@ async function createWatchlist(watchlist, page = "profile") {
 
         let movieBanner = await makeMovieBanner(movieId, page);
 
-        movieBanner.addEventListener('click', () => {
-            window.location.href = `explore.php?movieID=${movieId}`;
-        });
+        // movieBanner.addEventListener('click', (event) => {
+        //     event.preventDefault();
+        //     event.stopPropagation();
+        //     window.location.href = `explore.php?movieID=${movieId}`;
+        // });
 
         container.append(movieBanner);   
     });

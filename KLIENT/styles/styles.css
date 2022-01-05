@@ -591,15 +591,14 @@ body {
       -ms-flex-align: center;
           align-items: center;
   position: absolute;
-  width: 150px;
 }
 
 #profileWrapper #watchlistContainer button:first-child {
-  bottom: -35px;
+  bottom: -55px;
 }
 
 #profileWrapper #watchlistContainer button:last-child {
-  bottom: -70px;
+  bottom: -105px;
 }
 
 #messageWhenEmpty {
@@ -640,7 +639,7 @@ body {
   position: absolute;
   height: 100vh;
   width: 100vw;
-  z-index: 15000;
+  z-index: 1000;
 }
 
 #overlay {
@@ -2163,6 +2162,24 @@ body {
   }
 }
 
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .movieBanner {
   max-width: 100px;
   background-size: cover;
@@ -2217,6 +2234,32 @@ body {
   width: 150%;
   -webkit-transform: rotate(-20deg);
           transform: rotate(-20deg);
+}
+
+.zoomIn {
+  z-index: 16000;
+  pointer-events: auto;
+  -webkit-filter: blur(0px);
+          filter: blur(0px);
+  -webkit-transform: scale(1.1, 1.1);
+          transform: scale(1.1, 1.1);
+}
+
+.messageToUser {
+  position: fixed;
+  bottom: 70px;
+  width: 100%;
+  z-index: 1000;
+  background: black;
+  padding: 10px;
+}
+
+.messageToUser p {
+  text-align: center;
+  color: white;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 #footer {

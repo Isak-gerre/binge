@@ -4,7 +4,8 @@
 
 "use strict";
 
-async function makeMovieBanner(movieID, page) {
+async function makeMovieBanner(activity) {
+  let movieID = activity.movieID;
   let movieInfo = await getMovieInfo(movieID);
 
   //create elements
@@ -24,93 +25,151 @@ async function makeMovieBanner(movieID, page) {
   //the background image
   movieBanner.style.backgroundImage = movieImgPath;
 
-  // Om vi är på myprofile så körs detta
-  if (page == "myProfile") {
+  if (window.location.search === "") {
     movieBanner.setAttribute("data-long-press-delay", "500");
+
     movieBanner.addEventListener("long-press", (e) => {
       e.preventDefault();
 
+      // All movieBanners
       let allMovieBanner = document.querySelectorAll(".movieBanner");
-      allMovieBanner.forEach((movBan) => {
-        movBan.style.filter = "blur(8px)";
+
+      zoomIn(allMovieBanner, e);
+
+      // Prevent scrolling
+      document.body.style.overflow = "hidden";
+
+      // Click-event på föräldern 
+      let wrapper = document.querySelector("#profileWrapper");
+      wrapper.addEventListener("click", () => {
+        zoomOut(allMovieBanner);
+      });
+
+      // Options för vad du kan göra med den
+      let options = document.createElement("div");
+      options.className = "options";
+
+      // Marked as watched - button
+      let markedAsWatched = document.createElement("button");
+      markedAsWatched.textContent = "Marked as watched";
+      markedAsWatched.className = "button";
+
+      markedAsWatched.addEventListener("click", () => {
+        // Här skickas den ändrade aktiviteten för att ändras.
+        // Typ till watched och updatera datum
+
+        let focusedMovie = document.querySelector(".zoomIn");
+
+        deleteteActivity(activity.id);
+        postNewActivity(activity.movieID, activity.userID, "watched");
+      
+        // Styles på den
+        zoomOut(allMovieBanner);
+        disappearingOfActivity(focusedMovie);
+
+        let message = "You have successfully marked the movie as watched";
+        setTimeout(() => {
+          messageToUser(message);
+        }, 1000)
+      });
+
+      // Remove from list - button
+      let removeFromList = document.createElement("button");
+      removeFromList.textContent = "Remove from list";
+      removeFromList.className = "button";
+
+      removeFromList.addEventListener("click", (e) => {
+        // Denna knappen ska radera den från aktiviteten och griden
+        // deleteteActivity(activity.id);
+        
+        let focusedMovie = document.querySelector(".zoomIn");
+
+        zoomOut(allMovieBanner);
+        disappearingOfActivity(focusedMovie);
+
+        let message = "You have succesfully delted this from your watchlist";
+        setTimeout(() => {
+          messageToUser(message);
+        }, 1000)
       })
 
-      touchstart(e);
-      touchend(e);
+      // En delay på när knapparna skapas.
+      options.append(markedAsWatched, removeFromList);
+      setTimeout(() => {
+        e.target.append(options);
+      }, 1000);
 
-      function touchstart(e) {
-        
-        e.target.style.filter = "blur(0px)";
-        e.target.style.transform = "scale(1.1 , 1.1)";
-        onlongtouch(e);
+      // Transition funktioner
+      function zoomOut(allMovieBanner) {
+        document.body.style.overflow = "visible";
+
+        if(document.querySelector(".options")){
+          document.querySelector(".options").remove();
+        }
+
+        allMovieBanner.forEach((movBan) => {
+          if (movBan.className == "movieBanner"){
+            movBan.style.filter = "blur(0px)";
+            movBan.style.pointerEvents = 'auto';
+          } else {
+            movBan.className = "movieBanner";
+          }
+        })
       }
 
-      function onlongtouch(e) {
+      function zoomIn(allMovieBanner, e) {
+
         // Prevent scrolling
         document.body.style.overflow = "hidden";
 
-        let overlay = document.createElement("div");
-        overlay.setAttribute("id", "overlay-profile");
+        e.target.className += " zoomIn";
 
-        // Event på overlay
-        // tar bort knapparna osv.
-        overlay.addEventListener("click", () => {
-          document.body.style.overflow = "visible";
-          document.querySelector(".options > button:first-child").remove();
-          document.querySelector(".options > button:last-child").remove();
-          overlay.remove();
+        allMovieBanner.forEach((movBan) => {
+          if (movBan.className == "movieBanner"){
+            movBan.style.filter = "blur(8px)"; 
+            movBan.style.pointerEvents = 'none';
+          }
+        });
+      }
 
-          allMovieBanner.forEach((movBan) => {
-            movBan.style.filter = "blur(0px)";
-          })
-          
-          e.target.style.transform = "scale(1 , 1)";
-          e.target.style.zIndex = "0";
-        })
-
-        // Position på overlay
-        let currentTopPosition = window.pageYOffset.toFixed(0);
-        overlay.style.top = `${currentTopPosition}px`;
-
-        document.body.append(overlay);
-
-        e.target.style.zIndex = "16000";
-        let options = document.createElement("div");
-        options.className = "options";
-
-        let markedAsWatched = document.createElement("button");
-        markedAsWatched.textContent = "Marked as watched";
-        markedAsWatched.className = "button";
-
-        markedAsWatched.addEventListener("click", () =>{
-          // Forsättning
-          // det ska göras en patch på denna aktiviteten
-          // Ändra type till watched samt datum till nytt
-          
-        })
-
-        let removeFromList = document.createElement("button");
-        removeFromList.textContent = "Remove from list";
-        removeFromList.className = "button";
-
-        removeFromList.addEventListener("click", () =>{
-          // Denna knappen ska radera den från aktiviteten och griden
-        })
-
-        // En delay på när knapparna skapas.
-        options.append(markedAsWatched, removeFromList);
+      function disappearingOfActivity(movie){
+        movie.style.animation = "fadeOut 1.5s";
         setTimeout(() => {
-          e.target.append(options);
-        }, 1000);
-      };
+          movie.remove();
+        }, 1500);
+      }
+
+      function messageToUser(message){
+        let messageDOM = document.createElement("div");
+        messageDOM.className = "messageToUser";
+        
+
+        let p = document.createElement("p");
+        p.textContent = message;
+
+        messageDOM.append(p);
+        messageDOM.style.animation = "fadeIn 1s";
+        document.body.append(messageDOM);
+        
+        setTimeout(() => {
+          messageDOM.style.animation = "fadeOut 1s";
+          setTimeout(() => {
+            messageDOM.remove();
+          }, 1000)
+        }, 2000)
+      }
+
     });
   }
 
   //send to movieProfile
-  movieBanner.addEventListener("click", (e) => {
-    e.stopPropagation();
-    window.location.href = `explore.php?movieID=${movieID}`;
-  });
+  // movieBanner.addEventListener("click", (event) => {
+  //   event.stopImmediatePropagation();
+  //   event.preventDefault();
+  //   event.stopPropagation();
+
+  //   window.location.href = `explore.php?movieID=${movieID}`;
+  // });
 
   return movieBanner;
 }
@@ -136,7 +195,9 @@ function makeMovieBannerFromMovie(movie, page) {
   movieBanner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movie["poster_path"]}')`;
 
   // send to movieProfile
-  movieBanner.addEventListener("click", () => {
+  movieBanner.addEventListener("click", (event) => {
+
+    event.stopPropagation();
     window.location.href = `explore.php?movieID=${movie.id}`;
   });
 
