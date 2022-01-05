@@ -341,6 +341,7 @@ async function makeMovieProfile(movieID) {
   let similar = await getSimilar(movieID);
 
   await similar.message.results.forEach(async function (simMovie) {
+    console.log(simMovie);
     let movie = await makeMovieBanner(simMovie.id);
     similarMovies.append(movie);
   });

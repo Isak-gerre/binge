@@ -4,8 +4,8 @@
 
 "use strict";
 
-async function makeMovieBanner(activity) {
-  let movieID = activity.movieID;
+async function makeMovieBanner(movieID, activity) {
+
   let movieInfo = await getMovieInfo(movieID);
 
   //create elements

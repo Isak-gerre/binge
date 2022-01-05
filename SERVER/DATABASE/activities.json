@@ -70,16 +70,6 @@
             "rate": "",
             "updated": false
         },
-        "8": {
-            "id": 8,
-            "userID": 10,
-            "movieID": "634649",
-            "type": "watched",
-            "date": "202201050958",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
         "9": {
             "id": 9,
             "userID": 10,
@@ -90,52 +80,12 @@
             "rate": "",
             "updated": false
         },
-        "10": {
-            "id": 10,
-            "userID": 10,
-            "movieID": "673",
-            "type": "watched",
-            "date": "202201050958",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "11": {
-            "id": 11,
-            "userID": 10,
-            "movieID": "634649",
-            "type": "watchlist",
-            "date": "202201051003",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "12": {
-            "id": 12,
-            "userID": 10,
-            "movieID": "14239",
-            "type": "watchlist",
-            "date": "202201051003",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "13": {
-            "id": 13,
+        "61": {
+            "id": 61,
             "userID": 10,
             "movieID": "9642",
-            "type": "watchlist",
-            "date": "202201051003",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "59": {
-            "id": 59,
-            "userID": 10,
-            "movieID": "68179",
             "type": "watched",
-            "date": "20220104",
+            "date": "202201051010",
             "comment": "",
             "rate": "",
             "updated": false

@@ -443,7 +443,7 @@ async function createWatchlist(watchlist, page = "profile") {
     watchlist.forEach(async function (activity) {
         let movieId = activity.movieID;
 
-        let movieBanner = await makeMovieBanner(movieId, page);
+        let movieBanner = await makeMovieBanner(movieId, activity);
 
         // movieBanner.addEventListener('click', (event) => {
         //     event.preventDefault();

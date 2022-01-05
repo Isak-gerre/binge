@@ -268,8 +268,7 @@
             },
             "followers": [],
             "following": [
-                6,
-                14
+                6
             ],
             "sessionId": "$2y$10$ovQLNrITq0LJ0LOau0S5auIgwZ8dAwYk5JXalFW\/MG3hVo0O5Vhti",
             "id": 10
@@ -338,7 +337,9 @@
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_5.png"
             },
-            "followers": [],
+            "followers": [
+                10
+            ],
             "following": [
                 10,
                 6
