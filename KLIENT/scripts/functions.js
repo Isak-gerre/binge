@@ -375,6 +375,13 @@ function createActivities(array, page, appendIn = "wrapper") {
     activityContainerRight.addEventListener("click", () => {
       window.location.href = `explore.php?movieID=${obj.movieID}`;
     });
+    
+    activityContainer.addEventListener("long-press", (e) => {
+      // make/update review & delete activity
+      // ZoomIn container
+      // Skapa knapparna 
+      // overlay - 
+    });
 
     //Appenda de två delarna till containern
     container.append(activityContainer);
