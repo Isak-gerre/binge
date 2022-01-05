@@ -2916,14 +2916,14 @@ svg:active,
   filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
 }
 
-.lds-ellipsis {
+.loading_dots {
   display: inline-block;
   position: relative;
   width: 73px;
   height: 9px;
 }
 
-.lds-ellipsis div {
+.loading_dots div {
   position: absolute;
   width: 8px;
   height: 8px;
@@ -2933,31 +2933,31 @@ svg:active,
           animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
-.lds-ellipsis div:nth-child(1) {
+.loading_dots div:nth-child(1) {
   left: 8px;
-  -webkit-animation: lds-ellipsis1 0.6s infinite;
-          animation: lds-ellipsis1 0.6s infinite;
+  -webkit-animation: scaleUp 0.6s infinite;
+          animation: scaleUp 0.6s infinite;
 }
 
-.lds-ellipsis div:nth-child(2) {
+.loading_dots div:nth-child(2) {
   left: 8px;
-  -webkit-animation: lds-ellipsis2 0.6s infinite;
-          animation: lds-ellipsis2 0.6s infinite;
+  -webkit-animation: moveSideways 0.6s infinite;
+          animation: moveSideways 0.6s infinite;
 }
 
-.lds-ellipsis div:nth-child(3) {
+.loading_dots div:nth-child(3) {
   left: 32px;
-  -webkit-animation: lds-ellipsis2 0.6s infinite;
-          animation: lds-ellipsis2 0.6s infinite;
+  -webkit-animation: moveSideways 0.6s infinite;
+          animation: moveSideways 0.6s infinite;
 }
 
-.lds-ellipsis div:nth-child(4) {
+.loading_dots div:nth-child(4) {
   left: 56px;
-  -webkit-animation: lds-ellipsis3 0.6s infinite;
-          animation: lds-ellipsis3 0.6s infinite;
+  -webkit-animation: scaleDown 0.6s infinite;
+          animation: scaleDown 0.6s infinite;
 }
 
-@-webkit-keyframes lds-ellipsis1 {
+@-webkit-keyframes scaleUp {
   0% {
     -webkit-transform: scale(0);
             transform: scale(0);
@@ -2968,7 +2968,7 @@ svg:active,
   }
 }
 
-@keyframes lds-ellipsis1 {
+@keyframes scaleUp {
   0% {
     -webkit-transform: scale(0);
             transform: scale(0);
@@ -2979,7 +2979,7 @@ svg:active,
   }
 }
 
-@-webkit-keyframes lds-ellipsis3 {
+@-webkit-keyframes scaleDown {
   0% {
     -webkit-transform: scale(1);
             transform: scale(1);
@@ -2990,7 +2990,7 @@ svg:active,
   }
 }
 
-@keyframes lds-ellipsis3 {
+@keyframes scaleDown {
   0% {
     -webkit-transform: scale(1);
             transform: scale(1);
@@ -3001,7 +3001,7 @@ svg:active,
   }
 }
 
-@-webkit-keyframes lds-ellipsis2 {
+@-webkit-keyframes moveSideways {
   0% {
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
@@ -3012,7 +3012,7 @@ svg:active,
   }
 }
 
-@keyframes lds-ellipsis2 {
+@keyframes moveSideways {
   0% {
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);

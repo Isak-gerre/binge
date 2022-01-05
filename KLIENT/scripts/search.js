@@ -226,7 +226,7 @@ async function searchFunction(searchBy) {
   // document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");
 
 
-  if(searchBy != "Users") {
+  if (searchBy != "Users") {
     // document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(3, 1fr);");
 
 
@@ -285,356 +285,358 @@ async function searchFunction(searchBy) {
   if (searchBy == "Users") {
     let page = 1;
     await searchForUsers(inputValue, page);
-}
-
-function myFunction(searchWord, searchAttribute = "name", selector = "#search-results > div") {
-  var movie, text, i, txtValue;
-  filter = searchWord.toUpperCase();
-  movie = document.querySelectorAll(selector);
-  if (searchWord == "") {
-    let length = movie.length > 20 ? 20 : movie.length;
-    for (i = 0; i < length; i++) {
-      movie[i].style.display = "";
-    }
-  } else {
-    for (i = 0; i < movie.length; i++) {
-      text = movie[i].getAttribute(searchAttribute);
-      // txtValue = text.textContent || text.innerText;
-      if (text.toUpperCase().indexOf(filter) > -1) {
-        movie[i].style.display = "";
-      } else {
-        movie[i].style.display = "none";
-      }
-      if (text.toUpperCase().indexOf(filter) > -1) {
-        movie[i].style.display = "";
-      } else {
-        movie[i].style.display = "none";
-      }
-    }
   }
-  // Check if nothing is showing
-  let noResults = true;
-  document.querySelectorAll(selector).forEach((element) => {
-    if (!element.style.display.includes("none")) {
-      noResults = false;
-    }
-  });
-  searchWord = document.getElementById("searchField").value;
-  if (!searchWord == "") {
-    if (noResults) {
-      document.querySelector("#search-results-text").textContent = "No results for: " + searchWord;
+
+  function myFunction(searchWord, searchAttribute = "name", selector = "#search-results > div") {
+    var movie, text, i, txtValue;
+    filter = searchWord.toUpperCase();
+    movie = document.querySelectorAll(selector);
+    if (searchWord == "") {
+      let length = movie.length > 20 ? 20 : movie.length;
+      for (i = 0; i < length; i++) {
+        movie[i].style.display = "";
+      }
     } else {
-      document.querySelector("#search-results-text").textContent = "Showing results for: " + searchWord;
+      for (i = 0; i < movie.length; i++) {
+        text = movie[i].getAttribute(searchAttribute);
+        // txtValue = text.textContent || text.innerText;
+        console.log(text);
+        if (text.toUpperCase().indexOf(filter) > -1) {
+          movie[i].style.display = "";
+        } else {
+          movie[i].style.display = "none";
+        }
+        if (text.toUpperCase().indexOf(filter) > -1) {
+          movie[i].style.display = "";
+        } else {
+          movie[i].style.display = "none";
+        }
+      }
+    }
+    // Check if nothing is showing
+    let noResults = true;
+    document.querySelectorAll(selector).forEach((element) => {
+      if (!element.style.display.includes("none")) {
+        noResults = false;
+      }
+    });
+    
+    searchWord = document.getElementById("searchField").value;
+    if (!searchWord == "") {
+      if (noResults) {
+        document.querySelector("#search-results-text").textContent = "No results for: " + searchWord;
+      } else {
+        document.querySelector("#search-results-text").textContent = "Showing results for: " + searchWord;
+      }
     }
   }
-}
 
-async function displayTrending(page = 1) {
-  document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
-  let searchResults = await getTrending(page);
-  // console.log(searchResults);
-
-  if(document.getElementById("show-more-btn")){
-    document.querySelector(".showMoreDiv").remove();
-  }
-
-  searchResults.forEach(async function (result) {
-    addToMovies(result);
-    let movieElement = makeMovieBannerFromMovie(result);
-    movieElement.setAttribute("name", result.title);
-    movieElement.setAttribute("actor", result.actor);
-    movieElement.classList.add("trending");
-    document.querySelector("#search-results").append(movieElement);
-  });
-
-  if (!document.getElementById("show-more-btn")) {
-    let showMoreDiv = document.createElement("div");
-    showMoreDiv.className = "showMoreDiv";
-    showMoreDiv.innerHTML = `
-    <button id="show-more-btn">Show more</button>
-    `;
-
-    document.querySelector(".search-results").append(showMoreDiv);
+  async function displayTrending(page = 1) {
     document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
-    document.getElementById("show-more-btn").addEventListener("click", () => {
-      document.getElementById("show-more-btn").innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
-      if (document.querySelectorAll(".trending").length == 20) {
-        // console.log(true);
-        page = 2;
-      }
-      console.log(page);
-      page++;
-      displayTrending(page);
-      
-    });
-  }
-}
+    let searchResults = await getTrending(page);
+    // console.log(searchResults);
 
-async function getAndShowMoviesByActors(inputValue = "", page = 1) {
-  inputValue = document.getElementById("searchField").value;
-  searchType = "cast";
+    if (document.getElementById("show-more-btn")) {
+      document.querySelector(".showMoreDiv").remove();
+    }
 
-  if(document.getElementById("show-more-btn-actors")){
-    document.querySelector(".showMoreDiv").remove();
-  }
-
-  document.querySelector("#search-results-text").textContent = "Showing Movies by Actors";
-  if (page == 1) {
-    let movieList = document.querySelector("#search-results");
-    movieList.innerHTML = "";
-  }
-
-  if (inputValue != "") {
-    console.log(page);
-    let searchResults = await getSearchResults(searchType, inputValue, page);
-    searchResults.results.forEach(function (result) {
-      if (
-        result["known_for"].length != 0 &&
-        result["known_for_department"] == "Acting" &&
-        Array.isArray(result["known_for"])
-      ) {
-        console.log(result);
-        result["known_for"].forEach((movie) => {
-          movie.actor = result.name;
-          addToMovies(movie, true);
-        });
-      }
+    searchResults.forEach(async function (result) {
+      addToMovies(result);
+      let movieElement = makeMovieBannerFromMovie(result);
+      movieElement.setAttribute("name", result.title);
+      movieElement.setAttribute("actor", result.actor);
+      movieElement.classList.add("trending");
+      document.querySelector("#search-results").append(movieElement);
     });
 
-    let allMovies = getFromSession("movies");
-    console.log(allMovies);
-    document.getElementById("search-results").innerHTML = "";
-    allMovies.forEach((movie) => {
-      let movieElement = makeMovieBannerFromMovie(movie);
-      movieElement.setAttribute("name", movie.title);
-      movieElement.setAttribute("actor", movie.actor);
-      document.querySelector("#search-results").prepend(movieElement);
-    });
-
-    if (!document.querySelector("#show-more-btn-actors")) {
-      // console.log(true);
+    if (!document.getElementById("show-more-btn")) {
       let showMoreDiv = document.createElement("div");
       showMoreDiv.className = "showMoreDiv";
       showMoreDiv.innerHTML = `
+    <button id="show-more-btn">Show more</button>
+    `;
+
+      document.querySelector(".search-results").append(showMoreDiv);
+      document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
+      document.getElementById("show-more-btn").addEventListener("click", () => {
+        document.getElementById("show-more-btn").innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+        if (document.querySelectorAll(".trending").length == 20) {
+          // console.log(true);
+          page = 2;
+        }
+        console.log(page);
+        page++;
+        displayTrending(page);
+
+      });
+    }
+  }
+
+  async function getAndShowMoviesByActors(inputValue = "", page = 1) {
+    inputValue = document.getElementById("searchField").value;
+    searchType = "cast";
+
+    if (document.getElementById("show-more-btn-actors")) {
+      document.querySelector(".showMoreDiv").remove();
+    }
+
+    document.querySelector("#search-results-text").textContent = "Showing Movies by Actors";
+    if (page == 1) {
+      let movieList = document.querySelector("#search-results");
+      movieList.innerHTML = "";
+    }
+
+    if (inputValue != "") {
+      console.log(page);
+      let searchResults = await getSearchResults(searchType, inputValue, page);
+      searchResults.results.forEach(function (result) {
+        if (
+          result["known_for"].length != 0 &&
+          result["known_for_department"] == "Acting" &&
+          Array.isArray(result["known_for"])
+        ) {
+          console.log(result);
+          result["known_for"].forEach((movie) => {
+            movie.actor = result.name;
+            addToMovies(movie, true);
+          });
+        }
+      });
+
+      let allMovies = getFromSession("movies");
+      console.log(allMovies);
+      document.getElementById("search-results").innerHTML = "";
+      allMovies.forEach((movie) => {
+        let movieElement = makeMovieBannerFromMovie(movie);
+        movieElement.setAttribute("name", movie.title);
+        movieElement.setAttribute("actor", movie.actor);
+        document.querySelector("#search-results").prepend(movieElement);
+      });
+
+      if (!document.querySelector("#show-more-btn-actors")) {
+        // console.log(true);
+        let showMoreDiv = document.createElement("div");
+        showMoreDiv.className = "showMoreDiv";
+        showMoreDiv.innerHTML = `
         <button id="show-more-btn-actors">Show more</button>
         `;
 
-      document.querySelector(".search-results").append(showMoreDiv);
+        document.querySelector(".search-results").append(showMoreDiv);
 
-      document.getElementById("show-more-btn-actors").addEventListener("click", () => {
-        document.getElementById("show-more-btn-actors").innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
-        if (document.querySelectorAll(".movieBanner").length >= 20) {
-          page += 1;
-          getAndShowMoviesByActors(inputValue, page);
-          myFunction(inputValue, "actor");
+        document.getElementById("show-more-btn-actors").addEventListener("click", () => {
+          document.getElementById("show-more-btn-actors").innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+          
+          if (document.querySelectorAll(".movieBanner").length >= 20) {
+            page += 1;
+            getAndShowMoviesByActors(inputValue, page);
+          }
+        });
+      }
+    } else {
+      document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
+      displayTrending();
+    }
+    myFunction(inputValue, "actor");
+  }
+
+  async function searchForUsers(inputValue = "") {
+    // document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");    
+
+    inputValue = document.getElementById("searchField").value;
+    searchType = "users";
+
+    //Skapar en counter som ska börja på 8
+    let counter = 9;
+
+    // Hämta alla användare
+    let users = await getUsers();
+    let newArray = [];
+
+    // Om något är sökt på, gör ny array med användarna som matchar sökvärdet
+    if (inputValue != "") {
+      users.forEach(user => {
+        if (user.username.includes(inputValue)) {
+          newArray.push(user);
         }
       });
     }
-  } else {
-    document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
-    displayTrending();
-  }
-  myFunction(inputValue, "actor");
-}
 
-async function searchForUsers(inputValue = "") {
-  // document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");    
-
-  inputValue = document.getElementById("searchField").value;
-  searchType = "users";
-
-  //Skapar en counter som ska börja på 8
-  let counter = 8;
-  
-  // Hämta alla användare
-  let users = await getUsers();
-  let newArray = [];
-  
-  // Om något är sökt på, gör ny array med användarna som matchar sökvärdet
-  if(inputValue != "") {
-    users.forEach(user => {
-      if(user.username.includes(inputValue)){
-        newArray.push(user);
-      } 
-    });
-  }
-  
-  // Loopa för att skapa element för användare
-  for(let i = 0; i < counter; i++) {
-    if(inputValue == ""){ // Om inget är sökt på, skapa element för ALLA användare
-      // Om det finns färre än vad countern är, ta bort visa mer och bryt loop
-      if (i >= users.length){
-        document.getElementById("show-more-btn").remove();
-        break;
-      };
-      makeUserSearchDivs(users[i]);
-
-    } else { // Om något är sökt på, skapa element för användarna som matchar sökn.
-      // Om det finns färre än vad countern är, ta bort visa mer och bryt loop
-      if (i >= newArray.length){
-        document.getElementById("show-more-btn").remove();
-        break;
-      };
-      makeUserSearchDivs(newArray[i]);
-    }
-  };
-  
-  // if(document.getElementById("show-more-btn")){
-  //   document.querySelector(".showMoreDiv").remove();
-  // }
-
-  // Skapa show more knapp
-  let showMoreDiv = document.createElement("div");
-  showMoreDiv.className = "showMoreDiv";
-  showMoreDiv.innerHTML = `<button id="show-more-btn">Show more</button>`;
-  document.querySelector("#search-results").append(showMoreDiv);
-  
-  // Event för show-more-knapp
-  document.getElementById("show-more-btn").addEventListener("click", () => {
-    // tar bort gamalt resultat
-    document.querySelectorAll(".userDiv").forEach(div => div.remove());
-    document.querySelectorAll(".movieBanner.placeHolder").forEach(div => div.remove());
-    
-    // ladd ikon på show more knapp
-    document.getElementById("show-more-btn").innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
-    
-    // höj counter
-    counter += 8;
-    
-    // skapa resultat på nytt fast fler (!!gör funktion??)
-    for(let i = 0; i < counter; i++) {
-      if(inputValue == ""){
-        if (i >= users.length){
-          document.getElementById("show-more-btn").remove();       
+    // Loopa för att skapa element för användare
+    for (let i = 0; i < counter; i++) {
+      if (inputValue == "") { // Om inget är sökt på, skapa element för ALLA användare
+        // Om det finns färre än vad countern är, ta bort visa mer och bryt loop
+        if (i >= users.length) {
+          document.getElementById("show-more-btn").remove();
           break;
         };
         makeUserSearchDivs(users[i]);
-        
-      } else{
-        if (i >= newArray.length){ 
+
+      } else { // Om något är sökt på, skapa element för användarna som matchar sökn.
+        // Om det finns färre än vad countern är, ta bort visa mer och bryt loop
+        if (i >= newArray.length) {
           document.getElementById("show-more-btn").remove();
           break;
         };
         makeUserSearchDivs(newArray[i]);
       }
-      
     };
-    
-  });
-}
 
-async function makeUserSearchDivs(user) {
-  const loggedInUserInfo = await getUserInfo(loggedInUserId);
-  let loggedInUserID = loggedInUserInfo.id;
-  let loggedInFollowing = loggedInUserInfo.following;
-  let relationText;
-  let relationImg;
+    if(document.getElementById("show-more-btn")){
+      document.querySelector(".showMoreDiv").remove();
+    }
 
-  if(loggedInFollowing.includes(user.id)) {
-    relationText = "Unfollow";
-    relationImg = "../icons/remove_circle_black.svg";
-  } else {
-    relationText = "Follow";
-    relationImg = "../icons/add_circle_black.svg";
+    // Skapa show more knapp
+    let showMoreDiv = document.createElement("div");
+    showMoreDiv.className = "showMoreDiv";
+    showMoreDiv.innerHTML = `<button id="show-more-btn">Show more</button>`;
+    document.querySelector("#search-results").append(showMoreDiv);
+
+    // Event för show-more-knapp
+    document.getElementById("show-more-btn").addEventListener("click", () => {
+      // tar bort gamalt resultat
+      document.querySelectorAll(".userDiv").forEach(div => div.remove());
+      document.querySelectorAll(".movieBanner.placeHolder").forEach(div => div.remove());
+
+      // ladd ikon på show more knapp
+      document.getElementById("show-more-btn").innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
+
+      // höj counter
+      counter += 9;
+
+      // skapa resultat på nytt fast fler (!!gör funktion??)
+      for (let i = 0; i < counter; i++) {
+        if (inputValue == "") {
+          if (i >= users.length) {
+            document.getElementById("show-more-btn").remove();
+            break;
+          };
+          makeUserSearchDivs(users[i]);
+
+        } else {
+          if (i >= newArray.length) {
+            document.getElementById("show-more-btn").remove();
+            break;
+          };
+          makeUserSearchDivs(newArray[i]);
+        }
+
+      };
+
+    });
   }
 
-  document.querySelector("#search-results-text").textContent = "Showing all users";
-  // document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");    
+  async function makeUserSearchDivs(user) {
+    const loggedInUserInfo = await getUserInfo(loggedInUserId);
+    let loggedInUserID = loggedInUserInfo.id;
+    let loggedInFollowing = loggedInUserInfo.following;
+    let relationText;
+    let relationImg;
 
-  let userDiv = document.createElement("div");
-  userDiv.className = "userDiv";
-  userDiv.setAttribute("user", user.username);
-
-  let userImage = document.createElement("div");
-  userImage.className = "userImage";
-  userImage.style.backgroundImage = `url('http://localhost:7001/${user["profile_picture"].filepath}')`;
-  userImage.addEventListener("click", () => {
-    window.location.href = `http://localhost:2000/profile.php?userID=${user.id}`;
-  });
-
-  let userInfoDiv = document.createElement("div");
-  userInfoDiv.className = "userInfoDiv";
-
-  userDiv.append(userImage, userInfoDiv);
-
-  let username = document.createElement("p");
-  username.textContent = `@${user.username}`;
-  username.setAttribute("id", "usernameP");
-  username.addEventListener("click", () => {
-    window.location.href = `http://localhost:2000/profile.php?userID=${user.id}`;
-  });
-
-  let followDiv = document.createElement("div");
-  followDiv.setAttribute("id", "followDiv");
-
-  userInfoDiv.append(username, followDiv);
-
-  let followImg = document.createElement("img");
-  followImg.setAttribute("id", `${relationText.toLowerCase()}`);
-  followImg.setAttribute("src", `${relationImg}`);
-
-  let followText = document.createElement("p");
-  followText.textContent = relationText;
-
-  followDiv.append(followImg, followText);
-
-  // userInfoDiv.innerHTML = `
-  //   <p id="username">@${user.username}</p>
-  //   <div id="followDiv">
-  //     <img id="${relationText.toLowerCase()}" src="${relationImg}">
-  //     <p>${relationText}</p>
-  //   </div>`;
-        
-  document.querySelector("#search-results").append(userDiv);
-
-  // Eventlistern för att följa/avfölja folk härifrån
-  followDiv.addEventListener("click", async function(e) {
-    if (e.target.textContent == 'Unfollow') {
-      followText.textContent = 'Follow';
-      followText.setAttribute("id", "follow");
-      followImg.setAttribute("src", "../icons/add_circle_black.svg");
-
-      // redigera db
-      await followPatch(loggedInUserId, user.id);
-
-    } else if (e.target.textContent == 'Follow') {
-      followText.textContent = 'Unfollow';
-      followText.setAttribute("id", "unfollow");
-      followImg.setAttribute("src", "../icons/remove_circle_black.svg");
-
-      // redigera db
-      await followPatch(loggedInUserId, user.id);
+    if (loggedInFollowing.includes(user.id)) {
+      relationText = "Unfollow";
+      relationImg = "../icons/remove_circle_black.svg";
+    } else {
+      relationText = "Follow";
+      relationImg = "../icons/add_circle_black.svg";
     }
-  });
 
-  // let followDiv = document.createElement("div");
-  // followDiv.className = "followDiv";
-  // followDiv.innerHTML = `
-  // <div id="followInfo">
-  //       <div id="followersDiv">
-  //           <p>Followers</p>
-  //           <p id="followers">${user.followers.length}</p>
-  //       </div>
-  //       <div id="followingDiv">
-  //           <p>Following</p>
-  //           <p id="following">${user.following.length}</p>
-  //       </div>
-  //   </div>`;
+    document.querySelector("#search-results-text").textContent = "Showing all users";
+    // document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");    
 
-  // if (!document.getElementById("show-more-btn")) {
-  //   let showMoreDiv = document.createElement("div");
-  //   showMoreDiv.className = "showMoreDiv";
-  //   showMoreDiv.innerHTML = `
-  //   <button id="show-more-btn">Show more</button>
-  //   `;
-  //   document.querySelector(".search-container").append(showMoreDiv);
-  //   document.getElementById("show-more-btn").addEventListener("click", () => {
-  //     if (document.querySelectorAll(".userDiv").length == 6) {
-  //     }
-  //   });
-  // }
-  // });
-  myFunction(inputValue, "user");
-}
+    let userDiv = document.createElement("div");
+    userDiv.className = "userDiv";
+    userDiv.setAttribute("user", user.username);
+
+    let userImage = document.createElement("div");
+    userImage.className = "userImage";
+    userImage.style.backgroundImage = `url('http://localhost:7001/${user["profile_picture"].filepath}')`;
+    userImage.addEventListener("click", () => {
+      window.location.href = `http://localhost:2000/profile.php?userID=${user.id}`;
+    });
+
+    let userInfoDiv = document.createElement("div");
+    userInfoDiv.className = "userInfoDiv";
+
+    userDiv.append(userImage, userInfoDiv);
+
+    let username = document.createElement("p");
+    username.textContent = `@${user.username}`;
+    username.setAttribute("id", "usernameP");
+    username.addEventListener("click", () => {
+      window.location.href = `http://localhost:2000/profile.php?userID=${user.id}`;
+    });
+
+    let followDiv = document.createElement("div");
+    followDiv.setAttribute("id", "followDiv");
+
+    userInfoDiv.append(username, followDiv);
+
+    let followImg = document.createElement("img");
+    followImg.setAttribute("id", `${relationText.toLowerCase()}`);
+    followImg.setAttribute("src", `${relationImg}`);
+
+    let followText = document.createElement("p");
+    followText.textContent = relationText;
+
+    followDiv.append(followImg, followText);
+
+    // userInfoDiv.innerHTML = `
+    //   <p id="username">@${user.username}</p>
+    //   <div id="followDiv">
+    //     <img id="${relationText.toLowerCase()}" src="${relationImg}">
+    //     <p>${relationText}</p>
+    //   </div>`;
+
+    document.querySelector("#search-results").append(userDiv);
+
+    // Eventlistern för att följa/avfölja folk härifrån
+    followDiv.addEventListener("click", async function (e) {
+      if (e.target.textContent == 'Unfollow') {
+        followText.textContent = 'Follow';
+        followText.setAttribute("id", "follow");
+        followImg.setAttribute("src", "../icons/add_circle_black.svg");
+
+        // redigera db
+        await followPatch(loggedInUserId, user.id);
+
+      } else if (e.target.textContent == 'Follow') {
+        followText.textContent = 'Unfollow';
+        followText.setAttribute("id", "unfollow");
+        followImg.setAttribute("src", "../icons/remove_circle_black.svg");
+
+        // redigera db
+        await followPatch(loggedInUserId, user.id);
+      }
+    });
+
+    // let followDiv = document.createElement("div");
+    // followDiv.className = "followDiv";
+    // followDiv.innerHTML = `
+    // <div id="followInfo">
+    //       <div id="followersDiv">
+    //           <p>Followers</p>
+    //           <p id="followers">${user.followers.length}</p>
+    //       </div>
+    //       <div id="followingDiv">
+    //           <p>Following</p>
+    //           <p id="following">${user.following.length}</p>
+    //       </div>
+    //   </div>`;
+
+    // if (!document.getElementById("show-more-btn")) {
+    //   let showMoreDiv = document.createElement("div");
+    //   showMoreDiv.className = "showMoreDiv";
+    //   showMoreDiv.innerHTML = `
+    //   <button id="show-more-btn">Show more</button>
+    //   `;
+    //   document.querySelector(".search-container").append(showMoreDiv);
+    //   document.getElementById("show-more-btn").addEventListener("click", () => {
+    //     if (document.querySelectorAll(".userDiv").length == 6) {
+    //     }
+    //   });
+    // }
+    // });
+    myFunction(inputValue, "user");
+  }
 }
 
