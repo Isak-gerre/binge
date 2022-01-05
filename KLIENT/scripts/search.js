@@ -469,7 +469,7 @@ async function searchFunction(searchBy) {
           document.getElementById("show-more-btn").remove();
           break;
         };
-        makeUserSearchDivs(users[i]);
+        await makeUserSearchDivs(users[i]);
 
       } else { // Om något är sökt på, skapa element för användarna som matchar sökn.
         // Om det finns färre än vad countern är, ta bort visa mer och bryt loop
@@ -477,7 +477,8 @@ async function searchFunction(searchBy) {
           document.getElementById("show-more-btn").remove();
           break;
         };
-        makeUserSearchDivs(newArray[i]);
+         await makeUserSearchDivs(newArray[i]);
+
       }
     };
 
@@ -485,44 +486,48 @@ async function searchFunction(searchBy) {
       document.querySelector(".showMoreDiv").remove();
     }
 
-    // Skapa show more knapp
-    let showMoreDiv = document.createElement("div");
-    showMoreDiv.className = "showMoreDiv";
-    showMoreDiv.innerHTML = `<button id="show-more-btn">Show more</button>`;
-    document.querySelector("#search-results").append(showMoreDiv);
+  
+      // Skapa show more knapp
+      let showMoreDiv = document.createElement("div");
+      showMoreDiv.className = "showMoreDiv";
+      showMoreDiv.innerHTML = `<button id="show-more-btn">Show more</button>`;
+      document.querySelector("#search-results").append(showMoreDiv);
+  
+      // Event för show-more-knapp
+      document.getElementById("show-more-btn").addEventListener("click", () => {
+        // tar bort gamalt resultat
+        document.querySelectorAll(".userDiv").forEach(div => div.remove());
+        document.querySelectorAll(".movieBanner.placeHolder").forEach(div => div.remove());
+  
+        // ladd ikon på show more knapp
+        document.getElementById("show-more-btn").innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
+  
+        // höj counter
+        counter += 9;
+  
+        // skapa resultat på nytt fast fler (!!gör funktion??)
+        for (let i = 0; i < counter; i++) {
+          if (inputValue == "") {
+            if (i >= users.length) {
+              document.getElementById("show-more-btn").remove();
+              break;
+            };
+            makeUserSearchDivs(users[i]);
+  
+          } else {
+            if (i >= newArray.length) {
+              document.getElementById("show-more-btn").remove();
+              break;
+            };
+            makeUserSearchDivs(newArray[i]);
+          }
+  
+        };
+  
+      });
+    
 
-    // Event för show-more-knapp
-    document.getElementById("show-more-btn").addEventListener("click", () => {
-      // tar bort gamalt resultat
-      document.querySelectorAll(".userDiv").forEach(div => div.remove());
-      document.querySelectorAll(".movieBanner.placeHolder").forEach(div => div.remove());
-
-      // ladd ikon på show more knapp
-      document.getElementById("show-more-btn").innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
-
-      // höj counter
-      counter += 9;
-
-      // skapa resultat på nytt fast fler (!!gör funktion??)
-      for (let i = 0; i < counter; i++) {
-        if (inputValue == "") {
-          if (i >= users.length) {
-            document.getElementById("show-more-btn").remove();
-            break;
-          };
-          makeUserSearchDivs(users[i]);
-
-        } else {
-          if (i >= newArray.length) {
-            document.getElementById("show-more-btn").remove();
-            break;
-          };
-          makeUserSearchDivs(newArray[i]);
-        }
-
-      };
-
-    });
+  
   }
 
   async function makeUserSearchDivs(user) {
