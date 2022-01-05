@@ -535,15 +535,14 @@
       -ms-flex-align: center;
           align-items: center;
   position: absolute;
-  width: 150px;
 }
 
 #profileWrapper #watchlistContainer button:first-child {
-  bottom: -35px;
+  bottom: -55px;
 }
 
 #profileWrapper #watchlistContainer button:last-child {
-  bottom: -70px;
+  bottom: -105px;
 }
 
 #messageWhenEmpty {

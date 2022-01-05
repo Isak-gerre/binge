@@ -266,14 +266,13 @@
       filter: none;
       @include flex(row, center, center);
       position: absolute;
-      width: 150px;
     }
 
     button:first-child{
-      bottom: -35px;
+      bottom: -55px;
     }
     button:last-child{
-      bottom: -70px;
+      bottom: -105px;
     }
   }
 }
