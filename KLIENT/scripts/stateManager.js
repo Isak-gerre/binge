@@ -30,5 +30,5 @@ function applyState() {
     searchParams = `&search_word=${appliedState.search.search_word}&search_by=${appliedState.search.search_by}&open=${appliedState.search.openSearch}`;
   }
   let scroll = appliedState.scrollHeight != 0 ? `&scroll=${appliedState.scrollHeight}` : "";
-  window.location.href = appliedState.page.href + "?" + scroll + searchParams;
+  window.location.href = appliedState.page.href + scroll + searchParams;
 }
