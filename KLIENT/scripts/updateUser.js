@@ -14,21 +14,26 @@
 // Meddelande när allt ändrats som det ska
 // Things have changed since i last saw you <3
 
+// Öppnar fönster för settings
 async function openSettings(userId) {
+  // Hämtar user för att den nuvarande profilbilden ska visas
     let user = await getUserInfo(userId);
 
     let settingsWindow = document.createElement('div');
     settingsWindow.id = "settingsWindow";
+    // Skapar transition
     setTimeout(() => {
         settingsWindow.style.left = 0;
     }, 50);
 
+    // Knapp som stänger fönstret
     let closeTab = document.createElement('button');
     closeTab.id = "closeTab";
     let exit = document.createElement('img');
     exit.src = "../icons/exit.svg";
     closeTab.append(exit);
 
+    // Snygg transition
     closeTab.addEventListener('click', () => {
         settingsWindow.style.left = '100vw';
         setTimeout(() => {
@@ -36,6 +41,7 @@ async function openSettings(userId) {
         }, 1000);
     });
 
+    // Container för profilbilden
     let changeProfilePicContainer = document.createElement('div');
     changeProfilePicContainer.id = "settingsChangePic";
 
@@ -48,20 +54,25 @@ async function openSettings(userId) {
     changePicDiv.append(changePicIcon);
     changeProfilePicContainer.append(profilePicture, changePicDiv);
 
+    // Öppnar nästa fönster där man ändrar profilbild
     changePicDiv.addEventListener('click', () => {
+        // Hämtar fönster för ändring av profilbild
         let changeProfilePicWindow = changeProfilePic(user);
         settingsWindow.prepend(changeProfilePicWindow);
 
         let allAvatars = document.querySelectorAll('#avatars label');
         let profilePicFilepath = user.profile_picture.filepath.replace("DATABASE\\\/IMAGES\\\/AVATAR\\\/", '');
 
+        // Jämför avatarer med nuvarande profilbild
         allAvatars.forEach(avatar => {
             let avatarFilepath = avatar.childNodes[3].src.replace('http://localhost:7001/DATABASE/IMAGES/AVATAR/', '');
             
+            // Om nuvarande profilbild är densamma som avatar så ska avataren markeras som selected
             if (avatarFilepath == profilePicFilepath) {
                 avatar.classList.add('profileImgSelected');
             }
 
+            // Trycker man på en annan avatar så ändras den till att vara selected
             avatar.addEventListener("click", () => {
                 if(document.querySelector(".profileImgSelected")){
                     document.querySelector(".profileImgSelected").classList.remove("profileImgSelected");
@@ -113,13 +124,16 @@ async function openSettings(userId) {
     return settingsWindow;
 }
 
-function changeProfilePic(user, filepath) {
+// Fönster där profilbild kan ändras
+function changeProfilePic(user) {
     let changeProfilePicWindow = document.createElement('div');
     changeProfilePicWindow.id = "changeProfilePicWindow";
+    // Transition
     setTimeout(() => {
         changeProfilePicWindow.style.left = 0;
     }, 50);
 
+    // Tillbaka-knapp som leder tillbaks till första settingsfönstret
     let closeTab = document.createElement('button');
     closeTab.id = "closeTab";
 
@@ -130,6 +144,7 @@ function changeProfilePic(user, filepath) {
     closeTab.addEventListener('click', () => {
         let settingsWindow = document.getElementById('settingsWindow');
 
+        // Transition
         changeProfilePicWindow.style.left = '100vw';
         settingsWindow.style.left = 0;
 
@@ -138,12 +153,14 @@ function changeProfilePic(user, filepath) {
         }, 1000);
     });
 
+    // Formulär för profilbild
     let formDiv = document.createElement('div');
     let form = document.createElement('form');
     form.id = "updateProfilePic";
     form.method = "POST";
     form.enctype = "multipart/form-data";
 
+    // Alla avatarer och filuppladdning
     form.innerHTML = `
     <div id="avatars">
         <p>Change avatar</p>
@@ -198,6 +215,7 @@ function changeProfilePic(user, filepath) {
         const data = new FormData(form);
         data.append("userID", loggedInUser);
 
+        // Om det inte finns en fil i filuppladdningsfältet så läggs avataren till i formData
         if (document.getElementById("fileToUpload").value == "") {
             let image = document.querySelector('input[name="profileImg"]:checked').value;
             data.set("fileToUpload", image);
@@ -209,6 +227,7 @@ function changeProfilePic(user, filepath) {
     return changeProfilePicWindow;
 }
 
+// Skickar formData om profilbild till servern som uppdaterar information
 async function patchProfilePic(data) {
     const request = new Request("http://localhost:7001/POST/post-profile-picture.php", {
             method: "POST",
@@ -218,6 +237,9 @@ async function patchProfilePic(data) {
     let response = await fetch(request);
     let json = await response.json();
 
+    console.log(response);
+    
+    // Om 'post' går bra visas ett meddelande
     if (response.ok) {
         let responseDiv = document.createElement('div');
         responseDiv.id = "responseDiv";
@@ -226,23 +248,50 @@ async function patchProfilePic(data) {
 
         responseDiv.append(text);
         changeProfilePicWindow.prepend(responseDiv);
+
+        // Transition in
         setTimeout( () => {
             responseDiv.style.opacity = '1';
         }, 10);
 
+        // Transition ut
         setTimeout( () => {
             responseDiv.style.opacity = '0';
         }, 1500);
 
+        // Ta bort fönster
         setTimeout( () => {
             responseDiv.remove();
         }, 2000);
 
+        // Uppdaterar profilbild på profilsida och i settings
         document.querySelector('#profilePic div').style.backgroundImage = `url("http://localhost:7001/${json.filePath}")`;
         document.querySelector('#settingsChangePic div').style.backgroundImage = `url("http://localhost:7001/${json.filePath}")`;
+    } else if (response.status == 406) {
+      let responseDiv = document.createElement('div');
+        responseDiv.id = "responseDiv";
+        let text = document.createElement('p');
+        text.textContent = "Picture can't override than 4mb. Couldn't upload.";
+
+        responseDiv.append(text);
+        changeProfilePicWindow.prepend(responseDiv);
+
+        // Transition in
+        setTimeout( () => {
+            responseDiv.style.opacity = '1';
+        }, 10);
+
+        // Transition ut
+        setTimeout( () => {
+            responseDiv.style.opacity = '0';
+        }, 1500);
+
+        // Ta bort fönster
+        setTimeout( () => {
+            responseDiv.remove();
+        }, 2000);
+    } else if (response.status == 400) {
+      console.log(json);
     }
-
-
-    
 
 }
