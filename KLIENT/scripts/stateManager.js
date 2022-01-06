@@ -25,10 +25,11 @@ function applyState() {
   saveToSession(allStates, "state");
 
   // Skickar till ny sida
+  let windowHasqMark = appliedState.page.href.includes("?") ? appliedState.page.href : appliedState.page.href + "?";
   let searchParams = "";
   if (appliedState.search) {
     searchParams = `&search_word=${appliedState.search.search_word}&search_by=${appliedState.search.search_by}&open=${appliedState.search.openSearch}`;
   }
-  let scroll = appliedState.scrollHeight != 0 ? `&scroll=${appliedState.scrollHeight}` : "";
-  window.location.href = appliedState.page.href + scroll + searchParams;
+  let scroll = appliedState.scrollHeight != 0 ? `scroll=${appliedState.scrollHeight}` : "";
+  window.location.href = windowHasqMark + scroll + searchParams;
 }
