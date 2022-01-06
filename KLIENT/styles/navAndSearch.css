@@ -111,20 +111,22 @@ input:focus {
 .search-container input[type="text"] {
   outline: none;
   border: 1px solid white;
-  border-radius: 5px;
+  border-radius: 30px;
   width: calc(100vw - 50px);
   background-color: white;
   background-image: url("../icons/search.svg");
   background-position: 95% 50%;
   background-repeat: no-repeat;
   background-color: transparent;
-  padding: 5px;
-  padding-left: 1em;
+  padding: 10px;
+  padding-left: 15px;
   z-index: 1000;
   position: absolute;
   top: 70px;
-  font-family: "Mulish";
-  font-size: 1.2rem;
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  font-weight: normal;
   letter-spacing: 0.08em;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -221,7 +223,7 @@ svg:active,
 .pill {
   padding: 8px;
   margin-right: 5px;
-  border-radius: 10px;
+  border-radius: 30px;
   width: 90px;
   background: #1d155a;
   -webkit-transform: scale(1);
@@ -266,7 +268,7 @@ svg:active,
   z-index: 100;
   width: 100vw;
   min-height: 100vh;
-  padding: 10px 25px;
+  padding: 0 25px 10px 25px;
   padding-bottom: 100px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -297,7 +299,8 @@ svg:active,
       grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   z-index: 100;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   max-height: calc(100vh - 170px);
   width: 100%;
   padding-bottom: 130px;
@@ -322,6 +325,7 @@ svg:active,
   background: linear-gradient(to right, #3c3c3c00 8%, #f4f4f40d 38%, #fafafa00 54%);
   background-size: 1000px 640px;
   position: relative;
+  z-index: 1200;
 }
 
 @-webkit-keyframes placeHolderShimmer {
@@ -531,6 +535,13 @@ svg:active,
 
 .pill-container div {
   margin-right: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.pill-container div:last-child {
+  margin-right: 0;
 }
 
 .userDiv {
@@ -590,7 +601,7 @@ svg:active,
           align-items: center;
   gap: 4px;
   width: 85px;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 3px;
 }
 
@@ -613,12 +624,13 @@ svg:active,
   width: 100%;
   height: 100%;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 30px;
   border: 0;
   color: #eeeeee;
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
-  filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+  background: transparent;
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .loading_dots {
@@ -729,9 +741,13 @@ svg:active,
 }
 
 #search-results-text {
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
   margin-top: 20px;
   z-index: 1000;
   position: relative;
   top: 156px;
+  color: #eeeeee;
 }
 /*# sourceMappingURL=navAndSearch.css.map */

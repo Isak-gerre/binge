@@ -274,13 +274,11 @@ function createGenreLinks(genre) {
   genreLink.addEventListener("click", () => {
     document.body.style.overflow = "visible";
 
-    console.log(document.querySelector(".search-container"));
     if(document.querySelector(".search-container")){
-      
       document.querySelector(".search-container").remove();
-      makeSearchOverlay(genre, "Genres");
+      makeSearchOverlay(genre, "Genre");
     } else {
-      makeSearchOverlay(genre, "Genres");
+      makeSearchOverlay(genre, "Genre");
     }
 
     // Här vill man även dölja själva menyn

@@ -242,7 +242,13 @@ async function makeMovieProfile(movieID) {
   titleCast.textContent = "Cast";
   cast.append(titleCast);
 
-  for (let i = 0; i < 5; i++) {
+  let count = 5;
+
+  if(additionalInfo.message.credits.cast.length < 5) {
+    count = additionalInfo.message.credits.cast.length;
+  }
+
+  for (let i = 0; i < count; i++) {
     let castMember = createCreditDiv(additionalInfo.message.credits.cast[i]);
     cast.append(castMember);
   }
@@ -279,7 +285,7 @@ async function makeMovieProfile(movieID) {
 
     productionPeople.addEventListener("click", () => {
       let name = person.name.toLowerCase();
-      makeSearchOverlay(name, "Actors");
+      makeSearchOverlay(name, "Actor");
     });
 
     productionPeople.append(image, name);
