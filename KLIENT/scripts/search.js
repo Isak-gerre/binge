@@ -3,6 +3,12 @@
 let searchType = "movie";
 let searches = {};
 
+if (getParamFromUrl("search_by")) {
+  if (getParamFromUrl("open") == "true") {
+    makeSearchOverlay(getParamFromUrl("search_word"), getParamFromUrl("search_by"));
+  }
+}
+
 // Skapar hela overlayen
 function makeSearchOverlay(searchWord = "", searchBy = "Title") {
   document.body.style.overflow = "hidden";

@@ -22,9 +22,10 @@ function makeUpperNav() {
   document.body.prepend(upperNav);
   document.querySelector(".back").addEventListener("click", () => {
     document.body.style.overflow = "visible";
+    // goToPageAndAddToState(window.location.href);
+    applyState();
   });
   document.querySelector(".hamburger").addEventListener("click", () => {
-
     if (document.querySelector(".hamburger-menu") == null) {
       document.body.style.overflow = "hidden";
       makeHamburgerMenu();
@@ -88,23 +89,16 @@ function makeLowerNav() {
       document.body.style.overflow = "hidden";
       document.querySelectorAll(".lowerNav > div").forEach((element) => {
         element.style.borderBottom = "0px";
-        // console.log(document.querySelectorAll(".lowerNav > div"));
       });
       document.querySelector(".navRight").style.borderBottom = "3px solid white";
-      
-      // document.querySelector("#overlay").style.display = "none";
       makeSearchOverlay();
-      document.querySelector(".back").setAttribute("src", "../icons/exit 2.svg");
-      document.querySelector(".back").addEventListener("click", () => {
-        document.querySelector(".back").setAttribute("src", "../icons/back.svg");
-        document.querySelector(".search-container").style.animation = "removeSearchBar 0.2s ease-out";
-        document.querySelector("#overlay").style.display = "flex";
-        setTimeout(() => {
-          document.querySelector(".search-container").remove();
-        }, 200);
-      });
+      let scrollDistance =
+        window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
+
+      addToState(window.location, scrollDistance, makeSearchState("", ""));
       document.querySelector(".search-container").style.animation = "searchBar 0.2s ease-out";
     } else {
+      removeLatestState();
       document.body.style.overflow = "visible";
       document.querySelector(".navRight").style.borderBottom = "0px";
       if (window.location.href.indexOf("feed") > -1) {
@@ -126,13 +120,13 @@ function makeLowerNav() {
     }
   });
   lowerNavLeft.addEventListener("click", () => {
-    window.location.href = `feed.php`;
+    goToPageAndAddToState("feed.php");
   });
   lowerNavMiddle.addEventListener("click", () => {
-    window.location.href = `explore.php`;
+    goToPageAndAddToState("explore.php");
   });
   lowerNavRight.addEventListener("click", () => {
-    window.location.href = `profile.php`;
+    goToPageAndAddToState("profile.php");
   });
 
   if (window.location.href.indexOf("feed") > -1) {
@@ -274,14 +268,14 @@ function hamburgerText(text) {
   let url = window.location.href;
 
   // Makrera den sidan som användaren är på
-  if(url.includes(page)) {
+  if (url.includes(page)) {
     hamburgerText.classList.add("markedPage");
   } else {
     hamburgerText.classList.remove("markedPage");
   }
 
   hamburgerText.addEventListener("click", () => {
-    if(page == "home"){
+    if (page == "home") {
       page = "feed";
     }
 
@@ -317,7 +311,6 @@ function createGenreLinks(genre) {
       document.querySelector(".hamburger-menu").remove();
       document.querySelector(".hamburger-background").remove();
     }, 400);
-
   });
 
   return genreLink;

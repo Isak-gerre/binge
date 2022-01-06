@@ -16,7 +16,6 @@
 // 2. Watch later: skickar till servern
 // 3. Review: skickar till servern
 
-
 "use strict";
 
 // Variabler för den inloggade?
@@ -48,7 +47,7 @@ async function makeMovieProfile(movieID) {
   // backdrop
   let backdrop = document.createElement("div");
   backdrop.className = "movie-profile-backdrop";
-  if(movieInfo["backdrop_path"] == null) {
+  if (movieInfo["backdrop_path"] == null) {
     backdrop.style.backgroundImage = "url('../icons/image.svg')";
   } else {
     backdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${movieInfo["backdrop_path"]})`;
@@ -74,7 +73,7 @@ async function makeMovieProfile(movieID) {
   poster.className = "movie-profile-poster";
 
   console.log(movieInfo["poster_path"])
-  if(movieInfo["poster_path"] == null) {
+  if (movieInfo["poster_path"] == null) {
     poster.setAttribute("src", "../icons/image.svg");
     poster.style.background = "white";
   } else {
@@ -90,8 +89,8 @@ async function makeMovieProfile(movieID) {
   // p (Runtime, Rating & Release date) - Isak
   let movieRsDiv = document.createElement("div");
   let movieRs = document.createElement("p");
-  let runtime =  movieInfo["runtime"] != undefined ? `| ${movieInfo["runtime"]} min` : "";
-  let rating =  movieInfo["vote_average"] != 0 ? `${movieInfo["vote_average"]} |` : "";
+  let runtime = movieInfo["runtime"] != undefined ? `| ${movieInfo["runtime"]} min` : "";
+  let rating = movieInfo["vote_average"] != 0 ? `${movieInfo["vote_average"]} |` : "";
   movieRs.textContent = `${rating} ${movieInfo["release_date"]} ${runtime}`;
 
   movieRsDiv.append(movieRs);
@@ -152,96 +151,93 @@ async function makeMovieProfile(movieID) {
     <p>${movieInfo.overview}</p>
     `;
 
-    let additionalInfo = await getAdditionalInfo(movieID);
-    // console.log(user);
-    let userRegion = user.region;
+  let additionalInfo = await getAdditionalInfo(movieID);
+  // console.log(user);
+  let userRegion = user.region;
 
-    let streamingservices = document.createElement("div");
-    streamingservices.className = "movie-profile-streamingservices";
+  let streamingservices = document.createElement("div");
+  streamingservices.className = "movie-profile-streamingservices";
 
-    let streamingservicesText = document.createElement("h4");
-    streamingservicesText.textContent = "Available on";
-    streamingservicesText.className = "streaming-services-text";
+  let streamingservicesText = document.createElement("h4");
+  streamingservicesText.textContent = "Available on";
+  streamingservicesText.className = "streaming-services-text";
 
-    streamingservices.append(streamingservicesText);
+  streamingservices.append(streamingservicesText);
 
-    let allProvidersGrid = document.createElement("div");
-    allProvidersGrid.className = "allProviders";
+  let allProvidersGrid = document.createElement("div");
+  allProvidersGrid.className = "allProviders";
 
-    streamingservices.append(allProvidersGrid);
+  streamingservices.append(allProvidersGrid);
 
-    // console.log(additionalInfo.message.providers.results[userRegion]);
-    // Checks if you can buy, rent or flatrate in your country
-    if (additionalInfo.message.providers.results[userRegion] == undefined) {
-        let message = document.createElement("p");
-        message.textContent = "It's not avaible in your country :(";
-        streamingservices.append(message);
+  // console.log(additionalInfo.message.providers.results[userRegion]);
+  // Checks if you can buy, rent or flatrate in your country
+  if (additionalInfo.message.providers.results[userRegion] == undefined) {
+    let message = document.createElement("p");
+    message.textContent = "It's not avaible in your country :(";
+    streamingservices.append(message);
+  } else {
+    // Checks if you can flatrate it
+    if (additionalInfo.message.providers.results[userRegion].flatrate == undefined) {
+      let message = document.createElement("p");
+      message.textContent = "This movie isnt avaible at any streaming services.";
+      streamingservices.append(message);
     } else {
-        // Checks if you can flatrate it
-        if (additionalInfo.message.providers.results[userRegion].flatrate == undefined) {
-            let message = document.createElement("p");
-            message.textContent = "This movie isnt avaible at any streaming services.";
-            streamingservices.append(message);
-        } else {
-            let movieProviders = additionalInfo.message.providers.results[userRegion].flatrate;
-            let activeUserSC = user.active_streaming_services;
-            
-            let yourProviders= movieProviders.filter(prov => activeUserSC.includes(prov["provider_name"]));
-            let otherProviders= movieProviders.filter(prov => !activeUserSC.includes(prov["provider_name"]));
+      let movieProviders = additionalInfo.message.providers.results[userRegion].flatrate;
+      let activeUserSC = user.active_streaming_services;
 
-            let yourStreamingservicesGrid = document.createElement("div");
-            yourStreamingservicesGrid.className = "your-streaming-services-grid";
+      let yourProviders = movieProviders.filter((prov) => activeUserSC.includes(prov["provider_name"]));
+      let otherProviders = movieProviders.filter((prov) => !activeUserSC.includes(prov["provider_name"]));
 
-            let yourStreamingServices = document.createElement("div");
-            yourStreamingServices.className = "movie-profile-your-streaming-services"
-            yourStreamingServices.innerHTML = "<p>Yours</p>"
+      let yourStreamingservicesGrid = document.createElement("div");
+      yourStreamingservicesGrid.className = "your-streaming-services-grid";
 
-            if(yourProviders.length > 0){
-                yourProviders.forEach((provider) => {
-                     let providerName = provider.provider_name;
-                     if (activeUserSC.includes(providerName)) {
-                         let yourProvidersDiv = document.createElement("img");
-     
-                         yourStreamingservicesGrid.append(yourProvidersDiv);
-                         yourProvidersDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
-                     } 
-                })
-            } else {
-              let message = document.createElement("p");
-              message.textContent = "Not available on your streaming providers.";
-              message.className = "movie-p-message";
-              yourStreamingServices.append(message);
-            }
+      let yourStreamingServices = document.createElement("div");
+      yourStreamingServices.className = "movie-profile-your-streaming-services";
+      yourStreamingServices.innerHTML = "<p>Yours</p>";
 
-              yourStreamingServices.append(yourStreamingservicesGrid);
-              allProvidersGrid.append(yourStreamingServices);
+      if (yourProviders.length > 0) {
+        yourProviders.forEach((provider) => {
+          let providerName = provider.provider_name;
+          if (activeUserSC.includes(providerName)) {
+            let yourProvidersDiv = document.createElement("img");
 
-            if(otherProviders.length > 0){
-                let otherStreamingservicesGrid = document.createElement("div");
-                otherStreamingservicesGrid.className = "other-streaming-services-grid";
+            yourStreamingservicesGrid.append(yourProvidersDiv);
+            yourProvidersDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
+          }
+        });
+      } else {
+        let message = document.createElement("p");
+        message.textContent = "Not available on your streaming providers.";
+        message.className = "movie-p-message";
+        yourStreamingServices.append(message);
+      }
 
-                let otherStreamingServices = document.createElement("div");
-                otherStreamingServices.className = "movie-profile-other-streaming-services"
-                otherStreamingServices.innerHTML = "<p>Other</p>"
-                
-                otherProviders.forEach((provider) => {
-                    let otherProvidersDiv = document.createElement("img");
-                    otherStreamingservicesGrid.append(otherProvidersDiv);
-                    otherProvidersDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
-                })
-                
-                otherStreamingServices.append(otherStreamingservicesGrid)
-                allProvidersGrid.append(otherStreamingServices);
-            }
+      yourStreamingServices.append(yourStreamingservicesGrid);
+      allProvidersGrid.append(yourStreamingServices);
 
+      if (otherProviders.length > 0) {
+        let otherStreamingservicesGrid = document.createElement("div");
+        otherStreamingservicesGrid.className = "other-streaming-services-grid";
 
-        }
+        let otherStreamingServices = document.createElement("div");
+        otherStreamingServices.className = "movie-profile-other-streaming-services";
+        otherStreamingServices.innerHTML = "<p>Other</p>";
 
-        // providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
-        // streamingservices.append(providerDiv);
-    };
-      // streamingservices.append(allProvidersGrid);
+        otherProviders.forEach((provider) => {
+          let otherProvidersDiv = document.createElement("img");
+          otherStreamingservicesGrid.append(otherProvidersDiv);
+          otherProvidersDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
+        });
 
+        otherStreamingServices.append(otherStreamingservicesGrid);
+        allProvidersGrid.append(otherStreamingServices);
+      }
+    }
+
+    // providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
+    // streamingservices.append(providerDiv);
+  }
+  // streamingservices.append(allProvidersGrid);
 
   // Credits - Niklas
   let credits = document.createElement("div");
@@ -256,7 +252,7 @@ async function makeMovieProfile(movieID) {
 
   let count = 5;
 
-  if(additionalInfo.message.credits.cast.length < 5) {
+  if (additionalInfo.message.credits.cast.length < 5) {
     count = additionalInfo.message.credits.cast.length;
   }
 
@@ -287,14 +283,14 @@ async function makeMovieProfile(movieID) {
     let image = document.createElement("div");
     let name = document.createElement("p");
 
-    if(person !== undefined) {
-      if(person.profile_path == null) {
+    if (person !== undefined) {
+      if (person.profile_path == null) {
         image.style.backgroundImage = `url(../icons/face.svg)`;
       } else {
         image.style.backgroundImage = `url(https://image.tmdb.org/t/p/w200/${person.profile_path})`;
       }
       name.textContent = person.name;
-  
+
     } else {
       image.style.backgroundImage = `url(../icons/face.svg)`;
       name.textContent = "Jane Doe";
@@ -320,7 +316,7 @@ async function makeMovieProfile(movieID) {
   let titleReview = document.createElement("h4");
   titleReview.textContent = "Reviews";
   reviews.append(titleReview);
-  
+
   let activities = await getActivityByMovieID(movieID);
 
   async function getActivityByMovieID(movieID) {
@@ -334,7 +330,7 @@ async function makeMovieProfile(movieID) {
   }
   createActivities(activities, "movie", "movie-profile-reviews");
 
-  if(activities.length == 0) {
+  if (activities.length == 0) {
     let message = document.createElement("p");
     message.className = "movie-p-message";
     message.textContent = "This movie doesn't have any reviews yet.";
@@ -389,7 +385,6 @@ async function makeMovieProfile(movieID) {
 
       // VISA REVIEW knapp
       review.style.display = "flex";
-
     }
 
     // om personen HAR ifilmen i sin watched => ta bort den
@@ -404,7 +399,7 @@ async function makeMovieProfile(movieID) {
     }
   });
 
-  review.addEventListener("click", async function(e) {
+  review.addEventListener("click", async function (e) {
     relation = await getButtonRealtionStatus(loggedInUser, movieID);
 
     // Prevent scrolling
@@ -482,18 +477,18 @@ async function makeMovieProfile(movieID) {
       let labelComment = document.createElement("label");
       labelComment.textContent = "Review";
       labelComment.classList.add("labelComment");
-      
+
       let buttonHolder = document.createElement("div");
       buttonHolder.className = "buttonHolder";
 
-      if(relation.review != false){
+      if (relation.review != false) {
         let date = howManyDaysAgo(relation.review.date);
         let labelDate = document.createElement("label");
         labelDate.classList.add("labelDate");
 
         labelDate.textContent = `Last updated ${date}`;
         labelHolder.append(labelComment, labelDate);
-        
+
         // Delete-button
         let deleteButton = document.createElement("button");
         deleteButton.className = "delete button";
@@ -503,7 +498,7 @@ async function makeMovieProfile(movieID) {
         deleteButton.addEventListener("click", () => {
           deleteteActivity(relation.review.id);
 
-          let message = "You successfully deleted your review";
+          let message = "You have successfully deleted your review";
           closingMessage(message);
 
           review.classList.remove("marked");
@@ -560,7 +555,6 @@ async function makeMovieProfile(movieID) {
 
     // Submit click
     document.querySelector(".submit").addEventListener("click", () => {
-      
       let comment = document.querySelector("textarea").value;
       let starRate = 0;
       let radioStars = document.querySelectorAll("input");
@@ -581,7 +575,7 @@ async function makeMovieProfile(movieID) {
         patchActivity(relation.review);
         message = "You updated your review";
 
-      // POST
+        // POST
       } else {
         postNewActivity(movieID, loggedInUser, "review", comment, starRate);
         message = "Thanks for your review";
@@ -590,11 +584,9 @@ async function makeMovieProfile(movieID) {
       closingMessage(message);
       review.classList.add("marked");
       review.textContent = "Update review";
-
     });
 
-    function closingMessage(message){
-
+    function closingMessage(message) {
       let messageWrapper = document.querySelector(".message-wrapper");
       let top = document.querySelector(".message-wrapper > .top");
       let middle = document.querySelector(".message-wrapper > .middle");
@@ -627,11 +619,11 @@ async function makeMovieProfile(movieID) {
 
           let activities = await getActivityByMovieID(movieID);
           createActivities(activities, "movie", "movie-profile-reviews");
-
         }, 1000);
       }, 2500);
-    };
+    }
     buttons.append(watchLater, watched, review);
   });
 
+  toScroll();
 }

@@ -33,6 +33,10 @@ async function makeMovieBanner(movieID, activity) {
 
       // All movieBanners
       let allMovieBanner = document.querySelectorAll(".movieBanner");
+      
+      allMovieBanner.forEach((movBan) => {
+        movBan.style.filter = "blur(8px)";
+      });
 
       zoomIn(allMovieBanner, e);
 
@@ -163,13 +167,10 @@ async function makeMovieBanner(movieID, activity) {
   }
 
   //send to movieProfile
-  // movieBanner.addEventListener("click", (event) => {
-  //   event.stopImmediatePropagation();
-  //   event.preventDefault();
-  //   event.stopPropagation();
-
-  //   window.location.href = `explore.php?movieID=${movieID}`;
-  // });
+  movieBanner.addEventListener("click", (e) => {
+    e.stopPropagation();
+    goToPageAndAddToState(`explore.php?movieID=${movieID}`);
+  });
 
   return movieBanner;
 }
@@ -184,7 +185,7 @@ function makePlaceholderMovieBanner() {
   return movieBanner;
 }
 
-function makeMovieBannerFromMovie(movie, page) {
+function makeMovieBannerFromMovie(movie) {
   //create elements
   let movieBanner = document.createElement("div");
 
@@ -195,10 +196,11 @@ function makeMovieBannerFromMovie(movie, page) {
   movieBanner.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movie["poster_path"]}')`;
 
   // send to movieProfile
-  movieBanner.addEventListener("click", (event) => {
-
-    event.stopPropagation();
-    window.location.href = `explore.php?movieID=${movie.id}`;
+  movieBanner.addEventListener("click", () => {
+    let input = document.getElementById("searchField").value;
+    let searchBy = document.querySelector(".active").textContent;
+    let search = makeSearchState(input, searchBy);
+    goToPageAndAddToState(`explore.php?movieID=${movie.id}`, search);
   });
 
   //return it
