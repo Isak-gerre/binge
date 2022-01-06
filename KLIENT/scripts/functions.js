@@ -333,7 +333,7 @@ async function getFriendsActivities(id) {
 
 function howManyDaysAgo(recievedDate) {
   // console.log(moment("202201011402", "YYYYMMDDhmm").fromNow());
-  let stringDate = recievedDate.toString();  
+  let stringDate = recievedDate.toString();
   let thisMagicMoment = moment(stringDate, "YYYYMMDDhmm").fromNow();
   return thisMagicMoment;
 }
@@ -349,6 +349,7 @@ function createActivities(array, page, appendIn = "wrapper") {
     // Aktivitets containern
     let container = document.createElement("div");
     container.classList.add("container");
+
 
     document.getElementById(appendIn).append(container);
 
@@ -421,6 +422,64 @@ function createActivities(array, page, appendIn = "wrapper") {
     let activityContainer = document.createElement("div");
     activityContainer.classList.add("activityContainer");
 
+    if (page == "myProfile") {
+      activityContainer.addEventListener("long-press", (e) => {
+        // console.log(e.currentTarget);
+
+        e.currentTarget.className += " zoomIn";
+
+        let allActivities = document.querySelectorAll("#profileWrapper > .container");
+        // console.log(allActivities)
+
+        allActivities.forEach((element) => {
+
+          if (!element.children[1].classList.contains("zoomIn")) {
+            element.style.filter = "blur(8px)";
+            element.style.pointerEvents = "none";
+          } else if (element.children[1].classList.contains("zoomIn")) {
+            // Options för vad du kan göra med den
+            let options = document.createElement("div");
+            options.className = "options";
+
+            // Remove from list - button
+            let removeFromList = document.createElement("button");
+            removeFromList.textContent = "Remove from list";
+            removeFromList.className = "button";
+
+            let makeOrUpdate;
+            if (obj.type == "watched") {
+              makeOrUpdate = "Make review";
+            } else if (obj.type == "review") {
+              makeOrUpdate = " Update review";
+            }
+
+            let reviewDiv = document.createElement("button");
+            reviewDiv.textContent = makeOrUpdate;
+            reviewDiv.className = "button";
+
+            options.append(removeFromList, reviewDiv);
+            element.append(options);
+
+            // removeFromList.addEventListener("click", (event) => {
+            //   event.stopPropagation();
+            //   let focusedMovie = document.querySelector(".zoomIn");
+
+            //   //delete from db
+            //   deleteteActivity(obj.id);
+
+            //   zoomOut(allMovieBanner);
+            //   disappearingOfActivity(focusedMovie);
+
+            //   let message = "You have succesfully delted this from your watchlist";
+            //   setTimeout(() => {
+            //     messageToUser(message);
+            //   }, 1000)
+            // })
+          }
+        })
+      })
+    }
+
     let activityContainerLeft = document.createElement("div");
     activityContainerLeft.classList.add("activityContainerLeft");
 
@@ -448,7 +507,7 @@ function createActivities(array, page, appendIn = "wrapper") {
     title.classList.add("title");
     title.textContent = movieInfo.message.title;
     title.addEventListener("click", () => {
-      
+
     });
 
     activityContainerLeft.append(type, title);
@@ -633,11 +692,11 @@ async function deleteteActivity(activityID) {
 async function followPatch(mainUserID, friendsUserID) {
 
   const response = await fetch(new Request("http://localhost:7001/PATCH/update-user.php", {
-      method: "PATCH",
-      headers: {
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify({userID: mainUserID, friendsUserID: friendsUserID})
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ userID: mainUserID, friendsUserID: friendsUserID })
   }));
 
   const data = await response;

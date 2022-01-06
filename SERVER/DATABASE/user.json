@@ -349,6 +349,26 @@
             ],
             "sessionId": "$2y$10$GQPUquml7jwBrnmUHfMtiOFFCPGqLcSSpxIFuaqqACsNrjaO2zcia",
             "id": 14
+        },
+        "15": {
+            "firstname": "lina",
+            "lastname": "andersson",
+            "username": "linisfinis",
+            "password": "$2y$10$C3w7DSxfn6HHX4NlZUDFRep9OxYCycXyih43ClAlLfICvV8YkdYVi",
+            "email": "linisfinis@gmail.com",
+            "birthday": "1973-11-08",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "Disney Plus"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/PROFILE\\\/f8345ba406f51e15af4f50fce65f8136c86e633f311485efde1b870e5feca4e5.jpg"
+            },
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$Yj1w491lRUUxK4KhUu4jLOjC4qHN4R\/2WEXVYXi2evxVifNEhMRaq",
+            "id": 15
         }
     }
 }
