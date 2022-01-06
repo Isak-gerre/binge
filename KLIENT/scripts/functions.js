@@ -177,10 +177,12 @@ async function getMovieInfo(movieID) {
 
 async function getSearchResults(searchType, query, page = 1) {
   try {
+    console.log(searchType);
     let response = await fetch(
       `http://localhost:7001/GET/get-search-results.php?searchtype=${searchType}&query=${query}&page=${page}`
     );
     let data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.error(error);
@@ -210,6 +212,16 @@ async function getGenres() {
 async function getMoviesByGenre(genre) {
   try {
     let response = await fetch(`http://localhost:7001/GET/get-movies-by-genre.php?genre=${genre}`);
+    let data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function searchResultsByGenre(genre) {
+  try {
+    let response = await fetch(`http://localhost:7001/GET/get-search-results-genres.php?genre=${genre}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -501,9 +513,9 @@ async function getSimilar(movieID) {
 
 async function getAdditionalInfo(movieID) {
   try {
-    console.log(movieID);
+    // console.log(movieID);
     let response = await fetch(`http://localhost:7001/GET/get-additional-movieInfo.php?movieID=${movieID}`);
-    console.log(response);
+    // console.log(response);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -582,4 +594,17 @@ async function deleteteActivity(activityID) {
   } catch (err) {
     console.log(err);
   }
+}
+
+async function followPatch(mainUserID, friendsUserID) {
+
+  const response = await fetch(new Request("http://localhost:7001/PATCH/update-user.php", {
+      method: "PATCH",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({userID: mainUserID, friendsUserID: friendsUserID})
+  }));
+
+  const data = await response;
 }

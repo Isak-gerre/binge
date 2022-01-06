@@ -1,6 +1,6 @@
 "user strict";
 
-const userID = getLoggedInUserID();
+const loggedInUserId = getLoggedInUserID();
 
 if(getParamFromUrl("movieID")){
     document.querySelector("#wrapper").innerHTML = "";
@@ -17,7 +17,7 @@ if(getParamFromUrl("movieID")){
     }, 1000);
 
     //FRIENDS RECENTLY WATCHED
-    executeFriendsActivities(userID);
+    executeFriendsActivities(loggedInUserId);
 
     //GENRED
     makeGenreBanner();

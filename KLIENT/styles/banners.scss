@@ -1,8 +1,8 @@
 @import "variables.scss";
 
 .movieBanner,
-.genreImageDiv,
-.userDiv {
+.genreImageDiv
+{
   height: 150px;
   border-radius: $borderRadiusNav;
   background-size: cover;

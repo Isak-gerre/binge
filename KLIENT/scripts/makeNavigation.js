@@ -88,7 +88,7 @@ function makeLowerNav() {
       document.body.style.overflow = "hidden";
       document.querySelectorAll(".lowerNav > div").forEach((element) => {
         element.style.borderBottom = "0px";
-        console.log(document.querySelectorAll(".lowerNav > div"));
+        // console.log(document.querySelectorAll(".lowerNav > div"));
       });
       document.querySelector(".navRight").style.borderBottom = "3px solid white";
       
@@ -299,13 +299,11 @@ function createGenreLinks(genre) {
   genreLink.addEventListener("click", () => {
     document.body.style.overflow = "visible";
 
-    console.log(document.querySelector(".search-container"));
     if(document.querySelector(".search-container")){
-      
       document.querySelector(".search-container").remove();
-      makeSearchOverlay(genre);
+      makeSearchOverlay(genre, "Genre");
     } else {
-      makeSearchOverlay(genre);
+      makeSearchOverlay(genre, "Genre");
     }
 
     // Här vill man även dölja själva menyn
