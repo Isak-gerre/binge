@@ -1,29 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
-.loginMoviePreviews, .loginMoviePreviewsOverlay {
+.parentSkew {
   height: 30vh;
   position: absolute;
   top: 0;
   z-index: 21;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-.loginMoviePreviews {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: auto;
   overflow: hidden;
 }
 
-.loginMoviePreviews .movieBanner {
+.parentSkew .loginMoviePreviews {
+  width: 100vw;
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: auto;
+  top: -25px;
+  left: -90px;
+  -webkit-transform: skew(-8deg, -5deg) rotate(12deg);
+          transform: skew(-8deg, -5deg) rotate(12deg);
+}
+
+.parentSkew .loginMoviePreviews .movieBanner {
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
 }
 
-.loginMoviePreviewsOverlay {
+.parentSkew .loginMoviePreviewsOverlay {
+  height: 30vh;
   width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(15, 123, 161, 0)), color-stop(74%, rgba(15, 11, 46, 0)), to(#100c30));
   background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 74%, #100c30 100%);
   z-index: 22;
@@ -59,6 +67,11 @@
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;
+  text-align: center;
+}
+
+.movie-profile-background {
+  height: 100%;
 }
 
 .signInWrap {

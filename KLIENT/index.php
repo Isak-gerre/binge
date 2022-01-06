@@ -18,11 +18,13 @@ require "head.php";
 
 //Skapar formuläret för inlogg alternativt skapar konto 
 ?>
-<div class="loginMoviePreviews"></div>
-<div class="loginMoviePreviewsOverlay"></div>
+<div class="parentSkew">
+    <div class="loginMoviePreviews"></div>
+    <div class="loginMoviePreviewsOverlay"></div>
+</div>
 <div class="logoDiv">
     <div class="logoImg"></div>
-    <div class="slogan">Your favourite moviesite</div>
+    <div class="slogan">Explore, save and share your favourite movies. </div>
 </div>
 <div class="movie-profile-background"></div>
 
