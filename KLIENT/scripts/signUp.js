@@ -8,6 +8,9 @@
 // * Hämta fyra random AVATARER
 //
 
+document.querySelector(".backLogin").addEventListener("click", () => {
+  window.location.href = `index.php`;
+});
 
 document.getElementById("username1").addEventListener("keyup", () => {
 
@@ -53,6 +56,10 @@ let image;
 let pictureID;
 
 let signUpForm = document.getElementById("signUpForm");
+
+// document.querySelector(".backLogin").addEventListener("click", () => {
+//   window.location.href = `index.php`;
+// });
 
 signUpForm.addEventListener("submit", (event) => {
   console.log("SignUpForm ok");
@@ -101,3 +108,4 @@ signUpForm.addEventListener("submit", (event) => {
         sessionStorage.clear();
     });
 });
+
