@@ -18,7 +18,7 @@ require "head.php";
 
 //Skapar formuläret för inlogg alternativt skapar konto 
 ?>
-<div class="parentSkew">
+<div class="previewWrapper">
     <div class="loginMoviePreviews"></div>
     <div class="loginMoviePreviewsOverlay"></div>
 </div>

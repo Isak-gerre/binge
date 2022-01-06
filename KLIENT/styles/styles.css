@@ -642,6 +642,13 @@ body {
   z-index: 1000;
 }
 
+.statsP {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+}
+
 #overlay {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3132,15 +3139,15 @@ svg:active,
   color: #eeeeee;
 }
 
-.parentSkew {
+.previewWrapper {
   height: 30vh;
   position: absolute;
-  top: 0;
+  top: -5px;
   z-index: 21;
   overflow: hidden;
 }
 
-.parentSkew .loginMoviePreviews {
+.previewWrapper .loginMoviePreviews {
   width: 100vw;
   position: relative;
   display: -ms-grid;
@@ -3154,12 +3161,12 @@ svg:active,
           transform: skew(-8deg, -5deg) rotate(12deg);
 }
 
-.parentSkew .loginMoviePreviews .movieBanner {
+.previewWrapper .loginMoviePreviews .movieBanner {
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
 }
 
-.parentSkew .loginMoviePreviewsOverlay {
+.previewWrapper .loginMoviePreviewsOverlay {
   height: 30vh;
   width: 100vw;
   position: absolute;

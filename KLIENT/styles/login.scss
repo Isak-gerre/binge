@@ -1,11 +1,11 @@
 @import "variables.scss";
 
 //MovieBanners (preview)
-.parentSkew {
+.previewWrapper {
     height: 30vh;
     // width: 100vw;
     position: absolute;
-    top: 0;
+    top: -5px;
     z-index: 21;
     overflow: hidden;
 

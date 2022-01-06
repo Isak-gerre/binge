@@ -306,3 +306,9 @@
   width: 100vw;
   z-index: 1000;
 }
+
+//text on stats
+.statsP {
+  @include bodyFont();
+  text-align: center;
+}

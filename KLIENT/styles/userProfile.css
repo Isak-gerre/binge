@@ -585,4 +585,11 @@
   width: 100vw;
   z-index: 1000;
 }
+
+.statsP {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+}
 /*# sourceMappingURL=userProfile.css.map */

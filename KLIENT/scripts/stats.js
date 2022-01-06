@@ -6,10 +6,12 @@ Create stats
 
 async function renderChart(userId) {
   document.getElementById('profileWrapper').innerHTML = `
+    <p class="statsP">You seem to love watching: </p>
     <canvas id="ctx" width="400" height="400"></canvas>
   `;
 
   let userData = await getUserActivities(userId);
+  // console.log(userData);
   let genres = [];
   let time = [];
   let data = {};
@@ -18,7 +20,6 @@ async function renderChart(userId) {
   userData.forEach(async function (activity) {
     // console.log(activity);
     let movieInfo = await getMovieInfo(activity.movieID);
-    // console.log(movieInfo);
     await movieInfo.message.genres.forEach((genre, index) => {
       if (!genres.includes(genre.name)) {
         genres.push(genre.name);
