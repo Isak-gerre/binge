@@ -20,7 +20,7 @@ if (isset($_FILES["fileToUpload"], $_POST["userID"])) {
     // Filen får inte vara större än ~400kb
     if ($_FILES["fileToUpload"]["size"] > (0.4 * 1000 * 1000)) {
         $message = ["message" => "Too large"];
-        sendJSON($message, 400);
+        sendJSON($message, 406);
     }
     $file = $_FILES["fileToUpload"];
     $filename = $file["name"];
