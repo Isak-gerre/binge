@@ -241,57 +241,43 @@ async function patchProfilePic(data) {
     
     // Om 'post' går bra visas ett meddelande
     if (response.ok) {
-        let responseDiv = document.createElement('div');
-        responseDiv.id = "responseDiv";
-        let text = document.createElement('p');
-        text.textContent = 'Profile picture is updated';
-
-        responseDiv.append(text);
-        changeProfilePicWindow.prepend(responseDiv);
-
-        // Transition in
-        setTimeout( () => {
-            responseDiv.style.opacity = '1';
-        }, 10);
-
-        // Transition ut
-        setTimeout( () => {
-            responseDiv.style.opacity = '0';
-        }, 1500);
-
-        // Ta bort fönster
-        setTimeout( () => {
-            responseDiv.remove();
-        }, 2000);
+        changeProfilePicWindow.prepend(responseDiv("Your profile picture was updated"));
 
         // Uppdaterar profilbild på profilsida och i settings
         document.querySelector('#profilePic div').style.backgroundImage = `url("http://localhost:7001/${json.filePath}")`;
         document.querySelector('#settingsChangePic div').style.backgroundImage = `url("http://localhost:7001/${json.filePath}")`;
     } else if (response.status == 406) {
-      let responseDiv = document.createElement('div');
-        responseDiv.id = "responseDiv";
-        let text = document.createElement('p');
-        text.textContent = "Picture can't override than 4mb. Couldn't upload.";
-
-        responseDiv.append(text);
-        changeProfilePicWindow.prepend(responseDiv);
-
-        // Transition in
-        setTimeout( () => {
-            responseDiv.style.opacity = '1';
-        }, 10);
-
-        // Transition ut
-        setTimeout( () => {
-            responseDiv.style.opacity = '0';
-        }, 1500);
-
-        // Ta bort fönster
-        setTimeout( () => {
-            responseDiv.remove();
-        }, 2000);
+      changeProfilePicWindow.prepend(responseDiv("You're profile picture can't override 4Mb."));
+      
     } else if (response.status == 400) {
-      console.log(json);
+      console.log(response);
+      changeProfilePicWindow.prepend(responseDiv("Something went wrong. Try again!"));
     }
 
+}
+
+function responseDiv(message) {
+  let responseDiv = document.createElement('div');
+  responseDiv.id = "responseDiv";
+  let text = document.createElement('p');
+  text.textContent = message;
+
+  responseDiv.append(text);
+
+  // Transition in
+  setTimeout( () => {
+    responseDiv.style.opacity = '1';
+  }, 10);
+
+  // Transition ut
+  setTimeout( () => {
+    responseDiv.style.opacity = '0';
+  }, 1500);
+
+  // Ta bort fönster
+  setTimeout( () => {
+    responseDiv.remove();
+  }, 2000);
+  
+  return responseDiv;
 }
