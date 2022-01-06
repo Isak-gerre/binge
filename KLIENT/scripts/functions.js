@@ -406,7 +406,7 @@ function createActivities(array, page, appendIn = "wrapper") {
     title.classList.add("title");
     title.textContent = movieInfo.message.title;
     title.addEventListener("click", () => {
-      makeMovieProfile(obj.movieID);
+      
     });
 
     activityContainerLeft.append(type, title);

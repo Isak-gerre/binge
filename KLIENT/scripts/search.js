@@ -113,7 +113,7 @@ async function searchFunction(searchBy) {
   // GENRE
   if (searchBy == "Genre") {
     for (let i = 0; i < 20; i++) {
-      console.log(document.querySelector("#search-results"));
+      // console.log(document.querySelector("#search-results"));
       document.querySelector("#search-results").append(makePlaceholderMovieBanner());
     }
     let page = 1;
@@ -162,18 +162,30 @@ async function searchFunction(searchBy) {
         }
       }
     }
+
     // Check if nothing is showing
     let noResults = true;
     document.querySelectorAll(selector).forEach((element) => {
+      console.log(element.className.includes("placeholder"));
       if (!element.style.display.includes("none")) {
-        noResults = false;
+        if (element.className.includes("placeholder")){
+          console.log("placeholder");
+          noResults = true;
+        } else {
+          noResults = false;
+        }
       }
+
+      
+      
     });
 
     searchWord = document.getElementById("searchField").value;
-    if (!searchWord == "") {
+    console.log(noResults);
+    if (searchWord !== "") {
       if (noResults) {
         document.querySelector("#search-results-text").textContent = "No results for: " + searchWord;
+        document.querySelector("#search-results").innerHTML = "";
       } else {
         document.querySelector("#search-results-text").textContent = "Showing results for: " + searchWord;
       }

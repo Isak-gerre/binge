@@ -293,20 +293,13 @@ async function makeMovieProfile(movieID) {
       } else {
         image.style.backgroundImage = `url(https://image.tmdb.org/t/p/w200/${person.profile_path})`;
       }
-  
       name.textContent = person.name;
-  
-      productionPeople.addEventListener("click", () => {
-        makeSearchOverlay(person.name);
-      });
   
     } else {
       image.style.backgroundImage = `url(../icons/face.svg)`;
       name.textContent = "Jane Doe";
     }
 
-    let name = document.createElement("p");
-    name.textContent = person.name;
 
     productionPeople.addEventListener("click", () => {
       let name = person.name.toLowerCase();
