@@ -498,6 +498,7 @@
   z-index: 15;
   padding: 10px 25px;
   padding-bottom: 90px;
+  height: calc(100vh - 250px);
   -webkit-transition: height 1s;
   transition: height 1s;
 }

@@ -247,7 +247,7 @@
   z-index: 15;
   padding: $betweenPadding $wrapperPadding;
   padding-bottom: 90px;
-
+  height: calc(100vh - 250px);
   transition: height 1s;
 
   #watchlistContainer {
@@ -330,5 +330,4 @@
     margin-top: $innerPadding;
 
   }
-
 }
