@@ -100,7 +100,7 @@
 #loginForm, #signUpForm > fieldset {
     @include flex(column, center, center);
     gap: $betweenPadding;
-    width: 100%;
+    width: 80%;
 
     #input {
         @include flex(column, center, flex-start);
@@ -114,13 +114,14 @@
 
         label {
             @include xSmallFont();
+            margin-left: $betweenPadding
         }
 
         input {
             @include bodyFont();
             border: none;
             width: 100%;
-            padding: 0 2px;
+            padding: 0 10px;
             background: none;
             
             transition: color 0.5s;

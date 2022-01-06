@@ -3273,7 +3273,7 @@ svg:active,
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
-  width: 100%;
+  width: 80%;
 }
 
 #loginForm #input, #signUpForm > fieldset #input {
@@ -3303,6 +3303,7 @@ svg:active,
 #loginForm #input label, #signUpForm > fieldset #input label {
   font-family: "Mulish", sans-serif;
   font-size: 12px;
+  margin-left: 10px;
 }
 
 #loginForm #input input, #signUpForm > fieldset #input input {
@@ -3311,7 +3312,7 @@ svg:active,
   line-height: 1.4;
   border: none;
   width: 100%;
-  padding: 0 2px;
+  padding: 0 10px;
   background: none;
   -webkit-transition: color 0.5s;
   transition: color 0.5s;
