@@ -21,10 +21,10 @@
 
 // Variabler för den inloggade?
 let loggedInUser = getLoggedInUserID();
-console.log(loggedInUser);
+// console.log(loggedInUser);
 async function makeMovieProfile(movieID) {
   let user = await getUserInfo(loggedInUser);
-  console.log(user);
+  // console.log(user);
 
   let overlay = document.getElementById("overlay");
   let data = await getMovieInfo(movieID);
@@ -78,7 +78,9 @@ async function makeMovieProfile(movieID) {
   // p (Runtime, Rating & Release date) - Isak
   let movieRsDiv = document.createElement("div");
   let movieRs = document.createElement("p");
-  movieRs.textContent = `${movieInfo["vote_average"]} | ${movieInfo["release_date"]} | ${movieInfo["runtime"]} min`;
+  let runtime =  movieInfo["runtime"] != undefined ? `| ${movieInfo["runtime"]} min` : "";
+  let rating =  movieInfo["vote_average"] != 0 ? `${movieInfo["vote_average"]} |` : "";
+  movieRs.textContent = `${rating} ${movieInfo["release_date"]} ${runtime}`;
 
   movieRsDiv.append(movieRs);
 
@@ -139,7 +141,7 @@ async function makeMovieProfile(movieID) {
     `;
 
     let additionalInfo = await getAdditionalInfo(movieID);
-    console.log(user);
+    // console.log(user);
     let userRegion = user.region;
 
     let streamingservices = document.createElement("div");
@@ -276,7 +278,8 @@ async function makeMovieProfile(movieID) {
     name.textContent = person.name;
 
     productionPeople.addEventListener("click", () => {
-      makeSearchOverlay(person.name);
+      let name = person.name.toLowerCase();
+      makeSearchOverlay(name, "Actors");
     });
 
     productionPeople.append(image, name);

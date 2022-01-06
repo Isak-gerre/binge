@@ -40,11 +40,11 @@ function getMoviesByGenres() {
         }
     }
 
-
     $key = [];
     foreach($firstKeyword as $keyword){
         //find movies with the keyword
         $keywordID = $keyword["id"];
+        
         $getMovieByKeyword = "http://api.themoviedb.org/3/keyword/$keywordID/movies?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US&include_adult=false";
         
         $jsonData = json_decode(file_get_contents($getMovieByKeyword), true);
@@ -52,12 +52,9 @@ function getMoviesByGenres() {
     }
 
 
-    $jsonData =  json_decode(file_get_contents($getMovieByKeyword), true);
     sendJSON($key);
 
 }
-
-getMoviesByGenres();
 
 
 if($method == "GET") {

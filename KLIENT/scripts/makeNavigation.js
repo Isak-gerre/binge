@@ -278,9 +278,9 @@ function createGenreLinks(genre) {
     if(document.querySelector(".search-container")){
       
       document.querySelector(".search-container").remove();
-      makeSearchOverlay(genre);
+      makeSearchOverlay(genre, "Genres");
     } else {
-      makeSearchOverlay(genre);
+      makeSearchOverlay(genre, "Genres");
     }
 
     // Här vill man även dölja själva menyn

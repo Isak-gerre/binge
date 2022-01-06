@@ -10,9 +10,9 @@
 
 const wrapper = document.getElementById("wrapper");
 
-const userID = getLoggedInUserID();
+const loggedInUserId = getLoggedInUserID();
 // Get the logged in userobj
-makeFeed(userID);
+makeFeed(loggedInUserId);
 
 async function makeFeed(userID) {
     // hämta id från session

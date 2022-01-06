@@ -155,11 +155,13 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
         // Ändrar grid layout från två kolumner till tre
         // document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");
       }
+
       let active = document.querySelectorAll(".active");
       if (active.length != 0) {
         active[0].classList.remove("active");
       }
       let searchBar = document.querySelector("#searchField");
+
       if (searchBar.placeholder != "Search") {
         searchBar.placeholder = "Search";
         if (target.classList == "pill-text") {
@@ -228,8 +230,6 @@ async function searchFunction(searchBy) {
 
   if (searchBy != "Users") {
     // document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(3, 1fr);");
-
-
     for (let i = 0; i < 20; i++) {
       document.querySelector("#search-results").append(makePlaceholderMovieBanner());
     }
@@ -239,40 +239,14 @@ async function searchFunction(searchBy) {
 
   // MOVIES
   if (searchBy == "Movies") {
-    document.querySelector("#search-results-text").textContent = "Showing Movies";
-    let movieList = document.querySelector("#search-results");
-    movieList.innerHTML = "";
-    if (inputValue != "") {
-      let searchResults = await getSearchResults(searchType, inputValue);
-      searchResults.results.forEach(async function (result) {
-        addToMovies(result);
-      });
-      let allMovies = getFromSession("movies");
-      allMovies.forEach((movie) => {
-        let movieElement = makeMovieBannerFromMovie(movie);
-        movieElement.setAttribute("name", movie.title);
-        document.querySelector("#search-results").prepend(movieElement);
-      });
-    } else {
-      displayTrending();
-    }
-
-    myFunction(inputValue);
+    let page = 1;
+    await searchByTitle(inputValue, page);
   }
+
   // GENRES
   if (searchBy == "Genres") {
-    let movieList = document.querySelector("#search-results");
-    movieList.innerHTML = "";
-    let searchResults = await getMoviesByGenre(inputValue);
-    searchResults[1].results.forEach(async function (result) {
-      addToMovies(result);
-    });
-    searchResults[1].results.forEach((movie) => {
-      let movieElement = makeMovieBannerFromMovie(movie);
-      movieElement.setAttribute("genre", inputValue);
-      document.querySelector("#search-results").prepend(movieElement);
-    });
-    myFunction(inputValue, "genre");
+    let page = 1;
+    await searchByGenres(inputValue, page);
   }
 
   // ACTORS
@@ -289,6 +263,7 @@ async function searchFunction(searchBy) {
 
   function myFunction(searchWord, searchAttribute = "name", selector = "#search-results > div") {
     var movie, text, i, txtValue;
+    console.log(searchWord);
     filter = searchWord.toUpperCase();
     movie = document.querySelectorAll(selector);
     if (searchWord == "") {
@@ -297,19 +272,22 @@ async function searchFunction(searchBy) {
         movie[i].style.display = "";
       }
     } else {
+
       for (i = 0; i < movie.length; i++) {
         text = movie[i].getAttribute(searchAttribute);
+        // console.log(text);
         // txtValue = text.textContent || text.innerText;
-        console.log(text);
-        if (text.toUpperCase().indexOf(filter) > -1) {
-          movie[i].style.display = "";
-        } else {
-          movie[i].style.display = "none";
-        }
-        if (text.toUpperCase().indexOf(filter) > -1) {
-          movie[i].style.display = "";
-        } else {
-          movie[i].style.display = "none";
+        if(text != null){
+          if (text.toUpperCase().indexOf(filter) > -1) {
+            movie[i].style.display = "";
+          } else {
+            movie[i].style.display = "none";
+          }
+          if (text.toUpperCase().indexOf(filter) > -1) {
+            movie[i].style.display = "";
+          } else {
+            movie[i].style.display = "none";
+          }
         }
       }
     }
@@ -322,6 +300,7 @@ async function searchFunction(searchBy) {
     });
     
     searchWord = document.getElementById("searchField").value;
+    console.log(searchWord)
     if (!searchWord == "") {
       if (noResults) {
         document.querySelector("#search-results-text").textContent = "No results for: " + searchWord;
@@ -372,15 +351,129 @@ async function searchFunction(searchBy) {
     }
   }
 
+  async function searchByTitle(inputValue = "", page = 1){
+    console.log("hej")
+    inputValue = document.getElementById("searchField").value;
+    let searchType = "movie";
+    document.querySelector("#search-results-text").textContent = "Showing Movies by Title";
+
+    if (page == 1) {
+      let movieList = document.querySelector("#search-results");
+      movieList.innerHTML = "";
+    }
+
+    if (inputValue != "") {
+
+      let searchResults = await getSearchResults(searchType, inputValue, page);
+      console.log(searchResults);
+
+      searchResults.results.forEach(async function (result) {
+        addToMovies(result);
+        console.log(result);
+        let movieElement = makeMovieBannerFromMovie(result);
+        movieElement.setAttribute("name", result.title);
+        document.querySelector("#search-results").append(movieElement);
+      });
+
+
+      if (document.getElementById("show-more-btn-title")) {
+        document.querySelector(".showMoreDiv").remove();
+      }
+
+      if (!document.querySelector("#show-more-btn-title")) {
+        // console.log(true);
+        let showMoreDiv = document.createElement("div");
+        showMoreDiv.className = "showMoreDiv";
+        showMoreDiv.innerHTML = `
+        <button id="show-more-btn-title">Show more</button>
+        `;
+
+        document.querySelector(".search-results").append(showMoreDiv);
+
+        document.getElementById("show-more-btn-title").addEventListener("click", () => {
+          document.getElementById("show-more-btn-title").innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+          
+          if (document.querySelectorAll(".movieBanner").length >= 20) {
+            page += 1;
+            console.log(page)
+            searchByTitle(inputValue, page);
+          }
+        });
+      }
+    } else {
+      displayTrending();
+    }
+
+    myFunction(inputValue, "name");
+  }
+
+  async function searchByGenres(inputValue = "", page = 1){
+    console.log("genres")
+    inputValue = document.getElementById("searchField").value;
+
+    document.querySelector("#search-results-text").textContent = "Showing Movies by Genres";
+
+    if (page == 1) {
+      let movieList = document.querySelector("#search-results");
+      movieList.innerHTML = "";
+    }
+    
+    if(inputValue != ""){
+      let searchResults = await searchResultsByGenre(inputValue);
+      console.log(searchResults)
+      searchResults.forEach(async function (result) {
+        addToMovies(result);
+      });
+
+      
+      for (let i = page - 1; i <= page + 21; i++) {
+        let movieElement = makeMovieBannerFromMovie(searchResults[i]);
+        movieElement.setAttribute("genre", inputValue);
+        document.querySelector("#search-results").append(movieElement);
+      }
+
+      // searchResults.forEach((movie) => {
+      //   let movieElement = makeMovieBannerFromMovie(movie);
+      //   movieElement.setAttribute("genre", inputValue);
+      //   document.querySelector("#search-results").append(movieElement);
+      // });
+
+      if (document.getElementById("show-more-btn-genres")) {
+        document.querySelector(".showMoreDiv").remove();
+      }
+
+      if (!document.querySelector("#show-more-btn-genres")) {
+        // console.log(true);
+        let showMoreDiv = document.createElement("div");
+        showMoreDiv.className = "showMoreDiv";
+        showMoreDiv.innerHTML = `
+        <button id="show-more-btn-genres">Show more</button>
+        `;
+
+        document.querySelector(".search-results").append(showMoreDiv);
+
+        document.getElementById("show-more-btn-genres").addEventListener("click", () => {
+          document.getElementById("show-more-btn-genres").innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+          
+          if (document.querySelectorAll(".movieBanner").length >= 20) {
+            page += 21;
+            searchByGenres(inputValue, page);
+          }
+        });
+      }
+    } else {
+      displayTrending();
+    }
+
+    myFunction(inputValue, "genres");
+  }
+
   async function getAndShowMoviesByActors(inputValue = "", page = 1) {
     inputValue = document.getElementById("searchField").value;
     searchType = "cast";
 
-    if (document.getElementById("show-more-btn-actors")) {
-      document.querySelector(".showMoreDiv").remove();
-    }
-
     document.querySelector("#search-results-text").textContent = "Showing Movies by Actors";
+    
     if (page == 1) {
       let movieList = document.querySelector("#search-results");
       movieList.innerHTML = "";
@@ -388,20 +481,27 @@ async function searchFunction(searchBy) {
 
     if (inputValue != "") {
       console.log(page);
+      console.log(searchType);
+      console.log(inputValue);
       let searchResults = await getSearchResults(searchType, inputValue, page);
+      console.log(searchResults);
       searchResults.results.forEach(function (result) {
         if (
           result["known_for"].length != 0 &&
           result["known_for_department"] == "Acting" &&
           Array.isArray(result["known_for"])
         ) {
-          console.log(result);
+          // console.log(result);
           result["known_for"].forEach((movie) => {
             movie.actor = result.name;
             addToMovies(movie, true);
           });
         }
       });
+
+      if (document.getElementById("show-more-btn-actors")) {
+        document.querySelector(".showMoreDiv").remove();
+      }
 
       let allMovies = getFromSession("movies");
       console.log(allMovies);
@@ -433,9 +533,9 @@ async function searchFunction(searchBy) {
         });
       }
     } else {
-      document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
       displayTrending();
     }
+
     myFunction(inputValue, "actor");
   }
 

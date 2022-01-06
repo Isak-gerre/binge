@@ -392,6 +392,7 @@ svg:active,
     margin-right: $betweenPadding;
   }
 }
+
 .userDiv {
   @include flex(column, space-evenly, center);
   max-width: 140px;
