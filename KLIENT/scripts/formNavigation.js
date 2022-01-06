@@ -51,6 +51,9 @@ document.getElementById("registerButton").addEventListener("click", () => {
   
     // console.log("Event Click");
     document.getElementById("login").style.opacity = "0";
+    document.querySelector(".loginMoviePreviewsOverlay").style.opacity = "0";
+    document.querySelector(".loginMoviePreviews").style.opacity = "0";
+    document.querySelector(".logoDiv").style.opacity = "0";
     document.getElementById("signUpForm").style.display = "flex";
     document.getElementById("createUserP1").style.display = "";
 

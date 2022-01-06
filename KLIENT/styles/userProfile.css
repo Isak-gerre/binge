@@ -97,7 +97,7 @@
           align-items: center;
   gap: 4px;
   width: 85px;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 3px;
 }
 
@@ -214,7 +214,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 10px;
+  border-radius: 30px;
   overflow: hidden;
   background-color: #1c1452;
 }
@@ -242,7 +242,7 @@
 
 #profileNav .selected {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 #followContainer {
@@ -274,7 +274,7 @@
 
 #followContainer button {
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   padding: 3px;
 }
@@ -512,7 +512,7 @@
 }
 
 #profileWrapper #watchlistContainer button {
-  border-radius: 10px;
+  border-radius: 30px;
   border: none;
   padding: 5px;
   color: #eeeeee;
@@ -573,7 +573,7 @@
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 5px 25px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   color: #eeeeee;

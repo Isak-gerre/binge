@@ -2751,7 +2751,7 @@ svg:active,
 
 .log-out-btn {
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 5px;
   height: 20px;
   width: 30%;
@@ -3132,7 +3132,40 @@ svg:active,
   color: #eeeeee;
 }
 
-.signInWrap {
+.loginMoviePreviews, .loginMoviePreviewsOverlay {
+  height: 30vh;
+  position: absolute;
+  top: 0;
+  z-index: 21;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.loginMoviePreviews {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  overflow: hidden;
+}
+
+.loginMoviePreviews .movieBanner {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.loginMoviePreviewsOverlay {
+  width: 100vw;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(15, 123, 161, 0)), color-stop(74%, rgba(15, 11, 46, 0)), to(#100c30));
+  background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 74%, #100c30 100%);
+  z-index: 22;
+}
+
+.logoDiv {
+  position: absolute;
+  z-index: 30;
+  top: 27vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3146,6 +3179,35 @@ svg:active,
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.logoDiv .logoImg {
+  height: 55px;
+  width: 120px;
+  background-image: url(../logos/bingy-hela.svg);
+  background-repeat: no-repeat;
+}
+
+.logoDiv .slogan {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.signInWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 25px;
   z-index: 20;
   height: 100vh;
@@ -3154,10 +3216,13 @@ svg:active,
   opacity: 10;
   -webkit-transition: opacity 0.5s;
   transition: opacity 0.5s;
+  top: 40vh;
+  position: relative;
 }
 
 .signInWrap div:first-child {
   width: 100%;
+  text-align: center;
 }
 
 .signInWrap div:first-child h1 {

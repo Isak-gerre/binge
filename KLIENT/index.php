@@ -18,6 +18,12 @@ require "head.php";
 
 //Skapar formuläret för inlogg alternativt skapar konto 
 ?>
+<div class="loginMoviePreviews"></div>
+<div class="loginMoviePreviewsOverlay"></div>
+<div class="logoDiv">
+    <div class="logoImg"></div>
+    <div class="slogan">Your favourite moviesite</div>
+</div>
 <div class="movie-profile-background"></div>
 
 <div id="login" class="signInWrap">
@@ -44,13 +50,6 @@ require "head.php";
     
 
 </div>
-
-
-<?php
-echo "<script>";
-include_once "scripts/logIn.js";
-echo "</script>";
-?>
 
 <form id="signUpForm" class="signInForm" action="index.php" method="POST">
     <div>
@@ -90,9 +89,9 @@ echo "</script>";
     <fieldset id="createUserP2">
         <p>Choose your streaming providers</p>
         <?php
-        echo "<script>";
-        include_once "scripts/createFormAPI.js";
-        echo "</script>";
+        // echo "<script>";
+        // include_once "scripts/createFormAPI.js";
+        // echo "</script>";
         ?>
     </fieldset>
     <fieldset id="createUserP3">
@@ -144,10 +143,11 @@ echo "</script>";
 <script src="scripts/formNavigation.js"></script>
 <script src="scripts/stateManager.js"></script>
 <script src="scripts/createFormAPI.js"></script>
+<script src="scripts/makeMovieBanners.js"></script>
 <script src="scripts/logIn.js"></script>
 <script src="scripts/signUp.js"></script>
 <?php
-echo "<script>";
-include_once "scripts/signUp.js";
-echo "</script>";
+// echo "<script>";
+// include_once "scripts/signUp.js";
+// echo "</script>";
 ?>
