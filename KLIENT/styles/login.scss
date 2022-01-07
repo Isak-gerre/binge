@@ -169,7 +169,7 @@
 #signUpForm div:first-child {
     @include flex(row, center, center);
     margin-top: $wrapperPadding;
-    h1 { @include bigTitleFont();}
+    h1 { @include bigTitleFont(); }
     // flex-basis: 10vh;
 }
 
@@ -182,7 +182,8 @@
     padding: 0 $wrapperPadding $wrapperPadding;
 }
 
-#createUserP2{
+#createUserP2 {
+    border: none;
     select, option {
         color: $darkFont;
     }
@@ -273,7 +274,7 @@
 
 
     #signInButton {
-        width: 120px;
+        min-width: 120px;
         height: 30px;
         margin: auto;
 

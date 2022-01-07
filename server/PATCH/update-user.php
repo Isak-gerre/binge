@@ -12,7 +12,7 @@
 require_once "../access-control.php";
 require_once "../functions.php";
 
-// checkMethod("PATCH");
+checkMethod("POST");
 // checkContentType();
 
 // Data that was sent to us by the client
@@ -70,28 +70,39 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
     
     // Changes your own profile, firstname, lastname, username, email, birthday, location, bio, streaming services 
     $userID = $_POST["id"];
-    $executing = true;
+    $executing = false;
     $message = [];
+    $nothingChanged = true;
 
     // Om EMAIL nyckeln finns och inte tomt
-    if (isset($_POST["email"]) && !empty($_POST["email"])) {
+    if (isset($_POST["email"]) && $_POST["email"] !== "") {
         $email = $_POST["email"];
-        // $alreadyTaken = alreadyTaken($users, "email", $email);
 
-        // Kollar om email redan är taget
-        if ($alreadyTaken) {
-            $message["email"] = "Email already taken";
-            $executing = false;
-        }
-        // Kollar så att emailen innehåller "@" och "."
-        if (strpos($email, "@") === false && strpos($email, ".") === false) {
-            $message["email"] = "Email has to contain ''@'' and ''.''";
-            $executing = false;
-        }
-        // Om inget fel upptäckts så ändra vi nyckeln
-        if ($executing) {
-            $users[$userID]["email"] = $_POST["email"];
-            $message["email"] = "You succeded changing your email";
+        if ($email !== $users[$userID]["email"]) {
+            $executing = true;
+            $nothingChanged = false;
+
+
+            $alreadyTaken = alreadyTaken($users, "email", $email);
+    
+            // Kollar om email redan är taget
+            if ($alreadyTaken) {
+                $message["email"] = "Email already taken";
+                $executing = false;
+                $nothingChanged = false;
+            }
+
+            // Kollar så att emailen innehåller "@" och "."
+            if (strpos($email, "@") == false or strpos($email, ".") == false ) {  
+                $message["emailError"] = "Email has to contain ''@'' and ''.''";
+                $executing = false;
+                $nothingChanged = false;
+            }
+            // Om inget fel upptäckts så ändra vi nyckeln
+            if ($executing) {
+                $users[$userID]["email"] = $_POST["email"];
+                $message["email"] = "You succeded changing your email";
+            }
         }
     }
 
@@ -145,23 +156,32 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
 
 
     // Om FIRSTNAME är ifyllt och inte tomt
-    if (isset($_POST["firstname"])) {
-        if ($executing) {
+    if (isset($_POST["firstname"]) && $_POST["firstname"] !== "") {
+        if ($_POST["firstname"] !== $users[$userID]["firstname"]) {
+            $executing = true;
+            $nothingChanged = false;
+
             $users[$userID]["firstname"] = $_POST["firstname"];
             $message["firstname"] = "You succeded changing your firstname";
         }
     }
 
-    if (isset($_POST["lastname"])) {
-        if ($executing) {
+    if (isset($_POST["lastname"]) && $_POST["lastname"] !== "") {
+        if ($_POST["lastname"] !== $users[$userID]["lastname"]) {
+            $executing = true;
+            $nothingChanged = false;
+
             $users[$userID]["lastname"] = $_POST["lastname"];
             $message["lastname"] = "You succeded changing your lastname";
         }
     }
 
     // Om LOCATION är ifyllt och inte tomt
-    if (isset($_POST["region"])) {
-        if ($executing) {
+    if (isset($_POST["region"]) && $_POST["region"] !== "") {
+        if ($users[$userID]["region"] !== $_POST["region"]) {
+            $executing = true;
+            $nothingChanged = false;
+
             $users[$userID]["region"] = $_POST["region"];
             $message["region"] = "You succeded changing your region";
         }
@@ -169,7 +189,11 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
 
     // Om active_streaming_services finns, uppdatera
     if (isset($_POST["active_streaming_services"])) {
-        if ($executing) {
+
+        if ($users[$userID]["active_streaming_services"] !== $_POST["active_streaming_services"]) {
+            $executing = true;
+            $nothingChanged = false;
+
             $users[$userID]["active_streaming_services"] = [];
             foreach ($_POST["active_streaming_services"] as $key) {
                 $users[$userID]["active_streaming_services"][] = $key;
@@ -186,6 +210,10 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
         saveJSON("../DATABASE/user.json", $usersDB);
         sendJSON($message);
     } else {
-        sendJSON($message, 400);
+        if ($nothingChanged) {
+            sendJSON(["message" => "Nothing was changed"], 400);
+        } else {
+            sendJSON($message, 406);
+        }
     }
 }

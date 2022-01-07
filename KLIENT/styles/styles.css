@@ -55,6 +55,429 @@ body {
   padding-bottom: 90px;
 }
 
+.previewWrapper {
+  height: 30vh;
+  position: absolute;
+  top: -5px;
+  z-index: 21;
+  overflow: hidden;
+}
+
+.previewWrapper .loginMoviePreviews {
+  width: 100vw;
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: auto;
+  top: -25px;
+  left: -90px;
+  -webkit-transform: skew(-8deg, -5deg) rotate(12deg);
+          transform: skew(-8deg, -5deg) rotate(12deg);
+}
+
+.previewWrapper .loginMoviePreviews .movieBanner {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.previewWrapper .loginMoviePreviewsOverlay {
+  height: 30vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(15, 123, 161, 0)), color-stop(74%, rgba(15, 11, 46, 0)), to(#100c30));
+  background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 74%, #100c30 100%);
+  z-index: 22;
+}
+
+.logoDiv {
+  position: absolute;
+  z-index: 30;
+  top: 27vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logoDiv .logoImg {
+  height: 55px;
+  width: 120px;
+  background-image: url(../logos/bingy-hela.svg);
+  background-repeat: no-repeat;
+}
+
+.logoDiv .slogan {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.movie-profile-background {
+  height: 100%;
+}
+
+.signInWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 25px;
+  z-index: 20;
+  height: 100vh;
+  width: 100vw;
+  padding: 25px;
+  opacity: 10;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  top: 40vh;
+  position: relative;
+}
+
+.signInWrap div:first-child {
+  width: 100%;
+  text-align: center;
+}
+
+.signInWrap div:first-child h1 {
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.signInWrap div:first-child p {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.signInWrap #createAccount p {
+  margin: 0;
+}
+
+.signInWrap #createAccount span {
+  text-decoration: underline;
+}
+
+#loginForm, #signUpForm > fieldset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+#loginForm #input, #signUpForm > fieldset #input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100%;
+  padding: 5px;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / span 2;
+  border: 1px solid black;
+  border-radius: 30px;
+  background-color: #6F6D82;
+}
+
+#loginForm #input label, #signUpForm > fieldset #input label {
+  font-family: "Mulish", sans-serif;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+#loginForm #input input, #signUpForm > fieldset #input input {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  border: none;
+  width: 100%;
+  padding: 0 10px;
+  background: none;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+}
+
+#loginForm #buttonWrapper, #signUpForm > fieldset #buttonWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+#loginForm button, #signUpForm > fieldset button {
+  width: 100px;
+  height: 30px;
+  font-family: "Archivo", sans-serif;
+  font-size: 15px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  padding: 3px;
+  border-radius: 30px;
+  border: none;
+}
+
+#errorDiv {
+  font-family: "Mulish", sans-serif;
+  font-size: 12px;
+}
+
+#signUpForm {
+  z-index: 20;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  position: absolute;
+  z-index: 100000;
+  top: 100vh;
+  -webkit-transition: top 1.5s;
+  transition: top 1.5s;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+#signUpForm div:first-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 25px;
+}
+
+#signUpForm div:first-child h1 {
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#signUpForm > fieldset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100vw;
+  padding: 0 25px 25px;
+}
+
+#createUserP2 {
+  border: none;
+}
+
+#createUserP2 select, #createUserP2 option {
+  color: black;
+}
+
+#createUserP2 select, #createUserP2 .searchProvider {
+  width: 100%;
+  height: 35px;
+  padding: 5px;
+  background-color: #6F6D82;
+  border: none;
+  border-radius: 30px;
+}
+
+#createUserP2 #fieldSetProviders {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-family: "Mulish", sans-serif;
+  font-size: 12px;
+  width: 100%;
+  border: none;
+  max-height: 65vh;
+  overflow-y: scroll;
+}
+
+#createUserP2 #fieldSetProviders .providersLabel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  height: 80px;
+}
+
+#createUserP2 #fieldSetProviders .providersLabel img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+#createUserP2 #fieldSetProviders .providersLabel.selectedProvider {
+  background-color: #6F6D82;
+  border-radius: 5px;
+}
+
+#createUserP3 #avatars, #updateProfilePic #avatars {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+#createUserP3 #avatars p, #updateProfilePic #avatars p {
+  margin: none;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
+  -ms-grid-row: 1;
+  grid-area: 1 / span 2;
+}
+
+#createUserP3 #avatars label, #updateProfilePic #avatars label {
+  margin: auto;
+}
+
+#createUserP3 #avatars label.profileImgSelected, #updateProfilePic #avatars label.profileImgSelected {
+  background-color: #6F6D82;
+  border-radius: 5px;
+}
+
+#createUserP3 #uploadProfilePic, #updateProfilePic #uploadProfilePic {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  margin: 25px 0;
+}
+
+#createUserP3 #uploadProfilePic p, #updateProfilePic #uploadProfilePic p {
+  margin: none;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+
+#createUserP3 #uploadProfilePic #fileToUpload, #updateProfilePic #uploadProfilePic #fileToUpload {
+  width: 100%;
+  margin: auto;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+#createUserP3 #signInButton, #updateProfilePic #signInButton {
+  min-width: 120px;
+  height: 30px;
+  margin: auto;
+  font-family: "Archivo", sans-serif;
+  font-size: 15px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  padding: 3px;
+  border-radius: 30px;
+  border: none;
+}
+
 #topWrapperProfile {
   margin-top: 60px;
   z-index: 15;
@@ -328,13 +751,6 @@ body {
   padding: 25px;
 }
 
-#followContainer button {
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  padding: 3px;
-}
-
 #followContainer #usersWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -397,12 +813,15 @@ body {
 }
 
 #closeTab {
+  position: absolute;
+  z-index: 10000;
   width: 30px;
   height: 30px;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   padding: 3px;
+  margin: 25px;
 }
 
 #profileWrapper {
@@ -424,7 +843,7 @@ body {
 }
 
 #profileWrapper #watchlistContainer button {
-  border-radius: 10px;
+  border-radius: 30px;
   border: none;
   padding: 5px;
   color: #eeeeee;
@@ -486,7 +905,7 @@ body {
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 5px 25px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   color: #eeeeee;
@@ -494,7 +913,7 @@ body {
 
 #overlay-profile {
   position: absolute;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   z-index: 15000;
 }
@@ -520,37 +939,148 @@ body {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  gap: 20px;
-  padding: 25px;
-  background-color: #0f0b2e;
+  gap: 25px;
+  background-image: url("../icons/background-m-profile.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   z-index: 100000;
+  overflow-y: scroll;
 }
 
-#settingsWindow #settingsForm {
+#settingsForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  padding: 0 25px 25px 25px;
+  width: 100%;
+}
+
+#settingsForm #informationForm {
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+#settingsForm #informationForm #errorIcon {
+  opacity: 0.8;
+  position: absolute;
+  right: 10px;
+}
+
+#settingsForm #informationForm #errorMessage {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.48);
+  padding: 10px;
+  border-radius: 15px;
+  right: 38px;
+  font-family: "Mulish", sans-serif;
+  font-size: 12px;
+}
+
+#settingsForm #providersForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  border: none;
+}
+
+#settingsForm #providersForm select, #settingsForm #providersForm option {
+  color: black;
+}
+
+#settingsForm #providersForm select, #settingsForm #providersForm .searchProvider {
+  width: 100%;
+  height: 35px;
+  padding: 5px;
+  background-color: #6F6D82;
+  border: none;
+  border-radius: 30px;
+}
+
+#settingsForm #providersForm #fieldSetProviders {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-  -ms-grid-rows: (35px)[8];
-      grid-template-rows: repeat(8, 35px);
-  gap: 5px;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-family: "Mulish", sans-serif;
+  font-size: 12px;
   width: 100%;
-  padding: 25px;
+  border: none;
+  max-height: 65vh;
+  overflow-y: scroll;
 }
 
-#settingsWindow #settingsForm div:nth-child(1) {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-column: 1 / span 1;
+#settingsForm #providersForm #fieldSetProviders .providersLabel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  height: 80px;
 }
 
-#settingsWindow #settingsForm div:nth-child(2) {
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-column: 2 / span 1;
+#settingsForm #providersForm #fieldSetProviders .providersLabel img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
 }
 
-#settingsWindow #settingsForm div {
+#settingsForm #providersForm .providersLabel.selectedProvider {
+  background-color: #6F6D82;
+  border-radius: 5px;
+}
+
+#settingsForm #input {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -565,23 +1095,59 @@ body {
       -ms-flex-align: start;
           align-items: flex-start;
   width: 100%;
-  padding: 2px;
+  padding: 5px;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-column: 1 / span 2;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 30px;
+  background-color: #6F6D82;
+  -webkit-transition: border 1s;
+  transition: border 1s;
 }
 
-#settingsWindow #settingsForm div label {
+#settingsForm #input label {
   font-family: "Mulish", sans-serif;
   font-size: 12px;
+  margin-left: 10px;
 }
 
-#settingsWindow #settingsForm div input {
+#settingsForm #input input {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
   border: none;
   width: 100%;
-  padding: 0;
+  padding: 0 10px;
+  background: none;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+}
+
+#settingsForm #buttonWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+#settingsForm button {
+  font-family: "Archivo", sans-serif;
+  font-size: 15px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  padding: 10px;
+  border-radius: 30px;
+  border: none;
 }
 
 #settingsChangePic {
@@ -599,6 +1165,7 @@ body {
       -ms-flex-align: start;
           align-items: flex-start;
   gap: 10px;
+  padding: 25px;
   width: 100%;
   position: relative;
   z-index: 100;
@@ -648,6 +1215,7 @@ body {
   left: 100vw;
   -webkit-transition: left 1s;
   transition: left 1s;
+  top: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -662,24 +1230,29 @@ body {
       -ms-flex-align: start;
           align-items: flex-start;
   gap: 10px;
-  padding: 0 25px;
-  background-color: #0f0b2e;
+  background-image: url("../icons/background-m-profile.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
-#changeProfilePicWindow div:last-child {
+#changeProfilePicWindow div {
   width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  position: relative;
+  top: 20px;
+  overflow: hidden;
+  padding: 25px;
 }
 
-#profileWrapper #watchlistContainer button {
-  border-radius: 30px;
-  border: none;
-  padding: 5px;
-  color: #eeeeee;
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  -webkit-filter: none;
-          filter: none;
+#changeProfilePicWindow #closeTab {
+  z-index: 10001;
+}
+
+#responseDiv {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -694,48 +1267,18 @@ body {
       -ms-flex-align: center;
           align-items: center;
   position: absolute;
-}
-
-#profileWrapper #watchlistContainer button:first-child {
-  bottom: -55px;
-}
-
-#profileWrapper #watchlistContainer button:last-child {
-  bottom: -105px;
-}
-
-#messageWhenEmpty {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 25px;
-  height: 15vh;
+  height: 100%;
   width: 100%;
+  background-color: rgba(15, 11, 46, 0.5);
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 
-#messageWhenEmpty p {
-  text-align: center;
-}
-
-#messageWhenEmpty button {
-  border: none;
-  font-family: "Mulish", sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
-  border-radius: 30px;
-  padding: 5px 25px;
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  color: #eeeeee;
+#responseDiv p {
+  background-color: #0f0b2e;
+  padding: 20px;
+  border-radius: 5px;
 }
 
 #overlay-profile {
@@ -3240,424 +3783,5 @@ svg:active,
   position: relative;
   top: 156px;
   color: #eeeeee;
-}
-
-.previewWrapper {
-  height: 30vh;
-  position: absolute;
-  top: -5px;
-  z-index: 21;
-  overflow: hidden;
-}
-
-.previewWrapper .loginMoviePreviews {
-  width: 100vw;
-  position: relative;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[6];
-      grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: auto;
-  top: -25px;
-  left: -90px;
-  -webkit-transform: skew(-8deg, -5deg) rotate(12deg);
-          transform: skew(-8deg, -5deg) rotate(12deg);
-}
-
-.previewWrapper .loginMoviePreviews .movieBanner {
-  -webkit-transform: scale(0.9);
-          transform: scale(0.9);
-}
-
-.previewWrapper .loginMoviePreviewsOverlay {
-  height: 30vh;
-  width: 100vw;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(15, 123, 161, 0)), color-stop(74%, rgba(15, 11, 46, 0)), to(#100c30));
-  background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 74%, #100c30 100%);
-  z-index: 22;
-}
-
-.logoDiv {
-  position: absolute;
-  z-index: 30;
-  top: 27vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.logoDiv .logoImg {
-  height: 55px;
-  width: 120px;
-  background-image: url(../logos/bingy-hela.svg);
-  background-repeat: no-repeat;
-}
-
-.logoDiv .slogan {
-  font-family: "Mulish", sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
-  text-align: center;
-}
-
-.movie-profile-background {
-  height: 100%;
-}
-
-.signInWrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 25px;
-  z-index: 20;
-  height: 100vh;
-  width: 100vw;
-  padding: 25px;
-  opacity: 10;
-  -webkit-transition: opacity 0.5s;
-  transition: opacity 0.5s;
-  top: 40vh;
-  position: relative;
-}
-
-.signInWrap div:first-child {
-  width: 100%;
-  text-align: center;
-}
-
-.signInWrap div:first-child h1 {
-  font-family: "Archivo", sans-serif;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.signInWrap div:first-child p {
-  font-family: "Mulish", sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-.signInWrap #createAccount p {
-  margin: 0;
-}
-
-.signInWrap #createAccount span {
-  text-decoration: underline;
-}
-
-#loginForm, #signUpForm > fieldset {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 10px;
-  width: 80%;
-}
-
-#loginForm #input, #signUpForm > fieldset #input {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  width: 100%;
-  padding: 5px;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-column: 1 / span 2;
-  border: 1px solid black;
-  border-radius: 30px;
-  background-color: #6F6D82;
-}
-
-#loginForm #input label, #signUpForm > fieldset #input label {
-  font-family: "Mulish", sans-serif;
-  font-size: 12px;
-  margin-left: 10px;
-}
-
-#loginForm #input input, #signUpForm > fieldset #input input {
-  font-family: "Mulish", sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
-  border: none;
-  width: 100%;
-  padding: 0 10px;
-  background: none;
-  -webkit-transition: color 0.5s;
-  transition: color 0.5s;
-}
-
-#loginForm #buttonWrapper, #signUpForm > fieldset #buttonWrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 10px;
-}
-
-#loginForm button, #signUpForm > fieldset button {
-  width: 100px;
-  height: 30px;
-  font-family: "Archivo", sans-serif;
-  font-size: 15px;
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  padding: 3px;
-  border-radius: 30px;
-  border: none;
-}
-
-#errorDiv {
-  font-family: "Mulish", sans-serif;
-  font-size: 12px;
-}
-
-#signUpForm {
-  z-index: 20;
-  display: none;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100vw;
-  position: absolute;
-  z-index: 100000;
-  top: 100vh;
-  -webkit-transition: top 1.5s;
-  transition: top 1.5s;
-  width: 100vw;
-  min-height: 100vh;
-}
-
-#signUpForm div:first-child {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: 25px;
-}
-
-#signUpForm div:first-child h1 {
-  font-family: "Archivo", sans-serif;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-#signUpForm > fieldset {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border: none;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  width: 100vw;
-  padding: 0 25px 25px;
-}
-
-#createUserP2 select, #createUserP2 option {
-  color: black;
-}
-
-#createUserP2 select, #createUserP2 .searchProvider {
-  width: 100%;
-  height: 35px;
-  padding: 5px;
-  background-color: #6F6D82;
-  border: none;
-  border-radius: 30px;
-}
-
-#createUserP2 #fieldSetProviders {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  font-family: "Mulish", sans-serif;
-  font-size: 12px;
-  width: 100%;
-  border: none;
-  max-height: 65vh;
-  overflow-y: scroll;
-}
-
-#createUserP2 #fieldSetProviders .providersLabel {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: center;
-  height: 80px;
-}
-
-#createUserP2 #fieldSetProviders .providersLabel img {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-}
-
-#createUserP2 #fieldSetProviders .providersLabel.selectedProvider {
-  background-color: #6F6D82;
-  border-radius: 5px;
-}
-
-#createUserP3 #avatars, #updateProfilePic #avatars {
-  width: 100%;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
-#createUserP3 #avatars p, #updateProfilePic #avatars p {
-  margin: none;
-  font-family: "Archivo", sans-serif;
-  font-size: 16px;
-  padding-bottom: 5px;
-  -ms-grid-row: 1;
-  grid-area: 1 / span 2;
-}
-
-#createUserP3 #avatars label, #updateProfilePic #avatars label {
-  margin: auto;
-}
-
-#createUserP3 #avatars label.profileImgSelected, #updateProfilePic #avatars label.profileImgSelected {
-  background-color: #6F6D82;
-  border-radius: 5px;
-}
-
-#createUserP3 #uploadProfilePic, #updateProfilePic #uploadProfilePic {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  gap: 10px;
-  width: 100%;
-  margin: 25px 0;
-}
-
-#createUserP3 #uploadProfilePic p, #updateProfilePic #uploadProfilePic p {
-  margin: none;
-  font-family: "Archivo", sans-serif;
-  font-size: 16px;
-  padding-bottom: 5px;
-}
-
-#createUserP3 #uploadProfilePic #fileToUpload, #updateProfilePic #uploadProfilePic #fileToUpload {
-  width: 100%;
-  margin: auto;
-  font-family: "Mulish", sans-serif;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-#createUserP3 #signInButton, #updateProfilePic #signInButton {
-  width: 120px;
-  height: 30px;
-  margin: auto;
-  font-family: "Archivo", sans-serif;
-  font-size: 15px;
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  padding: 3px;
-  border-radius: 30px;
-  border: none;
 }
 /*# sourceMappingURL=styles.css.map */

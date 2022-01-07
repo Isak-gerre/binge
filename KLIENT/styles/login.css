@@ -140,7 +140,7 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
-  width: 80%;
+  width: 100%;
 }
 
 #loginForm #input, #signUpForm > fieldset #input {
@@ -286,6 +286,10 @@
   padding: 0 25px 25px;
 }
 
+#createUserP2 {
+  border: none;
+}
+
 #createUserP2 select, #createUserP2 option {
   color: black;
 }
@@ -407,7 +411,7 @@
 }
 
 #createUserP3 #signInButton, #updateProfilePic #signInButton {
-  width: 120px;
+  min-width: 120px;
   height: 30px;
   margin: auto;
   font-family: "Archivo", sans-serif;

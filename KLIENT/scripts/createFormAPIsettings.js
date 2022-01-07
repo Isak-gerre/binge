@@ -1,8 +1,8 @@
 "use strict";
 
-
-
-function getRegions() {
+function getProviders() {
+  let titleProviders = document.createElement('p');
+  titleProviders.textContent = "Change your region and streaming providers";
   // Ta bort API-nyckel, lägg den i APIn
   let regionRQ = new Request(
     "http://localhost:7001/GET/get-regions.php"
@@ -15,6 +15,7 @@ function getRegions() {
       let selectRegion = document.createElement("select");
       selectRegion.setAttribute("id", "region");
       selectRegion.setAttribute("name", "region");
+
       data.results.forEach((region) => {
         //Varje option fylls med alla regions
         let opt = document.createElement("option");
@@ -26,7 +27,7 @@ function getRegions() {
       });
 
       //Skapar en slect för region
-      document.getElementById("createUserP2").append(selectRegion);
+        document.getElementById("providersForm").append(titleProviders, selectRegion);
 
       //Selectar värdet som kommer finnas på select region.
       let filter = selectRegion;
@@ -42,7 +43,6 @@ function getRegions() {
       let providerArray = [];
 
       async function loadProviders() {
-        // let startNumber = document.getElementById("region").selectedIndex == 1 ? 1 : 0;
         if (document.getElementById("fieldSetProviders")) {
           document.getElementById("fieldSetProviders").innerHTML = "";
         }
@@ -58,8 +58,8 @@ function getRegions() {
         providerArray = data.results;
         showProviders();
 
-        document.getElementById("createUserP2").append(searchProvider);
-        document.getElementById("createUserP2").append(providers);
+        document.getElementById("providersForm").append(searchProvider);
+        document.getElementById("providersForm").append(providers);
       }
 
       //Filtrerar baserat på vad du sökt
@@ -138,6 +138,7 @@ function getRegions() {
           document.querySelector("input[name=lastname]").value = data[0].lastname;
           document.querySelector("input[name=email]").value = data[0].email;
           document.querySelector("input[name=birthday]").value = data[0].birthday;
+
           document.querySelector(`option[id=${data[0].region}]`).setAttribute("selected", true);
 
           filter.value = document.querySelector(`option[id=${data[0].region}]`).value;
@@ -163,7 +164,6 @@ function getRegions() {
               });
             }
           });
-          console.log(data[0].profile_picture.filepath);
         });
     });
 }

@@ -30,6 +30,7 @@ body {
 }
 
 // Imported css-files
+@import "login.scss";
 
 @import "userProfile.scss";
 
@@ -45,4 +46,4 @@ body {
 
 @import "navAndSearch.scss";
 
-@import "login.scss";
+// @import "login .scss";

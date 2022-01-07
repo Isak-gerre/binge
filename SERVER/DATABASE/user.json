@@ -290,11 +290,10 @@
                 "Netflix",
                 "Disney Plus",
                 "HBO Max",
-                "SVT",
                 "Viaplay"
             ],
             "profile_picture": {
-                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_8.png"
+                "filepath": "DATABASE\/IMAGES\/PROFILE\/3aef994de22d9efb533a2f5a07815286a2d3b2d6.jpg"
             },
             "followers": [],
             "following": [],

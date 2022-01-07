@@ -87,9 +87,9 @@ async function openSettings(userId) {
     });
 
     let form = document.createElement('form');
-    form.id = "loginForm";
+    form.id = "settingsForm";
     form.innerHTML = `
-    <fieldset id="createUserP1">
+    <fieldset id="informationForm">
         <div id="input">
             <label>Firstname</label>
             <input class="signInInput" type="text" name="firstname" placeholder="Firstname">
@@ -98,85 +98,93 @@ async function openSettings(userId) {
             <label>Lastname</label>
             <input class="signInInput" type="text" name="lastname" placeholder="Lastname">
         </div>
-        <div id="input">
-            <label>Old Password</label>
-            <input class="signInInput" type="password" id="passwordOld" name="old_password" placeholder="Old Password">
-        </div>
-        <div id="input">
-            <label>New Password</label>
-            <input class="signInInput" type="password" id="password2" name="password" placeholder="New Password">
-        </div>
-        <div id="input">
-            <label>Confirm Password</label>
-            <input class="signInInput" type="password" name="confirm_password" placeholder="Confirm Password">
-        </div>
-        <div id="input">
+        <div id="input" class="emailInput">
             <label>Email</label>
             <input class="signInInput" type="text" name="email" placeholder="Email">
         </div>
-        <div id="input">
+        <div id="input" class="birthdayInput">
             <label>Birthday</label>
             <input class="signInInput" type="date" name="birthday" placeholder="Birthday">
         </div>
     </fieldset>
-        <fieldset id="createUserP2" class="settingsForm"></fieldset>
-        <button id="signInButton">Update</button>
+    <fieldset id="providersForm"></fieldset>
+    <button id="signInButton">Update Profile</button>
     `;
 
-    getRegions();
+    getProviders();
+
+    settingsWindow.append(closeTab, changeProfilePicContainer, form);
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
-        console.log(document.getElementById("createUserP2"));
+
+        let inputs = document.querySelectorAll('.signInInput');
+        let empty = false;
         
-        const formData = new FormData(form);
-        
-
-
-        let session = sessionStorage.getItem("session");
-        let id = JSON.parse(session).session.userID;
-
-        formData.append("id", id);
-
-        let array = [];
-        let checkboxes = document.querySelectorAll("input[type=checkbox]:checked");
-
-        for (let i = 0; i < checkboxes.length; i++) {
-            array.push(checkboxes[i].value);
-        }
-
-        for (let i = 0; i < array.length; i++) {
-            formData.append("active_streaming_services[]", array[i]);
-        }
-        const reqChangeUser = new Request("http://localhost:7001/PATCH/update-user.php", {
-            method: "POST",
-            body: formData
+        inputs.forEach((input) => {
+            if (input.value == "") {
+                errorInput(input.parentElement, "Please fill in!");
+                empty = true;
+            }
         });
-
-        fetch(reqChangeUser)
-            .then((response) => {
-                if (response.ok) {
-                    return response.json();
-                }
-                else if (response.status == 400) {
-                    console.log(response);
-                    settingsWindow.prepend(responseDiv("Something went wrong. Try again!"));
-                }
-
-            })
-            .then(() => {
-                settingsWindow.prepend(responseDiv("The user was uppdated"))
-                console.log("Changed");
-                // window.location.replace("http://localhost:2000/profile.php");
-            })
-            .catch(error => {
-                console.log(error);
-                // sessionStorage.clear();
+        
+        if (!empty) {
+            const formData = new FormData(form);
+    
+            let session = sessionStorage.getItem("session");
+            let id = JSON.parse(session).session.userID;
+    
+            formData.append("id", id);
+    
+            let array = [];
+            let checkboxes = document.querySelectorAll("input[type=checkbox]:checked");
+    
+            for (let i = 0; i < checkboxes.length; i++) {
+                array.push(checkboxes[i].value);
+            }
+    
+            for (let i = 0; i < array.length; i++) {
+                formData.append("active_streaming_services[]", array[i]);
+            }
+    
+            const reqChangeUser = new Request("http://localhost:7001/PATCH/update-user.php", {
+                method: "POST",
+                body: formData
             });
+    
+    
+            fetch(reqChangeUser)
+                .then((response) => {
+                    let json = response.json();
+                    return json;
+                })
+                .then((data) => {
+                    inputs.forEach((input) => {
+                        if (input.value !== "") {
+                            input.parentElement.style.border = "none";
+                            if (input.nextElementSibling != null ) {
+                                input.nextElementSibling.remove();
+                            }
+                        }
+                    });
+                    if ("emailError" in data) {
+                        let emailInput = document.querySelector(".emailInput");
+                        
+                        errorInput(emailInput, "Please enter a valid email");
+    
+                    } else if ("birthdayError" in data) {
+                        let birthdayInput = document.querySelector(".birthdayInput");
+                        
+                        errorInput(birthdayInput, "Please enter a valid date");
+                    } else {
+                        settingsWindow.append(responseDiv("Your profile was updated!"));
+                    }
+                    
+                });
+
+        }
     });
 
-
-    settingsWindow.append(closeTab, changeProfilePicContainer, form);
     return settingsWindow;
 }
 
@@ -256,7 +264,7 @@ function changeProfilePic(user) {
     <div id="uploadProfilePic">
         <p>Or upload your own profile picture</p>
         <input type="file" id="fileToUpload" name="fileToUpload">
-        <button id="signInButton">Update</button>
+        <button id="signInButton">Update Profile picture</button>
     </div>
     `;
 
@@ -337,3 +345,49 @@ function responseDiv(message) {
 
     return responseDiv;
 }
+
+function errorInput(inputField, message) {
+    let errorIcon = document.createElement('img');
+    errorIcon.id = "errorIcon";
+    errorIcon.src = "../icons/error_white_24dp.svg";
+    
+    errorIcon.addEventListener('click', (event) => {
+        event.stopPropagation();
+        errorIcon.style.opacity = "1";
+        
+        let errorMessage = document.createElement('p');
+        errorMessage.id = "errorMessage";
+        errorMessage.textContent = message;
+
+        if (inputField.childNodes[6] == undefined) {
+            inputField.append(errorMessage);
+        }
+
+        body.addEventListener('click', (event) => {
+            event.stopPropagation();
+
+            errorIcon.removeAttribute("style");
+            errorMessage.remove();
+        });
+    });
+
+    if (inputField.childNodes[5] == undefined) {
+        inputField.style.border = "2px solid red";
+        inputField.append(errorIcon);
+    }
+    
+}
+
+
+{/* <div id="input">
+            <label>Old Password</label>
+            <input class="signInInput" type="password" id="passwordOld" name="old_password" placeholder="Old Password">
+        </div>
+        <div id="input">
+            <label>New Password</label>
+            <input class="signInInput" type="password" id="password2" name="password" placeholder="New Password">
+        </div>
+        <div id="input">
+            <label>Confirm Password</label>
+            <input class="signInInput" type="password" name="confirm_password" placeholder="Confirm Password">
+        </div> */}
