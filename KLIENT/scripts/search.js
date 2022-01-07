@@ -119,7 +119,6 @@ async function searchFunction(searchBy) {
   // GENRE
   if (searchBy == "Genre") {
     for (let i = 0; i < 20; i++) {
-      // console.log(document.querySelector("#search-results"));
       document.querySelector("#search-results").append(makePlaceholderMovieBanner());
     }
     let page = 1;
@@ -172,22 +171,17 @@ async function searchFunction(searchBy) {
     // Check if nothing is showing
     let noResults = true;
     document.querySelectorAll(selector).forEach((element) => {
-      console.log(element.className.includes("placeholder"));
       if (!element.style.display.includes("none")) {
         if (element.className.includes("placeholder")){
-          console.log("placeholder");
           noResults = true;
         } else {
           noResults = false;
         }
       }
-
-      
       
     });
 
     searchWord = document.getElementById("searchField").value;
-    console.log(noResults);
     if (searchWord !== "") {
       if (noResults) {
         document.querySelector("#search-results-text").textContent = "No results for: " + searchWord;
@@ -275,7 +269,6 @@ async function searchFunction(searchBy) {
 
           if (document.querySelectorAll(".movieBanner").length >= 20) {
             page += 1;
-            console.log(page)
             searchByTitle(inputValue, page);
           }
         });
@@ -367,9 +360,7 @@ async function searchFunction(searchBy) {
 
     if (inputValue != "") {
       let searchResults = await getSearchResults(searchType, inputValue, page);
-      console.log(searchResults);
       
-      console.log(searchResults["total_pages"])
       if (page == searchResults["total_pages"] || searchResults["total_pages"] == 0) {
         x = false;
       }
@@ -434,8 +425,9 @@ async function searchFunction(searchBy) {
     inputValue = document.getElementById("searchField").value;
     searchType = "user";
 
-    // Hämta alla användare
+    // Hämta alla användare + plocka bort den som är inlogagd
     let users = await getUsers();
+    users = users.filter(user => user.id != loggedInUserId);
     let newArray = [];
 
     // Om något är sökt på, gör ny array med användarna som matchar sökvärdet
@@ -461,6 +453,7 @@ async function searchFunction(searchBy) {
           x = false;
           break;
         };
+
         await makeUserSearchDivs(users[i]);
 
       } else {

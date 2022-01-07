@@ -33,7 +33,7 @@ async function makeFeed(userID) {
         msgDiv.append(msgQuo, msgBtn);
 
         msgBtn.addEventListener("click", () => {
-            makeSearchOverlay("", "Users");
+            makeSearchOverlay("", "User");
         });
 
         wrapper.append(msgDiv);
