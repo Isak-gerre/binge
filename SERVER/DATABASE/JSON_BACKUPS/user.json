@@ -1,28 +1,5 @@
 {
     "users": {
-        "1": {
-            "firstname": "isak",
-            "lastname": "gerre",
-            "username": "isak123",
-            "password": "$2y$10$xwvj6iKdxA\/jkzah0o5Y3uceF\/24F\/BRSKGkyQte5jNqWqMtp5DFK",
-            "email": "isak@mail.se",
-            "birthday": "2022-01-12",
-            "region": "SE",
-            "active_streaming_services": [
-                "Netflix",
-                "Disney Plus",
-                "HBO Max",
-                "SVT",
-                "Viaplay",
-                "YouTube Premium"
-            ],
-            "profile_picture": {
-                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_8.png"
-            },
-            "followers": [],
-            "following": [],
-            "sessionId": "$2y$10$E3CozMfhA63KGunvn4\/zheaa7fEj1F6kYyi\/DVOhXFNZvVzSIqi0O",
-            "id": 1
-        }
+       
     }
 }
