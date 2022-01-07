@@ -8,66 +8,65 @@ $method = $_SERVER["REQUEST_METHOD"];
 
 
 // Gets movies by genre
-function getMoviesByGenres() {
+function getMoviesByGenres($api_key)
+{
 
     //Get genres
-    $genres = 'http://api.themoviedb.org/3/genre/movie/list?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US';
+    $genres = 'http://api.themoviedb.org/3/genre/movie/list?api_key=$api_key&language=en-US';
     $data = json_decode(file_get_contents($genres), true);
 
     $firstKeyword = [];
-    foreach($data["genres"] as $genre) {
+    foreach ($data["genres"] as $genre) {
         $genreName = $genre["name"];
-        
+
         //Find keywords connected to the genre name
-        $searchKeyword = "http://api.themoviedb.org/3/search/keyword?api_key=f5c0e0db147d0e6434391f3ff153b6a8&query=$genreName&page=1";
+        $searchKeyword = "http://api.themoviedb.org/3/search/keyword?api_key=$api_key&query=$genreName&page=1";
         $firstData =  json_decode(file_get_contents($searchKeyword), true);
-        
+
         //Change keyword if it has a space between the words
-        if($genreName == "Science Fiction"){
+        if ($genreName == "Science Fiction") {
             $firstKeyword[] = [
-                "name"=> "sci-fi",
-                "id"=> 9950
+                "name" => "sci-fi",
+                "id" => 9950
             ];
-        } elseif($genreName === "TV Movie") {
+        } elseif ($genreName === "TV Movie") {
             $firstKeyword[] = [
-                "name"=> "tv",
-                "id"=> 10770
+                "name" => "tv",
+                "id" => 10770
             ];
         } else {
             //else get a result
             $firstKeyword[] = $firstData["results"][1];
-            
         }
     }
 
     $key = [];
-    foreach($firstKeyword as $keyword){
+    foreach ($firstKeyword as $keyword) {
         //find movies with the keyword
         $keywordID = $keyword["id"];
-        
-        $getMovieByKeyword = "http://api.themoviedb.org/3/keyword/$keywordID/movies?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US&include_adult=false";
-        
+
+        $getMovieByKeyword = "http://api.themoviedb.org/3/keyword/$keywordID/movies?api_key=$api_key&language=en-US&include_adult=false";
+
         $jsonData = json_decode(file_get_contents($getMovieByKeyword), true);
-        $key[]= $jsonData;
+        $key[] = $jsonData;
     }
 
 
     sendJSON($key);
-
 }
 
 
-if($method == "GET") {
+if ($method == "GET") {
 
-    if(isset($_GET["genre"])) {
+    if (isset($_GET["genre"])) {
         $genre = $_GET["genre"];
 
-        getMoviesByGenres();
+        getMoviesByGenres($api_key);
     }
-
 } else {
 
     sendJSON(
-        ["message" => "Method not allowed"], 400
+        ["message" => "Method not allowed"],
+        400
     );
 }

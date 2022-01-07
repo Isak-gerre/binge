@@ -19,7 +19,7 @@ $page = 1;
 if (isset($_GET["page"])) {
     $page = $_GET["page"];
 }
-$trendingMovies = getTrending($page);
+$trendingMovies = getTrending($page, $api_key);
 
 // Om hämtningen från TMDB inte fungerade skickas ett felmeddelande till klienten
 if (isset($trendingMovies["success"]) && $trendingMovies["success"] == false) {
@@ -32,9 +32,9 @@ if (isset($trendingMovies["success"]) && $trendingMovies["success"] == false) {
 // Skickar trendingMovies (20st) till klient
 sendJSON($trendingMovies);
 
-function getTrending($page)
+function getTrending($page, $api_key)
 {
-    $url = "http://api.themoviedb.org/3/trending/movie/week?api_key=f5c0e0db147d0e6434391f3ff153b6a8&page=$page";
+    $url = "http://api.themoviedb.org/3/trending/movie/week?api_key=$api_key&page=$page";
     $data = file_get_contents($url, true);
 
     if ($data === false) {

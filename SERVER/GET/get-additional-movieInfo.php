@@ -8,7 +8,7 @@ $method = $_SERVER["REQUEST_METHOD"];
 
 if ($method === "GET") {
     if (isset($_GET["movieID"])) {
-        getAdditionalMovieInfo();
+        getAdditionalMovieInfo($api_key);
     } else {
         sendJSON(
             ["message" => "MovieID was not sent"],
@@ -25,11 +25,11 @@ if ($method === "GET") {
 
 
 function
-getAdditionalMovieInfo()
+getAdditionalMovieInfo($api_key)
 {
     $movieID = $_GET["movieID"];
-    $credits = "http://api.themoviedb.org/3/movie/$movieID/credits?api_key=f5c0e0db147d0e6434391f3ff153b6a8";
-    $providers = "http://api.themoviedb.org/3/movie/$movieID/watch/providers?api_key=f5c0e0db147d0e6434391f3ff153b6a8";
+    $credits = "http://api.themoviedb.org/3/movie/$movieID/credits?api_key=$api_key";
+    $providers = "http://api.themoviedb.org/3/movie/$movieID/watch/providers?api_key=$api_key";
 
     //Use file_get_contents to GET the URL in question.
     $contentsCredits = json_decode(file_get_contents($credits), true);
