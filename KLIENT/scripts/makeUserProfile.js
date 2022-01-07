@@ -145,7 +145,8 @@ async function createProfilePage() {
         if (watchedActivities.length < 1) {
             noActivitiesInfo("watched");
         } else {
-            createActivities(watchedActivities, "myProfile", "profileWrapper");
+            let activities = watchedActivities.sort((a, b) => b.date - a.date);
+            makeShowMoreForActis(makeShowMoreForActis, 'profile', "#profileWrapper", activities, 1);
         }
     }
 }

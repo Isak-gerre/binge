@@ -17,20 +17,23 @@ async function makeGenreBanner() {
       watchlist.push(obj);
     }
   });
-  let random = Math.floor(Math.random() * watchlist.length);
-  let randomMovie = await getMovieInfo(watchlist[random].movieID);
+  if(watchlist.length != 0) {
+    let random = Math.floor(Math.random() * watchlist.length);
+    let randomMovie = await getMovieInfo(watchlist[random].movieID);
+    
+    let yourlist = document.createElement("div");
+    yourlist.className = "genreBanner yourlist";
+    yourlist.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${randomMovie.message["poster_path"]}')`;
+    yourlist.addEventListener("click", () => {
+      goToPageAndAddToState(`profile.php?watchlist=true`);
+    });
+    let yourListText = document.createElement("h2");
+    yourListText.textContent = "Your Watchlist";
+  
+    yourlist.append(yourListText);
+    document.getElementById("genre").append(yourlist);
+  }
 
-  let yourlist = document.createElement("div");
-  yourlist.className = "genreBanner yourlist";
-  yourlist.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${randomMovie.message["poster_path"]}')`;
-  yourlist.addEventListener("click", () => {
-    goToPageAndAddToState(`profile.php?watchlist=true`);
-  });
-  let yourListText = document.createElement("h2");
-  yourListText.textContent = "Your Watchlist";
-
-  yourlist.append(yourListText);
-  document.getElementById("genre").append(yourlist);
 
   genres["genres"].forEach(async function (genre) {
     //create elements
