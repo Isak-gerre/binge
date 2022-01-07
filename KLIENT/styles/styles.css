@@ -250,7 +250,7 @@ body {
   grid-column: 1 / span 2;
   border: 1px solid black;
   border-radius: 30px;
-  background-color: #6F6D82;
+  background-color: #1c1452;
 }
 
 #loginForm #input label, #signUpForm > fieldset #input label {
@@ -413,7 +413,7 @@ body {
   width: 100%;
   height: 35px;
   padding: 5px;
-  background-color: #6F6D82;
+  background-color: #1c1452;
   border: none;
   border-radius: 30px;
 }
@@ -460,7 +460,7 @@ body {
 }
 
 #createUserP2 #fieldSetProviders .providersLabel.selectedProvider {
-  background-color: #6F6D82;
+  background-color: #1c1452;
   border-radius: 5px;
 }
 
@@ -487,7 +487,7 @@ body {
 }
 
 #createUserP3 #avatars label.profileImgSelected, #updateProfilePic #avatars label.profileImgSelected {
-  background-color: #6F6D82;
+  background-color: #1c1452;
   border-radius: 5px;
 }
 
@@ -526,7 +526,7 @@ body {
 }
 
 #createUserP3 label.profileImgSelected, #updateProfilePic label.profileImgSelected {
-  background-color: #6F6D82;
+  background-color: #1c1452;
   border-radius: 5px;
 }
 
@@ -1105,7 +1105,7 @@ body {
   width: 100%;
   height: 35px;
   padding: 5px;
-  background-color: #6F6D82;
+  background-color: #1c1452;
   border: none;
   border-radius: 30px;
 }
@@ -1152,7 +1152,7 @@ body {
 }
 
 #settingsForm #providersForm .providersLabel.selectedProvider {
-  background-color: #6F6D82;
+  background-color: #1c1452;
   border-radius: 5px;
 }
 
@@ -1178,7 +1178,7 @@ body {
   grid-column: 1 / span 2;
   border: 1px solid black;
   border-radius: 30px;
-  background-color: #6F6D82;
+  background-color: #1c1452;
   -webkit-transition: border 1s;
   transition: border 1s;
 }
@@ -2294,7 +2294,7 @@ body {
 }
 
 .movie-profile-middle .activityContainer {
-  background-color: #6F6D82;
+  background-color: #1c1452;
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
@@ -2576,7 +2576,7 @@ body {
 }
 
 .activityContainer {
-  background-color: #6F6D82;
+  background-color: #1c1452;
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
