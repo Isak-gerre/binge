@@ -48,7 +48,7 @@ if($method === "DELETE"){
     sendJson([
         "code" => 1,
         "message" => "Method not allowed"
-    ], 400);
+    ], 405);
 }
 
 
