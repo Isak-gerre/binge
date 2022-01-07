@@ -1,4 +1,5 @@
 <?php
+require_once "api-key.php";
 
 function checkMethod($method)
 {

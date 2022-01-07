@@ -1,8 +1,7 @@
 @import "variables.scss";
 
 .movieBanner,
-.genreImageDiv
-{
+.genreImageDiv {
   height: 150px;
   border-radius: $borderRadiusNav;
   background-size: cover;
@@ -29,10 +28,10 @@
 
 @keyframes bannerScale {
   0% {
-    transform:scale(1,1);
+    transform: scale(1, 1);
   }
   100% {
-    transform:scale(1.2,1.2);
+    transform: scale(1.2, 1.2);
   }
 }
 
@@ -54,8 +53,6 @@
   }
 }
 
-
-
 .movieBanner {
   max-width: 100px;
   background-size: cover;
@@ -64,15 +61,32 @@
   overflow: visible;
   margin: auto;
 }
-
+.yourlist {
+  background-position: 0px -30px;
+  background-size: cover;
+}
 .genreBanner {
   height: auto;
   position: relative;
-  
+
   .genreImageDiv {
     height: 100px;
     width: 100%;
-    box-shadow: 0px -5px 7px 0px rgba(185, 185, 185, 0.16);
+    box-shadow: 0px -5px 7px 0px rgba(0, 0, 0, 0.37);
+    border-radius: 2px;
+  }
+  h2 {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.39);
+    font-family: "Archivo";
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    font-weight: 500;
   }
 
   .genreGradient {
@@ -97,10 +111,7 @@
     z-index: 10;
 
     @include bodyFont();
-
   }
-
-
 }
 
 .titleDiv {
@@ -117,7 +128,7 @@
   z-index: 16000;
   pointer-events: auto;
   filter: blur(0px);
-  transform: scale(1.1 , 1.1);
+  transform: scale(1.1, 1.1);
 }
 
 .messageToUser {
@@ -127,7 +138,7 @@
   z-index: 1000;
   background: black;
   padding: 10px;
-  
+
   p {
     text-align: center;
     color: white;

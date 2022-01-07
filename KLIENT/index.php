@@ -18,6 +18,7 @@ require "head.php";
 
 //Skapar formuläret för inlogg alternativt skapar konto 
 ?>
+
 <div class="previewWrapper">
     <div class="loginMoviePreviews"></div>
     <div class="loginMoviePreviewsOverlay"></div>
@@ -41,15 +42,15 @@ require "head.php";
         </div>
         <div id="input">
             <label for="password">Password</label>
-            <input class="signInInput" type="password", name="password">
+            <input class="signInInput" type="password" , name="password">
         </div>
         <button class="signButton">Login</button>
     </form>
     <div id="createAccount">
         <p>Don't have an account? <span id="registerButton">Sign up</span></p>
     </div>
-    
-    
+
+
 
 </div>
 

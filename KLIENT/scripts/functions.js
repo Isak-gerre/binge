@@ -333,7 +333,7 @@ async function getFriendsActivities(id) {
 
 function howManyDaysAgo(recievedDate) {
   // console.log(moment("202201011402", "YYYYMMDDhmm").fromNow());
-  let stringDate = recievedDate.toString();  
+  let stringDate = recievedDate.toString();
   let thisMagicMoment = moment(stringDate, "YYYYMMDDhmm").fromNow();
   return thisMagicMoment;
 }
@@ -447,9 +447,7 @@ function createActivities(array, page, appendIn = "wrapper") {
     let title = document.createElement("div");
     title.classList.add("title");
     title.textContent = movieInfo.message.title;
-    title.addEventListener("click", () => {
-      
-    });
+    title.addEventListener("click", () => {});
 
     activityContainerLeft.append(type, title);
 
@@ -631,14 +629,24 @@ async function deleteteActivity(activityID) {
 }
 
 async function followPatch(mainUserID, friendsUserID) {
-
-  const response = await fetch(new Request("http://localhost:7001/PATCH/update-user.php", {
+  const response = await fetch(
+    new Request("http://localhost:7001/PATCH/update-user.php", {
       method: "PATCH",
       headers: {
-          "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({userID: mainUserID, friendsUserID: friendsUserID})
-  }));
+      body: JSON.stringify({ userID: mainUserID, friendsUserID: friendsUserID }),
+    })
+  );
 
   const data = await response;
+}
+
+async function getAllActivites(userId) {
+  // console.log(userId);
+  let response = await fetch(`http://localhost:7001/GET/get-activities.php?followingIDs=${userId}`);
+  let userActivites = await response.json();
+  userActivites.sort((a, b) => b.date - a.date);
+
+  return userActivites;
 }

@@ -12,6 +12,8 @@
 
 require_once "head.php";
 ?>
+<div class="drop3"></div>
+<div class="drop4"></div>
 <div class="movie-profile-background"></div>
 
 <div id="topWrapperProfile">

@@ -55,6 +55,33 @@ body {
   padding-bottom: 90px;
 }
 
+.drop4 {
+  background-image: url("../icons/drop.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 563px;
+  z-index: 11;
+  width: 135px;
+  left: 5%;
+  height: 150px;
+}
+
+.drop3 {
+  background-image: url("../icons/drop.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 360px;
+  z-index: 11;
+  width: 120px;
+  right: 0px;
+  height: 135px;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
 #topWrapperProfile {
   margin-top: 60px;
   z-index: 15;
@@ -1430,8 +1457,6 @@ body {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
           filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
-  -webkit-box-shadow: 3px 3px 3px #0f0b2e;
-          box-shadow: 3px 3px 3px #0f0b2e;
 }
 
 .movie-profile-middle .container {
@@ -1712,8 +1737,6 @@ body {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
           filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
-  -webkit-box-shadow: 3px 3px 3px #0f0b2e;
-          box-shadow: 3px 3px 3px #0f0b2e;
 }
 
 .container {
@@ -2001,8 +2024,6 @@ body {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
           filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
-  -webkit-box-shadow: 3px 3px 3px #0f0b2e;
-          box-shadow: 3px 3px 3px #0f0b2e;
 }
 
 #frw {
@@ -2200,6 +2221,11 @@ body {
   margin: auto;
 }
 
+.yourlist {
+  background-position: 0px -30px;
+  background-size: cover;
+}
+
 .genreBanner {
   height: auto;
   position: relative;
@@ -2208,8 +2234,29 @@ body {
 .genreBanner .genreImageDiv {
   height: 100px;
   width: 100%;
-  -webkit-box-shadow: 0px -5px 7px 0px rgba(185, 185, 185, 0.16);
-          box-shadow: 0px -5px 7px 0px rgba(185, 185, 185, 0.16);
+  -webkit-box-shadow: 0px -5px 7px 0px rgba(0, 0, 0, 0.37);
+          box-shadow: 0px -5px 7px 0px rgba(0, 0, 0, 0.37);
+  border-radius: 2px;
+}
+
+.genreBanner h2 {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(0, 0, 0, 0.39);
+  font-family: "Archivo";
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  font-weight: 500;
 }
 
 .genreBanner .genreGradient {
@@ -2731,13 +2778,13 @@ svg:active,
   background-size: contain;
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: 50px;
 }
 
 .pages-container {
   border-bottom: 1px solid #eeeeee;
   margin-bottom: 10px;
-  width: 90%;
+  width: 77%;
 }
 
 .pages-container p {
@@ -2795,7 +2842,7 @@ svg:active,
 .genres-container {
   border-bottom: 1px solid #eeeeee;
   margin-bottom: 10px;
-  width: 90%;
+  width: 77%;
 }
 
 .genres-container .genre-link {
@@ -3275,7 +3322,8 @@ svg:active,
   text-decoration: underline;
 }
 
-#loginForm, #signUpForm > fieldset {
+#loginForm,
+#signUpForm > fieldset {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3293,7 +3341,8 @@ svg:active,
   width: 80%;
 }
 
-#loginForm #input, #signUpForm > fieldset #input {
+#loginForm #input,
+#signUpForm > fieldset #input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3312,18 +3361,19 @@ svg:active,
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-column: 1 / span 2;
-  border: 1px solid black;
   border-radius: 30px;
   background-color: #6F6D82;
 }
 
-#loginForm #input label, #signUpForm > fieldset #input label {
+#loginForm #input label,
+#signUpForm > fieldset #input label {
   font-family: "Mulish", sans-serif;
   font-size: 12px;
   margin-left: 10px;
 }
 
-#loginForm #input input, #signUpForm > fieldset #input input {
+#loginForm #input input,
+#signUpForm > fieldset #input input {
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;
@@ -3335,7 +3385,8 @@ svg:active,
   transition: color 0.5s;
 }
 
-#loginForm #buttonWrapper, #signUpForm > fieldset #buttonWrapper {
+#loginForm #buttonWrapper,
+#signUpForm > fieldset #buttonWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3352,7 +3403,8 @@ svg:active,
   gap: 10px;
 }
 
-#loginForm button, #signUpForm > fieldset button {
+#loginForm button,
+#signUpForm > fieldset button {
   width: 100px;
   height: 30px;
   font-family: "Archivo", sans-serif;
@@ -3436,11 +3488,13 @@ svg:active,
   padding: 0 25px 25px;
 }
 
-#createUserP2 select, #createUserP2 option {
+#createUserP2 select,
+#createUserP2 option {
   color: black;
 }
 
-#createUserP2 select, #createUserP2 .searchProvider {
+#createUserP2 select,
+#createUserP2 .searchProvider {
   width: 100%;
   height: 35px;
   padding: 5px;
