@@ -18,7 +18,7 @@ function checkStuff(){
                 console.log(element);
                 next = false;
 
-                element.parentElement.style.border = "2px solid red";
+                element.parentElement.style.outline = "2px solid red";
                 element.placeholder = "Please fill in this field";
                 element.style.color = 'Red';
                 setTimeout( () => {
