@@ -102,6 +102,11 @@
   margin: auto;
 }
 
+.yourlist {
+  background-position: 0px -30px;
+  background-size: cover;
+}
+
 .genreBanner {
   height: auto;
   position: relative;
@@ -110,8 +115,29 @@
 .genreBanner .genreImageDiv {
   height: 100px;
   width: 100%;
-  -webkit-box-shadow: 0px -5px 7px 0px rgba(185, 185, 185, 0.16);
-          box-shadow: 0px -5px 7px 0px rgba(185, 185, 185, 0.16);
+  -webkit-box-shadow: 0px -5px 7px 0px rgba(0, 0, 0, 0.37);
+          box-shadow: 0px -5px 7px 0px rgba(0, 0, 0, 0.37);
+  border-radius: 2px;
+}
+
+.genreBanner h2 {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(0, 0, 0, 0.39);
+  font-family: "Archivo";
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  font-weight: 500;
 }
 
 .genreBanner .genreGradient {

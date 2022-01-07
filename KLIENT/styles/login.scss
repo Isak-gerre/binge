@@ -2,283 +2,288 @@
 
 //MovieBanners (preview)
 .previewWrapper {
-    height: 30vh;
-    // width: 100vw;
-    position: absolute;
-    top: -5px;
-    z-index: 21;
-    overflow: hidden;
+  height: 30vh;
+  // width: 100vw;
+  position: absolute;
+  top: -5px;
+  z-index: 21;
+  overflow: hidden;
 
-    .loginMoviePreviews {
-        width: 100vw;
-        position: relative;
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        grid-auto-rows: auto;
-        top: -25px;
-        left: -90px;
-        // overflow: hidden;
-        transform: skew(-8deg, -5deg) rotate(12deg);
-        // gap: $betweenPadding;
-    
-        .movieBanner {
-            transform: scale(0.9);
-        }
+  .loginMoviePreviews {
+    width: 100vw;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: auto;
+    top: -25px;
+    left: -90px;
+    // overflow: hidden;
+    transform: skew(-8deg, -5deg) rotate(12deg);
+    // gap: $betweenPadding;
+
+    .movieBanner {
+      transform: scale(0.9);
     }
-    
-    .loginMoviePreviewsOverlay{
-        height: 30vh;
-        width: 100vw;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 74%, #100c30 100%);
-        z-index: 22;
-    }
-    
+  }
+
+  .loginMoviePreviewsOverlay {
+    height: 30vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 74%, #100c30 100%);
+    z-index: 22;
+  }
 }
 
 //LOGO
 .logoDiv {
-    position: absolute;
-    z-index: 30;
-    top: 27vh;
-    @include flex(column, center, center);
+  position: absolute;
+  z-index: 30;
+  top: 27vh;
+  @include flex(column, center, center);
 
-    .logoImg {
-        height: 55px;
-        width: 120px;
-        background-image: url(../logos/bingy-hela.svg);
-        background-repeat: no-repeat;
-    }
+  .logoImg {
+    height: 55px;
+    width: 120px;
+    background-image: url(../logos/bingy-hela.svg);
+    background-repeat: no-repeat;
+  }
 
-    .slogan {
-        @include bodyFont;
-        text-align: center;
-    }
+  .slogan {
+    @include bodyFont;
+    text-align: center;
+  }
 }
 
 //Background
 .movie-profile-background {
-    height: 100%
+  height: 100%;
 }
 
-
 // Login
-.signInWrap  {
-    @include flex(column, flex-start, center);
-    gap: $wrapperPadding;
+.signInWrap {
+  @include flex(column, flex-start, center);
+  gap: $wrapperPadding;
 
-    z-index: 20;
-    height: 100vh;
-    width: 100vw;
-    padding: $wrapperPadding;
+  z-index: 20;
+  height: 100vh;
+  width: 100vw;
+  padding: $wrapperPadding;
 
-    opacity: 10;
-    transition: opacity 0.5s;
+  opacity: 10;
+  transition: opacity 0.5s;
 
-    top: 40vh;
-    position: relative;
+  top: 40vh;
+  position: relative;
 
-
-    div:first-child {
-        width: 100%;
-        text-align: center;
-        h1 { @include bigTitleFont();}
-        p {@include bodyFont();}
+  div:first-child {
+    width: 100%;
+    text-align: center;
+    h1 {
+      @include bigTitleFont();
     }
-
-    #createAccount {
-        p {margin: 0;}
-        span {
-            text-decoration: underline;
-        }
+    p {
+      @include bodyFont();
     }
+  }
+
+  #createAccount {
+    p {
+      margin: 0;
+    }
+    span {
+      text-decoration: underline;
+    }
+  }
 }
 
 // Form
-#loginForm, #signUpForm > fieldset {
-    @include flex(column, center, center);
+#loginForm,
+#signUpForm > fieldset {
+  @include flex(column, center, center);
+  gap: $betweenPadding;
+  width: 80%;
+
+  #input {
+    @include flex(column, center, flex-start);
+    width: 100%;
+    padding: $innerPadding;
+    grid-column: 1 / span 2;
+
+    // border: 1px solid black;
+    border-radius: $borderRadiusButtons;
+    background-color: $activityColor;
+
+    label {
+      @include xSmallFont();
+      margin-left: $betweenPadding;
+    }
+
+    input {
+      @include bodyFont();
+      border: none;
+      width: 100%;
+      padding: 0 10px;
+      background: none;
+
+      transition: color 0.5s;
+    }
+  }
+
+  #buttonWrapper {
+    @include flex(row, center, center);
     gap: $betweenPadding;
-    width: 80%;
+  }
 
-    #input {
-        @include flex(column, center, flex-start);
-        width: 100%;
-        padding: $innerPadding;
-        grid-column: 1 / span 2;
+  button {
+    width: 100px;
+    height: 30px;
 
-        border: 1px solid black;
-        border-radius: $borderRadiusButtons;
-        background-color: $activityColor;
+    @include postFont();
 
-        label {
-            @include xSmallFont();
-            margin-left: $betweenPadding
-        }
-
-        input {
-            @include bodyFont();
-            border: none;
-            width: 100%;
-            padding: 0 10px;
-            background: none;
-            
-            transition: color 0.5s;
-        }
-        
-    }
-    
-    
-    #buttonWrapper {
-        @include flex(row, center, center);
-        gap: $betweenPadding;
-    }
-    
-    button {
-        width: 100px;
-        height: 30px;
-        
-        @include postFont();
-        
-        background: $gradientPeach;
-        padding: $buttonPadding;
-        border-radius: $borderRadiusButtons;
-        border: none;
-    }
+    background: $gradientPeach;
+    padding: $buttonPadding;
+    border-radius: $borderRadiusButtons;
+    border: none;
+  }
 }
 
 #errorDiv {
-    @include xSmallFont();
+  @include xSmallFont();
 }
 
 // Sign up
 #signUpForm {
-    z-index: 20;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    // @include flex(column, center, center);
-    @include transitionFromBottom();
+  z-index: 20;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // @include flex(column, center, center);
+  @include transitionFromBottom();
 
-    width: 100vw;
-    min-height: 100vh;
+  width: 100vw;
+  min-height: 100vh;
 }
 
 #signUpForm div:first-child {
-    @include flex(row, center, center);
-    margin-top: $wrapperPadding;
-    h1 { @include bigTitleFont();}
-    // flex-basis: 10vh;
+  @include flex(row, center, center);
+  margin-top: $wrapperPadding;
+  h1 {
+    @include bigTitleFont();
+  }
+  // flex-basis: 10vh;
 }
 
 #signUpForm > fieldset {
-    @include flex(column, flex-start, center);
-    border: none;
+  @include flex(column, flex-start, center);
+  border: none;
 
-    flex-grow: 1;
-    width: 100vw;
-    padding: 0 $wrapperPadding $wrapperPadding;
+  flex-grow: 1;
+  width: 100vw;
+  padding: 0 $wrapperPadding $wrapperPadding;
 }
 
 #createUserP2 {
-    select, option {
-        color: $darkFont;
+  select,
+  option {
+    color: $darkFont;
+  }
+
+  select,
+  .searchProvider {
+    width: 100%;
+    height: 35px;
+    padding: $innerPadding;
+    background-color: $activityColor;
+    border: none;
+    border-radius: $borderRadiusButtons;
+  }
+
+  #fieldSetProviders {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $betweenPadding;
+
+    @include xSmallFont();
+    width: 100%;
+    border: none;
+    max-height: 65vh;
+
+    overflow-y: scroll;
+
+    .providersLabel {
+      @include flex(column-reverse, center, center);
+      text-align: center;
+      height: 80px;
+
+      img {
+        height: 30px;
+        width: 30px;
+
+        border-radius: 50%;
+      }
     }
 
-    select, .searchProvider {
-        width: 100%;
-        height: 35px;
-        padding: $innerPadding;
-        background-color: $activityColor;
-        border: none;
-        border-radius: $borderRadiusButtons;
+    .providersLabel.selectedProvider {
+      background-color: $activityColor;
+      border-radius: $borderRadiusObjects;
     }
-
-    #fieldSetProviders {
-        flex-grow: 1;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: $betweenPadding;
-
-        @include xSmallFont();
-        width: 100%;
-        border: none;
-        max-height: 65vh;
-
-        overflow-y: scroll;
-
-        .providersLabel {
-            @include flex(column-reverse, center, center);
-            text-align: center;
-            height: 80px;
-
-            img {
-                height: 30px;
-                width: 30px;
-
-                border-radius: 50%;
-            }
-        }
-
-        .providersLabel.selectedProvider {
-            background-color: $activityColor;
-            border-radius: $borderRadiusObjects;
-        }
-    }
+  }
 }
 
 #createUserP3 {
-    #avatars {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: $betweenPadding;
+  #avatars {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $betweenPadding;
 
-        p {
-            margin: none;
-            @include smallTitleFont();
-            grid-area: 1 / span 2;
-        }
-
-        label {
-            margin: auto;
-        }
-
-        label.profileImgSelected {
-            background-color: $activityColor;
-            border-radius: $borderRadiusObjects;
-        }
+    p {
+      margin: none;
+      @include smallTitleFont();
+      grid-area: 1 / span 2;
     }
 
-    #uploadProfilePic {
-        @include flex(column, center, flex-start);
-        gap: $betweenPadding;
-        margin: $wrapperPadding 0;
-        p {
-            margin: none;
-            @include smallTitleFont();
-        }
-
-        #fileToUpload {
-            width: 100%;
-            margin: auto;
-
-            @include bodyFont();
-        }
+    label {
+      margin: auto;
     }
 
-
-    #signInButton {
-        width: 120px;
-        height: 30px;
-
-        @include postFont();
-
-        background: $gradientPeach;
-        padding: $buttonPadding;
-        border-radius: $borderRadiusButtons;
-        border: none;
+    label.profileImgSelected {
+      background-color: $activityColor;
+      border-radius: $borderRadiusObjects;
     }
+  }
+
+  #uploadProfilePic {
+    @include flex(column, center, flex-start);
+    gap: $betweenPadding;
+    margin: $wrapperPadding 0;
+    p {
+      margin: none;
+      @include smallTitleFont();
+    }
+
+    #fileToUpload {
+      width: 100%;
+      margin: auto;
+
+      @include bodyFont();
+    }
+  }
+
+  #signInButton {
+    width: 120px;
+    height: 30px;
+
+    @include postFont();
+
+    background: $gradientPeach;
+    padding: $buttonPadding;
+    border-radius: $borderRadiusButtons;
+    border: none;
+  }
 }

@@ -29,6 +29,32 @@ body {
   padding-bottom: 90px;
 }
 
+.drop4 {
+  background-image: url("../icons/drop.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 563px;
+  z-index: 11;
+  width: 135px;
+  left: 5%;
+  height: 150px;
+}
+.drop3 {
+  background-image: url("../icons/drop.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 360px;
+  z-index: 11;
+  width: 120px;
+  right: 0px;
+  height: 135px;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
 // Imported css-files
 
 @import "userProfile.scss";
