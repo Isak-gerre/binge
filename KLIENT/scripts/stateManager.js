@@ -25,7 +25,9 @@ function goToPageAndAddToState(href, search = null) {
 }
 function applyState() {
   let allStates = getFromSession("state");
-
+  if (allStates == null) {
+    return;
+  }
   // Tar bort nyaste state
   let appliedState = allStates[0];
   allStates.splice(0, 1);
