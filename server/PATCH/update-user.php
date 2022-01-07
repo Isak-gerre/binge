@@ -13,6 +13,7 @@ require_once "../access-control.php";
 require_once "../functions.php";
 
 checkMethod("POST");
+
 // checkContentType();
 
 // Data that was sent to us by the client

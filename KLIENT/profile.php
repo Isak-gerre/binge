@@ -39,7 +39,7 @@ require_once "head.php";
 
 <nav id="profileNav">
     <div id="watched">
-        <p>Watched</p>
+        <p>Activities</p>
     </div>
 
     <div id="watchlist">

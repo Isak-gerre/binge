@@ -60,7 +60,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  position: absolute;
+  position: fixed;
   top: 563px;
   z-index: 11;
   width: 135px;
@@ -72,7 +72,7 @@ body {
   background-image: url("../icons/drop.svg");
   background-size: cover;
   background-repeat: no-repeat;
-  position: absolute;
+  position: fixed;
   top: 360px;
   z-index: 11;
   width: 120px;
