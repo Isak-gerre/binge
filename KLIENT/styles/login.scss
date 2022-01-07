@@ -142,7 +142,7 @@
       border: none;
       width: 100%;
       padding: 0 10px;
-      background: none;
+      // background: none;
 
       transition: color 0.5s;
     }
@@ -182,6 +182,15 @@
 
   width: 100vw;
   min-height: 100vh;
+
+  .buttonsSignUp {
+    display: flex;
+
+    .backLogin {
+      margin: 0px 10px 0px 0px;
+
+    }
+  }
 }
 
 #signUpForm div:first-child {
@@ -203,7 +212,7 @@
 #createUserP2 {
     border: none;
     select, option {
-        color: $darkFont;
+        color: $lightFont;
     }
 
     select, .searchProvider {

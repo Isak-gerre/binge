@@ -20,7 +20,7 @@
     @include flex(row, space-around, center);
 
     img {
-      margin: 0 80px;
+      margin: 0 70px;
     }
   }
 }
@@ -169,7 +169,7 @@ svg,
 }
 
 .navImg.logo {
-  z-index: 13000;
+  // z-index: 13000;
   transform: scale(2);
 }
 

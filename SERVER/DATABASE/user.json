@@ -161,6 +161,25 @@
             ],
             "sessionId": "$2y$10$VBlpINZcW.9xG1Qh08PqB.akUiqGlekXsHQjy6Z9yZGONClQYHXIq",
             "id": 6
+        },
+        "7": {
+            "firstname": "henke",
+            "lastname": "lindh",
+            "username": "henke",
+            "password": "$2y$10$lAyxWPLM5CjMW9BPQVjLgOTJ6efLG\/CZltpzzh4S\/IFNIJCjxROkO",
+            "email": "henke@gm",
+            "birthday": "1962-04-30",
+            "region": "AE",
+            "active_streaming_services": [
+                "Amazon Prime Video"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_8.png"
+            },
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$TpN2Vcw46o5BDTwAJ3Ydy.f2jwuG.Mb4e4StiHqNDz6yCyXnVzTcq",
+            "id": 7
         }
     }
 }

@@ -44,7 +44,7 @@
 }
 
 .upperNav div img {
-  margin: 0 80px;
+  margin: 0 70px;
 }
 
 input:focus {
@@ -200,7 +200,6 @@ svg,
 }
 
 .navImg.logo {
-  z-index: 13000;
   -webkit-transform: scale(2);
           transform: scale(2);
 }

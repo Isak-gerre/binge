@@ -87,8 +87,10 @@ require "head.php";
             <label>Birthday</label>
             <input class="signInInput" type="date" name="birthday" placeholder="Birthday">
         </div>
-        <button type="button" id="next1">Next</button>
-        <button type="button" class="backLogin" onclick="window.location.href = `index.php`">Back to log in</button>
+        <div class="buttonsSignUp">
+            <div class="backLogin" onclick="window.location.href = `index.php`">Back to log in</div>
+            <button type="button" id="next1">Next</button>
+        </div>
     </fieldset>
     <fieldset id="createUserP2">
         <p>Choose your streaming providers</p>
@@ -138,8 +140,11 @@ require "head.php";
             <p>Or upload your own profile picture</p>
             <input type="file" id="fileToUpload" name="fileToUpload">
         </div>
-        <button type="button" class="backLogin" onclick="window.location.href = `index.php`">Back to log in</button>
-        <input type="submit" value="Create account" id="signInButton">
+
+        <div class="buttonsSignUp">
+            <div class="backLogin" onclick="window.location.href = `index.php`">Back to log in</div>
+            <input type="submit" value="Create account" id="signInButton">
+        </div>
 
     </fieldset>
 
