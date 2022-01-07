@@ -16,7 +16,7 @@
 
 // Öppnar fönster för settings
 async function openSettings(userId) {
-  // Hämtar user för att den nuvarande profilbilden ska visas
+    // Hämtar user för att den nuvarande profilbilden ska visas
     let user = await getUserInfo(userId);
 
     let settingsWindow = document.createElement('div');
@@ -37,7 +37,7 @@ async function openSettings(userId) {
     closeTab.addEventListener('click', () => {
         settingsWindow.style.left = '100vw';
         setTimeout(() => {
-            settingsWindow.remove(); 
+            settingsWindow.remove();
         }, 1000);
     });
 
@@ -66,7 +66,7 @@ async function openSettings(userId) {
         // Jämför avatarer med nuvarande profilbild
         allAvatars.forEach(avatar => {
             let avatarFilepath = avatar.childNodes[3].src.replace('http://localhost:7001/DATABASE/IMAGES/AVATAR/', '');
-            
+
             // Om nuvarande profilbild är densamma som avatar så ska avataren markeras som selected
             if (avatarFilepath == profilePicFilepath) {
                 avatar.classList.add('profileImgSelected');
@@ -74,7 +74,7 @@ async function openSettings(userId) {
 
             // Trycker man på en annan avatar så ändras den till att vara selected
             avatar.addEventListener("click", () => {
-                if(document.querySelector(".profileImgSelected")){
+                if (document.querySelector(".profileImgSelected")) {
                     document.querySelector(".profileImgSelected").classList.remove("profileImgSelected");
                 }
                 avatar.classList.toggle("profileImgSelected");
@@ -88,37 +88,92 @@ async function openSettings(userId) {
     let form = document.createElement('form');
     form.id = "loginForm";
     form.innerHTML = `
+    <fieldset id="createUserP1">
         <div id="input">
             <label>Firstname</label>
-            <input class="signInInput" type="text" name="firstname" placeholder="Firstname" required>
+            <input class="signInInput" type="text" name="firstname" placeholder="Firstname">
         </div>
         <div id="input">
             <label>Lastname</label>
-            <input class="signInInput" type="text" name="lastname" placeholder="Lastname" required>
+            <input class="signInInput" type="text" name="lastname" placeholder="Lastname">
         </div>
         <div id="input">
-            <label>Username</label>
-            <input class="signInInput" type="text" id="username1" name="username" placeholder="Username" required>
+            <label>Old Password</label>
+            <input class="signInInput" type="password" id="passwordOld" name="old_password" placeholder="Old Password">
         </div>
         <div id="input">
             <label>New Password</label>
-            <input class="signInInput" type="password" id="password2" name="password" placeholder="Password" required>
+            <input class="signInInput" type="password" id="password2" name="password" placeholder="New Password">
         </div>
         <div id="input">
             <label>Confirm Password</label>
-            <input class="signInInput" type="password" name="confirm_password" placeholder="Confirm Password" required>
+            <input class="signInInput" type="password" name="confirm_password" placeholder="Confirm Password">
         </div>
         <div id="input">
             <label>Email</label>
-            <input class="signInInput" type="text" name="email" placeholder="Email" required>
+            <input class="signInInput" type="text" name="email" placeholder="Email">
         </div>
         <div id="input">
             <label>Birthday</label>
             <input class="signInInput" type="date" name="birthday" placeholder="Birthday">
         </div>
+    </fieldset>
+        <fieldset id="createUserP2" class="settingsForm"></fieldset>
         <button id="signInButton">Update</button>
     `;
-    // form.addEventListener('')
+
+    // let data;
+    // let image;
+    // let pictureID;
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        console.log(document.getElementById("createUserP2"));
+        
+        const formData = new FormData(form);
+        
+
+
+        let session = sessionStorage.getItem("session");
+        let id = JSON.parse(session).session.userID;
+
+        formData.append("id", id);
+        // let array = [];
+        // let checkboxes = document.querySelectorAll("input[type=checkbox]:checked");
+
+        // for (let i = 0; i < checkboxes.length; i++) {
+        //     array.push(checkboxes[i].value);
+        // }
+
+        // for (let i = 0; i < array.length; i++) {
+        //     formData.append("active_streaming_services[]", array[i]);
+        // }
+
+        const reqChangeUser = new Request("http://localhost:7001/PATCH/update-user.php", {
+            method: "POST",
+            body: formData
+        });
+
+        fetch(reqChangeUser)
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+                else{
+                    throw new Error("Something went wrong!");
+                }
+
+            })
+            .then((data) => {
+                console.log("Changed");
+                // window.location.replace("http://localhost:2000/explore.php");
+            })
+            .catch(error => {
+                console.log(error);
+                // sessionStorage.clear();
+            });
+    });
+
 
     settingsWindow.append(closeTab, changeProfilePicContainer, form);
     return settingsWindow;
@@ -149,7 +204,7 @@ function changeProfilePic(user) {
         settingsWindow.style.left = 0;
 
         setTimeout(() => {
-            changeProfilePicWindow.remove(); 
+            changeProfilePicWindow.remove();
         }, 1000);
     });
 
@@ -203,15 +258,15 @@ function changeProfilePic(user) {
         <button id="signInButton">Update</button>
     </div>
     `;
-    
+
     formDiv.append(form);
     changeProfilePicWindow.append(closeTab, formDiv);
-    
+
     form.addEventListener('submit', (event) => {
         event.preventDefault();
 
         let loggedInUser = user.id;
-        
+
         const data = new FormData(form);
         data.append("userID", loggedInUser);
 
@@ -230,15 +285,15 @@ function changeProfilePic(user) {
 // Skickar formData om profilbild till servern som uppdaterar information
 async function patchProfilePic(data) {
     const request = new Request("http://localhost:7001/POST/post-profile-picture.php", {
-            method: "POST",
-            body: data,
-        });
+        method: "POST",
+        body: data,
+    });
 
     let response = await fetch(request);
     let json = await response.json();
 
     console.log(response);
-    
+
     // Om 'post' går bra visas ett meddelande
     if (response.ok) {
         changeProfilePicWindow.prepend(responseDiv("Your profile picture was updated"));
@@ -247,37 +302,37 @@ async function patchProfilePic(data) {
         document.querySelector('#profilePic div').style.backgroundImage = `url("http://localhost:7001/${json.filePath}")`;
         document.querySelector('#settingsChangePic div').style.backgroundImage = `url("http://localhost:7001/${json.filePath}")`;
     } else if (response.status == 406) {
-      changeProfilePicWindow.prepend(responseDiv("You're profile picture can't override 4Mb."));
-      
+        changeProfilePicWindow.prepend(responseDiv("You're profile picture can't override 4Mb."));
+
     } else if (response.status == 400) {
-      console.log(response);
-      changeProfilePicWindow.prepend(responseDiv("Something went wrong. Try again!"));
+        console.log(response);
+        changeProfilePicWindow.prepend(responseDiv("Something went wrong. Try again!"));
     }
 
 }
 
 function responseDiv(message) {
-  let responseDiv = document.createElement('div');
-  responseDiv.id = "responseDiv";
-  let text = document.createElement('p');
-  text.textContent = message;
+    let responseDiv = document.createElement('div');
+    responseDiv.id = "responseDiv";
+    let text = document.createElement('p');
+    text.textContent = message;
 
-  responseDiv.append(text);
+    responseDiv.append(text);
 
-  // Transition in
-  setTimeout( () => {
-    responseDiv.style.opacity = '1';
-  }, 10);
+    // Transition in
+    setTimeout(() => {
+        responseDiv.style.opacity = '1';
+    }, 10);
 
-  // Transition ut
-  setTimeout( () => {
-    responseDiv.style.opacity = '0';
-  }, 1500);
+    // Transition ut
+    setTimeout(() => {
+        responseDiv.style.opacity = '0';
+    }, 1500);
 
-  // Ta bort fönster
-  setTimeout( () => {
-    responseDiv.remove();
-  }, 2000);
-  
-  return responseDiv;
+    // Ta bort fönster
+    setTimeout(() => {
+        responseDiv.remove();
+    }, 2000);
+
+    return responseDiv;
 }

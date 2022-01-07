@@ -32,7 +32,7 @@
     @include flex(column, center, center);
     gap: $betweenPadding;
     width: 100%;
-
+ 
     #input {
         @include flex(column, center, flex-start);
         width: 100%;
@@ -112,7 +112,7 @@
     padding: 0 $wrapperPadding $wrapperPadding;
 }
 
-#createUserP2 {
+#createUserP2{
     select, option {
         color: $darkFont;
     }
