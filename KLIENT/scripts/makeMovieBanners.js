@@ -1,7 +1,3 @@
-// Hämta filmbild + titel
-// skapa element
-// returnera det.
-
 "use strict";
 
 async function makeMovieBanner(movieID, activity) {

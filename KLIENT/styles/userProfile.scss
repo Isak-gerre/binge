@@ -248,7 +248,10 @@
   background-repeat: no-repeat;
   
   z-index: 100000;
-  overflow-y: scroll;  
+  overflow-y: scroll;
+  button {
+    margin: $wrapperPadding;
+  }  
 }
 
 #settingsForm {
@@ -287,7 +290,7 @@
     border: none;
       
     select, option {
-      color: $darkFont;
+      color: $lightFont;
     }
 
     select, .searchProvider {
@@ -382,7 +385,8 @@
 #settingsChangePic {
   @include flex(row, center, flex-start);
   gap: $betweenPadding;
-  padding: $wrapperPadding;
+  padding: $wrapperPadding $wrapperPadding 0 $wrapperPadding;
+  margin-top: $wrapperPadding;
 
   width: 100%;
   position: relative;
@@ -484,7 +488,7 @@
     z-index: 20000;
     max-width: 150px;
     right: 0;
-    bottom: -100px;
+    bottom: -68px;
     padding: $betweenPadding;
   
     button {
@@ -499,9 +503,9 @@
       margin-top: $innerPadding;
     }
 
-    button:first-child {
-      margin-bottom: 5px;
-    }
+    // button:first-child {
+    //   margin-bottom: 5px;
+    // }
   }
 }
 
@@ -516,7 +520,7 @@
     margin-bottom: 0px;
   }
   100%{
-    margin-bottom: 90px;
+    margin-bottom: 45px;
   }
 }
 

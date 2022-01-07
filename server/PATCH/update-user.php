@@ -1,14 +1,4 @@
 <?php
-// If changing your profile this will be sent by the client
-// {
-//     "userID": "5",
-// }
-// If unfollowing or follows this will be sent by the client
-// {
-//     "userID": "5",
-//     "otherUserID": "2",
-// }
-
 require_once "../access-control.php";
 require_once "../functions.php";
 

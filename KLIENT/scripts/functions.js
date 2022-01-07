@@ -1,17 +1,3 @@
-// Allmänna funktioner som används överallt:
-
-/*
-
-function runLoadingAnimation(){
-
-}
-
-highestID(){
-
-}
-
-*/
-
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -394,40 +380,6 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
     userContainer.append(userPic, username);
   }
 
-  // if (page == "profile") {
-  //   let deleteActivityDropdown = document.createElement("img");
-  //   deleteActivityDropdown.setAttribute("src", "../icons/expand_more_white.svg");
-
-  //   let dropDown = document.createElement("div");
-  //   dropDown.id = "dropDown";
-  //   let deleteActivity = document.createElement("p");
-  //   deleteActivity.textContent = "Delete activity";
-
-  //   deleteActivityDropdown.addEventListener("click", (event) => {
-  //     event.stopPropagation();
-  //     dropDown.append(deleteActivity);
-
-  //     body.addEventListener("click", (event) => {
-  //       event.stopPropagation();
-  //       dropDown.remove();
-  //     });
-
-  //     deleteActivity.addEventListener("click", function (event) {
-  //       event.stopPropagation();
-  //       deleteteActivity(obj.id);
-  //       dropDown.remove();
-
-  //       container.style.left = "100vw";
-  //       setTimeout(() => {
-  //         container.remove();
-  //       }, 1000);
-  //     });
-  //     userContainer.append(dropDown);
-  //   });
-
-  //   userContainer.append(deleteActivityDropdown);
-  // }
-
   //datum
   let date = document.createElement("div");
   date.classList.add("date");
@@ -549,6 +501,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
           let reviewDiv = document.createElement("button");
           reviewDiv.textContent = makeOrUpdate;
           reviewDiv.className = "button";
+          reviewDiv.style.display = "none";
 
           reviewDiv.addEventListener("click", (event) => {
             event.stopPropagation();
@@ -560,7 +513,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
           // En delay på när knapparna skapas.
           removeFromList.style.animation = "scaleFromZero 1s forwards";
           reviewDiv.style.animation = "scaleFromZero 1s forwards";
-          options.append(removeFromList, reviewDiv);
+          options.append(removeFromList);
           setTimeout(() => {
 
             element.append(options);

@@ -1,22 +1,9 @@
 <?php
-// Tar emot ny data och gamla aktivitetsidet,
-// raderar den gamla aktiviteten, lägg till en ny
-
 require_once "../access-control.php";
 require_once "../functions.php";
 
 checkMethod("PATCH");
 checkContentType();
-
-// The keys that is sent by the client
-// {
-//     "activity": {
-//         "id": 2,
-//         "rate": 5,
-//         "comment": "YÄY"
-//     } 
-// }
-
 
 // Loading data - activities
 $activitiesDB = loadJSON("../DATABASE/activities.json");

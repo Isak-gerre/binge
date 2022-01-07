@@ -36,15 +36,13 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.upperNav div img {
-  margin: 0 70px;
+  padding: 0 25px;
 }
 
 input:focus {
@@ -200,8 +198,8 @@ svg,
 }
 
 .navImg.logo {
-  -webkit-transform: scale(2);
-          transform: scale(2);
+  -webkit-transform: scale(1.8);
+          transform: scale(1.8);
 }
 
 svg:active,
@@ -433,7 +431,7 @@ svg:active,
   border: none;
   border-radius: 30px;
   padding: 5px;
-  height: 20px;
+  height: 30px;
   width: 30%;
   margin: 10px 10px 10px 0;
   cursor: pointer;

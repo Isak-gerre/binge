@@ -1,5 +1,3 @@
-// Skapa navigationen
-
 "use strict";
 
 function makeUpperNav() {

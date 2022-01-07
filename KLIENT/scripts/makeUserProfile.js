@@ -1,37 +1,4 @@
 "use strict";
-// import "makeMovieBanner.js";
-// import "makeFeed.js"
-
-// Kontrollera i om det finns en get-parameter med en användares ID
-// -> Om inte - hämta egen användares ID i sessionStorage
-/*
-Om det är någon annans profil:
--   Kolla om 
-*/
-
-// Hämta UserInfo by ID och placera i variabel
-/* Gör html-element som ska placeras i profilbeskrivningen
-    - username
-    - followers
-    - following
-    - follor/unfollow eller settings 
-*/
-
-// * Hämtar acitivity feed
-// * Skapar UserInfo ruta
-// * Visa följ/avfölj eller settings utifrån ID
-
-// Whatched:
-// sortera bort watch later
-// Anropar på makeFeed med userID
-
-// Watchlist:
-// välj ut watch later
-// hämta film-informationen
-// Anropar movieBanner med film idn
-
-// Stats:
-//
 
 // Inloggad användare
 const loggedInUserId = getLoggedInUserID();

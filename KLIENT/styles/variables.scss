@@ -74,7 +74,7 @@ $starSz: 30px;
 @mixin transitionFromLeft() {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 100000;
 
   left: 100vw;

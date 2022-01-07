@@ -6,10 +6,6 @@
 // Element som ska vara statiska, 
 // skapas här
 
-// Kontrollera om inloggad -> Annars skicka till index.php
-
-// Inkludera footer.php
-
 require_once "head.php";
 ?>
 <div class="drop3"></div>

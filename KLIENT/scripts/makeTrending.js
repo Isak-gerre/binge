@@ -1,6 +1,3 @@
-// Hämtar trending
-// Skapar element och appendas
-
 "use strict";
 
 let loaded = false;

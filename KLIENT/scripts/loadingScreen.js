@@ -1,4 +1,4 @@
-
+"use strict";
 function loadingScreen() {
     
     const loadingScreen = document.createElement('div');

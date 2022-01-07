@@ -1,17 +1,4 @@
 <?php
-
-/* 
-Tar emot:
-- userID
-
-Returnernar:
-- status: success / error
-- deletedUser / message
-
-
-*/
-
-
 include_once "../access-control.php";
 include_once "../functions.php";
 
