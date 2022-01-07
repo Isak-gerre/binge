@@ -51,10 +51,6 @@ document.getElementById("username1").addEventListener("keyup", () => {
 });
 
 
-let data;
-let image;
-let pictureID;
-
 let signUpForm = document.getElementById("signUpForm");
 
 // document.querySelector(".backLogin").addEventListener("click", () => {
@@ -64,6 +60,7 @@ let signUpForm = document.getElementById("signUpForm");
 signUpForm.addEventListener("submit", (event) => {
   console.log("SignUpForm ok");
   event.preventDefault();
+
   const formData = new FormData(signUpForm);
 
   let array = [];
@@ -80,7 +77,6 @@ signUpForm.addEventListener("submit", (event) => {
   if (document.getElementById("fileToUpload").value == "") {
     let form = document.getElementById("profileImgForm");
     image = document.querySelector('input[name="profileImg"]:checked').value;
-    console.log(image);
     formData.set("fileToUpload", image);
   }
     
@@ -92,10 +88,11 @@ signUpForm.addEventListener("submit", (event) => {
   fetch(req)
     .then((response) =>{
         if(response.ok){
+            console.log(response);
             return response.json();
         }
         else{
-            throw new Error("Something went wrong!");
+            throw new Error();
         }
        
     })

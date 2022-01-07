@@ -138,17 +138,17 @@ async function openSettings(userId) {
         let id = JSON.parse(session).session.userID;
 
         formData.append("id", id);
-        // let array = [];
-        // let checkboxes = document.querySelectorAll("input[type=checkbox]:checked");
 
-        // for (let i = 0; i < checkboxes.length; i++) {
-        //     array.push(checkboxes[i].value);
-        // }
+        let array = [];
+        let checkboxes = document.querySelectorAll("input[type=checkbox]:checked");
 
-        // for (let i = 0; i < array.length; i++) {
-        //     formData.append("active_streaming_services[]", array[i]);
-        // }
+        for (let i = 0; i < checkboxes.length; i++) {
+            array.push(checkboxes[i].value);
+        }
 
+        for (let i = 0; i < array.length; i++) {
+            formData.append("active_streaming_services[]", array[i]);
+        }
         const reqChangeUser = new Request("http://localhost:7001/PATCH/update-user.php", {
             method: "POST",
             body: formData
@@ -159,14 +159,16 @@ async function openSettings(userId) {
                 if (response.ok) {
                     return response.json();
                 }
-                else{
-                    throw new Error("Something went wrong!");
+                else if (response.status == 400) {
+                    console.log(response);
+                    settingsWindow.prepend(responseDiv("Something went wrong. Try again!"));
                 }
 
             })
-            .then((data) => {
+            .then(() => {
+                settingsWindow.prepend(responseDiv("The user was uppdated"))
                 console.log("Changed");
-                // window.location.replace("http://localhost:2000/explore.php");
+                // window.location.replace("http://localhost:2000/profile.php");
             })
             .catch(error => {
                 console.log(error);

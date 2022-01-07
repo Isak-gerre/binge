@@ -99,7 +99,7 @@ document.getElementById("settingOrPlus").addEventListener("click", () => {
             providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
   
             selectProvider.setAttribute("type", "checkbox");
-            selectProvider.setAttribute("name", `providers`);
+            selectProvider.setAttribute("name", `active_streaming_services`);
             selectProvider.setAttribute("value", `${provider.provider_name}`);
             selectProvider.style.display = "none";
             let providerID = provider.provider_name.split(" ").join("");
