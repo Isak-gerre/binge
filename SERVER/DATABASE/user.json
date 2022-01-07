@@ -196,7 +196,8 @@
                 "filepath": "DATABASE\/IMAGES\/PROFILE\/fff8f75bc2937e07145efdf23f74916d71bc2db5.jpg"
             },
             "followers": [
-                8
+                8,
+                15
             ],
             "following": [
                 8
@@ -349,6 +350,34 @@
             ],
             "sessionId": "$2y$10$GQPUquml7jwBrnmUHfMtiOFFCPGqLcSSpxIFuaqqACsNrjaO2zcia",
             "id": 14
+        },
+        "15": {
+            "firstname": "tessla",
+            "lastname": "carlsson",
+            "username": "tessla.c",
+            "password": "$2y$10$fMWhnOw\/voDyCGkN96SAdeKPS3p9Z2cjkh1Qf9BjHWfdlVgBEKljO",
+            "email": "tesslamc55@gmail.com",
+            "birthday": "2000-12-19",
+            "region": "US",
+            "active_streaming_services": [
+                "Netflix",
+                "Amazon Prime Video",
+                "Disney Plus",
+                "Apple iTunes",
+                "Hulu",
+                "HBO Max",
+                "Amazon Video",
+                "YouTube"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_6.png"
+            },
+            "followers": [],
+            "following": [
+                7
+            ],
+            "sessionId": "$2y$10$mI1rrVfeapCSU82wl8JqhO6SmOh5w.4QbpJxIiLZeplDBubupLr5a",
+            "id": 15
         }
     }
 }
