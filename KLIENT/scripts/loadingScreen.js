@@ -1,10 +1,8 @@
 
 function loadingScreen() {
+    
     const loadingScreen = document.createElement('div');
     loadingScreen.className = "loadingScreen";
-
-    // const logotype = document.createElement('img');
-    // logotype.src = "../logos/b-circle.svg";
 
     const loadingAnimaion = document.createElement('div');
     loadingAnimaion.id = "loadingAnimation";
