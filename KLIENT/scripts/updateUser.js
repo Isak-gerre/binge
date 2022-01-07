@@ -70,6 +70,7 @@ async function openSettings(userId) {
             // Om nuvarande profilbild är densamma som avatar så ska avataren markeras som selected
             if (avatarFilepath == profilePicFilepath) {
                 avatar.classList.add('profileImgSelected');
+                document.querySelector(".profileImgSelected > input").setAttribute("checked", true);
             }
 
             // Trycker man på en annan avatar så ändras den till att vara selected
