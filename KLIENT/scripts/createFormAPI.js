@@ -86,18 +86,18 @@ fetch(regionRQ)
     let providerArray = [];
     //Filtrerar baserat på vad du sökt
     filter.addEventListener("change", (e) => {
-      let startNumber = document.getElementById("region").selectedIndex == 1 ? 1 : 0;
-      if (document.getElementById("fieldSetProviders")) {
-        document.getElementById("fieldSetProviders").innerHTML = "";
-      }
-      let selected = e.target.selectedOptions[startNumber].getAttribute("name");
-      let length = e.originalTarget.options.length;
-      for (let i = 1; i < length; i++) {
-        if (e.originalTarget.options[i].innerHTML == selected) {
-          document.getElementById("region").selectedIndex = i;
-          break;
-        }
-      }
+      // let startNumber = document.getElementById("region").selectedIndex == 1 ? 1 : 0;
+      // if (document.getElementById("fieldSetProviders")) {
+      //   document.getElementById("fieldSetProviders").innerHTML = "";
+      // }
+      // let selected = e.target.selectedOptions[startNumber].getAttribute("name");
+      // let length = e.originalTarget.options.length;
+      // for (let i = 1; i < length; i++) {
+      //   if (e.originalTarget.options[i].innerHTML == selected) {
+      //     document.getElementById("region").selectedIndex = i;
+      //     break;
+      //   }
+      // }
 
       //Gör en sökning efter varje provider från apin och laddar hem dem som är specifika till den regionen
       providerArray = [];

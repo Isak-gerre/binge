@@ -68,7 +68,6 @@
   gap: $wrapperPadding;
 
   z-index: 20;
-  height: 100vh;
   width: 100vw;
   padding: $wrapperPadding;
 
@@ -100,25 +99,42 @@
 }
 
 // Form
-#loginForm,
-#signUpForm > fieldset {
-  @include flex(column, center, center);
-  gap: $betweenPadding;
-  width: 80%;
-
-  #input {
-    @include flex(column, center, flex-start);
+#loginForm, #signUpForm > fieldset {
+    @include flex(column, center, center);
+    gap: $betweenPadding;
     width: 100%;
-    padding: $innerPadding;
-    grid-column: 1 / span 2;
+ 
+    #input {
+        @include flex(column, center, flex-start);
+        width: 100%;
+        padding: $innerPadding;
+        grid-column: 1 / span 2;
 
-    // border: 1px solid black;
-    border-radius: $borderRadiusButtons;
-    background-color: $activityColor;
+        border: 1px solid black;
+        border-radius: $borderRadiusButtons;
+        background-color: $activityColor;
 
-    label {
-      @include xSmallFont();
-      margin-left: $betweenPadding;
+        label {
+            @include xSmallFont();
+            margin-left: $betweenPadding
+        }
+
+        input {
+            @include bodyFont();
+            border: none;
+            width: 100%;
+            padding: 0 10px;
+            background: none;
+            
+            transition: color 0.5s;
+        }
+        
+    }
+    
+    
+    #buttonWrapper {
+        @include flex(row, center, center);
+        gap: $betweenPadding;
     }
 
     input {
@@ -130,7 +146,7 @@
 
       transition: color 0.5s;
     }
-  }
+  
 
   #buttonWrapper {
     @include flex(row, center, center);
@@ -169,12 +185,10 @@
 }
 
 #signUpForm div:first-child {
-  @include flex(row, center, center);
-  margin-top: $wrapperPadding;
-  h1 {
-    @include bigTitleFont();
-  }
-  // flex-basis: 10vh;
+    @include flex(row, center, center);
+    margin-top: $wrapperPadding;
+    h1 { @include bigTitleFont(); }
+    // flex-basis: 10vh;
 }
 
 #signUpForm > fieldset {
@@ -187,20 +201,19 @@
 }
 
 #createUserP2 {
-  select,
-  option {
-    color: $darkFont;
-  }
-
-  select,
-  .searchProvider {
-    width: 100%;
-    height: 35px;
-    padding: $innerPadding;
-    background-color: $activityColor;
     border: none;
-    border-radius: $borderRadiusButtons;
-  }
+    select, option {
+        color: $darkFont;
+    }
+
+    select, .searchProvider {
+        width: 100%;
+        height: 35px;
+        padding: $innerPadding;
+        background-color: $activityColor;
+        border: none;
+        border-radius: $borderRadiusButtons;
+    }
 
   #fieldSetProviders {
     flex-grow: 1;
@@ -235,45 +248,53 @@
   }
 }
 
-#createUserP3 {
-  #avatars {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: $betweenPadding;
+#createUserP3, #updateProfilePic {
+    #avatars {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: $betweenPadding;
 
-    p {
-      margin: none;
-      @include smallTitleFont();
-      grid-area: 1 / span 2;
+        p {
+            margin: none;
+            @include smallTitleFont();
+            grid-area: 1 / span 2;
+        }
+
+        label {
+            margin: auto;
+        }
+
+        label.profileImgSelected {
+            background-color: $activityColor;
+            border-radius: $borderRadiusObjects;
+        }
     }
 
-    label {
-      margin: auto;
+    #uploadProfilePic {
+        @include flex(column, center, flex-start);
+        gap: $betweenPadding;
+        width: 100%;
+
+        margin: $wrapperPadding 0;
+        p {
+            margin: none;
+            @include smallTitleFont();
+        }
+
+        #fileToUpload {
+            width: 100%;
+            margin: auto;
+
+            @include bodyFont();
+        }
     }
 
     label.profileImgSelected {
       background-color: $activityColor;
       border-radius: $borderRadiusObjects;
     }
-  }
-
-  #uploadProfilePic {
-    @include flex(column, center, flex-start);
-    gap: $betweenPadding;
-    margin: $wrapperPadding 0;
-    p {
-      margin: none;
-      @include smallTitleFont();
-    }
-
-    #fileToUpload {
-      width: 100%;
-      margin: auto;
-
-      @include bodyFont();
-    }
-  }
+}
 
   #signInButton {
     width: 120px;
@@ -286,4 +307,4 @@
     border-radius: $borderRadiusButtons;
     border: none;
   }
-}
+

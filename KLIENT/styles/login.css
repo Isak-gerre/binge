@@ -90,7 +90,6 @@
           align-items: center;
   gap: 25px;
   z-index: 20;
-  height: 100vh;
   width: 100vw;
   padding: 25px;
   opacity: 10;
@@ -125,8 +124,7 @@
   text-decoration: underline;
 }
 
-#loginForm,
-#signUpForm > fieldset {
+#loginForm, #signUpForm > fieldset {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -141,11 +139,10 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
-  width: 80%;
+  width: 100%;
 }
 
-#loginForm #input,
-#signUpForm > fieldset #input {
+#loginForm #input, #signUpForm > fieldset #input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -164,19 +161,18 @@
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-column: 1 / span 2;
+  border: 1px solid black;
   border-radius: 30px;
   background-color: #6F6D82;
 }
 
-#loginForm #input label,
-#signUpForm > fieldset #input label {
+#loginForm #input label, #signUpForm > fieldset #input label {
   font-family: "Mulish", sans-serif;
   font-size: 12px;
   margin-left: 10px;
 }
 
-#loginForm #input input,
-#signUpForm > fieldset #input input {
+#loginForm #input input, #signUpForm > fieldset #input input {
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;
@@ -188,8 +184,7 @@
   transition: color 0.5s;
 }
 
-#loginForm #buttonWrapper,
-#signUpForm > fieldset #buttonWrapper {
+#loginForm #buttonWrapper, #signUpForm > fieldset #buttonWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -206,8 +201,36 @@
   gap: 10px;
 }
 
-#loginForm button,
-#signUpForm > fieldset button {
+#loginForm input, #signUpForm > fieldset input {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  border: none;
+  width: 100%;
+  padding: 0 10px;
+  background: none;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+}
+
+#loginForm #buttonWrapper, #signUpForm > fieldset #buttonWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+#loginForm button, #signUpForm > fieldset button {
   width: 100px;
   height: 30px;
   font-family: "Archivo", sans-serif;
@@ -291,13 +314,15 @@
   padding: 0 25px 25px;
 }
 
-#createUserP2 select,
-#createUserP2 option {
+#createUserP2 {
+  border: none;
+}
+
+#createUserP2 select, #createUserP2 option {
   color: black;
 }
 
-#createUserP2 select,
-#createUserP2 .searchProvider {
+#createUserP2 select, #createUserP2 .searchProvider {
   width: 100%;
   height: 35px;
   padding: 5px;
@@ -352,7 +377,7 @@
   border-radius: 5px;
 }
 
-#createUserP3 #avatars {
+#createUserP3 #avatars, #updateProfilePic #avatars {
   width: 100%;
   display: -ms-grid;
   display: grid;
@@ -361,7 +386,7 @@
   gap: 10px;
 }
 
-#createUserP3 #avatars p {
+#createUserP3 #avatars p, #updateProfilePic #avatars p {
   margin: none;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
@@ -370,16 +395,16 @@
   grid-area: 1 / span 2;
 }
 
-#createUserP3 #avatars label {
+#createUserP3 #avatars label, #updateProfilePic #avatars label {
   margin: auto;
 }
 
-#createUserP3 #avatars label.profileImgSelected {
+#createUserP3 #avatars label.profileImgSelected, #updateProfilePic #avatars label.profileImgSelected {
   background-color: #6F6D82;
   border-radius: 5px;
 }
 
-#createUserP3 #uploadProfilePic {
+#createUserP3 #uploadProfilePic, #updateProfilePic #uploadProfilePic {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -394,17 +419,18 @@
       -ms-flex-align: start;
           align-items: flex-start;
   gap: 10px;
+  width: 100%;
   margin: 25px 0;
 }
 
-#createUserP3 #uploadProfilePic p {
+#createUserP3 #uploadProfilePic p, #updateProfilePic #uploadProfilePic p {
   margin: none;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
   padding-bottom: 5px;
 }
 
-#createUserP3 #uploadProfilePic #fileToUpload {
+#createUserP3 #uploadProfilePic #fileToUpload, #updateProfilePic #uploadProfilePic #fileToUpload {
   width: 100%;
   margin: auto;
   font-family: "Mulish", sans-serif;
@@ -412,7 +438,12 @@
   line-height: 1.4;
 }
 
-#createUserP3 #signInButton {
+#createUserP3 label.profileImgSelected, #updateProfilePic label.profileImgSelected {
+  background-color: #6F6D82;
+  border-radius: 5px;
+}
+
+#signInButton {
   width: 120px;
   height: 30px;
   font-family: "Archivo", sans-serif;
