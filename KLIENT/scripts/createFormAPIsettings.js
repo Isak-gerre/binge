@@ -2,7 +2,7 @@
 
 
 
-document.getElementById("settingOrPlus").addEventListener("click", () => {
+function getProviders() {
   // Ta bort API-nyckel, lägg den i APIn
   let regionRQ = new Request(
     "https://api.themoviedb.org/3/watch/providers/regions?api_key=f5c0e0db147d0e6434391f3ff153b6a8"
@@ -15,6 +15,7 @@ document.getElementById("settingOrPlus").addEventListener("click", () => {
       let selectRegion = document.createElement("select");
       selectRegion.setAttribute("id", "region");
       selectRegion.setAttribute("name", "region");
+
       data.results.forEach((region) => {
         //Varje option fylls med alla regions
         let opt = document.createElement("option");
@@ -26,7 +27,9 @@ document.getElementById("settingOrPlus").addEventListener("click", () => {
       });
 
       //Skapar en slect för region
-      document.getElementById("createUserP2").append(selectRegion);
+      if (document.getElementById("createUserP2")) {
+        document.getElementById("createUserP2").append(selectRegion);
+      }
 
       //Selectar värdet som kommer finnas på select region.
       let filter = selectRegion;
@@ -138,6 +141,7 @@ document.getElementById("settingOrPlus").addEventListener("click", () => {
           document.querySelector("input[name=lastname]").value = data[0].lastname;
           document.querySelector("input[name=email]").value = data[0].email;
           document.querySelector("input[name=birthday]").value = data[0].birthday;
+
           document.querySelector(`option[id=${data[0].region}]`).setAttribute("selected", true);
 
           filter.value = document.querySelector(`option[id=${data[0].region}]`).value;
@@ -166,5 +170,5 @@ document.getElementById("settingOrPlus").addEventListener("click", () => {
           console.log(data[0].profile_picture.filepath);
         });
     });
-});
+};
 

@@ -123,6 +123,10 @@ async function openSettings(userId) {
         <button id="signInButton">Update</button>
     `;
 
+    getProviders();
+
+    settingsWindow.append(closeTab, changeProfilePicContainer, form);
+
     // let data;
     // let image;
     // let pictureID;
@@ -177,8 +181,6 @@ async function openSettings(userId) {
             });
     });
 
-
-    settingsWindow.append(closeTab, changeProfilePicContainer, form);
     return settingsWindow;
 }
 
