@@ -16,7 +16,8 @@ require_once "head.php";
 <div class="drop4"></div>
 <div class="movie-profile-background"></div>
 
-<div id="wrapper">
+<div id="pWrapper">
+
     <div id="topWrapperProfile">
         <div id="profilePic"></div>
         <div id="profileInfo">
@@ -56,8 +57,8 @@ require_once "head.php";
 </div>
 
 <script src="Lib/node_modules/chart.js/dist/chart.js"></script>
-<script src="Lib/moment/moment.min.js"></script>
 <script src="Lib/pressure/pressure.min.js"></script>
+<script src="Lib/moment/moment.min.js"></script>
 <script src="scripts/functions.js"></script>
 <script src="scripts/stateManager.js"></script>
 <script src="scripts/makeMovieBanners.js"></script>

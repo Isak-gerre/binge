@@ -18,7 +18,7 @@ if ($method === "GET") {
 } else {
     sendJSON(
         ["message" => "Method not allowed"],
-        400
+        405
     );
 };
 

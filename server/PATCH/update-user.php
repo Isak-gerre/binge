@@ -106,6 +106,8 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
                 $message["email"] = "You succeded changing your email";
             }
         }
+    } else {
+        $message["email"] = "Email's emty";
     }
 
     // Om BIRTHDAY är ifyllt och inte tomt
@@ -129,6 +131,8 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
                 $message["birthday"] = "You succeded changing your birthday";
             }
         }
+    } else {
+        $message["birthday"] = "Birthday's emty";
     }
 
     // Om FIRSTNAME är ifyllt och inte tomt
@@ -140,6 +144,8 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
             $users[$userID]["firstname"] = $_POST["firstname"];
             $message["firstname"] = "You succeded changing your firstname";
         }
+    } else {
+        $message["fistname"] = "Firstname's emty";
     }
 
     if (isset($_POST["lastname"]) && $_POST["lastname"] !== "") {
@@ -149,7 +155,9 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
 
             $users[$userID]["lastname"] = $_POST["lastname"];
             $message["lastname"] = "You succeded changing your lastname";
-        }
+        } 
+    } else {
+        $message["lastname"] = "Lastname's empty";
     }
 
     // Om LOCATION är ifyllt och inte tomt
@@ -161,6 +169,8 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
             $users[$userID]["region"] = $_POST["region"];
             $message["region"] = "You succeded changing your region";
         }
+    } else {
+        $message["region"] = "Region's emty";
     }
 
     // Om active_streaming_services finns, uppdatera
@@ -176,6 +186,8 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
             }
             $message["active_streaming_services"] = "You succeded changing your active streamingservices";
         }
+    } else {
+        $message["active_streaming_service"] = "Active_streaming_service's emty";
     }
 
     // Om inte executing har ändrats till FALSE

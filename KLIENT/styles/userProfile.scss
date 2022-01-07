@@ -1,11 +1,19 @@
 @import "variables.scss";
 
-#topWrapperProfile {
+#pWrapper {
+  width: 100%;
   margin-top: 60px;
+  position: relative;
+  z-index: 200;
+  height: calc(100vh - 60px);
+}
+
+#topWrapperProfile {
   z-index: 15;
   @include flex(row, center, center);
   width: 100%;
-  padding: $betweenPadding $wrapperPadding;
+  padding: 0px $wrapperPadding;
+  padding-bottom: $betweenPadding;
   color: $lightFont;
 }
 
@@ -97,6 +105,8 @@
   border-radius: $borderRadiusButtons;
   overflow: hidden;
   background-color: #1c1452;
+  margin: 0px auto;
+  margin-bottom: 20px;
 
   div {
     @include flex(row, center, center);
@@ -168,10 +178,13 @@
 #profileWrapper {
   width: 100%;
   z-index: 15;
-  padding: $betweenPadding $wrapperPadding;
+  padding: 0px $wrapperPadding;
   padding-bottom: 90px;
-
+  padding-top: 10px;
+  height: calc(100vh - 250px);
   transition: height 1s;
+  overflow-y:scroll;
+  scroll-behavior: smooth;
 
   #watchlistContainer {
     display: grid;
@@ -467,4 +480,35 @@
 .statsP {
   @include bodyFont();
   text-align: center;
+}
+
+.container {
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    position: absolute;
+    z-index: 20000;
+    max-width: 150px;
+    right: 0;
+    bottom: -100px;
+    padding: $betweenPadding;
+  
+    button {
+      border: none;
+      @include bodyFont();
+      
+      border-radius: $borderRadiusButtons;
+      padding: $innerPadding;
+  
+      background: $gradientPeach;
+      color: $lightFont;
+      margin-top: $innerPadding;
+    }
+
+    button:first-child {
+      margin-bottom: 5px;
+    }
+  }
 }

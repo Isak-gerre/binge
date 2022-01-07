@@ -901,6 +901,8 @@
   display: -ms-flexbox;
   display: flex;
   min-height: 100px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 .movie-profile-middle .activityContainer .activityContainerLeft {
@@ -971,7 +973,7 @@
   margin: auto;
 }
 
-.movie-profile-middle .activityContainer .activityContainerRight {
+.movie-profile-middle .activityContainerRight {
   -webkit-box-flex: 1.5;
       -ms-flex-positive: 1.5;
           flex-grow: 1.5;
