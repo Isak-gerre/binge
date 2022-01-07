@@ -40,8 +40,8 @@
             transform: scale(1, 1);
   }
   100% {
-    -webkit-transform: scale(1.2, 1.2);
-            transform: scale(1.2, 1.2);
+    -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
   }
 }
 
@@ -51,8 +51,30 @@
             transform: scale(1, 1);
   }
   100% {
-    -webkit-transform: scale(1.2, 1.2);
-            transform: scale(1.2, 1.2);
+    -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+  }
+}
+
+@-webkit-keyframes bannerScaleBack {
+  0% {
+    -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+
+@keyframes bannerScaleBack {
+  0% {
+    -webkit-transform: scale(1.1, 1.1);
+            transform: scale(1.1, 1.1);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
   }
 }
 
@@ -181,6 +203,8 @@
           filter: blur(0px);
   -webkit-transform: scale(1.1, 1.1);
           transform: scale(1.1, 1.1);
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 .messageToUser {

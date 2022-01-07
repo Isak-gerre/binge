@@ -33,10 +33,7 @@ async function makeMovieBanner(movieID, activity) {
 
       // All movieBanners
       let allMovieBanner = document.querySelectorAll(".movieBanner");
-      
-      allMovieBanner.forEach((movBan) => {
-        movBan.style.filter = "blur(8px)";
-      });
+  
 
       zoomIn(allMovieBanner, e);
 
@@ -58,18 +55,17 @@ async function makeMovieBanner(movieID, activity) {
       markedAsWatched.textContent = "Marked as watched";
       markedAsWatched.className = "button";
 
-      markedAsWatched.addEventListener("click", () => {
+      markedAsWatched.addEventListener("click", (event) => {
+        event.stopPropagation();
+
         // Här skickas den ändrade aktiviteten för att ändras.
         // Typ till watched och updatera datum
 
         let focusedMovie = document.querySelector(".zoomIn");
-
-        deleteteActivity(activity.id);
         postNewActivity(activity.movieID, activity.userID, "watched");
       
         // Styles på den
         zoomOut(allMovieBanner);
-        disappearingOfActivity(focusedMovie);
 
         let message = "You have successfully marked the movie as watched";
         setTimeout(() => {
@@ -82,9 +78,10 @@ async function makeMovieBanner(movieID, activity) {
       removeFromList.textContent = "Remove from list";
       removeFromList.className = "button";
 
-      removeFromList.addEventListener("click", (e) => {
+      removeFromList.addEventListener("click", (event) => {
+        event.stopPropagation();
         // Denna knappen ska radera den från aktiviteten och griden
-        // deleteteActivity(activity.id);
+        deleteteActivity(activity.id);
         
         let focusedMovie = document.querySelector(".zoomIn");
 

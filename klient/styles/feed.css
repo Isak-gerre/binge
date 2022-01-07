@@ -171,6 +171,8 @@
   display: -ms-flexbox;
   display: flex;
   min-height: 100px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 .activityContainer .activityContainerLeft {

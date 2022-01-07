@@ -422,6 +422,88 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
     let activityContainer = document.createElement("div");
     activityContainer.classList.add("activityContainer");
 
+
+    if (page == "myProfile") {
+      activityContainer.setAttribute("data-long-press-delay", "500");
+
+      activityContainer.addEventListener("long-press", (e) => {
+        
+        // Den du trycker på kommer att få klassen zoomIn
+        e.currentTarget.className += " zoomIn";
+
+        // Variabel för alla aktiviteter som är i profileWrapper
+        let allActivities = document.querySelectorAll("#profileWrapper > .container");
+
+        // Click-event på föräldern som gör att du går ur fokus-perspektivet
+        let wrapper = document.querySelector("#profileWrapper");
+        wrapper.addEventListener("click", () => {
+          document.body.style.overflow = "visible";
+
+          if(document.querySelector(".options")){
+            document.querySelector(".options").remove();
+          }
+
+          allActivities.forEach((activitieContainer) => {
+            console.log(activitieContainer.children[1].className);
+            if (activitieContainer.children[1].className == "activityContainer"){
+              activitieContainer.style.filter = "blur(0px)";
+              activitieContainer.style.pointerEvents = 'auto';
+            } else {
+              activitieContainer.children[1].className = "activityContainer";
+            }
+          })
+        });
+
+        allActivities.forEach((element) => {
+
+          if (!element.children[1].classList.contains("zoomIn")) {
+            element.style.filter = "blur(8px)";
+            element.style.pointerEvents = "none";
+
+          } else if (element.children[1].classList.contains("zoomIn")) {
+            // Options för vad du kan göra med den
+            let options = document.createElement("div");
+            options.className = "options";
+
+            // Remove from list - button
+            let removeFromList = document.createElement("button");
+            removeFromList.textContent = "Remove from list";
+            removeFromList.className = "button";
+
+            let makeOrUpdate;
+            if (obj.type == "watched") {
+              makeOrUpdate = "Make review";
+            } else if (obj.type == "review") {
+              makeOrUpdate = " Update review";
+            }
+
+            let reviewDiv = document.createElement("button");
+            reviewDiv.textContent = makeOrUpdate;
+            reviewDiv.className = "button";
+
+            options.append(removeFromList, reviewDiv);
+            element.append(options);
+
+            // removeFromList.addEventListener("click", (event) => {
+            //   event.stopPropagation();
+            //   let focusedMovie = document.querySelector(".zoomIn");
+
+            //   //delete from db
+            //   deleteteActivity(obj.id);
+
+            //   zoomOut(allMovieBanner);
+            //   disappearingOfActivity(focusedMovie);
+
+            //   let message = "You have succesfully delted this from your watchlist";
+            //   setTimeout(() => {
+            //     messageToUser(message);
+            //   }, 1000)
+            // })
+          }
+        })
+      })
+    }
+
     let activityContainerLeft = document.createElement("div");
     activityContainerLeft.classList.add("activityContainerLeft");
 
@@ -429,7 +511,8 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
     activityContainerRight.classList.add("activityContainerRight");
     activityContainerRight.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["backdrop_path"]}')`;
     activityContainerRight.addEventListener("click", () => {
-      window.location.href = `explore.php?movieID=${obj.movieID}`;
+      goToPageAndAddToState(`explore.php?movieID=${obj.movieID}`);
+      // window.location.href = `explore.php?movieID=${obj.movieID}`;
     });
 
     //Appenda de två delarna till containern
@@ -448,7 +531,9 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
     let title = document.createElement("div");
     title.classList.add("title");
     title.textContent = movieInfo.message.title;
-    title.addEventListener("click", () => {});
+    title.addEventListener("click", () => {
+      goToPageAndAddToState(`explore.php?movieID=${obj.movieID}`);
+    });
 
     activityContainerLeft.append(type, title);
 
