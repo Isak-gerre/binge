@@ -269,7 +269,7 @@
 
 .overlay-fade .message-wrapper .button {
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 5px;
   height: 20px;
   margin: 10px 10px 10px 0;
@@ -485,7 +485,7 @@
 }
 
 .movie-profile-info .movie-profile-info-text #movie-profile-buttons .button {
-  border-radius: 10px;
+  border-radius: 30px;
   border: none;
   padding: 5px;
   height: 20px;
@@ -510,7 +510,7 @@
 }
 
 .movie-profile-info .movie-profile-info-text #movie-profile-buttons .marked {
-  border-radius: 10px;
+  border-radius: 30px;
   border: 0;
   color: #eeeeee;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
@@ -758,7 +758,7 @@
 
 .movie-profile-middle .msgBtn {
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 30px;
   border: 0;
   padding: 3px;
   height: 25px;
@@ -901,6 +901,8 @@
   display: -ms-flexbox;
   display: flex;
   min-height: 100px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 .movie-profile-middle .activityContainer .activityContainerLeft {

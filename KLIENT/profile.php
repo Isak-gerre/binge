@@ -14,45 +14,47 @@ require_once "head.php";
 ?>
 <div class="movie-profile-background"></div>
 
-<div id="topWrapperProfile">
-    <div id="profilePic"></div>
-    <div id="profileInfo">
-        <div id="usernameDiv">
-            <p id="username"></p>
-            <div id="settingOrPlus"></div>
+<div id="pWrapper">
+
+    <div id="topWrapperProfile">
+        <div id="profilePic"></div>
+        <div id="profileInfo">
+            <div id="usernameDiv">
+                <p id="username"></p>
+                <div id="settingOrPlus"></div>
+            </div>
+
+            <div id="followInfo">
+                <div id="followersDiv">
+                    <p>Followers</p>
+                    <p id="followers"></p>
+                </div>
+                <div id="followingDiv">
+                    <p>Following</p>
+                    <p id="following"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav id="profileNav">
+        <div id="watched">
+            <p>Watched</p>
         </div>
 
-        <div id="followInfo">
-            <div id="followersDiv">
-                <p>Followers</p>
-                <p id="followers"></p>
-            </div>
-            <div id="followingDiv">
-                <p>Following</p>
-                <p id="following"></p>
-            </div>
+        <div id="watchlist">
+            <p>Watchlist</p>
         </div>
+
+        <div id="stats">
+            <p>Stats</p>
+        </div>
+    </nav>
+
+    <div id="profileWrapper">
+        <!-- <canvas id="ctx" width="400" height="400"></canvas> -->
     </div>
 </div>
-
-<nav id="profileNav">
-    <div id="watched">
-        <p>Watched</p>
-    </div>
-
-    <div id="watchlist">
-        <p>Watchlist</p>
-    </div>
-
-    <div id="stats">
-        <p>Stats</p>
-    </div>
-</nav>
-
-<div id="profileWrapper">
-    <!-- <canvas id="ctx" width="400" height="400"></canvas> -->
-</div>
-
 <script src="Lib/node_modules/chart.js/dist/chart.js"></script>
 <script src="Lib/moment/moment.min.js"></script>
 <script src="Lib/pressure/pressure.min.js"></script>

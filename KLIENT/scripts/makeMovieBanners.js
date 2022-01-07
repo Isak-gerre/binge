@@ -36,16 +36,16 @@ async function makeMovieBanner(movieID, activity) {
   
 
       zoomIn(allMovieBanner, e);
-
-      // Prevent scrolling
-      document.body.style.overflow = "hidden";
-
+      
       // Click-event på föräldern 
       let wrapper = document.querySelector("#profileWrapper");
       wrapper.addEventListener("click", () => {
         zoomOut(allMovieBanner);
       });
-
+      
+      // Prevent scrolling
+      wrapper.style.overflow = "hidden";
+      
       // Options för vad du kan göra med den
       let options = document.createElement("div");
       options.className = "options";
@@ -91,7 +91,7 @@ async function makeMovieBanner(movieID, activity) {
         let message = "You have succesfully delted this from your watchlist";
         setTimeout(() => {
           messageToUser(message);
-        }, 1000)
+        }, 1500)
       })
 
       // En delay på när knapparna skapas.
