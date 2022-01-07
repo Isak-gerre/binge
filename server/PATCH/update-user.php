@@ -79,10 +79,10 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
         // $alreadyTaken = alreadyTaken($users, "email", $email);
 
         // Kollar om email redan är taget
-        // if ($alreadyTaken) {
-        //     $message["email"] = "Email already taken";
-        //     $executing = false;
-        // }
+        if ($alreadyTaken) {
+            $message["email"] = "Email already taken";
+            $executing = false;
+        }
         // Kollar så att emailen innehåller "@" och "."
         if (strpos($email, "@") === false && strpos($email, ".") === false) {
             $message["email"] = "Email has to contain ''@'' and ''.''";
@@ -96,25 +96,53 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
     }
 
     // Om BIRTHDAY är ifyllt och inte tomt
-    // if (isset($requestData["birthday"]) && !empty($requestData["birthday"])) {
-    //     $birthday = $requestData["birthday"];
-    //     $birthdayInteger = intval($birthday);
-    //     // Kollar så att det är en siffra 
-    //     if (!is_int($birthdayInteger) || $birthdayInteger === 1 || $birthdayInteger === 0) {
-    //         $message["birthday_first"] = "It has to be an integer";
-    //         $executing = false;
-    //     }
-    //     // Kollar så att det är ett rimligt år
-    //     if ($birthdayInteger < 1850 && $birthdayInteger < 2015) {
-    //         $message["birthday"] = "Insert a valid birthday";
-    //         $executing = false;
-    //     }
-    //     // Om inget fel upptäckts så ändra vi nyckeln
-    //     if ($executing) {
-    //         $users[$userID]["birthday"] = $requestData["birthday"];
-    //         $message["birthday"] = "You succeded changing your birthday";
-    //     }
-    // }
+    if (isset($requestData["birthday"]) && !empty($requestData["birthday"])) {
+        $birthday = $requestData["birthday"];
+        $birthdayInteger = intval($birthday);
+        // Kollar så att det är en siffra 
+        if (!is_int($birthdayInteger) || $birthdayInteger === 1 || $birthdayInteger === 0) {
+            $message["birthday_first"] = "It has to be an integer";
+            $executing = false;
+        }
+        // Kollar så att det är ett rimligt år
+        if ($birthdayInteger < 1850 && $birthdayInteger < 2015) {
+            $message["birthday"] = "Insert a valid birthday";
+            $executing = false;
+        }
+        // Om inget fel upptäckts så ändra vi nyckeln
+        if ($executing) {
+            $users[$userID]["birthday"] = $requestData["birthday"];
+            $message["birthday"] = "You succeded changing your birthday";
+        }
+    }
+    
+    //Password 
+    if (isset($_POST["old_password"]) || isset($_POST["password"]) || isset($_POST["confirm_password"])) {
+        if (!isset($_POST["old_password"]) || !isset($_POST["password"]) || !isset($_POST["confirm_password"])){
+            $message["password"] = "All fields must be filled";
+            $executing = false;
+        }
+        if (isset($_POST["old_password"])) {
+            if(!password_verify($_POST['old_password'], $users[$userID]["password"])){
+                $message["password"] = "Wrong password";
+                $executing = false;
+            }
+            else{
+                if ($_POST["password"] != $_POST["confirm_password"]) {
+                    sendJSON(["message" => "Passwords do not match"], 409);
+                }
+                else{
+                    $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                    if ($executing) {
+                        $users[$userID]["password"] = $hashedPassword;
+                        $message["password"] = "You changed your password";
+                    }
+                }
+                
+            }
+        }
+    }
+
 
     // Om FIRSTNAME är ifyllt och inte tomt
     if (isset($_POST["firstname"])) {

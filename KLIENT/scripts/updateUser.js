@@ -123,9 +123,7 @@ async function openSettings(userId) {
         <button id="signInButton">Update</button>
     `;
 
-    // let data;
-    // let image;
-    // let pictureID;
+    getRegions();
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();

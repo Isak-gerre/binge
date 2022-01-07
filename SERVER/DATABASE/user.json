@@ -177,10 +177,10 @@
             ]
         },
         "7": {
-            "firstname": "Ivan",
+            "firstname": "Ivannanna",
             "lastname": "Knezevic",
             "username": "ivan",
-            "password": "$2y$10$1IGPlzodXnZ.djQ3on9gzuuIknbW7To\/MrxGRWFATa7X3DKdKt.g6",
+            "password": "$2y$10$U5Tds2\/i59pO5TmW8JpElu\/NKTjj2T9s4cKdS4KbjhIUL2MBVWQ32",
             "email": "ivan.k@live.se",
             "birthday": "2000-12-13",
             "region": "SE",
@@ -200,7 +200,8 @@
                 15
             ],
             "following": [
-                8
+                8,
+                15
             ],
             "sessionId": "$2y$10$ZM3StiAJ7S\/AoaClgj26rerkw\/IcLrH53rRmAEj11GCdpqUZlJEAe",
             "id": 7
@@ -372,12 +373,65 @@
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_6.png"
             },
-            "followers": [],
+            "followers": [
+                7
+            ],
             "following": [
                 7
             ],
             "sessionId": "$2y$10$mI1rrVfeapCSU82wl8JqhO6SmOh5w.4QbpJxIiLZeplDBubupLr5a",
             "id": 15
+        },
+        "16": {
+            "firstname": "Matilda",
+            "lastname": "Ejnarsson",
+            "username": "Nuvana",
+            "password": "$2y$10$CBDge0vsGuUiDrEuyLKf\/Oa7tMy3BAMfwUijZx\/EsR2tx3aWHlvK.",
+            "email": "ivank@live.se",
+            "birthday": "2000-12-12",
+            "region": "AE",
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/PROFILE\\\/.jpg"
+            },
+            "active_streaming_services": [],
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$agS26fkRQWqccnkhyalyju2.t0yuHcp9UUS53mR50O58MU5CW.nU.",
+            "id": 16
+        },
+        "17": {
+            "firstname": "ivan",
+            "lastname": "ivan",
+            "username": "asda",
+            "password": "$2y$10$8Q3X7vuUil1EI.5YCmNe4uHmExmvvWAkRa1.xEu9DKSp7YBJVlq8q",
+            "email": "aa",
+            "birthday": "1222-12-12",
+            "region": "AE",
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/PROFILE\\\/.jpg"
+            },
+            "active_streaming_services": [],
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$\/.99PsDXTrdgUf3kaQIhiudeaKriOCnbA.aY.2ivCKdIJLEWoWrvW",
+            "id": 17
+        },
+        "18": {
+            "firstname": "ivan",
+            "lastname": "ivan",
+            "username": "asdasd",
+            "password": "$2y$10$JRk3WMQwkEgjjHHnJ0BeVeFZCYwOU4a4crbEuUnkLjxKlII2rO6me",
+            "email": "a",
+            "birthday": "2000-12-12",
+            "region": "AE",
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/PROFILE\\\/549d1723f22bedaa0f1f56a44a3e52e8c99a846c6575b1475110fee36462161f.jpg"
+            },
+            "active_streaming_services": [],
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$WvK3EFNvQhglkFypyOn1Pepk6qA3GiCdn6A2MDM32ZlutsZnZSvx2",
+            "id": 18
         }
     }
 }

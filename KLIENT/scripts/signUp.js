@@ -98,7 +98,7 @@ signUpForm.addEventListener("submit", (event) => {
     })
     .then((data) => {
         saveToSession(data, "session");
-        window.location.replace("http://localhost:2000/explore.php");
+        // window.location.replace("http://localhost:2000/explore.php");
     })
     .catch(error => {
         console.log(error);

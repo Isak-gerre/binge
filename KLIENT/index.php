@@ -1,19 +1,6 @@
 <?php
 session_start();
 require "functions.php";
-
-$method = $_SERVER["REQUEST_METHOD"];
-
-if ($method === "OPTIONS") {
-    // Tillåt alla (origins) och alla headers
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: *");
-    exit();
-}
-
-// Alla är vällkommna
-header("Access-Control-Allow-Origin: *");
-
 require "head.php";
 
 //Skapar formuläret för inlogg alternativt skapar konto 
@@ -91,11 +78,6 @@ require "head.php";
     </fieldset>
     <fieldset id="createUserP2">
         <p>Choose your streaming providers</p>
-        <?php
-        // echo "<script>";
-        // include_once "scripts/createFormAPI.js";
-        // echo "</script>";
-        ?>
     </fieldset>
     <fieldset id="createUserP3">
         <div id="avatars">
@@ -151,8 +133,3 @@ require "head.php";
 <script src="scripts/makeMovieBanners.js"></script>
 <script src="scripts/logIn.js"></script>
 <script src="scripts/signUp.js"></script>
-<?php
-// echo "<script>";
-// include_once "scripts/signUp.js";
-// echo "</script>";
-?>

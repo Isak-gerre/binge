@@ -129,6 +129,56 @@
             "comment": "",
             "rate": "",
             "updated": false
+        },
+        "64": {
+            "id": 64,
+            "userID": 7,
+            "movieID": "634649",
+            "type": "watched",
+            "date": "202201070902",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "65": {
+            "id": 65,
+            "userID": 7,
+            "movieID": "634649",
+            "type": "review",
+            "date": "202201070902",
+            "comment": "Such a good movie! Loved it",
+            "rate": "5",
+            "updated": false
+        },
+        "66": {
+            "id": 66,
+            "userID": 7,
+            "movieID": "438631",
+            "type": "watchlist",
+            "date": "202201070903",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "67": {
+            "id": 67,
+            "userID": 7,
+            "movieID": "335983",
+            "type": "watchlist",
+            "date": "202201072106",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "68": {
+            "id": 68,
+            "userID": 7,
+            "movieID": "580489",
+            "type": "watchlist",
+            "date": "202201072107",
+            "comment": "",
+            "rate": "",
+            "updated": false
         }
     }
 }

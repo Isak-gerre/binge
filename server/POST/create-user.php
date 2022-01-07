@@ -68,7 +68,7 @@ foreach($_POST as $key => $value) {
 if (isset($_FILES["fileToUpload"])) {
     //Skapar ett unikt bildnamn
     $imgName = $_FILES["fileToUpload"]["name"];
-    $imgName = hash("sha256", $imgName + time());
+    $imgName = hash_file("sha256", $imgName + time());
     //Kollar filtyp
     //OBS!!!!: INTE SÄKERT SÄTT ATT KOLLA FIL MEN BÄTTRE ÄN INGET
     if ($_FILES["fileToUpload"]["type"] === "image/jpeg") {
