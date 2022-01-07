@@ -973,7 +973,7 @@
   margin: auto;
 }
 
-.movie-profile-middle .activityContainer .activityContainerRight {
+.movie-profile-middle .activityContainerRight {
   -webkit-box-flex: 1.5;
       -ms-flex-positive: 1.5;
           flex-grow: 1.5;

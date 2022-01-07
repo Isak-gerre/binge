@@ -243,7 +243,7 @@
   margin: auto;
 }
 
-.activityContainer .activityContainerRight {
+.activityContainerRight {
   -webkit-box-flex: 1.5;
       -ms-flex-positive: 1.5;
           flex-grow: 1.5;

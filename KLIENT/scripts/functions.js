@@ -15,7 +15,12 @@ highestID(){
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function (event) {
-  document.querySelector("#wrapper").style.opacity = 1;
+  if (document.querySelector("#pWrapper") != null) {
+    document.querySelector("#pWrapper").style.opacity = 1;
+  }
+  if (document.querySelector("#wrapper") != null) {
+    document.querySelector("#wrapper").style.opacity = 1;
+  }
 });
 
 // State Handlers
@@ -361,6 +366,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
     let container = document.createElement("div");
     container.classList.add("container");
 
+    console.log(appendIn)
     document.querySelector(appendIn).append(container);
 
     // Top av aktivitets container, innehåller användarnamn + datum
