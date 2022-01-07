@@ -360,6 +360,7 @@
   z-index: 15;
   padding: 0px 25px;
   padding-bottom: 90px;
+  padding-top: 10px;
   height: calc(100vh - 250px);
   -webkit-transition: height 1s;
   transition: height 1s;

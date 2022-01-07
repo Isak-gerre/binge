@@ -57,6 +57,7 @@ require_once "head.php";
 </div>
 
 <script src="Lib/node_modules/chart.js/dist/chart.js"></script>
+<script src="Lib/pressure/pressure.min.js"></script>
 <script src="Lib/moment/moment.min.js"></script>
 <script src="scripts/functions.js"></script>
 <script src="scripts/stateManager.js"></script>
