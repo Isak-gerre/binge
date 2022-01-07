@@ -152,6 +152,7 @@
 }
 
 #closeTab {
+  position: absolute;
   width: 30px;
   height: 30px;
 
@@ -357,13 +358,13 @@
     }
     
     button {
-        width: 100px;
-        height: 30px;
+        // width: 100px;
+        // height: 30px;
         
         @include postFont();
         
         background: $gradientPeach;
-        padding: $buttonPadding;
+        padding: $betweenPadding;
         border-radius: $borderRadiusButtons;
         border: none;
     }
@@ -415,8 +416,15 @@
   background-size: cover;
   background-repeat: no-repeat;
 
+  overflow: hidden;
+
   div {
     width: 100%;
+    flex-grow: 1;
+    
+    position: relative;
+    top: 20px;
+    overflow: hidden;
   }
 
 }

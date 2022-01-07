@@ -334,6 +334,7 @@
 }
 
 #closeTab {
+  position: absolute;
   width: 30px;
   height: 30px;
   border: none;
@@ -660,12 +661,10 @@
 }
 
 #settingsForm button {
-  width: 100px;
-  height: 30px;
   font-family: "Archivo", sans-serif;
   font-size: 15px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  padding: 3px;
+  padding: 10px;
   border-radius: 30px;
   border: none;
 }
@@ -754,10 +753,17 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 #changeProfilePicWindow div {
   width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  position: relative;
+  top: 20px;
+  overflow: hidden;
 }
 
 #responseDiv {

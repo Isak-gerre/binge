@@ -117,13 +117,13 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
             $birthdayInteger = intval($birthday);
             
             // Kollar så att det är ett rimligt år
-            if ($birthdayInteger < 1850 && $birthdayInteger < 2015) {
-                $message["birthday"] = "Insert a valid birthday";
+            if ($birthdayInteger < 1850 || $birthdayInteger > 2015) {
+                $message["birthdayError"] = "Insert a valid birthday";
                 $executing = false;
             }
             // Om inget fel upptäckts så ändra vi nyckeln
             if ($executing) {
-                $users[$userID]["birthday"] = $requestData["birthday"];
+                $users[$userID]["birthday"] = $_POST["birthday"];
                 $message["birthday"] = "You succeded changing your birthday";
             }
         }

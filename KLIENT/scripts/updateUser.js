@@ -102,13 +102,13 @@ async function openSettings(userId) {
             <label>Email</label>
             <input class="signInInput" type="text" name="email" placeholder="Email">
         </div>
-        <div id="input">
+        <div id="input" class="birthdayInput">
             <label>Birthday</label>
             <input class="signInInput" type="date" name="birthday" placeholder="Birthday">
         </div>
     </fieldset>
     <fieldset id="providersForm"></fieldset>
-    <button id="signInButton">Update</button>
+    <button id="signInButton">Update Profile</button>
     `;
 
     getProviders();
@@ -123,7 +123,7 @@ async function openSettings(userId) {
         
         inputs.forEach((input) => {
             if (input.value == "") {
-                errorInput(input.parentElement, "Can't be empty!");
+                errorInput(input.parentElement, "Please fill in!");
                 empty = true;
             }
         });
@@ -172,10 +172,12 @@ async function openSettings(userId) {
                         
                         errorInput(emailInput, "Please enter a valid email");
     
-                    } else if ("email" in data) {
-                        console.log("changed Email");
-                    } else if ("") {
-    
+                    } else if ("birthdayError" in data) {
+                        let birthdayInput = document.querySelector(".birthdayInput");
+                        
+                        errorInput(birthdayInput, "Please enter a valid date");
+                    } else {
+                        settingsWindow.append(responseDiv("Your profile was updated!"));
                     }
                     
                 });
@@ -262,7 +264,7 @@ function changeProfilePic(user) {
     <div id="uploadProfilePic">
         <p>Or upload your own profile picture</p>
         <input type="file" id="fileToUpload" name="fileToUpload">
-        <button id="signInButton">Update</button>
+        <button id="signInButton">Update Profile picture</button>
     </div>
     `;
 
