@@ -1,16 +1,6 @@
-// Hämtar alla aktiviteter som användarens vänner gjort från get-activitys.php
-// Sortera aktiviterna enligt datum
-// Skapa elementen, appenda dem 
-// Kallar på makeMovie profile vid klick. Movie Profile kommer upp.
-
 "use strict";
 
-// Hämta den inloggade användares id
-// let loggedInUserID = sessionStorage.getItem("loggedInUserID");
-
 const wrapper = document.getElementById("wrapper");
-
-
 const loggedInUserId = getLoggedInUserID();
 // Get the logged in userobj
 loadingScreen();
@@ -18,8 +8,7 @@ setTimeout(()=>{
     makeFeed(loggedInUserId);
 }, 1000)
 
-
-
+// create feed
 async function makeFeed(userID, counter = 1) {
     
     let activities = await getFriendsActivities(userID);
@@ -30,7 +19,7 @@ async function makeFeed(userID, counter = 1) {
         msgDiv.classList.add("msgDiv");
         
         let msgQuo = document.createElement("div");
-        msgQuo.textContent = "Well, like you said there's no friends on Wall Street. Right? - Wolf of Wallstreet";
+        msgQuo.textContent = "Nothing here yet..";
         msgQuo.classList.add("msgQuo");
         
         let msgBtn = document.createElement("button");
@@ -43,11 +32,9 @@ async function makeFeed(userID, counter = 1) {
             makeSearchOverlay("", "User");
         });
         
-        
         wrapper.append(msgDiv);
     } else {
         makeShowMoreForActis(makeFeed, "feed", "#wrapper", activities, counter);
     }
     removeLoadingOverlay();
-
 }

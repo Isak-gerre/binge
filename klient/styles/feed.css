@@ -29,12 +29,12 @@
   z-index: 3000;
 }
 
-.msgQuo {
+.msgDiv .msgQuo {
   font-style: italic;
   padding: 10px;
 }
 
-.msgBtn {
+.msgDiv .msgBtn {
   padding: 10px;
   border-radius: 30px;
   border: 0;
@@ -249,7 +249,7 @@
   margin: auto;
 }
 
-.activityContainerRight {
+.activityContainer .activityContainerRight {
   -webkit-box-flex: 1.5;
       -ms-flex-positive: 1.5;
           flex-grow: 1.5;

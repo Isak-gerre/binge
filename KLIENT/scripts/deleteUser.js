@@ -1,5 +1,0 @@
-/*
-
-Send a request of delete with session ID
-
-*/

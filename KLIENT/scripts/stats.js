@@ -1,9 +1,4 @@
-/*
-
-Create stats
-
-*/
-
+"use strict";
 async function renderChart(userId) {
   document.getElementById("profileWrapper").innerHTML = `
     <p class="statsP">You seem to love watching: </p>

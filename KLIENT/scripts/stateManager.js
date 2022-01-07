@@ -1,8 +1,3 @@
-// Det som ska sparas i STATE
-// URL
-
-//Struktur tillkommer
-
 "use strict";
 function goToPageAndAddToState(href, search = null) {
   document.querySelector("nav").style.opacity = 1;
