@@ -96,7 +96,8 @@ async function createProfilePage() {
         if (watchedActivities.length < 1) {
             noActivitiesInfo('watched', userInfo.firstname);
         } else {
-            createActivities(watchedActivities, 'profile', "profileWrapper");
+            let activities = watchedActivities.sort((a, b) => b.date - a.date);
+            makeShowMoreForActis(makeShowMoreForActis, 'profile', "#profileWrapper", activities, 1);
         }
         
 
@@ -121,7 +122,8 @@ async function createProfilePage() {
         if (watchedActivities.length < 1) {
             noActivitiesInfo('watched');
         } else {
-            createActivities(watchedActivities, 'myProfile', "profileWrapper");
+            let activities = watchedActivities.sort((a, b) => b.date - a.date);
+            makeShowMoreForActis(makeShowMoreForActis, 'profile', "#profileWrapper", activities, 1);
         }
     }
 
@@ -139,9 +141,12 @@ function profileNav(watchedActivities, watchlist, userId, name = null) {
                 noActivitiesInfo('watched', name);
             } else {
                 if (userId == loggedInUserId) {
-                    createActivities(watchedActivities, "myProfile", "profileWrapper");
+                    let activities = watchedActivities.sort((a, b) => b.date - a.date);
+                    makeShowMoreForActis(makeShowMoreForActis, 'profile', "#profileWrapper", activities, 1);
+                    
                 } else {
-                    createActivities(watchedActivities, "profile", "profileWrapper");
+                    let activities = watchedActivities.sort((a, b) => b.date - a.date);
+                    makeShowMoreForActis(makeShowMoreForActis, 'profile', "#profileWrapper", activities, 1);
                 }
             }
         }

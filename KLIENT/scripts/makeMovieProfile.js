@@ -328,7 +328,9 @@ async function makeMovieProfile(movieID) {
       console.error(error);
     }
   }
-  createActivities(activities, "movie", "movie-profile-reviews");
+
+  activities.sort((a, b) => b.date - a.date);
+  makeShowMoreForActis(makeShowMoreForActis, 'movieProfile', "#movie-profile-reviews", activities, 1);
 
   if (activities.length == 0) {
     let message = document.createElement("p");
@@ -347,7 +349,6 @@ async function makeMovieProfile(movieID) {
   let similar = await getSimilar(movieID);
 
   await similar.message.results.forEach(async function (simMovie) {
-    console.log(simMovie);
     let movie = await makeMovieBanner(simMovie.id);
     similarMovies.append(movie);
   });
@@ -618,7 +619,9 @@ async function makeMovieProfile(movieID) {
           reviews.append(titleReview);
 
           let activities = await getActivityByMovieID(movieID);
-          createActivities(activities, "movie", "movie-profile-reviews");
+          activities.sort((a, b) => b.date - a.date);
+          makeShowMoreForActis(makeShowMoreForActis, 'movieProfile', "#movie-profile-reviews", activities, 1);
+
         }, 1000);
       }, 2500);
     }
