@@ -69,6 +69,26 @@
             "comment": "",
             "rate": "",
             "updated": false
+        },
+        "8": {
+            "id": 8,
+            "userID": 4,
+            "movieID": "646380",
+            "type": "watched",
+            "date": "202201071457",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "9": {
+            "id": 9,
+            "userID": 4,
+            "movieID": "646380",
+            "type": "watchlist",
+            "date": "202201071457",
+            "comment": "",
+            "rate": "",
+            "updated": false
         }
     }
 }

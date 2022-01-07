@@ -150,7 +150,6 @@ async function searchFunction(searchBy) {
         movie[i].style.display = "";
       }
     } else {
-
       for (i = 0; i < movie.length; i++) {
         text = movie[i].getAttribute(searchAttribute);
         if (text != null) {
@@ -172,13 +171,12 @@ async function searchFunction(searchBy) {
     let noResults = true;
     document.querySelectorAll(selector).forEach((element) => {
       if (!element.style.display.includes("none")) {
-        if (element.className.includes("placeholder")){
+        if (element.className.includes("placeholder")) {
           noResults = true;
         } else {
           noResults = false;
         }
       }
-      
     });
 
     searchWord = document.getElementById("searchField").value;
@@ -217,7 +215,9 @@ async function searchFunction(searchBy) {
       document.querySelector(".search-results").append(showMoreDiv);
       document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
       document.getElementById("show-more-btn").addEventListener("click", () => {
-        document.getElementById("show-more-btn").innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+        document.getElementById(
+          "show-more-btn"
+        ).innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
         if (document.querySelectorAll(".trending").length == 20) {
           page = 2;
         }
@@ -231,9 +231,8 @@ async function searchFunction(searchBy) {
     inputValue = document.getElementById("searchField").value;
     let searchType = "movie";
 
-    
     let x = true;
-    
+
     if (inputValue != "") {
       let searchResults = await getSearchResults(searchType, inputValue, page);
 
@@ -265,7 +264,9 @@ async function searchFunction(searchBy) {
         document.querySelector(".search-results").append(showMoreDiv);
 
         document.getElementById("show-more-btn-title").addEventListener("click", () => {
-          document.getElementById("show-more-btn-title").innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+          document.getElementById(
+            "show-more-btn-title"
+          ).innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
 
           if (document.querySelectorAll(".movieBanner").length >= 20) {
             page += 1;
@@ -295,7 +296,7 @@ async function searchFunction(searchBy) {
 
       let x = false;
 
-      if(searchResults.length !== 0) {
+      if (searchResults.length !== 0) {
         x = true;
 
         if (page == 1) {
@@ -307,7 +308,7 @@ async function searchFunction(searchBy) {
           let movieElement = makeMovieBannerFromMovie(searchResults[i]);
           movieElement.setAttribute("genre", inputValue);
           document.querySelector("#search-results").append(movieElement);
-  
+
           let lastSearch = searchResults.length - 1;
           if (i == lastSearch) {
             if (document.querySelector(".showMoreDiv")) {
@@ -332,7 +333,9 @@ async function searchFunction(searchBy) {
         document.querySelector(".search-results").append(showMoreDiv);
 
         document.getElementById("show-more-btn-genres").addEventListener("click", () => {
-          document.getElementById("show-more-btn-genres").innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+          document.getElementById(
+            "show-more-btn-genres"
+          ).innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
 
           if (document.querySelectorAll(".movieBanner").length >= 20) {
             page += 21;
@@ -360,7 +363,7 @@ async function searchFunction(searchBy) {
 
     if (inputValue != "") {
       let searchResults = await getSearchResults(searchType, inputValue, page);
-      
+
       if (page == searchResults["total_pages"] || searchResults["total_pages"] == 0) {
         x = false;
       }
@@ -400,14 +403,15 @@ async function searchFunction(searchBy) {
         document.querySelector(".search-results").append(showMoreDiv);
 
         document.getElementById("show-more-btn-actors").addEventListener("click", () => {
-          document.getElementById("show-more-btn-actors").innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+          document.getElementById(
+            "show-more-btn-actors"
+          ).innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
 
           if (document.querySelectorAll(".movieBanner").length >= 20) {
             page += 1;
             getAndShowMoviesByActors(inputValue, page);
           }
         });
-
       }
     } else {
       if (page == 1) {
@@ -427,12 +431,12 @@ async function searchFunction(searchBy) {
 
     // Hämta alla användare + plocka bort den som är inlogagd
     let users = await getUsers();
-    users = users.filter(user => user.id != loggedInUserId);
+    users = users.filter((user) => user.id != loggedInUserId);
     let newArray = [];
 
     // Om något är sökt på, gör ny array med användarna som matchar sökvärdet
     if (inputValue != "") {
-      users.forEach(user => {
+      users.forEach((user) => {
         if (user.username.includes(inputValue)) {
           newArray.push(user);
         }
@@ -443,7 +447,6 @@ async function searchFunction(searchBy) {
     // Loopa för att skapa element för användare
     for (let i = counter - 1; i <= counter + 7; i++) {
       if (inputValue == "") {
-
         // Om inget är sökt på, skapa element för ALLA användare
         // Om det finns färre än vad countern är, ta bort visa mer och bryt loop
         if (i >= users.length) {
@@ -452,10 +455,9 @@ async function searchFunction(searchBy) {
           }
           x = false;
           break;
-        };
+        }
 
         await makeUserSearchDivs(users[i]);
-
       } else {
         // Om något är sökt på, skapa element för användarna som matchar sökn.
         // Om det finns färre än vad countern är, ta bort visa mer och bryt loop
@@ -465,11 +467,10 @@ async function searchFunction(searchBy) {
           }
           x = false;
           break;
-        };
+        }
         await makeUserSearchDivs(newArray[i]);
       }
-
-    };
+    }
 
     if (document.querySelector(".showMoreDiv")) {
       document.querySelector(".showMoreDiv").remove();
@@ -488,8 +489,9 @@ async function searchFunction(searchBy) {
         searchForUsers(inputValue, counter);
 
         // ladd ikon på show more knapp
-        document.getElementById("show-more-btn").innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
-
+        document.getElementById(
+          "show-more-btn"
+        ).innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
       });
     }
   }
@@ -551,16 +553,15 @@ async function searchFunction(searchBy) {
 
     // Eventlistern för att följa/avfölja folk härifrån
     followDiv.addEventListener("click", async function (e) {
-      if (e.target.textContent == 'Unfollow') {
-        followText.textContent = 'Follow';
+      if (e.target.textContent == "Unfollow") {
+        followText.textContent = "Follow";
         followText.setAttribute("id", "follow");
         followImg.setAttribute("src", "../icons/add_circle_black.svg");
 
         // redigera db
         await followPatch(loggedInUserId, user.id);
-
-      } else if (e.target.textContent == 'Follow') {
-        followText.textContent = 'Unfollow';
+      } else if (e.target.textContent == "Follow") {
+        followText.textContent = "Unfollow";
         followText.setAttribute("id", "unfollow");
         followImg.setAttribute("src", "../icons/remove_circle_black.svg");
 

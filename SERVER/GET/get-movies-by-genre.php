@@ -12,7 +12,7 @@ function getMoviesByGenres($api_key)
 {
 
     //Get genres
-    $genres = 'http://api.themoviedb.org/3/genre/movie/list?api_key=$api_key&language=en-US';
+    $genres = "http://api.themoviedb.org/3/genre/movie/list?api_key=$api_key&language=en-US";
     $data = json_decode(file_get_contents($genres), true);
 
     $firstKeyword = [];

@@ -22,6 +22,8 @@
 let loggedInUser = getLoggedInUserID();
 // console.log(loggedInUser);
 async function makeMovieProfile(movieID) {
+  document.querySelector(".drop3").remove();
+  document.querySelector(".drop4").remove();
   let user = await getUserInfo(loggedInUser);
   // console.log(user);
 
@@ -72,7 +74,7 @@ async function makeMovieProfile(movieID) {
   let poster = document.createElement("img");
   poster.className = "movie-profile-poster";
 
-  console.log(movieInfo["poster_path"])
+  console.log(movieInfo["poster_path"]);
   if (movieInfo["poster_path"] == null) {
     poster.setAttribute("src", "../icons/image.svg");
     poster.style.background = "white";
@@ -290,12 +292,10 @@ async function makeMovieProfile(movieID) {
         image.style.backgroundImage = `url(https://image.tmdb.org/t/p/w200/${person.profile_path})`;
       }
       name.textContent = person.name;
-
     } else {
       image.style.backgroundImage = `url(../icons/face.svg)`;
       name.textContent = "Jane Doe";
     }
-
 
     productionPeople.addEventListener("click", () => {
       let name = person.name.toLowerCase();
@@ -505,7 +505,6 @@ async function makeMovieProfile(movieID) {
           review.textContent = "Review";
         });
         buttonHolder.append(deleteButton);
-
       } else {
         labelHolder.append(labelComment);
       }
@@ -520,13 +519,11 @@ async function makeMovieProfile(movieID) {
         textArea.textContent = relation.review.comment;
       }
 
-
       // Submit-button
       let submitButton = document.createElement("button");
       submitButton.setAttribute("type", "submit");
       submitButton.className = "submit button";
       submitButton.textContent = "Submit";
-
 
       // Appends
       topDiv.append(title, exitButton);
@@ -545,7 +542,6 @@ async function makeMovieProfile(movieID) {
 
     overlayFade.append(messageWrapper);
     document.body.append(overlayFade);
-
 
     // Exit clickevent
     document.querySelector(".exit").addEventListener("click", () => {
