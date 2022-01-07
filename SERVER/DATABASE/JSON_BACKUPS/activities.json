@@ -339,26 +339,6 @@
             "comment": "",
             "rate": "",
             "updated": false
-        },
-        "110": {
-            "id": 110,
-            "userID": 2,
-            "movieID": "634649",
-            "type": "watched",
-            "date": "202201071751",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "111": {
-            "id": 111,
-            "userID": 2,
-            "movieID": "634649",
-            "type": "review",
-            "date": "202201071758",
-            "comment": "hej",
-            "rate": "5",
-            "updated": true
         }
     }
 }

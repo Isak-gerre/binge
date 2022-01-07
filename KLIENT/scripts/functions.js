@@ -359,343 +359,343 @@ function howManyDaysAgo(recievedDate) {
 // Skapat aktivteter till feed och profile
 async function createActivities(obj, page, appendIn = "#wrapper") {
 
-    let movieInfo = await getMovieInfo(obj.movieID);
-    let userInfo = await getUserInfo(obj.userID);
+  let movieInfo = await getMovieInfo(obj.movieID);
+  let userInfo = await getUserInfo(obj.userID);
 
-    // Aktivitets containern
-    let container = document.createElement("div");
-    container.classList.add("container");
+  // Aktivitets containern
+  let container = document.createElement("div");
+  container.classList.add("container");
 
-    console.log(appendIn)
-    document.querySelector(appendIn).append(container);
+  console.log(appendIn)
+  document.querySelector(appendIn).append(container);
 
-    // Top av aktivitets container, innehåller användarnamn + datum
-    let userContainer = document.createElement("div");
-    userContainer.classList.add("userContainer");
-    container.append(userContainer);
+  // Top av aktivitets container, innehåller användarnamn + datum
+  let userContainer = document.createElement("div");
+  userContainer.classList.add("userContainer");
+  container.append(userContainer);
 
-    if (page == "feed" || page == "movie") {
-      // användarnamn
-      let userPic = document.createElement("div");
-      userPic.classList.add("userPic");
-      userPic.style.backgroundImage = `url('http://localhost:7001/${userInfo.profile_picture.filepath}')`;
+  if (page == "feed" || page == "movie") {
+    // användarnamn
+    let userPic = document.createElement("div");
+    userPic.classList.add("userPic");
+    userPic.style.backgroundImage = `url('http://localhost:7001/${userInfo.profile_picture.filepath}')`;
 
-      userPic.addEventListener("click", () => {
-        window.location.href = `profile.php?userID=${obj.userID}`;
-      });
+    userPic.addEventListener("click", () => {
+      window.location.href = `profile.php?userID=${obj.userID}`;
+    });
 
-      let username = document.createElement("div");
-      username.classList.add("username");
-      username.textContent = userInfo.username;
-      username.addEventListener("click", () => {
-        window.location.href = `profile.php?userID=${obj.userID}`;
-      });
+    let username = document.createElement("div");
+    username.classList.add("username");
+    username.textContent = userInfo.username;
+    username.addEventListener("click", () => {
+      window.location.href = `profile.php?userID=${obj.userID}`;
+    });
 
-      userContainer.append(userPic, username);
-    }
+    userContainer.append(userPic, username);
+  }
 
-    if (page == "myProfile") {
-      let deleteActivityDropdown = document.createElement("img");
-      deleteActivityDropdown.setAttribute("src", "../icons/expand_more_white.svg");
+  if (page == "profile") {
+    let deleteActivityDropdown = document.createElement("img");
+    deleteActivityDropdown.setAttribute("src", "../icons/expand_more_white.svg");
 
-      let dropDown = document.createElement("div");
-      dropDown.id = "dropDown";
-      let deleteActivity = document.createElement("p");
-      deleteActivity.textContent = "Delete activity";
+    let dropDown = document.createElement("div");
+    dropDown.id = "dropDown";
+    let deleteActivity = document.createElement("p");
+    deleteActivity.textContent = "Delete activity";
 
-      deleteActivityDropdown.addEventListener("click", (event) => {
+    deleteActivityDropdown.addEventListener("click", (event) => {
+      event.stopPropagation();
+      dropDown.append(deleteActivity);
+
+      body.addEventListener("click", (event) => {
         event.stopPropagation();
-        dropDown.append(deleteActivity);
-
-        body.addEventListener("click", (event) => {
-          event.stopPropagation();
-          dropDown.remove();
-        });
-
-        deleteActivity.addEventListener("click", function (event) {
-          event.stopPropagation();
-          deleteteActivity(obj.id);
-          dropDown.remove();
-
-          container.style.left = "100vw";
-          setTimeout(() => {
-            container.remove();
-          }, 1000);
-        });
-        userContainer.append(dropDown);
+        dropDown.remove();
       });
 
-      userContainer.append(deleteActivityDropdown);
-    }
+      deleteActivity.addEventListener("click", function (event) {
+        event.stopPropagation();
+        deleteteActivity(obj.id);
+        dropDown.remove();
 
-    //datum
-    let date = document.createElement("div");
-    date.classList.add("date");
-    date.textContent = howManyDaysAgo(obj.date);
-    userContainer.append(date);
+        container.style.left = "100vw";
+        setTimeout(() => {
+          container.remove();
+        }, 1000);
+      });
+      userContainer.append(dropDown);
+    });
 
-    // Bottom av aktivitetens container, innehåller titel + aktiviteten
-    let activityContainer = document.createElement("div");
-    activityContainer.classList.add("activityContainer");
+    userContainer.append(deleteActivityDropdown);
+  }
 
+  //datum
+  let date = document.createElement("div");
+  date.classList.add("date");
+  date.textContent = howManyDaysAgo(obj.date);
+  userContainer.append(date);
 
-    // LONG-PRESS BUTTON
-    if (page == "myProfile") {
-      activityContainer.setAttribute("data-long-press-delay", "500");
+  // Bottom av aktivitetens container, innehåller titel + aktiviteten
+  let activityContainer = document.createElement("div");
+  activityContainer.classList.add("activityContainer");
 
-      activityContainer.addEventListener("long-press", (e) => {
+  // LONG-PRESS BUTTON
+  if (page == "profile") {
+    console.log("hej")
+    activityContainer.setAttribute("data-long-press-delay", "500");
 
-        // Den du trycker på kommer att få klassen zoomIn
-        e.currentTarget.className += " zoomIn";
+    activityContainer.addEventListener("long-press", (e) => {
 
-        // Variabel för alla aktiviteter som är i profileWrapper
-        let allActivities = document.querySelectorAll("#profileWrapper > .container");
-        
-        // Click-event på föräldern som gör att du går ur fokus-perspektivet
-        let wrapper = document.querySelector("#profileWrapper");
-        
-        // Prevent scrolling
-        wrapper.style.overflow = "hidden";
+      // Den du trycker på kommer att få klassen zoomIn
+      e.currentTarget.className += " zoomIn";
 
-        wrapper.addEventListener("click", () => {
-          wrapper.style.overflow = "scroll";
+      // Variabel för alla aktiviteter som är i profileWrapper
+      let allActivities = document.querySelectorAll("#profileWrapper > .container");
 
-          if (document.querySelector(".options")) {
-            document.querySelector(".options").remove();
-          }
+      // Click-event på föräldern som gör att du går ur fokus-perspektivet
+      let wrapper = document.querySelector("#profileWrapper");
 
-          allActivities.forEach((activitieContainer) => {
-            if (activitieContainer.children[1].className == "activityContainer") {
-              activitieContainer.style.filter = "blur(0px)";
-              activitieContainer.style.pointerEvents = 'auto';
-            } else {
-              activitieContainer.children[1].className = "activityContainer";
-            }
-          })
-        });
+      // Prevent scrolling
+      wrapper.style.overflow = "hidden";
 
-        // För varje aktivitet som  finns på displayen
-        allActivities.forEach((element) => {
+      wrapper.addEventListener("click", () => {
+        wrapper.style.overflow = "scroll";
 
-          // om en activityContainer inte innehåller zoomIn lägg på blur
-          if (!element.children[1].classList.contains("zoomIn")) {
-            element.style.filter = "blur(8px)";
-            element.style.pointerEvents = "none";
+        if (document.querySelector(".options")) {
+          document.querySelector(".options").remove();
+        }
 
-            // om en aktivitet innehåller zoomIn
-          } else if (element.children[1].classList.contains("zoomIn")) {
-
-            // Options för vad du kan göra med den
-            let options = document.createElement("div");
-            options.className = "options";
-
-            // Remove from list - button
-            let removeFromList = document.createElement("button");
-            removeFromList.textContent = "Remove from list";
-            removeFromList.className = "button";
-
-            removeFromList.addEventListener("click", (event) => {
-              event.stopPropagation();
-
-              wrapper.style.overflow = "scroll";
-
-              deleteteActivity(obj.id);
-
-              if (document.querySelector(".options")) {
-                document.querySelector(".options").remove();
-              }
-
-              allActivities.forEach((activitieContainer) => {
-                if (activitieContainer.children[1].className == "activityContainer") {
-                  activitieContainer.style.filter = "blur(0px)";
-                  activitieContainer.style.pointerEvents = 'auto';
-                } else {
-                  activitieContainer.children[1].className = "activityContainer";
-                }
-              })
-
-              setTimeout(() => {
-                container.style.left = "100vw";
-                setTimeout(() => {
-                  container.remove();
-                }, 1000);
-              }, 1000);
-
-              let message = "You have succesfully delted this from your activities";
-              setTimeout(() => {
-                messageToUser(message);
-              }, 2000)
-            })
-
-            let makeOrUpdate;
-            if (obj.type == "watched") {
-              makeOrUpdate = "Make review";
-            } else if (obj.type == "review") {
-              makeOrUpdate = " Update review";
-            }
-
-            let reviewDiv = document.createElement("button");
-            reviewDiv.textContent = makeOrUpdate;
-            reviewDiv.className = "button";
-
-            reviewDiv.addEventListener("click", (event) => {
-              event.stopPropagation();
-
-              wrapper.style.overflow = "scroll";
-
-
-            })
-            // En delay på när knapparna skapas.
-            options.append(removeFromList, reviewDiv);
-            setTimeout(() => {
-              element.append(options);
-            }, 1000);
-
-            // Fucntions 
-            // function disappearingOfActivity(activityDOM) {
-            //   activityDOM.style.animation = "fadeOut 1.5s";
-            //   setTimeout(() => {
-            //     movie.remove();
-            //   }, 1500);
-            // }
-
-            function messageToUser(message) {
-              let messageDOM = document.createElement("div");
-              messageDOM.className = "messageToUser";
-
-
-              let p = document.createElement("p");
-              p.textContent = message;
-
-              messageDOM.append(p);
-              messageDOM.style.animation = "fadeIn 1s";
-              document.body.append(messageDOM);
-
-              setTimeout(() => {
-                messageDOM.style.animation = "fadeOut 1.5s";
-                setTimeout(() => {
-                  messageDOM.remove();
-                }, 1000)
-              }, 2000)
-            }
+        allActivities.forEach((activitieContainer) => {
+          if (activitieContainer.children[1].className == "activityContainer") {
+            activitieContainer.style.filter = "blur(0px)";
+            activitieContainer.style.pointerEvents = 'auto';
+          } else {
+            activitieContainer.children[1].className = "activityContainer";
           }
         })
-      })
-    }
+      });
 
-    let activityContainerLeft = document.createElement("div");
-    activityContainerLeft.classList.add("activityContainerLeft");
+      // För varje aktivitet som  finns på displayen
+      allActivities.forEach((element) => {
 
-    let activityContainerRight = document.createElement("div");
-    activityContainerRight.classList.add("activityContainerRight");
-    activityContainerRight.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["backdrop_path"]}')`;
-    activityContainerRight.addEventListener("click", () => {
-      goToPageAndAddToState(`explore.php?movieID=${obj.movieID}`);
-      // window.location.href = `explore.php?movieID=${obj.movieID}`;
-    });
+        // om en activityContainer inte innehåller zoomIn lägg på blur
+        if (!element.children[1].classList.contains("zoomIn")) {
+          element.style.filter = "blur(8px)";
+          element.style.pointerEvents = "none";
 
-    //Appenda de två delarna till containern
-    container.append(activityContainer);
+          // om en aktivitet innehåller zoomIn
+        } else if (element.children[1].classList.contains("zoomIn")) {
 
-    if (page !== "movie") {
-      activityContainer.append(activityContainerLeft, activityContainerRight);
-    } else {
-      activityContainer.append(activityContainerLeft);
-    }
+          // Options för vad du kan göra med den
+          let options = document.createElement("div");
+          options.className = "options";
 
-    // type
-    let type = document.createElement("div");
-    type.classList.add("type");
+          // Remove from list - button
+          let removeFromList = document.createElement("button");
+          removeFromList.textContent = "Remove from list";
+          removeFromList.className = "button";
 
-    let title = document.createElement("div");
-    title.classList.add("title");
-    title.textContent = movieInfo.message.title;
-    title.addEventListener("click", () => {
-      goToPageAndAddToState(`explore.php?movieID=${obj.movieID}`);
-    });
+          removeFromList.addEventListener("click", (event) => {
+            event.stopPropagation();
 
-    activityContainerLeft.append(type, title);
+            wrapper.style.overflow = "scroll";
 
-    //type text
-    let typeText = document.createElement("div");
-    typeText.classList.add("typeText");
-    typeText.textContent = obj.type;
+            deleteteActivity(obj.id);
 
-    //Type icon
-    let typeIcon = document.createElement("img");
-    typeIcon.classList.add("typeIcon");
-
-    if (obj.type == "watchlist") {
-      typeIcon.setAttribute("src", "../icons/watchlist.svg");
-    }
-
-    if (obj.type == "review") {
-      typeIcon.setAttribute("src", "../icons/rate.svg");
-
-      // stjärnor
-      if (obj.rate !== "") {
-        let rate = document.createElement("div");
-        rate.classList.add("rate");
-
-        for (let i = 0; i < obj.rate; i++) {
-          let star = document.createElement("img");
-          star.classList.add("star");
-          star.setAttribute("src", "../icons/star_gold.svg");
-          rate.append(star);
-        }
-
-        let gStars = 5 - obj.rate;
-
-        for (let i = 0; i < gStars; i++) {
-          let star = document.createElement("img");
-          star.classList.add("star");
-          star.setAttribute("src", "../icons/star_grey.svg");
-          rate.append(star);
-        }
-        activityContainerLeft.append(rate);
-      }
-
-      //kommentar om det finns
-      if (obj.comment !== "") {
-        let comment = document.createElement("div");
-        // comment.style.height = '200px';
-        comment.classList.add("comment");
-        comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
-        activityContainerLeft.append(comment);
-
-        if (obj.comment.length > 30) {
-          let expandComment = document.createElement("img");
-          expandComment.setAttribute("src", "../icons/expand_more.svg");
-          expandComment.id = "expandComment";
-
-          expandComment.addEventListener("click", () => {
-            activityContainer.classList.toggle("open");
-
-            if (activityContainer.classList.contains("open")) {
-              // console.log(activityContainer.scrollHeight);
-              expandComment.setAttribute("src", "../icons/expand_less.svg");
-              comment.textContent = `" ${obj.comment} " `;
-              let expandHeight = comment.scrollHeight;
-              comment.style.height = `${expandHeight}px`;
-            } else {
-              comment.removeAttribute("style");
-              expandComment.setAttribute("src", "../icons/expand_more.svg");
-              comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
-              // comment.style.height = '200px';
+            if (document.querySelector(".options")) {
+              document.querySelector(".options").remove();
             }
-          });
 
-          activityContainerLeft.append(expandComment);
+            allActivities.forEach((activitieContainer) => {
+              if (activitieContainer.children[1].className == "activityContainer") {
+                activitieContainer.style.filter = "blur(0px)";
+                activitieContainer.style.pointerEvents = 'auto';
+              } else {
+                activitieContainer.children[1].className = "activityContainer";
+              }
+            })
+
+            setTimeout(() => {
+              container.style.left = "100vw";
+              setTimeout(() => {
+                container.remove();
+              }, 1000);
+            }, 1000);
+
+            let message = "You have succesfully delted this from your activities";
+            setTimeout(() => {
+              messageToUser(message);
+            }, 2000)
+          })
+
+          let makeOrUpdate;
+          if (obj.type == "watched") {
+            makeOrUpdate = "Make review";
+          } else if (obj.type == "review") {
+            makeOrUpdate = " Update review";
+          }
+
+          let reviewDiv = document.createElement("button");
+          reviewDiv.textContent = makeOrUpdate;
+          reviewDiv.className = "button";
+
+          reviewDiv.addEventListener("click", (event) => {
+            event.stopPropagation();
+
+            wrapper.style.overflow = "scroll";
+
+
+          })
+          // En delay på när knapparna skapas.
+          options.append(removeFromList, reviewDiv);
+          setTimeout(() => {
+            element.append(options);
+          }, 1000);
+
+          // Fucntions 
+          // function disappearingOfActivity(activityDOM) {
+          //   activityDOM.style.animation = "fadeOut 1.5s";
+          //   setTimeout(() => {
+          //     movie.remove();
+          //   }, 1500);
+          // }
+
+          function messageToUser(message) {
+            let messageDOM = document.createElement("div");
+            messageDOM.className = "messageToUser";
+
+
+            let p = document.createElement("p");
+            p.textContent = message;
+
+            messageDOM.append(p);
+            messageDOM.style.animation = "fadeIn 1s";
+            document.body.append(messageDOM);
+
+            setTimeout(() => {
+              messageDOM.style.animation = "fadeOut 1.5s";
+              setTimeout(() => {
+                messageDOM.remove();
+              }, 1000)
+            }, 2000)
+          }
         }
+      })
+    })
+  }
+
+  let activityContainerLeft = document.createElement("div");
+  activityContainerLeft.classList.add("activityContainerLeft");
+
+  let activityContainerRight = document.createElement("div");
+  activityContainerRight.classList.add("activityContainerRight");
+  activityContainerRight.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["backdrop_path"]}')`;
+  activityContainerRight.addEventListener("click", () => {
+    goToPageAndAddToState(`explore.php?movieID=${obj.movieID}`);
+    // window.location.href = `explore.php?movieID=${obj.movieID}`;
+  });
+
+  //Appenda de två delarna till containern
+  container.append(activityContainer);
+
+  if (page !== "movie") {
+    activityContainer.append(activityContainerLeft, activityContainerRight);
+  } else {
+    activityContainer.append(activityContainerLeft);
+  }
+
+  // type
+  let type = document.createElement("div");
+  type.classList.add("type");
+
+  let title = document.createElement("div");
+  title.classList.add("title");
+  title.textContent = movieInfo.message.title;
+  title.addEventListener("click", () => {
+    goToPageAndAddToState(`explore.php?movieID=${obj.movieID}`);
+  });
+
+  activityContainerLeft.append(type, title);
+
+  //type text
+  let typeText = document.createElement("div");
+  typeText.classList.add("typeText");
+  typeText.textContent = obj.type;
+
+  //Type icon
+  let typeIcon = document.createElement("img");
+  typeIcon.classList.add("typeIcon");
+
+  if (obj.type == "watchlist") {
+    typeIcon.setAttribute("src", "../icons/watchlist.svg");
+  }
+
+  if (obj.type == "review") {
+    typeIcon.setAttribute("src", "../icons/rate.svg");
+
+    // stjärnor
+    if (obj.rate !== "") {
+      let rate = document.createElement("div");
+      rate.classList.add("rate");
+
+      for (let i = 0; i < obj.rate; i++) {
+        let star = document.createElement("img");
+        star.classList.add("star");
+        star.setAttribute("src", "../icons/star_gold.svg");
+        rate.append(star);
+      }
+
+      let gStars = 5 - obj.rate;
+
+      for (let i = 0; i < gStars; i++) {
+        let star = document.createElement("img");
+        star.classList.add("star");
+        star.setAttribute("src", "../icons/star_grey.svg");
+        rate.append(star);
+      }
+      activityContainerLeft.append(rate);
+    }
+
+    //kommentar om det finns
+    if (obj.comment !== "") {
+      let comment = document.createElement("div");
+      // comment.style.height = '200px';
+      comment.classList.add("comment");
+      comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
+      activityContainerLeft.append(comment);
+
+      if (obj.comment.length > 30) {
+        let expandComment = document.createElement("img");
+        expandComment.setAttribute("src", "../icons/expand_more.svg");
+        expandComment.id = "expandComment";
+
+        expandComment.addEventListener("click", () => {
+          activityContainer.classList.toggle("open");
+
+          if (activityContainer.classList.contains("open")) {
+            // console.log(activityContainer.scrollHeight);
+            expandComment.setAttribute("src", "../icons/expand_less.svg");
+            comment.textContent = `" ${obj.comment} " `;
+            let expandHeight = comment.scrollHeight;
+            comment.style.height = `${expandHeight}px`;
+          } else {
+            comment.removeAttribute("style");
+            expandComment.setAttribute("src", "../icons/expand_more.svg");
+            comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
+            // comment.style.height = '200px';
+          }
+        });
+
+        activityContainerLeft.append(expandComment);
       }
     }
+  }
 
-    if (obj.type == "watched") {
-      typeIcon.setAttribute("src", "../icons/watched.svg");
-    }
+  if (obj.type == "watched") {
+    typeIcon.setAttribute("src", "../icons/watched.svg");
+  }
 
-    type.append(typeText, typeIcon);
-  
+  type.append(typeText, typeIcon);
+
 }
 async function getUserActivities(id) {
   try {
@@ -821,54 +821,54 @@ async function makeShowMoreForActis(whatFunc, page, appendIn, actis, counter) {
   let x = true;
   let y = 8;
 
-  if(page == "movieProfile"){
+  if (page == "movieProfile") {
     y = 1;
   }
 
   console.log(actis);
-  
+
   for (let i = counter - 1; i <= counter + y; i++) {
     console.log("y = " + y, "i =" + i);
 
-      if (i >= actis.length) {
-          if (document.querySelector(".showMoreDiv")) {
-              document.querySelector(".showMoreDiv").remove();
-          }
-          x = false;
-          break;
+    if (i >= actis.length) {
+      if (document.querySelector(".showMoreDiv")) {
+        document.querySelector(".showMoreDiv").remove();
       }
+      x = false;
+      break;
+    }
 
-      await createActivities(actis[i], page, appendIn);
+    await createActivities(actis[i], page, appendIn);
   }
 
   if (document.querySelector(".showMoreDiv")) {
-      document.querySelector(".showMoreDiv").remove();
+    document.querySelector(".showMoreDiv").remove();
   }
 
   if (x) {
-      // Skapa show more knapp
-      let showMoreDiv = document.createElement("div");
-      showMoreDiv.className = "showMoreDiv";
-      showMoreDiv.innerHTML = `<button id="show-more-btn">Show more</button>`;
-      document.querySelector(appendIn).append(showMoreDiv);
+    // Skapa show more knapp
+    let showMoreDiv = document.createElement("div");
+    showMoreDiv.className = "showMoreDiv";
+    showMoreDiv.innerHTML = `<button id="show-more-btn">Show more</button>`;
+    document.querySelector(appendIn).append(showMoreDiv);
 
-      // Event för show-more-knapp
-      document.getElementById("show-more-btn").addEventListener("click", () => {
-        if(page == "feed") {
-            counter += 10;
-            whatFunc(loggedInUserId, counter);
-          }
-          if(page == "profile"){
-            counter += 10;
-            whatFunc(makeShowMoreForActis, "profile", "#profileWrapper", actis, counter);
-          }
-          if(page=="movieProfile"){
-            counter += 3;
-            whatFunc(makeShowMoreForActis, "movieProfile", "#movie-profile-reviews", actis, counter);
-          }
+    // Event för show-more-knapp
+    document.getElementById("show-more-btn").addEventListener("click", () => {
+      if (page == "feed") {
+        counter += 10;
+        whatFunc(loggedInUserId, counter);
+      }
+      if (page == "profile") {
+        counter += 10;
+        whatFunc(makeShowMoreForActis, "profile", "#profileWrapper", actis, counter);
+      }
+      if (page == "movieProfile") {
+        counter += 3;
+        whatFunc(makeShowMoreForActis, "movieProfile", "#movie-profile-reviews", actis, counter);
+      }
 
-          // ladd ikon på show more knapp
-          document.getElementById("show-more-btn").innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
-      });
+      // ladd ikon på show more knapp
+      document.getElementById("show-more-btn").innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
+    });
   }
 }
