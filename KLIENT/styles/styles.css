@@ -768,7 +768,6 @@ body {
   overflow: hidden;
   background-color: #1c1452;
   margin: 0px auto;
-  margin-bottom: 20px;
 }
 
 #profileNav div {
@@ -1403,6 +1402,94 @@ body {
 
 .container .options button:first-child {
   margin-bottom: 5px;
+}
+
+@-webkit-keyframes marginScale {
+  0% {
+    margin-bottom: 0px;
+  }
+  100% {
+    margin-bottom: 90px;
+  }
+}
+
+@keyframes marginScale {
+  0% {
+    margin-bottom: 0px;
+  }
+  100% {
+    margin-bottom: 90px;
+  }
+}
+
+@-webkit-keyframes marginScaleReverse {
+  0% {
+    margin-bottom: 90px;
+  }
+  100% {
+    margin-bottom: 0px;
+  }
+}
+
+@keyframes marginScaleReverse {
+  0% {
+    margin-bottom: 90px;
+  }
+  100% {
+    margin-bottom: 0px;
+  }
+}
+
+@-webkit-keyframes scaleFromZero {
+  0% {
+    -webkit-transform: scale(0.7, 0.7);
+            transform: scale(0.7, 0.7);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleFromZero {
+  0% {
+    -webkit-transform: scale(0.7, 0.7);
+            transform: scale(0.7, 0.7);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes scaleFromNormal {
+  0% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0.8, 0.5);
+            transform: scale(0.8, 0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleFromNormal {
+  0% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0.8, 0.5);
+            transform: scale(0.8, 0.5);
+    opacity: 0;
+  }
 }
 
 #overlay {
@@ -2219,7 +2306,7 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  padding: 0 0 5px 0;
+  padding: 10px 0 10px 0;
   font-family: "Archivo", sans-serif;
   font-size: 15px;
 }
@@ -2501,7 +2588,7 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  padding: 0 0 5px 0;
+  padding: 10px 0 10px 0;
   font-family: "Archivo", sans-serif;
   font-size: 15px;
 }

@@ -106,7 +106,6 @@
   overflow: hidden;
   background-color: #1c1452;
   margin: 0px auto;
-  margin-bottom: 20px;
 
   div {
     @include flex(row, center, center);
@@ -510,5 +509,51 @@
     button:first-child {
       margin-bottom: 5px;
     }
+  }
+}
+
+// .pushDownElement {
+//   animation: marginScale 1s forwards;
+//   // margin-bottom: 90px;
+//   // transition: all 1s;
+// }
+
+@keyframes marginScale {
+  0% {
+    margin-bottom: 0px;
+  }
+  100%{
+    margin-bottom: 90px;
+  }
+}
+
+@keyframes marginScaleReverse {
+  0% {
+    margin-bottom: 90px;
+  }
+  100%{
+    margin-bottom: 0px;
+  }
+}
+
+@keyframes scaleFromZero {
+  0% {
+    transform: scale(0.7, 0.7);
+    opacity: 0;
+  }
+  100%{
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleFromNormal {
+  0% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+  100%{
+    transform: scale(0.8, 0.5);
+    opacity: 0;
   }
 }

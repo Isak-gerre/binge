@@ -49,7 +49,7 @@
   display: flex;
   justify-content: space-between;
   flex-grow: 1;
-  padding: 0 0 $innerPadding 0;
+  padding: $betweenPadding 0 $betweenPadding 0;
   @include postFont();
 
   .userPic {

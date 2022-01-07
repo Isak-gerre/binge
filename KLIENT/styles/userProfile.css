@@ -226,7 +226,6 @@
   overflow: hidden;
   background-color: #1c1452;
   margin: 0px auto;
-  margin-bottom: 20px;
 }
 
 #profileNav div {
@@ -563,7 +562,7 @@
   width: 100%;
   height: 35px;
   padding: 5px;
-  background-color: #6F6D82;
+  background-color: #1c1452;
   border: none;
   border-radius: 30px;
 }
@@ -610,7 +609,7 @@
 }
 
 #settingsForm #providersForm .providersLabel.selectedProvider {
-  background-color: #6F6D82;
+  background-color: #1c1452;
   border-radius: 5px;
 }
 
@@ -636,7 +635,7 @@
   grid-column: 1 / span 2;
   border: 1px solid black;
   border-radius: 30px;
-  background-color: #6F6D82;
+  background-color: #1c1452;
   -webkit-transition: border 1s;
   transition: border 1s;
 }
@@ -861,5 +860,93 @@
 
 .container .options button:first-child {
   margin-bottom: 5px;
+}
+
+@-webkit-keyframes marginScale {
+  0% {
+    margin-bottom: 0px;
+  }
+  100% {
+    margin-bottom: 90px;
+  }
+}
+
+@keyframes marginScale {
+  0% {
+    margin-bottom: 0px;
+  }
+  100% {
+    margin-bottom: 90px;
+  }
+}
+
+@-webkit-keyframes marginScaleReverse {
+  0% {
+    margin-bottom: 90px;
+  }
+  100% {
+    margin-bottom: 0px;
+  }
+}
+
+@keyframes marginScaleReverse {
+  0% {
+    margin-bottom: 90px;
+  }
+  100% {
+    margin-bottom: 0px;
+  }
+}
+
+@-webkit-keyframes scaleFromZero {
+  0% {
+    -webkit-transform: scale(0.7, 0.7);
+            transform: scale(0.7, 0.7);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleFromZero {
+  0% {
+    -webkit-transform: scale(0.7, 0.7);
+            transform: scale(0.7, 0.7);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes scaleFromNormal {
+  0% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0.8, 0.5);
+            transform: scale(0.8, 0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes scaleFromNormal {
+  0% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0.8, 0.5);
+            transform: scale(0.8, 0.5);
+    opacity: 0;
+  }
 }
 /*# sourceMappingURL=userProfile.css.map */

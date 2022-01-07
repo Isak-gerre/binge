@@ -447,6 +447,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
 
       // Den du trycker på kommer att få klassen zoomIn
       e.currentTarget.className += " zoomIn";
+      container.style.animation = "marginScale 1s forwards";
 
       // Variabel för alla aktiviteter som är i profileWrapper
       let allActivities = document.querySelectorAll("#profileWrapper > .container");
@@ -455,21 +456,31 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
       let wrapper = document.querySelector("#profileWrapper");
 
       // Prevent scrolling
-      wrapper.style.overflow = "hidden";
+      // wrapper.style.overflow = "hidden";
 
       wrapper.addEventListener("click", () => {
-        wrapper.style.overflow = "scroll";
+        // wrapper.style.overflow = "scroll";
 
         if (document.querySelector(".options")) {
-          document.querySelector(".options").remove();
+          document.querySelector(".options > button:first-child").style.animation = "scaleFromNormal 0.5s forwards";
+          document.querySelector(".options > button:last-child").style.animation = "scaleFromNormal 0.5s forwards";
+          setTimeout(() => {
+            if(document.querySelector(".options") != null){
+              document.querySelector(".options").remove();
+
+            }
+          },500)
+         
         }
 
         allActivities.forEach((activitieContainer) => {
           if (activitieContainer.children[1].className == "activityContainer") {
             activitieContainer.style.filter = "blur(0px)";
             activitieContainer.style.pointerEvents = 'auto';
+            container.style.animation = "marginScaleReverse 1s forwards";
           } else {
             activitieContainer.children[1].className = "activityContainer";
+            container.style.animation = "marginScaleReverse 1s forwards";
           }
         })
       });
@@ -546,10 +557,13 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
 
           })
           // En delay på när knapparna skapas.
+          removeFromList.style.animation = "scaleFromZero 1s forwards";
+          reviewDiv.style.animation = "scaleFromZero 1s forwards";
           options.append(removeFromList, reviewDiv);
           setTimeout(() => {
+
             element.append(options);
-          }, 1000);
+          }, 100);
 
           // Fucntions 
           // function disappearingOfActivity(activityDOM) {
