@@ -41,5 +41,5 @@ function applyState() {
   let scroll = appliedState.scrollHeight != 0 ? `&scroll=${appliedState.scrollHeight}` : "";
   setTimeout(function () {
     window.location.href = appliedState.page.href + scroll + searchParams;
-  }, 300);
+  }, 200);
 }

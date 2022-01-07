@@ -239,7 +239,7 @@ svg:active,
   padding-bottom: 100px;
   box-sizing: border-box;
   @include flex(column, none, center);
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 
   div {
     margin: auto;

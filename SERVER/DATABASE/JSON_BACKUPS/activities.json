@@ -1,5 +1,14 @@
 {
     "activities": {
-
+        "1": {
+            "id": 1,
+            "userID": 1,
+            "movieID": "884",
+            "type": "watched",
+            "date": "202201071110",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        }
     }
 }

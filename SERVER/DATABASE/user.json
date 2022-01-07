@@ -20,7 +20,10 @@
             "followers": [
                 2
             ],
-            "following": [],
+            "following": [
+                3,
+                2
+            ],
             "sessionId": "$2y$10$O3.WrewOFvw\/kzzBux9VuOYmYbL3nA0Ba2uYkfMJ77L4W3fEOrIBS",
             "id": 1
         },
@@ -41,7 +44,9 @@
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_2.png"
             },
-            "followers": [],
+            "followers": [
+                1
+            ],
             "following": [
                 1
             ],
@@ -62,7 +67,9 @@
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_7.png"
             },
-            "followers": [],
+            "followers": [
+                1
+            ],
             "following": [],
             "sessionId": "$2y$10$Znilyoeos1BWVcpslFMV3.IsfnD50zkz2BkYxYLZ9iGFSkUAjWoWu",
             "id": 3

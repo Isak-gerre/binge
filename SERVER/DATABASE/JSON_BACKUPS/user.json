@@ -1,5 +1,75 @@
 {
     "users": {
-       
+        "1": {
+            "firstname": "lina",
+            "lastname": "andersson",
+            "username": "linkis",
+            "password": "$2y$10$s2MUJA97X2XItTePWO7Yy.dywXjrnvcLl8QbtCawKu8Z2NsMSDj6m",
+            "email": "linkis@mau.se",
+            "birthday": "1999-06-16",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "Disney Plus",
+                "HBO Max",
+                "SVT"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/PROFILE\\\/f421300d6fc2a3dcdba4d9c7bc1ce710797ed3b8cbdd4c55a8b7ce1cc3ca42d6.jpg"
+            },
+            "followers": [
+                2
+            ],
+            "following": [
+                3
+            ],
+            "sessionId": "$2y$10$O3.WrewOFvw\/kzzBux9VuOYmYbL3nA0Ba2uYkfMJ77L4W3fEOrIBS",
+            "id": 1
+        },
+        "2": {
+            "firstname": "niklas",
+            "lastname": "stavnjak",
+            "username": "nickokicken",
+            "password": "$2y$10$VP2QpceePo4QD0mBs.Uqb.71tVjm09qA71w6UrrNEIzGpo.ERDIwq",
+            "email": "niko@mau.se",
+            "birthday": "1996-08-12",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "HBO Max",
+                "SVT",
+                "Viafree"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_2.png"
+            },
+            "followers": [],
+            "following": [
+                1
+            ],
+            "sessionId": "$2y$10$tySGNoLqUQT9JlE7UPibGel3v1PGfuN1z8mLQuDHZuviDNw.m2aCW",
+            "id": 2
+        },
+        "3": {
+            "firstname": "elsa",
+            "lastname": "lindh",
+            "username": "eelsalindh",
+            "password": "$2y$10$pdEojCZ6WMfZGxpJ6UZ7VePJZpfsWnFSNiqW.7foPZQV1R9NrZ\/4S",
+            "email": "elsa@mau.se",
+            "birthday": "1999-01-14",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_7.png"
+            },
+            "followers": [
+                1
+            ],
+            "following": [],
+            "sessionId": "$2y$10$Znilyoeos1BWVcpslFMV3.IsfnD50zkz2BkYxYLZ9iGFSkUAjWoWu",
+            "id": 3
+        }
     }
 }
