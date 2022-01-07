@@ -153,6 +153,7 @@
 
 #closeTab {
   position: absolute;
+  z-index: 10000;
   width: 30px;
   height: 30px;
 
@@ -160,6 +161,8 @@
   border-radius: $borderRadiusButtons;
   background: $gradientPeach;
   padding: $buttonPadding;
+
+  margin: $wrapperPadding;
 }
 
 #profileWrapper {
@@ -233,7 +236,6 @@
   @include transitionFromLeft();
   @include flex(column, flex-start, flex-start);
   gap: $wrapperPadding;
-  padding: $wrapperPadding;
 
   background-image: url("../icons/background-m-profile.png");
   background-position: center;
@@ -247,6 +249,8 @@
 #settingsForm {
   @include flex(column, center, center);
   gap: $betweenPadding;
+
+  padding: $wrapperPadding;
   width: 100%;
 
   #informationForm {
@@ -373,6 +377,7 @@
 #settingsChangePic {
   @include flex(row, center, flex-start);
   gap: $betweenPadding;
+  padding: $wrapperPadding;
 
   width: 100%;
   position: relative;
@@ -409,8 +414,6 @@
   @include flex(column, flex-start, flex-start);
   gap: $betweenPadding;
 
-  padding: $wrapperPadding;
-
   background-image: url("../icons/background-m-profile.png");
   background-position: center;
   background-size: cover;
@@ -425,6 +428,12 @@
     position: relative;
     top: 20px;
     overflow: hidden;
+
+    padding: $wrapperPadding;
+  }
+
+  #closeTab {
+    z-index: 10001;
   }
 
 }
@@ -433,8 +442,8 @@
   @include flex(row, center, center);
 
   position: absolute;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 
   background-color: rgba($backgroundColor, 0.5);
   opacity: 0;
