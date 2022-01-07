@@ -3,7 +3,8 @@
 
 // COLORS - ska ändras till rätt senare
 $backgroundColor: #0f0b2e;
-$activityColor: #6F6D82;
+// $activityColor: #6F6D82;
+$activityColor: #1c1452;
 $mainColor: #361986;
 $accentColor: #ffb700;
 $darkFont: black;
@@ -64,26 +65,24 @@ $starSz: 30px;
   transition: top 1.5s;
 }
 
-
-
 // FONTS
 
 @mixin bigTitleFont() {
-    font-family: $headerFont;
-    font-size: 18px;
-    font-weight: bold;
+  font-family: $headerFont;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 @mixin smallTitleFont() {
-    font-family: $headerFont;
-    font-size: 16px;
-    padding-bottom: $innerPadding;
+  font-family: $headerFont;
+  font-size: 16px;
+  padding-bottom: $innerPadding;
 }
 
 @mixin bodyFont() {
-    font-family: $bodyFont;
-    font-size: 14px;
-    line-height: 1.4;
+  font-family: $bodyFont;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 @mixin postFont() {
@@ -93,6 +92,6 @@ $starSz: 30px;
 // ------------------------
 
 @mixin xSmallFont() {
-    font-family: $bodyFont;
-    font-size: 12px;
+  font-family: $bodyFont;
+  font-size: 12px;
 }
