@@ -16,7 +16,7 @@
   position: absolute;
   height: 100vh;
   width: 100vw;
-  background-color: #1c1452b3;
+  background-color: none;
   z-index: 1000;
 }
 

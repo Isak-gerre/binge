@@ -47,21 +47,22 @@
     padding: $betweenPadding $wrapperPadding;
 
     #settingOrPlus {
-      background: $gradientPeach;
-      @include flex(row, center, center);
       gap: 4px;
-
-      width: 85px;
-      border-radius: $borderRadiusButtons;
-      padding: $buttonPadding;
-
+      
       p {
         @include xSmallFont();
         padding: 0;
       }
     }
   }
+  
+  .follow{
+    @include buttonMarked();
+  }
 
+  .unfollow {
+    @include buttonNotMarked();
+  }
   #followInfo {
     @include bodyFont();
     @include flex(row, space-evenly, center);
@@ -134,10 +135,11 @@
     width: 100%;
     color: $lightFont;
     gap: $betweenPadding;
+    margin-top: 60px;
 
     #userDiv {
       @include bodyFont();
-      @include flex(row, space-between, center);
+      @include flex(row, flex-start, center);
       gap: $betweenPadding;
       width: 100%;
       height: 100px;
@@ -145,16 +147,25 @@
       // padding: $wrapperPadding;
       cursor: pointer;
 
-      img {
+      .userProfilePic {
         @include profilePicture(90px, 90px);
       }
-
-      button, div {
-        width: 70px;
-        transition: background 0.5s ease-in;
+      button {
+        margin-left: auto;
+        p {
+          margin-right: 5px;
+        }
       }
-      button#noGradient {
-        background: #1c1452;
+
+      button.follow {
+        @include buttonMarked();
+        padding: 5px 5px 5px 10px;
+        justify-content: space-between;
+      }
+      button.unfollow {
+        @include buttonNotMarked();
+        padding: 5px 5px 5px 10px;
+
       }
     }
   }
@@ -171,7 +182,6 @@
   background: $gradientPeach;
   padding: $buttonPadding;
 
-  margin: $wrapperPadding;
 }
 
 #profileWrapper {
@@ -191,25 +201,8 @@
     gap: $betweenPadding;    
     position: relative;
 
-    button {
-      border-radius: $borderRadiusButtons;
-      border: none;
-      padding: $innerPadding;
-      color: $lightFont;
-      background: $gradientPeach;
-      box-sizing: border-box;
-      filter: none;
-      @include flex(row, center, center);
-      position: absolute;
-      width: 150px;
-    }
 
-    button:first-child{
-      bottom: -35px;
-    }
-    button:last-child{
-      bottom: -70px;
-    }
+
   }
 }
 

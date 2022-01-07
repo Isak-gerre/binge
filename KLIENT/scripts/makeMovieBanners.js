@@ -44,7 +44,7 @@ async function makeMovieBanner(movieID, activity) {
       });
       
       // Prevent scrolling
-      wrapper.style.overflow = "hidden";
+      // wrapper.style.overflow = "hidden";
       
       // Options för vad du kan göra med den
       let options = document.createElement("div");
@@ -52,7 +52,7 @@ async function makeMovieBanner(movieID, activity) {
 
       // Marked as watched - button
       let markedAsWatched = document.createElement("button");
-      markedAsWatched.textContent = "Marked as watched";
+      markedAsWatched.textContent = "Watched";
       markedAsWatched.className = "button";
 
       markedAsWatched.addEventListener("click", (event) => {
@@ -75,7 +75,7 @@ async function makeMovieBanner(movieID, activity) {
 
       // Remove from list - button
       let removeFromList = document.createElement("button");
-      removeFromList.textContent = "Remove from list";
+      removeFromList.textContent = "Remove";
       removeFromList.className = "button";
 
       removeFromList.addEventListener("click", (event) => {
@@ -88,7 +88,7 @@ async function makeMovieBanner(movieID, activity) {
         zoomOut(allMovieBanner);
         disappearingOfActivity(focusedMovie);
 
-        let message = "You have succesfully delted this from your watchlist";
+        let message = "You have succesfully deleted this from your watchlist";
         setTimeout(() => {
           messageToUser(message);
         }, 1500)
@@ -102,7 +102,7 @@ async function makeMovieBanner(movieID, activity) {
 
       // Transition funktioner
       function zoomOut(allMovieBanner) {
-        document.body.style.overflow = "visible";
+        // document.body.style.overflow = "visible";
 
         if(document.querySelector(".options")){
           document.querySelector(".options").remove();
@@ -121,7 +121,7 @@ async function makeMovieBanner(movieID, activity) {
       function zoomIn(allMovieBanner, e) {
 
         // Prevent scrolling
-        document.body.style.overflow = "hidden";
+        // document.body.style.overflow = "hidden";
 
         e.target.className += " zoomIn";
 

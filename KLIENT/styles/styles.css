@@ -631,7 +631,20 @@ body {
 }
 
 #profileInfo #usernameDiv #settingOrPlus {
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  gap: 4px;
+}
+
+#profileInfo #usernameDiv #settingOrPlus p {
+  font-family: "Mulish", sans-serif;
+  font-size: 12px;
+  padding: 0;
+}
+
+#profileInfo .follow {
+  padding: 10px;
+  border-radius: 30px;
+  border: 0;
+  height: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -645,16 +658,38 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 4px;
-  width: 85px;
-  border-radius: 30px;
-  padding: 3px;
+  margin-top: 10px;
+  color: #eeeeee;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+          filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+  -ms-flex-preferred-size: 100px;
+      flex-basis: 100px;
 }
 
-#profileInfo #usernameDiv #settingOrPlus p {
-  font-family: "Mulish", sans-serif;
-  font-size: 12px;
-  padding: 0;
+#profileInfo .unfollow {
+  padding: 10px;
+  border-radius: 30px;
+  border: 0;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10px;
+  color: #eeeeee;
+  background: #1c1452;
+  -ms-flex-preferred-size: 100px;
+      flex-basis: 100px;
 }
 
 #profileInfo #followInfo {
@@ -843,6 +878,7 @@ body {
   width: 100%;
   color: #eeeeee;
   gap: 10px;
+  margin-top: 60px;
 }
 
 #followContainer #usersWrapper #userDiv {
@@ -856,9 +892,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -868,20 +904,75 @@ body {
   cursor: pointer;
 }
 
-#followContainer #usersWrapper #userDiv img {
+#followContainer #usersWrapper #userDiv .userProfilePic {
   width: 90px;
   height: 90px;
   border-radius: 50%;
 }
 
-#followContainer #usersWrapper #userDiv button, #followContainer #usersWrapper #userDiv div {
-  width: 70px;
-  -webkit-transition: background 0.5s ease-in;
-  transition: background 0.5s ease-in;
+#followContainer #usersWrapper #userDiv button {
+  margin-left: auto;
 }
 
-#followContainer #usersWrapper #userDiv button#noGradient {
+#followContainer #usersWrapper #userDiv button p {
+  margin-right: 5px;
+}
+
+#followContainer #usersWrapper #userDiv button.follow {
+  padding: 10px;
+  border-radius: 30px;
+  border: 0;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10px;
+  color: #eeeeee;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+          filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+  -ms-flex-preferred-size: 100px;
+      flex-basis: 100px;
+  padding: 5px 5px 5px 10px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#followContainer #usersWrapper #userDiv button.unfollow {
+  padding: 10px;
+  border-radius: 30px;
+  border: 0;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10px;
+  color: #eeeeee;
   background: #1c1452;
+  -ms-flex-preferred-size: 100px;
+      flex-basis: 100px;
+  padding: 5px 5px 5px 10px;
 }
 
 #closeTab {
@@ -893,7 +984,6 @@ body {
   border-radius: 30px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   padding: 3px;
-  margin: 25px;
 }
 
 #profileWrapper {
@@ -916,41 +1006,6 @@ body {
       grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   position: relative;
-}
-
-#profileWrapper #watchlistContainer button {
-  border-radius: 30px;
-  border: none;
-  padding: 5px;
-  color: #eeeeee;
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  -webkit-filter: none;
-          filter: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: absolute;
-  width: 150px;
-}
-
-#profileWrapper #watchlistContainer button:first-child {
-  bottom: -35px;
-}
-
-#profileWrapper #watchlistContainer button:last-child {
-  bottom: -70px;
 }
 
 #messageWhenEmpty {
@@ -1609,8 +1664,8 @@ body {
 }
 
 .overlay-fade .message-wrapper .top img {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 }
 
@@ -1765,7 +1820,7 @@ body {
   border: none;
   border-radius: 30px;
   padding: 5px;
-  height: 20px;
+  height: 30px;
   margin: 10px 10px 10px 0;
   cursor: pointer;
   -webkit-animation: fadeIn 1s;
@@ -1982,7 +2037,7 @@ body {
   border-radius: 30px;
   border: none;
   padding: 5px;
-  height: 20px;
+  height: 30px;
   background: #20185b;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -2225,6 +2280,7 @@ body {
   width: 100%;
   padding-right: 25px;
   padding-left: 25px;
+  overflow: visible;
 }
 
 .movie-profile-middle .msgDiv {
@@ -2243,6 +2299,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: absolute;
+  top: 50vh;
+  -webkit-transform: translateY(calc(-50% - 120px));
+          transform: translateY(calc(-50% - 120px));
+  z-index: 3000;
 }
 
 .movie-profile-middle .msgQuo {
@@ -2507,6 +2568,7 @@ body {
   width: 100%;
   padding-right: 25px;
   padding-left: 25px;
+  overflow: visible;
 }
 
 .msgDiv {
@@ -2525,6 +2587,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: absolute;
+  top: 50vh;
+  -webkit-transform: translateY(calc(-50% - 120px));
+          transform: translateY(calc(-50% - 120px));
+  z-index: 3000;
 }
 
 .msgQuo {
@@ -3165,6 +3232,37 @@ body {
   line-height: 1.4;
 }
 
+.movieBanner .options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: black;
+  position: absolute;
+  z-index: 20000;
+  min-width: 100%;
+  top: 100%;
+}
+
+.movieBanner .options button {
+  border: none;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 30px;
+  padding: 5px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  color: #eeeeee;
+  margin-top: 5px;
+}
+
+.movieBanner .options button:first-child {
+  margin-bottom: 5px;
+}
+
 #footer {
   position: relative;
   bottom: 0;
@@ -3663,7 +3761,7 @@ svg:active,
   border: none;
   border-radius: 30px;
   padding: 5px;
-  height: 20px;
+  height: 30px;
   width: 30%;
   margin: 10px 10px 10px 0;
   cursor: pointer;
@@ -4061,7 +4159,7 @@ svg:active,
   position: absolute;
   height: 100vh;
   width: 100vw;
-  background-color: #1c1452b3;
+  background-color: none;
   z-index: 1000;
 }
 

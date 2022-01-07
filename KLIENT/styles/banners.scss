@@ -159,3 +159,33 @@
     @include bodyFont();
   }
 }
+
+.movieBanner {
+  .options {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    position: absolute;
+    z-index: 20000;
+    min-width: 100%;
+    top: 100%;
+  
+    button {
+      border: none;
+      @include bodyFont();
+      
+      border-radius: $borderRadiusButtons;
+      padding: $innerPadding;
+  
+      background: $gradientPeach;
+      color: $lightFont;
+      margin-top: $innerPadding;
+    }
+  
+    button:first-child {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+

@@ -1,15 +1,5 @@
 {
     "activities": {
-        "1": {
-            "id": 1,
-            "userID": 1,
-            "movieID": "13465",
-            "type": "watched",
-            "date": "202201071113",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
         "2": {
             "id": 2,
             "userID": 4,
@@ -386,6 +376,126 @@
             "movieID": "11",
             "type": "watched",
             "date": "202201071848",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "115": {
+            "id": 115,
+            "userID": 4,
+            "movieID": "11",
+            "type": "review",
+            "date": "202201071848",
+            "comment": "B\u00e4sta Filmen ",
+            "rate": "5",
+            "updated": false
+        },
+        "116": {
+            "id": 116,
+            "userID": 1,
+            "movieID": "15302",
+            "type": "watched",
+            "date": "202201072009",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "117": {
+            "id": 117,
+            "userID": 1,
+            "movieID": "634649",
+            "type": "watchlist",
+            "date": "202201072142",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "118": {
+            "id": 118,
+            "userID": 1,
+            "movieID": "617126",
+            "type": "watchlist",
+            "date": "202201072142",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "119": {
+            "id": 119,
+            "userID": 1,
+            "movieID": "693",
+            "type": "watchlist",
+            "date": "202201072143",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "120": {
+            "id": 120,
+            "userID": 1,
+            "movieID": "241251",
+            "type": "watchlist",
+            "date": "202201072143",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "121": {
+            "id": 121,
+            "userID": 1,
+            "movieID": "60304",
+            "type": "watched",
+            "date": "202201072143",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "122": {
+            "id": 122,
+            "userID": 1,
+            "movieID": "11459",
+            "type": "watchlist",
+            "date": "202201072211",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "123": {
+            "id": 123,
+            "userID": 1,
+            "movieID": "74018",
+            "type": "watchlist",
+            "date": "202201072212",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "124": {
+            "id": 124,
+            "userID": 1,
+            "movieID": "10545",
+            "type": "watchlist",
+            "date": "202201072212",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "125": {
+            "id": 125,
+            "userID": 1,
+            "movieID": "861",
+            "type": "watchlist",
+            "date": "202201072212",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "126": {
+            "id": 126,
+            "userID": 1,
+            "movieID": "605",
+            "type": "watchlist",
+            "date": "202201072212",
             "comment": "",
             "rate": "",
             "updated": false

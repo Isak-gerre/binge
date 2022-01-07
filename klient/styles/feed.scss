@@ -4,12 +4,17 @@
   width: 100%;
   padding-right: $wrapperPadding;
   padding-left: $wrapperPadding;
+  overflow: visible;
 }
 
 .msgDiv {
   text-align: center;
   padding: $wrapperPadding;
   @include flex(column, center, center);
+  position: absolute;
+  top: 50vh;
+  transform: translateY(calc(-50% - 120px));
+  z-index: 3000;
 }
 
 .msgQuo {

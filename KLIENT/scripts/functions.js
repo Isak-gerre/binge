@@ -394,39 +394,39 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
     userContainer.append(userPic, username);
   }
 
-  if (page == "profile") {
-    let deleteActivityDropdown = document.createElement("img");
-    deleteActivityDropdown.setAttribute("src", "../icons/expand_more_white.svg");
+  // if (page == "profile") {
+  //   let deleteActivityDropdown = document.createElement("img");
+  //   deleteActivityDropdown.setAttribute("src", "../icons/expand_more_white.svg");
 
-    let dropDown = document.createElement("div");
-    dropDown.id = "dropDown";
-    let deleteActivity = document.createElement("p");
-    deleteActivity.textContent = "Delete activity";
+  //   let dropDown = document.createElement("div");
+  //   dropDown.id = "dropDown";
+  //   let deleteActivity = document.createElement("p");
+  //   deleteActivity.textContent = "Delete activity";
 
-    deleteActivityDropdown.addEventListener("click", (event) => {
-      event.stopPropagation();
-      dropDown.append(deleteActivity);
+  //   deleteActivityDropdown.addEventListener("click", (event) => {
+  //     event.stopPropagation();
+  //     dropDown.append(deleteActivity);
 
-      body.addEventListener("click", (event) => {
-        event.stopPropagation();
-        dropDown.remove();
-      });
+  //     body.addEventListener("click", (event) => {
+  //       event.stopPropagation();
+  //       dropDown.remove();
+  //     });
 
-      deleteActivity.addEventListener("click", function (event) {
-        event.stopPropagation();
-        deleteteActivity(obj.id);
-        dropDown.remove();
+  //     deleteActivity.addEventListener("click", function (event) {
+  //       event.stopPropagation();
+  //       deleteteActivity(obj.id);
+  //       dropDown.remove();
 
-        container.style.left = "100vw";
-        setTimeout(() => {
-          container.remove();
-        }, 1000);
-      });
-      userContainer.append(dropDown);
-    });
+  //       container.style.left = "100vw";
+  //       setTimeout(() => {
+  //         container.remove();
+  //       }, 1000);
+  //     });
+  //     userContainer.append(dropDown);
+  //   });
 
-    userContainer.append(deleteActivityDropdown);
-  }
+  //   userContainer.append(deleteActivityDropdown);
+  // }
 
   //datum
   let date = document.createElement("div");
@@ -440,10 +440,10 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
 
   // LONG-PRESS BUTTON
   if (page == "profile") {
-    console.log("hej")
     activityContainer.setAttribute("data-long-press-delay", "500");
 
     activityContainer.addEventListener("long-press", (e) => {
+      e.stopPropagation();
 
       // Den du trycker på kommer att få klassen zoomIn
       e.currentTarget.className += " zoomIn";
@@ -458,7 +458,8 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
       // Prevent scrolling
       // wrapper.style.overflow = "hidden";
 
-      wrapper.addEventListener("click", () => {
+      wrapper.addEventListener("click", (e) => {
+        e.stopPropagation();
         // wrapper.style.overflow = "scroll";
 
         if (document.querySelector(".options")) {
@@ -603,7 +604,8 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
   let activityContainerRight = document.createElement("div");
   activityContainerRight.classList.add("activityContainerRight");
   activityContainerRight.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${movieInfo.message["backdrop_path"]}')`;
-  activityContainerRight.addEventListener("click", () => {
+  activityContainerRight.addEventListener("click", (e) => {
+    e.stopPropagation();
     goToPageAndAddToState(`explore.php?movieID=${obj.movieID}`);
     // window.location.href = `explore.php?movieID=${obj.movieID}`;
   });
@@ -624,7 +626,8 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
   let title = document.createElement("div");
   title.classList.add("title");
   title.textContent = movieInfo.message.title;
-  title.addEventListener("click", () => {
+  title.addEventListener("click", (e) => {
+    e.stopPropagation();
     goToPageAndAddToState(`explore.php?movieID=${obj.movieID}`);
   });
 

@@ -42,6 +42,8 @@ const body = document.querySelector("body");
 const proPicCont = document.getElementById("profilePic");
 const uNameCont = document.getElementById("username");
 const settingOrPlus = document.getElementById("settingOrPlus");
+const followersDiv = document.getElementById("followersDiv");
+const followingDiv = document.getElementById("followingDiv");
 const followersCont = document.getElementById("followers");
 const followingCont = document.getElementById("following");
 
@@ -203,10 +205,11 @@ async function createProfileHeader(user, isFollowing, settings = null) {
         uNameCont.textContent = "@" + user.username;
     }
     // uNameCont.textContent = "@" + username;
-    let profilePic = document.createElement("div");
+    // let profilePic = document.createElement("div");
 
     // vi behöver ett url här va
-    profilePic.style.backgroundImage = `url("http://localhost:7001/${user.profile_picture.filepath}")`;
+    proPicCont.style.backgroundImage = `url("http://localhost:7001/${user.profile_picture.filepath}")`;
+    proPicCont.style.backgroundSize = "cover";
 
     let followers = user.followers;
     let following = user.following;
@@ -219,10 +222,12 @@ async function createProfileHeader(user, isFollowing, settings = null) {
     if (isFollowing !== null) {
         if (isFollowing) {
             profileButtonText.textContent = "Unfollow";
+            settingOrPlus.classList.add("unfollow");
             profileButtonIcon.src = "../icons/remove_circle_black.svg";
             profileButtonIcon.id = "unfollow";
         } else if (!isFollowing) {
             profileButtonText.textContent = "Follow";
+            settingOrPlus.classList.add("follow");
             profileButtonIcon.src = "../icons/add_circle_black.svg";
             profileButtonIcon.id = "follow";
         }
@@ -232,12 +237,17 @@ async function createProfileHeader(user, isFollowing, settings = null) {
         profileButtonText.textContent = 'Settings';
         profileButtonIcon.src = '../icons/settings_black.svg';
         profileButtonIcon.id = 'settings';
+        settingOrPlus.classList.add("follow");
+
     }
 
     settingOrPlus.addEventListener("click", async function () {
         let userId = user.id;
 
         if (profileButtonIcon.id == "unfollow") {
+            settingOrPlus.classList.add("follow");
+            settingOrPlus.classList.remove("unfollow");
+
             profileButtonText.textContent = "Follow";
             profileButtonIcon.id = "follow";
             isFollowing = false;
@@ -251,6 +261,10 @@ async function createProfileHeader(user, isFollowing, settings = null) {
             nrOfFollowers -= 1;
             followersCont.textContent = nrOfFollowers;
         } else if (profileButtonIcon.id == "follow") {
+            settingOrPlus.classList.remove("follow");
+
+            settingOrPlus.classList.add("unfollow");
+
             profileButtonText.textContent = "Unfollow";
             profileButtonIcon.id = "unfollow";
             isFollowing = true;
@@ -269,7 +283,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
         }
     });
 
-    followersCont.addEventListener("click", async function () {
+    followersDiv.addEventListener("click", async function () {
         // console.log(followers)
         let closeTab = document.createElement("button");
         closeTab.id = "closeTab";
@@ -287,7 +301,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
         body.prepend(followContainer);
     });
 
-    followingCont.addEventListener("click", async function () {
+    followingDiv.addEventListener("click", async function () {
         let closeTab = document.createElement("button");
         closeTab.id = "closeTab";
         closeTab.textContent = "x";
@@ -304,7 +318,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
         body.prepend(followContainer);
     });
 
-    proPicCont.append(profilePic);
+    
     settingOrPlus.append(profileButtonText, profileButtonIcon);
     followersCont.append(nrOfFollowers);
     followingCont.append(nrOfFollowing);
@@ -345,8 +359,11 @@ async function showUsers(userId, type) {
             username.textContent = "@" + user.username;
         }
 
-        let userProfilePic = document.createElement("img");
-        userProfilePic.src = `http://localhost:7001/${user.profile_picture.filepath}`;
+        let userProfilePic = document.createElement("div");
+        userProfilePic.className = 'userProfilePic';
+        userProfilePic.style.backgroundImage = `url('http://localhost:7001/${user.profile_picture.filepath}')`;
+        userProfilePic.style.backgroundSize = 'cover';
+
 
         username.addEventListener("click", () => {
             window.location.href = `profile.php?userID=${user.id}`;
@@ -364,10 +381,16 @@ async function showUsers(userId, type) {
 
         // Beroende på om användaren följs av inloggad anv. eller ej visas olika texter
         if (isFollowed) {
-            followOrUnfollow.textContent = "Unfollow";
-            followOrUnfollow.id = "noGradient";
+            followOrUnfollow.classList.add("unfollow");
+            followOrUnfollow.innerHTML = 
+                `<p>Unfollow</p>
+                <img src="../icons/remove_circle_black.svg" id="unfollow"> `;
+
         } else if (!isFollowed) {
-            followOrUnfollow.textContent = "Follow";
+            followOrUnfollow.classList.add("follow");
+            followOrUnfollow.innerHTML = 
+            `<p>Follow</p>
+            <img src="../icons/add_circle_black.svg" id="follow">`;
         }
 
         let followingCont = document.getElementById("following");

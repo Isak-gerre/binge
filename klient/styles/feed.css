@@ -3,6 +3,7 @@
   width: 100%;
   padding-right: 25px;
   padding-left: 25px;
+  overflow: visible;
 }
 
 .msgDiv {
@@ -21,6 +22,11 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: absolute;
+  top: 50vh;
+  -webkit-transform: translateY(calc(-50% - 120px));
+          transform: translateY(calc(-50% - 120px));
+  z-index: 3000;
 }
 
 .msgQuo {
