@@ -587,7 +587,7 @@
   z-index: 1000;
 }
 
-.options {
+.container .options {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -600,10 +600,11 @@
   z-index: 20000;
   max-width: 150px;
   right: 0;
-  bottom: 0;
+  bottom: -80px;
+  padding: 10px;
 }
 
-.options button {
+.container .options button {
   border: none;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
@@ -613,5 +614,9 @@
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   color: #eeeeee;
   margin-top: 5px;
+}
+
+.container .options button:first-child {
+  padding-bottom: 10px;
 }
 /*# sourceMappingURL=userProfile.css.map */

@@ -30,7 +30,7 @@
 
 .msgBtn {
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 30px;
   border: 0;
   padding: 3px;
   height: 25px;
@@ -173,6 +173,8 @@
   display: -ms-flexbox;
   display: flex;
   min-height: 100px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 .activityContainer .activityContainerLeft {
@@ -215,6 +217,7 @@
 .activityContainer .activityContainerLeft .title {
   font-family: "Archivo", sans-serif;
   font-size: 18px;
+  font-weight: bold;
 }
 
 .activityContainer .activityContainerLeft .comment {

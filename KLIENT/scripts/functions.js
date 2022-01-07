@@ -422,20 +422,44 @@ function createActivities(array, page, appendIn = "wrapper") {
     let activityContainer = document.createElement("div");
     activityContainer.classList.add("activityContainer");
 
-    if (page == "myProfile") {
-      activityContainer.addEventListener("long-press", (e) => {
-        // console.log(e.currentTarget);
 
+    if (page == "myProfile") {
+      activityContainer.setAttribute("data-long-press-delay", "500");
+
+      activityContainer.addEventListener("long-press", (e) => {
+        
+        // Den du trycker på kommer att få klassen zoomIn
         e.currentTarget.className += " zoomIn";
 
+        // Variabel för alla aktiviteter som är i profileWrapper
         let allActivities = document.querySelectorAll("#profileWrapper > .container");
-        // console.log(allActivities)
+
+        // Click-event på föräldern som gör att du går ur fokus-perspektivet
+        let wrapper = document.querySelector("#profileWrapper");
+        wrapper.addEventListener("click", () => {
+          document.body.style.overflow = "visible";
+
+          if(document.querySelector(".options")){
+            document.querySelector(".options").remove();
+          }
+
+          allActivities.forEach((activitieContainer) => {
+            console.log(activitieContainer.children[1].className);
+            if (activitieContainer.children[1].className == "activityContainer"){
+              activitieContainer.style.filter = "blur(0px)";
+              activitieContainer.style.pointerEvents = 'auto';
+            } else {
+              activitieContainer.children[1].className = "activityContainer";
+            }
+          })
+        });
 
         allActivities.forEach((element) => {
 
           if (!element.children[1].classList.contains("zoomIn")) {
             element.style.filter = "blur(8px)";
             element.style.pointerEvents = "none";
+
           } else if (element.children[1].classList.contains("zoomIn")) {
             // Options för vad du kan göra med den
             let options = document.createElement("div");
