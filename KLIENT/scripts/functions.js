@@ -319,7 +319,6 @@ async function getFollowing(id) {
 }
 
 async function getFriendsActivities(id) {
-  console.log(id);
   // Get the users following
   let user = await getFollowing(id); // session stared id
   let following = user[0].following;
@@ -339,10 +338,8 @@ function howManyDaysAgo(recievedDate) {
 }
 
 // Skapat aktivteter till feed och profile
-function createActivities(array, page, appendIn = "wrapper") {
-  array.sort((a, b) => b.date - a.date);
+async function createActivities(obj, page, appendIn = "#wrapper") {
 
-  array.forEach(async function (obj) {
     let movieInfo = await getMovieInfo(obj.movieID);
     let userInfo = await getUserInfo(obj.userID);
 
@@ -350,7 +347,7 @@ function createActivities(array, page, appendIn = "wrapper") {
     let container = document.createElement("div");
     container.classList.add("container");
 
-    document.getElementById(appendIn).append(container);
+    document.querySelector(appendIn).append(container);
 
     // Top av aktivitets container, innehåller användarnamn + datum
     let userContainer = document.createElement("div");
@@ -528,8 +525,9 @@ function createActivities(array, page, appendIn = "wrapper") {
     if (obj.type == "watched") {
       typeIcon.setAttribute("src", "../icons/watched.svg");
     }
+
     type.append(typeText, typeIcon);
-  });
+  
 }
 async function getUserActivities(id) {
   try {
@@ -649,4 +647,60 @@ async function getAllActivites(userId) {
   userActivites.sort((a, b) => b.date - a.date);
 
   return userActivites;
+}
+
+async function makeShowMoreForActis(whatFunc, page, appendIn, actis, counter) {
+  let x = true;
+  let y = 8;
+
+  if(page == "movieProfile"){
+    y = 1;
+  }
+
+  console.log(actis);
+  
+  for (let i = counter - 1; i <= counter + y; i++) {
+    console.log("y = " + y, "i =" + i);
+
+      if (i >= actis.length) {
+          if (document.querySelector(".showMoreDiv")) {
+              document.querySelector(".showMoreDiv").remove();
+          }
+          x = false;
+          break;
+      }
+
+      await createActivities(actis[i], page, appendIn);
+  }
+
+  if (document.querySelector(".showMoreDiv")) {
+      document.querySelector(".showMoreDiv").remove();
+  }
+
+  if (x) {
+      // Skapa show more knapp
+      let showMoreDiv = document.createElement("div");
+      showMoreDiv.className = "showMoreDiv";
+      showMoreDiv.innerHTML = `<button id="show-more-btn">Show more</button>`;
+      document.querySelector(appendIn).append(showMoreDiv);
+
+      // Event för show-more-knapp
+      document.getElementById("show-more-btn").addEventListener("click", () => {
+        if(page == "feed") {
+            counter += 10;
+            whatFunc(loggedInUserId, counter);
+          }
+          if(page == "profile"){
+            counter += 10;
+            whatFunc(makeShowMoreForActis, "profile", "#profileWrapper", actis, counter);
+          }
+          if(page=="movieProfile"){
+            counter += 3;
+            whatFunc(makeShowMoreForActis, "movieProfile", "#movie-profile-reviews", actis, counter);
+          }
+
+          // ladd ikon på show more knapp
+          document.getElementById("show-more-btn").innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
+      });
+  }
 }

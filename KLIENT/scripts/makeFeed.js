@@ -10,15 +10,18 @@
 
 const wrapper = document.getElementById("wrapper");
 
+
 const loggedInUserId = getLoggedInUserID();
 // Get the logged in userobj
 makeFeed(loggedInUserId);
 
-async function makeFeed(userID) {
-    // hämta id från session
-    let activities = await getFriendsActivities(userID);
 
-    if(activities.length < 1) {
+
+async function makeFeed(userID, counter = 1) {
+    let activities = await getFriendsActivities(userID);
+    activities = activities.sort((a, b) => b.date - a.date);
+
+    if (activities.length < 1) {
         let msgDiv = document.createElement("div");
         msgDiv.classList.add("msgDiv");
 
@@ -29,7 +32,7 @@ async function makeFeed(userID) {
         let msgBtn = document.createElement("button");
         msgBtn.textContent = "Find more friends to follow";
         msgBtn.classList.add("msgBtn");
-        
+
         msgDiv.append(msgQuo, msgBtn);
 
         msgBtn.addEventListener("click", () => {
@@ -38,6 +41,7 @@ async function makeFeed(userID) {
 
         wrapper.append(msgDiv);
     } else {
-        createActivities(activities, "feed");
+        makeShowMoreForActis(makeFeed, "feed", "#wrapper", activities, counter);
     }
 }
+
