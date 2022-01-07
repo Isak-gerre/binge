@@ -272,13 +272,6 @@
   padding: 25px;
 }
 
-#followContainer button {
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  padding: 3px;
-}
-
 #followContainer #usersWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -340,157 +333,16 @@
   background: #1c1452;
 }
 
-#settingsWindow {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: 100000;
-  left: 100vw;
-  -webkit-transition: left 1s;
-  transition: left 1s;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 20px;
-  background-color: #0f0b2e;
-  z-index: 100;
-}
-
-#settingsWindow #settingsForm {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-  -ms-grid-rows: (35px)[8];
-      grid-template-rows: repeat(8, 35px);
-  gap: 5px;
-  width: 100%;
-  padding: 25px;
-}
-
-#settingsWindow #settingsForm div:nth-child(1) {
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-column: 1 / span 1;
-}
-
-#settingsWindow #settingsForm div:nth-child(2) {
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-column: 2 / span 1;
-}
-
-#settingsWindow #settingsForm div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  width: 100%;
-  padding: 2px;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-column: 1 / span 2;
-  border: 1px solid black;
-  border-radius: 5px;
-}
-
-#settingsWindow #settingsForm div label {
-  font-family: "Mulish", sans-serif;
-  font-size: 12px;
-}
-
-#settingsWindow #settingsForm div input {
-  border: none;
-  width: 100%;
-  padding: 0;
-}
-
-#settingsChangePic {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 100%;
-  position: relative;
-  z-index: 100;
-}
-
-#settingsChangePic img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-
-#settingsChangePic div {
-  position: absolute;
-  margin-left: 70px;
-  margin-top: 75px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: #ffb700;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-#settingsChangePic div img {
-  width: 50%;
-  height: 50%;
-}
-
-#changeProfileWindow {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: 100000;
-  left: 100vw;
-  -webkit-transition: left 1s;
-  transition: left 1s;
-  background-color: #0f0b2e;
-}
-
 #closeTab {
+  position: absolute;
+  z-index: 10000;
   width: 30px;
   height: 30px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  padding: 3px;
+  margin: 25px;
 }
 
 #profileWrapper {
@@ -535,14 +387,15 @@
       -ms-flex-align: center;
           align-items: center;
   position: absolute;
+  width: 150px;
 }
 
 #profileWrapper #watchlistContainer button:first-child {
-  bottom: -55px;
+  bottom: -35px;
 }
 
 #profileWrapper #watchlistContainer button:last-child {
-  bottom: -105px;
+  bottom: -70px;
 }
 
 #messageWhenEmpty {
@@ -577,6 +430,376 @@
   padding: 5px 25px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   color: #eeeeee;
+}
+
+#overlay-profile {
+  position: absolute;
+  min-height: 100vh;
+  width: 100vw;
+  z-index: 15000;
+}
+
+#settingsWindow {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 100000;
+  left: 100vw;
+  -webkit-transition: left 1s;
+  transition: left 1s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 25px;
+  background-image: url("../icons/background-m-profile.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 100000;
+  overflow-y: scroll;
+}
+
+#settingsForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  padding: 25px;
+  width: 100%;
+}
+
+#settingsForm #informationForm {
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+#settingsForm #informationForm #errorIcon {
+  opacity: 0.8;
+  position: absolute;
+  right: 10px;
+}
+
+#settingsForm #informationForm #errorMessage {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.48);
+  padding: 10px;
+  border-radius: 15px;
+  right: 38px;
+  font-family: "Mulish", sans-serif;
+  font-size: 12px;
+}
+
+#settingsForm #providersForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  border: none;
+}
+
+#settingsForm #providersForm select, #settingsForm #providersForm option {
+  color: black;
+}
+
+#settingsForm #providersForm select, #settingsForm #providersForm .searchProvider {
+  width: 100%;
+  height: 35px;
+  padding: 5px;
+  background-color: #6F6D82;
+  border: none;
+  border-radius: 30px;
+}
+
+#settingsForm #providersForm #fieldSetProviders {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  font-family: "Mulish", sans-serif;
+  font-size: 12px;
+  width: 100%;
+  border: none;
+  max-height: 65vh;
+  overflow-y: scroll;
+}
+
+#settingsForm #providersForm #fieldSetProviders .providersLabel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  height: 80px;
+}
+
+#settingsForm #providersForm #fieldSetProviders .providersLabel img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+#settingsForm #providersForm .providersLabel.selectedProvider {
+  background-color: #6F6D82;
+  border-radius: 5px;
+}
+
+#settingsForm #input {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100%;
+  padding: 5px;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / span 2;
+  border: 1px solid black;
+  border-radius: 30px;
+  background-color: #6F6D82;
+  -webkit-transition: border 1s;
+  transition: border 1s;
+}
+
+#settingsForm #input label {
+  font-family: "Mulish", sans-serif;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+#settingsForm #input input {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  border: none;
+  width: 100%;
+  padding: 0 10px;
+  background: none;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+}
+
+#settingsForm #buttonWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+#settingsForm button {
+  font-family: "Archivo", sans-serif;
+  font-size: 15px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  padding: 10px;
+  border-radius: 30px;
+  border: none;
+}
+
+#settingsChangePic {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+  padding: 25px;
+  width: 100%;
+  position: relative;
+  z-index: 100;
+}
+
+#settingsChangePic div:first-child {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+}
+
+#settingsChangePic div:last-child {
+  position: absolute;
+  margin-left: 70px;
+  margin-top: 75px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#settingsChangePic div:last-child img {
+  width: 50%;
+  height: 50%;
+}
+
+#changeProfilePicWindow {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 100000;
+  left: 100vw;
+  -webkit-transition: left 1s;
+  transition: left 1s;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 10px;
+  background-image: url("../icons/background-m-profile.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+#changeProfilePicWindow div {
+  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  position: relative;
+  top: 20px;
+  overflow: hidden;
+  padding: 25px;
+}
+
+#changeProfilePicWindow #closeTab {
+  z-index: 10001;
+}
+
+#responseDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(15, 11, 46, 0.5);
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+#responseDiv p {
+  background-color: #0f0b2e;
+  padding: 20px;
+  border-radius: 5px;
 }
 
 #overlay-profile {

@@ -87,6 +87,34 @@
             "following": [],
             "sessionId": "$2y$10$T0HfOf8NVDOxFRQHdl3MKu6I6eJc\/V8\/f8HKPZwbK2zp3cZG4\/Tva",
             "id": 4
+        },
+        "5": {
+            "firstname": "Matilda",
+            "lastname": "Einarsson",
+            "username": "Mattis4life",
+            "password": "$2y$10$Xt8kBALk3RMpv90WozvFK.rSHQJoLeqCuBX7x7xX9W15baAHhH.fe",
+            "email": "matildaeinartupac@rapit.com",
+            "birthday": "",
+            "region": "SE",
+            "active_streaming_services": [
+                "Netflix",
+                "Disney Plus",
+                "C More",
+                "GuideDoc",
+                "Paramount Plus",
+                "Netflix Kids",
+                "HBO Max",
+                "Argo",
+                "Acorn TV",
+                "Rakuten TV"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/PROFILE\\\/69dcba54e86c3b10ec76828bef5766a41779c3725cb14590bf6d1039f486691e.jpg"
+            },
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$G5T5tJix2CN7XjD24Rl9zuYxxirpnxtXCd7p9GTHMLkcnIS\/IISx6",
+            "id": 5
         }
     }
 }

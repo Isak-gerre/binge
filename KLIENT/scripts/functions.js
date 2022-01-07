@@ -115,7 +115,7 @@ async function userVarification() {
       return false;
     }
   } catch (error) {
-    console.error(error);
+    // console.error(error);
   }
 }
 
