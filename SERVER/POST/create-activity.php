@@ -65,6 +65,9 @@ sendJSON([
 function createActivity($userID, $movieID, $type, $comment, $rate) {
     
     $activitiesDB = loadJSON("../DATABASE/activities.json");
+    saveJSON("../DATABASE/JSON_BACKUPS/activities.json", $activitiesDB);
+
+
     $activities = $activitiesDB["activities"];
     
     $highestId = nextHighestId($activities);
@@ -88,5 +91,3 @@ function createActivity($userID, $movieID, $type, $comment, $rate) {
     return $newActivity;
 
 }
-
-?>

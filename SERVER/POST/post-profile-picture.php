@@ -8,6 +8,8 @@ checkMethod("POST");
 if (isset($_FILES["fileToUpload"], $_POST["userID"])) {
 
     $db = loadJSON("../DATABASE/user.json");
+    saveJSON("../DATABASE/JSON_BACKUPS/user.json", $db);
+
 
     // Kontrollera att allt gick bra med PHP
     // (https://www.php.net/manual/en/features.file-upload.errors.php)
