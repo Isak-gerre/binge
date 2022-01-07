@@ -250,7 +250,7 @@
   @include flex(column, center, center);
   gap: $betweenPadding;
 
-  padding: $wrapperPadding;
+  padding: 0 $wrapperPadding $wrapperPadding $wrapperPadding;
   width: 100%;
 
   #informationForm {
