@@ -334,6 +334,16 @@ async function getFriendsActivities(id) {
   return data;
 }
 
+async function getActivityByMovieID(movieID) {
+  try {
+    let response = await fetch(`http://localhost:7001/GET/get-activities.php?movieID=${movieID}`);
+    let data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 function howManyDaysAgo(recievedDate) {
   // console.log(moment("202201011402", "YYYYMMDDhmm").fromNow());
   let stringDate = recievedDate.toString();
@@ -423,29 +433,33 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
     activityContainer.classList.add("activityContainer");
 
 
+    // LONG-PRESS BUTTON
     if (page == "myProfile") {
       activityContainer.setAttribute("data-long-press-delay", "500");
 
       activityContainer.addEventListener("long-press", (e) => {
-        
+
         // Den du trycker på kommer att få klassen zoomIn
         e.currentTarget.className += " zoomIn";
 
         // Variabel för alla aktiviteter som är i profileWrapper
         let allActivities = document.querySelectorAll("#profileWrapper > .container");
-
+        
         // Click-event på föräldern som gör att du går ur fokus-perspektivet
         let wrapper = document.querySelector("#profileWrapper");
-        wrapper.addEventListener("click", () => {
-          document.body.style.overflow = "visible";
+        
+        // Prevent scrolling
+        wrapper.style.overflow = "hidden";
 
-          if(document.querySelector(".options")){
+        wrapper.addEventListener("click", () => {
+          wrapper.style.overflow = "scroll";
+
+          if (document.querySelector(".options")) {
             document.querySelector(".options").remove();
           }
 
           allActivities.forEach((activitieContainer) => {
-            console.log(activitieContainer.children[1].className);
-            if (activitieContainer.children[1].className == "activityContainer"){
+            if (activitieContainer.children[1].className == "activityContainer") {
               activitieContainer.style.filter = "blur(0px)";
               activitieContainer.style.pointerEvents = 'auto';
             } else {
@@ -454,13 +468,17 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
           })
         });
 
+        // För varje aktivitet som  finns på displayen
         allActivities.forEach((element) => {
 
+          // om en activityContainer inte innehåller zoomIn lägg på blur
           if (!element.children[1].classList.contains("zoomIn")) {
             element.style.filter = "blur(8px)";
             element.style.pointerEvents = "none";
 
+            // om en aktivitet innehåller zoomIn
           } else if (element.children[1].classList.contains("zoomIn")) {
+
             // Options för vad du kan göra med den
             let options = document.createElement("div");
             options.className = "options";
@@ -469,6 +487,39 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
             let removeFromList = document.createElement("button");
             removeFromList.textContent = "Remove from list";
             removeFromList.className = "button";
+
+            removeFromList.addEventListener("click", (event) => {
+              event.stopPropagation();
+
+              wrapper.style.overflow = "scroll";
+
+              deleteteActivity(obj.id);
+
+              if (document.querySelector(".options")) {
+                document.querySelector(".options").remove();
+              }
+
+              allActivities.forEach((activitieContainer) => {
+                if (activitieContainer.children[1].className == "activityContainer") {
+                  activitieContainer.style.filter = "blur(0px)";
+                  activitieContainer.style.pointerEvents = 'auto';
+                } else {
+                  activitieContainer.children[1].className = "activityContainer";
+                }
+              })
+
+              setTimeout(() => {
+                container.style.left = "100vw";
+                setTimeout(() => {
+                  container.remove();
+                }, 1000);
+              }, 1000);
+
+              let message = "You have succesfully delted this from your activities";
+              setTimeout(() => {
+                messageToUser(message);
+              }, 2000)
+            })
 
             let makeOrUpdate;
             if (obj.type == "watched") {
@@ -481,24 +532,46 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
             reviewDiv.textContent = makeOrUpdate;
             reviewDiv.className = "button";
 
+            reviewDiv.addEventListener("click", (event) => {
+              event.stopPropagation();
+
+              wrapper.style.overflow = "scroll";
+
+
+            })
+            // En delay på när knapparna skapas.
             options.append(removeFromList, reviewDiv);
-            element.append(options);
+            setTimeout(() => {
+              element.append(options);
+            }, 1000);
 
-            // removeFromList.addEventListener("click", (event) => {
-            //   event.stopPropagation();
-            //   let focusedMovie = document.querySelector(".zoomIn");
-
-            //   //delete from db
-            //   deleteteActivity(obj.id);
-
-            //   zoomOut(allMovieBanner);
-            //   disappearingOfActivity(focusedMovie);
-
-            //   let message = "You have succesfully delted this from your watchlist";
+            // Fucntions 
+            // function disappearingOfActivity(activityDOM) {
+            //   activityDOM.style.animation = "fadeOut 1.5s";
             //   setTimeout(() => {
-            //     messageToUser(message);
-            //   }, 1000)
-            // })
+            //     movie.remove();
+            //   }, 1500);
+            // }
+
+            function messageToUser(message) {
+              let messageDOM = document.createElement("div");
+              messageDOM.className = "messageToUser";
+
+
+              let p = document.createElement("p");
+              p.textContent = message;
+
+              messageDOM.append(p);
+              messageDOM.style.animation = "fadeIn 1s";
+              document.body.append(messageDOM);
+
+              setTimeout(() => {
+                messageDOM.style.animation = "fadeOut 1.5s";
+                setTimeout(() => {
+                  messageDOM.remove();
+                }, 1000)
+              }, 2000)
+            }
           }
         })
       })

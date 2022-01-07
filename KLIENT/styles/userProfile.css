@@ -1,6 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
-#topWrapperProfile {
+#pWrapper {
+  width: 100%;
   margin-top: 60px;
+  position: relative;
+  z-index: 200;
+  height: calc(100vh - 60px);
+}
+
+#topWrapperProfile {
   z-index: 15;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -16,7 +23,8 @@
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  padding: 10px 25px;
+  padding: 0px 25px;
+  padding-bottom: 10px;
   color: #eeeeee;
 }
 
@@ -217,6 +225,8 @@
   border-radius: 30px;
   overflow: hidden;
   background-color: #1c1452;
+  margin: 0px auto;
+  margin-bottom: 20px;
 }
 
 #profileNav div {
@@ -348,11 +358,13 @@
 #profileWrapper {
   width: 100%;
   z-index: 15;
-  padding: 10px 25px;
+  padding: 0px 25px;
   padding-bottom: 90px;
   height: calc(100vh - 250px);
   -webkit-transition: height 1s;
   transition: height 1s;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 #profileWrapper #watchlistContainer {
@@ -830,7 +842,7 @@
   z-index: 20000;
   max-width: 150px;
   right: 0;
-  bottom: -80px;
+  bottom: -100px;
   padding: 10px;
 }
 
@@ -847,6 +859,6 @@
 }
 
 .container .options button:first-child {
-  padding-bottom: 10px;
+  margin-bottom: 5px;
 }
 /*# sourceMappingURL=userProfile.css.map */
