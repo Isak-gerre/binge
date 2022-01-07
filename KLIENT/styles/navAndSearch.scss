@@ -17,11 +17,9 @@
   div {
     flex-grow: 1;
     box-sizing: border-box;
-    @include flex(row, space-around, center);
+    @include flex(row, space-between, center);
+    padding: 0 $wrapperPadding;
 
-    img {
-      margin: 0 70px;
-    }
   }
 }
 input:focus {
@@ -170,7 +168,7 @@ svg,
 
 .navImg.logo {
   // z-index: 13000;
-  transform: scale(2);
+  transform: scale(1.8);
 }
 
 svg:active,

@@ -292,7 +292,7 @@
 #followContainer {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
@@ -510,7 +510,7 @@
 #settingsWindow {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
@@ -535,6 +535,10 @@
   background-repeat: no-repeat;
   z-index: 100000;
   overflow-y: scroll;
+}
+
+#settingsWindow button {
+  margin: 25px;
 }
 
 #settingsForm {
@@ -610,7 +614,7 @@
 }
 
 #settingsForm #providersForm select, #settingsForm #providersForm option {
-  color: black;
+  color: #eeeeee;
 }
 
 #settingsForm #providersForm select, #settingsForm #providersForm .searchProvider {
@@ -754,7 +758,8 @@
       -ms-flex-align: start;
           align-items: flex-start;
   gap: 10px;
-  padding: 25px;
+  padding: 25px 25px 0 25px;
+  margin-top: 25px;
   width: 100%;
   position: relative;
   z-index: 100;
@@ -799,7 +804,7 @@
 #changeProfilePicWindow {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   z-index: 100000;
   left: 100vw;
   -webkit-transition: left 1s;
@@ -897,7 +902,7 @@
   z-index: 20000;
   max-width: 150px;
   right: 0;
-  bottom: -100px;
+  bottom: -68px;
   padding: 10px;
 }
 
@@ -913,16 +918,12 @@
   margin-top: 5px;
 }
 
-.container .options button:first-child {
-  margin-bottom: 5px;
-}
-
 @-webkit-keyframes marginScale {
   0% {
     margin-bottom: 0px;
   }
   100% {
-    margin-bottom: 90px;
+    margin-bottom: 45px;
   }
 }
 
@@ -931,7 +932,7 @@
     margin-bottom: 0px;
   }
   100% {
-    margin-bottom: 90px;
+    margin-bottom: 45px;
   }
 }
 

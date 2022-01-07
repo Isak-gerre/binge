@@ -549,6 +549,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
           let reviewDiv = document.createElement("button");
           reviewDiv.textContent = makeOrUpdate;
           reviewDiv.className = "button";
+          reviewDiv.style.display = "none";
 
           reviewDiv.addEventListener("click", (event) => {
             event.stopPropagation();
@@ -560,7 +561,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
           // En delay på när knapparna skapas.
           removeFromList.style.animation = "scaleFromZero 1s forwards";
           reviewDiv.style.animation = "scaleFromZero 1s forwards";
-          options.append(removeFromList, reviewDiv);
+          options.append(removeFromList);
           setTimeout(() => {
 
             element.append(options);
