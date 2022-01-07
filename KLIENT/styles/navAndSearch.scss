@@ -316,17 +316,22 @@ svg:active,
   // background-color: blueviolet;
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: 50px;
 }
 
 .pages-container {
   border-bottom: 1px solid $lightFont;
   margin-bottom: 10px;
-  width: 90%;
+  width: 77%;
+
+  p {
+    @include bigTitleFont();
+  }
 }
 
 .hamburger-text {
   opacity: 0;
+  transform: translateX(0px);
   transition: all 1s ease;
   @include smallTitleFont();
   padding-bottom: $betweenPadding;
@@ -354,7 +359,7 @@ svg:active,
 .genres-container {
   border-bottom: 1px solid $lightFont;
   margin-bottom: 10px;
-  width: 90%;
+  width: 77%;
 
   .genre-link {
     opacity: 0;
@@ -376,7 +381,9 @@ svg:active,
 }
 
 .markedPage {
-  font-weight: bold;
+  background: $gradientPeach;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @keyframes hamburgerScale {

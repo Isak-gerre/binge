@@ -2740,8 +2740,16 @@ svg:active,
   width: 90%;
 }
 
+.pages-container p {
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .hamburger-text {
   opacity: 0;
+  -webkit-transform: translateX(0px);
+          transform: translateX(0px);
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
   font-family: "Archivo", sans-serif;
@@ -2819,7 +2827,9 @@ svg:active,
 }
 
 .markedPage {
-  font-weight: bold;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @-webkit-keyframes hamburgerScale {

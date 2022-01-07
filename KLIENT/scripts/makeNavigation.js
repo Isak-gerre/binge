@@ -230,7 +230,9 @@ async function makeHamburgerMenu() {
     gitLogo.classList.add("gitLogo");
     gitLogo.textContent = "gitLogo";
   
-    let gitText = document.createElement("div");
+    let gitText = document.createElement("a");
+    gitText.setAttribute("href", "https://github.com/Isak-gerre/binge");
+    gitText.setAttribute("target", "_blank");
     gitText.classList.add("gitText");
     gitText.textContent = "Follow this product on github.";
   
@@ -244,7 +246,7 @@ async function makeHamburgerMenu() {
     document.querySelectorAll(".hamburger-text").forEach((element, index) => {
       setTimeout(() => {
         element.style.opacity = "1";
-        element.setAttribute("style", `opacity: 1; transition-delay: ${index * 0.3 + 0.9}s;`);
+        element.setAttribute("style", `opacity: 1; transition-delay: ${index * 0.1}s; transform: translateX(15px); `);
       }, 0);
     });
   
@@ -252,7 +254,7 @@ async function makeHamburgerMenu() {
     document.querySelectorAll(".genre-link").forEach((element, index) => {
       setTimeout(() => {
         element.style.opacity = "1";
-        element.setAttribute("style", `opacity: 1; transition-delay: ${index * 0.3 + 0.9}s;`);
+        element.setAttribute("style", `opacity: 1; transition-delay: ${index * 0.1}s; transform: translateX(15px); `);
       }, 100);
     });
 
