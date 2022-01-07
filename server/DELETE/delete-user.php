@@ -42,6 +42,8 @@ sendJSON(
 
 function deleteUser($userId) {
     $usersDB = loadJSON("../DATABASE/user.json");
+    saveJSON("../DATABASE/JSON_BACKUPS/user.json", $usersDB);
+
     $users = $usersDB["users"];
 
     $found = false;
@@ -95,5 +97,3 @@ function deleteActivities($userId) {
     // Sparar den nya databasen
     saveJSON("../DATABASE/activities.json",$activityData);
 }
-
-?>

@@ -7,6 +7,8 @@ require_once "../functions.php";
 
 $method = $_SERVER["REQUEST_METHOD"];
 $activityData = loadJSON("../DATABASE/activities.json");
+saveJSON("../DATABASE/JSON_BACKUPS/activities.json", $activityData);
+
 
 error_reporting(-1);
 

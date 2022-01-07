@@ -17,6 +17,7 @@ require_once "../functions.php";
 
 $method = $_SERVER["REQUEST_METHOD"];
 $db = loadJSON("../DATABASE/user.json");
+saveJSON("../DATABASE/JSON_BACKUPS/user.json", $db);
 
 //Lägger användaren som nästa ID
 $nextID = nextHighestId($db["users"]);
