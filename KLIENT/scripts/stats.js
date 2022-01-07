@@ -5,46 +5,47 @@ Create stats
 */
 
 async function renderChart(userId) {
-  document.getElementById('profileWrapper').innerHTML = `
+  document.getElementById("profileWrapper").innerHTML = `
     <p class="statsP">You seem to love watching: </p>
     <canvas id="ctx" width="400" height="400"></canvas>
   `;
 
   let userData = await getUserActivities(userId);
   // console.log(userData);
-  let genres = [];
+  let genres = await getGenres();
+  console.log(genres);
   let time = [];
+  let genresAndRuntime = {};
   let data = {};
   let runtimes = [];
+  let genreNames = [];
   let done = false;
   userData.forEach(async function (activity) {
-    // console.log(activity);
     let movieInfo = await getMovieInfo(activity.movieID);
-    await movieInfo.message.genres.forEach((genre, index) => {
-      if (!genres.includes(genre.name)) {
-        genres.push(genre.name);
-        let timeAndGenre = {
-          genre: genre.name,
-          time: movieInfo.message.runtime,
-        };
-        time.push(timeAndGenre);
-      } else {
-        time.forEach((obj) => {
-            // console.log(obj.genre);
-            // console.log(genre)
-            // console.log(obj.genre == genre);
-          if (obj.genre == genre.name) {
-            obj.time = obj.time + movieInfo.message.runtime;
-            // console.log("test");
-          }
-        });
-      }
-    });
-    // console.log(genres);
-    // console.log(time);
-    runtimes = time.map((obj) => {
-      return obj.time;
-    });
+    console.log(movieInfo);
+    if (movieInfo.message.genres && movieInfo.message.runtime) {
+      await movieInfo.message.genres.forEach((genre, index) => {
+        if (genre.name in genresAndRuntime) {
+          genresAndRuntime[`${genre.name}`] += movieInfo.message.runtime;
+        } else {
+          genresAndRuntime[`${genre.name}`] = movieInfo.message.runtime;
+        }
+      });
+    }
+    if (movieInfo.message.genre_ids && movieInfo.message.runtime) {
+      await movieInfo.message.genre_ids.forEach((genre, index) => {
+        genre = genres.genres.find((obj) => obj.id == genre);
+        console.log(genre);
+        if (genre.name in genresAndRuntime) {
+          genresAndRuntime[`${genre.name}`] += movieInfo.message.runtime;
+        } else {
+          genresAndRuntime[`${genre.name}`] = movieInfo.message.runtime;
+        }
+      });
+    }
+    console.log(genresAndRuntime);
+    genreNames = Object.keys(genresAndRuntime);
+    runtimes = Object.values(genresAndRuntime);
     data = {
       type: "doughnut",
       options: {
@@ -53,7 +54,7 @@ async function renderChart(userId) {
         },
       },
       data: {
-        labels: genres,
+        labels: genreNames,
         datasets: [
           {
             label: "My First Dataset",
@@ -65,6 +66,7 @@ async function renderChart(userId) {
       },
     };
   });
+
   // console.log(genres);
   let interval = setInterval(() => {
     if (data != {}) {
