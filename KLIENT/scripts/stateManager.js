@@ -6,7 +6,12 @@
 "use strict";
 function goToPageAndAddToState(href, search = null) {
   document.querySelector("nav").style.opacity = 1;
-  document.querySelector("#wrapper").style.opacity = 0;
+  if (document.querySelector("#pWrapper") != null) {
+    document.querySelector("#pWrapper").style.opacity = 0;
+  }
+  if (document.querySelector("#wrapper") != null) {
+    document.querySelector("#wrapper").style.opacity = 0;
+  }
   if (document.querySelector(".search-container") != null) {
     document.querySelector(".search-container").style.opacity = 0;
   }
