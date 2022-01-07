@@ -117,11 +117,11 @@
 .movieBanner {
   max-width: 100px;
   background-size: cover;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);
-          box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);
   position: relative;
   overflow: visible;
   margin: auto;
+  -webkit-box-shadow: 0px -5px 7px 0px rgba(0, 0, 0, 0.37);
+          box-shadow: 0px -5px 7px 0px rgba(0, 0, 0, 0.37);
 }
 
 .yourlist {
@@ -139,7 +139,7 @@
   width: 100%;
   -webkit-box-shadow: 0px -5px 7px 0px rgba(0, 0, 0, 0.37);
           box-shadow: 0px -5px 7px 0px rgba(0, 0, 0, 0.37);
-  border-radius: 2px;
+  border-radius: 8px;
 }
 
 .genreBanner h2 {

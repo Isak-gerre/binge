@@ -1,5 +1,6 @@
 @import "variables.scss";
 
+
 .movieBanner,
 .genreImageDiv {
   height: 150px;
@@ -65,10 +66,11 @@
 .movieBanner {
   max-width: 100px;
   background-size: cover;
-  box-shadow: rgba(0, 0, 0, 0.7) 0px -50px 36px -28px inset, 2px 2px 5px 1px rgba(185, 185, 185, 0.16);
   position: relative;
   overflow: visible;
   margin: auto;
+  box-shadow: 0px -5px 7px 0px rgba(0, 0, 0, 0.37);
+
 }
 .yourlist {
   background-position: 0px -30px;
@@ -82,7 +84,7 @@
     height: 100px;
     width: 100%;
     box-shadow: 0px -5px 7px 0px rgba(0, 0, 0, 0.37);
-    border-radius: 2px;
+    border-radius: $borderRadiusNav;
   }
   h2 {
     height: 100%;

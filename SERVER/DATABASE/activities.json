@@ -349,6 +349,36 @@
             "comment": "",
             "rate": "",
             "updated": false
+        },
+        "111": {
+            "id": 111,
+            "userID": 2,
+            "movieID": "634649",
+            "type": "watchlist",
+            "date": "202201071828",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "112": {
+            "id": 112,
+            "userID": 2,
+            "movieID": "634649",
+            "type": "watched",
+            "date": "202201071828",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "113": {
+            "id": 113,
+            "userID": 2,
+            "movieID": "634649",
+            "type": "watched",
+            "date": "202201071828",
+            "comment": "",
+            "rate": "",
+            "updated": false
         }
     }
 }

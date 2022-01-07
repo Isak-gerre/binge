@@ -18,7 +18,6 @@
                 "filepath": "DATABASE\\\/IMAGES\\\/PROFILE\\\/f421300d6fc2a3dcdba4d9c7bc1ce710797ed3b8cbdd4c55a8b7ce1cc3ca42d6.jpg"
             },
             "followers": [
-                2,
                 5
             ],
             "following": [],
@@ -46,7 +45,8 @@
                 5
             ],
             "following": [
-                1
+                3,
+                5
             ],
             "sessionId": "$2y$10$tySGNoLqUQT9JlE7UPibGel3v1PGfuN1z8mLQuDHZuviDNw.m2aCW",
             "id": 2
@@ -66,7 +66,8 @@
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_7.png"
             },
             "followers": [
-                5
+                5,
+                2
             ],
             "following": [],
             "sessionId": "$2y$10$Znilyoeos1BWVcpslFMV3.IsfnD50zkz2BkYxYLZ9iGFSkUAjWoWu",
@@ -88,7 +89,9 @@
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_2.png"
             },
-            "followers": [],
+            "followers": [
+                5
+            ],
             "following": [],
             "sessionId": "$2y$10$T0HfOf8NVDOxFRQHdl3MKu6I6eJc\/V8\/f8HKPZwbK2zp3cZG4\/Tva",
             "id": 4
@@ -116,11 +119,14 @@
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_8.png"
             },
-            "followers": [],
+            "followers": [
+                2
+            ],
             "following": [
                 1,
                 2,
-                3
+                3,
+                4
             ],
             "sessionId": "$2y$10$G5T5tJix2CN7XjD24Rl9zuYxxirpnxtXCd7p9GTHMLkcnIS\/IISx6",
             "id": 5
