@@ -21,6 +21,7 @@ $requestData = json_decode($data, true);
 
 // Loading data - activities
 $usersDB = loadJSON("../DATABASE/user.json");
+saveJSON("../DATABASE/JSON_BACKUPS/user.json", $usersDB);
 $users = $usersDB["users"];
 
 
@@ -39,26 +40,26 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
             404
         );
     }
-   
+
     // Om vännen följer mig, ta bort. Ta bort mig själv från "vännens" array
     // Om jag finns i vännens followers = jag följer vännen (jag vill då avfölja vännen)
     if (in_array(intval($userID), $users[$friendsUserID]["followers"])) {
         $index = array_search($userID, $users[$friendsUserID]["followers"]);
         array_splice($users[$friendsUserID]["followers"], $index, 1);
-        
+
         // Om vännen inte följer mig, lägg till (follow)    
     } else {
         $users[$friendsUserID]["followers"][] = intval($userID);
-    }   
-    
+    }
+
     // Om jag följer vännen. Ta bort "vännen" från min array
     if (in_array(intval($friendsUserID), $users[$userID]["following"])) {
         $index = array_search($friendsUserID, $users[$userID]["following"]);
-        array_splice($users[$userID]["following"], $index, 1);  
-        
+        array_splice($users[$userID]["following"], $index, 1);
+
         // Om jag inte följer vännen, lägg till vänne i min array
     } else {
-        $users[$userID]["following"][] = intval($friendsUserID);  
+        $users[$userID]["following"][] = intval($friendsUserID);
     }
 
     // Saves the update
@@ -68,8 +69,6 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
         "message" => "SUCCESS"
     ];
     sendJSON($message);
-
-
 } else {
     // Changes your own profile, firstname, lastname, username, email, birthday, location, bio, streaming services 
     $userID = $requestData["userID"];
@@ -169,7 +168,7 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
     }
 
     // Om active_streaming_services finns, uppdatera
-    if(isset($requestData["active_streaming_services"])) {
+    if (isset($requestData["active_streaming_services"])) {
         if ($executing) {
             $users[$userID]["active_streaming_services"] = $requestData["active_streaming_services"];
             $message["active_streaming_services"] = "You succeded changing your active streamingservices";
@@ -178,7 +177,7 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
 
 
 
-    
+
 
     // Om inte executing har ändrats till FALSE
     // kommer den att utföra ändringarna
