@@ -11,6 +11,8 @@
   position: relative;
   z-index: 100;
   width: 100vw;
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .drop1 {

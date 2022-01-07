@@ -53,6 +53,9 @@ body {
   overflow-x: hidden;
   color: black;
   padding-bottom: 90px;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 #topWrapperProfile {
@@ -660,6 +663,8 @@ body {
   position: relative;
   z-index: 100;
   width: 100vw;
+  -webkit-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .drop1 {
@@ -2627,6 +2632,8 @@ svg:active,
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
 }
 
 .search-container div {

@@ -90,7 +90,7 @@ input:focus {
     background-repeat: no-repeat;
     background-color: transparent;
     padding: $betweenPadding;
-    padding-left: 15px; 
+    padding-left: 15px;
     z-index: 1000;
     position: absolute;
     top: 70px;
@@ -107,7 +107,7 @@ input:focus {
     border-bottom: 1px solid white;
     border-radius: 0;
   }
-  .movie-profile-background{
+  .movie-profile-background {
     position: absolute;
   }
 }
@@ -239,8 +239,9 @@ svg:active,
   padding-bottom: 100px;
   box-sizing: border-box;
   @include flex(column, none, center);
+  transition: opacity 0.3s ease;
 
-  div{
+  div {
     margin: auto;
   }
 }
@@ -345,7 +346,7 @@ svg:active,
   width: 30%;
   margin: $betweenPadding $betweenPadding $betweenPadding 0;
   cursor: pointer;
-  box-sizing: content-box;      
+  box-sizing: content-box;
   background: $gradientPeach;
   filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
   @include flex(row, center, center);
@@ -456,17 +457,16 @@ svg:active,
       background: $gradientPeach;
       @include flex(row, center, center);
       gap: 4px;
-    
+
       width: 85px;
       border-radius: $borderRadiusButtons;
       padding: $buttonPadding;
-    
+
       p {
         @include xSmallFont();
         padding: 0;
       }
     }
-
   }
 
   // .followDiv {
@@ -483,10 +483,6 @@ svg:active,
   //   }
   // }
 }
-
-
-
-
 
 .showMoreDiv {
   z-index: 1000;
@@ -537,13 +533,12 @@ svg:active,
     left: 32px;
     animation: moveSideways 0.6s infinite;
   }
-  
+
   div:nth-child(4) {
     left: 56px;
     animation: scaleDown 0.6s infinite;
   }
 }
-
 
 @keyframes scaleUp {
   0% {
@@ -576,7 +571,5 @@ svg:active,
   z-index: 1000;
   position: relative;
   top: 156px;
-  color: $lightFont
+  color: $lightFont;
 }
-
-
