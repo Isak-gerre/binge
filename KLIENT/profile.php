@@ -50,7 +50,6 @@ require_once "head.php";
 </nav>
 
 <div id="profileWrapper">
-    <!-- <canvas id="ctx" width="400" height="400"></canvas> -->
 </div>
 
 <script src="Lib/node_modules/chart.js/dist/chart.js"></script>

@@ -231,47 +231,142 @@
 #settingsWindow {
   @include transitionFromLeft();
   @include flex(column, flex-start, flex-start);
-  gap: 20px;
-
+  gap: $wrapperPadding;
   padding: $wrapperPadding;
-  background-color: $backgroundColor;
-  z-index: 100000;
+
+  background-image: url("../icons/background-m-profile.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   
-  #settingsForm {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(8, 35px);
-    gap: 5px;
+  z-index: 100000;
+  overflow-y: scroll;  
+}
+
+#settingsForm {
+  @include flex(column, center, center);
+  gap: $betweenPadding;
+  width: 100%;
+
+  #informationForm {
+    border: none;
+    @include flex(column, center, center);
+    gap: $betweenPadding;
     width: 100%;
-    padding: $wrapperPadding;
 
-    div:nth-child(1) {
-      grid-column: 1 / span 1;
-    }
-    div:nth-child(2) {
-      grid-column: 2 / span 1;
+    #errorIcon {
+      opacity: 0.8;
+      position: absolute;
+      right: 10px;
     }
 
-    div {
-      @include flex(column, center, flex-start);
-      width: 100%;
-      padding: 2px;
-      grid-column: 1 / span 2;
-
-      border: 1px solid black;
-      border-radius: 5px;
-
-      label {
-        @include xSmallFont();
-      }
-
-      input {
-        border: none;
-        width: 100%;
-        padding: 0;
-      }
+    #errorMessage {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.48);
+      padding: 10px;
+      border-radius: 15px;
+      right: 38px;
+      
+      @include xSmallFont();
     }
   }
+
+  #providersForm {
+    @include flex(column, center, center);
+    gap: $betweenPadding;
+    border: none;
+      
+    select, option {
+      color: $darkFont;
+    }
+
+    select, .searchProvider {
+      width: 100%;
+      height: 35px;
+      padding: $innerPadding;
+      background-color: $activityColor;
+      border: none;
+      border-radius: $borderRadiusButtons;
+    }
+
+    #fieldSetProviders {
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: $betweenPadding;
+
+      @include xSmallFont();
+      width: 100%;
+      border: none;
+      max-height: 65vh;
+
+      overflow-y: scroll;
+
+      .providersLabel {
+        @include flex(column-reverse, center, center);
+        text-align: center;
+        height: 80px;
+
+        img {
+          height: 30px;
+          width: 30px;
+
+          border-radius: 50%;
+        }
+      }
+    }
+
+    .providersLabel.selectedProvider {
+      background-color: $activityColor;
+      border-radius: $borderRadiusObjects;
+    }
+  }
+
+  #input {
+    position: relative;
+
+    @include flex(column, center, flex-start);
+    width: 100%;
+    padding: $innerPadding;
+    grid-column: 1 / span 2;
+
+    border: 1px solid black;
+    border-radius: $borderRadiusButtons;
+    background-color: $activityColor;
+    transition: border 1s;
+
+    label {
+      @include xSmallFont();
+      margin-left: $betweenPadding;
+    }
+
+    input {
+      @include bodyFont();
+      border: none;
+      width: 100%;
+      padding: 0 10px;
+      background: none;
+            
+      transition: color 0.5s;
+      }    
+    }
+    
+    #buttonWrapper {
+        @include flex(row, center, center);
+        gap: $betweenPadding;
+    }
+    
+    button {
+        width: 100px;
+        height: 30px;
+        
+        @include postFont();
+        
+        background: $gradientPeach;
+        padding: $buttonPadding;
+        border-radius: $borderRadiusButtons;
+        border: none;
+    }
 }
 
 #settingsChangePic {
@@ -309,45 +404,38 @@
 
 #changeProfilePicWindow {
   @include transitionFromLeft();
+  top: 0;
   @include flex(column, flex-start, flex-start);
   gap: $betweenPadding;
 
-    button {
-      border-radius: $borderRadiusButtons;
-      border: none;
-      padding: $innerPadding;
-      color: $lightFont;
-      background: $gradientPeach;
-      box-sizing: border-box;
-      filter: none;
-      @include flex(row, center, center);
-      position: absolute;
-    }
+  padding: $wrapperPadding;
 
-    button:first-child{
-      bottom: -55px;
-    }
-    button:last-child{
-      bottom: -105px;
-    }
+  background-image: url("../icons/background-m-profile.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  div {
+    width: 100%;
   }
 
-  #responseDiv {
-    @include flex(row, center, center);
+}
 
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
+#responseDiv {
+  @include flex(row, center, center);
 
-    background-color: rgba($backgroundColor, 0.5);
-    opacity: 0;
-    transition: opacity 0.5s;
-    
-    p {
-      background-color: $backgroundColor;
-      padding: 20px;
-      border-radius: $borderRadiusObjects;
-    }
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+
+  background-color: rgba($backgroundColor, 0.5);
+  opacity: 0;
+  transition: opacity 0.5s;
+  
+  p {
+    background-color: $backgroundColor;
+    padding: 20px;
+    border-radius: $borderRadiusObjects;
   }
 }
 

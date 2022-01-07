@@ -1,8 +1,8 @@
 "use strict";
 
-
-
 function getProviders() {
+  let titleProviders = document.createElement('p');
+  titleProviders.textContent = "Change your region and streaming providers";
   // Ta bort API-nyckel, lägg den i APIn
   let regionRQ = new Request(
     "https://api.themoviedb.org/3/watch/providers/regions?api_key=f5c0e0db147d0e6434391f3ff153b6a8"
@@ -27,9 +27,7 @@ function getProviders() {
       });
 
       //Skapar en slect för region
-      if (document.getElementById("createUserP2")) {
-        document.getElementById("createUserP2").append(selectRegion);
-      }
+        document.getElementById("providersForm").append(titleProviders, selectRegion);
 
       //Selectar värdet som kommer finnas på select region.
       let filter = selectRegion;
@@ -45,7 +43,6 @@ function getProviders() {
       let providerArray = [];
 
       async function loadProviders() {
-        // let startNumber = document.getElementById("region").selectedIndex == 1 ? 1 : 0;
         if (document.getElementById("fieldSetProviders")) {
           document.getElementById("fieldSetProviders").innerHTML = "";
         }
@@ -61,8 +58,8 @@ function getProviders() {
         providerArray = data.results;
         showProviders();
 
-        document.getElementById("createUserP2").append(searchProvider);
-        document.getElementById("createUserP2").append(providers);
+        document.getElementById("providersForm").append(searchProvider);
+        document.getElementById("providersForm").append(providers);
       }
 
       //Filtrerar baserat på vad du sökt
@@ -167,7 +164,6 @@ function getProviders() {
               });
             }
           });
-          console.log(data[0].profile_picture.filepath);
         });
     });
 };

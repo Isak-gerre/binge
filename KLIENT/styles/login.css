@@ -140,7 +140,7 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
-  width: 80%;
+  width: 100%;
 }
 
 #loginForm #input, #signUpForm > fieldset #input {
@@ -284,6 +284,10 @@
           flex-grow: 1;
   width: 100vw;
   padding: 0 25px 25px;
+}
+
+#createUserP2 {
+  border: none;
 }
 
 #createUserP2 select, #createUserP2 option {
