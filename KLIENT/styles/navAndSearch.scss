@@ -20,7 +20,7 @@
     @include flex(row, space-around, center);
 
     img {
-      margin: 0 130px;
+      margin: 0 70px;
     }
   }
 }
@@ -151,15 +151,7 @@ input:focus {
 
 .backLowerNav {
   display: none;
-  // width: 0%;
-  // position: absolute;
-  // background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  // opacity: 0.9;
-  // border: 1px solid rgba(255, 255, 255, 0.3);
-  // box-sizing: border-box;
-  // backdrop-filter: blur(0px);
-  // border-radius: 2px;
-  // transform: translateX(-1%);
+  
 }
 
 //ICONS
@@ -174,6 +166,11 @@ svg,
 
 .navImg.hamburger {
   z-index: 13000;
+}
+
+.navImg.logo {
+  // z-index: 13000;
+  transform: scale(2);
 }
 
 svg:active,

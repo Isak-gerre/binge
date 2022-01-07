@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&family=Mulish&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="logos/b-circle.svg">
+    <title>BINGY</title>
 </head>
 <body>

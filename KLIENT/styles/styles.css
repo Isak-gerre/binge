@@ -295,7 +295,6 @@ body {
   border: none;
   width: 100%;
   padding: 0 10px;
-  background: none;
   -webkit-transition: color 0.5s;
   transition: color 0.5s;
 }
@@ -356,6 +355,16 @@ body {
   min-height: 100vh;
 }
 
+#signUpForm .buttonsSignUp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#signUpForm .buttonsSignUp .backLogin {
+  margin: 0px 10px 0px 0px;
+}
+
 #signUpForm div:first-child {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -406,7 +415,7 @@ body {
 }
 
 #createUserP2 select, #createUserP2 option {
-  color: black;
+  color: #eeeeee;
 }
 
 #createUserP2 select, #createUserP2 .searchProvider {
@@ -3377,7 +3386,7 @@ body {
 }
 
 .upperNav div img {
-  margin: 0 130px;
+  margin: 0 70px;
 }
 
 input:focus {
@@ -3530,6 +3539,11 @@ svg,
 
 .navImg.hamburger {
   z-index: 13000;
+}
+
+.navImg.logo {
+  -webkit-transform: scale(2);
+          transform: scale(2);
 }
 
 svg:active,

@@ -163,7 +163,7 @@
   grid-column: 1 / span 2;
   border: 1px solid black;
   border-radius: 30px;
-  background-color: #6F6D82;
+  background-color: #1c1452;
 }
 
 #loginForm #input label, #signUpForm > fieldset #input label {
@@ -208,7 +208,6 @@
   border: none;
   width: 100%;
   padding: 0 10px;
-  background: none;
   -webkit-transition: color 0.5s;
   transition: color 0.5s;
 }
@@ -269,6 +268,16 @@
   min-height: 100vh;
 }
 
+#signUpForm .buttonsSignUp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#signUpForm .buttonsSignUp .backLogin {
+  margin: 0px 10px 0px 0px;
+}
+
 #signUpForm div:first-child {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -319,14 +328,14 @@
 }
 
 #createUserP2 select, #createUserP2 option {
-  color: black;
+  color: #eeeeee;
 }
 
 #createUserP2 select, #createUserP2 .searchProvider {
   width: 100%;
   height: 35px;
   padding: 5px;
-  background-color: #6F6D82;
+  background-color: #1c1452;
   border: none;
   border-radius: 30px;
 }
@@ -373,7 +382,7 @@
 }
 
 #createUserP2 #fieldSetProviders .providersLabel.selectedProvider {
-  background-color: #6F6D82;
+  background-color: #1c1452;
   border-radius: 5px;
 }
 
@@ -400,7 +409,7 @@
 }
 
 #createUserP3 #avatars label.profileImgSelected, #updateProfilePic #avatars label.profileImgSelected {
-  background-color: #6F6D82;
+  background-color: #1c1452;
   border-radius: 5px;
 }
 
@@ -439,7 +448,7 @@
 }
 
 #createUserP3 label.profileImgSelected, #updateProfilePic label.profileImgSelected {
-  background-color: #6F6D82;
+  background-color: #1c1452;
   border-radius: 5px;
 }
 

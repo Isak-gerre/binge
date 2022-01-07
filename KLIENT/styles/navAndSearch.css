@@ -44,7 +44,7 @@
 }
 
 .upperNav div img {
-  margin: 0 130px;
+  margin: 0 70px;
 }
 
 input:focus {
@@ -197,6 +197,11 @@ svg,
 
 .navImg.hamburger {
   z-index: 13000;
+}
+
+.navImg.logo {
+  -webkit-transform: scale(2);
+          transform: scale(2);
 }
 
 svg:active,

@@ -814,7 +814,7 @@
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  padding: 0 0 5px 0;
+  padding: 10px 0 10px 0;
   font-family: "Archivo", sans-serif;
   font-size: 15px;
 }
@@ -889,7 +889,7 @@
 }
 
 .movie-profile-middle .activityContainer {
-  background-color: #6F6D82;
+  background-color: #1c1452;
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;

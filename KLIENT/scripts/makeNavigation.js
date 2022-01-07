@@ -15,6 +15,7 @@ function makeUpperNav() {
 
   //content
   navMiddle.innerHTML = `<img src='../icons/back.svg' class ='navImg back' alt='Back'>`;
+  navMiddle.innerHTML += `<img src='../logos/b-circle.svg' class ='navImg logo' alt='Logo'>`;
   navMiddle.innerHTML += `<img src='../icons/hamburger.svg' class ='navImg hamburger' alt='Home'>`;
 
   //append
@@ -25,6 +26,11 @@ function makeUpperNav() {
     // goToPageAndAddToState(window.location.href);
     applyState();
   });
+
+  document.querySelector(".logo").addEventListener("click", () => {
+    goToPageAndAddToState("feed.php");
+  });
+
   document.querySelector(".hamburger").addEventListener("click", () => {
     if (document.querySelector(".hamburger-menu") == null) {
       document.body.style.overflow = "hidden";
