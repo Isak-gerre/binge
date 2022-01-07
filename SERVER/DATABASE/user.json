@@ -9,7 +9,7 @@
             "password": "hejhopp",
             "birthday": "hejhopp",
             "profile_picture": {
-                "filepath": "DATABASE\/IMAGES\/PROFILE\/239ed7a5767ea3e5f0028cfe27ead12cd8bfa099.jpg"
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_6.png"
             },
             "region": "SE",
             "active_streaming_services": [
@@ -244,7 +244,9 @@
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_5.png"
             },
-            "followers": [],
+            "followers": [
+                10
+            ],
             "following": [],
             "sessionId": "$2y$10$KGWhg4hgRa4bhdbMxTAv\/.kLn.liQk5Po43IQaiOu5h10mMC9QxNu",
             "id": 9
@@ -269,7 +271,7 @@
             "followers": [],
             "following": [
                 6,
-                14
+                9
             ],
             "sessionId": "$2y$10$ovQLNrITq0LJ0LOau0S5auIgwZ8dAwYk5JXalFW\/MG3hVo0O5Vhti",
             "id": 10
@@ -338,7 +340,9 @@
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_5.png"
             },
-            "followers": [],
+            "followers": [
+                10
+            ],
             "following": [
                 10,
                 6

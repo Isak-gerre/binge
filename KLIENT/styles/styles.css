@@ -153,7 +153,7 @@ body {
           align-items: center;
   gap: 4px;
   width: 85px;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 3px;
 }
 
@@ -270,7 +270,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 10px;
+  border-radius: 30px;
   overflow: hidden;
   background-color: #1c1452;
 }
@@ -298,7 +298,7 @@ body {
 
 #profileNav .selected {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 #followContainer {
@@ -326,6 +326,13 @@ body {
   background-color: #0f0b2e;
   width: 100%;
   padding: 25px;
+}
+
+#followContainer button {
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  padding: 3px;
 }
 
 #followContainer #usersWrapper {
@@ -663,7 +670,16 @@ body {
   width: 100%;
 }
 
-#changeProfilePicWindow #responseDiv {
+#profileWrapper #watchlistContainer button {
+  border-radius: 30px;
+  border: none;
+  padding: 5px;
+  color: #eeeeee;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-filter: none;
+          filter: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -678,18 +694,62 @@ body {
       -ms-flex-align: center;
           align-items: center;
   position: absolute;
-  height: 100vh;
-  width: 100vw;
-  background-color: rgba(15, 11, 46, 0.5);
-  opacity: 0;
-  -webkit-transition: opacity 0.5s;
-  transition: opacity 0.5s;
 }
 
-#changeProfilePicWindow #responseDiv p {
-  background-color: #0f0b2e;
-  padding: 20px;
-  border-radius: 5px;
+#profileWrapper #watchlistContainer button:first-child {
+  bottom: -55px;
+}
+
+#profileWrapper #watchlistContainer button:last-child {
+  bottom: -105px;
+}
+
+#messageWhenEmpty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 25px;
+  height: 15vh;
+  width: 100%;
+}
+
+#messageWhenEmpty p {
+  text-align: center;
+}
+
+#messageWhenEmpty button {
+  border: none;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 30px;
+  padding: 5px 25px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  color: #eeeeee;
+}
+
+#overlay-profile {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1000;
+}
+
+.statsP {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
 }
 
 #overlay {
@@ -702,6 +762,7 @@ body {
           flex-direction: column;
   position: relative;
   z-index: 100;
+  width: 100vw;
 }
 
 .drop1 {
@@ -816,6 +877,7 @@ body {
   color: "Mulish", sans-serif;
   font-family: "Archivo", sans-serif;
   font-size: 18px;
+  font-weight: bold;
 }
 
 .overlay-fade .message-wrapper .middle {
@@ -959,7 +1021,7 @@ body {
 
 .overlay-fade .message-wrapper .button {
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 5px;
   height: 20px;
   margin: 10px 10px 10px 0;
@@ -1134,6 +1196,7 @@ body {
 .movie-profile-info .movie-profile-info-text .movie-profile-title {
   font-family: "Archivo", sans-serif;
   font-size: 18px;
+  font-weight: bold;
   color: #eeeeee;
   padding-bottom: 10px;
 }
@@ -1174,7 +1237,7 @@ body {
 }
 
 .movie-profile-info .movie-profile-info-text #movie-profile-buttons .button {
-  border-radius: 10px;
+  border-radius: 30px;
   border: none;
   padding: 5px;
   height: 20px;
@@ -1199,7 +1262,7 @@ body {
 }
 
 .movie-profile-info .movie-profile-info-text #movie-profile-buttons .marked {
-  border-radius: 10px;
+  border-radius: 30px;
   border: 0;
   color: #eeeeee;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
@@ -1258,7 +1321,8 @@ body {
   font-size: 12px;
 }
 
-.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid {
+.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid,
+.movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1278,13 +1342,15 @@ body {
       flex-wrap: wrap;
 }
 
-.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid img, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid img {
+.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid img,
+.movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid img {
   border-radius: 50%;
   height: 10vw;
   width: 10vw;
 }
 
-.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid p, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid p {
+.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid p,
+.movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid p {
   color: #eeeeee;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
@@ -1444,7 +1510,7 @@ body {
 
 .movie-profile-middle .msgBtn {
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 30px;
   border: 0;
   padding: 3px;
   height: 25px;
@@ -1629,6 +1695,7 @@ body {
 .movie-profile-middle .activityContainer .activityContainerLeft .title {
   font-family: "Archivo", sans-serif;
   font-size: 18px;
+  font-weight: bold;
 }
 
 .movie-profile-middle .activityContainer .activityContainerLeft .comment {
@@ -1725,7 +1792,7 @@ body {
 
 .msgBtn {
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 30px;
   border: 0;
   padding: 3px;
   height: 25px;
@@ -1910,6 +1977,7 @@ body {
 .activityContainer .activityContainerLeft .title {
   font-family: "Archivo", sans-serif;
   font-size: 18px;
+  font-weight: bold;
 }
 
 .activityContainer .activityContainerLeft .comment {
@@ -2015,7 +2083,7 @@ body {
 
 .msgBtn {
   padding: 14px;
-  border-radius: 10px;
+  border-radius: 30px;
   border: 0;
   height: 25px;
   display: -webkit-box;
@@ -2151,8 +2219,7 @@ body {
 }
 
 .movieBanner,
-.genreImageDiv,
-.userDiv {
+.genreImageDiv {
   height: 150px;
   border-radius: 8px;
   background-size: cover;
@@ -2205,6 +2272,24 @@ body {
   100% {
     -webkit-transform: scale(1.2, 1.2);
             transform: scale(1.2, 1.2);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
@@ -2262,6 +2347,32 @@ body {
   width: 150%;
   -webkit-transform: rotate(-20deg);
           transform: rotate(-20deg);
+}
+
+.zoomIn {
+  z-index: 16000;
+  pointer-events: auto;
+  -webkit-filter: blur(0px);
+          filter: blur(0px);
+  -webkit-transform: scale(1.1, 1.1);
+          transform: scale(1.1, 1.1);
+}
+
+.messageToUser {
+  position: fixed;
+  bottom: 70px;
+  width: 100%;
+  z-index: 1000;
+  background: black;
+  padding: 10px;
+}
+
+.messageToUser p {
+  text-align: center;
+  color: white;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 #footer {
@@ -2445,20 +2556,22 @@ input:focus {
 .search-container input[type="text"] {
   outline: none;
   border: 1px solid white;
-  border-radius: 5px;
+  border-radius: 30px;
   width: calc(100vw - 50px);
   background-color: white;
   background-image: url("../icons/search.svg");
   background-position: 95% 50%;
   background-repeat: no-repeat;
   background-color: transparent;
-  padding: 5px;
-  padding-left: 1em;
+  padding: 10px;
+  padding-left: 15px;
   z-index: 1000;
   position: absolute;
   top: 70px;
-  font-family: "Mulish";
-  font-size: 1.2rem;
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  font-weight: normal;
   letter-spacing: 0.08em;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -2502,7 +2615,7 @@ input:focus {
   padding-bottom: 20px;
   width: 100%;
   bottom: 0;
-  z-index: 11000;
+  z-index: 9000;
   background-color: black;
 }
 
@@ -2555,7 +2668,7 @@ svg:active,
 .pill {
   padding: 8px;
   margin-right: 5px;
-  border-radius: 10px;
+  border-radius: 30px;
   width: 90px;
   background: #1d155a;
   -webkit-transform: scale(1);
@@ -2598,9 +2711,12 @@ svg:active,
   top: -2px;
   position: absolute;
   z-index: 100;
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
+  padding: 0 25px 10px 25px;
   padding-bottom: 100px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2621,8 +2737,6 @@ svg:active,
 }
 
 #search-results {
-  width: 100%;
-  padding: 10px 25px;
   margin-top: 170px;
   display: -ms-grid;
   display: grid;
@@ -2630,9 +2744,14 @@ svg:active,
       grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   z-index: 100;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   max-height: calc(100vh - 170px);
+  width: 100%;
   padding-bottom: 130px;
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .placeholder {
@@ -2651,6 +2770,7 @@ svg:active,
   background: linear-gradient(to right, #3c3c3c00 8%, #f4f4f40d 38%, #fafafa00 54%);
   background-size: 1000px 640px;
   position: relative;
+  z-index: 1200;
 }
 
 @-webkit-keyframes placeHolderShimmer {
@@ -2677,7 +2797,7 @@ svg:active,
   top: 0;
   background-color: black;
   width: 60%;
-  z-index: 10000;
+  z-index: 11000;
   right: 0;
   padding: 60px 0px 90px 20px;
   -webkit-box-sizing: border-box;
@@ -2702,14 +2822,25 @@ svg:active,
   top: 0;
   background-color: black;
   width: 100%;
-  z-index: 900;
+  z-index: 10000;
   opacity: 0.6;
+}
+
+.exitMenu {
+  height: 20px;
+  width: 20px;
+  background-image: url("../icons/exit.svg");
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .pages-container {
   border-bottom: 1px solid #eeeeee;
   margin-bottom: 10px;
-  width: 100%;
+  width: 90%;
 }
 
 .hamburger-text {
@@ -2728,10 +2859,38 @@ svg:active,
           transform: scale(1.1, 1.1);
 }
 
+.log-out-btn {
+  border: none;
+  border-radius: 30px;
+  padding: 5px;
+  height: 20px;
+  width: 30%;
+  margin: 10px 10px 10px 0;
+  cursor: pointer;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+          filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .genres-container {
   border-bottom: 1px solid #eeeeee;
   margin-bottom: 10px;
-  width: 100%;
+  width: 90%;
 }
 
 .genres-container .genre-link {
@@ -2753,6 +2912,13 @@ svg:active,
 .about-container {
   font-family: "Mulish", sans-serif;
   font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .markedPage {
@@ -2860,6 +3026,13 @@ svg:active,
 
 .pill-container div {
   margin-right: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.pill-container div:last-child {
+  margin-right: 0;
 }
 
 .userDiv {
@@ -2879,16 +3052,7 @@ svg:active,
   max-width: 140px;
 }
 
-.userDiv .followDiv {
-  width: 70%;
-}
-
-.userDiv .followDiv #followInfo #followersDiv p,
-.userDiv .followDiv #followInfo #followingDiv p {
-  font-size: 10px;
-}
-
-.userImage {
+.userDiv .userImage {
   width: 75px;
   height: 75px;
   background-position: center;
@@ -2896,8 +3060,51 @@ svg:active,
   border-radius: 50%;
 }
 
+.userDiv .userInfoDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.userDiv .userInfoDiv #usernameP {
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.userDiv .userInfoDiv #followDiv {
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 4px;
+  width: 85px;
+  border-radius: 30px;
+  padding: 3px;
+}
+
+.userDiv .userInfoDiv #followDiv p {
+  font-family: "Mulish", sans-serif;
+  font-size: 12px;
+  padding: 0;
+}
+
 .showMoreDiv {
   z-index: 1000;
+  position: relative;
   width: 40%;
   -ms-grid-column-span: 3;
       grid-column-end: span 3;
@@ -2908,22 +3115,23 @@ svg:active,
   width: 100%;
   height: 100%;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 30px;
   border: 0;
   color: #eeeeee;
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
-  filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+  background: transparent;
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.lds-ellipsis {
+.loading_dots {
   display: inline-block;
   position: relative;
   width: 73px;
   height: 9px;
 }
 
-.lds-ellipsis div {
+.loading_dots div {
   position: absolute;
   width: 8px;
   height: 8px;
@@ -2933,31 +3141,31 @@ svg:active,
           animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
-.lds-ellipsis div:nth-child(1) {
+.loading_dots div:nth-child(1) {
   left: 8px;
-  -webkit-animation: lds-ellipsis1 0.6s infinite;
-          animation: lds-ellipsis1 0.6s infinite;
+  -webkit-animation: scaleUp 0.6s infinite;
+          animation: scaleUp 0.6s infinite;
 }
 
-.lds-ellipsis div:nth-child(2) {
+.loading_dots div:nth-child(2) {
   left: 8px;
-  -webkit-animation: lds-ellipsis2 0.6s infinite;
-          animation: lds-ellipsis2 0.6s infinite;
+  -webkit-animation: moveSideways 0.6s infinite;
+          animation: moveSideways 0.6s infinite;
 }
 
-.lds-ellipsis div:nth-child(3) {
+.loading_dots div:nth-child(3) {
   left: 32px;
-  -webkit-animation: lds-ellipsis2 0.6s infinite;
-          animation: lds-ellipsis2 0.6s infinite;
+  -webkit-animation: moveSideways 0.6s infinite;
+          animation: moveSideways 0.6s infinite;
 }
 
-.lds-ellipsis div:nth-child(4) {
+.loading_dots div:nth-child(4) {
   left: 56px;
-  -webkit-animation: lds-ellipsis3 0.6s infinite;
-          animation: lds-ellipsis3 0.6s infinite;
+  -webkit-animation: scaleDown 0.6s infinite;
+          animation: scaleDown 0.6s infinite;
 }
 
-@-webkit-keyframes lds-ellipsis1 {
+@-webkit-keyframes scaleUp {
   0% {
     -webkit-transform: scale(0);
             transform: scale(0);
@@ -2968,7 +3176,7 @@ svg:active,
   }
 }
 
-@keyframes lds-ellipsis1 {
+@keyframes scaleUp {
   0% {
     -webkit-transform: scale(0);
             transform: scale(0);
@@ -2979,7 +3187,7 @@ svg:active,
   }
 }
 
-@-webkit-keyframes lds-ellipsis3 {
+@-webkit-keyframes scaleDown {
   0% {
     -webkit-transform: scale(1);
             transform: scale(1);
@@ -2990,7 +3198,7 @@ svg:active,
   }
 }
 
-@keyframes lds-ellipsis3 {
+@keyframes scaleDown {
   0% {
     -webkit-transform: scale(1);
             transform: scale(1);
@@ -3001,7 +3209,7 @@ svg:active,
   }
 }
 
-@-webkit-keyframes lds-ellipsis2 {
+@-webkit-keyframes moveSideways {
   0% {
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
@@ -3012,7 +3220,7 @@ svg:active,
   }
 }
 
-@keyframes lds-ellipsis2 {
+@keyframes moveSideways {
   0% {
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);
@@ -3024,13 +3232,58 @@ svg:active,
 }
 
 #search-results-text {
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  padding-bottom: 5px;
   margin-top: 20px;
   z-index: 1000;
   position: relative;
   top: 156px;
+  color: #eeeeee;
 }
 
-.signInWrap {
+.previewWrapper {
+  height: 30vh;
+  position: absolute;
+  top: -5px;
+  z-index: 21;
+  overflow: hidden;
+}
+
+.previewWrapper .loginMoviePreviews {
+  width: 100vw;
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: auto;
+  top: -25px;
+  left: -90px;
+  -webkit-transform: skew(-8deg, -5deg) rotate(12deg);
+          transform: skew(-8deg, -5deg) rotate(12deg);
+}
+
+.previewWrapper .loginMoviePreviews .movieBanner {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.previewWrapper .loginMoviePreviewsOverlay {
+  height: 30vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(15, 123, 161, 0)), color-stop(74%, rgba(15, 11, 46, 0)), to(#100c30));
+  background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 74%, #100c30 100%);
+  z-index: 22;
+}
+
+.logoDiv {
+  position: absolute;
+  z-index: 30;
+  top: 27vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3044,6 +3297,40 @@ svg:active,
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.logoDiv .logoImg {
+  height: 55px;
+  width: 120px;
+  background-image: url(../logos/bingy-hela.svg);
+  background-repeat: no-repeat;
+}
+
+.logoDiv .slogan {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.movie-profile-background {
+  height: 100%;
+}
+
+.signInWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 25px;
   z-index: 20;
   height: 100vh;
@@ -3052,15 +3339,19 @@ svg:active,
   opacity: 10;
   -webkit-transition: opacity 0.5s;
   transition: opacity 0.5s;
+  top: 40vh;
+  position: relative;
 }
 
 .signInWrap div:first-child {
   width: 100%;
+  text-align: center;
 }
 
 .signInWrap div:first-child h1 {
   font-family: "Archivo", sans-serif;
   font-size: 18px;
+  font-weight: bold;
 }
 
 .signInWrap div:first-child p {
@@ -3092,7 +3383,7 @@ svg:active,
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
-  width: 100%;
+  width: 80%;
 }
 
 #loginForm #input, #signUpForm > fieldset #input {
@@ -3115,13 +3406,14 @@ svg:active,
   -ms-grid-column-span: 2;
   grid-column: 1 / span 2;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 30px;
   background-color: #6F6D82;
 }
 
 #loginForm #input label, #signUpForm > fieldset #input label {
   font-family: "Mulish", sans-serif;
   font-size: 12px;
+  margin-left: 10px;
 }
 
 #loginForm #input input, #signUpForm > fieldset #input input {
@@ -3130,7 +3422,7 @@ svg:active,
   line-height: 1.4;
   border: none;
   width: 100%;
-  padding: 0 2px;
+  padding: 0 10px;
   background: none;
   -webkit-transition: color 0.5s;
   transition: color 0.5s;
@@ -3160,7 +3452,7 @@ svg:active,
   font-size: 15px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   padding: 3px;
-  border-radius: 10px;
+  border-radius: 30px;
   border: none;
 }
 
@@ -3212,6 +3504,7 @@ svg:active,
 #signUpForm div:first-child h1 {
   font-family: "Archivo", sans-serif;
   font-size: 18px;
+  font-weight: bold;
 }
 
 #signUpForm > fieldset {
@@ -3246,7 +3539,7 @@ svg:active,
   padding: 5px;
   background-color: #6F6D82;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 #createUserP2 #fieldSetProviders {
@@ -3364,7 +3657,7 @@ svg:active,
   font-size: 15px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   padding: 3px;
-  border-radius: 10px;
+  border-radius: 30px;
   border: none;
 }
 /*# sourceMappingURL=styles.css.map */

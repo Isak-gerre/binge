@@ -2,9 +2,30 @@
 // Skicka data(POST) till log-in-verification.php
 // data kontrolleras(om fält är ifyllda) innan den skickas för att
 // Ex. kolla om fälten är ifyllda, om mailen har tecken som @ och . osv.
-sessionStorage.clear();
-const form = document.getElementById("loginForm");
 
+if (sessionStorage.length > 0) {
+    window.location.href = "feed.php";
+}
+
+
+//trending top
+async function trendingMovieBanners(page = 1){
+    let trendingMovies = await getTrending(page);
+    console.log(trendingMovies);
+    
+    trendingMovies.forEach(async function (result) {
+      addToMovies(result);
+      let movieElement = makeMovieBannerFromMovie(result);
+      movieElement.setAttribute("name", result.title);
+      movieElement.setAttribute("actor", result.actor);
+    //   movieElement.classList.add("trending");
+      document.querySelector(".loginMoviePreviews").append(movieElement);
+    });   
+}
+
+trendingMovieBanners();
+
+const form = document.getElementById("loginForm");
 form.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(form);

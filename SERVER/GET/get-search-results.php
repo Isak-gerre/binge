@@ -28,7 +28,7 @@ function search()
     if (isset($_GET["page"]) && intval($_GET["page"]) > 0) {
         $page = intval($_GET["page"]);
     }
-    $query = $_GET["query"];
+    $query = urlencode($_GET["query"]);
     $url = "http://api.themoviedb.org/3/search/multi?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US&page=1&include_adult=false&query=$query&page=$page";
     $searchtype = "all";
 
@@ -36,13 +36,13 @@ function search()
         //Checks if user wants to search by actors or by movie and changes $url accordingly. If not set: will search by both actors and movies[1]
         //[1] Searchword "Cruise" will give results "Jungle Cruise" and "Mission Impossible" (starring Tom Cruise)
         if ($_GET["searchtype"] == "cast") {
-            $url = "http://api.themoviedb.org/3/search/person?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US&page=1&include_adult=false&query=$query&page=$page";
+            $url = "http://api.themoviedb.org/3/search/person?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US&include_adult=false&query=$query&page=$page";
             $searchtype = "cast";
         }
         if ($_GET["searchtype"] == "movie") {
-            $url = "http://api.themoviedb.org/3/search/movie?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US&page=1&include_adult=false&query=$query&page=$page";
+            $url = "http://api.themoviedb.org/3/search/movie?api_key=f5c0e0db147d0e6434391f3ff153b6a8&language=en-US&include_adult=false&query=$query&page=$page";
         }
-        // if ($_GET["searchtype"] == "user") {
+        // if ($_GET["searchtype"] == "users") {
         //     $url = "http://localhost:7001/SERVER/DATABASE/user.json";
         // }
     }

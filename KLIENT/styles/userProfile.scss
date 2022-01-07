@@ -312,11 +312,24 @@
   @include flex(column, flex-start, flex-start);
   gap: $betweenPadding;
 
-  padding: 0 $wrapperPadding;
-  background-color: $backgroundColor;
+    button {
+      border-radius: $borderRadiusButtons;
+      border: none;
+      padding: $innerPadding;
+      color: $lightFont;
+      background: $gradientPeach;
+      box-sizing: border-box;
+      filter: none;
+      @include flex(row, center, center);
+      position: absolute;
+    }
 
-  div:last-child {
-    width: 100%;
+    button:first-child{
+      bottom: -55px;
+    }
+    button:last-child{
+      bottom: -105px;
+    }
   }
 
   #responseDiv {
@@ -336,4 +349,17 @@
       border-radius: $borderRadiusObjects;
     }
   }
+}
+
+#overlay-profile {
+  position: absolute;
+  height:100vh;
+  width: 100vw;
+  z-index: 1000;
+}
+
+//text on stats
+.statsP {
+  @include bodyFont();
+  text-align: center;
 }

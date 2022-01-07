@@ -82,20 +82,22 @@ input:focus {
   input[type="text"] {
     outline: none;
     border: 1px solid white;
-    border-radius: 5px;
+    border-radius: $borderRadiusButtons;
     width: calc(100vw - 50px);
     background-color: white;
     background-image: url("../icons/search.svg");
     background-position: 95% 50%;
     background-repeat: no-repeat;
     background-color: transparent;
-    padding: 5px;
-    padding-left: 1em;
+    padding: $betweenPadding;
+    padding-left: 15px; 
     z-index: 1000;
     position: absolute;
     top: 70px;
-    font-family: "Mulish";
-    font-size: 1.2rem;
+    @include bigTitleFont();
+    font-weight: normal;
+    // font-family: "Mulish";
+    // font-size: 1.2rem;
     letter-spacing: 0.08em;
     box-sizing: border-box;
   }
@@ -137,7 +139,7 @@ input:focus {
   padding-bottom: 20px;
   width: 100%;
   bottom: 0;
-  z-index: 11000;
+  z-index: 9000;
   background-color: black;
   // background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
 
@@ -197,7 +199,7 @@ svg:active,
 .pill {
   padding: 8px;
   margin-right: 5px;
-  border-radius: 10px;
+  border-radius: $borderRadiusButtons;
   width: 90px;
   background: #1d155a;
   transform: scale(1);
@@ -231,9 +233,11 @@ svg:active,
   top: -2px;
   position: absolute;
   z-index: 100;
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
+  padding: 0 $wrapperPadding $betweenPadding $wrapperPadding;
   padding-bottom: 100px;
+  box-sizing: border-box;
   @include flex(column, none, center);
 
   div{
@@ -241,17 +245,20 @@ svg:active,
   }
 }
 #search-results {
-  width: 100%;
-  padding: $betweenPadding $wrapperPadding;
   margin-top: 170px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   z-index: 100;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   max-height: calc(100vh - 170px);
+  width: 100%;
   padding-bottom: 130px;
+  position: relative;
+  box-sizing: border-box;
 }
+
 .placeholder {
   animation-duration: 1.8s;
   animation-fill-mode: forwards;
@@ -262,6 +269,7 @@ svg:active,
   background: linear-gradient(to right, #3c3c3c00 8%, #f4f4f40d 38%, #fafafa00 54%);
   background-size: 1000px 640px;
   position: relative;
+  z-index: 1200;
 }
 @keyframes placeHolderShimmer {
   0% {
@@ -278,7 +286,7 @@ svg:active,
   top: 0;
   background-color: black;
   width: 60%;
-  z-index: 10000;
+  z-index: 11000;
   right: 0;
   padding: 60px 0px 90px 20px;
   box-sizing: border-box;
@@ -295,14 +303,26 @@ svg:active,
   top: 0;
   background-color: black;
   width: 100%;
-  z-index: 900;
+  z-index: 10000;
   opacity: 0.6;
+}
+
+.exitMenu {
+  height: 20px;
+  width: 20px;
+  background-image: url("../icons/exit.svg");
+  background-position: center;
+  background-size: contain;
+  // background-color: blueviolet;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .pages-container {
   border-bottom: 1px solid $lightFont;
   margin-bottom: 10px;
-  width: 100%;
+  width: 90%;
 }
 
 .hamburger-text {
@@ -317,10 +337,24 @@ svg:active,
   transform: scale(1.1, 1.1);
 }
 
+.log-out-btn {
+  border: none;
+  border-radius: $borderRadiusButtons;
+  padding: $innerPadding;
+  height: $iconButtonSz;
+  width: 30%;
+  margin: $betweenPadding $betweenPadding $betweenPadding 0;
+  cursor: pointer;
+  box-sizing: content-box;      
+  background: $gradientPeach;
+  filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+  @include flex(row, center, center);
+}
+
 .genres-container {
   border-bottom: 1px solid $lightFont;
   margin-bottom: 10px;
-  width: 100%;
+  width: 90%;
 
   .genre-link {
     opacity: 0;
@@ -337,6 +371,8 @@ svg:active,
 
 .about-container {
   @include xSmallFont();
+  display: flex;
+  flex-direction: column;
 }
 
 .markedPage {
@@ -387,34 +423,74 @@ svg:active,
   scroll-behavior: smooth;
   div {
     margin-right: $betweenPadding;
+    flex-grow: 1;
+  }
+
+  div:last-child {
+    margin-right: 0;
   }
 }
+
 .userDiv {
   @include flex(column, space-evenly, center);
   max-width: 140px;
 
-  .followDiv {
-    width: 70%;
+  .userImage {
+    width: 75px;
+    height: 75px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+  }
 
-    #followInfo {
-      #followersDiv,
-      #followingDiv {
-        p {
-          font-size: 10px;
-        }
+  .userInfoDiv {
+    display: flex;
+    flex-direction: column;
+
+    #usernameP {
+      text-align: center;
+      padding-bottom: $innerPadding;
+    }
+
+    #followDiv {
+      background: $gradientPeach;
+      @include flex(row, center, center);
+      gap: 4px;
+    
+      width: 85px;
+      border-radius: $borderRadiusButtons;
+      padding: $buttonPadding;
+    
+      p {
+        @include xSmallFont();
+        padding: 0;
       }
     }
+
   }
+
+  // .followDiv {
+  //   width: 70%;
+
+  //   #followInfo {
+  //     #followersDiv,
+  //     #followingDiv {
+  //       p {
+  //         font-size: 10px;
+  //         text-align: center;
+  //       }
+  //     }
+  //   }
+  // }
 }
-.userImage {
-  width: 75px;
-  height: 75px;
-  background-position: center;
-  background-size: cover;
-  border-radius: 50%;
-}
+
+
+
+
+
 .showMoreDiv {
   z-index: 1000;
+  position: relative;
   width: 40%;
   grid-column-end: span 3;
   padding-top: 10px;
@@ -423,47 +499,53 @@ svg:active,
     width: 100%;
     height: 100%;
     padding: $betweenPadding;
-    border-radius: 10px;
+    border-radius: $borderRadiusButtons;
     border: 0;
-    color: #eeeeee;
-    background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-    -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
-    filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+    color: $lightFont;
+    background: transparent;
+    @include bigTitleFont();
   }
 }
 
 // LOAD dots
-.lds-ellipsis {
+.loading_dots {
   display: inline-block;
   position: relative;
   width: 73px;
   height: 9px;
+
+  div {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+
+  div:nth-child(1) {
+    left: 8px;
+    animation: scaleUp 0.6s infinite;
+  }
+
+  div:nth-child(2) {
+    left: 8px;
+    animation: moveSideways 0.6s infinite;
+  }
+
+  div:nth-child(3) {
+    left: 32px;
+    animation: moveSideways 0.6s infinite;
+  }
+  
+  div:nth-child(4) {
+    left: 56px;
+    animation: scaleDown 0.6s infinite;
+  }
 }
-.lds-ellipsis div {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #fff;
-  animation-timing-function: cubic-bezier(0, 1, 1, 0);
-}
-.lds-ellipsis div:nth-child(1) {
-  left: 8px;
-  animation: lds-ellipsis1 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(2) {
-  left: 8px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(3) {
-  left: 32px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(4) {
-  left: 56px;
-  animation: lds-ellipsis3 0.6s infinite;
-}
-@keyframes lds-ellipsis1 {
+
+
+@keyframes scaleUp {
   0% {
     transform: scale(0);
   }
@@ -471,7 +553,7 @@ svg:active,
     transform: scale(1);
   }
 }
-@keyframes lds-ellipsis3 {
+@keyframes scaleDown {
   0% {
     transform: scale(1);
   }
@@ -479,7 +561,7 @@ svg:active,
     transform: scale(0);
   }
 }
-@keyframes lds-ellipsis2 {
+@keyframes moveSideways {
   0% {
     transform: translate(0, 0);
   }
@@ -489,8 +571,12 @@ svg:active,
 }
 
 #search-results-text {
+  @include smallTitleFont();
   margin-top: 20px;
   z-index: 1000;
   position: relative;
   top: 156px;
+  color: $lightFont
 }
+
+

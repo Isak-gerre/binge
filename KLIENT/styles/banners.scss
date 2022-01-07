@@ -1,8 +1,8 @@
 @import "variables.scss";
 
 .movieBanner,
-.genreImageDiv,
-.userDiv {
+.genreImageDiv
+{
   height: 150px;
   border-radius: $borderRadiusNav;
   background-size: cover;
@@ -35,6 +35,26 @@
     transform:scale(1.2,1.2);
   }
 }
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
 
 .movieBanner {
   max-width: 100px;
@@ -91,4 +111,26 @@
   background-color: rgba(211, 211, 211, 0.7);
   width: 150%;
   transform: rotate(-20deg);
+}
+
+.zoomIn {
+  z-index: 16000;
+  pointer-events: auto;
+  filter: blur(0px);
+  transform: scale(1.1 , 1.1);
+}
+
+.messageToUser {
+  position: fixed;
+  bottom: 70px;
+  width: 100%;
+  z-index: 1000;
+  background: black;
+  padding: 10px;
+  
+  p {
+    text-align: center;
+    color: white;
+    @include bodyFont();
+  }
 }

@@ -1,121 +1,16 @@
-/*
-
-Fetch all relevant keys and display them
-Add filter that actiate on button press
-
-*/
+"use strict";
 
 let searchType = "movie";
 let searches = {};
 
-async function searchFunction(searchBy) {
-  console.log(searchBy);
-  let input = document.getElementById("searchField");
-  document.getElementById("search-results").innerHTML = "";
-  for (let i = 0; i < 20; i++) {
-    document.querySelector("#search-results").append(makePlaceholderMovieBanner());
-  }
-  let savedMovies = [];
-  let inputValue = input.value.toLowerCase();
-
-  // MOVIES
-  if (input.value !== "" && searchBy == "Movies") {
-    let searchResults = await getSearchResults(searchType, inputValue);
-    let movieList = document.querySelector("#search-results");
-    movieList.innerHTML = "";
-
-    searchResults.results.forEach(async function (result) {
-      addToMovies(result);
-    });
-    let allMovies = getFromSession("movies");
-    allMovies.forEach((movie) => {
-      let movieElement = makeMovieBannerFromMovie(movie);
-      movieElement.setAttribute("name", movie.title);
-      document.querySelector("#search-results").prepend(movieElement);
-    });
-
-    myFunction(inputValue);
-  }
-
-  // ACTORS
-  console.log(searchBy);
-  if (input.value !== "" && searchBy == "Actors") {
-    console.log(inputValue);
-    searchType = "cast";
-    console.log(searchType);
-    let searchResults = await getSearchResults(searchType, inputValue);
-    console.log(searchResults);
-    let movieList = document.querySelector("#search-results");
-    movieList.innerHTML = "";
-
-    let allMovies = [];
-    searchResults.results.forEach(async function (result) {
-      console.log(result);
-      if (result["known_for"].length != 0 && result["known_for_department"] == "Acting") {
-        result["known_for"].forEach((movie) => {
-          movie.actor = result.name;
-          addToMovies(movie);
-          allMovies.push(movie);
-        });
-      }
-    });
-
-    allMovies.forEach((movie) => {
-      console.log(movie);
-      let movieElement = makeMovieBannerFromMovie(movie);
-      console.log(movieElement);
-      movieElement.setAttribute("name", movie.title);
-      movieElement.setAttribute("actor", movie.actor);
-      document.querySelector("#search-results").prepend(movieElement);
-    });
-
-    myFunction(inputValue, "actor");
-  }
-
-  // USERS
-  if (input.value !== "" && searchBy == "Users") {
-    let searchResults = await getSearchResults(searchType, inputValue);
-    let movieList = document.querySelector("#search-results");
-    movieList.innerHTML = "";
-
-    searchResults.results.forEach(async function (result) {
-      addToMovies(result);
-    });
-    let allMovies = getFromSession("movies");
-    allMovies.forEach((movie) => {
-      let movieElement = makeMovieBannerFromMovie(movie);
-      movieElement.setAttribute("name", movie.title);
-      document.querySelector("#search-results").prepend(movieElement);
-      let title = movie.title || movie.name;
-    });
-
-    myFunction(inputValue, "users");
+if (getParamFromUrl("search_by")) {
+  if (getParamFromUrl("open") == "true") {
+    makeSearchOverlay(getParamFromUrl("search_word"), getParamFromUrl("search_by"));
   }
 }
 
-function myFunction(searchResults, searchAttribute = "name") {
-  console.log(searchResults);
-  var movie, text, i, txtValue;
-  filter = searchResults.toUpperCase();
-  movie = document.querySelectorAll("#search-results .movieBanner");
-
-  for (i = 0; i < movie.length; i++) {
-    text = movie[i].getAttribute(searchAttribute);
-    // txtValue = text.textContent || text.innerText;
-    if (text.toUpperCase().indexOf(filter) > -1) {
-      movie[i].style.display = "";
-    } else {
-      movie[i].style.display = "none";
-    }
-    if (text.toUpperCase().indexOf(filter) > -1) {
-      movie[i].style.display = "";
-    } else {
-      movie[i].style.displlay = "none";
-    }
-  }
-}
-
-function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
+// Skapar hela overlayen
+function makeSearchOverlay(searchWord = "", searchBy = "Title") {
   document.body.style.overflow = "hidden";
   let searchContainer = document.createElement("div");
   searchContainer.className = "search-container";
@@ -134,7 +29,7 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
   // PILLS
   let pillContainer = document.createElement("div");
   pillContainer.className = "pill-container";
-  let pills = ["Movies", "Genres", "Actors", "Users", "Directors"];
+  let pills = ["Title", "Genre", "Actor", "User"];
   pills.forEach((pill, index) => {
     let pillDiv = document.createElement("div");
     pillDiv.className = `pill ${pill == searchBy ? "active" : ""}`;
@@ -147,18 +42,14 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
     pillDiv.addEventListener("click", ({ target }) => {
       searchBy = pill;
       searchFunction(pill);
-      // Ändrar grid layout från två kolumner till tre
-      document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(3, 1fr);");
-      if (pill == "Users") {
-        // Om User => 2 kolumner
-        // Ändrar grid layout från två kolumner till tre
-        document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");
-      }
       let active = document.querySelectorAll(".active");
+
       if (active.length != 0) {
         active[0].classList.remove("active");
       }
+
       let searchBar = document.querySelector("#searchField");
+
       if (searchBar.placeholder != "Search") {
         searchBar.placeholder = "Search";
         if (target.classList == "pill-text") {
@@ -194,26 +85,17 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
 
   document.body.append(searchContainer);
 
-  //OBS!! ELSA LAGT TILL!! om man kommer från genre på explore
-  // scroll till top och displaya det vi får från keywords istället
   if (searchField.value == "") {
     searchField.value = searchWord;
     setTimeout(() => {
       searchResults.innerHTML = "";
       searchFunction(searchBy);
     }, 200);
-  } else {
   }
-  // setTimeout(() => {
-  //   displayTrending();
-  // }, 200);
 
   searchField.addEventListener("keyup", (e) => {
     if (e.key == "Enter") {
-      // Ändrar grid layout från två kolumner till tre
-      document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(3, 1fr);");
-      document.querySelector("#search-results-text").textContent =
-        "Showing " + document.querySelector(".active").textContent;
+      "Showing " + document.querySelector(".active").textContent;
       searchFunction(searchBy);
     }
   });
@@ -222,267 +104,478 @@ function makeSearchOverlay(searchWord = "", searchBy = "Movies") {
 async function searchFunction(searchBy) {
   let input = document.getElementById("searchField");
   document.getElementById("search-results").innerHTML = "";
-  for (let i = 0; i < 20; i++) {
-    document.querySelector("#search-results").append(makePlaceholderMovieBanner());
-  }
-  let savedMovies = [];
+
   let inputValue = input.value.toLowerCase();
 
-  // MOVIES
-  if (searchBy == "Movies") {
-    document.querySelector("#search-results-text").textContent = "Showing Movies";
-    let movieList = document.querySelector("#search-results");
-    movieList.innerHTML = "";
-    if (inputValue != "") {
-      let searchResults = await getSearchResults(searchType, inputValue);
-      searchResults.results.forEach(async function (result) {
-        addToMovies(result);
-      });
-      let allMovies = getFromSession("movies");
-      allMovies.forEach((movie) => {
-        let movieElement = makeMovieBannerFromMovie(movie);
-        movieElement.setAttribute("name", movie.title);
-        document.querySelector("#search-results").prepend(movieElement);
-      });
-    } else {
-      displayTrending();
+  // TITLE
+  if (searchBy == "Title") {
+    for (let i = 0; i < 20; i++) {
+      document.querySelector("#search-results").append(makePlaceholderMovieBanner());
     }
-
-    myFunction(inputValue);
-  }
-  // GENRES
-  if (searchBy == "Genres") {
-    let movieList = document.querySelector("#search-results");
-    movieList.innerHTML = "";
-    let searchResults = await getMoviesByGenre(inputValue);
-    searchResults[1].results.forEach(async function (result) {
-      addToMovies(result);
-    });
-    searchResults[1].results.forEach((movie) => {
-      let movieElement = makeMovieBannerFromMovie(movie);
-      movieElement.setAttribute("genre", inputValue);
-      document.querySelector("#search-results").prepend(movieElement);
-    });
-    myFunction(inputValue, "genre");
+    let page = 1;
+    await searchByTitle(inputValue, page);
   }
 
-  // ACTORS
-  if (searchBy == "Actors") {
+  // GENRE
+  if (searchBy == "Genre") {
+    for (let i = 0; i < 20; i++) {
+      // console.log(document.querySelector("#search-results"));
+      document.querySelector("#search-results").append(makePlaceholderMovieBanner());
+    }
+    let page = 1;
+    await searchByGenres(inputValue, page);
+  }
+
+  // ACTOR
+  if (searchBy == "Actor") {
+    for (let i = 0; i < 20; i++) {
+      document.querySelector("#search-results").append(makePlaceholderMovieBanner());
+    }
     let page = 1;
     await getAndShowMoviesByActors(inputValue, page);
   }
 
-  // USERS
-  if (searchBy == "Users") {
-    document.querySelector("#search-results").innerHTML = "";
-    document.querySelector("#search-results-text").textContent = "Showing Users";
-    document.querySelector("#search-results").setAttribute("style", "grid-template-columns: repeat(2, 1fr);");
-    let users = await getUsers();
-    console.log(users);
-    users.forEach((user) => {
-      console.log(user);
-      let userDiv = document.createElement("div");
-      userDiv.className = "userDiv";
-      userDiv.setAttribute("user", user.username);
-      userDiv.addEventListener("click", () => {
-        window.location.href = `http://localhost:2000/profile.php?userID=${user.id}`;
-      });
-
-      let userImage = document.createElement("div");
-      userImage.className = "userImage";
-      console.log(user["profile_picture"].filepath);
-      userImage.style.backgroundImage = `url('http://localhost:7001/${user["profile_picture"].filepath}')`;
-
-      let userInfoDiv = document.createElement("div");
-      userInfoDiv.className = "userInfoDiv";
-      userInfoDiv.innerHTML = `
-      <div id="usernameDiv">
-            <p id="username">@${user.username}</p>
-            <div id="settingOrPlus"></div>
-        </div>`;
-
-      let followDiv = document.createElement("div");
-      followDiv.className = "followDiv";
-      followDiv.innerHTML = `
-      <div id="followInfo">
-            <div id="followersDiv">
-                <p>Followers</p>
-                <p id="followers">${user.followers.length}</p>
-            </div>
-            <div id="followingDiv">
-                <p>Following</p>
-                <p id="following">${user.following.length}</p>
-            </div>
-        </div>`;
-
-      if (!document.getElementById("show-more-btn")) {
-        let showMoreDiv = document.createElement("div");
-        showMoreDiv.className = "showMoreDiv";
-        showMoreDiv.innerHTML = `
-    <button id="show-more-btn">Show more</button>
-    `;
-        document.querySelector(".search-container").append(showMoreDiv);
-        document.getElementById("show-more-btn").addEventListener("click", () => {
-          // if (document.querySelectorAll(".trending").length == 20) {
-          // }
-        });
-      }
-
-      userDiv.append(userImage, userInfoDiv, followDiv);
-      document.querySelector("#search-results").append(userDiv);
-    });
-    myFunction(inputValue, "user");
+  // USER
+  if (searchBy == "User") {
+    let page = 1;
+    await searchForUsers(inputValue, page);
   }
-}
 
-function myFunction(searchWord, searchAttribute = "name", selector = "#search-results > div") {
-  var movie, text, i, txtValue;
-  console.log("searching");
-  filter = searchWord.toUpperCase();
-  movie = document.querySelectorAll(selector);
-  if (searchWord == "") {
-    let length = movie.length > 20 ? 20 : movie.length;
-    console.log(length);
-    for (i = 0; i < length; i++) {
-      movie[i].style.display = "";
-    }
-  } else {
-    for (i = 0; i < movie.length; i++) {
-      text = movie[i].getAttribute(searchAttribute);
-      // txtValue = text.textContent || text.innerText;
-      if (text.toUpperCase().indexOf(filter) > -1) {
+  function myFunction(searchWord, searchAttribute = "name", selector = "#search-results > div") {
+    var movie, text, i;
+    let filter = searchWord.toUpperCase();
+    movie = document.querySelectorAll(selector);
+    if (searchWord == "") {
+      let length = movie.length > 20 ? 20 : movie.length;
+      for (i = 0; i < length; i++) {
         movie[i].style.display = "";
-      } else {
-        movie[i].style.display = "none";
       }
-      if (text.toUpperCase().indexOf(filter) > -1) {
-        movie[i].style.display = "";
-      } else {
-        movie[i].style.display = "none";
-      }
-    }
-  }
-  // Check if nothing is showing
-  let noResults = true;
-  document.querySelectorAll(selector).forEach((element) => {
-    if (!element.style.display.includes("none")) {
-      noResults = false;
-    }
-  });
-  searchWord = document.getElementById("searchField").value;
-  if (!searchWord == "") {
-    if (noResults) {
-      document.querySelector("#search-results-text").textContent = "No results for: " + searchWord;
     } else {
-      document.querySelector("#search-results-text").textContent = "Showing results for: " + searchWord;
-    }
-  }
-}
 
-async function displayTrending(page = 1) {
-  document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
-  let searchResults = await getTrending(page);
-  console.log(searchResults);
-
-  if(document.getElementById("show-more-btn")){
-    document.querySelector(".showMoreDiv").remove();
-  }
-
-  searchResults.forEach(async function (result) {
-    addToMovies(result);
-    let movieElement = makeMovieBannerFromMovie(result);
-    movieElement.setAttribute("name", result.title);
-    movieElement.setAttribute("actor", result.actor);
-    movieElement.classList.add("trending");
-    document.querySelector("#search-results").append(movieElement);
-  });
-
-  if (!document.getElementById("show-more-btn")) {
-    let showMoreDiv = document.createElement("div");
-    showMoreDiv.className = "showMoreDiv";
-    showMoreDiv.innerHTML = `
-    <button id="show-more-btn">Show more</button>
-    `;
-
-    document.querySelector(".search-results").append(showMoreDiv);
-    document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
-    document.getElementById("show-more-btn").addEventListener("click", () => {
-      document.getElementById("show-more-btn").innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
-      if (document.querySelectorAll(".trending").length == 20) {
-        console.log(true);
-        page = 2;
+      for (i = 0; i < movie.length; i++) {
+        text = movie[i].getAttribute(searchAttribute);
+        if (text != null) {
+          if (text.toUpperCase().indexOf(filter) > -1) {
+            movie[i].style.display = "";
+          } else {
+            movie[i].style.display = "none";
+          }
+          if (text.toUpperCase().indexOf(filter) > -1) {
+            movie[i].style.display = "";
+          } else {
+            movie[i].style.display = "none";
+          }
+        }
       }
-      console.log(page);
-      page++;
-      displayTrending(page);
+    }
+
+    // Check if nothing is showing
+    let noResults = true;
+    document.querySelectorAll(selector).forEach((element) => {
+      console.log(element.className.includes("placeholder"));
+      if (!element.style.display.includes("none")) {
+        if (element.className.includes("placeholder")){
+          console.log("placeholder");
+          noResults = true;
+        } else {
+          noResults = false;
+        }
+      }
+
+      
       
     });
-  }
-}
 
-async function getAndShowMoviesByActors(inputValue = "", page = 1) {
-  inputValue = document.getElementById("searchField").value;
-  searchType = "cast";
-
-  if(document.getElementById("show-more-btn-actors")){
-    document.querySelector(".showMoreDiv").remove();
-  }
-
-  document.querySelector("#search-results-text").textContent = "Showing Movies by Actors";
-  if (page == 1) {
-    let movieList = document.querySelector("#search-results");
-    movieList.innerHTML = "";
-  }
-
-  if (inputValue != "") {
-    console.log(page);
-    let searchResults = await getSearchResults(searchType, inputValue, page);
-    searchResults.results.forEach(function (result) {
-      if (
-        result["known_for"].length != 0 &&
-        result["known_for_department"] == "Acting" &&
-        Array.isArray(result["known_for"])
-      ) {
-        console.log(result);
-        result["known_for"].forEach((movie) => {
-          movie.actor = result.name;
-          addToMovies(movie, true);
-        });
+    searchWord = document.getElementById("searchField").value;
+    console.log(noResults);
+    if (searchWord !== "") {
+      if (noResults) {
+        document.querySelector("#search-results-text").textContent = "No results for: " + searchWord;
+        document.querySelector("#search-results").innerHTML = "";
+      } else {
+        document.querySelector("#search-results-text").textContent = "Showing results for: " + searchWord;
       }
+    }
+  }
+
+  async function displayTrending(page = 1) {
+    document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
+    let searchResults = await getTrending(page);
+
+    if (document.getElementById("show-more-btn")) {
+      document.querySelector(".showMoreDiv").remove();
+    }
+
+    searchResults.forEach(async function (result) {
+      addToMovies(result);
+      let movieElement = makeMovieBannerFromMovie(result);
+      movieElement.setAttribute("name", result.title);
+      movieElement.setAttribute("actor", result.actor);
+      movieElement.classList.add("trending");
+      document.querySelector("#search-results").append(movieElement);
     });
 
-    let allMovies = getFromSession("movies");
-    console.log(allMovies);
-    document.getElementById("search-results").innerHTML = "";
-    allMovies.forEach((movie) => {
-      let movieElement = makeMovieBannerFromMovie(movie);
-      movieElement.setAttribute("name", movie.title);
-      movieElement.setAttribute("actor", movie.actor);
-      document.querySelector("#search-results").prepend(movieElement);
-    });
-
-    if (!document.querySelector("#show-more-btn-actors")) {
-      console.log(true);
+    if (!document.getElementById("show-more-btn")) {
       let showMoreDiv = document.createElement("div");
       showMoreDiv.className = "showMoreDiv";
-      showMoreDiv.innerHTML = `
-        <button id="show-more-btn-actors">Show more</button>
-        `;
+      showMoreDiv.innerHTML = `<button id="show-more-btn">Show more</button>`;
 
       document.querySelector(".search-results").append(showMoreDiv);
+      document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
+      document.getElementById("show-more-btn").addEventListener("click", () => {
+        document.getElementById("show-more-btn").innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+        if (document.querySelectorAll(".trending").length == 20) {
+          page = 2;
+        }
+        page++;
+        displayTrending(page);
+      });
+    }
+  }
 
-      document.getElementById("show-more-btn-actors").addEventListener("click", () => {
-        document.getElementById("show-more-btn-actors").innerHTML = `<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>`;
-        if (document.querySelectorAll(".movieBanner").length >= 20) {
-          page += 1;
-          getAndShowMoviesByActors(inputValue, page);
-          myFunction(inputValue, "actor");
+  async function searchByTitle(inputValue = "", page = 1) {
+    inputValue = document.getElementById("searchField").value;
+    let searchType = "movie";
+
+    
+    let x = true;
+    
+    if (inputValue != "") {
+      let searchResults = await getSearchResults(searchType, inputValue, page);
+
+      if (page == searchResults["total_pages"] || searchResults["total_pages"] == 0) {
+        x = false;
+      }
+
+      if (page == 1) {
+        let movieList = document.querySelector("#search-results");
+        movieList.innerHTML = "";
+      }
+
+      searchResults.results.forEach(async function (result) {
+        addToMovies(result);
+        let movieElement = makeMovieBannerFromMovie(result);
+        movieElement.setAttribute("name", result.title);
+        document.querySelector("#search-results").append(movieElement);
+      });
+
+      if (document.getElementById("show-more-btn-title")) {
+        document.querySelector(".showMoreDiv").remove();
+      }
+
+      if (x) {
+        let showMoreDiv = document.createElement("div");
+        showMoreDiv.className = "showMoreDiv";
+        showMoreDiv.innerHTML = `<button id="show-more-btn-title">Show more</button>`;
+
+        document.querySelector(".search-results").append(showMoreDiv);
+
+        document.getElementById("show-more-btn-title").addEventListener("click", () => {
+          document.getElementById("show-more-btn-title").innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+
+          if (document.querySelectorAll(".movieBanner").length >= 20) {
+            page += 1;
+            console.log(page)
+            searchByTitle(inputValue, page);
+          }
+        });
+      }
+    } else {
+      if (page == 1) {
+        let movieList = document.querySelector("#search-results");
+        movieList.innerHTML = "";
+      }
+      displayTrending();
+    }
+
+    myFunction(inputValue, "name");
+  }
+
+  async function searchByGenres(inputValue = "", page = 1) {
+    inputValue = document.getElementById("searchField").value;
+
+    if (inputValue != "") {
+      let searchResults = await searchResultsByGenre(inputValue);
+      searchResults.forEach(async function (result) {
+        addToMovies(result);
+      });
+
+      let x = false;
+
+      if(searchResults.length !== 0) {
+        x = true;
+
+        if (page == 1) {
+          let movieList = document.querySelector("#search-results");
+          movieList.innerHTML = "";
+        }
+
+        for (let i = page - 1; i <= page + 19; i++) {
+          let movieElement = makeMovieBannerFromMovie(searchResults[i]);
+          movieElement.setAttribute("genre", inputValue);
+          document.querySelector("#search-results").append(movieElement);
+  
+          let lastSearch = searchResults.length - 1;
+          if (i == lastSearch) {
+            if (document.querySelector(".showMoreDiv")) {
+              document.querySelector(".showMoreDiv").remove();
+            }
+            x = false;
+            break;
+          }
+        }
+      }
+
+      if (document.getElementById("show-more-btn-genres")) {
+        document.querySelector(".showMoreDiv").remove();
+      }
+
+      if (x) {
+        // if (!document.querySelector("#show-more-btn-genres")) {
+        let showMoreDiv = document.createElement("div");
+        showMoreDiv.className = "showMoreDiv";
+        showMoreDiv.innerHTML = `<button id="show-more-btn-genres">Show more</button>`;
+
+        document.querySelector(".search-results").append(showMoreDiv);
+
+        document.getElementById("show-more-btn-genres").addEventListener("click", () => {
+          document.getElementById("show-more-btn-genres").innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+
+          if (document.querySelectorAll(".movieBanner").length >= 20) {
+            page += 21;
+            searchByGenres(inputValue, page);
+          }
+        });
+        // }
+      }
+    } else {
+      if (page == 1) {
+        let movieList = document.querySelector("#search-results");
+        movieList.innerHTML = "";
+      }
+      displayTrending();
+    }
+
+    myFunction(inputValue, "genres");
+  }
+
+  async function getAndShowMoviesByActors(inputValue = "", page = 1) {
+    inputValue = document.getElementById("searchField").value;
+    searchType = "cast";
+
+    let x = true;
+
+    if (inputValue != "") {
+      let searchResults = await getSearchResults(searchType, inputValue, page);
+      console.log(searchResults);
+      
+      console.log(searchResults["total_pages"])
+      if (page == searchResults["total_pages"] || searchResults["total_pages"] == 0) {
+        x = false;
+      }
+
+      if (page == 1) {
+        let movieList = document.querySelector("#search-results");
+        movieList.innerHTML = "";
+      }
+
+      searchResults.results.forEach(function (result) {
+        if (
+          result["known_for"].length != 0 &&
+          result["known_for_department"] == "Acting" &&
+          Array.isArray(result["known_for"])
+        ) {
+          result["known_for"].forEach((movie) => {
+            movie.actor = result.name;
+            addToMovies(movie, true);
+
+            let movieElement = makeMovieBannerFromMovie(movie);
+            movieElement.setAttribute("name", movie.title);
+            movieElement.setAttribute("actor", movie.actor);
+            document.querySelector("#search-results").prepend(movieElement);
+          });
+        }
+      });
+
+      if (document.getElementById("show-more-btn-actors")) {
+        document.querySelector(".showMoreDiv").remove();
+      }
+
+      if (x) {
+        let showMoreDiv = document.createElement("div");
+        showMoreDiv.className = "showMoreDiv";
+        showMoreDiv.innerHTML = `<button id="show-more-btn-actors">Show more</button>`;
+
+        document.querySelector(".search-results").append(showMoreDiv);
+
+        document.getElementById("show-more-btn-actors").addEventListener("click", () => {
+          document.getElementById("show-more-btn-actors").innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+
+          if (document.querySelectorAll(".movieBanner").length >= 20) {
+            page += 1;
+            getAndShowMoviesByActors(inputValue, page);
+          }
+        });
+
+      }
+    } else {
+      if (page == 1) {
+        let movieList = document.querySelector("#search-results");
+        movieList.innerHTML = "";
+      }
+
+      displayTrending();
+    }
+
+    myFunction(inputValue, "actor");
+  }
+
+  async function searchForUsers(inputValue = "", counter = 1) {
+    inputValue = document.getElementById("searchField").value;
+    searchType = "user";
+
+    // Hämta alla användare
+    let users = await getUsers();
+    let newArray = [];
+
+    // Om något är sökt på, gör ny array med användarna som matchar sökvärdet
+    if (inputValue != "") {
+      users.forEach(user => {
+        if (user.username.includes(inputValue)) {
+          newArray.push(user);
         }
       });
     }
-  } else {
-    document.querySelector("#search-results-text").textContent = "Showing Trending Movies";
-    displayTrending();
+
+    let x = true;
+    // Loopa för att skapa element för användare
+    for (let i = counter - 1; i <= counter + 7; i++) {
+      if (inputValue == "") {
+
+        // Om inget är sökt på, skapa element för ALLA användare
+        // Om det finns färre än vad countern är, ta bort visa mer och bryt loop
+        if (i >= users.length) {
+          if (document.querySelector(".showMoreDiv")) {
+            document.querySelector(".showMoreDiv").remove();
+          }
+          x = false;
+          break;
+        };
+        await makeUserSearchDivs(users[i]);
+
+      } else {
+        // Om något är sökt på, skapa element för användarna som matchar sökn.
+        // Om det finns färre än vad countern är, ta bort visa mer och bryt loop
+        if (i >= newArray.length) {
+          if (document.querySelector(".showMoreDiv")) {
+            document.querySelector(".showMoreDiv").remove();
+          }
+          x = false;
+          break;
+        };
+        await makeUserSearchDivs(newArray[i]);
+      }
+
+    };
+
+    if (document.querySelector(".showMoreDiv")) {
+      document.querySelector(".showMoreDiv").remove();
+    }
+
+    if (x) {
+      // Skapa show more knapp
+      let showMoreDiv = document.createElement("div");
+      showMoreDiv.className = "showMoreDiv";
+      showMoreDiv.innerHTML = `<button id="show-more-btn">Show more</button>`;
+      document.querySelector("#search-results").append(showMoreDiv);
+
+      // Event för show-more-knapp
+      document.getElementById("show-more-btn").addEventListener("click", () => {
+        counter += 9;
+        searchForUsers(inputValue, counter);
+
+        // ladd ikon på show more knapp
+        document.getElementById("show-more-btn").innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
+
+      });
+    }
   }
-  myFunction(inputValue, "actor");
+
+  async function makeUserSearchDivs(user) {
+    const loggedInUserInfo = await getUserInfo(loggedInUserId);
+    let loggedInFollowing = loggedInUserInfo.following;
+    let relationText;
+    let relationImg;
+
+    if (loggedInFollowing.includes(user.id)) {
+      relationText = "Unfollow";
+      relationImg = "../icons/remove_circle_black.svg";
+    } else {
+      relationText = "Follow";
+      relationImg = "../icons/add_circle_black.svg";
+    }
+
+    document.querySelector("#search-results-text").textContent = "Showing all users";
+
+    let userDiv = document.createElement("div");
+    userDiv.className = "userDiv";
+    userDiv.setAttribute("user", user.username);
+
+    let userImage = document.createElement("div");
+    userImage.className = "userImage";
+    userImage.style.backgroundImage = `url('http://localhost:7001/${user["profile_picture"].filepath}')`;
+    userImage.addEventListener("click", () => {
+      window.location.href = `http://localhost:2000/profile.php?userID=${user.id}`;
+    });
+
+    let userInfoDiv = document.createElement("div");
+    userInfoDiv.className = "userInfoDiv";
+
+    userDiv.append(userImage, userInfoDiv);
+
+    let username = document.createElement("p");
+    username.textContent = `@${user.username}`;
+    username.setAttribute("id", "usernameP");
+    username.addEventListener("click", () => {
+      window.location.href = `http://localhost:2000/profile.php?userID=${user.id}`;
+    });
+
+    let followDiv = document.createElement("div");
+    followDiv.setAttribute("id", "followDiv");
+
+    userInfoDiv.append(username, followDiv);
+
+    let followImg = document.createElement("img");
+    followImg.setAttribute("id", `${relationText.toLowerCase()}`);
+    followImg.setAttribute("src", `${relationImg}`);
+
+    let followText = document.createElement("p");
+    followText.textContent = relationText;
+
+    followDiv.append(followImg, followText);
+
+    document.querySelector("#search-results").append(userDiv);
+
+    // Eventlistern för att följa/avfölja folk härifrån
+    followDiv.addEventListener("click", async function (e) {
+      if (e.target.textContent == 'Unfollow') {
+        followText.textContent = 'Follow';
+        followText.setAttribute("id", "follow");
+        followImg.setAttribute("src", "../icons/add_circle_black.svg");
+
+        // redigera db
+        await followPatch(loggedInUserId, user.id);
+
+      } else if (e.target.textContent == 'Follow') {
+        followText.textContent = 'Unfollow';
+        followText.setAttribute("id", "unfollow");
+        followImg.setAttribute("src", "../icons/remove_circle_black.svg");
+
+        // redigera db
+        await followPatch(loggedInUserId, user.id);
+      }
+    });
+
+    myFunction(inputValue, "user");
+  }
 }

@@ -97,7 +97,7 @@
           align-items: center;
   gap: 4px;
   width: 85px;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 3px;
 }
 
@@ -214,7 +214,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 10px;
+  border-radius: 30px;
   overflow: hidden;
   background-color: #1c1452;
 }
@@ -242,7 +242,7 @@
 
 #profileNav .selected {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 #followContainer {
@@ -270,6 +270,13 @@
   background-color: #0f0b2e;
   width: 100%;
   padding: 25px;
+}
+
+#followContainer button {
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  padding: 3px;
 }
 
 #followContainer #usersWrapper {
@@ -607,7 +614,16 @@
   width: 100%;
 }
 
-#changeProfilePicWindow #responseDiv {
+#profileWrapper #watchlistContainer button {
+  border-radius: 30px;
+  border: none;
+  padding: 5px;
+  color: #eeeeee;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-filter: none;
+          filter: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -622,17 +638,61 @@
       -ms-flex-align: center;
           align-items: center;
   position: absolute;
-  height: 100vh;
-  width: 100vw;
-  background-color: rgba(15, 11, 46, 0.5);
-  opacity: 0;
-  -webkit-transition: opacity 0.5s;
-  transition: opacity 0.5s;
 }
 
-#changeProfilePicWindow #responseDiv p {
-  background-color: #0f0b2e;
-  padding: 20px;
-  border-radius: 5px;
+#profileWrapper #watchlistContainer button:first-child {
+  bottom: -55px;
+}
+
+#profileWrapper #watchlistContainer button:last-child {
+  bottom: -105px;
+}
+
+#messageWhenEmpty {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 25px;
+  height: 15vh;
+  width: 100%;
+}
+
+#messageWhenEmpty p {
+  text-align: center;
+}
+
+#messageWhenEmpty button {
+  border: none;
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 30px;
+  padding: 5px 25px;
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+  color: #eeeeee;
+}
+
+#overlay-profile {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1000;
+}
+
+.statsP {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
 }
 /*# sourceMappingURL=userProfile.css.map */

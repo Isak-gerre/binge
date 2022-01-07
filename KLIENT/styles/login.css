@@ -1,5 +1,46 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
-.signInWrap {
+.previewWrapper {
+  height: 30vh;
+  position: absolute;
+  top: -5px;
+  z-index: 21;
+  overflow: hidden;
+}
+
+.previewWrapper .loginMoviePreviews {
+  width: 100vw;
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: auto;
+  top: -25px;
+  left: -90px;
+  -webkit-transform: skew(-8deg, -5deg) rotate(12deg);
+          transform: skew(-8deg, -5deg) rotate(12deg);
+}
+
+.previewWrapper .loginMoviePreviews .movieBanner {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.previewWrapper .loginMoviePreviewsOverlay {
+  height: 30vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(15, 123, 161, 0)), color-stop(74%, rgba(15, 11, 46, 0)), to(#100c30));
+  background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 74%, #100c30 100%);
+  z-index: 22;
+}
+
+.logoDiv {
+  position: absolute;
+  z-index: 30;
+  top: 27vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13,6 +54,40 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.logoDiv .logoImg {
+  height: 55px;
+  width: 120px;
+  background-image: url(../logos/bingy-hela.svg);
+  background-repeat: no-repeat;
+}
+
+.logoDiv .slogan {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.movie-profile-background {
+  height: 100%;
+}
+
+.signInWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 25px;
   z-index: 20;
   height: 100vh;
@@ -21,10 +96,13 @@
   opacity: 10;
   -webkit-transition: opacity 0.5s;
   transition: opacity 0.5s;
+  top: 40vh;
+  position: relative;
 }
 
 .signInWrap div:first-child {
   width: 100%;
+  text-align: center;
 }
 
 .signInWrap div:first-child h1 {
@@ -62,7 +140,7 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 10px;
-  width: 100%;
+  width: 80%;
 }
 
 #loginForm #input, #signUpForm > fieldset #input {
@@ -85,13 +163,14 @@
   -ms-grid-column-span: 2;
   grid-column: 1 / span 2;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 30px;
   background-color: #6F6D82;
 }
 
 #loginForm #input label, #signUpForm > fieldset #input label {
   font-family: "Mulish", sans-serif;
   font-size: 12px;
+  margin-left: 10px;
 }
 
 #loginForm #input input, #signUpForm > fieldset #input input {
@@ -100,7 +179,7 @@
   line-height: 1.4;
   border: none;
   width: 100%;
-  padding: 0 2px;
+  padding: 0 10px;
   background: none;
   -webkit-transition: color 0.5s;
   transition: color 0.5s;
@@ -130,7 +209,7 @@
   font-size: 15px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   padding: 3px;
-  border-radius: 10px;
+  border-radius: 30px;
   border: none;
 }
 
@@ -217,7 +296,7 @@
   padding: 5px;
   background-color: #6F6D82;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 #createUserP2 #fieldSetProviders {
@@ -335,7 +414,7 @@
   font-size: 15px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   padding: 3px;
-  border-radius: 10px;
+  border-radius: 30px;
   border: none;
 }
 /*# sourceMappingURL=login.css.map */

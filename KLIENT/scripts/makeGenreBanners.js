@@ -22,11 +22,11 @@ async function makeGenreBanner(){
         genreName.className = "genreName";
         
         //content
-        genreName.textContent= genre.name;
+        genreName.textContent = genre.name;
 
         //clickEvent, call on search function with the genre name in the field
         genreBanner.addEventListener('click', ()=>{
-            makeSearchOverlay(genre.name);
+            makeSearchOverlay(genre.name, "Genres");
         })
         
         //append

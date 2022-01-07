@@ -22,9 +22,10 @@ function makeUpperNav() {
   document.body.prepend(upperNav);
   document.querySelector(".back").addEventListener("click", () => {
     document.body.style.overflow = "visible";
+    // goToPageAndAddToState(window.location.href);
+    applyState();
   });
   document.querySelector(".hamburger").addEventListener("click", () => {
-
     if (document.querySelector(".hamburger-menu") == null) {
       document.body.style.overflow = "hidden";
       makeHamburgerMenu();
@@ -88,23 +89,16 @@ function makeLowerNav() {
       document.body.style.overflow = "hidden";
       document.querySelectorAll(".lowerNav > div").forEach((element) => {
         element.style.borderBottom = "0px";
-        console.log(document.querySelectorAll(".lowerNav > div"));
       });
       document.querySelector(".navRight").style.borderBottom = "3px solid white";
-      
-      // document.querySelector("#overlay").style.display = "none";
       makeSearchOverlay();
-      document.querySelector(".back").setAttribute("src", "../icons/exit 2.svg");
-      document.querySelector(".back").addEventListener("click", () => {
-        document.querySelector(".back").setAttribute("src", "../icons/back.svg");
-        document.querySelector(".search-container").style.animation = "removeSearchBar 0.2s ease-out";
-        document.querySelector("#overlay").style.display = "flex";
-        setTimeout(() => {
-          document.querySelector(".search-container").remove();
-        }, 200);
-      });
+      let scrollDistance =
+        window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
+
+      addToState(window.location, scrollDistance, makeSearchState("", ""));
       document.querySelector(".search-container").style.animation = "searchBar 0.2s ease-out";
     } else {
+      removeLatestState();
       document.body.style.overflow = "visible";
       document.querySelector(".navRight").style.borderBottom = "0px";
       if (window.location.href.indexOf("feed") > -1) {
@@ -126,13 +120,13 @@ function makeLowerNav() {
     }
   });
   lowerNavLeft.addEventListener("click", () => {
-    window.location.href = `feed.php`;
+    goToPageAndAddToState("feed.php");
   });
   lowerNavMiddle.addEventListener("click", () => {
-    window.location.href = `explore.php`;
+    goToPageAndAddToState("explore.php");
   });
   lowerNavRight.addEventListener("click", () => {
-    window.location.href = `profile.php`;
+    goToPageAndAddToState("profile.php");
   });
 
   if (window.location.href.indexOf("feed") > -1) {
@@ -152,98 +146,117 @@ function makeLowerNav() {
 }
 
 async function makeHamburgerMenu() {
-  let pages = ["Feed", "Explore", "Profile"]; // Home eller feed? ska vi döpa om hela filen, för denna blir inte markerad annars, ändrar till feed nu. / ns
-  let genres = await getGenres();
-
+  
   // Black overlay
   let hamburgerBackground = document.createElement("div");
   hamburgerBackground.className = "hamburger-background";
-
+  
   // Menu container
   let hamburgerMenu = document.createElement("div");
   hamburgerMenu.className = "hamburger-menu";
   document.body.append(hamburgerMenu, hamburgerBackground);
-
-  let exit = document.createElement("div");
-  exit.textContent = "X";
-  exit.addEventListener("click", () => {
-    document.querySelector(".hamburger-menu").style.display = "none";
-
-  });
-
-  // Create PAGE-links-and-container
-  let pagesContainer = document.createElement("div");
-  pagesContainer.className = "pages-container";
-
-  pages.forEach((text) => {
-    pagesContainer.append(hamburgerText(text));
-  });
-
-  // Create GENRE-links-and-container
-  let genresContainer = document.createElement("div");
-  genresContainer.className = "genres-container";
   
-  genres.genres.forEach((genre) => {
-    genresContainer.append(createGenreLinks(genre.name));
-  })
-
-  // Create ABOUT-links-and-container
-  let aboutContainer = document.createElement("div");
-  aboutContainer.className = "about-container";
-
-  let logout = hamburgerText("Log out");
-  logout.addEventListener("click", () => {
-    sessionStorage.clear();
-    window.location.replace("http://localhost:2000");
-  })
-
-  let tmdb = document.createElement("div");
-  tmdb.className = "tmdb";
-
-  let tmdbLogo = document.createElement("img");
-  tmdbLogo.setAttribute("src", "../icons/tmdb.svg");
-  tmdbLogo.classList.add("tmdbLogo");
-  tmdbLogo.textContent = "tmdbLogo";
-
-  let tmdbText = document.createElement("div");
-  tmdbText.classList.add("tmdbText");
-  tmdbText.textContent = "This product uses the TMDB API but is not endorsed or certified by TMDB.";
-
-  tmdb.append(tmdbLogo, tmdbText);
-
-  let git = document.createElement("div");
-  git.classList.add("git");
-
-  let gitLogo = document.createElement("img");
-  gitLogo.setAttribute("src", "../icons/github.svg");
-  gitLogo.classList.add("gitLogo");
-  gitLogo.textContent = "gitLogo";
-
-  let gitText = document.createElement("div");
-  gitText.classList.add("gitText");
-  gitText.textContent = "Follow this product on github.";
-
-  aboutContainer.append(logout, tmdb, git);
-  git.append(gitLogo, gitText);
-
-  // Append containers in main container
-  hamburgerMenu.append(exit, pagesContainer, genresContainer, aboutContainer);
-
-  // Page-link fade in
-  document.querySelectorAll(".hamburger-text").forEach((element, index) => {
-    setTimeout(() => {
-      element.style.opacity = "1";
-      element.setAttribute("style", `opacity: 1; transition-delay: ${index * 0.3 + 0.6}s;`);
-    }, 0);
+  // Close menu
+  let exit = document.createElement("div");
+  exit.classList.add("exitMenu");
+  
+  exit.addEventListener("click", () => {
+      document.querySelector(".hamburger-background").style.animation = "removeHamburgerBackground 0.4s ease-out";
+      document.querySelector(".hamburger-menu").style.animation = "removeHamburgerMenu 0.4s ease-out";
+      document.querySelectorAll(".hamburger-text").forEach((element) => {
+        element.style.opacity = "0";
+      });
+        
+      setTimeout(() => {
+        document.querySelector(".hamburger-menu").remove();
+          document.querySelector(".hamburger-background").remove();
+      }, 400);
   });
 
-  // Genre fade in
-  document.querySelectorAll(".genre-link").forEach((element, index) => {
-    setTimeout(() => {
-      element.style.opacity = "1";
-      element.setAttribute("style", `opacity: 1; transition-delay: 0.9s;`);
-    }, 1000);
-  });
+  hamburgerMenu.append(exit);
+  
+  document.querySelector(".hamburger-menu").addEventListener("animationend", async function() {
+    let genres = await getGenres();
+    let pages = ["Feed", "Explore", "Profile"]; // Home eller feed? ska vi döpa om hela filen, för denna blir inte markerad annars, ändrar till feed nu. / ns
+    
+    // Create PAGE-links-and-container
+    let pagesContainer = document.createElement("div");
+    pagesContainer.className = "pages-container";
+  
+    pages.forEach((text) => {
+      pagesContainer.append(hamburgerText(text));
+    });
+  
+    // Create GENRE-links-and-container
+    let genresContainer = document.createElement("div");
+    genresContainer.className = "genres-container";
+    
+    genres.genres.forEach((genre) => {
+      genresContainer.append(createGenreLinks(genre.name));
+    })
+  
+    // Create ABOUT-links-and-container
+    let aboutContainer = document.createElement("div");
+    aboutContainer.className = "about-container";
+
+    let logout = document.createElement("button");
+    logout.textContent = "Log out";
+    logout.classList.add("log-out-btn");
+  
+    logout.addEventListener("click", () => {
+      sessionStorage.clear();
+      window.location.replace("http://localhost:2000");
+    })
+  
+    let tmdb = document.createElement("div");
+    tmdb.className = "tmdb";
+  
+    let tmdbLogo = document.createElement("img");
+    tmdbLogo.setAttribute("src", "../icons/tmdb.svg");
+    tmdbLogo.classList.add("tmdbLogo");
+    tmdbLogo.textContent = "tmdbLogo";
+  
+    let tmdbText = document.createElement("div");
+    tmdbText.classList.add("tmdbText");
+    tmdbText.textContent = "This product uses the TMDB API but is not endorsed or certified by TMDB.";
+  
+    tmdb.append(tmdbLogo, tmdbText);
+  
+    let git = document.createElement("div");
+    git.classList.add("git");
+  
+    let gitLogo = document.createElement("img");
+    gitLogo.setAttribute("src", "../icons/github.svg");
+    gitLogo.classList.add("gitLogo");
+    gitLogo.textContent = "gitLogo";
+  
+    let gitText = document.createElement("div");
+    gitText.classList.add("gitText");
+    gitText.textContent = "Follow this product on github.";
+  
+    aboutContainer.append(logout, tmdb, git);
+    git.append(gitLogo, gitText);
+  
+    // Append containers in main container
+    hamburgerMenu.append(pagesContainer, genresContainer, aboutContainer);
+  
+    // Page-link fade in
+    document.querySelectorAll(".hamburger-text").forEach((element, index) => {
+      setTimeout(() => {
+        element.style.opacity = "1";
+        element.setAttribute("style", `opacity: 1; transition-delay: ${index * 0.3 + 0.9}s;`);
+      }, 0);
+    });
+  
+    // Genre fade in
+    document.querySelectorAll(".genre-link").forEach((element, index) => {
+      setTimeout(() => {
+        element.style.opacity = "1";
+        element.setAttribute("style", `opacity: 1; transition-delay: ${index * 0.3 + 0.9}s;`);
+      }, 100);
+    });
+
+  })
 }
 
 function hamburgerText(text) {
@@ -255,15 +268,14 @@ function hamburgerText(text) {
   let url = window.location.href;
 
   // Makrera den sidan som användaren är på
-  if(url.includes(page)) {
+  if (url.includes(page)) {
     hamburgerText.classList.add("markedPage");
-    // hamburgerText.style.fontWeight = "bold"; // vf funkar ej detta?
   } else {
     hamburgerText.classList.remove("markedPage");
   }
 
   hamburgerText.addEventListener("click", () => {
-    if(page == "home"){
+    if (page == "home") {
       page = "feed";
     }
 
@@ -281,13 +293,11 @@ function createGenreLinks(genre) {
   genreLink.addEventListener("click", () => {
     document.body.style.overflow = "visible";
 
-    console.log(document.querySelector(".search-container"));
     if(document.querySelector(".search-container")){
-      
       document.querySelector(".search-container").remove();
-      makeSearchOverlay(genre);
+      makeSearchOverlay(genre, "Genre");
     } else {
-      makeSearchOverlay(genre);
+      makeSearchOverlay(genre, "Genre");
     }
 
     // Här vill man även dölja själva menyn
@@ -301,7 +311,6 @@ function createGenreLinks(genre) {
       document.querySelector(".hamburger-menu").remove();
       document.querySelector(".hamburger-background").remove();
     }, 400);
-
   });
 
   return genreLink;

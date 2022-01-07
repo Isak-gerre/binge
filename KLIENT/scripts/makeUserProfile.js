@@ -301,18 +301,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
 
 }
 
-async function followPatch(mainUserID, friendsUserID) {
 
-    const response = await fetch(new Request("http://localhost:7001/PATCH/update-user.php", {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({userID: mainUserID, friendsUserID: friendsUserID})
-    }));
-
-    const data = await response;
-}
 
 // Öppnar en sida som visar alla followers/following
 async function showUsers(userId, type) {
@@ -441,11 +430,13 @@ async function createWatchlist(watchlist, page = "profile") {
     watchlist.forEach(async function (activity) {
         let movieId = activity.movieID;
 
-        let movieBanner = await makeMovieBanner(movieId, page);
+        let movieBanner = await makeMovieBanner(movieId, activity);
 
-        movieBanner.addEventListener('click', () => {
-            window.location.href = `explore.php?movieID=${movieId}`;
-        });
+        // movieBanner.addEventListener('click', (event) => {
+        //     event.preventDefault();
+        //     event.stopPropagation();
+        //     window.location.href = `explore.php?movieID=${movieId}`;
+        // });
 
         container.append(movieBanner);   
     });

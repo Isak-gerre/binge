@@ -10,6 +10,7 @@
           flex-direction: column;
   position: relative;
   z-index: 100;
+  width: 100vw;
 }
 
 .drop1 {
@@ -268,7 +269,7 @@
 
 .overlay-fade .message-wrapper .button {
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 5px;
   height: 20px;
   margin: 10px 10px 10px 0;
@@ -484,7 +485,7 @@
 }
 
 .movie-profile-info .movie-profile-info-text #movie-profile-buttons .button {
-  border-radius: 10px;
+  border-radius: 30px;
   border: none;
   padding: 5px;
   height: 20px;
@@ -509,7 +510,7 @@
 }
 
 .movie-profile-info .movie-profile-info-text #movie-profile-buttons .marked {
-  border-radius: 10px;
+  border-radius: 30px;
   border: 0;
   color: #eeeeee;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
@@ -568,7 +569,8 @@
   font-size: 12px;
 }
 
-.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid {
+.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid,
+.movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -588,13 +590,15 @@
       flex-wrap: wrap;
 }
 
-.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid img, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid img {
+.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid img,
+.movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid img {
   border-radius: 50%;
   height: 10vw;
   width: 10vw;
 }
 
-.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid p, .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid p {
+.movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid p,
+.movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid p {
   color: #eeeeee;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
@@ -754,7 +758,7 @@
 
 .movie-profile-middle .msgBtn {
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 30px;
   border: 0;
   padding: 3px;
   height: 25px;
