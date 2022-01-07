@@ -319,7 +319,7 @@ async function getFollowing(id) {
 }
 
 async function getFriendsActivities(id) {
-  console.log(id);
+  // console.log(id);
   // Get the users following
   let user = await getFollowing(id); // session stared id
   let following = user[0].following;
