@@ -69,12 +69,10 @@ async function makeMovieProfile(movieID) {
   // info-poster
   let infoPoster = document.createElement("div");
   infoPoster.className = "movie-profile-info-poster";
-  console.log(movieInfo);
 
   let poster = document.createElement("img");
   poster.className = "movie-profile-poster";
 
-  console.log(movieInfo["poster_path"]);
   if (movieInfo["poster_path"] == null) {
     poster.setAttribute("src", "../icons/image.svg");
     poster.style.background = "white";

@@ -14,6 +14,10 @@ highestID(){
 
 "use strict";
 
+document.addEventListener("DOMContentLoaded", function (event) {
+  document.querySelector("#wrapper").style.opacity = 1;
+});
+
 // State Handlers
 //_______________________________________________________________________________________
 function ifSearchInState() {

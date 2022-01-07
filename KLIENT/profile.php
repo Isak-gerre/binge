@@ -16,40 +16,41 @@ require_once "head.php";
 <div class="drop4"></div>
 <div class="movie-profile-background"></div>
 
-<div id="topWrapperProfile">
-    <div id="profilePic"></div>
-    <div id="profileInfo">
-        <div id="usernameDiv">
-            <p id="username"></p>
-            <div id="settingOrPlus"></div>
-        </div>
-
-        <div id="followInfo">
-            <div id="followersDiv">
-                <p>Followers</p>
-                <p id="followers"></p>
+<div id="wrapper">
+    <div id="topWrapperProfile">
+        <div id="profilePic"></div>
+        <div id="profileInfo">
+            <div id="usernameDiv">
+                <p id="username"></p>
+                <div id="settingOrPlus"></div>
             </div>
-            <div id="followingDiv">
-                <p>Following</p>
-                <p id="following"></p>
+
+            <div id="followInfo">
+                <div id="followersDiv">
+                    <p>Followers</p>
+                    <p id="followers"></p>
+                </div>
+                <div id="followingDiv">
+                    <p>Following</p>
+                    <p id="following"></p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 <nav id="profileNav">
     <div id="watched">
         <p>Activities</p>
     </div>
 
-    <div id="watchlist">
-        <p>Watchlist</p>
-    </div>
+        <div id="watchlist">
+            <p>Watchlist</p>
+        </div>
 
-    <div id="stats">
-        <p>Stats</p>
-    </div>
-</nav>
+        <div id="stats">
+            <p>Stats</p>
+        </div>
+    </nav>
 
 <div id="profileWrapper">
 </div>

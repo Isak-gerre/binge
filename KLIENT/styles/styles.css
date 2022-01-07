@@ -53,6 +53,9 @@ body {
   overflow-x: hidden;
   color: black;
   padding-bottom: 90px;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .drop4 {
@@ -1365,6 +1368,8 @@ body {
   position: relative;
   z-index: 100;
   width: 100vw;
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .drop1 {
@@ -3352,6 +3357,8 @@ svg:active,
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .search-container div {

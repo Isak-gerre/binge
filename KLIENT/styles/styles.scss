@@ -27,6 +27,8 @@ body {
   overflow-x: hidden;
   color: $darkFont;
   padding-bottom: 90px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
 .drop4 {
