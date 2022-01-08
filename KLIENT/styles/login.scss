@@ -9,6 +9,9 @@
   z-index: 21;
   overflow: hidden;
 
+  opacity: 1;
+  transition: opacity 0.6s;
+
   .loginMoviePreviews {
     width: 100vw;
     position: relative;
@@ -182,20 +185,25 @@
 
   width: 100vw;
   min-height: 100vh;
+  padding-top: $wrapperPadding;
+
+  .backLogin {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 15px;
+      margin: 25px;
+  }
 
   .buttonsSignUp {
     display: flex;
 
-    .backLogin {
-      margin: 0px 10px 0px 0px;
-
-    }
   }
 }
 
-#signUpForm div:first-child {
+#signUpForm #signUp {
     @include flex(row, center, center);
-    margin-top: $wrapperPadding;
+    margin: $wrapperPadding;
     h1 { @include bigTitleFont(); }
     // flex-basis: 10vh;
 }

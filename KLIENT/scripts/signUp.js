@@ -1,7 +1,8 @@
 "use strict";
-document.querySelector(".backLogin").addEventListener("click", () => {
-  window.location.href = `index.php`;
-});
+
+// document.querySelector(".backLogin").addEventListener("click", () => {
+//   window.location.href = `index.php`;
+// });
 
 document.getElementById("username1").addEventListener("keyup", () => {
 
