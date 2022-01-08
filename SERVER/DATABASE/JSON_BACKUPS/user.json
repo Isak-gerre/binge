@@ -21,7 +21,6 @@
                 5
             ],
             "following": [
-                5,
                 2
             ],
             "sessionId": "$2y$10$O3.WrewOFvw\/kzzBux9VuOYmYbL3nA0Ba2uYkfMJ77L4W3fEOrIBS",
@@ -122,8 +121,7 @@
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_8.png"
             },
             "followers": [
-                2,
-                1
+                2
             ],
             "following": [
                 1,

@@ -131,6 +131,29 @@
             ],
             "sessionId": "$2y$10$G5T5tJix2CN7XjD24Rl9zuYxxirpnxtXCd7p9GTHMLkcnIS\/IISx6",
             "id": 5
+        },
+        "6": {
+            "firstname": "Matilda",
+            "lastname": "Einarsson",
+            "username": "matildaein",
+            "password": "$2y$10$tzuKczkejSrN0vlS1X5\/Y.KYdhMFs4LMyGHzsGy5UOVlKQqjHFxQ2",
+            "email": "matildaeinar@gmail.com",
+            "birthday": "1997-05-20",
+            "region": "SE",
+            "active_streaming_services": [
+                "Disney Plus",
+                "HBO Max",
+                "SVT",
+                "Viaplay",
+                "Comhem Play"
+            ],
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_1.png"
+            },
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$73nblJRrg3DoGBsEvXIUnOi39nP3INulHlxmylxrJ3eci1dpISHCq",
+            "id": 6
         }
     }
 }
