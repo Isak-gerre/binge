@@ -5,6 +5,9 @@ require "head.php";
 
 //Skapar formuläret för inlogg alternativt skapar konto 
 ?>
+<div id="startUpScreen">
+    <img id="logoStartUp" src="../logos/bingy-hela.svg">
+</div>
 
 <div class="previewWrapper">
     <div class="loginMoviePreviews"></div>
@@ -36,9 +39,6 @@ require "head.php";
     <div id="createAccount">
         <p>Don't have an account? <span id="registerButton">Sign up</span></p>
     </div>
-
-
-
 </div>
 
 <form id="signUpForm" class="signInForm" action="index.php" method="POST">
@@ -138,8 +138,3 @@ require "head.php";
 <script src="scripts/makeMovieBanners.js"></script>
 <script src="scripts/logIn.js"></script>
 <script src="scripts/signUp.js"></script>
-<?php
-// echo "<script>";
-// include_once "scripts/signUp.js";
-// echo "</script>";
-?>

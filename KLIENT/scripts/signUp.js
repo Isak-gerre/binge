@@ -68,7 +68,7 @@ signUpForm.addEventListener("submit", (event) => {
 
   if (document.getElementById("fileToUpload").value == "") {
     let form = document.getElementById("profileImgForm");
-    image = document.querySelector('input[name="profileImg"]:checked').value;
+    let image = document.querySelector('input[name="profileImg"]:checked').value;
     formData.set("fileToUpload", image);
   }
     

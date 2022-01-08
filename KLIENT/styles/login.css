@@ -1,13 +1,51 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo&family=Mulish&family=Nunito+Sans&family=Source+Sans+Pro&display=swap");
+#startUpScreen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  margin-top: -3px;
+  background-image: url("../icons/background-m-profile.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+#startUpScreen img {
+  width: 65%;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+}
+
 .previewWrapper {
   height: 30vh;
   position: absolute;
   top: -5px;
   z-index: 21;
   overflow: hidden;
-  opacity: 1;
-  -webkit-transition: opacity 0.6s;
-  transition: opacity 0.6s;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 
 .previewWrapper .loginMoviePreviews {
@@ -57,6 +95,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 
 .logoDiv .logoImg {
@@ -125,6 +166,10 @@
 
 .signInWrap #createAccount span {
   text-decoration: underline;
+}
+
+#login {
+  opacity: 0;
 }
 
 #loginForm, #signUpForm > fieldset {
