@@ -540,14 +540,15 @@ body {
 }
 
 #signInButton {
-  width: 120px;
-  height: 30px;
+  min-width: 120px;
+  min-height: 30px;
   font-family: "Archivo", sans-serif;
   font-size: 15px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   padding: 3px;
   border-radius: 30px;
   border: none;
+  margin: auto;
 }
 
 #pWrapper {
@@ -1088,7 +1089,7 @@ body {
   overflow-y: scroll;
 }
 
-#settingsWindow button {
+#settingsWindow #closeTab {
   margin: 25px;
 }
 
@@ -1467,6 +1468,71 @@ body {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   color: #eeeeee;
   margin-top: 5px;
+}
+
+#deleteAccountBtn {
+  padding: 10px;
+  border-radius: 30px;
+  border: 0;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10px;
+  color: #eeeeee;
+  background: #1c1452;
+  -ms-flex-preferred-size: 100px;
+      flex-basis: 100px;
+  color: #d20000;
+  margin: 0 auto 25px;
+}
+
+.swal-overlay {
+  z-index: 100001;
+  background-color: rgba(49, 49, 49, 0.4);
+}
+
+.swal-modal {
+  background-color: #0f0b2e;
+}
+
+.swal-title {
+  margin: 25px;
+  font-family: "Archivo", sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #eeeeee;
+}
+
+.swal-footer {
+  margin: 25px;
+}
+
+.swal-button-container .swal-button {
+  font-family: "Mulish", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  border: none;
+  color: #eeeeee;
+  border-radius: 30px;
+}
+
+.swal-button-container .swal-button--cancel {
+  background-color: #1c1452;
+}
+
+.swal-button-container .swal-button--confirm {
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
 }
 
 @-webkit-keyframes marginScale {
@@ -2316,12 +2382,12 @@ body {
   z-index: 3000;
 }
 
-.movie-profile-middle .msgQuo {
+.movie-profile-middle .msgDiv .msgQuo {
   font-style: italic;
   padding: 10px;
 }
 
-.movie-profile-middle .msgBtn {
+.movie-profile-middle .msgDiv .msgBtn {
   padding: 10px;
   border-radius: 30px;
   border: 0;
@@ -2536,7 +2602,7 @@ body {
   margin: auto;
 }
 
-.movie-profile-middle .activityContainerRight {
+.movie-profile-middle .activityContainer .activityContainerRight {
   -webkit-box-flex: 1.5;
       -ms-flex-positive: 1.5;
           flex-grow: 1.5;
@@ -2604,12 +2670,12 @@ body {
   z-index: 3000;
 }
 
-.msgQuo {
+.msgDiv .msgQuo {
   font-style: italic;
   padding: 10px;
 }
 
-.msgBtn {
+.msgDiv .msgBtn {
   padding: 10px;
   border-radius: 30px;
   border: 0;
@@ -2824,7 +2890,7 @@ body {
   margin: auto;
 }
 
-.activityContainerRight {
+.activityContainer .activityContainerRight {
   -webkit-box-flex: 1.5;
       -ms-flex-positive: 1.5;
           flex-grow: 1.5;

@@ -249,7 +249,8 @@
   
   z-index: 100000;
   overflow-y: scroll;
-  button {
+  
+  #closeTab {
     margin: $wrapperPadding;
   }  
 }
@@ -502,10 +503,45 @@
       color: $lightFont;
       margin-top: $innerPadding;
     }
+  }
+}
 
-    // button:first-child {
-    //   margin-bottom: 5px;
-    // }
+#deleteAccountBtn {
+  @include buttonNotMarked;
+  color: #d20000;
+  margin: 0 auto 25px
+}
+
+// Swal-alert
+.swal-overlay {
+  z-index: 100001;
+  background-color: rgba(49, 49, 49, 0.4);
+}
+.swal-modal {
+  background-color: $backgroundColor;
+}
+.swal-title {
+  margin: $wrapperPadding;
+  @include bigTitleFont();
+  color: $lightFont;
+}
+.swal-footer {
+  margin: $wrapperPadding;
+}
+.swal-button-container {
+  
+  .swal-button {
+    @include bodyFont();
+    border: none;
+    color: $lightFont;
+    border-radius: $borderRadiusButtons;
+
+  }
+  .swal-button--cancel {
+    background-color: $activityColor;
+  }
+  .swal-button--confirm {
+    background: $gradientPeach;
   }
 }
 
