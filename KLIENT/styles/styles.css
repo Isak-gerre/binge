@@ -4211,7 +4211,7 @@ svg:active,
   position: absolute;
   z-index: 20000;
   min-width: 100%;
-  top: 100%;
+  top: 104%;
 }
 
 .movieBanner .options button {

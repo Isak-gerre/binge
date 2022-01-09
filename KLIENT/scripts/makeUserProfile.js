@@ -56,25 +56,36 @@ async function createProfilePage() {
     }
 }
 
-async function profileNav(userId, name = null) {
+async function sortActivities(userId, whatActivities){
+    console.log(whatActivities);
     let allUserActivities = await getAllActivites(userId);
     let watchedActivities = [];
     let watchlist = [];
 
     allUserActivities.forEach((obj) => {
         if (obj.type == "watchlist") {
-                watchlist.push(obj);
+            watchlist.push(obj);
         } else {
             watchedActivities.push(obj);
         }
     });
 
+    if(whatActivities == "watched"){
+        return watchedActivities;
+    } else if (whatActivities == "watchlist") {
+        return watchlist;
+    }
+}
+
+async function profileNav(userId, name = null) {
 
     if (getParamFromUrl("watchlist")) {
         watchlistBtn.classList.add("selected");
+        let watchlist = await sortActivities(userId, "watchlist");
         createWatchlist(watchlist, "myProfile");
     } else {
         watchedBtn.classList.add("selected");
+        let watchedActivities = await sortActivities(userId, "watched");
         wrapper.innerHTML = "";
 
         if (name != null && watchedActivities.length < 1) {
@@ -87,7 +98,9 @@ async function profileNav(userId, name = null) {
         }
     }
 
-    watchedBtn.addEventListener("click", () => {
+    watchedBtn.addEventListener("click", async function() {
+        let watchedActivities = await sortActivities(userId, "watched");
+
         if (watchedBtn.className !== "selected") {
             wrapper.innerHTML = "";
             document.querySelector(".selected").classList.remove("selected");
@@ -109,7 +122,10 @@ async function profileNav(userId, name = null) {
     });
 
 
-    watchlistBtn.addEventListener("click", () => {
+    watchlistBtn.addEventListener("click", async function() {
+        let watchlist = await sortActivities(userId, "watchlist");
+        console.log(watchlist);
+
         if (watchlistBtn.className !== "selected") {
             wrapper.innerHTML = "";
             document.querySelector(".selected").classList.remove("selected");
@@ -127,7 +143,8 @@ async function profileNav(userId, name = null) {
         }
     });
 
-    statsBtn.addEventListener("click", () => {
+    statsBtn.addEventListener("click", async function() {
+        let watchedActivities = await sortActivities(userId, "watched");
         if (statsBtn.className !== "selected") {
             wrapper.innerHTML = "";
             document.querySelector(".selected").classList.remove("selected");
@@ -437,7 +454,7 @@ function noActivitiesInfo(tab, name = null) {
         } else if (tab == "watchlist") {
             text.textContent = `${name} haven't added any movies to your watchlist.`;
         } else if (tab == "stats") {
-            text.textContent = `No stats since ${name} have no activities.`;
+            text.textContent = `No stats since ${name} has no activities.`;
         }
 
         container.append(text);

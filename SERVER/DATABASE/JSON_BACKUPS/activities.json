@@ -320,46 +320,6 @@
             "rate": "",
             "updated": false
         },
-        "110": {
-            "id": 110,
-            "userID": 2,
-            "movieID": "13465",
-            "type": "watched",
-            "date": "202201071816",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "111": {
-            "id": 111,
-            "userID": 2,
-            "movieID": "634649",
-            "type": "watchlist",
-            "date": "202201071828",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "112": {
-            "id": 112,
-            "userID": 2,
-            "movieID": "634649",
-            "type": "watched",
-            "date": "202201071828",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "113": {
-            "id": 113,
-            "userID": 2,
-            "movieID": "634649",
-            "type": "watched",
-            "date": "202201071828",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
         "114": {
             "id": 114,
             "userID": 4,
@@ -500,36 +460,6 @@
             "rate": "",
             "updated": false
         },
-        "128": {
-            "id": 128,
-            "userID": 2,
-            "movieID": "628",
-            "type": "watched",
-            "date": "202201081242",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
-        "129": {
-            "id": 129,
-            "userID": 2,
-            "movieID": "628",
-            "type": "review",
-            "date": "202201081242",
-            "comment": "N\u00e4stan som twilihgt",
-            "rate": 0,
-            "updated": false
-        },
-        "130": {
-            "id": 130,
-            "userID": 2,
-            "movieID": "493050",
-            "type": "watchlist",
-            "date": "202201081423",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
         "131": {
             "id": 131,
             "userID": 5,
@@ -546,6 +476,16 @@
             "movieID": "60304",
             "type": "watchlist",
             "date": "202201091530",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "134": {
+            "id": 134,
+            "userID": 2,
+            "movieID": "60304",
+            "type": "watched",
+            "date": "202201091611",
             "comment": "",
             "rate": "",
             "updated": false

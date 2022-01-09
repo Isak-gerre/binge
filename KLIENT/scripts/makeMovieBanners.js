@@ -24,7 +24,7 @@ async function makeMovieBanner(movieID, activity) {
   if (window.location.search === "") {
     movieBanner.setAttribute("data-long-press-delay", "500");
 
-    movieBanner.addEventListener("long-press", (e) => {
+    movieBanner.addEventListener("long-press", async function(e){
       e.preventDefault();
 
       // All movieBanners
@@ -89,9 +89,23 @@ async function makeMovieBanner(movieID, activity) {
           messageToUser(message);
         }, 1500)
       })
-
+      
+      
       // En delay på när knapparna skapas.
+      let allActivities = await getAllActivites(activity.userID);
+      console.log(allActivities);
+      console.log(activity)
+      let filter = allActivities.filter((acti) => acti.movieID == activity.movieID);
+      console.log(filter);
+
+      filter.forEach( element => {
+        if(element.type == "watched") {
+          markedAsWatched.style.display = "none";
+        } 
+      })
+      
       options.append(markedAsWatched, removeFromList);
+      
       setTimeout(() => {
         e.target.append(options);
       }, 1000);
