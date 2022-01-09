@@ -2,8 +2,7 @@
     require_once "../access-control.php";
     require_once "../functions.php";
 
-    $method = $_SERVER["REQUEST_METHOD"];
-
+    checkMethod("POST");
 
     //Ladda hem alla inputs
     $rawLoginTry = file_get_contents("php://input");

@@ -178,7 +178,7 @@ async function openSettings(userId) {
                 formData.append("active_streaming_services[]", array[i]);
             }
     
-            const reqChangeUser = new Request("http://localhost:7001/PATCH/update-user.php", {
+            const reqChangeUser = new Request("http://localhost:7001/POST/update-user.php", {
                 method: "POST",
                 body: formData
             });
