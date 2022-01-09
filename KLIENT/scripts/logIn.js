@@ -1,6 +1,6 @@
 "use strict";
 
-if ( sessionStorage.getItem("session") !== null ) {
+if (sessionStorage.getItem("session") !== null) {
     window.location.href = "feed.php";
 }
 
@@ -13,14 +13,14 @@ function startUpScreen() {
     let logo = document.querySelector('.logoDiv');
     let login = document.getElementById('login');
 
-    setTimeout( () => {
+    setTimeout(() => {
         logoStartUp.style.transform = "scale(1)";
     }, 50)
 
-    setTimeout( () => {
+    setTimeout(() => {
         startUpOverlay.style.opacity = "0";
     }, 1500);
-    setTimeout( () => {
+    setTimeout(() => {
         startUpOverlay.remove();
         preview.style.opacity = "1";
         logo.style.opacity = "1";
@@ -29,18 +29,17 @@ function startUpScreen() {
 }
 
 //trending top
-async function trendingMovieBanners(page = 1){
+async function trendingMovieBanners(page = 1) {
     let trendingMovies = await getTrending(page);
-    console.log(trendingMovies);
-    
+
     trendingMovies.forEach(async function (result) {
-      addToMovies(result);
-      let movieElement = makeMovieBannerFromMovie(result);
-      movieElement.setAttribute("name", result.title);
-      movieElement.setAttribute("actor", result.actor);
-    //   movieElement.classList.add("trending");
-      document.querySelector(".loginMoviePreviews").append(movieElement);
-    });   
+        addToMovies(result);
+        let movieElement = makeMovieBannerFromMovie(result);
+        movieElement.setAttribute("name", result.title);
+        movieElement.setAttribute("actor", result.actor);
+        //   movieElement.classList.add("trending");
+        document.querySelector(".loginMoviePreviews").append(movieElement);
+    });
 }
 
 trendingMovieBanners();
@@ -51,34 +50,34 @@ form.addEventListener("submit", (event) => {
     const formData = new FormData(form);
 
     let error = 0;
-    for(let [key, value] of formData.entries()) {
-        if(key === "username" && value === ""){
+    for (let [key, value] of formData.entries()) {
+        if (key === "username" && value === "") {
             error += 1;
         }
-        else if(key === "password" && value === ""){
+        else if (key === "password" && value === "") {
             error += 2;
         }
-    }   
+    }
 
-    let errorDiv = document.createElement("div"); 
+    let errorDiv = document.createElement("div");
     errorDiv.setAttribute("id", "errorDiv");
     document.getElementById("loginForm").prepend(errorDiv);
 
-    if(error == 1){
+    if (error == 1) {
         errorDiv.innerHTML = "Please fill in your username";
     }
-    else if(error == 2){
-        errorDiv.innerHTML = "Please fill in your password"; 
+    else if (error == 2) {
+        errorDiv.innerHTML = "Please fill in your password";
     }
-    else if(error == 3){
+    else if (error == 3) {
         errorDiv.innerHTML = "Please fill in your password and username";
-    } 
-    else if(error == 0){
+    }
+    else if (error == 0) {
 
         let object = {};
-        for(let [key, value] of formData.entries()) {
+        for (let [key, value] of formData.entries()) {
             object[key] = value;
-        }   
+        }
 
         const req2 = new Request("http://localhost:7001/POST/log-in-verification.php", {
             method: "POST",
@@ -87,41 +86,37 @@ form.addEventListener("submit", (event) => {
 
         fetch(req2)
             .then(response => {
-                if(response.ok){
-                    console.log(response);
+                if (response.ok) {
                     return response.json();
                 }
-                else{
-
+                else {
                     throw new Error("Password or username is wrong");
                 }
-                })
-            .then(data => { 
-                saveToSession(data,'session');
+            })
+            .then(data => {
+                saveToSession(data, 'session');
                 window.location.replace("http://localhost:2000/feed.php");
             })
             .catch(error => {
                 document.getElementById("errorDiv").innerHTML = "Wrong combination of username and password";
                 sessionStorage.clear();
-                console.log(error);
+                console.error(error);
             });
     }
-    if(error == 1 || error == 2 || error == 3){
-        if(!document.getElementById("errorDiv")){
+    if (error == 1 || error == 2 || error == 3) {
+        if (!document.getElementById("errorDiv")) {
             document.getElementById("loginForm").prepend(errorDiv);
         }
-        else{
-            if(error == 1){
+        else {
+            if (error == 1) {
                 document.getElementById("errorDiv").innerHTML = "Please fill in your username";
             }
-            else if(error == 2){
-                document.getElementById("errorDiv").innerHTML = "Please fill in your password"; 
+            else if (error == 2) {
+                document.getElementById("errorDiv").innerHTML = "Please fill in your password";
             }
-            else if(error == 3){
+            else if (error == 3) {
                 document.getElementById("errorDiv").innerHTML = "Please fill in your username and password";
-            } 
+            }
         }
     }
 });
-
-

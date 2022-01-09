@@ -2,14 +2,11 @@
 
 // Variabler för den inloggade?
 let loggedInUser = getLoggedInUserID();
-// console.log(loggedInUser);
 async function makeMovieProfile(movieID) {
   document.querySelector(".drop3").remove();
   document.querySelector(".drop4").remove();
 
   let user = await getUserInfo(loggedInUser);
-  // console.log(user);
-
   let overlay = document.getElementById("overlay");
   let data = await getMovieInfo(movieID);
   let movieInfo = data.message;
@@ -24,10 +21,6 @@ async function makeMovieProfile(movieID) {
   drop1.className = "drop1";
   let drop2 = document.createElement("div");
   drop2.className = "drop2";
-
-  // // Background
-  // let overlayBackground = document.createElement("div");
-  // overlayBackground.className = "movie-profile-background";
 
   // backdrop
   let backdrop = document.createElement("div");
@@ -52,12 +45,10 @@ async function makeMovieProfile(movieID) {
   // info-poster
   let infoPoster = document.createElement("div");
   infoPoster.className = "movie-profile-info-poster";
-  console.log(movieInfo);
 
   let poster = document.createElement("img");
   poster.className = "movie-profile-poster";
 
-  console.log(movieInfo["poster_path"])
   if (movieInfo["poster_path"] == null) {
     poster.setAttribute("src", "../icons/image.svg");
     poster.style.background = "white";
@@ -137,7 +128,6 @@ async function makeMovieProfile(movieID) {
     `;
 
   let additionalInfo = await getAdditionalInfo(movieID);
-  // console.log(user);
   let userRegion = user.region;
 
   let streamingservices = document.createElement("div");
@@ -154,7 +144,6 @@ async function makeMovieProfile(movieID) {
 
   streamingservices.append(allProvidersGrid);
 
-  // console.log(additionalInfo.message.providers.results[userRegion]);
   // Checks if you can buy, rent or flatrate in your country
   if (additionalInfo.message.providers.results[userRegion] == undefined) {
     let message = document.createElement("p");
@@ -218,11 +207,7 @@ async function makeMovieProfile(movieID) {
         allProvidersGrid.append(otherStreamingServices);
       }
     }
-
-    // providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
-    // streamingservices.append(providerDiv);
   }
-  // streamingservices.append(allProvidersGrid);
 
   // Credits - Niklas
   let credits = document.createElement("div");
@@ -263,7 +248,6 @@ async function makeMovieProfile(movieID) {
   function createCreditDiv(person) {
     let productionPeople = document.createElement("div");
     productionPeople.className = "production-people";
-    // let defaultFace = "../icons/face.png"
 
     let image = document.createElement("div");
     let name = document.createElement("p");
@@ -280,7 +264,6 @@ async function makeMovieProfile(movieID) {
       image.style.backgroundImage = `url(../icons/face.svg)`;
       name.textContent = "Jane Doe";
     }
-
 
     productionPeople.addEventListener("click", () => {
       let name = person.name.toLowerCase();
@@ -355,14 +338,14 @@ async function makeMovieProfile(movieID) {
       postNewActivity(movieID, loggedInUser, "watchlist");
       watchLater.classList.add("marked");
     }
-    
+
     // om personen HAR ifilmen i sin watchlist => ta bort den
     if (relation.watchlist !== false) {
       deleteteActivity(relation.watchlist);
       watchLater.classList.remove("marked");
     }
     watchLater.disabled = false;
-   
+
   });
 
   watched.addEventListener("click", async function () {
@@ -373,7 +356,6 @@ async function makeMovieProfile(movieID) {
     if (relation.watched == false) {
       postNewActivity(movieID, loggedInUser, "watched");
       watched.classList.add("marked");
-      
 
       // VISA REVIEW knapp
       review.style.display = "flex";
@@ -389,7 +371,7 @@ async function makeMovieProfile(movieID) {
     }
 
     watched.disabled = false;
-  
+
   });
 
   review.addEventListener("click", async function (e) {
@@ -513,13 +495,11 @@ async function makeMovieProfile(movieID) {
         textArea.textContent = relation.review.comment;
       }
 
-
       // Submit-button
       let submitButton = document.createElement("button");
       submitButton.setAttribute("type", "submit");
       submitButton.className = "submit button";
       submitButton.textContent = "Submit";
-
 
       // Appends
       topDiv.append(title, exitButton);
@@ -538,7 +518,6 @@ async function makeMovieProfile(movieID) {
 
     overlayFade.append(messageWrapper);
     document.body.append(overlayFade);
-
 
     // Exit clickevent
     document.querySelector(".exit").addEventListener("click", () => {

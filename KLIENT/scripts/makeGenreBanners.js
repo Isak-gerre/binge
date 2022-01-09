@@ -13,10 +13,10 @@ async function makeGenreBanner() {
       watchlist.push(obj);
     }
   });
-  if(watchlist.length != 0) {
+  if (watchlist.length != 0) {
     let random = Math.floor(Math.random() * watchlist.length);
     let randomMovie = await getMovieInfo(watchlist[random].movieID);
-    
+
     let yourlist = document.createElement("div");
     yourlist.className = "genreBanner yourlist";
     yourlist.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${randomMovie.message["poster_path"]}')`;
@@ -25,11 +25,10 @@ async function makeGenreBanner() {
     });
     let yourListText = document.createElement("h2");
     yourListText.textContent = "Your Watchlist";
-  
+
     yourlist.append(yourListText);
     document.getElementById("genre").append(yourlist);
   }
-
 
   genres["genres"].forEach(async function (genre) {
     //create elements
@@ -42,7 +41,6 @@ async function makeGenreBanner() {
     genreBanner.className = "genreBanner";
     genreGradient.className = "genreGradient";
     genreImageDiv.className = "genreImageDiv";
-    // genreName.className = "genreName";
 
     //content
     genreName.textContent = genre.name;

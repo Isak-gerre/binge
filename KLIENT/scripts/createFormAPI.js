@@ -1,7 +1,6 @@
 "use strict";
 
 // Ta bort API-nyckel, lägg den i APIn
-
 let regionRQ = new Request(
   "https://api.themoviedb.org/3/watch/providers/regions?api_key=f5c0e0db147d0e6434391f3ff153b6a8"
 );
@@ -9,7 +8,6 @@ let regionRQ = new Request(
 fetch(regionRQ)
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
     //Skapar en select
     let selectRegion = document.createElement("select");
     selectRegion.setAttribute("id", "region");
@@ -53,20 +51,17 @@ fetch(regionRQ)
 
     document.getElementById("next2").addEventListener("click", () => {
       let checkboxes = document.querySelectorAll("input[type=checkbox]:checked");
-      console.log(checkboxes.length);
       if (filter.value == "") {
         console.log("please choose a region");
       } else if (checkboxes.length == 0) {
         console.log("please choose at least one provider");
       } else {
-        console.log("Event Click 2");
         document.getElementById("createUserP2").style.display = "none";
         document.getElementById("createUserP3").style.display = "";
       }
     });
 
     document.getElementById("skip2").addEventListener("click", () => {
-      console.log("Event Click 2");
       document.getElementById("createUserP2").style.display = "none";
       document.getElementById("createUserP3").style.display = "";
     });
@@ -86,19 +81,6 @@ fetch(regionRQ)
     let providerArray = [];
     //Filtrerar baserat på vad du sökt
     filter.addEventListener("change", (e) => {
-      // let startNumber = document.getElementById("region").selectedIndex == 1 ? 1 : 0;
-      // if (document.getElementById("fieldSetProviders")) {
-      //   document.getElementById("fieldSetProviders").innerHTML = "";
-      // }
-      // let selected = e.target.selectedOptions[startNumber].getAttribute("name");
-      // let length = e.originalTarget.options.length;
-      // for (let i = 1; i < length; i++) {
-      //   if (e.originalTarget.options[i].innerHTML == selected) {
-      //     document.getElementById("region").selectedIndex = i;
-      //     break;
-      //   }
-      // }
-
       //Gör en sökning efter varje provider från apin och laddar hem dem som är specifika till den regionen
       providerArray = [];
       // Ta bort API-nyckel, lägg den i APIn
@@ -132,7 +114,6 @@ fetch(regionRQ)
           let check = e.provider_name.toLowerCase();
           if (!check.includes(`${searchProvider.value.toLowerCase()}`)) {
             filterArray.push(e);
-            console.log(e);
           }
         });
       }

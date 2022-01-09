@@ -13,7 +13,6 @@ if (isset($_FILES["fileToUpload"], $_POST["userID"])) {
 
 
     // Kontrollera att allt gick bra med PHP
-    // (https://www.php.net/manual/en/features.file-upload.errors.php)
     if ($_FILES["fileToUpload"]["error"] !== 0) {
         $message = ["message" => "Something went wrong with the picture"];
         sendJSON($message, 400);

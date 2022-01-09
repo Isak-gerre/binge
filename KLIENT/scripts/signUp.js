@@ -1,13 +1,7 @@
 "use strict";
 
-// document.querySelector(".backLogin").addEventListener("click", () => {
-//   window.location.href = `index.php`;
-// });
-
 document.getElementById("username1").addEventListener("keyup", () => {
-
   let userexists = {};
-
   userexists["userexists"] = document.getElementById("username1").value;
 
   let json = JSON.stringify(userexists);
@@ -19,38 +13,32 @@ document.getElementById("username1").addEventListener("keyup", () => {
 
   fetch(userreq)
     .then(response => {
-      if(response.ok){
+      if (response.ok) {
         return response.json();
       }
-      else{
+      else {
         throw new Error(response.json());
       }
     })
     .then(data => {
       document.getElementById("username1").style.color = 'Green';
       document.getElementById("username1").parentElement.style.border = "2px solid Green";
-      setTimeout( () => {
-          document.getElementById("username1").parentElement.removeAttribute("style");
-          document.getElementById("username1").removeAttribute("style");
+      setTimeout(() => {
+        document.getElementById("username1").parentElement.removeAttribute("style");
+        document.getElementById("username1").removeAttribute("style");
       }, 5000);
     })
     .catch(error => {
-      console.log(error);
+      console.error(error);
       document.getElementById("username1").style.color = 'Red';
       document.getElementById("username1").parentElement.style.border = "2px solid red";
     });
 
 });
 
-
 let signUpForm = document.getElementById("signUpForm");
 
-// document.querySelector(".backLogin").addEventListener("click", () => {
-//   window.location.href = `index.php`;
-// });
-
 signUpForm.addEventListener("submit", (event) => {
-  console.log("SignUpForm ok");
   event.preventDefault();
 
   const formData = new FormData(signUpForm);
@@ -71,30 +59,28 @@ signUpForm.addEventListener("submit", (event) => {
     let image = document.querySelector('input[name="profileImg"]:checked').value;
     formData.set("fileToUpload", image);
   }
-    
+
   const req = new Request("http://localhost:7001/POST/create-user.php", {
-  method: "POST",
-  body: formData,
+    method: "POST",
+    body: formData,
   });
 
   fetch(req)
-    .then((response) =>{
-        if(response.ok){
-            console.log(response);
-            return response.json();
-        }
-        else{
-            throw new Error();
-        }
-       
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      else {
+        throw new Error();
+      }
+
     })
     .then((data) => {
-        saveToSession(data, "session");
-        window.location.replace("http://localhost:2000/explore.php");
+      saveToSession(data, "session");
+      window.location.replace("http://localhost:2000/explore.php");
     })
     .catch(error => {
-        console.log(error);
-        sessionStorage.clear();
+      console.error(error);
+      sessionStorage.clear();
     });
 });
-
