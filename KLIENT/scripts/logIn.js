@@ -1,13 +1,36 @@
 "use strict";
 
-if (sessionStorage.length > 0) {
+if (sessionStorage.getItem("session") !== null) {
   window.location.href = "feed.php";
+}
+
+startUpScreen();
+
+function startUpScreen() {
+  let startUpOverlay = document.getElementById("startUpScreen");
+  let logoStartUp = document.getElementById("logoStartUp");
+  let preview = document.querySelector(".previewWrapper");
+  let logo = document.querySelector(".logoDiv");
+  let login = document.getElementById("login");
+
+  setTimeout(() => {
+    logoStartUp.style.transform = "scale(1)";
+  }, 50);
+
+  setTimeout(() => {
+    startUpOverlay.style.opacity = "0";
+  }, 1500);
+  setTimeout(() => {
+    startUpOverlay.remove();
+    preview.style.opacity = "1";
+    logo.style.opacity = "1";
+    login.style.opacity = "1";
+  }, 2000);
 }
 
 //trending top
 async function trendingMovieBanners(page = 1) {
   let trendingMovies = await getTrending(page);
-  console.log(trendingMovies);
 
   trendingMovies.forEach(async function (result) {
     addToMovies(result);
@@ -59,7 +82,6 @@ form.addEventListener("submit", (event) => {
     fetch(req2)
       .then((response) => {
         if (response.ok) {
-          console.log(response);
           return response.json();
         } else {
           throw new Error("Password or username is wrong");
@@ -72,7 +94,7 @@ form.addEventListener("submit", (event) => {
       .catch((error) => {
         document.getElementById("errorDiv").innerHTML = "Wrong combination of username and password";
         sessionStorage.clear();
-        console.log(error);
+        console.error(error);
       });
   }
   if (error == 1 || error == 2 || error == 3) {

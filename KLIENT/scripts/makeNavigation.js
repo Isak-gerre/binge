@@ -21,7 +21,6 @@ function makeUpperNav() {
   document.body.prepend(upperNav);
   document.querySelector(".back").addEventListener("click", () => {
     document.body.style.overflow = "visible";
-    // goToPageAndAddToState(window.location.href);
     applyState();
   });
 
@@ -106,20 +105,16 @@ function makeLowerNav() {
       document.body.style.overflow = "visible";
       document.querySelector(".navRight").style.borderBottom = "0px";
       if (window.location.href.indexOf("feed") > -1) {
-        // lowerNavLeft.innerHTML = `<img class="navImg navLinkFeed" src="https://d.r101.wbsprt.com/bingy.se/icons/feedCOLOR.svg">`;
         lowerNavLeft.style.borderBottom = "3px solid white";
       } else if (window.location.href.indexOf("explore") > -1) {
-        // lowerNavMiddle.innerHTML = `<img class="navImg navLinkExplore" src="https://d.r101.wbsprt.com/bingy.se/icons/exploreCOLOR.svg">`;
         lowerNavMiddle.style.borderBottom = "3px solid white";
       } else if (window.location.href.indexOf("profile") > -1) {
-        // lowerNavRight.innerHTML = `<img  class="navImg navLinkProfile" src="https://d.r101.wbsprt.com/bingy.se/icons/profileCOLOR.svg">`;
         lowerNavRight.style.borderBottom = "3px solid white";
       }
       document
         .querySelector(".back")
         .setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/back.svg alt='Back'");
       document.querySelector(".search-container").style.animation = "removeSearchBar 0.2s ease-out";
-      // document.querySelector("#overlay").style.display = "flex";
       setTimeout(() => {
         document.querySelector(".search-container").remove();
       }, 200);
@@ -136,13 +131,10 @@ function makeLowerNav() {
   });
 
   if (window.location.href.indexOf("feed") > -1) {
-    // lowerNavLeft.innerHTML = `<img class="navImg navLinkFeed" src="https://d.r101.wbsprt.com/bingy.se/icons/feedCOLOR.svg">`;
     lowerNavLeft.style.borderBottom = "3px solid white";
   } else if (window.location.href.indexOf("explore") > -1) {
-    // lowerNavMiddle.innerHTML = `<img class="navImg navLinkExplore" src="https://d.r101.wbsprt.com/bingy.se/icons/exploreCOLOR.svg">`;
     lowerNavMiddle.style.borderBottom = "3px solid white";
   } else if (window.location.href.indexOf("profile") > -1) {
-    // lowerNavRight.innerHTML = `<img  class="navImg navLinkProfile" src="https://d.r101.wbsprt.com/bingy.se/icons/profileCOLOR.svg">`;
     lowerNavRight.style.borderBottom = "3px solid white";
   }
 
@@ -182,7 +174,7 @@ async function makeHamburgerMenu() {
 
   document.querySelector(".hamburger-menu").addEventListener("animationend", async function () {
     let genres = await getGenres();
-    let pages = ["Feed", "Explore", "Profile"]; // Home eller feed? ska vi döpa om hela filen, för denna blir inte markerad annars, ändrar till feed nu. / ns
+    let pages = ["Feed", "Explore", "Profile"];
 
     // Create PAGE-links-and-container
     let pagesContainer = document.createElement("div");
@@ -198,7 +190,7 @@ async function makeHamburgerMenu() {
 
     genres.genres.forEach((genre) => {
       genresContainer.append(createGenreLinks(genre.name));
-    });
+    })
 
     // Create ABOUT-links-and-container
     let aboutContainer = document.createElement("div");

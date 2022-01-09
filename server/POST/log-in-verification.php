@@ -2,8 +2,7 @@
     require_once "../access-control.php";
     require_once "../functions.php";
 
-    $method = $_SERVER["REQUEST_METHOD"];
-
+    checkMethod("POST");
 
     //Ladda hem alla inputs
     $rawLoginTry = file_get_contents("php://input");
@@ -17,7 +16,7 @@
         if(strtolower($_POST["username"]) === strtolower($key["username"]) || strtolower($_POST["username"]) === strtolower($key["email"])){
             if(password_verify($_POST["password"], $key["password"])){
 
-                //On sucess skickar tillbaka användarens ID
+                // On sucess skickar tillbaka användarens ID
                 sendJSON(
                     [
                     "message" => "Login was a success",

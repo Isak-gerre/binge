@@ -67,15 +67,6 @@ input:focus {
   }
 }
 
-// .search {
-//   animation: searchBar .3s ease-in-out;
-// }
-
-// form {
-//   width: 100%;
-//   height: 100%;
-// }
-
 .search-container {
   input[type="text"] {
     outline: none;
@@ -94,8 +85,6 @@ input:focus {
     top: 70px;
     @include bigTitleFont();
     font-weight: normal;
-    // font-family: "Mulish";
-    // font-size: 1.2rem;
     letter-spacing: 0.08em;
     box-sizing: border-box;
   }
@@ -139,7 +128,6 @@ input:focus {
   bottom: 0;
   z-index: 9000;
   background-color: black;
-  // background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
 
   div {
     flex-grow: 1;
@@ -149,16 +137,15 @@ input:focus {
 
 .backLowerNav {
   display: none;
-  
 }
 
 //ICONS
 svg,
 .navImg {
-  width: 30px;
-  height: 30px;
+  width: $iconButtonSz;
+  height: $iconButtonSz;
   cursor: pointer;
-  margin: 10px 0px;
+  margin: $betweenPadding 0px;
   position: relative;
 }
 
@@ -167,7 +154,6 @@ svg,
 }
 
 .navImg.logo {
-  // z-index: 13000;
   transform: scale(1.8);
 }
 
@@ -193,7 +179,7 @@ svg:active,
 
 .pill {
   padding: 8px;
-  margin-right: 5px;
+  margin-right: $innerPadding;
   border-radius: $borderRadiusButtons;
   width: 90px;
   background: #1d155a;
@@ -217,7 +203,7 @@ svg:active,
   width: 90%;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
-  gap: 10px;
+  gap: $betweenPadding;
 }
 
 .filtered {
@@ -244,7 +230,7 @@ svg:active,
   margin-top: 170px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: $betweenPadding;
   z-index: 100;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -317,7 +303,7 @@ svg:active,
 
 .pages-container {
   border-bottom: 1px solid $lightFont;
-  margin-bottom: 10px;
+  margin-bottom: $betweenPadding;
   width: 77%;
 
   p {
@@ -354,7 +340,7 @@ svg:active,
 
 .genres-container {
   border-bottom: 1px solid $lightFont;
-  margin-bottom: 10px;
+  margin-bottom: $betweenPadding;
   width: 77%;
 
   .genre-link {
@@ -424,6 +410,7 @@ svg:active,
   margin: auto;
   overflow-x: scroll;
   scroll-behavior: smooth;
+  padding-top: $innerPadding;
   div {
     margin-right: $betweenPadding;
     flex-grow: 1;
@@ -456,10 +443,8 @@ svg:active,
     }
 
     #followDiv {
-      background: $gradientPeach;
       @include flex(row, center, center);
       gap: 4px;
-
       width: 85px;
       border-radius: $borderRadiusButtons;
       padding: $buttonPadding;
@@ -469,21 +454,14 @@ svg:active,
         padding: 0;
       }
     }
+
+    .unfollow {
+      background:$activityColor;
+    }
+    .follow {
+      background:$gradientPeach;
+    }
   }
-
-  // .followDiv {
-  //   width: 70%;
-
-  //   #followInfo {
-  //     #followersDiv,
-  //     #followingDiv {
-  //       p {
-  //         font-size: 10px;
-  //         text-align: center;
-  //       }
-  //     }
-  //   }
-  // }
 }
 
 .showMoreDiv {
@@ -505,73 +483,27 @@ svg:active,
   }
 }
 
-// LOAD dots
-.loading_dots {
-  display: inline-block;
-  position: relative;
-  width: 73px;
-  height: 9px;
-
-  div {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #fff;
-    animation-timing-function: cubic-bezier(0, 1, 1, 0);
-  }
-
-  div:nth-child(1) {
-    left: 8px;
-    animation: scaleUp 0.6s infinite;
-  }
-
-  div:nth-child(2) {
-    left: 8px;
-    animation: moveSideways 0.6s infinite;
-  }
-
-  div:nth-child(3) {
-    left: 32px;
-    animation: moveSideways 0.6s infinite;
-  }
-
-  div:nth-child(4) {
-    left: 56px;
-    animation: scaleDown 0.6s infinite;
-  }
-}
-
-@keyframes scaleUp {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@keyframes scaleDown {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
-@keyframes moveSideways {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(24px, 0);
-  }
-}
-
 #search-results-text {
   @include smallTitleFont();
   margin-top: 20px;
   z-index: 1000;
   position: relative;
   top: 156px;
+  color: $lightFont;
+}
+
+.tmdb,
+.git {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+
+.tmdbLogo,
+.gitLogo {
+  width: 30px;
+  margin-right: 10px;
+}
+.gitText > a {
   color: $lightFont;
 }

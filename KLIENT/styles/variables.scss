@@ -3,10 +3,7 @@
 
 // COLORS - ska ändras till rätt senare
 $backgroundColor: #0f0b2e;
-// $activityColor: #6F6D82;
 $activityColor: #1c1452;
-$mainColor: #361986;
-$accentColor: #ffb700;
 $darkFont: black;
 $lightFont: #eeeeee;
 $gradientPeach: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
@@ -69,29 +66,24 @@ $starSz: 30px;
 }
 
 // Transitions
-
 @mixin transitionFromLeft() {
   width: 100vw;
   height: 100vh;
   position: fixed;
   z-index: 100000;
-
   left: 100vw;
   transition: left 1s;
 }
 
 @mixin transitionFromBottom() {
   width: 100vw;
-  // height: 100vh;
   position: absolute;
   z-index: 100000;
-
   top: 100vh;
-  transition: top 1.5s;
+  transition: top 1s;
 }
 
 // FONTS
-
 @mixin bigTitleFont() {
   font-family: $headerFont;
   font-size: 18px;
@@ -115,7 +107,6 @@ $starSz: 30px;
   font-size: 15px;
 }
 // ------------------------
-
 @mixin xSmallFont() {
   font-family: $bodyFont;
   font-size: 12px;

@@ -57,12 +57,14 @@ foreach($_POST as $key => $value) {
 if (isset($_FILES["fileToUpload"])) {
     //Skapar ett unikt bildnamn
     $imgName = $_FILES["fileToUpload"]["name"];
-    $imgName = hash("sha256", $imgName + time());
+    $time = (string) time();
+    $newImgName = hash("sha256", $imgName + $time);
+    inspect($newImgName);
     //Kollar filtyp
     //OBS!!!!: INTE SÄKERT SÄTT ATT KOLLA FIL MEN BÄTTRE ÄN INGET
     if ($_FILES["fileToUpload"]["type"] === "image/jpeg") {
-        move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "../DATABASE/IMAGES/PROFILE/$imgName.jpg");
-        $db["users"]["$nextID"]["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/$imgName.jpg";
+        move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "../DATABASE/IMAGES/PROFILE/$newImgName.jpg");
+        $db["users"]["$nextID"]["profile_picture"]["filepath"] = "DATABASE\/IMAGES\/PROFILE\/$newImgName.jpg";
     }
 } else {
     if ($_POST["fileToUpload"] === "profileImg1") {

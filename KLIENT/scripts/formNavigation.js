@@ -1,6 +1,5 @@
 "use strict";
 
-console.log("formNavigation online");
 document.getElementById("createUserP1").style.display = "none";
 document.getElementById("createUserP2").style.display = "none";
 document.getElementById("createUserP3").style.display = "none";

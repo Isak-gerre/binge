@@ -44,7 +44,7 @@
     }
 
     width: 100%;
-    padding: $betweenPadding $wrapperPadding;
+    padding: $betweenPadding $betweenPadding $betweenPadding $wrapperPadding;
 
     #settingOrPlus {
       gap: 4px;
@@ -58,16 +58,18 @@
   
   .follow{
     @include buttonMarked();
+    justify-content: flex-end;
   }
 
   .unfollow {
     @include buttonNotMarked();
+    justify-content: flex-end;
   }
+
   #followInfo {
     @include bodyFont();
     @include flex(row, space-evenly, center);
     width: 100%;
-    // gap: 5px;
 
     #followersDiv,
     #followingDiv {
@@ -84,7 +86,6 @@
   @include bodyFont();
   @include flex(row, space-evenly, center);
   width: 100%;
-  // gap: 5px;
 
   #followersDiv,
   #followingDiv {
@@ -107,6 +108,7 @@
   overflow: hidden;
   background-color: #1c1452;
   margin: 0px auto;
+  margin-bottom: 10px;
 
   div {
     @include flex(row, center, center);
@@ -143,8 +145,6 @@
       gap: $betweenPadding;
       width: 100%;
       height: 100px;
-
-      // padding: $wrapperPadding;
       cursor: pointer;
 
       .userProfilePic {
@@ -159,13 +159,12 @@
 
       button.follow {
         @include buttonMarked();
-        padding: 5px 5px 5px 10px;
+        padding: $innerPadding $innerPadding $innerPadding $betweenPadding;
         justify-content: space-between;
       }
       button.unfollow {
         @include buttonNotMarked();
-        padding: 5px 5px 5px 10px;
-
+        padding: $innerPadding $innerPadding $innerPadding $betweenPadding;
       }
     }
   }
@@ -181,7 +180,6 @@
   border-radius: $borderRadiusButtons;
   background: $gradientPeach;
   padding: $buttonPadding;
-
 }
 
 #profileWrapper {
@@ -189,7 +187,6 @@
   z-index: 15;
   padding: 0px $wrapperPadding;
   padding-bottom: 90px;
-  padding-top: 10px;
   height: calc(100vh - 250px);
   transition: height 1s;
   overflow-y:scroll;
@@ -200,16 +197,12 @@
     grid-template-columns: repeat(3, 1fr);
     gap: $betweenPadding;    
     position: relative;
-
-
-
   }
 }
 
 #messageWhenEmpty {
   @include flex(column, center, center);
   gap: $wrapperPadding;
-
   height: 15vh;
   width: 100%;
 
@@ -220,10 +213,8 @@
   button {
     border: none;
     @include bodyFont();
-    
     border-radius: $borderRadiusButtons;
     padding: $innerPadding $wrapperPadding;
-
     background: $gradientPeach;
     color: $lightFont;
   }
@@ -249,7 +240,8 @@
   
   z-index: 100000;
   overflow-y: scroll;
-  button {
+  
+  #closeTab {
     margin: $wrapperPadding;
   }  
 }
@@ -276,10 +268,9 @@
     #errorMessage {
       position: absolute;
       background: rgba(255, 255, 255, 0.48);
-      padding: 10px;
+      padding: $betweenPadding;
       border-radius: 15px;
       right: 38px;
-      
       @include xSmallFont();
     }
   }
@@ -323,7 +314,6 @@
         img {
           height: 30px;
           width: 30px;
-
           border-radius: 50%;
         }
       }
@@ -357,7 +347,7 @@
       @include bodyFont();
       border: none;
       width: 100%;
-      padding: 0 10px;
+      padding: 0 $betweenPadding;
       background: none;
             
       transition: color 0.5s;
@@ -370,9 +360,6 @@
     }
     
     button {
-        // width: 100px;
-        // height: 30px;
-        
         @include postFont();
         
         background: $gradientPeach;
@@ -444,7 +431,6 @@
   #closeTab {
     z-index: 10001;
   }
-
 }
 
 #responseDiv {
@@ -502,18 +488,47 @@
       color: $lightFont;
       margin-top: $innerPadding;
     }
-
-    // button:first-child {
-    //   margin-bottom: 5px;
-    // }
   }
 }
 
-// .pushDownElement {
-//   animation: marginScale 1s forwards;
-//   // margin-bottom: 90px;
-//   // transition: all 1s;
-// }
+#deleteAccountBtn {
+  @include buttonNotMarked;
+  color: #d20000;
+  margin: 0 auto 25px
+}
+
+// Swal-alert
+.swal-overlay {
+  z-index: 100001;
+  background-color: rgba(49, 49, 49, 0.4);
+}
+.swal-modal {
+  background-color: $backgroundColor;
+}
+.swal-title {
+  margin: $wrapperPadding;
+  @include bigTitleFont();
+  color: $lightFont;
+}
+.swal-footer {
+  margin: $wrapperPadding;
+}
+.swal-button-container {
+  
+  .swal-button {
+    @include bodyFont();
+    border: none;
+    color: $lightFont;
+    border-radius: $borderRadiusButtons;
+
+  }
+  .swal-button--cancel {
+    background-color: $activityColor;
+  }
+  .swal-button--confirm {
+    background: $gradientPeach;
+  }
+}
 
 @keyframes marginScale {
   0% {

@@ -31,7 +31,6 @@ function toScroll() {
   let stateCheck = setInterval(() => {
     if (document.readyState === "complete") {
       if (getParamFromUrl("scroll")) {
-        console.log(getParamFromUrl("scroll"));
         window.scrollTo(0, getParamFromUrl("scroll"));
       }
       clearInterval(stateCheck);
@@ -58,9 +57,6 @@ function makeState(page, scrollHeight = 0, search = null) {
 }
 function makeSearchState(searchword, searchBy) {
   let scrollDistance = document.querySelector("#search-results").scrollTop;
-  console.log(scrollDistance);
-  console.log(searchword);
-  console.log(searchBy);
   return {
     search_word: searchword,
     search_by: searchBy,
@@ -70,11 +66,7 @@ function makeSearchState(searchword, searchBy) {
 }
 
 function saveToSession(object, setter) {
-  // if (typeof object != "object") {
-  //   alert("You can only save objects to sessionStorage");
-  // } else {
   sessionStorage.setItem(setter, JSON.stringify(object));
-  // }
 }
 
 function getFromSession(getter) {
@@ -85,7 +77,6 @@ function getLoggedInUserID() {
   if (getFromSession("session") != undefined) {
     if (userVarification()) {
       let userID = getFromSession("session").session.userID;
-      // console.log(userID);
       return userID;
     } else {
       sessionStorage.clear();
@@ -192,7 +183,6 @@ async function getMovieInfo(movieID) {
       }
     });
     await saveMultipleMovies(notSavedMovies);
-    console.log(notSavedMovies);
     movieID.forEach((id) => {
       savedMovies.push(isMovieSaved(id));
     });
@@ -216,12 +206,10 @@ async function getMovieInfo(movieID) {
 
 async function getSearchResults(searchType, query, page = 1) {
   try {
-    console.log(searchType);
     let response = await fetch(
       `https://d.r101.wbsprt.com/api.bingy.se/GET/get-search-results.php?searchtype=${searchType}&query=${query}&page=${page}`
     );
     let data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.error(error);
@@ -313,7 +301,7 @@ async function getFollowing(id) {
     let loggedInUser = await response.json();
     return loggedInUser;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 
@@ -340,7 +328,6 @@ async function getActivityByMovieID(movieID) {
 }
 
 function howManyDaysAgo(recievedDate) {
-  // console.log(moment("202201011402", "YYYYMMDDhmm").fromNow());
   let stringDate = recievedDate.toString();
   let thisMagicMoment = moment(stringDate, "YYYYMMDDhmm").fromNow();
   return thisMagicMoment;
@@ -355,7 +342,6 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
   let container = document.createElement("div");
   container.classList.add("container");
 
-  console.log(appendIn);
   document.querySelector(appendIn).append(container);
 
   // Top av aktivitets container, innehåller användarnamn + datum
@@ -394,7 +380,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
   activityContainer.classList.add("activityContainer");
 
   // LONG-PRESS BUTTON
-  if (page == "profile") {
+  if (window.location.search === "") {
     activityContainer.setAttribute("data-long-press-delay", "500");
 
     activityContainer.addEventListener("long-press", (e) => {
@@ -504,7 +490,6 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
 
           reviewDiv.addEventListener("click", (event) => {
             event.stopPropagation();
-
             wrapper.style.overflow = "scroll";
           });
           // En delay på när knapparna skapas.
@@ -514,14 +499,6 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
           setTimeout(() => {
             element.append(options);
           }, 100);
-
-          // Fucntions
-          // function disappearingOfActivity(activityDOM) {
-          //   activityDOM.style.animation = "fadeOut 1.5s";
-          //   setTimeout(() => {
-          //     movie.remove();
-          //   }, 1500);
-          // }
 
           function messageToUser(message) {
             let messageDOM = document.createElement("div");
@@ -555,7 +532,6 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
   activityContainerRight.addEventListener("click", (e) => {
     e.stopPropagation();
     goToPageAndAddToState(`explore.php?movieID=${obj.movieID}`);
-    // window.location.href = `explore.php?movieID=${obj.movieID}`;
   });
 
   //Appenda de två delarna till containern
@@ -646,7 +622,6 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
             comment.removeAttribute("style");
             expandComment.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/expand_more.svg");
             comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
-            // comment.style.height = '200px';
           }
         });
 
@@ -667,7 +642,7 @@ async function getUserActivities(id) {
     let activities = await response.json();
     return activities;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 
@@ -724,7 +699,7 @@ async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
     let data = await response.json();
     return data;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 
@@ -740,7 +715,7 @@ async function patchActivity(activity) {
     let data = await response.json();
     return data;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 
@@ -756,7 +731,7 @@ async function deleteteActivity(activityID) {
     let data = await response.json();
     return data;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 
@@ -770,8 +745,6 @@ async function followPatch(mainUserID, friendsUserID) {
       body: JSON.stringify({ userID: mainUserID, friendsUserID: friendsUserID }),
     })
   );
-
-  // const data = await response;
 }
 
 async function getAllActivites(userId) {
@@ -791,10 +764,7 @@ async function makeShowMoreForActis(whatFunc, page, appendIn, actis, counter) {
     y = 1;
   }
 
-  console.log(actis);
-
   for (let i = counter - 1; i <= counter + y; i++) {
-    console.log("y = " + y, "i =" + i);
 
     if (i >= actis.length) {
       if (document.querySelector(".showMoreDiv")) {
@@ -820,6 +790,9 @@ async function makeShowMoreForActis(whatFunc, page, appendIn, actis, counter) {
 
     // Event för show-more-knapp
     document.getElementById("show-more-btn").addEventListener("click", () => {
+      // ladd ikon på show more knapp   
+      document.getElementById("show-more-btn").innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
+
       if (page == "feed") {
         counter += 10;
         whatFunc(loggedInUserId, counter);
@@ -832,11 +805,6 @@ async function makeShowMoreForActis(whatFunc, page, appendIn, actis, counter) {
         counter += 3;
         whatFunc(makeShowMoreForActis, "movieProfile", "#movie-profile-reviews", actis, counter);
       }
-
-      // ladd ikon på show more knapp
-      document.getElementById(
-        "show-more-btn"
-      ).innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
     });
   }
 }

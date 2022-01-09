@@ -217,7 +217,7 @@ async function searchFunction(searchBy) {
       document.getElementById("show-more-btn").addEventListener("click", () => {
         document.getElementById(
           "show-more-btn"
-        ).innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+        ).innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
         if (document.querySelectorAll(".trending").length == 20) {
           page = 2;
         }
@@ -266,7 +266,7 @@ async function searchFunction(searchBy) {
         document.getElementById("show-more-btn-title").addEventListener("click", () => {
           document.getElementById(
             "show-more-btn-title"
-          ).innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+          ).innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
 
           if (document.querySelectorAll(".movieBanner").length >= 20) {
             page += 1;
@@ -325,7 +325,6 @@ async function searchFunction(searchBy) {
       }
 
       if (x) {
-        // if (!document.querySelector("#show-more-btn-genres")) {
         let showMoreDiv = document.createElement("div");
         showMoreDiv.className = "showMoreDiv";
         showMoreDiv.innerHTML = `<button id="show-more-btn-genres">Show more</button>`;
@@ -335,14 +334,13 @@ async function searchFunction(searchBy) {
         document.getElementById("show-more-btn-genres").addEventListener("click", () => {
           document.getElementById(
             "show-more-btn-genres"
-          ).innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+          ).innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
 
           if (document.querySelectorAll(".movieBanner").length >= 20) {
             page += 21;
             searchByGenres(inputValue, page);
           }
         });
-        // }
       }
     } else {
       if (page == 1) {
@@ -405,7 +403,7 @@ async function searchFunction(searchBy) {
         document.getElementById("show-more-btn-actors").addEventListener("click", () => {
           document.getElementById(
             "show-more-btn-actors"
-          ).innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+          ).innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
 
           if (document.querySelectorAll(".movieBanner").length >= 20) {
             page += 1;
@@ -426,7 +424,7 @@ async function searchFunction(searchBy) {
   }
 
   async function searchForUsers(inputValue = "", counter = 1) {
-    inputValue = document.getElementById("searchField").value;
+    inputValue = document.getElementById("searchField").value.toLowerCase();
     searchType = "user";
 
     // Hämta alla användare + plocka bort den som är inlogagd
@@ -437,7 +435,7 @@ async function searchFunction(searchBy) {
     // Om något är sökt på, gör ny array med användarna som matchar sökvärdet
     if (inputValue != "") {
       users.forEach((user) => {
-        if (user.username.includes(inputValue)) {
+        if (user.username.toLowerCase().includes(inputValue)) {
           newArray.push(user);
         }
       });
@@ -456,7 +454,6 @@ async function searchFunction(searchBy) {
           x = false;
           break;
         }
-
         await makeUserSearchDivs(users[i]);
       } else {
         // Om något är sökt på, skapa element för användarna som matchar sökn.
@@ -471,6 +468,8 @@ async function searchFunction(searchBy) {
         await makeUserSearchDivs(newArray[i]);
       }
     }
+
+    myFunction(inputValue, "user");
 
     if (document.querySelector(".showMoreDiv")) {
       document.querySelector(".showMoreDiv").remove();
@@ -537,6 +536,11 @@ async function searchFunction(searchBy) {
 
     let followDiv = document.createElement("div");
     followDiv.setAttribute("id", "followDiv");
+    if (relationText == "Unfollow") {
+      followDiv.classList.add("unfollow");
+    } else if (relationText == "Follow") {
+      followDiv.classList.add("follow");
+    }
 
     userInfoDiv.append(username, followDiv);
 
@@ -557,6 +561,8 @@ async function searchFunction(searchBy) {
         followText.textContent = "Follow";
         followText.setAttribute("id", "follow");
         followImg.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/add_circle_black.svg");
+        followDiv.classList.add("follow");
+        followDiv.classList.remove("unfollow");
 
         // redigera db
         await followPatch(loggedInUserId, user.id);
@@ -564,12 +570,12 @@ async function searchFunction(searchBy) {
         followText.textContent = "Unfollow";
         followText.setAttribute("id", "unfollow");
         followImg.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/remove_circle_black.svg");
+        followDiv.classList.add("unfollow");
+        followDiv.classList.remove("follow");
 
         // redigera db
         await followPatch(loggedInUserId, user.id);
       }
     });
-
-    myFunction(inputValue, "user");
   }
 }

@@ -22,9 +22,9 @@
   background-repeat: no-repeat;
   position: absolute;
   top: 400px;
+  left: 13%;
   z-index: 100;
   width: 120px;
-  left: 13%;
   height: 135px;
 }
 
@@ -35,9 +35,9 @@
   background-repeat: no-repeat;
   position: absolute;
   top: 360px;
+  right: 0px;
   z-index: 100;
   width: 120px;
-  right: 0px;
   height: 135px;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
@@ -46,9 +46,9 @@
 .overlay-fade {
   position: absolute;
   top: 0px;
+  z-index: 10000;
   height: 100vh;
   width: 100vw;
-  z-index: 10000;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -83,10 +83,10 @@
           align-items: flex-end;
   background-color: #0f0b2e;
   min-height: 300px;
+  width: 80%;
   display: none;
   -webkit-animation: smoothWidth 1s;
           animation: smoothWidth 1s;
-  width: 80%;
   border-radius: 5px;
   -webkit-box-shadow: 3px 3px 3px #0f0b2e;
           box-shadow: 3px 3px 3px #0f0b2e;
@@ -95,6 +95,10 @@
 
 .overlay-fade .message-wrapper div {
   width: 100%;
+}
+
+.overlay-fade .message-wrapper p {
+  text-align: center;
 }
 
 .overlay-fade .message-wrapper .top {
@@ -117,8 +121,8 @@
 }
 
 .overlay-fade .message-wrapper .top img {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
 }
 
@@ -171,7 +175,7 @@
 .overlay-fade .message-wrapper .middle #rate:not(:checked) > label:hover,
 .overlay-fade .message-wrapper .middle #rate:not(:checked) > label:hover ~ label {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -181,13 +185,13 @@
 .overlay-fade .message-wrapper .middle #rate > input:checked ~ label:hover ~ label,
 .overlay-fade .message-wrapper .middle #rate > label:hover ~ input:checked ~ label {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .overlay-fade .message-wrapper .middle #rate > input:checked ~ label {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -273,7 +277,7 @@
   border: none;
   border-radius: 30px;
   padding: 5px;
-  height: 20px;
+  height: 30px;
   margin: 10px 10px 10px 0;
   cursor: pointer;
   -webkit-animation: fadeIn 1s;
@@ -286,10 +290,12 @@
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   -webkit-filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
           filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+  padding: 0 10px;
 }
 
 .overlay-fade .message-wrapper .delete {
-  background-color: red;
+  background: red;
+  padding: 0 10px;
 }
 
 @-webkit-keyframes fadeOut {
@@ -352,9 +358,9 @@
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+  width: 100%;
   position: fixed;
   z-index: 10;
-  width: 100%;
 }
 
 .movie-profile-header {
@@ -365,12 +371,12 @@
 
 .movie-profile-header .movie-profile-gradient {
   width: 100vw;
+  height: 400px;
   position: absolute;
   top: 0;
   z-index: 11;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(15, 123, 161, 0)), color-stop(74%, rgba(15, 11, 46, 0)), to(#100c30));
   background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 74%, #100c30 100%);
-  height: 400px;
 }
 
 .movie-profile-header .movie-profile-backdrop {
@@ -490,7 +496,7 @@
   border-radius: 30px;
   border: none;
   padding: 5px;
-  height: 20px;
+  height: 30px;
   background: #20185b;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -523,6 +529,7 @@
 .movie-profile-middle {
   z-index: 100;
   padding: 25px;
+  margin-bottom: 70px;
 }
 
 .movie-profile-middle .movie-profile-description {
@@ -735,6 +742,10 @@
   padding-left: 25px;
 }
 
+.movie-profile-middle #wrapper.feedOverflow {
+  overflow: visible;
+}
+
 .movie-profile-middle .msgDiv {
   text-align: center;
   padding: 25px;
@@ -751,18 +762,22 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: absolute;
+  top: 50vh;
+  -webkit-transform: translateY(calc(-50% - 120px));
+          transform: translateY(calc(-50% - 120px));
+  z-index: 3000;
 }
 
-.movie-profile-middle .msgQuo {
+.movie-profile-middle .msgDiv .msgQuo {
   font-style: italic;
   padding: 10px;
 }
 
-.movie-profile-middle .msgBtn {
+.movie-profile-middle .msgDiv .msgBtn {
   padding: 10px;
   border-radius: 30px;
   border: 0;
-  padding: 3px;
   height: 25px;
   -webkit-filter: none;
           filter: none;
@@ -906,7 +921,7 @@
 }
 
 .movie-profile-middle .activityContainer .activityContainerLeft {
-  padding: 5px 5px 5px 10px;
+  padding: 10px;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -973,7 +988,7 @@
   margin: auto;
 }
 
-.movie-profile-middle .activityContainerRight {
+.movie-profile-middle .activityContainer .activityContainerRight {
   -webkit-box-flex: 1.5;
       -ms-flex-positive: 1.5;
           flex-grow: 1.5;

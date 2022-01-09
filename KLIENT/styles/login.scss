@@ -1,13 +1,39 @@
 @import "variables.scss";
 
+// Overlay at startup
+#startUpScreen {
+    @include flex(row, center, center);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    margin-top: -3px;
+
+    background-image: url("../icons/background-m-profile.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    opacity: 1;
+    transition: opacity 0.5s;
+
+    img {
+        width: 65%;
+        transform: scale(0);
+        transition: transform 1s;
+    }
+}
+
 //MovieBanners (preview)
 .previewWrapper {
   height: 30vh;
-  // width: 100vw;
   position: absolute;
   top: -5px;
   z-index: 21;
   overflow: hidden;
+
+  opacity: 0;
+  transition: opacity 0.5s;
 
   .loginMoviePreviews {
     width: 100vw;
@@ -17,9 +43,7 @@
     grid-auto-rows: auto;
     top: -25px;
     left: -90px;
-    // overflow: hidden;
     transform: skew(-8deg, -5deg) rotate(12deg);
-    // gap: $betweenPadding;
 
     .movieBanner {
       transform: scale(0.9);
@@ -43,6 +67,9 @@
   z-index: 30;
   top: 27vh;
   @include flex(column, center, center);
+
+  opacity: 0;
+  transition: opacity 0.5s;
 
   .logoImg {
     height: 55px;
@@ -71,7 +98,7 @@
   width: 100vw;
   padding: $wrapperPadding;
 
-  opacity: 10;
+  opacity: 1;
   transition: opacity 0.5s;
 
   top: 40vh;
@@ -96,6 +123,10 @@
       text-decoration: underline;
     }
   }
+}
+
+#login {
+    opacity: 0;
 }
 
 // Form
@@ -142,7 +173,6 @@
       border: none;
       width: 100%;
       padding: 0 10px;
-      // background: none;
 
       transition: color 0.5s;
     }
@@ -177,27 +207,30 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // @include flex(column, center, center);
   @include transitionFromBottom();
 
   width: 100vw;
   min-height: 100vh;
+  padding-top: $wrapperPadding;
+
+  .backLogin {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15px;
+    margin: 25px;
+  }
 
   .buttonsSignUp {
     display: flex;
 
-    .backLogin {
-      margin: 0px 10px 0px 0px;
-
-    }
   }
 }
 
-#signUpForm div:first-child {
-    @include flex(row, center, center);
-    margin-top: $wrapperPadding;
-    h1 { @include bigTitleFont(); }
-    // flex-basis: 10vh;
+#signUpForm #signUp {
+  @include flex(row, center, center);
+  margin: $wrapperPadding;
+  h1 { @include bigTitleFont(); }
 }
 
 #signUpForm > fieldset {
@@ -211,17 +244,18 @@
 
 #createUserP2 {
     border: none;
+
     select, option {
         color: $lightFont;
     }
 
     select, .searchProvider {
-        width: 100%;
-        height: 35px;
-        padding: $innerPadding;
-        background-color: $activityColor;
-        border: none;
-        border-radius: $borderRadiusButtons;
+      width: 100%;
+      height: 35px;
+      padding: $innerPadding;
+      background-color: $activityColor;
+      border: none;
+      border-radius: $borderRadiusButtons;
     }
 
   #fieldSetProviders {
@@ -306,8 +340,8 @@
 }
 
   #signInButton {
-    width: 120px;
-    height: 30px;
+    min-width: 120px;
+    min-height: 30px;
 
     @include postFont();
 
@@ -315,5 +349,6 @@
     padding: $buttonPadding;
     border-radius: $borderRadiusButtons;
     border: none;
+    margin: auto;
   }
 

@@ -2,14 +2,11 @@
 
 // Variabler för den inloggade?
 let loggedInUser = getLoggedInUserID();
-// console.log(loggedInUser);
 async function makeMovieProfile(movieID) {
   document.querySelector(".drop3").remove();
   document.querySelector(".drop4").remove();
 
   let user = await getUserInfo(loggedInUser);
-  // console.log(user);
-
   let overlay = document.getElementById("overlay");
   let data = await getMovieInfo(movieID);
   let movieInfo = data.message;
@@ -24,10 +21,6 @@ async function makeMovieProfile(movieID) {
   drop1.className = "drop1";
   let drop2 = document.createElement("div");
   drop2.className = "drop2";
-
-  // // Background
-  // let overlayBackground = document.createElement("div");
-  // overlayBackground.className = "movie-profile-background";
 
   // backdrop
   let backdrop = document.createElement("div");
@@ -52,12 +45,10 @@ async function makeMovieProfile(movieID) {
   // info-poster
   let infoPoster = document.createElement("div");
   infoPoster.className = "movie-profile-info-poster";
-  console.log(movieInfo);
 
   let poster = document.createElement("img");
   poster.className = "movie-profile-poster";
 
-  console.log(movieInfo["poster_path"]);
   if (movieInfo["poster_path"] == null) {
     poster.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/image.svg");
     poster.style.background = "white";
@@ -137,7 +128,6 @@ async function makeMovieProfile(movieID) {
     `;
 
   let additionalInfo = await getAdditionalInfo(movieID);
-  // console.log(user);
   let userRegion = user.region;
 
   let streamingservices = document.createElement("div");
@@ -154,7 +144,6 @@ async function makeMovieProfile(movieID) {
 
   streamingservices.append(allProvidersGrid);
 
-  // console.log(additionalInfo.message.providers.results[userRegion]);
   // Checks if you can buy, rent or flatrate in your country
   if (additionalInfo.message.providers.results[userRegion] == undefined) {
     let message = document.createElement("p");
@@ -218,11 +207,7 @@ async function makeMovieProfile(movieID) {
         allProvidersGrid.append(otherStreamingServices);
       }
     }
-
-    // providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
-    // streamingservices.append(providerDiv);
   }
-  // streamingservices.append(allProvidersGrid);
 
   // Credits - Niklas
   let credits = document.createElement("div");
@@ -263,7 +248,6 @@ async function makeMovieProfile(movieID) {
   function createCreditDiv(person) {
     let productionPeople = document.createElement("div");
     productionPeople.className = "production-people";
-    // let defaultFace = "https://d.r101.wbsprt.com/bingy.se/icons/face.png"
 
     let image = document.createElement("div");
     let name = document.createElement("p");
@@ -344,6 +328,8 @@ async function makeMovieProfile(movieID) {
   // ------------------------------------------------------------------------------------------------------
   // EVENT for the buttons
   watchLater.addEventListener("click", async function () {
+
+    watchLater.disabled = true;
     relation = await getButtonRealtionStatus(loggedInUser, movieID);
 
     // om personen inte har filmen i sin watchlist => lägg till den
@@ -357,9 +343,12 @@ async function makeMovieProfile(movieID) {
       deleteteActivity(relation.watchlist);
       watchLater.classList.remove("marked");
     }
+    watchLater.disabled = false;
+
   });
 
   watched.addEventListener("click", async function () {
+    watched.disabled = true;
     relation = await getButtonRealtionStatus(loggedInUser, movieID);
 
     // om personen INTE har filmen i sin watched => lägg till den
@@ -378,9 +367,10 @@ async function makeMovieProfile(movieID) {
 
       // TA BORT REVIEW knapp
       review.style.display = "none";
-
-      // vill man då ta bort markeringen från watchlist?
     }
+
+    watched.disabled = false;
+
   });
 
   review.addEventListener("click", async function (e) {

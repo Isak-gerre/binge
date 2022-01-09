@@ -15,7 +15,7 @@ async function openSettings(userId) {
   let closeTab = document.createElement("button");
   closeTab.id = "closeTab";
   let exit = document.createElement("img");
-  exit.src = "https://d.r101.wbsprt.com/bingy.se/icons/exit.svg";
+  exit.src = "https://d.r101.wbsprt.com/bingy.seicons/exit.svg";
   closeTab.append(exit);
 
   // Snygg transition
@@ -34,7 +34,7 @@ async function openSettings(userId) {
   profilePicture.style.backgroundImage = `url("https://d.r101.wbsprt.com/api.bingy.se/${user.profile_picture.filepath}")`;
   let changePicDiv = document.createElement("div");
   let changePicIcon = document.createElement("img");
-  changePicIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/edit.svg";
+  changePicIcon.src = "https://d.r101.wbsprt.com/bingy.seicons/edit.svg";
 
   changePicDiv.append(changePicIcon);
   changeProfilePicContainer.append(profilePicture, changePicDiv);
@@ -101,7 +101,52 @@ async function openSettings(userId) {
 
   getProviders();
 
-  settingsWindow.append(closeTab, changeProfilePicContainer, form);
+  let deleteButton = document.createElement("button");
+  deleteButton.id = "deleteAccountBtn";
+  deleteButton.textContent = "Delete Account";
+  deleteButton.addEventListener("click", () => {
+    return new Promise((confirm) => {
+      swal({
+        title: "Are you sure you want to delete your account?",
+        buttons: {
+          cancel: {
+            text: "No",
+            value: false,
+            visible: true,
+            className: "",
+            closeModal: true,
+          },
+          confirm: {
+            text: "Yes",
+            value: true,
+            visible: true,
+            className: "",
+            closeModal: true,
+          },
+        },
+      }).then((value) => {
+        if (value) {
+          let deletedComplete = deleteAccount(loggedInUserId);
+
+          if (deletedComplete) {
+            swal({
+              title: "Your account is deleted.",
+            }).then((ok) => {
+              sessionStorage.clear();
+              window.location.href = "/index.php";
+            });
+
+            setTimeout(() => {
+              sessionStorage.clear();
+              window.location.href = "/index.php";
+            }, 5000);
+          }
+        }
+      });
+    });
+  });
+
+  settingsWindow.append(closeTab, changeProfilePicContainer, form, deleteButton);
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -135,7 +180,7 @@ async function openSettings(userId) {
         formData.append("active_streaming_services[]", array[i]);
       }
 
-      const reqChangeUser = new Request("https://d.r101.wbsprt.com/api.bingy.se/PATCH/update-user.php", {
+      const reqChangeUser = new Request("https://d.r101.wbsprt.com/api.bingy.se/POST/update-user.php", {
         method: "POST",
         body: formData,
       });
@@ -186,7 +231,7 @@ function changeProfilePic(user) {
   closeTab.id = "closeTab";
 
   let back = document.createElement("img");
-  back.src = "https://d.r101.wbsprt.com/bingy.se/icons/back_2.svg";
+  back.src = "https://d.r101.wbsprt.com/bingy.seicons/back_2.svg";
   closeTab.append(back);
 
   closeTab.addEventListener("click", () => {
@@ -253,6 +298,7 @@ function changeProfilePic(user) {
     `;
 
   formDiv.append(form);
+
   changeProfilePicWindow.append(closeTab, formDiv);
 
   form.addEventListener("submit", (event) => {
@@ -285,8 +331,6 @@ async function patchProfilePic(data) {
   let response = await fetch(request);
   let json = await response.json();
 
-  console.log(response);
-
   // Om 'post' går bra visas ett meddelande
   if (response.ok) {
     changeProfilePicWindow.prepend(responseDiv("Your profile picture was updated"));
@@ -301,8 +345,25 @@ async function patchProfilePic(data) {
   } else if (response.status == 406) {
     changeProfilePicWindow.prepend(responseDiv("You're profile picture can't override 4Mb."));
   } else if (response.status == 400) {
-    console.log(response);
     changeProfilePicWindow.prepend(responseDiv("Something went wrong. Try again!"));
+  }
+}
+
+async function deleteAccount(userId) {
+  const response = await fetch(
+    new Request("https://d.r101.wbsprt.com/api.bingy.se/DELETE/delete-user.php", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ userID: userId }),
+    })
+  );
+
+  if (response.ok) {
+    return true;
+  } else {
+    return false;
   }
 }
 
@@ -335,7 +396,7 @@ function responseDiv(message) {
 function errorInput(inputField, message) {
   let errorIcon = document.createElement("img");
   errorIcon.id = "errorIcon";
-  errorIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/error_white_24dp.svg";
+  errorIcon.src = "https://d.r101.wbsprt.com/bingy.seicons/error_white_24dp.svg";
 
   errorIcon.addEventListener("click", (event) => {
     event.stopPropagation();
@@ -361,19 +422,4 @@ function errorInput(inputField, message) {
     inputField.style.border = "2px solid red";
     inputField.append(errorIcon);
   }
-}
-
-{
-  /* <div id="input">
-            <label>Old Password</label>
-            <input class="signInInput" type="password" id="passwordOld" name="old_password" placeholder="Old Password">
-        </div>
-        <div id="input">
-            <label>New Password</label>
-            <input class="signInInput" type="password" id="password2" name="password" placeholder="New Password">
-        </div>
-        <div id="input">
-            <label>Confirm Password</label>
-            <input class="signInInput" type="password" name="confirm_password" placeholder="Confirm Password">
-        </div> */
 }

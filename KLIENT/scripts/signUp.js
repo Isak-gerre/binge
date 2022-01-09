@@ -1,11 +1,7 @@
 "use strict";
-document.querySelector(".backLogin").addEventListener("click", () => {
-  window.location.href = `index.php`;
-});
 
 document.getElementById("username1").addEventListener("keyup", () => {
   let userexists = {};
-
   userexists["userexists"] = document.getElementById("username1").value;
 
   let json = JSON.stringify(userexists);
@@ -16,10 +12,11 @@ document.getElementById("username1").addEventListener("keyup", () => {
   });
 
   fetch(userreq)
-    .then((response) => {
+    .then(response => {
       if (response.ok) {
         return response.json();
-      } else {
+      }
+      else {
         throw new Error(response.json());
       }
     })
@@ -31,21 +28,16 @@ document.getElementById("username1").addEventListener("keyup", () => {
         document.getElementById("username1").removeAttribute("style");
       }, 5000);
     })
-    .catch((error) => {
-      console.log(error);
-      document.getElementById("username1").style.color = "Red";
+    .catch(error => {
+      console.error(error);
+      document.getElementById("username1").style.color = 'Red';
       document.getElementById("username1").parentElement.style.border = "2px solid red";
     });
 });
 
 let signUpForm = document.getElementById("signUpForm");
 
-// document.querySelector(".backLogin").addEventListener("click", () => {
-//   window.location.href = `index.php`;
-// });
-
 signUpForm.addEventListener("submit", (event) => {
-  console.log("SignUpForm ok");
   event.preventDefault();
 
   const formData = new FormData(signUpForm);
@@ -63,7 +55,7 @@ signUpForm.addEventListener("submit", (event) => {
 
   if (document.getElementById("fileToUpload").value == "") {
     let form = document.getElementById("profileImgForm");
-    image = document.querySelector('input[name="profileImg"]:checked').value;
+    let image = document.querySelector('input[name="profileImg"]:checked').value;
     formData.set("fileToUpload", image);
   }
 
@@ -73,20 +65,14 @@ signUpForm.addEventListener("submit", (event) => {
   });
 
   fetch(req)
-    .then((response) => {
-      if (response.ok) {
-        console.log(response);
-        return response.json();
-      } else {
-        throw new Error();
-      }
-    })
+    .then((response) => response.json())
     .then((data) => {
-      saveToSession(data, "session");
-      window.location.replace("https://d.r101.wbsprt.com/bingy.se/explore.php");
-    })
-    .catch((error) => {
-      console.log(error);
-      sessionStorage.clear();
+      
+      if (data.message == "User has been created") {
+        saveToSession(data, "session");
+        window.location.replace("https://d.r101.wbsprt.com/bingy.se/explore.php");
+      } else {
+        console.log("it went wrong");
+      }
     });
 });

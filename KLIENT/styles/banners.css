@@ -156,7 +156,7 @@
       -ms-flex-align: center;
           align-items: center;
   background: rgba(0, 0, 0, 0.39);
-  font-family: "Archivo";
+  font-family: "Archivo", sans-serif;
   font-size: 15px;
   letter-spacing: 0.08em;
   font-weight: 500;
@@ -190,8 +190,8 @@
   bottom: -10%;
   right: -40%;
   height: 50%;
-  background-color: rgba(211, 211, 211, 0.7);
   width: 150%;
+  background-color: rgba(211, 211, 211, 0.7);
   -webkit-transform: rotate(-20deg);
           transform: rotate(-20deg);
 }
@@ -233,17 +233,17 @@
       -ms-flex-direction: column;
           flex-direction: column;
   color: black;
-  position: absolute;
-  z-index: 20000;
   min-width: 100%;
-  top: 100%;
+  position: absolute;
+  top: 104%;
+  z-index: 20000;
 }
 
 .movieBanner .options button {
-  border: none;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;
+  border: none;
   border-radius: 30px;
   padding: 5px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);

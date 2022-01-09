@@ -5,7 +5,7 @@ require_once "head.php";
 <div class="drop4"></div>
 <div class="movie-profile-background"></div>
 
-<div id="wrapper"></div>
+<div id="wrapper" class="feedOverflow"></div>
 <script src="scripts/loadingScreen.js"></script>
 <script src="Lib/moment/moment.min.js"></script>
 <script src="scripts/functions.js"></script>

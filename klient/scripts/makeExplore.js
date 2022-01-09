@@ -5,7 +5,11 @@ const loggedInUserId = getLoggedInUserID();
 if (getParamFromUrl("movieID")) {
   document.querySelector("#wrapper").innerHTML = "";
   makeMovieProfile(getParamFromUrl("movieID"));
+  document.querySelector("#wrapper").style.display = "none";
+  
 } else {
+  document.querySelector("#wrapper").style.display = "flex";
+
   //SLIDESHOW
   makeTrending();
   setInterval(() => {
@@ -23,6 +27,6 @@ if (getParamFromUrl("movieID")) {
 }
 
 if (getParamFromUrl("scroll")) {
-  console.log(getParamFromUrl("scroll"));
+  document.querySelector("#wrapper").style.display = "none";
   window.scrollTo(0, getParamFromUrl("scroll"));
 }

@@ -9,10 +9,9 @@ async function makeTrending() {
   let slideshowSlider = document.createElement("div");
   slideshowSlider.className = "slideshow";
 
-  let slideshowImages = await getTrending(1); 
-  console.log(slideshowImages);
+  let slideshowImages = await getTrending(1);
   slideshowImages.push(slideshowImages[0]);
- 
+
   let counter = 0;
   slideshowImages.forEach((movie) => {
     let movieID = movie.id;
@@ -20,8 +19,6 @@ async function makeTrending() {
     let slideMovieDiv = document.createElement("div");
     slideMovieDiv.className = "slideMovieDiv";
 
-    // let slideshowImage = document.createElement("img");
-    // slideshowImage.setAttribute("src", `http://image.tmdb.org/t/p/w500${movie["backdrop_path"]}`);
     let slideshowImage = document.createElement("div");
     slideshowImage.className = "trending-movie-picture";
     slideshowImage.style.backgroundImage = `url('http://image.tmdb.org/t/p/w500${movie["backdrop_path"]}')`;
@@ -53,15 +50,7 @@ async function makeTrending() {
 function slide() {
   const carouselSlide = document.querySelector(".slideshow");
   const carouselImages = document.querySelectorAll(".slideshow .trending-movie-picture"); // div
-  // console.log(carouselImages);
   const size = carouselImages[0].clientWidth;
-
-  //   const prevBtn = document.querySelector("#prevBtn");
-  //   const nextBtn = document.querySelectorAll("#nextBtn");
-
-  //   nextBtn.addEventListener("click", next);
-  //   prevBtn.addEventListener("click", prev);
-
   let counter = 0;
 
   carouselSlide.addEventListener("transitionend", () => {
@@ -81,12 +70,9 @@ function slide() {
     counter++;
     next(carouselSlide, counter, size);
   }, 5000);
-  // console.log("test");
 }
 function next(carouselSlide, counter, size) {
   carouselSlide.style.transition = "transform 0.7s ease-in-out";
-  // console.log(-size * counter);
-
   carouselSlide.style.transform = "translatex(" + -size * counter + "px)";
 }
 function prev(carouselSlide) {
@@ -94,11 +80,3 @@ function prev(carouselSlide) {
   counter--;
   carouselSlide.style.transform = "translatex(" + -size * counter + "px)";
 }
-
-// makeTrending();
-// setInterval(() => {
-//   if (loaded) {
-//     slide();
-//     loaded = false;
-//   }
-// }, 1000);

@@ -592,6 +592,7 @@ svg:active,
   margin: auto;
   overflow-x: scroll;
   scroll-behavior: smooth;
+  padding-top: 5px;
 }
 
 .pill-container div {
@@ -646,7 +647,6 @@ svg:active,
 }
 
 .userDiv .userInfoDiv #followDiv {
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -672,6 +672,14 @@ svg:active,
   padding: 0;
 }
 
+.userDiv .userInfoDiv .unfollow {
+  background: #1c1452;
+}
+
+.userDiv .userInfoDiv .follow {
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
+}
+
 .showMoreDiv {
   z-index: 1000;
   position: relative;
@@ -694,113 +702,6 @@ svg:active,
   font-weight: bold;
 }
 
-.loading_dots {
-  display: inline-block;
-  position: relative;
-  width: 73px;
-  height: 9px;
-}
-
-.loading_dots div {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #fff;
-  -webkit-animation-timing-function: cubic-bezier(0, 1, 1, 0);
-          animation-timing-function: cubic-bezier(0, 1, 1, 0);
-}
-
-.loading_dots div:nth-child(1) {
-  left: 8px;
-  -webkit-animation: scaleUp 0.6s infinite;
-          animation: scaleUp 0.6s infinite;
-}
-
-.loading_dots div:nth-child(2) {
-  left: 8px;
-  -webkit-animation: moveSideways 0.6s infinite;
-          animation: moveSideways 0.6s infinite;
-}
-
-.loading_dots div:nth-child(3) {
-  left: 32px;
-  -webkit-animation: moveSideways 0.6s infinite;
-          animation: moveSideways 0.6s infinite;
-}
-
-.loading_dots div:nth-child(4) {
-  left: 56px;
-  -webkit-animation: scaleDown 0.6s infinite;
-          animation: scaleDown 0.6s infinite;
-}
-
-@-webkit-keyframes scaleUp {
-  0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-}
-
-@keyframes scaleUp {
-  0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-}
-
-@-webkit-keyframes scaleDown {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  100% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-}
-
-@keyframes scaleDown {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-  100% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-}
-
-@-webkit-keyframes moveSideways {
-  0% {
-    -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
-  }
-  100% {
-    -webkit-transform: translate(24px, 0);
-            transform: translate(24px, 0);
-  }
-}
-
-@keyframes moveSideways {
-  0% {
-    -webkit-transform: translate(0, 0);
-            transform: translate(0, 0);
-  }
-  100% {
-    -webkit-transform: translate(24px, 0);
-            transform: translate(24px, 0);
-  }
-}
-
 #search-results-text {
   font-family: "Archivo", sans-serif;
   font-size: 16px;
@@ -809,6 +710,27 @@ svg:active,
   z-index: 1000;
   position: relative;
   top: 156px;
+  color: #eeeeee;
+}
+
+.tmdb,
+.git {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.tmdbLogo,
+.gitLogo {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.gitText > a {
   color: #eeeeee;
 }
 /*# sourceMappingURL=navAndSearch.css.map */

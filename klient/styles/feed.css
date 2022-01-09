@@ -3,6 +3,9 @@
   width: 100%;
   padding-right: 25px;
   padding-left: 25px;
+}
+
+#wrapper.feedOverflow {
   overflow: visible;
 }
 
@@ -38,7 +41,6 @@
   padding: 10px;
   border-radius: 30px;
   border: 0;
-  padding: 3px;
   height: 25px;
   -webkit-filter: none;
           filter: none;

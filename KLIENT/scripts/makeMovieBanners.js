@@ -1,7 +1,6 @@
 "use strict";
 
 async function makeMovieBanner(movieID, activity) {
-
   let movieInfo = await getMovieInfo(movieID);
 
   //create elements
@@ -24,24 +23,20 @@ async function makeMovieBanner(movieID, activity) {
   if (window.location.search === "") {
     movieBanner.setAttribute("data-long-press-delay", "500");
 
-    movieBanner.addEventListener("long-press", (e) => {
+    movieBanner.addEventListener("long-press", async function (e) {
       e.preventDefault();
 
       // All movieBanners
       let allMovieBanner = document.querySelectorAll(".movieBanner");
-  
 
       zoomIn(allMovieBanner, e);
-      
+
       // Click-event på föräldern 
       let wrapper = document.querySelector("#profileWrapper");
       wrapper.addEventListener("click", () => {
         zoomOut(allMovieBanner);
       });
-      
-      // Prevent scrolling
-      // wrapper.style.overflow = "hidden";
-      
+
       // Options för vad du kan göra med den
       let options = document.createElement("div");
       options.className = "options";
@@ -59,7 +54,7 @@ async function makeMovieBanner(movieID, activity) {
 
         let focusedMovie = document.querySelector(".zoomIn");
         postNewActivity(activity.movieID, activity.userID, "watched");
-      
+
         // Styles på den
         zoomOut(allMovieBanner);
 
@@ -78,7 +73,7 @@ async function makeMovieBanner(movieID, activity) {
         event.stopPropagation();
         // Denna knappen ska radera den från aktiviteten och griden
         deleteteActivity(activity.id);
-        
+
         let focusedMovie = document.querySelector(".zoomIn");
 
         zoomOut(allMovieBanner);
@@ -91,21 +86,29 @@ async function makeMovieBanner(movieID, activity) {
       })
 
       // En delay på när knapparna skapas.
+      let allActivities = await getAllActivites(activity.userID);
+      let filter = allActivities.filter((acti) => acti.movieID == activity.movieID);
+
+      filter.forEach(element => {
+        if (element.type == "watched") {
+          markedAsWatched.style.display = "none";
+        }
+      })
+
       options.append(markedAsWatched, removeFromList);
+
       setTimeout(() => {
         e.target.append(options);
       }, 1000);
 
       // Transition funktioner
       function zoomOut(allMovieBanner) {
-        // document.body.style.overflow = "visible";
-
-        if(document.querySelector(".options")){
+        if (document.querySelector(".options")) {
           document.querySelector(".options").remove();
         }
 
         allMovieBanner.forEach((movBan) => {
-          if (movBan.className == "movieBanner"){
+          if (movBan.className == "movieBanner") {
             movBan.style.filter = "blur(0px)";
             movBan.style.pointerEvents = 'auto';
           } else {
@@ -115,31 +118,28 @@ async function makeMovieBanner(movieID, activity) {
       }
 
       function zoomIn(allMovieBanner, e) {
-
         // Prevent scrolling
-        // document.body.style.overflow = "hidden";
-
         e.target.className += " zoomIn";
 
         allMovieBanner.forEach((movBan) => {
-          if (movBan.className == "movieBanner"){
-            movBan.style.filter = "blur(8px)"; 
+          if (movBan.className == "movieBanner") {
+            movBan.style.filter = "blur(8px)";
             movBan.style.pointerEvents = 'none';
           }
         });
       }
 
-      function disappearingOfActivity(movie){
+      function disappearingOfActivity(movie) {
         movie.style.animation = "fadeOut 1.5s";
         setTimeout(() => {
           movie.remove();
         }, 1500);
       }
 
-      function messageToUser(message){
+      function messageToUser(message) {
         let messageDOM = document.createElement("div");
         messageDOM.className = "messageToUser";
-        
+
 
         let p = document.createElement("p");
         p.textContent = message;
@@ -147,7 +147,7 @@ async function makeMovieBanner(movieID, activity) {
         messageDOM.append(p);
         messageDOM.style.animation = "fadeIn 1s";
         document.body.append(messageDOM);
-        
+
         setTimeout(() => {
           messageDOM.style.animation = "fadeOut 1s";
           setTimeout(() => {
@@ -199,7 +199,3 @@ function makeMovieBannerFromMovie(movie) {
   //return it
   return movieBanner;
 }
-
-// makeMovieBanner(550);
-// makeMovieBanner(123);
-// makeMovieBanner(321);

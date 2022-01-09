@@ -138,7 +138,6 @@ function getProviders() {
           document.querySelector("input[name=lastname]").value = data[0].lastname;
           document.querySelector("input[name=email]").value = data[0].email;
           document.querySelector("input[name=birthday]").value = data[0].birthday;
-
           document.querySelector(`option[id=${data[0].region}]`).setAttribute("selected", true);
 
           filter.value = document.querySelector(`option[id=${data[0].region}]`).value;
