@@ -346,6 +346,7 @@ async function makeMovieProfile(movieID) {
   // ------------------------------------------------------------------------------------------------------
   // EVENT for the buttons
   watchLater.addEventListener("click", async function () {
+    watchLater.disabled = true;
     relation = await getButtonRealtionStatus(loggedInUser, movieID);
 
     // om personen inte har filmen i sin watchlist => lägg till den
@@ -353,15 +354,17 @@ async function makeMovieProfile(movieID) {
       postNewActivity(movieID, loggedInUser, "watchlist");
       watchLater.classList.add("marked");
     }
-
+    
     // om personen HAR ifilmen i sin watchlist => ta bort den
     if (relation.watchlist !== false) {
       deleteteActivity(relation.watchlist);
       watchLater.classList.remove("marked");
     }
+    watchLater.disabled = false;
   });
 
   watched.addEventListener("click", async function () {
+    watched.disabled = true;
     relation = await getButtonRealtionStatus(loggedInUser, movieID);
 
     // om personen INTE har filmen i sin watched => lägg till den
@@ -380,9 +383,9 @@ async function makeMovieProfile(movieID) {
 
       // TA BORT REVIEW knapp
       review.style.display = "none";
-
-      // vill man då ta bort markeringen från watchlist?
     }
+
+    watched.disabled = false;
   });
 
   review.addEventListener("click", async function (e) {

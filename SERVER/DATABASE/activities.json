@@ -110,16 +110,6 @@
             "rate": "",
             "updated": false
         },
-        "65": {
-            "id": 65,
-            "userID": 5,
-            "movieID": "425909",
-            "type": "watched",
-            "date": "202201071705",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
         "87": {
             "id": 87,
             "userID": 10,
@@ -542,10 +532,10 @@
         },
         "131": {
             "id": 131,
-            "userID": 2,
-            "movieID": "493050",
+            "userID": 5,
+            "movieID": "628",
             "type": "watched",
-            "date": "202201081423",
+            "date": "202201091514",
             "comment": "",
             "rate": "",
             "updated": false

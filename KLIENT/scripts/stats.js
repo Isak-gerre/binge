@@ -1,11 +1,18 @@
 "use strict";
-async function renderChart(userId) {
+async function renderChart(userId, name = null) {
+  
+  let userData = await getUserActivities(userId);
+  console.log(userData);
+  let user;
+  if (name == null) {
+    user = "You";
+  } else {
+    user = name;
+  }
   document.getElementById("profileWrapper").innerHTML = `
-    <p class="statsP">You seem to love watching: </p>
+    <p class="statsP">${user} seem to love watching: </p>
     <canvas id="ctx" width="400" height="400"></canvas>
   `;
-
-  let userData = await getUserActivities(userId);
   // console.log(userData);
   let genres = await getGenres();
   console.log(genres);
