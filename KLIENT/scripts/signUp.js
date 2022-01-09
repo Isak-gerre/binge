@@ -66,19 +66,14 @@ signUpForm.addEventListener("submit", (event) => {
   });
 
   fetch(req)
-    .then((response) =>{
-        if(response.ok){
-          console.log(response.json());
-            // return response.json();
-        }
-        else {
-            throw new Error();
-        }
-       
-    })
+    .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-        // saveToSession(data, "session");
-        // window.location.replace("/explore.php");
+      
+        if(data.message == "User has been created"){
+          saveToSession(data, "session");
+          window.location.replace("/explore.php");
+        } else {
+          console.log("it went wrong");
+        }
     });
 });
