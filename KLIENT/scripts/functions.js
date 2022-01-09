@@ -352,7 +352,6 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
   let container = document.createElement("div");
   container.classList.add("container");
 
-  console.log(appendIn)
   document.querySelector(appendIn).append(container);
 
   // Top av aktivitets container, innehåller användarnamn + datum
@@ -391,7 +390,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
   activityContainer.classList.add("activityContainer");
 
   // LONG-PRESS BUTTON
-  if (page == "profile") {
+  if (window.location.search === "") {
     activityContainer.setAttribute("data-long-press-delay", "500");
 
     activityContainer.addEventListener("long-press", (e) => {
@@ -795,10 +794,7 @@ async function makeShowMoreForActis(whatFunc, page, appendIn, actis, counter) {
     y = 1;
   }
 
-  console.log(actis);
-
   for (let i = counter - 1; i <= counter + y; i++) {
-    console.log("y = " + y, "i =" + i);
 
     if (i >= actis.length) {
       if (document.querySelector(".showMoreDiv")) {
@@ -823,7 +819,10 @@ async function makeShowMoreForActis(whatFunc, page, appendIn, actis, counter) {
     document.querySelector(appendIn).append(showMoreDiv);
 
     // Event för show-more-knapp
-    document.getElementById("show-more-btn").addEventListener("click", () => {
+    document.getElementById("show-more-btn").addEventListener("click", () => {   
+      // ladd ikon på show more knapp   
+      document.getElementById("show-more-btn").innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
+
       if (page == "feed") {
         counter += 10;
         whatFunc(loggedInUserId, counter);
@@ -836,9 +835,6 @@ async function makeShowMoreForActis(whatFunc, page, appendIn, actis, counter) {
         counter += 3;
         whatFunc(makeShowMoreForActis, "movieProfile", "#movie-profile-reviews", actis, counter);
       }
-
-      // ladd ikon på show more knapp
-      document.getElementById("show-more-btn").innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
     });
   }
 }

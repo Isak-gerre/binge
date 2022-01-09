@@ -1,7 +1,8 @@
 "use strict";
-document.querySelector(".backLogin").addEventListener("click", () => {
-  window.location.href = `index.php`;
-});
+
+// document.querySelector(".backLogin").addEventListener("click", () => {
+//   window.location.href = `index.php`;
+// });
 
 document.getElementById("username1").addEventListener("keyup", () => {
 
@@ -67,7 +68,7 @@ signUpForm.addEventListener("submit", (event) => {
 
   if (document.getElementById("fileToUpload").value == "") {
     let form = document.getElementById("profileImgForm");
-    image = document.querySelector('input[name="profileImg"]:checked').value;
+    let image = document.querySelector('input[name="profileImg"]:checked').value;
     formData.set("fileToUpload", image);
   }
     

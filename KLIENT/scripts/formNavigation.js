@@ -1,6 +1,6 @@
 "use strict"
 
-console.log("formNavigation online");
+// console.log("formNavigation online");
 document.getElementById("createUserP1").style.display = "none";
 document.getElementById("createUserP2").style.display = "none";
 document.getElementById("createUserP3").style.display = "none";
@@ -49,11 +49,10 @@ function checkStuff(){
 
 document.getElementById("registerButton").addEventListener("click", () => {
   
-    // console.log("Event Click");
     document.getElementById("login").style.opacity = "0";
-    document.querySelector(".loginMoviePreviewsOverlay").style.opacity = "0";
-    document.querySelector(".loginMoviePreviews").style.opacity = "0";
+    document.querySelector(".previewWrapper").style.opacity = "0";
     document.querySelector(".logoDiv").style.opacity = "0";
+
     document.getElementById("signUpForm").style.display = "flex";
     document.getElementById("createUserP1").style.display = "";
 
@@ -120,4 +119,30 @@ profileImgCheck.forEach(e => {
     })
 });
 
+let backBtn = document.querySelector(".backLogin");
 
+backBtn.addEventListener('click', () => {
+    if ( document.getElementById('createUserP1').style.display != "none" ) {
+        
+        document.getElementById("signUpForm").style.top = "100vh";
+        
+        setTimeout( () => {
+            document.getElementById("signUpForm").style.display = "none";
+            document.getElementById("login").style.display = "flex";
+        }, 1100);
+
+        setTimeout( () => {
+            document.getElementById("login").style.opacity = "1";
+            document.querySelector(".previewWrapper").style.opacity = "1";
+            document.querySelector(".logoDiv").style.opacity = "1";
+        }, 1100);
+        
+    } else if ( document.getElementById('createUserP2').style.display != "none" ) {
+        document.getElementById('createUserP2').style.display = "none";
+        document.getElementById('createUserP1').style.display = "";
+    } else if ( document.getElementById('createUserP3').style.display != "none" ) {
+        document.getElementById('createUserP3').style.display = "none";
+        document.getElementById('createUserP2').style.display = "";
+    }
+
+});

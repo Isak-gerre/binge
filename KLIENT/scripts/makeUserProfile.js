@@ -45,47 +45,31 @@ async function createProfilePage() {
 
         createProfileHeader(userInfo, following);
 
-        let allUserActivities = await getAllActivites(urlUserId);
-        let watchedActivities = [];
-        let watchlist = [];
 
-        allUserActivities.forEach((obj) => {
-            if (obj.type == "watchlist") {
-                watchlist.push(obj);
-            } else {
-                watchedActivities.push(obj);
-            }
-        });
-
-        if (watchedActivities.length < 1) {
-            noActivitiesInfo('watched', userInfo.firstname);
-        } else {
-            let activities = watchedActivities.sort((a, b) => b.date - a.date);
-            makeShowMoreForActis(makeShowMoreForActis, 'profile', "#profileWrapper", activities, 1);
-        }
-
-        profileNav(watchedActivities, watchlist, urlUserId, userInfo.firstname);
+        profileNav(urlUserId, userInfo.firstname);
 
     } else {
         createProfileHeader(loggedInUserInfo, null, true);
 
-        let allUserActivities = await getAllActivites(loggedInUserId);
-        let watchedActivities = [];
-        let watchlist = [];
 
-        allUserActivities.forEach((obj) => {
-            if (obj.type == "watchlist") {
-                watchlist.push(obj);
-            } else {
-                watchedActivities.push(obj);
-            }
-        });
-
-        profileNav(watchedActivities, watchlist, loggedInUserId);
+        profileNav(loggedInUserId);
     }
 }
 
-function profileNav(watchedActivities, watchlist, userId, name = null) {
+async function profileNav(userId, name = null) {
+    let allUserActivities = await getAllActivites(userId);
+    let watchedActivities = [];
+    let watchlist = [];
+
+    allUserActivities.forEach((obj) => {
+        if (obj.type == "watchlist") {
+                watchlist.push(obj);
+        } else {
+            watchedActivities.push(obj);
+        }
+    });
+
+
     if (getParamFromUrl("watchlist")) {
         watchlistBtn.classList.add("selected");
         createWatchlist(watchlist, "myProfile");
@@ -93,17 +77,13 @@ function profileNav(watchedActivities, watchlist, userId, name = null) {
         watchedBtn.classList.add("selected");
         wrapper.innerHTML = "";
 
-        if (watchedActivities.length < 1) {
-            noActivitiesInfo("watched", name);
+        if (name != null && watchedActivities.length < 1) {
+            noActivitiesInfo('watched', name);
+        } else if ( watchedActivities.length < 1 ){
+            noActivitiesInfo('watched');
         } else {
-            if (userId == loggedInUserId) {
-                let activities = watchedActivities.sort((a, b) => b.date - a.date);
-                makeShowMoreForActis(makeShowMoreForActis, 'profile', "#profileWrapper", activities, 1);
-
-            } else {
-                let activities = watchedActivities.sort((a, b) => b.date - a.date);
-                makeShowMoreForActis(makeShowMoreForActis, 'profile', "#profileWrapper", activities, 1);
-            }
+            let activities = watchedActivities.sort((a, b) => b.date - a.date);
+            makeShowMoreForActis(makeShowMoreForActis, 'profile', "#profileWrapper", activities, 1);
         }
     }
 
@@ -118,7 +98,7 @@ function profileNav(watchedActivities, watchlist, userId, name = null) {
             } else {
                 if (userId == loggedInUserId) {
                     let activities = watchedActivities.sort((a, b) => b.date - a.date);
-                    makeShowMoreForActis(makeShowMoreForActis, 'profile', "#profileWrapper", activities, 1);
+                    makeShowMoreForActis(makeShowMoreForActis, 'myProfile', "#profileWrapper", activities, 1);
 
                 } else {
                     let activities = watchedActivities.sort((a, b) => b.date - a.date);
@@ -153,10 +133,10 @@ function profileNav(watchedActivities, watchlist, userId, name = null) {
             document.querySelector(".selected").classList.remove("selected");
             statsBtn.classList.add("selected");
 
-            if (watchedActivities.length < 1 && watchlist.length < 1) {
+            if (watchedActivities.length < 1) {
                 noActivitiesInfo("stats", name);
             } else {
-                renderChart(userId);
+                renderChart(userId, name);
             }
         }
     });
@@ -201,9 +181,10 @@ async function createProfileHeader(user, isFollowing, settings = null) {
     }
 
     if (settings == true) {
-        profileButtonText.textContent = 'Settings';
+        profileButtonText.textContent = 'Edit';
         profileButtonIcon.src = '../icons/settings_black.svg';
         profileButtonIcon.id = 'settings';
+        settingOrPlus.style.flexBasis = "70px";
         settingOrPlus.classList.add("follow");
 
     }

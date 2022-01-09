@@ -63,6 +63,10 @@
       width: 100%;
     }
 
+    p {
+      text-align: center;
+    }
+
     .top {
       @include flex(row, space-between, center);
       display: none;
@@ -186,14 +190,16 @@
       animation: fadeIn 1s;
       box-sizing: content-box;
     }
-
+    
     .submit {
       background: $gradientPeach;
       filter: drop-shadow(0px 0px 2px rgba(239, 157, 26, 0.58));
+      padding: 0 10px;
     }
 
     .delete {
-      background-color: red;
+      background: red;
+      padding: 0 10px;
     }
   }
 }

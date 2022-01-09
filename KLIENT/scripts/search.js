@@ -217,7 +217,7 @@ async function searchFunction(searchBy) {
       document.getElementById("show-more-btn").addEventListener("click", () => {
         document.getElementById(
           "show-more-btn"
-        ).innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+        ).innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
         if (document.querySelectorAll(".trending").length == 20) {
           page = 2;
         }
@@ -266,7 +266,7 @@ async function searchFunction(searchBy) {
         document.getElementById("show-more-btn-title").addEventListener("click", () => {
           document.getElementById(
             "show-more-btn-title"
-          ).innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+          ).innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
 
           if (document.querySelectorAll(".movieBanner").length >= 20) {
             page += 1;
@@ -335,7 +335,7 @@ async function searchFunction(searchBy) {
         document.getElementById("show-more-btn-genres").addEventListener("click", () => {
           document.getElementById(
             "show-more-btn-genres"
-          ).innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+          ).innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
 
           if (document.querySelectorAll(".movieBanner").length >= 20) {
             page += 21;
@@ -405,7 +405,7 @@ async function searchFunction(searchBy) {
         document.getElementById("show-more-btn-actors").addEventListener("click", () => {
           document.getElementById(
             "show-more-btn-actors"
-          ).innerHTML = `<div class="loading_dots"><div></div><div></div><div></div><div></div></div>`;
+          ).innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
 
           if (document.querySelectorAll(".movieBanner").length >= 20) {
             page += 1;

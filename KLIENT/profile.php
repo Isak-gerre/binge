@@ -62,6 +62,7 @@ require_once "head.php";
 <script src="scripts/makeNavigation.js"></script>
 <script src="scripts/stats.js"></script>
 <script src="scripts/createFormAPIsettings.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" async></script>
 <script src="scripts/updateUser.js"></script>
 <script src="scripts/makeUserProfile.js"></script>
 

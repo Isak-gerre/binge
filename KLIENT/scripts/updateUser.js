@@ -98,7 +98,53 @@ async function openSettings(userId) {
 
     getProviders();
 
-    settingsWindow.append(closeTab, changeProfilePicContainer, form);
+    let deleteButton = document.createElement('button');
+    deleteButton.id = "deleteAccountBtn";
+    deleteButton.textContent = "Delete Account";
+    deleteButton.addEventListener('click', () => {
+        return new Promise((confirm) => {
+            swal({
+              title: "Are you sure you want to delete your account?",
+              buttons: {
+                cancel: {
+                  text: "No",
+                  value: false,
+                  visible: true,
+                  className: "",
+                  closeModal: true,
+                },
+                confirm: {
+                  text: "Yes",
+                  value: true,
+                  visible: true,
+                  className: "",
+                  closeModal: true,
+                },
+              },
+            }).then((value) => {
+              if (value) {
+                let deletedComplete = deleteAccount(loggedInUserId);
+                console.log(deletedComplete);
+                
+                if ( deletedComplete ) {
+                    swal({
+                        title: 'Your account is deleted.'
+                    }).then((ok) => {
+                        sessionStorage.clear();
+                        window.location.href = "/index.php";
+                    });
+
+                    setTimeout( () => {
+                        sessionStorage.clear();
+                        window.location.href = "/index.php";
+                    }, 5000);
+                }
+              }
+            });
+          });
+    });
+
+    settingsWindow.append(closeTab, changeProfilePicContainer, form, deleteButton);
 
     form.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -252,8 +298,9 @@ function changeProfilePic(user) {
         <button id="signInButton">Update Profile picture</button>
     </div>
     `;
-
+    
     formDiv.append(form);
+    
     changeProfilePicWindow.append(closeTab, formDiv);
 
     form.addEventListener('submit', (event) => {
@@ -301,6 +348,24 @@ async function patchProfilePic(data) {
     } else if (response.status == 400) {
         console.log(response);
         changeProfilePicWindow.prepend(responseDiv("Something went wrong. Try again!"));
+    }
+
+}
+
+async function deleteAccount(userId) {
+    const response = await fetch ( new Request("http://localhost:7001/DELETE/delete-user.php", {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({"userID": userId}),
+    }));
+    
+    console.log(response.ok);
+    if (response.ok) {
+        return true
+    } else {
+        return false
     }
 
 }
