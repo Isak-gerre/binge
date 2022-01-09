@@ -107,14 +107,14 @@ async function openSettings(userId) {
               title: "Are you sure you want to delete your account?",
               buttons: {
                 cancel: {
-                  text: "Nej",
+                  text: "No",
                   value: false,
                   visible: true,
                   className: "",
                   closeModal: true,
                 },
                 confirm: {
-                  text: "Ja",
+                  text: "Yes",
                   value: true,
                   visible: true,
                   className: "",
