@@ -736,7 +736,7 @@ async function deleteteActivity(activityID) {
 
 async function followPatch(mainUserID, friendsUserID) {
   const response = await fetch(
-    new Request("http://localhost:7001/PATCH/update-user.php", {
+    new Request("http://localhost:7001/POST/update-user.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

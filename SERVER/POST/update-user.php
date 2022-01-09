@@ -64,6 +64,8 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
     $message = [];
     $nothingChanged = true;
 
+    getUsersById($userID);
+
     // Om EMAIL nyckeln finns och inte tomt
     if (isset($_POST["email"]) && $_POST["email"] !== "") {
         $email = $_POST["email"];
@@ -159,6 +161,31 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
         }
     } else {
         $message["region"] = "Region's emty";
+    }
+
+    // Om PASSWORD är ifyllt och inte tomt
+    if (isset($_POST["old_password"]) && $_POST["old_password"] !== "") {
+        if(password_verify($_POST["old_password"], $users[$userID]["password"])){
+            if ($_POST["password"] != $_POST["confirm_password"]) {
+                sendJSON(["message" => "Passwords do not match"], 409);
+            } else {
+                //Hashar lösenordet
+                $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                
+                $executing = true;
+                $nothingChanged = false;
+
+                $users[$userID]["password"] = $hashedPassword;
+                $message["password"] = "You succeded changing your password";
+            }
+        }
+        else{
+            $nothingChanged = false;
+            sendJSON(["message" => "Wrong Password"], 409);
+        }
+    } 
+    else {  
+        $message["password"] = "Password's Empty";
     }
 
     // Om active_streaming_services finns, uppdatera

@@ -49,8 +49,7 @@
             ],
             "following": [
                 4,
-                5,
-                3
+                5
             ],
             "sessionId": "$2y$10$tySGNoLqUQT9JlE7UPibGel3v1PGfuN1z8mLQuDHZuviDNw.m2aCW",
             "id": 2
@@ -70,8 +69,7 @@
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_7.png"
             },
             "followers": [
-                5,
-                2
+                5
             ],
             "following": [],
             "sessionId": "$2y$10$Znilyoeos1BWVcpslFMV3.IsfnD50zkz2BkYxYLZ9iGFSkUAjWoWu",
@@ -158,6 +156,22 @@
             "following": [],
             "sessionId": "$2y$10$73nblJRrg3DoGBsEvXIUnOi39nP3INulHlxmylxrJ3eci1dpISHCq",
             "id": 6
+        },
+        "7": {
+            "firstname": "Lisa",
+            "lastname": "Svensson",
+            "email": "lisa.s@live.se",
+            "password": "$2y$10$wEwtSpKYbaXUtHmk6J2O5OpQDmRCLeTvcHF0UlL9UpUujF81SXap.",
+            "region": "SE",
+            "username": "LisaSven",
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/PROFILE\\\/d30c11c0db09db8441da62b3dd3021800135be1d224b8dad3a10f2545995fafd.jpg"
+            },
+            "active_streaming_services": [],
+            "followers": [],
+            "following": [],
+            "sessionId": "$2y$10$n7RV2P.m2oJdSe.O110gBeIexVdp9NxozsvA7taOsKvjy3aak1MFO",
+            "id": 7
         }
     }
 }
