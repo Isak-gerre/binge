@@ -3,13 +3,14 @@
 require_once "../access-control.php";
 require_once "../functions.php";
 
-$method = $_SERVER["REQUEST_METHOD"];
+checkMethod("POST");
+
 $db = loadJSON("../DATABASE/user.json");
 $rawUserData = file_get_contents("php://input");
 $userData = json_decode($rawUserData, true);
 
-if ($method != "POST") {
-    exit();
+if ( !isset($userData["userexists"]) ) {
+    sendJSON(["message" => "A key's missing from request body"], 400);
 }
 
 if(isset($userData["userexists"])){

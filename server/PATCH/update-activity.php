@@ -34,6 +34,7 @@ $activities[$activityID]["updated"] = true;
 $activitiesDB["activities"] = $activities;
 saveJSON("../DATABASE/activities.json", $activitiesDB);
 $message = [
-    "message" => "SUCCESS"
+    "state" => "SUCCESS",
+    "message" => "Activity was updated"
 ];
 sendJSON($message);
