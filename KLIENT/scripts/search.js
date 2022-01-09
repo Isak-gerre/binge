@@ -426,7 +426,7 @@ async function searchFunction(searchBy) {
   }
 
   async function searchForUsers(inputValue = "", counter = 1) {
-    inputValue = document.getElementById("searchField").value;
+    inputValue = document.getElementById("searchField").value.toLowerCase();
     searchType = "user";
 
     // Hämta alla användare + plocka bort den som är inlogagd
@@ -437,7 +437,7 @@ async function searchFunction(searchBy) {
     // Om något är sökt på, gör ny array med användarna som matchar sökvärdet
     if (inputValue != "") {
       users.forEach((user) => {
-        if (user.username.includes(inputValue)) {
+        if (user.username.toLowerCase().includes(inputValue)) {
           newArray.push(user);
         }
       });
@@ -456,7 +456,6 @@ async function searchFunction(searchBy) {
           x = false;
           break;
         }
-
         await makeUserSearchDivs(users[i]);
       } else {
         // Om något är sökt på, skapa element för användarna som matchar sökn.
@@ -471,6 +470,8 @@ async function searchFunction(searchBy) {
         await makeUserSearchDivs(newArray[i]);
       }
     }
+
+    myFunction(inputValue, "user");
 
     if (document.querySelector(".showMoreDiv")) {
       document.querySelector(".showMoreDiv").remove();
@@ -537,6 +538,11 @@ async function searchFunction(searchBy) {
 
     let followDiv = document.createElement("div");
     followDiv.setAttribute("id", "followDiv");
+    if(relationText == "Unfollow") {
+      followDiv.classList.add("unfollow");
+    } else if (relationText == "Follow"){
+      followDiv.classList.add("follow");
+    }
 
     userInfoDiv.append(username, followDiv);
 
@@ -557,6 +563,8 @@ async function searchFunction(searchBy) {
         followText.textContent = "Follow";
         followText.setAttribute("id", "follow");
         followImg.setAttribute("src", "../icons/add_circle_black.svg");
+        followDiv.classList.add("follow");
+        followDiv.classList.remove("unfollow");
 
         // redigera db
         await followPatch(loggedInUserId, user.id);
@@ -564,12 +572,12 @@ async function searchFunction(searchBy) {
         followText.textContent = "Unfollow";
         followText.setAttribute("id", "unfollow");
         followImg.setAttribute("src", "../icons/remove_circle_black.svg");
+        followDiv.classList.add("unfollow");
+        followDiv.classList.remove("follow");
 
         // redigera db
         await followPatch(loggedInUserId, user.id);
       }
     });
-
-    myFunction(inputValue, "user");
   }
 }

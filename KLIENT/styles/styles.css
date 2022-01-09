@@ -2444,7 +2444,6 @@ svg:active,
 }
 
 .userDiv .userInfoDiv #followDiv {
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2468,6 +2467,14 @@ svg:active,
   font-family: "Mulish", sans-serif;
   font-size: 12px;
   padding: 0;
+}
+
+.userDiv .userInfoDiv .unfollow {
+  background: #1c1452;
+}
+
+.userDiv .userInfoDiv .follow {
+  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
 }
 
 .showMoreDiv {
