@@ -520,3 +520,19 @@ svg:active,
   top: 156px;
   color: $lightFont;
 }
+
+.tmdb,
+.git {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+
+.tmdbLogo,
+.gitLogo {
+  width: 30px;
+  margin-right: 10px;
+}
+.gitText > a {
+  color: $lightFont;
+}

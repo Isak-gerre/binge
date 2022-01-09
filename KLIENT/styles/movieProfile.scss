@@ -2,11 +2,12 @@
 
 // WRAPPER för => hela filmporfilen
 #overlay {
-  // position: relative;
   display: flex;
   flex-direction: column;
+
   position: relative;
   z-index: 100;
+
   width: 100vw;
   transition: opacity 0.2s ease;
 }
@@ -16,11 +17,13 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
   position: absolute;
   top: 400px;
-  z-index: 100;
-  width: 120px;
   left: 13%;
+  z-index: 100;
+
+  width: 120px;
   height: 135px;
 }
 .drop2 {
@@ -28,11 +31,13 @@
   background-position: -40px;
   background-size: cover;
   background-repeat: no-repeat;
+
   position: absolute;
   top: 360px;
-  z-index: 100;
-  width: 120px;
   right: 0px;
+  z-index: 100;
+
+  width: 120px;
   height: 135px;
   transform: rotateY(180deg);
 }
@@ -40,21 +45,23 @@
 .overlay-fade {
   position: absolute;
   top: 0px;
+  z-index: 10000;
+
   height: 100vh;
   width: 100vw;
-  z-index: 10000;
+
   @include flex(row, center, center);
   background-color: rgba(0, 0, 0, 0.5);
-  //   opacity: 0;
   animation: fadeIn 1s;
 
   .message-wrapper {
     @include flex(column, flex-start, flex-end);
     background-color: $backgroundColor;
     min-height: 300px;
+    width: 80%;
+
     display: none;
     animation: smoothWidth 1s;
-    width: 80%;
     border-radius: $borderRadiusObjects;
     box-shadow: $boxShadow $boxShadow $boxShadow $backgroundColor;
     padding: $betweenPadding;
@@ -70,23 +77,18 @@
     .top {
       @include flex(row, space-between, center);
       display: none;
-      // height: 50px;
       animation: fadeIn 1s;
 
       img {
         width: $iconButtonSz;
         height: $iconButtonSz;
-        // padding: $innerPadding;
         cursor: pointer;
       }
 
       h1 {
         height: 100%;
         color: $bodyFont;
-        // padding: $innerPadding;
         @include bigTitleFont();
-        // display: flex;
-        // align-items: flex-end;
       }
     }
 
@@ -94,12 +96,10 @@
       display: none;
       width: 100%;
       animation: fadeIn 1s;
-      // flex-basis: 90px;
       position: relative;
 
       #rate {
         @include flex(row, flex-start, center);
-        // margin: 0px 10px;
 
         unicode-bidi: bidi-override;
         direction: rtl;
@@ -174,13 +174,11 @@
     }
 
     .buttonHolder {
-      // OBS ATT DELET/SUBMIT NU LIGEGR I EN WRAPPER FÖR ATT DE SKA VARA FLEX ROW
       @include flex(row, flex-end, center);
       display: none;
     }
 
     .button {
-      // display: none; // TROR DET VAR NÅT MED DETTA SOM FUCKADE ANIMATION
       border: none;
       border-radius: $borderRadiusButtons;
       padding: $innerPadding;
@@ -236,11 +234,14 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
   height: 100vh;
+  width: 100%;
+
   position: fixed;
   z-index: 10;
-  width: 100%;
 }
+
 // HEADER wrapper för => backdrop pic, gradient
 .movie-profile-header {
   height: auto;
@@ -249,11 +250,12 @@
 
   .movie-profile-gradient {
     width: 100vw;
+    height: 400px;
+
     position: absolute;
     top: 0;
     z-index: 11;
     background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 74%, #100c30 100%);
-    height: 400px;
   }
 
   .movie-profile-backdrop {
@@ -270,6 +272,7 @@
   padding-left: $wrapperPadding;
   padding-right: $wrapperPadding;
   padding-bottom: $betweenPadding;
+
   z-index: 101;
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -288,8 +291,6 @@
 
   // INFO TEXT
   .movie-profile-info-text {
-    // font-family: "Archivo", sans-serif;
-    // line-height: 1.4;
     @include flex(column, flex-end, flex-start);
 
     // SHORT INFO
@@ -344,7 +345,6 @@
 
       // MARKED BUTTON
       .marked {
-        // OPTION 2
         border-radius: $borderRadiusButtons;
         border: 0;
         color: $lightFont;
@@ -409,9 +409,6 @@
         border-radius: 50%;
         height: 10vw;
         width: 10vw;
-        // margin-right: $betweenPadding;
-        // filter: grayscale(100%) blur(1px);
-        // box-shadow: 5px 5px 5px #414141 inset;
       }
 
       p {
@@ -425,7 +422,6 @@
   // CREDITS-wrapper
   .movie-profile-credits {
     padding-bottom: $wrapperPadding;
-    // grid - column, 2fr
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: $betweenPadding;
