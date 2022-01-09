@@ -181,9 +181,10 @@ async function createProfileHeader(user, isFollowing, settings = null) {
     }
 
     if (settings == true) {
-        profileButtonText.textContent = 'Settings';
+        profileButtonText.textContent = 'Edit';
         profileButtonIcon.src = '../icons/settings_black.svg';
         profileButtonIcon.id = 'settings';
+        settingOrPlus.style.flexBasis = "70px";
         settingOrPlus.classList.add("follow");
 
     }

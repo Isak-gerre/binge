@@ -819,7 +819,10 @@ async function makeShowMoreForActis(whatFunc, page, appendIn, actis, counter) {
     document.querySelector(appendIn).append(showMoreDiv);
 
     // Event för show-more-knapp
-    document.getElementById("show-more-btn").addEventListener("click", () => {
+    document.getElementById("show-more-btn").addEventListener("click", () => {   
+      // ladd ikon på show more knapp   
+      document.getElementById("show-more-btn").innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
+
       if (page == "feed") {
         counter += 10;
         whatFunc(loggedInUserId, counter);
@@ -832,9 +835,6 @@ async function makeShowMoreForActis(whatFunc, page, appendIn, actis, counter) {
         counter += 3;
         whatFunc(makeShowMoreForActis, "movieProfile", "#movie-profile-reviews", actis, counter);
       }
-
-      // ladd ikon på show more knapp
-      document.getElementById("show-more-btn").innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
     });
   }
 }

@@ -500,16 +500,6 @@
             "rate": "",
             "updated": false
         },
-        "128": {
-            "id": 128,
-            "userID": 2,
-            "movieID": "628",
-            "type": "watched",
-            "date": "202201081242",
-            "comment": "",
-            "rate": "",
-            "updated": false
-        },
         "129": {
             "id": 129,
             "userID": 2,
@@ -536,6 +526,16 @@
             "movieID": "628",
             "type": "watched",
             "date": "202201091514",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "133": {
+            "id": 133,
+            "userID": 2,
+            "movieID": "60304",
+            "type": "watchlist",
+            "date": "202201091530",
             "comment": "",
             "rate": "",
             "updated": false

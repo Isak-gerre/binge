@@ -346,6 +346,7 @@ async function makeMovieProfile(movieID) {
   // ------------------------------------------------------------------------------------------------------
   // EVENT for the buttons
   watchLater.addEventListener("click", async function () {
+
     watchLater.disabled = true;
     relation = await getButtonRealtionStatus(loggedInUser, movieID);
 
@@ -361,6 +362,7 @@ async function makeMovieProfile(movieID) {
       watchLater.classList.remove("marked");
     }
     watchLater.disabled = false;
+   
   });
 
   watched.addEventListener("click", async function () {
@@ -371,6 +373,7 @@ async function makeMovieProfile(movieID) {
     if (relation.watched == false) {
       postNewActivity(movieID, loggedInUser, "watched");
       watched.classList.add("marked");
+      
 
       // VISA REVIEW knapp
       review.style.display = "flex";
@@ -386,6 +389,7 @@ async function makeMovieProfile(movieID) {
     }
 
     watched.disabled = false;
+  
   });
 
   review.addEventListener("click", async function (e) {

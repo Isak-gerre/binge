@@ -58,11 +58,15 @@
   
   .follow{
     @include buttonMarked();
+    justify-content: flex-end;
   }
 
   .unfollow {
     @include buttonNotMarked();
+    justify-content: flex-end;
+
   }
+
   #followInfo {
     @include bodyFont();
     @include flex(row, space-evenly, center);
