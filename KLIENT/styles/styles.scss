@@ -11,18 +11,13 @@
 
 body {
   margin: 0;
-  // display: grid;
   position: relative;
-  // min-height: 100vh;
   @include flex(column, none, center);
   background-color: $backgroundColor;
-  // overflow-x: hidden;
 }
 
 #wrapper {
   position: relative;
-  // overflow-y: scroll;
-  // height: 100vh;
   @include flex(column, none, center);
   overflow-x: hidden;
   color: $darkFont;

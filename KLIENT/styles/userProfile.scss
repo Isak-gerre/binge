@@ -64,14 +64,12 @@
   .unfollow {
     @include buttonNotMarked();
     justify-content: flex-end;
-
   }
 
   #followInfo {
     @include bodyFont();
     @include flex(row, space-evenly, center);
     width: 100%;
-    // gap: 5px;
 
     #followersDiv,
     #followingDiv {
@@ -88,7 +86,6 @@
   @include bodyFont();
   @include flex(row, space-evenly, center);
   width: 100%;
-  // gap: 5px;
 
   #followersDiv,
   #followingDiv {
@@ -148,8 +145,6 @@
       gap: $betweenPadding;
       width: 100%;
       height: 100px;
-
-      // padding: $wrapperPadding;
       cursor: pointer;
 
       .userProfilePic {
@@ -164,13 +159,12 @@
 
       button.follow {
         @include buttonMarked();
-        padding: 5px 5px 5px 10px;
+        padding: $innerPadding $innerPadding $innerPadding $betweenPadding;
         justify-content: space-between;
       }
       button.unfollow {
         @include buttonNotMarked();
-        padding: 5px 5px 5px 10px;
-
+        padding: $innerPadding $innerPadding $innerPadding $betweenPadding;
       }
     }
   }
@@ -186,7 +180,6 @@
   border-radius: $borderRadiusButtons;
   background: $gradientPeach;
   padding: $buttonPadding;
-
 }
 
 #profileWrapper {
@@ -204,16 +197,12 @@
     grid-template-columns: repeat(3, 1fr);
     gap: $betweenPadding;    
     position: relative;
-
-
-
   }
 }
 
 #messageWhenEmpty {
   @include flex(column, center, center);
   gap: $wrapperPadding;
-
   height: 15vh;
   width: 100%;
 
@@ -224,10 +213,8 @@
   button {
     border: none;
     @include bodyFont();
-    
     border-radius: $borderRadiusButtons;
     padding: $innerPadding $wrapperPadding;
-
     background: $gradientPeach;
     color: $lightFont;
   }
@@ -281,10 +268,9 @@
     #errorMessage {
       position: absolute;
       background: rgba(255, 255, 255, 0.48);
-      padding: 10px;
+      padding: $betweenPadding;
       border-radius: 15px;
       right: 38px;
-      
       @include xSmallFont();
     }
   }
@@ -328,7 +314,6 @@
         img {
           height: 30px;
           width: 30px;
-
           border-radius: 50%;
         }
       }
@@ -362,7 +347,7 @@
       @include bodyFont();
       border: none;
       width: 100%;
-      padding: 0 10px;
+      padding: 0 $betweenPadding;
       background: none;
             
       transition: color 0.5s;
@@ -375,9 +360,6 @@
     }
     
     button {
-        // width: 100px;
-        // height: 30px;
-        
         @include postFont();
         
         background: $gradientPeach;
@@ -449,7 +431,6 @@
   #closeTab {
     z-index: 10001;
   }
-
 }
 
 #responseDiv {
@@ -548,12 +529,6 @@
     background: $gradientPeach;
   }
 }
-
-// .pushDownElement {
-//   animation: marginScale 1s forwards;
-//   // margin-bottom: 90px;
-//   // transition: all 1s;
-// }
 
 @keyframes marginScale {
   0% {
