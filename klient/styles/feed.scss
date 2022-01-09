@@ -4,6 +4,10 @@
   width: 100%;
   padding-right: $wrapperPadding;
   padding-left: $wrapperPadding;
+  // overflow: visible;
+}
+
+#wrapper.feedOverflow{
   overflow: visible;
 }
 
@@ -25,7 +29,6 @@
     padding: $betweenPadding;
     border-radius: $borderRadiusButtons;
     border: 0;
-    padding: $buttonPadding;
     height: 25px;
     filter: none;
     @include flex(row, center, center);

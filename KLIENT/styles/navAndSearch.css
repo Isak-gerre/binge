@@ -592,6 +592,7 @@ svg:active,
   margin: auto;
   overflow-x: scroll;
   scroll-behavior: smooth;
+  padding-top: 5px;
 }
 
 .pill-container div {

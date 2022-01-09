@@ -812,6 +812,7 @@ body {
   overflow: hidden;
   background-color: #1c1452;
   margin: 0px auto;
+  margin-bottom: 10px;
 }
 
 #profileNav div {
@@ -1000,7 +1001,6 @@ body {
   z-index: 15;
   padding: 0px 25px;
   padding-bottom: 90px;
-  padding-top: 10px;
   height: calc(100vh - 250px);
   -webkit-transition: height 1s;
   transition: height 1s;
@@ -1728,7 +1728,7 @@ body {
 .overlay-fade .message-wrapper .middle #rate:not(:checked) > label:hover,
 .overlay-fade .message-wrapper .middle #rate:not(:checked) > label:hover ~ label {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -1738,13 +1738,13 @@ body {
 .overlay-fade .message-wrapper .middle #rate > input:checked ~ label:hover ~ label,
 .overlay-fade .message-wrapper .middle #rate > label:hover ~ input:checked ~ label {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .overlay-fade .message-wrapper .middle #rate > input:checked ~ label {
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -2080,6 +2080,7 @@ body {
 .movie-profile-middle {
   z-index: 100;
   padding: 25px;
+  margin-bottom: 70px;
 }
 
 .movie-profile-middle .movie-profile-description {
@@ -2290,6 +2291,9 @@ body {
   width: 100%;
   padding-right: 25px;
   padding-left: 25px;
+}
+
+.movie-profile-middle #wrapper.feedOverflow {
   overflow: visible;
 }
 
@@ -2316,16 +2320,15 @@ body {
   z-index: 3000;
 }
 
-.movie-profile-middle .msgQuo {
+.movie-profile-middle .msgDiv .msgQuo {
   font-style: italic;
   padding: 10px;
 }
 
-.movie-profile-middle .msgBtn {
+.movie-profile-middle .msgDiv .msgBtn {
   padding: 10px;
   border-radius: 30px;
   border: 0;
-  padding: 3px;
   height: 25px;
   -webkit-filter: none;
           filter: none;
@@ -2536,7 +2539,7 @@ body {
   margin: auto;
 }
 
-.movie-profile-middle .activityContainerRight {
+.movie-profile-middle .activityContainer .activityContainerRight {
   -webkit-box-flex: 1.5;
       -ms-flex-positive: 1.5;
           flex-grow: 1.5;
@@ -2578,6 +2581,9 @@ body {
   width: 100%;
   padding-right: 25px;
   padding-left: 25px;
+}
+
+#wrapper.feedOverflow {
   overflow: visible;
 }
 
@@ -2604,16 +2610,15 @@ body {
   z-index: 3000;
 }
 
-.msgQuo {
+.msgDiv .msgQuo {
   font-style: italic;
   padding: 10px;
 }
 
-.msgBtn {
+.msgDiv .msgBtn {
   padding: 10px;
   border-radius: 30px;
   border: 0;
-  padding: 3px;
   height: 25px;
   -webkit-filter: none;
           filter: none;
@@ -2824,7 +2829,7 @@ body {
   margin: auto;
 }
 
-.activityContainerRight {
+.activityContainer .activityContainerRight {
   -webkit-box-flex: 1.5;
       -ms-flex-positive: 1.5;
           flex-grow: 1.5;
@@ -3935,6 +3940,7 @@ svg:active,
   margin: auto;
   overflow-x: scroll;
   scroll-behavior: smooth;
+  padding-top: 5px;
 }
 
 .pill-container div {

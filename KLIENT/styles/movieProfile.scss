@@ -117,7 +117,7 @@
       #rate:not(:checked) > label:hover,
       #rate:not(:checked) > label:hover ~ label {
         background: $gradientPeach;
-        background-clip: text;
+        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
@@ -127,13 +127,13 @@
       #rate > input:checked ~ label:hover ~ label,
       #rate > label:hover ~ input:checked ~ label {
         background: $gradientPeach;
-        background-clip: text;
+        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
       #rate > input:checked ~ label {
         background: $gradientPeach;
-        background-clip: text;
+        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
     }
@@ -353,6 +353,7 @@
 .movie-profile-middle {
   z-index: 100;
   padding: $wrapperPadding;
+  margin-bottom: 70px;
 
   //  DESCRIPTION-wrapper
   .movie-profile-description {

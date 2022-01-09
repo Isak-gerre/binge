@@ -261,6 +261,7 @@
   overflow: hidden;
   background-color: #1c1452;
   margin: 0px auto;
+  margin-bottom: 10px;
 }
 
 #profileNav div {
@@ -449,7 +450,6 @@
   z-index: 15;
   padding: 0px 25px;
   padding-bottom: 90px;
-  padding-top: 10px;
   height: calc(100vh - 250px);
   -webkit-transition: height 1s;
   transition: height 1s;

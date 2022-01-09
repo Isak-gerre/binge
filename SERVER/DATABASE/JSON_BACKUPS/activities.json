@@ -499,6 +499,46 @@
             "comment": "",
             "rate": "",
             "updated": false
+        },
+        "127": {
+            "id": 127,
+            "userID": 1,
+            "movieID": "72559",
+            "type": "watchlist",
+            "date": "202201072212",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "128": {
+            "id": 128,
+            "userID": 2,
+            "movieID": "628",
+            "type": "watched",
+            "date": "202201081242",
+            "comment": "",
+            "rate": "",
+            "updated": false
+        },
+        "129": {
+            "id": 129,
+            "userID": 2,
+            "movieID": "628",
+            "type": "review",
+            "date": "202201081242",
+            "comment": "N\u00e4stan som twilihgt",
+            "rate": 0,
+            "updated": false
+        },
+        "130": {
+            "id": 130,
+            "userID": 2,
+            "movieID": "493050",
+            "type": "watchlist",
+            "date": "202201081423",
+            "comment": "",
+            "rate": "",
+            "updated": false
         }
     }
 }
