@@ -4,8 +4,6 @@ require_once "../functions.php";
 
 checkMethod("POST");
 
-// checkContentType();
-
 // Data that was sent to us by the client
 $data = file_get_contents("php://input");
 $requestData = json_decode($data, true);
