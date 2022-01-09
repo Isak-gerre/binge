@@ -107,6 +107,7 @@
   overflow: hidden;
   background-color: #1c1452;
   margin: 0px auto;
+  margin-bottom: 10px;
 
   div {
     @include flex(row, center, center);
@@ -189,7 +190,6 @@
   z-index: 15;
   padding: 0px $wrapperPadding;
   padding-bottom: 90px;
-  padding-top: 10px;
   height: calc(100vh - 250px);
   transition: height 1s;
   overflow-y:scroll;
