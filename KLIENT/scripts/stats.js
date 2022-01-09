@@ -1,8 +1,7 @@
 "use strict";
 async function renderChart(userId, name = null) {
-  
+
   let userData = await getUserActivities(userId);
-  console.log(userData);
   let user;
   if (name == null) {
     user = "You";
@@ -13,9 +12,7 @@ async function renderChart(userId, name = null) {
     <p class="statsP">${user} seem to love watching: </p>
     <canvas id="ctx" width="400" height="400"></canvas>
   `;
-  // console.log(userData);
   let genres = await getGenres();
-  console.log(genres);
   let time = [];
   let genresAndRuntime = {};
   let data = {};
@@ -24,7 +21,6 @@ async function renderChart(userId, name = null) {
   let done = false;
   userData.forEach(async function (activity) {
     let movieInfo = await getMovieInfo(activity.movieID);
-    console.log(movieInfo);
     if (movieInfo.message.genres && movieInfo.message.runtime) {
       await movieInfo.message.genres.forEach((genre, index) => {
         if (genre.name in genresAndRuntime) {
@@ -37,7 +33,6 @@ async function renderChart(userId, name = null) {
     if (movieInfo.message.genre_ids && movieInfo.message.runtime) {
       await movieInfo.message.genre_ids.forEach((genre, index) => {
         genre = genres.genres.find((obj) => obj.id == genre);
-        console.log(genre);
         if (genre.name in genresAndRuntime) {
           genresAndRuntime[`${genre.name}`] += movieInfo.message.runtime;
         } else {
@@ -45,7 +40,6 @@ async function renderChart(userId, name = null) {
         }
       });
     }
-    console.log(genresAndRuntime);
     genreNames = Object.keys(genresAndRuntime);
     runtimes = Object.values(genresAndRuntime);
     data = {
@@ -69,7 +63,6 @@ async function renderChart(userId, name = null) {
     };
   });
 
-  // console.log(genres);
   let interval = setInterval(() => {
     if (data != {}) {
       let ctx = document.getElementById("ctx").getContext("2d");
@@ -81,5 +74,3 @@ async function renderChart(userId, name = null) {
     }
   }, 1000);
 }
-
-// renderChart();

@@ -38,7 +38,6 @@ async function getFriendsRecentlyWatched(movieID, user) {
 
   let profileBox = document.createElement("div");
   profileBox.className = "profile-box";
-  console.log(user);
   profileBox.addEventListener("click", () => {
     window.location.href = `profile.php?userID=${user}`;
   });

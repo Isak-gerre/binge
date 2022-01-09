@@ -2510,6 +2510,27 @@ svg:active,
   color: #eeeeee;
 }
 
+.tmdb,
+.git {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.tmdbLogo,
+.gitLogo {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.gitText > a {
+  color: #eeeeee;
+}
+
 #overlay {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2532,9 +2553,9 @@ svg:active,
   background-repeat: no-repeat;
   position: absolute;
   top: 400px;
+  left: 13%;
   z-index: 100;
   width: 120px;
-  left: 13%;
   height: 135px;
 }
 
@@ -2545,9 +2566,9 @@ svg:active,
   background-repeat: no-repeat;
   position: absolute;
   top: 360px;
+  right: 0px;
   z-index: 100;
   width: 120px;
-  right: 0px;
   height: 135px;
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
@@ -2556,9 +2577,9 @@ svg:active,
 .overlay-fade {
   position: absolute;
   top: 0px;
+  z-index: 10000;
   height: 100vh;
   width: 100vw;
-  z-index: 10000;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2593,10 +2614,10 @@ svg:active,
           align-items: flex-end;
   background-color: #0f0b2e;
   min-height: 300px;
+  width: 80%;
   display: none;
   -webkit-animation: smoothWidth 1s;
           animation: smoothWidth 1s;
-  width: 80%;
   border-radius: 5px;
   -webkit-box-shadow: 3px 3px 3px #0f0b2e;
           box-shadow: 3px 3px 3px #0f0b2e;
@@ -2868,9 +2889,9 @@ svg:active,
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+  width: 100%;
   position: fixed;
   z-index: 10;
-  width: 100%;
 }
 
 .movie-profile-header {
@@ -2881,12 +2902,12 @@ svg:active,
 
 .movie-profile-header .movie-profile-gradient {
   width: 100vw;
+  height: 400px;
   position: absolute;
   top: 0;
   z-index: 11;
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(15, 123, 161, 0)), color-stop(74%, rgba(15, 11, 46, 0)), to(#100c30));
   background: linear-gradient(180deg, rgba(15, 123, 161, 0) 0%, rgba(15, 11, 46, 0) 74%, #100c30 100%);
-  height: 400px;
 }
 
 .movie-profile-header .movie-profile-backdrop {
@@ -4138,7 +4159,7 @@ svg:active,
       -ms-flex-align: center;
           align-items: center;
   background: rgba(0, 0, 0, 0.39);
-  font-family: "Archivo";
+  font-family: "Archivo", sans-serif;
   font-size: 15px;
   letter-spacing: 0.08em;
   font-weight: 500;
@@ -4172,8 +4193,8 @@ svg:active,
   bottom: -10%;
   right: -40%;
   height: 50%;
-  background-color: rgba(211, 211, 211, 0.7);
   width: 150%;
+  background-color: rgba(211, 211, 211, 0.7);
   -webkit-transform: rotate(-20deg);
           transform: rotate(-20deg);
 }
@@ -4215,17 +4236,17 @@ svg:active,
       -ms-flex-direction: column;
           flex-direction: column;
   color: black;
-  position: absolute;
-  z-index: 20000;
   min-width: 100%;
+  position: absolute;
   top: 104%;
+  z-index: 20000;
 }
 
 .movieBanner .options button {
-  border: none;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;
+  border: none;
   border-radius: 30px;
   padding: 5px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
@@ -4235,75 +4256,6 @@ svg:active,
 
 .movieBanner .options button:first-child {
   margin-bottom: 5px;
-}
-
-#footer {
-  position: relative;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-}
-
-.footerContainer {
-  padding-bottom: 80px;
-  background-color: #1d1656;
-  color: #f5f5f5;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.footerContainerLeft {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  font-size: 40px;
-  padding: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.footerContainerRight {
-  -webkit-box-flex: 2;
-      -ms-flex-positive: 2;
-          flex-grow: 2;
-  padding: 10px;
-  font-size: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.tmdb,
-.git {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 10px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.tmdbLogo,
-.gitLogo {
-  width: 30px;
-  margin-right: 10px;
-}
-
-.gitText > a {
-  color: whitesmoke;
 }
 
 .loadingScreen {

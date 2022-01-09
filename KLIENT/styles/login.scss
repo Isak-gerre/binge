@@ -27,7 +27,6 @@
 //MovieBanners (preview)
 .previewWrapper {
   height: 30vh;
-  // width: 100vw;
   position: absolute;
   top: -5px;
   z-index: 21;
@@ -44,9 +43,7 @@
     grid-auto-rows: auto;
     top: -25px;
     left: -90px;
-    // overflow: hidden;
     transform: skew(-8deg, -5deg) rotate(12deg);
-    // gap: $betweenPadding;
 
     .movieBanner {
       transform: scale(0.9);
@@ -176,7 +173,6 @@
       border: none;
       width: 100%;
       padding: 0 10px;
-      // background: none;
 
       transition: color 0.5s;
     }
@@ -211,7 +207,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // @include flex(column, center, center);
   @include transitionFromBottom();
 
   width: 100vw;
@@ -219,11 +214,11 @@
   padding-top: $wrapperPadding;
 
   .backLogin {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 15px;
-      margin: 25px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15px;
+    margin: 25px;
   }
 
   .buttonsSignUp {
@@ -233,10 +228,9 @@
 }
 
 #signUpForm #signUp {
-    @include flex(row, center, center);
-    margin: $wrapperPadding;
-    h1 { @include bigTitleFont(); }
-    // flex-basis: 10vh;
+  @include flex(row, center, center);
+  margin: $wrapperPadding;
+  h1 { @include bigTitleFont(); }
 }
 
 #signUpForm > fieldset {
@@ -250,17 +244,18 @@
 
 #createUserP2 {
     border: none;
+
     select, option {
         color: $lightFont;
     }
 
     select, .searchProvider {
-        width: 100%;
-        height: 35px;
-        padding: $innerPadding;
-        background-color: $activityColor;
-        border: none;
-        border-radius: $borderRadiusButtons;
+      width: 100%;
+      height: 35px;
+      padding: $innerPadding;
+      background-color: $activityColor;
+      border: none;
+      border-radius: $borderRadiusButtons;
     }
 
   #fieldSetProviders {

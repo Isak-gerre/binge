@@ -18,9 +18,6 @@ function goToPageAndAddToState(href, search = null) {
     window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
 
   addToState(window.location, scrollDistance, search);
-
-  console.log(scrollDistance);
-  console.log(window.location);
   window.location.href = href;
 }
 function applyState() {
