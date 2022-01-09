@@ -1,23 +1,13 @@
 <?php
 session_start();
 require "functions.php";
-
-$method = $_SERVER["REQUEST_METHOD"];
-
-if ($method === "OPTIONS") {
-    // Tillåt alla (origins) och alla headers
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: *");
-    exit();
-}
-
-// Alla är vällkommna
-header("Access-Control-Allow-Origin: *");
-
 require "head.php";
 
 //Skapar formuläret för inlogg alternativt skapar konto 
 ?>
+<div id="startUpScreen">
+    <img id="logoStartUp" src="../logos/bingy-hela.svg">
+</div>
 
 <div class="previewWrapper">
     <div class="loginMoviePreviews"></div>
@@ -49,13 +39,11 @@ require "head.php";
     <div id="createAccount">
         <p>Don't have an account? <span id="registerButton">Sign up</span></p>
     </div>
-
-
-
 </div>
 
 <form id="signUpForm" class="signInForm" action="index.php" method="POST">
-    <div>
+    <img class="backLogin" src="/icons/back_2.svg"/>
+    <div id="signUp">
         <h1>Sign Up</h1>
     </div>
     <fieldset id="createUserP1">
@@ -88,17 +76,11 @@ require "head.php";
             <input class="signInInput" type="date" name="birthday" placeholder="Birthday">
         </div>
         <div class="buttonsSignUp">
-            <div class="backLogin" onclick="window.location.href = `index.php`">Back to log in</div>
             <button type="button" id="next1">Next</button>
         </div>
     </fieldset>
     <fieldset id="createUserP2">
         <p>Choose your streaming providers</p>
-        <?php
-        // echo "<script>";
-        // include_once "scripts/createFormAPI.js";
-        // echo "</script>";
-        ?>
     </fieldset>
     <fieldset id="createUserP3">
         <div id="avatars">
@@ -142,7 +124,6 @@ require "head.php";
         </div>
 
         <div class="buttonsSignUp">
-            <div class="backLogin" onclick="window.location.href = `index.php`">Back to log in</div>
             <input type="submit" value="Create account" id="signInButton">
         </div>
 
@@ -157,8 +138,3 @@ require "head.php";
 <script src="scripts/makeMovieBanners.js"></script>
 <script src="scripts/logIn.js"></script>
 <script src="scripts/signUp.js"></script>
-<?php
-// echo "<script>";
-// include_once "scripts/signUp.js";
-// echo "</script>";
-?>
