@@ -457,10 +457,8 @@ svg:active,
     }
 
     #followDiv {
-      background: $gradientPeach;
       @include flex(row, center, center);
       gap: 4px;
-
       width: 85px;
       border-radius: $borderRadiusButtons;
       padding: $buttonPadding;
@@ -469,6 +467,13 @@ svg:active,
         @include xSmallFont();
         padding: 0;
       }
+    }
+
+    .unfollow {
+      background:$activityColor;
+    }
+    .follow {
+      background:$gradientPeach;
     }
   }
 
