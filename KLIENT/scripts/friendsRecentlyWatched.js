@@ -10,7 +10,7 @@ async function executeFriendsActivities(userID) {
   title.textContent = "Friends recently watched";
   document.querySelector("#frw").prepend(title);
 
-  if(filteredActArray.length < 1){
+  if (filteredActArray.length < 1) {
     let message = document.createElement("p");
     message.className = "explore-message";
     message.textContent = "Your friends don't like movies? Or do you just not have any friends?";
@@ -19,7 +19,7 @@ async function executeFriendsActivities(userID) {
     let msgBtn = document.createElement("button");
     msgBtn.textContent = "Find some friends!";
     msgBtn.classList.add("msgBtn");
-        
+
     msgBtn.addEventListener("click", () => {
       makeSearchOverlay("", "Users");
     });
@@ -47,7 +47,7 @@ async function getFriendsRecentlyWatched(movieID, user) {
 
   let profileImage = document.createElement("div");
   profileImage.className = "profile-image";
-  profileImage.style.backgroundImage = `url(http://localhost:7001/${userInfo.profile_picture.filepath})`;
+  profileImage.style.backgroundImage = `url(https://d.r101.wbsprt.com/api.bingy.se/${userInfo.profile_picture.filepath})`;
 
   let profileName = document.createElement("p");
   profileName.className = "profile-name";

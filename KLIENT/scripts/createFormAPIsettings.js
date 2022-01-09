@@ -1,7 +1,7 @@
 "use strict";
 
 function getProviders() {
-  let titleProviders = document.createElement('p');
+  let titleProviders = document.createElement("p");
   titleProviders.textContent = "Change your region and streaming providers";
   // Ta bort API-nyckel, lägg den i APIn
   let regionRQ = new Request(
@@ -27,7 +27,7 @@ function getProviders() {
       });
 
       //Skapar en slect för region
-        document.getElementById("providersForm").append(titleProviders, selectRegion);
+      document.getElementById("providersForm").append(titleProviders, selectRegion);
 
       //Selectar värdet som kommer finnas på select region.
       let filter = selectRegion;
@@ -64,7 +64,7 @@ function getProviders() {
 
       //Filtrerar baserat på vad du sökt
       filter.addEventListener("change", (e) => {
-        loadProviders()
+        loadProviders();
       });
 
       searchProvider.addEventListener("keyup", () => {
@@ -73,11 +73,11 @@ function getProviders() {
 
       function showProviders() {
         let pro = document.querySelectorAll(".providersLabel");
-  
+
         pro.forEach((e) => {
           e.style.display = "";
         });
-  
+
         let filterArray = [];
         if (searchProvider.value != "") {
           providerArray.forEach((e) => {
@@ -92,35 +92,35 @@ function getProviders() {
             let selectProvider = document.createElement("input");
             let providerDiv = document.createElement("img");
             let selectProviderLabel = document.createElement("label");
-  
+
             selectProviderLabel.setAttribute("id", `label${provider.provider_name}`);
             selectProviderLabel.setAttribute("class", "providersLabel");
-  
+
             providerDiv.setAttribute("src", `https://image.tmdb.org/t/p/w200${provider["logo_path"]}`);
-  
+
             selectProvider.setAttribute("type", "checkbox");
             selectProvider.setAttribute("name", `active_streaming_services`);
             selectProvider.setAttribute("value", `${provider.provider_name}`);
             selectProvider.style.display = "none";
             let providerID = provider.provider_name.split(" ").join("");
             selectProvider.id = providerID;
-  
+
             selectProviderLabel.innerHTML = `${provider.provider_name}`;
-  
+
             selectProviderLabel.append(selectProvider);
             selectProviderLabel.append(providerDiv);
             providers.append(selectProviderLabel);
-  
+
             selectProviderLabel.addEventListener("click", () => {
               selectProviderLabel.classList.toggle("selectedProvider");
             });
-  
+
             selectProvider.addEventListener("click", function (event) {
               event.stopPropagation();
             });
           }
         });
-  
+
         filterArray.forEach((e) => {
           document.getElementById(`label${e.provider_name}`).style.display = "none";
         });
@@ -129,11 +129,11 @@ function getProviders() {
       let userSession = sessionStorage.getItem("session");
       let id = JSON.parse(userSession).session.userID;
 
-      let userInfo = new Request(`http://localhost:7001/GET/get-users.php?ids=${id}`);
+      let userInfo = new Request(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-users.php?ids=${id}`);
 
       fetch(userInfo)
-        .then(res => res.json())
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
           document.querySelector("input[name=firstname]").value = data[0].firstname;
           document.querySelector("input[name=lastname]").value = data[0].lastname;
           document.querySelector("input[name=email]").value = data[0].email;
@@ -145,10 +145,10 @@ function getProviders() {
 
           //Selects the providers from users region
           loadProviders().then(() => {
-            data[0].active_streaming_services.forEach(e => {
+            data[0].active_streaming_services.forEach((e) => {
               let id = e.split(" ").join("");
-              document.querySelector(`#${id}`).setAttribute("checked", true)
-              document.querySelector(`#${id}`).parentElement.classList.add("selectedProvider")
+              document.querySelector(`#${id}`).setAttribute("checked", true);
+              document.querySelector(`#${id}`).parentElement.classList.add("selectedProvider");
             });
           });
 
@@ -156,15 +156,14 @@ function getProviders() {
           filter.addEventListener("change", (e) => {
             if (filter.value == data[0].region) {
               loadProviders().then(() => {
-                data[0].active_streaming_services.forEach(e => {
+                data[0].active_streaming_services.forEach((e) => {
                   let id = e.split(" ").join("");
-                  document.querySelector(`#${id}`).setAttribute("checked", true)
-                  document.querySelector(`#${id}`).parentElement.classList.add("selectedProvider")
+                  document.querySelector(`#${id}`).setAttribute("checked", true);
+                  document.querySelector(`#${id}`).parentElement.classList.add("selectedProvider");
                 });
               });
             }
           });
         });
     });
-};
-
+}

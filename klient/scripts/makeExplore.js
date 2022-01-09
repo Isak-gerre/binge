@@ -5,7 +5,6 @@ const loggedInUserId = getLoggedInUserID();
 if (getParamFromUrl("movieID")) {
   document.querySelector("#wrapper").innerHTML = "";
   makeMovieProfile(getParamFromUrl("movieID"));
-  
 } else {
   //SLIDESHOW
   makeTrending();

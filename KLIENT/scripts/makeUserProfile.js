@@ -25,442 +25,430 @@ createProfilePage();
 
 // Funktion som skapar hela sidan
 async function createProfilePage() {
-    // Hämtar info om inloggad användare
-    const loggedInUserInfo = await getUserInfo(loggedInUserId);
+  // Hämtar info om inloggad användare
+  const loggedInUserInfo = await getUserInfo(loggedInUserId);
 
-    // Hämtar id från url, ger 'null' om det inte finns
-    let urlUserId = getParamFromUrl("userID");
+  // Hämtar id från url, ger 'null' om det inte finns
+  let urlUserId = getParamFromUrl("userID");
 
-    // Kontrollerar om id i url är samma som inloggad
-    if (loggedInUserId == urlUserId) {
-        window.location.href = "profile.php";
-    }
+  // Kontrollerar om id i url är samma som inloggad
+  if (loggedInUserId == urlUserId) {
+    window.location.href = "profile.php";
+  }
 
-    // Om id i url finns ska profilsida för andra laddas
-    if (urlUserId !== null) {
-        let userInfo = await getUserInfo(urlUserId);
+  // Om id i url finns ska profilsida för andra laddas
+  if (urlUserId !== null) {
+    let userInfo = await getUserInfo(urlUserId);
 
-        let loggedInUserFollow = loggedInUserInfo.following;
-        let following = loggedInUserFollow.some((e) => e == urlUserId);
+    let loggedInUserFollow = loggedInUserInfo.following;
+    let following = loggedInUserFollow.some((e) => e == urlUserId);
 
-        createProfileHeader(userInfo, following);
+    createProfileHeader(userInfo, following);
 
-        let allUserActivities = await getAllActivites(urlUserId);
-        let watchedActivities = [];
-        let watchlist = [];
+    let allUserActivities = await getAllActivites(urlUserId);
+    let watchedActivities = [];
+    let watchlist = [];
 
-        allUserActivities.forEach((obj) => {
-            if (obj.type == "watchlist") {
-                watchlist.push(obj);
-            } else {
-                watchedActivities.push(obj);
-            }
-        });
+    allUserActivities.forEach((obj) => {
+      if (obj.type == "watchlist") {
+        watchlist.push(obj);
+      } else {
+        watchedActivities.push(obj);
+      }
+    });
 
-        if (watchedActivities.length < 1) {
-            noActivitiesInfo('watched', userInfo.firstname);
-        } else {
-            let activities = watchedActivities.sort((a, b) => b.date - a.date);
-            makeShowMoreForActis(makeShowMoreForActis, 'profile', "#profileWrapper", activities, 1);
-        }
-
-        profileNav(watchedActivities, watchlist, urlUserId, userInfo.firstname);
-
+    if (watchedActivities.length < 1) {
+      noActivitiesInfo("watched", userInfo.firstname);
     } else {
-        createProfileHeader(loggedInUserInfo, null, true);
-
-        let allUserActivities = await getAllActivites(loggedInUserId);
-        let watchedActivities = [];
-        let watchlist = [];
-
-        allUserActivities.forEach((obj) => {
-            if (obj.type == "watchlist") {
-                watchlist.push(obj);
-            } else {
-                watchedActivities.push(obj);
-            }
-        });
-
-        profileNav(watchedActivities, watchlist, loggedInUserId);
+      let activities = watchedActivities.sort((a, b) => b.date - a.date);
+      makeShowMoreForActis(makeShowMoreForActis, "profile", "#profileWrapper", activities, 1);
     }
+
+    profileNav(watchedActivities, watchlist, urlUserId, userInfo.firstname);
+  } else {
+    createProfileHeader(loggedInUserInfo, null, true);
+
+    let allUserActivities = await getAllActivites(loggedInUserId);
+    let watchedActivities = [];
+    let watchlist = [];
+
+    allUserActivities.forEach((obj) => {
+      if (obj.type == "watchlist") {
+        watchlist.push(obj);
+      } else {
+        watchedActivities.push(obj);
+      }
+    });
+
+    profileNav(watchedActivities, watchlist, loggedInUserId);
+  }
 }
 
 function profileNav(watchedActivities, watchlist, userId, name = null) {
-    if (getParamFromUrl("watchlist")) {
-        watchlistBtn.classList.add("selected");
-        createWatchlist(watchlist, "myProfile");
+  if (getParamFromUrl("watchlist")) {
+    watchlistBtn.classList.add("selected");
+    createWatchlist(watchlist, "myProfile");
+  } else {
+    watchedBtn.classList.add("selected");
+    wrapper.innerHTML = "";
+
+    if (watchedActivities.length < 1) {
+      noActivitiesInfo("watched", name);
     } else {
-        watchedBtn.classList.add("selected");
-        wrapper.innerHTML = "";
-
-        if (watchedActivities.length < 1) {
-            noActivitiesInfo("watched", name);
-        } else {
-            if (userId == loggedInUserId) {
-                let activities = watchedActivities.sort((a, b) => b.date - a.date);
-                makeShowMoreForActis(makeShowMoreForActis, 'profile', "#profileWrapper", activities, 1);
-
-            } else {
-                let activities = watchedActivities.sort((a, b) => b.date - a.date);
-                makeShowMoreForActis(makeShowMoreForActis, 'profile', "#profileWrapper", activities, 1);
-            }
-        }
+      if (userId == loggedInUserId) {
+        let activities = watchedActivities.sort((a, b) => b.date - a.date);
+        makeShowMoreForActis(makeShowMoreForActis, "profile", "#profileWrapper", activities, 1);
+      } else {
+        let activities = watchedActivities.sort((a, b) => b.date - a.date);
+        makeShowMoreForActis(makeShowMoreForActis, "profile", "#profileWrapper", activities, 1);
+      }
     }
+  }
 
-    watchedBtn.addEventListener("click", () => {
-        if (watchedBtn.className !== "selected") {
-            wrapper.innerHTML = "";
-            document.querySelector(".selected").classList.remove("selected");
-            watchedBtn.classList.add("selected");
+  watchedBtn.addEventListener("click", () => {
+    if (watchedBtn.className !== "selected") {
+      wrapper.innerHTML = "";
+      document.querySelector(".selected").classList.remove("selected");
+      watchedBtn.classList.add("selected");
 
-            if (watchedActivities.length < 1) {
-                noActivitiesInfo("watched", name);
-            } else {
-                if (userId == loggedInUserId) {
-                    let activities = watchedActivities.sort((a, b) => b.date - a.date);
-                    makeShowMoreForActis(makeShowMoreForActis, 'profile', "#profileWrapper", activities, 1);
-
-                } else {
-                    let activities = watchedActivities.sort((a, b) => b.date - a.date);
-                    makeShowMoreForActis(makeShowMoreForActis, 'profile', "#profileWrapper", activities, 1);
-                }
-            }
+      if (watchedActivities.length < 1) {
+        noActivitiesInfo("watched", name);
+      } else {
+        if (userId == loggedInUserId) {
+          let activities = watchedActivities.sort((a, b) => b.date - a.date);
+          makeShowMoreForActis(makeShowMoreForActis, "profile", "#profileWrapper", activities, 1);
+        } else {
+          let activities = watchedActivities.sort((a, b) => b.date - a.date);
+          makeShowMoreForActis(makeShowMoreForActis, "profile", "#profileWrapper", activities, 1);
         }
-    });
+      }
+    }
+  });
 
+  watchlistBtn.addEventListener("click", () => {
+    if (watchlistBtn.className !== "selected") {
+      wrapper.innerHTML = "";
+      document.querySelector(".selected").classList.remove("selected");
+      watchlistBtn.classList.add("selected");
 
-    watchlistBtn.addEventListener("click", () => {
-        if (watchlistBtn.className !== "selected") {
-            wrapper.innerHTML = "";
-            document.querySelector(".selected").classList.remove("selected");
-            watchlistBtn.classList.add("selected");
-
-            if (watchlist.length < 1) {
-                noActivitiesInfo("watchlist", name);
-            } else {
-                if (userId == loggedInUserId) {
-                    createWatchlist(watchlist, "myProfile");
-                } else {
-                    createWatchlist(watchlist);
-                }
-            }
+      if (watchlist.length < 1) {
+        noActivitiesInfo("watchlist", name);
+      } else {
+        if (userId == loggedInUserId) {
+          createWatchlist(watchlist, "myProfile");
+        } else {
+          createWatchlist(watchlist);
         }
-    });
+      }
+    }
+  });
 
-    statsBtn.addEventListener("click", () => {
-        if (statsBtn.className !== "selected") {
-            wrapper.innerHTML = "";
-            document.querySelector(".selected").classList.remove("selected");
-            statsBtn.classList.add("selected");
+  statsBtn.addEventListener("click", () => {
+    if (statsBtn.className !== "selected") {
+      wrapper.innerHTML = "";
+      document.querySelector(".selected").classList.remove("selected");
+      statsBtn.classList.add("selected");
 
-            if (watchedActivities.length < 1 && watchlist.length < 1) {
-                noActivitiesInfo("stats", name);
-            } else {
-                renderChart(userId);
-            }
-        }
-    });
+      if (watchedActivities.length < 1 && watchlist.length < 1) {
+        noActivitiesInfo("stats", name);
+      } else {
+        renderChart(userId);
+      }
+    }
+  });
 }
 
 async function createProfileHeader(user, isFollowing, settings = null) {
+  let username = user.username.toLowerCase();
+  if (username.length > 7) {
+    uNameCont.textContent = `@${user.username.substring(0, 7)}...`;
+  } else {
+    console.log("smaller");
+    uNameCont.textContent = "@" + user.username;
+  }
+  // uNameCont.textContent = "@" + username;
+  // let profilePic = document.createElement("div");
 
-    let username = user.username.toLowerCase();
-    if (username.length > 7) {
-        uNameCont.textContent = `@${user.username.substring(0, 7)}...`;
-    } else {
-        console.log("smaller");
-        uNameCont.textContent = "@" + user.username;
+  // vi behöver ett url här va
+  proPicCont.style.backgroundImage = `url("https://d.r101.wbsprt.com/api.bingy.se/${user.profile_picture.filepath}")`;
+  proPicCont.style.backgroundSize = "cover";
+
+  let followers = user.followers;
+  let following = user.following;
+  let nrOfFollowers = followers.length;
+  let nrOfFollowing = following.length;
+
+  let profileButtonText = document.createElement("p");
+  let profileButtonIcon = document.createElement("img");
+
+  if (isFollowing !== null) {
+    if (isFollowing) {
+      profileButtonText.textContent = "Unfollow";
+      settingOrPlus.classList.add("unfollow");
+      profileButtonIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/remove_circle_black.svg";
+      profileButtonIcon.id = "unfollow";
+    } else if (!isFollowing) {
+      profileButtonText.textContent = "Follow";
+      settingOrPlus.classList.add("follow");
+      profileButtonIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/add_circle_black.svg";
+      profileButtonIcon.id = "follow";
     }
-    // uNameCont.textContent = "@" + username;
-    // let profilePic = document.createElement("div");
+  }
 
-    // vi behöver ett url här va
-    proPicCont.style.backgroundImage = `url("http://localhost:7001/${user.profile_picture.filepath}")`;
-    proPicCont.style.backgroundSize = "cover";
+  if (settings == true) {
+    profileButtonText.textContent = "Settings";
+    profileButtonIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/settings_black.svg";
+    profileButtonIcon.id = "settings";
+    settingOrPlus.classList.add("follow");
+  }
 
-    let followers = user.followers;
-    let following = user.following;
-    let nrOfFollowers = followers.length;
-    let nrOfFollowing = following.length;
+  settingOrPlus.addEventListener("click", async function () {
+    let userId = user.id;
 
-    let profileButtonText = document.createElement("p");
-    let profileButtonIcon = document.createElement("img");
+    if (profileButtonIcon.id == "unfollow") {
+      settingOrPlus.classList.add("follow");
+      settingOrPlus.classList.remove("unfollow");
 
-    if (isFollowing !== null) {
-        if (isFollowing) {
-            profileButtonText.textContent = "Unfollow";
-            settingOrPlus.classList.add("unfollow");
-            profileButtonIcon.src = "../icons/remove_circle_black.svg";
-            profileButtonIcon.id = "unfollow";
-        } else if (!isFollowing) {
-            profileButtonText.textContent = "Follow";
-            settingOrPlus.classList.add("follow");
-            profileButtonIcon.src = "../icons/add_circle_black.svg";
-            profileButtonIcon.id = "follow";
-        }
+      profileButtonText.textContent = "Follow";
+      profileButtonIcon.id = "follow";
+      isFollowing = false;
+
+      profileButtonIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/add_circle_black.svg";
+      let userIndex = followers.findIndex((id) => id == loggedInUserId);
+      followers.splice(userIndex, 1);
+
+      await followPatch(loggedInUserId, userId);
+
+      nrOfFollowers -= 1;
+      followersCont.textContent = nrOfFollowers;
+    } else if (profileButtonIcon.id == "follow") {
+      settingOrPlus.classList.remove("follow");
+
+      settingOrPlus.classList.add("unfollow");
+
+      profileButtonText.textContent = "Unfollow";
+      profileButtonIcon.id = "unfollow";
+      isFollowing = true;
+
+      profileButtonIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/remove_circle_black.svg";
+      followers.push(loggedInUserId);
+
+      await followPatch(loggedInUserId, user.id);
+
+      nrOfFollowers += 1;
+      followersCont.textContent = nrOfFollowers;
+    } else if (profileButtonIcon.id == "settings") {
+      let settingsWindow = await openSettings(userId);
+      body.prepend(settingsWindow);
     }
+  });
 
-    if (settings == true) {
-        profileButtonText.textContent = 'Settings';
-        profileButtonIcon.src = '../icons/settings_black.svg';
-        profileButtonIcon.id = 'settings';
-        settingOrPlus.classList.add("follow");
-
-    }
-
-    settingOrPlus.addEventListener("click", async function () {
-        let userId = user.id;
-
-        if (profileButtonIcon.id == "unfollow") {
-            settingOrPlus.classList.add("follow");
-            settingOrPlus.classList.remove("unfollow");
-
-            profileButtonText.textContent = "Follow";
-            profileButtonIcon.id = "follow";
-            isFollowing = false;
-
-            profileButtonIcon.src = "../icons/add_circle_black.svg";
-            let userIndex = followers.findIndex((id) => id == loggedInUserId);
-            followers.splice(userIndex, 1);
-
-            await followPatch(loggedInUserId, userId);
-
-            nrOfFollowers -= 1;
-            followersCont.textContent = nrOfFollowers;
-        } else if (profileButtonIcon.id == "follow") {
-            settingOrPlus.classList.remove("follow");
-
-            settingOrPlus.classList.add("unfollow");
-
-            profileButtonText.textContent = "Unfollow";
-            profileButtonIcon.id = "unfollow";
-            isFollowing = true;
-
-            profileButtonIcon.src = "../icons/remove_circle_black.svg";
-            followers.push(loggedInUserId);
-
-            await followPatch(loggedInUserId, user.id);
-
-            nrOfFollowers += 1;
-            followersCont.textContent = nrOfFollowers;
-            
-        } else if (profileButtonIcon.id == "settings") {
-            let settingsWindow = await openSettings(userId);
-            body.prepend(settingsWindow);
-        }
+  followersDiv.addEventListener("click", async function () {
+    // console.log(followers)
+    let closeTab = document.createElement("button");
+    closeTab.id = "closeTab";
+    closeTab.textContent = "x";
+    closeTab.addEventListener("click", () => {
+      followContainer.style.left = "100vw";
+      setTimeout(() => {
+        closeTab.remove();
+        followContainer.remove();
+      }, 1000);
     });
 
-    followersDiv.addEventListener("click", async function () {
-        // console.log(followers)
-        let closeTab = document.createElement("button");
-        closeTab.id = "closeTab";
-        closeTab.textContent = "x";
-        closeTab.addEventListener("click", () => {
-            followContainer.style.left = "100vw";
-            setTimeout(() => {
-                closeTab.remove();
-                followContainer.remove();
-            }, 1000);
-        });
+    let followContainer = await showUsers(user.id, "followers");
+    followContainer.prepend(closeTab);
+    body.prepend(followContainer);
+  });
 
-        let followContainer = await showUsers(user.id, "followers");
-        followContainer.prepend(closeTab);
-        body.prepend(followContainer);
+  followingDiv.addEventListener("click", async function () {
+    let closeTab = document.createElement("button");
+    closeTab.id = "closeTab";
+    closeTab.textContent = "x";
+    closeTab.addEventListener("click", () => {
+      followContainer.style.left = "100vw";
+      setTimeout(() => {
+        closeTab.remove();
+        followContainer.remove();
+      }, 1000);
     });
 
-    followingDiv.addEventListener("click", async function () {
-        let closeTab = document.createElement("button");
-        closeTab.id = "closeTab";
-        closeTab.textContent = "x";
-        closeTab.addEventListener("click", () => {
-            followContainer.style.left = "100vw";
-            setTimeout(() => {
-                closeTab.remove();
-                followContainer.remove();
-            }, 1000);
-        });
+    let followContainer = await showUsers(user.id, "following");
+    followContainer.prepend(closeTab);
+    body.prepend(followContainer);
+  });
 
-        let followContainer = await showUsers(user.id, "following");
-        followContainer.prepend(closeTab);
-        body.prepend(followContainer);
-    });
-
-    
-    settingOrPlus.append(profileButtonText, profileButtonIcon);
-    followersCont.append(nrOfFollowers);
-    followingCont.append(nrOfFollowing);
+  settingOrPlus.append(profileButtonText, profileButtonIcon);
+  followersCont.append(nrOfFollowers);
+  followingCont.append(nrOfFollowing);
 }
 
 // Öppnar en sida som visar alla followers/following
 async function showUsers(userId, type) {
-    let userInfo = await getUserInfo(userId);
+  let userInfo = await getUserInfo(userId);
 
-    let ids = [];
-    if (type == "followers") {
-        ids = userInfo.followers;
-    } else if (type == "following") {
-        ids = userInfo.following;
+  let ids = [];
+  if (type == "followers") {
+    ids = userInfo.followers;
+  } else if (type == "following") {
+    ids = userInfo.following;
+  }
+
+  let following = userInfo.following;
+
+  let usersInfo = await Promise.all(ids.map((id) => getUserInfo(id)));
+  usersInfo.sort((a, b) => (a.username > b.username ? 1 : -1));
+
+  let followContainer = document.createElement("div");
+  followContainer.id = "followContainer";
+  setTimeout(() => {
+    followContainer.style.left = 0;
+  }, 50);
+
+  let usersWrapper = document.createElement("div");
+  usersWrapper.id = "usersWrapper";
+
+  usersInfo.forEach((user) => {
+    let userDiv = document.createElement("div");
+    userDiv.id = "userDiv";
+    let username = document.createElement("p");
+    if (username.length > 10) {
+      username.textContent = `@${user.username.substring(0, 10)}...`;
+    } else {
+      username.textContent = "@" + user.username;
     }
 
-    let following = userInfo.following;
+    let userProfilePic = document.createElement("div");
+    userProfilePic.className = "userProfilePic";
+    userProfilePic.style.backgroundImage = `url('https://d.r101.wbsprt.com/api.bingy.se/${user.profile_picture.filepath}')`;
+    userProfilePic.style.backgroundSize = "cover";
 
-    let usersInfo = await Promise.all(ids.map((id) => getUserInfo(id)));
-    usersInfo.sort((a, b) => (a.username > b.username ? 1 : -1));
-
-    let followContainer = document.createElement("div");
-    followContainer.id = "followContainer";
-    setTimeout(() => {
-        followContainer.style.left = 0;
-    }, 50);
-
-    let usersWrapper = document.createElement("div");
-    usersWrapper.id = "usersWrapper";
-
-    usersInfo.forEach((user) => {
-        let userDiv = document.createElement("div");
-        userDiv.id = "userDiv";
-        let username = document.createElement("p");
-        if (username.length > 10) {
-            username.textContent = `@${user.username.substring(0, 10)}...`;
-        } else {
-            username.textContent = "@" + user.username;
-        }
-
-        let userProfilePic = document.createElement("div");
-        userProfilePic.className = 'userProfilePic';
-        userProfilePic.style.backgroundImage = `url('http://localhost:7001/${user.profile_picture.filepath}')`;
-        userProfilePic.style.backgroundSize = 'cover';
-
-
-        username.addEventListener("click", () => {
-            window.location.href = `profile.php?userID=${user.id}`;
-        });
-        userProfilePic.addEventListener("click", () => {
-            window.location.href = `profile.php?userID=${user.id}`;
-        });
-
-        let followOrUnfollow = document.createElement("button");
-
-        let userFollowers = user.followers;
-
-        // Kontrollerar om användaren följs av inloggad anvöndare
-        let isFollowed = userFollowers.some((e) => e == loggedInUserId);
-
-        // Beroende på om användaren följs av inloggad anv. eller ej visas olika texter
-        if (isFollowed) {
-            followOrUnfollow.classList.add("unfollow");
-            followOrUnfollow.innerHTML = 
-                `<p>Unfollow</p>
-                <img src="../icons/remove_circle_black.svg" id="unfollow"> `;
-
-        } else if (!isFollowed) {
-            followOrUnfollow.classList.add("follow");
-            followOrUnfollow.innerHTML = 
-            `<p>Follow</p>
-            <img src="../icons/add_circle_black.svg" id="follow">`;
-        }
-
-        let followingCont = document.getElementById("following");
-
-        followOrUnfollow.addEventListener("click", async function () {
-            // Om inloggad anv. inte följer så..
-            if (!isFollowed) {
-                isFollowed = true;
-                followOrUnfollow.textContent = "Unfollow";
-                followOrUnfollow.id = "noGradient";
-                // Lägger till användare i followers
-                await followPatch(loggedInUserId, user.id);
-
-                if (userId == loggedInUserId) {
-                    following.push(user.id);
-                    followingCont.textContent = ids.length;
-                }
-
-                // Om inloggad anv. följer så..
-            } else if (isFollowed) {
-                isFollowed = false;
-                followOrUnfollow.textContent = "Follow";
-                followOrUnfollow.removeAttribute("id");
-                // Tar bort från followers
-                await followPatch(loggedInUserId, user.id);
-
-                if (userId == loggedInUserId) {
-                    let userIndex = ids.findIndex((id) => id == user.id);
-                    following.splice(userIndex, 1);
-                    followingCont.textContent = following.length;
-                }
-            }
-        });
-
-        followContainer.append(usersWrapper);
-        usersWrapper.append(userDiv);
-        userDiv.append(userProfilePic, username);
-        if (user.id !== loggedInUserId) {
-            userDiv.append(followOrUnfollow);
-        } else {
-            let emptyDiv = document.createElement("div");
-            userDiv.append(emptyDiv);
-        }
+    username.addEventListener("click", () => {
+      window.location.href = `profile.php?userID=${user.id}`;
+    });
+    userProfilePic.addEventListener("click", () => {
+      window.location.href = `profile.php?userID=${user.id}`;
     });
 
-    return followContainer;
+    let followOrUnfollow = document.createElement("button");
+
+    let userFollowers = user.followers;
+
+    // Kontrollerar om användaren följs av inloggad anvöndare
+    let isFollowed = userFollowers.some((e) => e == loggedInUserId);
+
+    // Beroende på om användaren följs av inloggad anv. eller ej visas olika texter
+    if (isFollowed) {
+      followOrUnfollow.classList.add("unfollow");
+      followOrUnfollow.innerHTML = `<p>Unfollow</p>
+                <img src="https://d.r101.wbsprt.com/bingy.se/icons/remove_circle_black.svg" id="unfollow"> `;
+    } else if (!isFollowed) {
+      followOrUnfollow.classList.add("follow");
+      followOrUnfollow.innerHTML = `<p>Follow</p>
+            <img src="https://d.r101.wbsprt.com/bingy.se/icons/add_circle_black.svg" id="follow">`;
+    }
+
+    let followingCont = document.getElementById("following");
+
+    followOrUnfollow.addEventListener("click", async function () {
+      // Om inloggad anv. inte följer så..
+      if (!isFollowed) {
+        isFollowed = true;
+        followOrUnfollow.textContent = "Unfollow";
+        followOrUnfollow.id = "noGradient";
+        // Lägger till användare i followers
+        await followPatch(loggedInUserId, user.id);
+
+        if (userId == loggedInUserId) {
+          following.push(user.id);
+          followingCont.textContent = ids.length;
+        }
+
+        // Om inloggad anv. följer så..
+      } else if (isFollowed) {
+        isFollowed = false;
+        followOrUnfollow.textContent = "Follow";
+        followOrUnfollow.removeAttribute("id");
+        // Tar bort från followers
+        await followPatch(loggedInUserId, user.id);
+
+        if (userId == loggedInUserId) {
+          let userIndex = ids.findIndex((id) => id == user.id);
+          following.splice(userIndex, 1);
+          followingCont.textContent = following.length;
+        }
+      }
+    });
+
+    followContainer.append(usersWrapper);
+    usersWrapper.append(userDiv);
+    userDiv.append(userProfilePic, username);
+    if (user.id !== loggedInUserId) {
+      userDiv.append(followOrUnfollow);
+    } else {
+      let emptyDiv = document.createElement("div");
+      userDiv.append(emptyDiv);
+    }
+  });
+
+  return followContainer;
 }
 
 async function createWatchlist(watchlist, page = "profile") {
-    let container = document.createElement("div");
-    container.id = "watchlistContainer";
+  let container = document.createElement("div");
+  container.id = "watchlistContainer";
 
-    watchlist.forEach(async function (activity) {
-        let movieId = activity.movieID;
+  watchlist.forEach(async function (activity) {
+    let movieId = activity.movieID;
 
-        let movieBanner = await makeMovieBanner(movieId, activity);
+    let movieBanner = await makeMovieBanner(movieId, activity);
 
-        // movieBanner.addEventListener('click', (event) => {
-        //     event.preventDefault();
-        //     event.stopPropagation();
-        //     window.location.href = `explore.php?movieID=${movieId}`;
-        // });
+    // movieBanner.addEventListener('click', (event) => {
+    //     event.preventDefault();
+    //     event.stopPropagation();
+    //     window.location.href = `explore.php?movieID=${movieId}`;
+    // });
 
-        container.append(movieBanner);
-    });
+    container.append(movieBanner);
+  });
 
-    wrapper.append(container);
+  wrapper.append(container);
 }
 
 function noActivitiesInfo(tab, name = null) {
-    if (document.getElementById("watchlistContainer")) {
-        return;
+  if (document.getElementById("watchlistContainer")) {
+    return;
+  }
+  let container = document.createElement("div");
+  container.id = "messageWhenEmpty";
+  let text = document.createElement("p");
+
+  if (name == null) {
+    let button = document.createElement("button");
+    button.textContent = "Go explore movies";
+    button.addEventListener("click", () => {
+      window.location.href = "explore.php";
+    });
+
+    if (tab == "watched") {
+      text.textContent = "You haven't watched any movies!";
+    } else if (tab == "watchlist") {
+      text.textContent = "You haven't added any movies to your watchlist.";
+    } else if (tab == "stats") {
+      text.textContent = "No stats since you have no activities on your profile.";
     }
-    let container = document.createElement("div");
-    container.id = "messageWhenEmpty";
-    let text = document.createElement("p");
-
-    if (name == null) {
-        let button = document.createElement("button");
-        button.textContent = "Go explore movies";
-        button.addEventListener("click", () => {
-            window.location.href = "explore.php";
-        });
-
-        if (tab == "watched") {
-            text.textContent = "You haven't watched any movies!";
-        } else if (tab == "watchlist") {
-            text.textContent = "You haven't added any movies to your watchlist.";
-        } else if (tab == "stats") {
-            text.textContent = "No stats since you have no activities on your profile.";
-        }
-        container.append(text, button);
-    } else {
-        if (tab == "watched") {
-            text.textContent = `${name} haven't watched any movies!`;
-        } else if (tab == "watchlist") {
-            text.textContent = `${name} haven't added any movies to your watchlist.`;
-        } else if (tab == "stats") {
-            text.textContent = `No stats since ${name} have no activities.`;
-        }
-
-        container.append(text);
+    container.append(text, button);
+  } else {
+    if (tab == "watched") {
+      text.textContent = `${name} haven't watched any movies!`;
+    } else if (tab == "watchlist") {
+      text.textContent = `${name} haven't added any movies to your watchlist.`;
+    } else if (tab == "stats") {
+      text.textContent = `No stats since ${name} have no activities.`;
     }
 
-    wrapper.append(container);
+    container.append(text);
+  }
+
+  wrapper.append(container);
 }

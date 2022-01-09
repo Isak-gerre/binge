@@ -4,43 +4,39 @@ document.querySelector(".backLogin").addEventListener("click", () => {
 });
 
 document.getElementById("username1").addEventListener("keyup", () => {
-
   let userexists = {};
 
   userexists["userexists"] = document.getElementById("username1").value;
 
   let json = JSON.stringify(userexists);
 
-  const userreq = new Request("http://localhost:7001/POST/check-user-exists.php", {
+  const userreq = new Request("https://d.r101.wbsprt.com/api.bingy.se/POST/check-user-exists.php", {
     method: "POST",
     body: json,
   });
 
   fetch(userreq)
-    .then(response => {
-      if(response.ok){
+    .then((response) => {
+      if (response.ok) {
         return response.json();
-      }
-      else{
+      } else {
         throw new Error(response.json());
       }
     })
-    .then(data => {
-      document.getElementById("username1").style.color = 'Green';
+    .then((data) => {
+      document.getElementById("username1").style.color = "Green";
       document.getElementById("username1").parentElement.style.border = "2px solid Green";
-      setTimeout( () => {
-          document.getElementById("username1").parentElement.removeAttribute("style");
-          document.getElementById("username1").removeAttribute("style");
+      setTimeout(() => {
+        document.getElementById("username1").parentElement.removeAttribute("style");
+        document.getElementById("username1").removeAttribute("style");
       }, 5000);
     })
-    .catch(error => {
+    .catch((error) => {
       console.log(error);
-      document.getElementById("username1").style.color = 'Red';
+      document.getElementById("username1").style.color = "Red";
       document.getElementById("username1").parentElement.style.border = "2px solid red";
     });
-
 });
-
 
 let signUpForm = document.getElementById("signUpForm");
 
@@ -70,30 +66,27 @@ signUpForm.addEventListener("submit", (event) => {
     image = document.querySelector('input[name="profileImg"]:checked').value;
     formData.set("fileToUpload", image);
   }
-    
-  const req = new Request("http://localhost:7001/POST/create-user.php", {
-  method: "POST",
-  body: formData,
+
+  const req = new Request("https://d.r101.wbsprt.com/api.bingy.se/POST/create-user.php", {
+    method: "POST",
+    body: formData,
   });
 
   fetch(req)
-    .then((response) =>{
-        if(response.ok){
-            console.log(response);
-            return response.json();
-        }
-        else{
-            throw new Error();
-        }
-       
+    .then((response) => {
+      if (response.ok) {
+        console.log(response);
+        return response.json();
+      } else {
+        throw new Error();
+      }
     })
     .then((data) => {
-        saveToSession(data, "session");
-        window.location.replace("http://localhost:2000/explore.php");
+      saveToSession(data, "session");
+      window.location.replace("https://d.r101.wbsprt.com/bingy.se/explore.php");
     })
-    .catch(error => {
-        console.log(error);
-        sessionStorage.clear();
+    .catch((error) => {
+      console.log(error);
+      sessionStorage.clear();
     });
 });
-

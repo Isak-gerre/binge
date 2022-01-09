@@ -504,10 +504,10 @@ async function searchFunction(searchBy) {
 
     if (loggedInFollowing.includes(user.id)) {
       relationText = "Unfollow";
-      relationImg = "../icons/remove_circle_black.svg";
+      relationImg = "https://d.r101.wbsprt.com/bingy.se/icons/remove_circle_black.svg";
     } else {
       relationText = "Follow";
-      relationImg = "../icons/add_circle_black.svg";
+      relationImg = "https://d.r101.wbsprt.com/bingy.se/icons/add_circle_black.svg";
     }
 
     document.querySelector("#search-results-text").textContent = "Showing all users";
@@ -518,9 +518,9 @@ async function searchFunction(searchBy) {
 
     let userImage = document.createElement("div");
     userImage.className = "userImage";
-    userImage.style.backgroundImage = `url('http://localhost:7001/${user["profile_picture"].filepath}')`;
+    userImage.style.backgroundImage = `url('https://d.r101.wbsprt.com/api.bingy.se/${user["profile_picture"].filepath}')`;
     userImage.addEventListener("click", () => {
-      window.location.href = `http://localhost:2000/profile.php?userID=${user.id}`;
+      window.location.href = `https://d.r101.wbsprt.com/bingy.se/profile.php?userID=${user.id}`;
     });
 
     let userInfoDiv = document.createElement("div");
@@ -532,7 +532,7 @@ async function searchFunction(searchBy) {
     username.textContent = `@${user.username}`;
     username.setAttribute("id", "usernameP");
     username.addEventListener("click", () => {
-      window.location.href = `http://localhost:2000/profile.php?userID=${user.id}`;
+      window.location.href = `https://d.r101.wbsprt.com/bingy.se/profile.php?userID=${user.id}`;
     });
 
     let followDiv = document.createElement("div");
@@ -556,14 +556,14 @@ async function searchFunction(searchBy) {
       if (e.target.textContent == "Unfollow") {
         followText.textContent = "Follow";
         followText.setAttribute("id", "follow");
-        followImg.setAttribute("src", "../icons/add_circle_black.svg");
+        followImg.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/add_circle_black.svg");
 
         // redigera db
         await followPatch(loggedInUserId, user.id);
       } else if (e.target.textContent == "Follow") {
         followText.textContent = "Unfollow";
         followText.setAttribute("id", "unfollow");
-        followImg.setAttribute("src", "../icons/remove_circle_black.svg");
+        followImg.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/remove_circle_black.svg");
 
         // redigera db
         await followPatch(loggedInUserId, user.id);

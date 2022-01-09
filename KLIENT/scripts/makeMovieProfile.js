@@ -33,7 +33,7 @@ async function makeMovieProfile(movieID) {
   let backdrop = document.createElement("div");
   backdrop.className = "movie-profile-backdrop";
   if (movieInfo["backdrop_path"] == null) {
-    backdrop.style.backgroundImage = "url('../icons/image.svg')";
+    backdrop.style.backgroundImage = "url('https://d.r101.wbsprt.com/bingy.se/icons/image.svg')";
   } else {
     backdrop.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${movieInfo["backdrop_path"]})`;
   }
@@ -57,9 +57,9 @@ async function makeMovieProfile(movieID) {
   let poster = document.createElement("img");
   poster.className = "movie-profile-poster";
 
-  console.log(movieInfo["poster_path"])
+  console.log(movieInfo["poster_path"]);
   if (movieInfo["poster_path"] == null) {
-    poster.setAttribute("src", "../icons/image.svg");
+    poster.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/image.svg");
     poster.style.background = "white";
   } else {
     poster.setAttribute("src", `https://image.tmdb.org/t/p/w500${movieInfo["poster_path"]}`);
@@ -263,24 +263,22 @@ async function makeMovieProfile(movieID) {
   function createCreditDiv(person) {
     let productionPeople = document.createElement("div");
     productionPeople.className = "production-people";
-    // let defaultFace = "../icons/face.png"
+    // let defaultFace = "https://d.r101.wbsprt.com/bingy.se/icons/face.png"
 
     let image = document.createElement("div");
     let name = document.createElement("p");
 
     if (person !== undefined) {
       if (person.profile_path == null) {
-        image.style.backgroundImage = `url(../icons/face.svg)`;
+        image.style.backgroundImage = `url(https://d.r101.wbsprt.com/bingy.se/icons/face.svg)`;
       } else {
         image.style.backgroundImage = `url(https://image.tmdb.org/t/p/w200/${person.profile_path})`;
       }
       name.textContent = person.name;
-
     } else {
-      image.style.backgroundImage = `url(../icons/face.svg)`;
+      image.style.backgroundImage = `url(https://d.r101.wbsprt.com/bingy.se/icons/face.svg)`;
       name.textContent = "Jane Doe";
     }
-
 
     productionPeople.addEventListener("click", () => {
       let name = person.name.toLowerCase();
@@ -306,7 +304,7 @@ async function makeMovieProfile(movieID) {
 
   async function getActivityByMovieID(movieID) {
     try {
-      let response = await fetch(`http://localhost:7001/GET/get-activities.php?movieID=${movieID}`);
+      let response = await fetch(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-activities.php?movieID=${movieID}`);
       let data = await response.json();
       return data;
     } catch (error) {
@@ -315,7 +313,7 @@ async function makeMovieProfile(movieID) {
   }
 
   activities.sort((a, b) => b.date - a.date);
-  makeShowMoreForActis(makeShowMoreForActis, 'movieProfile', "#movie-profile-reviews", activities, 1);
+  makeShowMoreForActis(makeShowMoreForActis, "movieProfile", "#movie-profile-reviews", activities, 1);
 
   if (activities.length == 0) {
     let message = document.createElement("p");
@@ -418,7 +416,7 @@ async function makeMovieProfile(movieID) {
       topDiv.className = "top";
       let exitButton = document.createElement("img");
       exitButton.className = "exit button";
-      exitButton.setAttribute("src", "../icons/exit.svg");
+      exitButton.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/exit.svg");
       let title = document.createElement("h1");
       title.className = "titleComment";
       title.textContent = "Tell your friends";
@@ -491,7 +489,6 @@ async function makeMovieProfile(movieID) {
           review.textContent = "Review";
         });
         buttonHolder.append(deleteButton);
-
       } else {
         labelHolder.append(labelComment);
       }
@@ -506,13 +503,11 @@ async function makeMovieProfile(movieID) {
         textArea.textContent = relation.review.comment;
       }
 
-
       // Submit-button
       let submitButton = document.createElement("button");
       submitButton.setAttribute("type", "submit");
       submitButton.className = "submit button";
       submitButton.textContent = "Submit";
-
 
       // Appends
       topDiv.append(title, exitButton);
@@ -531,7 +526,6 @@ async function makeMovieProfile(movieID) {
 
     overlayFade.append(messageWrapper);
     document.body.append(overlayFade);
-
 
     // Exit clickevent
     document.querySelector(".exit").addEventListener("click", () => {
@@ -605,8 +599,7 @@ async function makeMovieProfile(movieID) {
 
           let activities = await getActivityByMovieID(movieID);
           activities.sort((a, b) => b.date - a.date);
-          makeShowMoreForActis(makeShowMoreForActis, 'movieProfile', "#movie-profile-reviews", activities, 1);
-
+          makeShowMoreForActis(makeShowMoreForActis, "movieProfile", "#movie-profile-reviews", activities, 1);
         }, 1000);
       }, 2500);
     }

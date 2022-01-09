@@ -1,14 +1,13 @@
-"use strict"
+"use strict";
 
 console.log("formNavigation online");
 // document.getElementById("createUserP1").style.display = "none";
 // document.getElementById("createUserP2").style.display = "none";
 // document.getElementById("createUserP3").style.display = "none";
 
-
 // function checkStuff(){
 //     if(document.querySelector("#password2").value === document.querySelector("input[name=confirm_password]").value){
-        
+
 //         let req = document.querySelectorAll("#createUserP1 input[required]");
 
 //         let next = true;
@@ -28,13 +27,13 @@ console.log("formNavigation online");
 //             }
 //         });
 //         next = samePass;
-    
+
 //         if(next){
 //             console.log("Event Click 1");
 //             document.getElementById("createUserP1").style.display = "none";
 //             document.getElementById("createUserP2").style.display = "";
 //         }
-       
+
 //     }
 //     else {
 //         document.querySelector("input[name=confirm_password]").parentElement.style.border = "2px solid red";
@@ -43,12 +42,12 @@ console.log("formNavigation online");
 //         setTimeout( () => {
 //             document.querySelector("input[name=confirm_password]").parentElement.removeAttribute("style");
 //             document.querySelector("input[name=confirm_password]").removeAttribute("style");
-//         }, 1000);   
+//         }, 1000);
 //     }
 // }
 
 // document.getElementById("registerButton").addEventListener("click", () => {
-  
+
 //     // console.log("Event Click");
 //     document.getElementById("login").style.opacity = "0";
 //     document.getElementById("signUpForm").style.display = "flex";
@@ -63,11 +62,10 @@ console.log("formNavigation online");
 //     }, 1000);
 // });
 
-
 // let samePass = false;
 
 // document.querySelector("input[name=confirm_password]").addEventListener("keyup", () => {
-    
+
 //     let check = document.querySelector("#password2").value;
 //     let value = document.querySelector("input[name=confirm_password]").value;
 
@@ -100,8 +98,6 @@ console.log("formNavigation online");
 //     }
 // });
 
-
-
 // let profileImgCheck = document.querySelectorAll('input[name="profileImg"]');
 // console.log(profileImgCheck);
 // profileImgCheck.forEach(e => {
@@ -116,5 +112,3 @@ console.log("formNavigation online");
 //         event.stopPropagation();
 //     })
 // });
-
-

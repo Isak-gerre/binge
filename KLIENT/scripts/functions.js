@@ -93,7 +93,7 @@ function getLoggedInUserID() {
     }
   } else {
     sessionStorage.clear();
-    window.location.replace("http://localhost:2000");
+    window.location.replace("https://d.r101.wbsprt.com/bingy.se/index.php");
   }
 }
 
@@ -102,7 +102,9 @@ async function userVarification() {
   let userID = userSession.userID;
   let sessionID = userSession.sessionID;
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-users.php?sessionID=${sessionID}&userID=${userID}`);
+    let response = await fetch(
+      `https://d.r101.wbsprt.com/api.bingy.se/GET/get-users.php?sessionID=${sessionID}&userID=${userID}`
+    );
     let data = await response.json();
     if (data.ok) {
       return true;
@@ -157,7 +159,7 @@ function addToMovies(movie, update = false) {
   }
 }
 async function saveMultipleMovies(array) {
-  let fetches = array.map((id) => fetch(`http://localhost:7001/GET/get-movie-info.php?movieID=${id}`));
+  let fetches = array.map((id) => fetch(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-movie-info.php?movieID=${id}`));
   const resultArray = await Promise.all(fetches);
   resultArray.map(async function (resp) {
     let movie = await resp.json();
@@ -201,7 +203,7 @@ async function getMovieInfo(movieID) {
       return { message: savedMovie };
     }
     try {
-      let response = await fetch(`http://localhost:7001/GET/get-movie-info.php?movieID=${movieID}`);
+      let response = await fetch(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-movie-info.php?movieID=${movieID}`);
       let data = await response.json();
       addToMovies(data.message, "movies");
       return data;
@@ -216,7 +218,7 @@ async function getSearchResults(searchType, query, page = 1) {
   try {
     console.log(searchType);
     let response = await fetch(
-      `http://localhost:7001/GET/get-search-results.php?searchtype=${searchType}&query=${query}&page=${page}`
+      `https://d.r101.wbsprt.com/api.bingy.se/GET/get-search-results.php?searchtype=${searchType}&query=${query}&page=${page}`
     );
     let data = await response.json();
     console.log(data);
@@ -228,7 +230,7 @@ async function getSearchResults(searchType, query, page = 1) {
 
 async function getProviders() {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-watch-providers.php`);
+    let response = await fetch(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-watch-providers.php`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -238,7 +240,7 @@ async function getProviders() {
 
 async function getGenres() {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-genres.php`);
+    let response = await fetch(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-genres.php`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -248,7 +250,7 @@ async function getGenres() {
 
 async function getMoviesByGenre(genre) {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-movies-by-genre.php?genre=${genre}`);
+    let response = await fetch(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-movies-by-genre.php?genre=${genre}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -258,7 +260,9 @@ async function getMoviesByGenre(genre) {
 
 async function searchResultsByGenre(genre) {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-search-results-genres.php?genre=${genre}`);
+    let response = await fetch(
+      `https://d.r101.wbsprt.com/api.bingy.se/GET/get-search-results-genres.php?genre=${genre}`
+    );
     let data = await response.json();
     return data;
   } catch (error) {
@@ -268,7 +272,7 @@ async function searchResultsByGenre(genre) {
 
 async function getTrending(page) {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-trending.php?page=${page}`);
+    let response = await fetch(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-trending.php?page=${page}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -279,7 +283,7 @@ async function getTrending(page) {
 async function getButtonRealtionStatus(userID, movieID) {
   try {
     let response = await fetch(
-      `http://localhost:7001/GET/check-movie-user-relation.php?movieID=${movieID}&userID=${userID}`
+      `https://d.r101.wbsprt.com/api.bingy.se/GET/check-movie-user-relation.php?movieID=${movieID}&userID=${userID}`
     );
     let data = await response.json();
     return data;
@@ -289,14 +293,14 @@ async function getButtonRealtionStatus(userID, movieID) {
 }
 
 async function getUserInfo(userId) {
-  const request = new Request(`http://localhost:7001/GET/get-users.php?ids=${userId}`);
+  const request = new Request(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-users.php?ids=${userId}`);
   const response = await fetch(request);
   const userInfo = await response.json();
   return userInfo[0];
 }
 
 async function getUsers() {
-  const request = new Request(`http://localhost:7001/GET/get-users.php`);
+  const request = new Request(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-users.php`);
   const response = await fetch(request);
   const users = await response.json();
 
@@ -305,7 +309,7 @@ async function getUsers() {
 
 async function getFollowing(id) {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-users.php?ids=${id}`);
+    let response = await fetch(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-users.php?ids=${id}`);
     let loggedInUser = await response.json();
     return loggedInUser;
   } catch (err) {
@@ -319,7 +323,7 @@ async function getFriendsActivities(id) {
   let following = user[0].following;
 
   // Get following activities från db
-  let response = await fetch(`http://localhost:7001/GET/get-activities.php?followingIDs=${following}`);
+  let response = await fetch(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-activities.php?followingIDs=${following}`);
   let data = await response.json();
 
   return data;
@@ -327,7 +331,7 @@ async function getFriendsActivities(id) {
 
 async function getActivityByMovieID(movieID) {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-activities.php?movieID=${movieID}`);
+    let response = await fetch(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-activities.php?movieID=${movieID}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -344,7 +348,6 @@ function howManyDaysAgo(recievedDate) {
 
 // Skapat aktivteter till feed och profile
 async function createActivities(obj, page, appendIn = "#wrapper") {
-
   let movieInfo = await getMovieInfo(obj.movieID);
   let userInfo = await getUserInfo(obj.userID);
 
@@ -352,7 +355,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
   let container = document.createElement("div");
   container.classList.add("container");
 
-  console.log(appendIn)
+  console.log(appendIn);
   document.querySelector(appendIn).append(container);
 
   // Top av aktivitets container, innehåller användarnamn + datum
@@ -364,7 +367,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
     // användarnamn
     let userPic = document.createElement("div");
     userPic.classList.add("userPic");
-    userPic.style.backgroundImage = `url('http://localhost:7001/${userInfo.profile_picture.filepath}')`;
+    userPic.style.backgroundImage = `url('https://d.r101.wbsprt.com/api.bingy.se/${userInfo.profile_picture.filepath}')`;
 
     userPic.addEventListener("click", () => {
       window.location.href = `profile.php?userID=${obj.userID}`;
@@ -418,29 +421,26 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
           document.querySelector(".options > button:first-child").style.animation = "scaleFromNormal 0.5s forwards";
           document.querySelector(".options > button:last-child").style.animation = "scaleFromNormal 0.5s forwards";
           setTimeout(() => {
-            if(document.querySelector(".options") != null){
+            if (document.querySelector(".options") != null) {
               document.querySelector(".options").remove();
-
             }
-          },500)
-         
+          }, 500);
         }
 
         allActivities.forEach((activitieContainer) => {
           if (activitieContainer.children[1].className == "activityContainer") {
             activitieContainer.style.filter = "blur(0px)";
-            activitieContainer.style.pointerEvents = 'auto';
+            activitieContainer.style.pointerEvents = "auto";
             container.style.animation = "marginScaleReverse 1s forwards";
           } else {
             activitieContainer.children[1].className = "activityContainer";
             container.style.animation = "marginScaleReverse 1s forwards";
           }
-        })
+        });
       });
 
       // För varje aktivitet som  finns på displayen
       allActivities.forEach((element) => {
-
         // om en activityContainer inte innehåller zoomIn lägg på blur
         if (!element.children[1].classList.contains("zoomIn")) {
           element.style.filter = "blur(8px)";
@@ -448,7 +448,6 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
 
           // om en aktivitet innehåller zoomIn
         } else if (element.children[1].classList.contains("zoomIn")) {
-
           // Options för vad du kan göra med den
           let options = document.createElement("div");
           options.className = "options";
@@ -472,11 +471,11 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
             allActivities.forEach((activitieContainer) => {
               if (activitieContainer.children[1].className == "activityContainer") {
                 activitieContainer.style.filter = "blur(0px)";
-                activitieContainer.style.pointerEvents = 'auto';
+                activitieContainer.style.pointerEvents = "auto";
               } else {
                 activitieContainer.children[1].className = "activityContainer";
               }
-            })
+            });
 
             setTimeout(() => {
               container.style.left = "100vw";
@@ -488,8 +487,8 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
             let message = "You have succesfully delted this from your activities";
             setTimeout(() => {
               messageToUser(message);
-            }, 2000)
-          })
+            }, 2000);
+          });
 
           let makeOrUpdate;
           if (obj.type == "watched") {
@@ -507,19 +506,16 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
             event.stopPropagation();
 
             wrapper.style.overflow = "scroll";
-
-
-          })
+          });
           // En delay på när knapparna skapas.
           removeFromList.style.animation = "scaleFromZero 1s forwards";
           reviewDiv.style.animation = "scaleFromZero 1s forwards";
           options.append(removeFromList);
           setTimeout(() => {
-
             element.append(options);
           }, 100);
 
-          // Fucntions 
+          // Fucntions
           // function disappearingOfActivity(activityDOM) {
           //   activityDOM.style.animation = "fadeOut 1.5s";
           //   setTimeout(() => {
@@ -530,7 +526,6 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
           function messageToUser(message) {
             let messageDOM = document.createElement("div");
             messageDOM.className = "messageToUser";
-
 
             let p = document.createElement("p");
             p.textContent = message;
@@ -543,12 +538,12 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
               messageDOM.style.animation = "fadeOut 1.5s";
               setTimeout(() => {
                 messageDOM.remove();
-              }, 1000)
-            }, 2000)
+              }, 1000);
+            }, 2000);
           }
         }
-      })
-    })
+      });
+    });
   }
 
   let activityContainerLeft = document.createElement("div");
@@ -596,11 +591,11 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
   typeIcon.classList.add("typeIcon");
 
   if (obj.type == "watchlist") {
-    typeIcon.setAttribute("src", "../icons/watchlist.svg");
+    typeIcon.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/watchlist.svg");
   }
 
   if (obj.type == "review") {
-    typeIcon.setAttribute("src", "../icons/rate.svg");
+    typeIcon.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/rate.svg");
 
     // stjärnor
     if (obj.rate !== "") {
@@ -610,7 +605,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
       for (let i = 0; i < obj.rate; i++) {
         let star = document.createElement("img");
         star.classList.add("star");
-        star.setAttribute("src", "../icons/star_gold.svg");
+        star.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/star_gold.svg");
         rate.append(star);
       }
 
@@ -619,7 +614,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
       for (let i = 0; i < gStars; i++) {
         let star = document.createElement("img");
         star.classList.add("star");
-        star.setAttribute("src", "../icons/star_grey.svg");
+        star.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/star_grey.svg");
         rate.append(star);
       }
       activityContainerLeft.append(rate);
@@ -635,7 +630,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
 
       if (obj.comment.length > 30) {
         let expandComment = document.createElement("img");
-        expandComment.setAttribute("src", "../icons/expand_more.svg");
+        expandComment.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/expand_more.svg");
         expandComment.id = "expandComment";
 
         expandComment.addEventListener("click", () => {
@@ -643,13 +638,13 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
 
           if (activityContainer.classList.contains("open")) {
             // console.log(activityContainer.scrollHeight);
-            expandComment.setAttribute("src", "../icons/expand_less.svg");
+            expandComment.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/expand_less.svg");
             comment.textContent = `" ${obj.comment} " `;
             let expandHeight = comment.scrollHeight;
             comment.style.height = `${expandHeight}px`;
           } else {
             comment.removeAttribute("style");
-            expandComment.setAttribute("src", "../icons/expand_more.svg");
+            expandComment.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/expand_more.svg");
             comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
             // comment.style.height = '200px';
           }
@@ -661,15 +656,14 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
   }
 
   if (obj.type == "watched") {
-    typeIcon.setAttribute("src", "../icons/watched.svg");
+    typeIcon.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/watched.svg");
   }
 
   type.append(typeText, typeIcon);
-
 }
 async function getUserActivities(id) {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-activities.php?followingIDs=${id}`);
+    let response = await fetch(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-activities.php?followingIDs=${id}`);
     let activities = await response.json();
     return activities;
   } catch (err) {
@@ -679,7 +673,7 @@ async function getUserActivities(id) {
 
 async function getSimilar(movieID) {
   try {
-    let response = await fetch(`http://localhost:7001/GET/get-similar-movies.php?movieID=${movieID}`);
+    let response = await fetch(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-similar-movies.php?movieID=${movieID}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -690,7 +684,9 @@ async function getSimilar(movieID) {
 async function getAdditionalInfo(movieID) {
   try {
     // console.log(movieID);
-    let response = await fetch(`http://localhost:7001/GET/get-additional-movieInfo.php?movieID=${movieID}`);
+    let response = await fetch(
+      `https://d.r101.wbsprt.com/api.bingy.se/GET/get-additional-movieInfo.php?movieID=${movieID}`
+    );
     // console.log(response);
     let data = await response.json();
     return data;
@@ -717,7 +713,7 @@ async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
     rate: rate,
   };
 
-  let rqst = new Request("http://localhost:7001/POST/create-activity.php", {
+  let rqst = new Request("https://d.r101.wbsprt.com/api.bingy.se/POST/create-activity.php", {
     method: "POST",
     body: JSON.stringify(msg),
     headers: { "Content-type": "application/json" },
@@ -733,7 +729,7 @@ async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
 }
 
 async function patchActivity(activity) {
-  let rqst = new Request("http://localhost:7001/PATCH/update-activity.php", {
+  let rqst = new Request("https://d.r101.wbsprt.com/api.bingy.se/PATCH/update-activity.php", {
     method: "PATCH",
     body: JSON.stringify({ activity: activity }),
     headers: { "Content-type": "application/json" },
@@ -749,7 +745,7 @@ async function patchActivity(activity) {
 }
 
 async function deleteteActivity(activityID) {
-  let rqst = new Request("http://localhost:7001/DELETE/delete-activity.php", {
+  let rqst = new Request("https://d.r101.wbsprt.com/api.bingy.se/DELETE/delete-activity.php", {
     method: "DELETE",
     body: JSON.stringify({ id: activityID }),
     headers: { "Content-type": "application/json" },
@@ -766,7 +762,7 @@ async function deleteteActivity(activityID) {
 
 async function followPatch(mainUserID, friendsUserID) {
   const response = await fetch(
-    new Request("http://localhost:7001/PATCH/update-user.php", {
+    new Request("https://d.r101.wbsprt.com/api.bingy.se/PATCH/update-user.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -780,7 +776,7 @@ async function followPatch(mainUserID, friendsUserID) {
 
 async function getAllActivites(userId) {
   // console.log(userId);
-  let response = await fetch(`http://localhost:7001/GET/get-activities.php?followingIDs=${userId}`);
+  let response = await fetch(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-activities.php?followingIDs=${userId}`);
   let userActivites = await response.json();
   userActivites.sort((a, b) => b.date - a.date);
 
@@ -838,7 +834,9 @@ async function makeShowMoreForActis(whatFunc, page, appendIn, actis, counter) {
       }
 
       // ladd ikon på show more knapp
-      document.getElementById("show-more-btn").innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
+      document.getElementById(
+        "show-more-btn"
+      ).innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
     });
   }
 }

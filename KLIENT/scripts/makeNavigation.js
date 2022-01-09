@@ -12,9 +12,9 @@ function makeUpperNav() {
   navMiddle.className = "navMiddle";
 
   //content
-  navMiddle.innerHTML = `<img src='../icons/back.svg' class ='navImg back' alt='Back'>`;
-  navMiddle.innerHTML += `<img src='../logos/b-circle.svg' class ='navImg logo' alt='Logo'>`;
-  navMiddle.innerHTML += `<img src='../icons/hamburger.svg' class ='navImg hamburger' alt='Home'>`;
+  navMiddle.innerHTML = `<img src='https://d.r101.wbsprt.com/bingy.se/icons/back.svg' class ='navImg back' alt='Back'>`;
+  navMiddle.innerHTML += `<img src='https://d.r101.wbsprt.com/bingy.se/logos/b-circle.svg' class ='navImg logo' alt='Logo'>`;
+  navMiddle.innerHTML += `<img src='https://d.r101.wbsprt.com/bingy.se/icons/hamburger.svg' class ='navImg hamburger' alt='Home'>`;
 
   //append
   upperNav.append(navMiddle);
@@ -63,7 +63,7 @@ makeUpperNav();
 function makeLowerNav() {
   let navRight = document.createElement("div");
   let searchImg = document.createElement("img");
-  searchImg.src = `../icons/search.svg`;
+  searchImg.src = `https://d.r101.wbsprt.com/bingy.se/icons/search.svg`;
   navRight.className = "navRight";
   searchImg.className = "navImg";
 
@@ -85,9 +85,9 @@ function makeLowerNav() {
   lowerNavRight.className = "lowerNavRight";
 
   //content
-  lowerNavLeft.innerHTML = `<img class="navImg" src="../icons/home.svg">`;
-  lowerNavMiddle.innerHTML = `<img class="navImg" src="../icons/explore.svg">`;
-  lowerNavRight.innerHTML = `<img class="navImg" src="../icons/profile.svg">`;
+  lowerNavLeft.innerHTML = `<img class="navImg" src="https://d.r101.wbsprt.com/bingy.se/icons/home.svg" alt="Home">`;
+  lowerNavMiddle.innerHTML = `<img class="navImg" src=" https://d.r101.wbsprt.com/bingy.se/icons/explore.svg" alt="Explore">`;
+  lowerNavRight.innerHTML = `<img class="navImg" src="https://d.r101.wbsprt.com/bingy.se/icons/profile.svg" alt="Profile">`;
   searchImg.addEventListener("click", () => {
     if (document.querySelector(".search-container") == null) {
       document.body.style.overflow = "hidden";
@@ -106,16 +106,18 @@ function makeLowerNav() {
       document.body.style.overflow = "visible";
       document.querySelector(".navRight").style.borderBottom = "0px";
       if (window.location.href.indexOf("feed") > -1) {
-        // lowerNavLeft.innerHTML = `<img class="navImg navLinkFeed" src="../icons/feedCOLOR.svg">`;
+        // lowerNavLeft.innerHTML = `<img class="navImg navLinkFeed" src="https://d.r101.wbsprt.com/bingy.se/icons/feedCOLOR.svg">`;
         lowerNavLeft.style.borderBottom = "3px solid white";
       } else if (window.location.href.indexOf("explore") > -1) {
-        // lowerNavMiddle.innerHTML = `<img class="navImg navLinkExplore" src="../icons/exploreCOLOR.svg">`;
+        // lowerNavMiddle.innerHTML = `<img class="navImg navLinkExplore" src="https://d.r101.wbsprt.com/bingy.se/icons/exploreCOLOR.svg">`;
         lowerNavMiddle.style.borderBottom = "3px solid white";
       } else if (window.location.href.indexOf("profile") > -1) {
-        // lowerNavRight.innerHTML = `<img  class="navImg navLinkProfile" src="../icons/profileCOLOR.svg">`;
+        // lowerNavRight.innerHTML = `<img  class="navImg navLinkProfile" src="https://d.r101.wbsprt.com/bingy.se/icons/profileCOLOR.svg">`;
         lowerNavRight.style.borderBottom = "3px solid white";
       }
-      document.querySelector(".back").setAttribute("src", "../icons/back.svg");
+      document
+        .querySelector(".back")
+        .setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/back.svg alt='Back'");
       document.querySelector(".search-container").style.animation = "removeSearchBar 0.2s ease-out";
       // document.querySelector("#overlay").style.display = "flex";
       setTimeout(() => {
@@ -134,13 +136,13 @@ function makeLowerNav() {
   });
 
   if (window.location.href.indexOf("feed") > -1) {
-    // lowerNavLeft.innerHTML = `<img class="navImg navLinkFeed" src="../icons/feedCOLOR.svg">`;
+    // lowerNavLeft.innerHTML = `<img class="navImg navLinkFeed" src="https://d.r101.wbsprt.com/bingy.se/icons/feedCOLOR.svg">`;
     lowerNavLeft.style.borderBottom = "3px solid white";
   } else if (window.location.href.indexOf("explore") > -1) {
-    // lowerNavMiddle.innerHTML = `<img class="navImg navLinkExplore" src="../icons/exploreCOLOR.svg">`;
+    // lowerNavMiddle.innerHTML = `<img class="navImg navLinkExplore" src="https://d.r101.wbsprt.com/bingy.se/icons/exploreCOLOR.svg">`;
     lowerNavMiddle.style.borderBottom = "3px solid white";
   } else if (window.location.href.indexOf("profile") > -1) {
-    // lowerNavRight.innerHTML = `<img  class="navImg navLinkProfile" src="../icons/profileCOLOR.svg">`;
+    // lowerNavRight.innerHTML = `<img  class="navImg navLinkProfile" src="https://d.r101.wbsprt.com/bingy.se/icons/profileCOLOR.svg">`;
     lowerNavRight.style.borderBottom = "3px solid white";
   }
 
@@ -150,55 +152,54 @@ function makeLowerNav() {
 }
 
 async function makeHamburgerMenu() {
-  
   // Black overlay
   let hamburgerBackground = document.createElement("div");
   hamburgerBackground.className = "hamburger-background";
-  
+
   // Menu container
   let hamburgerMenu = document.createElement("div");
   hamburgerMenu.className = "hamburger-menu";
   document.body.append(hamburgerMenu, hamburgerBackground);
-  
+
   // Close menu
   let exit = document.createElement("div");
   exit.classList.add("exitMenu");
-  
+
   exit.addEventListener("click", () => {
-      document.querySelector(".hamburger-background").style.animation = "removeHamburgerBackground 0.4s ease-out";
-      document.querySelector(".hamburger-menu").style.animation = "removeHamburgerMenu 0.4s ease-out";
-      document.querySelectorAll(".hamburger-text").forEach((element) => {
-        element.style.opacity = "0";
-      });
-        
-      setTimeout(() => {
-        document.querySelector(".hamburger-menu").remove();
-          document.querySelector(".hamburger-background").remove();
-      }, 400);
+    document.querySelector(".hamburger-background").style.animation = "removeHamburgerBackground 0.4s ease-out";
+    document.querySelector(".hamburger-menu").style.animation = "removeHamburgerMenu 0.4s ease-out";
+    document.querySelectorAll(".hamburger-text").forEach((element) => {
+      element.style.opacity = "0";
+    });
+
+    setTimeout(() => {
+      document.querySelector(".hamburger-menu").remove();
+      document.querySelector(".hamburger-background").remove();
+    }, 400);
   });
 
   hamburgerMenu.append(exit);
-  
-  document.querySelector(".hamburger-menu").addEventListener("animationend", async function() {
+
+  document.querySelector(".hamburger-menu").addEventListener("animationend", async function () {
     let genres = await getGenres();
     let pages = ["Feed", "Explore", "Profile"]; // Home eller feed? ska vi döpa om hela filen, för denna blir inte markerad annars, ändrar till feed nu. / ns
-    
+
     // Create PAGE-links-and-container
     let pagesContainer = document.createElement("div");
     pagesContainer.className = "pages-container";
-  
+
     pages.forEach((text) => {
       pagesContainer.append(hamburgerText(text));
     });
-  
+
     // Create GENRE-links-and-container
     let genresContainer = document.createElement("div");
     genresContainer.className = "genres-container";
-    
+
     genres.genres.forEach((genre) => {
       genresContainer.append(createGenreLinks(genre.name));
-    })
-  
+    });
+
     // Create ABOUT-links-and-container
     let aboutContainer = document.createElement("div");
     aboutContainer.className = "about-container";
@@ -206,46 +207,46 @@ async function makeHamburgerMenu() {
     let logout = document.createElement("button");
     logout.textContent = "Log out";
     logout.classList.add("log-out-btn");
-  
+
     logout.addEventListener("click", () => {
       sessionStorage.clear();
-      window.location.replace("http://localhost:2000");
-    })
-  
+      window.location.replace("https://d.r101.wbsprt.com/bingy.se/index.php");
+    });
+
     let tmdb = document.createElement("div");
     tmdb.className = "tmdb";
-  
+
     let tmdbLogo = document.createElement("img");
-    tmdbLogo.setAttribute("src", "../icons/tmdb.svg");
+    tmdbLogo.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/tmdb.svg");
     tmdbLogo.classList.add("tmdbLogo");
     tmdbLogo.textContent = "tmdbLogo";
-  
+
     let tmdbText = document.createElement("div");
     tmdbText.classList.add("tmdbText");
     tmdbText.textContent = "This product uses the TMDB API but is not endorsed or certified by TMDB.";
-  
+
     tmdb.append(tmdbLogo, tmdbText);
-  
+
     let git = document.createElement("div");
     git.classList.add("git");
-  
+
     let gitLogo = document.createElement("img");
-    gitLogo.setAttribute("src", "../icons/github.svg");
+    gitLogo.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/github.svg");
     gitLogo.classList.add("gitLogo");
     gitLogo.textContent = "gitLogo";
-  
+
     let gitText = document.createElement("a");
     gitText.setAttribute("href", "https://github.com/Isak-gerre/binge");
     gitText.setAttribute("target", "_blank");
     gitText.classList.add("gitText");
     gitText.textContent = "Follow this product on github.";
-  
+
     aboutContainer.append(logout, tmdb, git);
     git.append(gitLogo, gitText);
-  
+
     // Append containers in main container
     hamburgerMenu.append(pagesContainer, genresContainer, aboutContainer);
-  
+
     // Page-link fade in
     document.querySelectorAll(".hamburger-text").forEach((element, index) => {
       setTimeout(() => {
@@ -253,7 +254,7 @@ async function makeHamburgerMenu() {
         element.setAttribute("style", `opacity: 1; transition-delay: ${index * 0.1}s; transform: translateX(15px); `);
       }, 0);
     });
-  
+
     // Genre fade in
     document.querySelectorAll(".genre-link").forEach((element, index) => {
       setTimeout(() => {
@@ -261,8 +262,7 @@ async function makeHamburgerMenu() {
         element.setAttribute("style", `opacity: 1; transition-delay: ${index * 0.1}s; transform: translateX(15px); `);
       }, 100);
     });
-
-  })
+  });
 }
 
 function hamburgerText(text) {
@@ -299,7 +299,7 @@ function createGenreLinks(genre) {
   genreLink.addEventListener("click", () => {
     document.body.style.overflow = "visible";
 
-    if(document.querySelector(".search-container")){
+    if (document.querySelector(".search-container")) {
       document.querySelector(".search-container").remove();
       makeSearchOverlay(genre, "Genre");
     } else {

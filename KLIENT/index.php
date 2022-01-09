@@ -1,18 +1,4 @@
 <?php
-session_start();
-require "functions.php";
-
-$method = $_SERVER["REQUEST_METHOD"];
-
-if ($method === "OPTIONS") {
-    // Tillåt alla (origins) och alla headers
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: *");
-    exit();
-}
-
-// Alla är vällkommna
-header("Access-Control-Allow-Origin: *");
 
 require "head.php";
 
@@ -105,35 +91,35 @@ require "head.php";
             <p>Choose an avatar</p>
             <label class="profileImgSelected">
                 <input style="display:none" name="profileImg" id="profileImg1" type="radio" value="profileImg1" checked>
-                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_1.png" width="100" height="100" alt="">
+                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_1.png" width="100" height="100" alt="">
             </label>
             <label>
                 <input style="display:none" name="profileImg" id="profileImg2" type="radio" value="profileImg2">
-                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_2.png" width="100" height="100" alt="">
+                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_2.png" width="100" height="100" alt="">
             </label>
             <label>
                 <input style="display:none" name="profileImg" id="profileImg3" type="radio" value="profileImg3">
-                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_3.png" width="100" height="100" alt="">
+                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_3.png" width="100" height="100" alt="">
             </label>
             <label>
                 <input style="display:none" name="profileImg" id="profileImg4" type="radio" value="profileImg4">
-                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_4.png" width="100" height="100" alt="">
+                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_4.png" width="100" height="100" alt="">
             </label>
             <label>
                 <input style="display:none" name="profileImg" id="profileImg1" type="radio" value="profileImg5">
-                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_5.png" width="100" height="100" alt="">
+                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_5.png" width="100" height="100" alt="">
             </label>
             <label>
                 <input style="display:none" name="profileImg" id="profileImg2" type="radio" value="profileImg6">
-                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_6.png" width="100" height="100" alt="">
+                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_6.png" width="100" height="100" alt="">
             </label>
             <label>
                 <input style="display:none" name="profileImg" id="profileImg3" type="radio" value="profileImg7">
-                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_7.png" width="100" height="100" alt="">
+                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_7.png" width="100" height="100" alt="">
             </label>
             <label>
                 <input style="display:none" name="profileImg" id="profileImg4" type="radio" value="profileImg8">
-                <img src="http://localhost:7001/DATABASE/IMAGES/AVATAR/avatar_8.png" width="100" height="100" alt="">
+                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_8.png" width="100" height="100" alt="">
             </label>
         </div>
         <div id="uploadProfilePic">
