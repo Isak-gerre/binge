@@ -712,4 +712,25 @@ svg:active,
   top: 156px;
   color: #eeeeee;
 }
+
+.tmdb,
+.git {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.tmdbLogo,
+.gitLogo {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.gitText > a {
+  color: #eeeeee;
+}
 /*# sourceMappingURL=navAndSearch.css.map */

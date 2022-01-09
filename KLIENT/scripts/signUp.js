@@ -66,21 +66,19 @@ signUpForm.addEventListener("submit", (event) => {
   });
 
   fetch(req)
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
-      else {
-        throw new Error();
-      }
-
+    .then((response) =>{
+        if(response.ok){
+          console.log(response.json());
+            // return response.json();
+        }
+        else {
+            throw new Error();
+        }
+       
     })
     .then((data) => {
-      saveToSession(data, "session");
-      window.location.replace("http://localhost:2000/explore.php");
-    })
-    .catch(error => {
-      console.error(error);
-      sessionStorage.clear();
+      console.log(data);
+        // saveToSession(data, "session");
+        // window.location.replace("/explore.php");
     });
 });

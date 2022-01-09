@@ -16,7 +16,7 @@
         if(strtolower($_POST["username"]) === strtolower($key["username"]) || strtolower($_POST["username"]) === strtolower($key["email"])){
             if(password_verify($_POST["password"], $key["password"])){
 
-                //On sucess skickar tillbaka användarens ID
+                // On sucess skickar tillbaka användarens ID
                 sendJSON(
                     [
                     "message" => "Login was a success",
