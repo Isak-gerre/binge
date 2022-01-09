@@ -15,7 +15,7 @@ async function openSettings(userId) {
   let closeTab = document.createElement("button");
   closeTab.id = "closeTab";
   let exit = document.createElement("img");
-  exit.src = "https://d.r101.wbsprt.com/bingy.seicons/exit.svg";
+  exit.src = "https://d.r101.wbsprt.com/bingy.se/icons/exit.svg";
   closeTab.append(exit);
 
   // Snygg transition
@@ -34,7 +34,7 @@ async function openSettings(userId) {
   profilePicture.style.backgroundImage = `url("https://d.r101.wbsprt.com/api.bingy.se/${user.profile_picture.filepath}")`;
   let changePicDiv = document.createElement("div");
   let changePicIcon = document.createElement("img");
-  changePicIcon.src = "https://d.r101.wbsprt.com/bingy.seicons/edit.svg";
+  changePicIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/edit.svg";
 
   changePicDiv.append(changePicIcon);
   changeProfilePicContainer.append(profilePicture, changePicDiv);
@@ -231,7 +231,7 @@ function changeProfilePic(user) {
   closeTab.id = "closeTab";
 
   let back = document.createElement("img");
-  back.src = "https://d.r101.wbsprt.com/bingy.seicons/back_2.svg";
+  back.src = "https://d.r101.wbsprt.com/bingy.se/icons/back_2.svg";
   closeTab.append(back);
 
   closeTab.addEventListener("click", () => {
@@ -396,7 +396,7 @@ function responseDiv(message) {
 function errorInput(inputField, message) {
   let errorIcon = document.createElement("img");
   errorIcon.id = "errorIcon";
-  errorIcon.src = "https://d.r101.wbsprt.com/bingy.seicons/error_white_24dp.svg";
+  errorIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/error_white_24dp.svg";
 
   errorIcon.addEventListener("click", (event) => {
     event.stopPropagation();

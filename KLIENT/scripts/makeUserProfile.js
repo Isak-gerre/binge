@@ -172,19 +172,19 @@ async function createProfileHeader(user, isFollowing, settings = null) {
     if (isFollowing) {
       profileButtonText.textContent = "Unfollow";
       settingOrPlus.classList.add("unfollow");
-      profileButtonIcon.src = "https://d.r101.wbsprt.com/bingy.seicons/remove_circle_black.svg";
+      profileButtonIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/remove_circle_black.svg";
       profileButtonIcon.id = "unfollow";
     } else if (!isFollowing) {
       profileButtonText.textContent = "Follow";
       settingOrPlus.classList.add("follow");
-      profileButtonIcon.src = "https://d.r101.wbsprt.com/bingy.seicons/add_circle_black.svg";
+      profileButtonIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/add_circle_black.svg";
       profileButtonIcon.id = "follow";
     }
   }
 
   if (settings == true) {
     profileButtonText.textContent = "Edit";
-    profileButtonIcon.src = "https://d.r101.wbsprt.com/bingy.seicons/settings_black.svg";
+    profileButtonIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/settings_black.svg";
     profileButtonIcon.id = "settings";
     settingOrPlus.style.flexBasis = "70px";
     settingOrPlus.classList.add("follow");
@@ -201,7 +201,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
       profileButtonIcon.id = "follow";
       isFollowing = false;
 
-      profileButtonIcon.src = "https://d.r101.wbsprt.com/bingy.seicons/add_circle_black.svg";
+      profileButtonIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/add_circle_black.svg";
       let userIndex = followers.findIndex((id) => id == loggedInUserId);
       followers.splice(userIndex, 1);
 
@@ -218,7 +218,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
       profileButtonIcon.id = "unfollow";
       isFollowing = true;
 
-      profileButtonIcon.src = "https://d.r101.wbsprt.com/bingy.seicons/remove_circle_black.svg";
+      profileButtonIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/remove_circle_black.svg";
       followers.push(loggedInUserId);
 
       await followPatch(loggedInUserId, user.id);
@@ -328,11 +328,11 @@ async function showUsers(userId, type) {
     if (isFollowed) {
       followOrUnfollow.classList.add("unfollow");
       followOrUnfollow.innerHTML = `<p>Unfollow</p>
-                <img src="https://d.r101.wbsprt.com/bingy.seicons/remove_circle_black.svg" id="unfollow"> `;
+                <img src="https://d.r101.wbsprt.com/bingy.se/icons/remove_circle_black.svg" id="unfollow"> `;
     } else if (!isFollowed) {
       followOrUnfollow.classList.add("follow");
       followOrUnfollow.innerHTML = `<p>Follow</p>
-            <img src="https://d.r101.wbsprt.com/bingy.seicons/add_circle_black.svg" id="follow">`;
+            <img src="https://d.r101.wbsprt.com/bingy.se/icons/add_circle_black.svg" id="follow">`;
     }
 
     let followingCont = document.getElementById("following");
