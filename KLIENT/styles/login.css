@@ -506,13 +506,14 @@
 }
 
 #signInButton {
-  width: 120px;
-  height: 30px;
+  min-width: 120px;
+  min-height: 30px;
   font-family: "Archivo", sans-serif;
   font-size: 15px;
   background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
   padding: 3px;
   border-radius: 30px;
   border: none;
+  margin: auto;
 }
 /*# sourceMappingURL=login.css.map */

@@ -345,8 +345,8 @@
 }
 
   #signInButton {
-    width: 120px;
-    height: 30px;
+    min-width: 120px;
+    min-height: 30px;
 
     @include postFont();
 
@@ -354,5 +354,6 @@
     padding: $buttonPadding;
     border-radius: $borderRadiusButtons;
     border: none;
+    margin: auto;
   }
 
