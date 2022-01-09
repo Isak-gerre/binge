@@ -800,7 +800,7 @@ body button:active, #settingOrPlus:active {
   font-size: 16px;
   padding-bottom: 5px;
   width: 100%;
-  padding: 10px 25px;
+  padding: 10px 10px 10px 25px;
 }
 
 #profileInfo #usernameDiv p {
