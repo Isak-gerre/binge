@@ -325,7 +325,6 @@ async function searchFunction(searchBy) {
       }
 
       if (x) {
-        // if (!document.querySelector("#show-more-btn-genres")) {
         let showMoreDiv = document.createElement("div");
         showMoreDiv.className = "showMoreDiv";
         showMoreDiv.innerHTML = `<button id="show-more-btn-genres">Show more</button>`;
@@ -342,7 +341,6 @@ async function searchFunction(searchBy) {
             searchByGenres(inputValue, page);
           }
         });
-        // }
       }
     } else {
       if (page == 1) {
@@ -538,9 +536,9 @@ async function searchFunction(searchBy) {
 
     let followDiv = document.createElement("div");
     followDiv.setAttribute("id", "followDiv");
-    if(relationText == "Unfollow") {
+    if (relationText == "Unfollow") {
       followDiv.classList.add("unfollow");
-    } else if (relationText == "Follow"){
+    } else if (relationText == "Follow") {
       followDiv.classList.add("follow");
     }
 

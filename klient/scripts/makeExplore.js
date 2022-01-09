@@ -28,7 +28,5 @@ if (getParamFromUrl("movieID")) {
 
 if (getParamFromUrl("scroll")) {
   document.querySelector("#wrapper").style.display = "none";
-
-  console.log(getParamFromUrl("scroll"));
   window.scrollTo(0, getParamFromUrl("scroll"));
 }

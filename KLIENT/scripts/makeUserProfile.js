@@ -20,7 +20,6 @@ const statsBtn = document.getElementById("stats");
 
 const wrapper = document.getElementById("profileWrapper");
 
-// watchedBtn.click();
 createProfilePage();
 
 // Funktion som skapar hela sidan
@@ -44,20 +43,15 @@ async function createProfilePage() {
         let following = loggedInUserFollow.some((e) => e == urlUserId);
 
         createProfileHeader(userInfo, following);
-
-
         profileNav(urlUserId, userInfo.firstname);
 
     } else {
         createProfileHeader(loggedInUserInfo, null, true);
-
-
         profileNav(loggedInUserId);
     }
 }
 
-async function sortActivities(userId, whatActivities){
-    console.log(whatActivities);
+async function sortActivities(userId, whatActivities) {
     let allUserActivities = await getAllActivites(userId);
     let watchedActivities = [];
     let watchlist = [];
@@ -70,7 +64,7 @@ async function sortActivities(userId, whatActivities){
         }
     });
 
-    if(whatActivities == "watched"){
+    if (whatActivities == "watched") {
         return watchedActivities;
     } else if (whatActivities == "watchlist") {
         return watchlist;
@@ -90,7 +84,7 @@ async function profileNav(userId, name = null) {
 
         if (name != null && watchedActivities.length < 1) {
             noActivitiesInfo('watched', name);
-        } else if ( watchedActivities.length < 1 ){
+        } else if (watchedActivities.length < 1) {
             noActivitiesInfo('watched');
         } else {
             let activities = watchedActivities.sort((a, b) => b.date - a.date);
@@ -98,7 +92,7 @@ async function profileNav(userId, name = null) {
         }
     }
 
-    watchedBtn.addEventListener("click", async function() {
+    watchedBtn.addEventListener("click", async function () {
         let watchedActivities = await sortActivities(userId, "watched");
 
         if (watchedBtn.className !== "selected") {
@@ -122,9 +116,8 @@ async function profileNav(userId, name = null) {
     });
 
 
-    watchlistBtn.addEventListener("click", async function() {
+    watchlistBtn.addEventListener("click", async function () {
         let watchlist = await sortActivities(userId, "watchlist");
-        console.log(watchlist);
 
         if (watchlistBtn.className !== "selected") {
             wrapper.innerHTML = "";
@@ -143,7 +136,7 @@ async function profileNav(userId, name = null) {
         }
     });
 
-    statsBtn.addEventListener("click", async function() {
+    statsBtn.addEventListener("click", async function () {
         let watchedActivities = await sortActivities(userId, "watched");
         if (statsBtn.className !== "selected") {
             wrapper.innerHTML = "";
@@ -160,16 +153,12 @@ async function profileNav(userId, name = null) {
 }
 
 async function createProfileHeader(user, isFollowing, settings = null) {
-
     let username = user.username.toLowerCase();
     if (username.length > 7) {
         uNameCont.textContent = `@${user.username.substring(0, 7)}...`;
     } else {
-        console.log("smaller");
         uNameCont.textContent = "@" + user.username;
     }
-    // uNameCont.textContent = "@" + username;
-    // let profilePic = document.createElement("div");
 
     // vi behöver ett url här va
     proPicCont.style.backgroundImage = `url("http://localhost:7001/${user.profile_picture.filepath}")`;
@@ -203,7 +192,6 @@ async function createProfileHeader(user, isFollowing, settings = null) {
         profileButtonIcon.id = 'settings';
         settingOrPlus.style.flexBasis = "70px";
         settingOrPlus.classList.add("follow");
-
     }
 
     settingOrPlus.addEventListener("click", async function () {
@@ -241,7 +229,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
 
             nrOfFollowers += 1;
             followersCont.textContent = nrOfFollowers;
-            
+
         } else if (profileButtonIcon.id == "settings") {
             let settingsWindow = await openSettings(userId);
             body.prepend(settingsWindow);
@@ -249,7 +237,6 @@ async function createProfileHeader(user, isFollowing, settings = null) {
     });
 
     followersDiv.addEventListener("click", async function () {
-        // console.log(followers)
         let closeTab = document.createElement("button");
         closeTab.id = "closeTab";
         closeTab.textContent = "x";
@@ -283,7 +270,6 @@ async function createProfileHeader(user, isFollowing, settings = null) {
         body.prepend(followContainer);
     });
 
-    
     settingOrPlus.append(profileButtonText, profileButtonIcon);
     followersCont.append(nrOfFollowers);
     followingCont.append(nrOfFollowing);
@@ -347,14 +333,14 @@ async function showUsers(userId, type) {
         // Beroende på om användaren följs av inloggad anv. eller ej visas olika texter
         if (isFollowed) {
             followOrUnfollow.classList.add("unfollow");
-            followOrUnfollow.innerHTML = 
+            followOrUnfollow.innerHTML =
                 `<p>Unfollow</p>
                 <img src="../icons/remove_circle_black.svg" id="unfollow"> `;
 
         } else if (!isFollowed) {
             followOrUnfollow.classList.add("follow");
-            followOrUnfollow.innerHTML = 
-            `<p>Follow</p>
+            followOrUnfollow.innerHTML =
+                `<p>Follow</p>
             <img src="../icons/add_circle_black.svg" id="follow">`;
         }
 
@@ -410,15 +396,7 @@ async function createWatchlist(watchlist, page = "profile") {
 
     watchlist.forEach(async function (activity) {
         let movieId = activity.movieID;
-
         let movieBanner = await makeMovieBanner(movieId, activity);
-
-        // movieBanner.addEventListener('click', (event) => {
-        //     event.preventDefault();
-        //     event.stopPropagation();
-        //     window.location.href = `explore.php?movieID=${movieId}`;
-        // });
-
         container.append(movieBanner);
     });
 

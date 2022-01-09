@@ -104,44 +104,43 @@ async function openSettings(userId) {
     deleteButton.addEventListener('click', () => {
         return new Promise((confirm) => {
             swal({
-              title: "Are you sure you want to delete your account?",
-              buttons: {
-                cancel: {
-                  text: "No",
-                  value: false,
-                  visible: true,
-                  className: "",
-                  closeModal: true,
+                title: "Are you sure you want to delete your account?",
+                buttons: {
+                    cancel: {
+                        text: "No",
+                        value: false,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Yes",
+                        value: true,
+                        visible: true,
+                        className: "",
+                        closeModal: true,
+                    },
                 },
-                confirm: {
-                  text: "Yes",
-                  value: true,
-                  visible: true,
-                  className: "",
-                  closeModal: true,
-                },
-              },
             }).then((value) => {
-              if (value) {
-                let deletedComplete = deleteAccount(loggedInUserId);
-                console.log(deletedComplete);
-                
-                if ( deletedComplete ) {
-                    swal({
-                        title: 'Your account is deleted.'
-                    }).then((ok) => {
-                        sessionStorage.clear();
-                        window.location.href = "/index.php";
-                    });
+                if (value) {
+                    let deletedComplete = deleteAccount(loggedInUserId);
 
-                    setTimeout( () => {
-                        sessionStorage.clear();
-                        window.location.href = "/index.php";
-                    }, 5000);
+                    if (deletedComplete) {
+                        swal({
+                            title: 'Your account is deleted.'
+                        }).then((ok) => {
+                            sessionStorage.clear();
+                            window.location.href = "/index.php";
+                        });
+
+                        setTimeout(() => {
+                            sessionStorage.clear();
+                            window.location.href = "/index.php";
+                        }, 5000);
+                    }
                 }
-              }
             });
-          });
+        });
     });
 
     settingsWindow.append(closeTab, changeProfilePicContainer, form, deleteButton);
@@ -151,39 +150,39 @@ async function openSettings(userId) {
 
         let inputs = document.querySelectorAll('.signInInput');
         let empty = false;
-        
+
         inputs.forEach((input) => {
             if (input.value == "") {
                 errorInput(input.parentElement, "Please fill in!");
                 empty = true;
             }
         });
-        
+
         if (!empty) {
             const formData = new FormData(form);
-    
+
             let session = sessionStorage.getItem("session");
             let id = JSON.parse(session).session.userID;
-    
+
             formData.append("id", id);
-    
+
             let array = [];
             let checkboxes = document.querySelectorAll("input[type=checkbox]:checked");
-    
+
             for (let i = 0; i < checkboxes.length; i++) {
                 array.push(checkboxes[i].value);
             }
-    
+
             for (let i = 0; i < array.length; i++) {
                 formData.append("active_streaming_services[]", array[i]);
             }
-    
+
             const reqChangeUser = new Request("http://localhost:7001/PATCH/update-user.php", {
                 method: "POST",
                 body: formData
             });
-    
-    
+
+
             fetch(reqChangeUser)
                 .then((response) => {
                     let json = response.json();
@@ -193,26 +192,25 @@ async function openSettings(userId) {
                     inputs.forEach((input) => {
                         if (input.value !== "") {
                             input.parentElement.style.border = "none";
-                            if (input.nextElementSibling != null ) {
+                            if (input.nextElementSibling != null) {
                                 input.nextElementSibling.remove();
                             }
                         }
                     });
                     if ("emailError" in data) {
                         let emailInput = document.querySelector(".emailInput");
-                        
+
                         errorInput(emailInput, "Please enter a valid email");
-    
+
                     } else if ("birthdayError" in data) {
                         let birthdayInput = document.querySelector(".birthdayInput");
-                        
+
                         errorInput(birthdayInput, "Please enter a valid date");
                     } else {
                         settingsWindow.append(responseDiv("Your profile was updated!"));
                     }
-                    
-                });
 
+                });
         }
     });
 
@@ -298,9 +296,9 @@ function changeProfilePic(user) {
         <button id="signInButton">Update Profile picture</button>
     </div>
     `;
-    
+
     formDiv.append(form);
-    
+
     changeProfilePicWindow.append(closeTab, formDiv);
 
     form.addEventListener('submit', (event) => {
@@ -333,8 +331,6 @@ async function patchProfilePic(data) {
     let response = await fetch(request);
     let json = await response.json();
 
-    console.log(response);
-
     // Om 'post' går bra visas ett meddelande
     if (response.ok) {
         changeProfilePicWindow.prepend(responseDiv("Your profile picture was updated"));
@@ -346,28 +342,24 @@ async function patchProfilePic(data) {
         changeProfilePicWindow.prepend(responseDiv("You're profile picture can't override 4Mb."));
 
     } else if (response.status == 400) {
-        console.log(response);
         changeProfilePicWindow.prepend(responseDiv("Something went wrong. Try again!"));
     }
-
 }
 
 async function deleteAccount(userId) {
-    const response = await fetch ( new Request("http://localhost:7001/DELETE/delete-user.php", {
+    const response = await fetch(new Request("http://localhost:7001/DELETE/delete-user.php", {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({"userID": userId}),
+        body: JSON.stringify({ "userID": userId }),
     }));
-    
-    console.log(response.ok);
+
     if (response.ok) {
         return true
     } else {
         return false
     }
-
 }
 
 function responseDiv(message) {
@@ -400,11 +392,11 @@ function errorInput(inputField, message) {
     let errorIcon = document.createElement('img');
     errorIcon.id = "errorIcon";
     errorIcon.src = "../icons/error_white_24dp.svg";
-    
+
     errorIcon.addEventListener('click', (event) => {
         event.stopPropagation();
         errorIcon.style.opacity = "1";
-        
+
         let errorMessage = document.createElement('p');
         errorMessage.id = "errorMessage";
         errorMessage.textContent = message;
@@ -425,19 +417,4 @@ function errorInput(inputField, message) {
         inputField.style.border = "2px solid red";
         inputField.append(errorIcon);
     }
-    
 }
-
-
-{/* <div id="input">
-            <label>Old Password</label>
-            <input class="signInInput" type="password" id="passwordOld" name="old_password" placeholder="Old Password">
-        </div>
-        <div id="input">
-            <label>New Password</label>
-            <input class="signInInput" type="password" id="password2" name="password" placeholder="New Password">
-        </div>
-        <div id="input">
-            <label>Confirm Password</label>
-            <input class="signInInput" type="password" name="confirm_password" placeholder="Confirm Password">
-        </div> */}
