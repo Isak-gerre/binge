@@ -11,6 +11,21 @@ if (getParamFromUrl("search_by")) {
 
 // Skapar hela overlayen
 function makeSearchOverlay(searchWord = "", searchBy = "Title") {
+  let page = window.location.href;
+
+  if(page.includes("profile.php")){
+    document.querySelector("#pWrapper").style.display = "none";
+  } else if (page.includes("explore.php")){
+    if(page.includes("?movieID=")){
+      document.querySelector(".movie-profile").style.display = "none";
+    } else {
+      document.querySelector("#wrapper").style.display = "none";
+    }
+  } else if (page.includes("feed.php")){
+    document.querySelector("#wrapper").style.display = "none";
+  } 
+  console.log(window.location.href);
+  
   document.body.style.overflow = "hidden";
   let searchContainer = document.createElement("div");
   searchContainer.className = "search-container";
@@ -84,6 +99,8 @@ function makeSearchOverlay(searchWord = "", searchBy = "Title") {
   searchContainer.style.top = `${currentTopPosition}px`;
 
   document.body.append(searchContainer);
+
+  
 
   if (searchField.value == "") {
     searchField.value = searchWord;
