@@ -173,13 +173,11 @@
 #closeTab {
   position: absolute;
   z-index: 10000;
-  width: 30px;
-  height: 30px;
-
-  border: none;
-  border-radius: $borderRadiusButtons;
-  background: $gradientPeach;
-  padding: $buttonPadding;
+  width: $iconButtonSz;
+  height: $iconButtonSz;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 #profileWrapper {
@@ -417,12 +415,12 @@
 
   overflow: hidden;
 
-  div {
+  #profilePicFormDiv {
     width: 100%;
     flex-grow: 1;
     
     position: relative;
-    top: 20px;
+    top: 50px;
     overflow: hidden;
 
     padding: $wrapperPadding;

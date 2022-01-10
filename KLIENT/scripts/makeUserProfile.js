@@ -237,9 +237,9 @@ async function createProfileHeader(user, isFollowing, settings = null) {
     });
 
     followersDiv.addEventListener("click", async function () {
-        let closeTab = document.createElement("button");
+        let closeTab = document.createElement("div");
         closeTab.id = "closeTab";
-        closeTab.textContent = "x";
+        closeTab.style.backgroundImage = `url("../icons/exit.svg")`;
         closeTab.addEventListener("click", () => {
             followContainer.style.left = "100vw";
             setTimeout(() => {
@@ -254,9 +254,9 @@ async function createProfileHeader(user, isFollowing, settings = null) {
     });
 
     followingDiv.addEventListener("click", async function () {
-        let closeTab = document.createElement("button");
+        let closeTab = document.createElement("div");
         closeTab.id = "closeTab";
-        closeTab.textContent = "x";
+        closeTab.style.backgroundImage = `url("../icons/exit.svg")`;
         closeTab.addEventListener("click", () => {
             followContainer.style.left = "100vw";
             setTimeout(() => {
