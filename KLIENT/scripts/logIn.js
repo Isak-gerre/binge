@@ -4,6 +4,10 @@ if (sessionStorage.getItem("session") !== null) {
     window.location.href = "feed.php";
 }
 
+let errorDiv = document.createElement("div");
+errorDiv.setAttribute("id", "errorDiv");
+document.getElementById("loginForm").prepend(errorDiv);
+
 startUpScreen();
 
 function startUpScreen() {
@@ -59,9 +63,11 @@ form.addEventListener("submit", (event) => {
         }
     }
 
-    let errorDiv = document.createElement("div");
-    errorDiv.setAttribute("id", "errorDiv");
-    document.getElementById("loginForm").prepend(errorDiv);
+    document.getElementById("errorDiv").classList.add("animate");
+    setTimeout(function () {
+      document.getElementById("errorDiv").classList.remove("animate");
+    }, 1000);
+
 
     if (error == 1) {
         errorDiv.innerHTML = "Please fill in your username";
@@ -99,6 +105,7 @@ form.addEventListener("submit", (event) => {
             })
             .catch(error => {
                 document.getElementById("errorDiv").innerHTML = "Wrong combination of username and password";
+
                 sessionStorage.clear();
                 console.error(error);
             });
