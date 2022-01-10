@@ -737,7 +737,7 @@ async function deleteteActivity(activityID) {
 
 async function followPatch(mainUserID, friendsUserID) {
   const response = await fetch(
-    new Request("https://d.r101.wbsprt.com/api.bingy.se/PATCH/update-user.php", {
+    new Request("https://d.r101.wbsprt.com/api.bingy.se/POST/update-user.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -765,7 +765,6 @@ async function makeShowMoreForActis(whatFunc, page, appendIn, actis, counter) {
   }
 
   for (let i = counter - 1; i <= counter + y; i++) {
-
     if (i >= actis.length) {
       if (document.querySelector(".showMoreDiv")) {
         document.querySelector(".showMoreDiv").remove();
@@ -790,8 +789,10 @@ async function makeShowMoreForActis(whatFunc, page, appendIn, actis, counter) {
 
     // Event för show-more-knapp
     document.getElementById("show-more-btn").addEventListener("click", () => {
-      // ladd ikon på show more knapp   
-      document.getElementById("show-more-btn").innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
+      // ladd ikon på show more knapp
+      document.getElementById(
+        "show-more-btn"
+      ).innerHTML = `<div class="loading-dots"><div></div><div></div><div></div><div></div></div>`;
 
       if (page == "feed") {
         counter += 10;

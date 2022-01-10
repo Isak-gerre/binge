@@ -13,7 +13,6 @@
 
   animation: movieScale 0.3s ease-out;
   transition: all 1s;
-  aspect-ratio: 1;
   cursor: pointer;
 }
 
@@ -31,16 +30,16 @@
     transform: scale(1, 1);
   }
   100% {
-    transform:scale(1.1,1.1);
+    transform: scale(1.1, 1.1);
   }
 }
 
 @keyframes bannerScaleBack {
   0% {
-    transform:scale(1.1,1.1);
+    transform: scale(1.1, 1.1);
   }
   100% {
-    transform:scale(1,1);
+    transform: scale(1, 1);
   }
 }
 
@@ -64,12 +63,12 @@
 
 .movieBanner {
   max-width: 100px;
+  width: 100px;
   background-size: cover;
   position: relative;
   overflow: visible;
   margin: auto;
   box-shadow: 0px -5px 7px 0px rgba(0, 0, 0, 0.37);
-
 }
 
 .yourlist {
@@ -173,23 +172,21 @@
     position: absolute;
     top: 104%;
     z-index: 20000;
-  
+
     button {
       @include bodyFont();
-      
+
       border: none;
       border-radius: $borderRadiusButtons;
       padding: $innerPadding;
-  
+
       background: $gradientPeach;
       color: $lightFont;
       margin-top: $innerPadding;
     }
-  
+
     button:first-child {
       margin-bottom: 5px;
     }
   }
 }
-
-

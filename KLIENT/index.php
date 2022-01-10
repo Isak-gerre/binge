@@ -4,7 +4,7 @@ require "head.php";
 //Skapar formuläret för inlogg alternativt skapar konto 
 ?>
 <div id="startUpScreen">
-    <img id="logoStartUp" src="../logos/bingy-hela.svg">
+    <img id="logoStartUp" src="https://d.r101.wbsprt.com/bingy.se/logos/bingy-hela.svg">
 </div>
 
 <div class="previewWrapper">
@@ -40,7 +40,7 @@ require "head.php";
 </div>
 
 <form id="signUpForm" class="signInForm" action="index.php" method="POST">
-    <img class="backLogin" src="/icons/back_2.svg"/>
+    <img class="backLogin" src="/icons/back_2.svg" />
     <div id="signUp">
         <h1>Sign Up</h1>
     </div>

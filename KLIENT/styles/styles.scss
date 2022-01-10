@@ -52,13 +52,13 @@ body {
   transform: rotateY(180deg);
 }
 
-body button:active, #settingOrPlus:active {
+body button:active,
+#settingOrPlus:active {
   background-color: rgba(0, 0, 0, 0.13);
   -webkit-box-shadow: inset 0px 0px 5px $backgroundColor;
-     -moz-box-shadow: inset 0px 0px 5px $backgroundColor;
-          box-shadow: inset 0px 0px 5px $backgroundColor;
-   outline: none;
-
+  -moz-box-shadow: inset 0px 0px 5px $backgroundColor;
+  box-shadow: inset 0px 0px 5px $backgroundColor;
+  outline: none;
 }
 
 // LOAD dots

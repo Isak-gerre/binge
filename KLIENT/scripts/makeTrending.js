@@ -21,7 +21,7 @@ async function makeTrending() {
 
     let slideshowImage = document.createElement("div");
     slideshowImage.className = "trending-movie-picture";
-    slideshowImage.style.backgroundImage = `url('http://image.tmdb.org/t/p/w500${movie["backdrop_path"]}')`;
+    slideshowImage.style.backgroundImage = `url('http://image.tmdb.org/t/p/original${movie["backdrop_path"]}')`;
     slideshowImage.addEventListener("click", () => {
       window.location.href = `explore.php?movieID=${movieID}`;
     });
