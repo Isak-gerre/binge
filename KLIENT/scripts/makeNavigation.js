@@ -99,6 +99,7 @@ function makeLowerNav() {
         element.style.borderBottom = "0px";
       });
       document.querySelector(".navRight").style.borderBottom = "3px solid white";
+
       makeSearchOverlay();
       let scrollDistance =
         window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
@@ -106,6 +107,19 @@ function makeLowerNav() {
       addToState(window.location, scrollDistance, makeSearchState("", ""));
       document.querySelector(".search-container").style.animation = "searchBar 0.2s ease-out";
     } else {
+      let page = window.location.href;
+      if (page.includes("profile.php")) {
+        document.querySelector("#pWrapper").style.display = "";
+      } else if (page.includes("explore.php")) {
+        if (page.includes("?movieID=")) {
+          document.querySelector(".movie-profile").style.display = "flex";
+        } else {
+          document.querySelector("#wrapper").style.display = "flex";
+        }
+      } else if (page.includes("feed.php")) {
+        document.querySelector("#wrapper").style.display = "flex";
+      }
+
       removeLatestState();
       document.body.style.overflow = "visible";
       document.querySelector(".navRight").style.borderBottom = "0px";
