@@ -32,6 +32,7 @@ function getProviders() {
       //Skapar ett fieldset
       let providers = document.createElement("fieldset");
       providers.setAttribute("id", "fieldSetProviders");
+      providers.setAttribute("class", "settingsProviders");
 
       let searchProvider = document.createElement("input");
       searchProvider.setAttribute("type", "text");

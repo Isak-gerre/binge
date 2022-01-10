@@ -229,6 +229,7 @@
 
 //  SETTINGS
 #settingsWindow {
+  padding-bottom: 150px;
   @include transitionFromLeft();
   @include flex(column, flex-start, flex-start);
   gap: $wrapperPadding;
@@ -319,6 +320,9 @@
           border-radius: 50%;
         }
       }
+    }
+    #fieldSetProviders.settingsProviders {
+      max-height: none;
     }
 
     .providersLabel.selectedProvider {
@@ -567,4 +571,6 @@
     transform: scale(0.8, 0.5);
     opacity: 0;
   }
+}
+.settingsProviders {
 }

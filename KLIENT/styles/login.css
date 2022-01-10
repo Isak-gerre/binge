@@ -171,7 +171,8 @@
   opacity: 0;
 }
 
-#loginForm, #signUpForm > fieldset {
+#loginForm,
+#signUpForm > fieldset {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -189,7 +190,8 @@
   width: 100%;
 }
 
-#loginForm #input, #signUpForm > fieldset #input {
+#loginForm #input,
+#signUpForm > fieldset #input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -213,13 +215,15 @@
   background-color: #1c1452;
 }
 
-#loginForm #input label, #signUpForm > fieldset #input label {
+#loginForm #input label,
+#signUpForm > fieldset #input label {
   font-family: "Mulish", sans-serif;
   font-size: 12px;
   margin-left: 10px;
 }
 
-#loginForm #input input, #signUpForm > fieldset #input input {
+#loginForm #input input,
+#signUpForm > fieldset #input input {
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;
@@ -231,7 +235,8 @@
   transition: color 0.5s;
 }
 
-#loginForm #buttonWrapper, #signUpForm > fieldset #buttonWrapper {
+#loginForm #buttonWrapper,
+#signUpForm > fieldset #buttonWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -248,7 +253,8 @@
   gap: 10px;
 }
 
-#loginForm input, #signUpForm > fieldset input {
+#loginForm input,
+#signUpForm > fieldset input {
   font-family: "Mulish", sans-serif;
   font-size: 14px;
   line-height: 1.4;
@@ -259,7 +265,8 @@
   transition: color 0.5s;
 }
 
-#loginForm #buttonWrapper, #signUpForm > fieldset #buttonWrapper {
+#loginForm #buttonWrapper,
+#signUpForm > fieldset #buttonWrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -276,7 +283,8 @@
   gap: 10px;
 }
 
-#loginForm button, #signUpForm > fieldset button {
+#loginForm button,
+#signUpForm > fieldset button {
   width: 100px;
   height: 30px;
   font-family: "Archivo", sans-serif;
@@ -298,7 +306,12 @@
 }
 
 @-webkit-keyframes bounce {
-  0%, 20%, 40%, 60%, 80%, 100% {
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  100% {
     -webkit-transform: translateY(0);
             transform: translateY(0);
   }
@@ -309,7 +322,12 @@
 }
 
 @keyframes bounce {
-  0%, 20%, 40%, 60%, 80%, 100% {
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  100% {
     -webkit-transform: translateY(0);
             transform: translateY(0);
   }
@@ -406,11 +424,13 @@
   border: none;
 }
 
-#createUserP2 select, #createUserP2 option {
+#createUserP2 select,
+#createUserP2 option {
   color: #eeeeee;
 }
 
-#createUserP2 select, #createUserP2 .searchProvider {
+#createUserP2 select,
+#createUserP2 .searchProvider {
   width: 100%;
   height: 35px;
   padding: 5px;
@@ -465,7 +485,8 @@
   border-radius: 5px;
 }
 
-#createUserP3 #avatars, #updateProfilePic #avatars {
+#createUserP3 #avatars,
+#updateProfilePic #avatars {
   width: 100%;
   display: -ms-grid;
   display: grid;
@@ -474,7 +495,8 @@
   gap: 10px;
 }
 
-#createUserP3 #avatars p, #updateProfilePic #avatars p {
+#createUserP3 #avatars p,
+#updateProfilePic #avatars p {
   margin: auto;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
@@ -483,16 +505,19 @@
   grid-area: 1 / span 2;
 }
 
-#createUserP3 #avatars label, #updateProfilePic #avatars label {
+#createUserP3 #avatars label,
+#updateProfilePic #avatars label {
   margin: auto;
 }
 
-#createUserP3 #avatars label.profileImgSelected, #updateProfilePic #avatars label.profileImgSelected {
+#createUserP3 #avatars label.profileImgSelected,
+#updateProfilePic #avatars label.profileImgSelected {
   background-color: #1c1452;
   border-radius: 5px;
 }
 
-#createUserP3 #uploadProfilePic, #updateProfilePic #uploadProfilePic {
+#createUserP3 #uploadProfilePic,
+#updateProfilePic #uploadProfilePic {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -511,14 +536,16 @@
   margin: 25px 0;
 }
 
-#createUserP3 #uploadProfilePic p, #updateProfilePic #uploadProfilePic p {
+#createUserP3 #uploadProfilePic p,
+#updateProfilePic #uploadProfilePic p {
   margin: none;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
   padding-bottom: 5px;
 }
 
-#createUserP3 #uploadProfilePic #fileToUpload, #updateProfilePic #uploadProfilePic #fileToUpload {
+#createUserP3 #uploadProfilePic #fileToUpload,
+#updateProfilePic #uploadProfilePic #fileToUpload {
   padding: 25px;
   width: 100%;
   margin: auto;
@@ -527,7 +554,8 @@
   line-height: 1.4;
 }
 
-#createUserP3 label.profileImgSelected, #updateProfilePic label.profileImgSelected {
+#createUserP3 label.profileImgSelected,
+#updateProfilePic label.profileImgSelected {
   background-color: #1c1452;
   border-radius: 5px;
 }
@@ -541,6 +569,6 @@
   padding: 3px;
   border-radius: 30px;
   border: none;
-  margin: auto;
+  margin: 10px auto -20px;
 }
 /*# sourceMappingURL=login.css.map */

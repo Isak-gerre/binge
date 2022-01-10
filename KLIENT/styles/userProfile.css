@@ -514,6 +514,7 @@
 }
 
 #settingsWindow {
+  padding-bottom: 150px;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -673,6 +674,10 @@
   height: 30px;
   width: 30px;
   border-radius: 50%;
+}
+
+#settingsForm #providersForm #fieldSetProviders.settingsProviders {
+  max-height: none;
 }
 
 #settingsForm #providersForm .providersLabel.selectedProvider {

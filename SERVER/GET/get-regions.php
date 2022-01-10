@@ -3,16 +3,14 @@
 require_once "../access-control.php";
 require_once "../functions.php";
 
-$method = $_SERVER["REQUEST_METHOD"];
+checkMethod("GET");
 
-if($method != "GET"){
-    sendJSON(["message" => "Method not allowed"]);
-}
 
-$url = "http://api.themoviedb.org/3/watch/providers/regions?api_key=f5c0e0db147d0e6434391f3ff153b6a8";
+$url = "http://api.themoviedb.org/3/watch/providers/regions?api_key=$api_key";
 
-if(isset($_GET["watch_region"]) && $_GET["watch_region"] != ""){
-    $url = "http://api.themoviedb.org/3/watch/providers/movie?watch_region=$watch_region&api_key=f5c0e0db147d0e6434391f3ff153b6a8";
+if (isset($_GET["watch_region"]) && $_GET["watch_region"] != "") {
+    $watch_region = $_GET["watch_region"];
+    $url = "http://api.themoviedb.org/3/watch/providers/movie?watch_region=$watch_region&api_key=$api_key";
 }
 
 $fetch = file_get_contents($url);

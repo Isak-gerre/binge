@@ -2,26 +2,26 @@
 
 // Overlay at startup
 #startUpScreen {
-    @include flex(row, center, center);
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    z-index: 100;
-    margin-top: -3px;
+  @include flex(row, center, center);
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  margin-top: -3px;
 
-    background-image: url("../icons/background-m-profile.png");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+  background-image: url("../icons/background-m-profile.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
-    opacity: 1;
-    transition: opacity 0.5s;
+  opacity: 1;
+  transition: opacity 0.5s;
 
-    img {
-        width: 65%;
-        transform: scale(0);
-        transition: transform 1s;
-    }
+  img {
+    width: 65%;
+    transform: scale(0);
+    transition: transform 1s;
+  }
 }
 
 //MovieBanners (preview)
@@ -126,46 +126,29 @@
 }
 
 #login {
-    opacity: 0;
+  opacity: 0;
 }
 
 // Form
-#loginForm, #signUpForm > fieldset {
-    @include flex(column, center, center);
-    gap: $betweenPadding;
+#loginForm,
+#signUpForm > fieldset {
+  @include flex(column, center, center);
+  gap: $betweenPadding;
+  width: 100%;
+
+  #input {
+    @include flex(column, center, flex-start);
     width: 100%;
- 
-    #input {
-        @include flex(column, center, flex-start);
-        width: 100%;
-        padding: $innerPadding;
-        grid-column: 1 / span 2;
+    padding: $innerPadding;
+    grid-column: 1 / span 2;
 
-        border: 1px solid black;
-        border-radius: $borderRadiusButtons;
-        background-color: $activityColor;
+    border: 1px solid black;
+    border-radius: $borderRadiusButtons;
+    background-color: $activityColor;
 
-        label {
-            @include xSmallFont();
-            margin-left: $betweenPadding
-        }
-
-        input {
-            @include bodyFont();
-            border: none;
-            width: 100%;
-            padding: 0 10px;
-            background: none;
-            
-            transition: color 0.5s;
-        }
-        
-    }
-    
-    
-    #buttonWrapper {
-        @include flex(row, center, center);
-        gap: $betweenPadding;
+    label {
+      @include xSmallFont();
+      margin-left: $betweenPadding;
     }
 
     input {
@@ -173,10 +156,25 @@
       border: none;
       width: 100%;
       padding: 0 10px;
+      background: none;
 
       transition: color 0.5s;
     }
-  
+  }
+
+  #buttonWrapper {
+    @include flex(row, center, center);
+    gap: $betweenPadding;
+  }
+
+  input {
+    @include bodyFont();
+    border: none;
+    width: 100%;
+    padding: 0 10px;
+
+    transition: color 0.5s;
+  }
 
   #buttonWrapper {
     @include flex(row, center, center);
@@ -200,16 +198,23 @@
   @include xSmallFont();
 }
 
-
 .animate {
   animation: bounce 1s infinite;
 }
 
-@keyframes bounce { 
-  0%, 20%, 40%, 60%, 80%, 100% {transform: translateY(0);}
-  50% {transform: translateY(-5px);}
-} 
-
+@keyframes bounce {
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
 
 // Sign up
 #signUpForm {
@@ -234,14 +239,15 @@
 
   .buttonsSignUp {
     display: flex;
-
   }
 }
 
 #signUpForm #signUp {
   @include flex(row, center, center);
   margin: $wrapperPadding;
-  h1 { @include bigTitleFont(); }
+  h1 {
+    @include bigTitleFont();
+  }
 }
 
 #signUpForm > fieldset {
@@ -254,20 +260,22 @@
 }
 
 #createUserP2 {
+  border: none;
+
+  select,
+  option {
+    color: $lightFont;
+  }
+
+  select,
+  .searchProvider {
+    width: 100%;
+    height: 35px;
+    padding: $innerPadding;
+    background-color: $activityColor;
     border: none;
-
-    select, option {
-        color: $lightFont;
-    }
-
-    select, .searchProvider {
-      width: 100%;
-      height: 35px;
-      padding: $innerPadding;
-      background-color: $activityColor;
-      border: none;
-      border-radius: $borderRadiusButtons;
-    }
+    border-radius: $borderRadiusButtons;
+  }
 
   #fieldSetProviders {
     flex-grow: 1;
@@ -302,64 +310,65 @@
   }
 }
 
-#createUserP3, #updateProfilePic {
-    #avatars {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: $betweenPadding;
+#createUserP3,
+#updateProfilePic {
+  #avatars {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $betweenPadding;
 
-        p {
-            margin: auto;
-            @include smallTitleFont();
-            grid-area: 1 / span 2;
-        }
-
-        label {
-            margin: auto;
-        }
-
-        label.profileImgSelected {
-            background-color: $activityColor;
-            border-radius: $borderRadiusObjects;
-        }
+    p {
+      margin: auto;
+      @include smallTitleFont();
+      grid-area: 1 / span 2;
     }
 
-    #uploadProfilePic {
-        @include flex(column, center, center);
-        gap: $betweenPadding;
-        width: 100%;
-
-        margin: $wrapperPadding 0;
-        p {
-            margin: none;
-            @include smallTitleFont();
-        }
-
-        #fileToUpload {
-            padding: $wrapperPadding;
-            width: 100%;
-            margin: auto;
-
-            @include bodyFont();
-        }
+    label {
+      margin: auto;
     }
 
     label.profileImgSelected {
       background-color: $activityColor;
       border-radius: $borderRadiusObjects;
     }
+  }
+
+  #uploadProfilePic {
+    @include flex(column, center, center);
+    gap: $betweenPadding;
+    width: 100%;
+
+    margin: $wrapperPadding 0;
+    p {
+      margin: none;
+      @include smallTitleFont();
+    }
+
+    #fileToUpload {
+      padding: $wrapperPadding;
+      width: 100%;
+      margin: auto;
+
+      @include bodyFont();
+    }
+  }
+
+  label.profileImgSelected {
+    background-color: $activityColor;
+    border-radius: $borderRadiusObjects;
+  }
 }
 
-  #signInButton {
-    min-width: 120px;
-    min-height: 30px;
+#signInButton {
+  min-width: 120px;
+  min-height: 30px;
 
-    @include postFont();
+  @include postFont();
 
-    background: $gradientPeach;
-    padding: $buttonPadding;
-    border-radius: $borderRadiusButtons;
-    border: none;
-    margin: auto;
-  }
+  background: $gradientPeach;
+  padding: $buttonPadding;
+  border-radius: $borderRadiusButtons;
+  border: none;
+  margin: 10px auto -20px;
+}
