@@ -71,7 +71,6 @@ form.addEventListener("submit", (event) => {
     document.getElementById("errorDiv").classList.remove("animate");
   }, 1000);
 
-
   if (error == 1) {
     errorDiv.innerHTML = "Please fill in your username";
   } else if (error == 2) {
@@ -106,18 +105,5 @@ form.addEventListener("submit", (event) => {
         sessionStorage.clear();
         console.error(error);
       });
-  }
-  if (error == 1 || error == 2 || error == 3) {
-    if (!document.getElementById("errorDiv")) {
-      document.getElementById("loginForm").prepend(errorDiv);
-    } else {
-      if (error == 1) {
-        document.getElementById("errorDiv").innerHTML = "Please fill in your username";
-      } else if (error == 2) {
-        document.getElementById("errorDiv").innerHTML = "Please fill in your password";
-      } else if (error == 3) {
-        document.getElementById("errorDiv").innerHTML = "Please fill in your username and password";
-      }
-    }
   }
 });

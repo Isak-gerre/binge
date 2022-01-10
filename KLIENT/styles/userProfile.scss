@@ -413,7 +413,7 @@
 #changeProfilePicWindow {
   @include transitionFromLeft();
   top: 0;
-  @include flex(column, flex-start, flex-start);
+  @include flex(column, flex-start, center);
   gap: $betweenPadding;
 
   background-image: url("../icons/background-m-profile.png");
@@ -421,7 +421,8 @@
   background-size: cover;
   background-repeat: no-repeat;
 
-  overflow: hidden;
+  overflow: scroll;
+  padding-bottom: 150px;
 
   #profilePicFormDiv {
     width: 100%;

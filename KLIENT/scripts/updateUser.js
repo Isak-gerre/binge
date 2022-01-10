@@ -12,11 +12,9 @@ async function openSettings(userId) {
   }, 50);
 
   // Knapp som stänger fönstret
-  let closeTab = document.createElement("button");
+  let closeTab = document.createElement("div");
   closeTab.id = "closeTab";
-  let exit = document.createElement("img");
-  exit.src = "https://d.r101.wbsprt.com/bingy.se/icons/exit.svg";
-  closeTab.append(exit);
+  closeTab.style.backgroundImage = `url("https://d.r101.wbsprt.com/bingy.se/icons/exit.svg")`;
 
   // Snygg transition
   closeTab.addEventListener("click", () => {
@@ -138,7 +136,7 @@ async function openSettings(userId) {
 
             setTimeout(() => {
               sessionStorage.clear();
-              window.location.href = "/index.php";
+              window.location.href = "/bingy.se/index.php";
             }, 5000);
           }
         }
@@ -208,7 +206,7 @@ async function openSettings(userId) {
 
             errorInput(birthdayInput, "Please enter a valid date");
           } else {
-            settingsWindow.append(responseDiv("Your profile was updated!"));
+            responseDiv("Your profile was updated!");
           }
         });
     }
@@ -227,12 +225,9 @@ function changeProfilePic(user) {
   }, 50);
 
   // Tillbaka-knapp som leder tillbaks till första settingsfönstret
-  let closeTab = document.createElement("button");
+  let closeTab = document.createElement("div");
   closeTab.id = "closeTab";
-
-  let back = document.createElement("img");
-  back.src = "https://d.r101.wbsprt.com/bingy.se/icons/back_2.svg";
-  closeTab.append(back);
+  closeTab.style.backgroundImage = `url("https://d.r101.wbsprt.com/bingy.se/icons/back_2.svg")`;
 
   closeTab.addEventListener("click", () => {
     let settingsWindow = document.getElementById("settingsWindow");
@@ -248,6 +243,7 @@ function changeProfilePic(user) {
 
   // Formulär för profilbild
   let formDiv = document.createElement("div");
+  formDiv.setAttribute("id", "profilePicFormDiv");
   let form = document.createElement("form");
   form.id = "updateProfilePic";
   form.method = "POST";

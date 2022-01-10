@@ -234,7 +234,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
   followersDiv.addEventListener("click", async function () {
     let closeTab = document.createElement("div");
     closeTab.id = "closeTab";
-    closeTab.style.backgroundImage = `url("../icons/exit.svg")`;
+    closeTab.style.backgroundImage = `url("https://d.r101.wbsprt.com/bingy.se/icons/exit.svg")`;
     closeTab.addEventListener("click", () => {
       followContainer.style.left = "100vw";
       setTimeout(() => {
@@ -251,7 +251,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
   followingDiv.addEventListener("click", async function () {
     let closeTab = document.createElement("div");
     closeTab.id = "closeTab";
-    closeTab.style.backgroundImage = `url("../icons/exit.svg")`;
+    closeTab.style.backgroundImage = `url("https://d.r101.wbsprt.com/bingy.se/icons/exit.svg")`;
     closeTab.addEventListener("click", () => {
       followContainer.style.left = "100vw";
       setTimeout(() => {
@@ -285,6 +285,7 @@ async function showUsers(userId, type) {
 
   let usersInfo = await Promise.all(ids.map((id) => getUserInfo(id)));
   usersInfo.sort((a, b) => (a.username > b.username ? 1 : -1));
+  console.log(usersInfo);
 
   let followContainer = document.createElement("div");
   followContainer.id = "followContainer";
@@ -361,7 +362,7 @@ async function showUsers(userId, type) {
             followOrUnfollow.classList.remove("follow");
 
             followOrUnfollow.innerHTML = `<p>Unfollow</p>
-            <img src="../icons/remove_circle_black.svg" id="unfollow">`;
+            <img src="https://d.r101.wbsprt.com/bingy.se/icons/remove_circle_black.svg" id="unfollow">`;
 
             followOrUnfollow.id = "noGradient";
             // Lägger till användare i followers
@@ -379,7 +380,7 @@ async function showUsers(userId, type) {
             followOrUnfollow.classList.remove("unfollow");
             followOrUnfollow.removeAttribute("id");
             followOrUnfollow.innerHTML = `<p>Follow</p>
-                <img src="../icons/add_circle_black.svg" id="follow">`;
+                <img src="https://d.r101.wbsprt.com/bingy.se/icons/add_circle_black.svg" id="follow">`;
             // Tar bort från followers
             await followPatch(loggedInUserId, user.id);
 
