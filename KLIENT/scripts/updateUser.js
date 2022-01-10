@@ -207,7 +207,7 @@ async function openSettings(userId) {
 
                         errorInput(birthdayInput, "Please enter a valid date");
                     } else {
-                        settingsWindow.append(responseDiv("Your profile was updated!"));
+                        responseDiv("Your profile was updated!");
                     }
 
                 });
@@ -333,16 +333,16 @@ async function patchProfilePic(data) {
 
     // Om 'post' går bra visas ett meddelande
     if (response.ok) {
-        changeProfilePicWindow.prepend(responseDiv("Your profile picture was updated"));
+        responseDiv("Your profile picture was updated");
 
         // Uppdaterar profilbild på profilsida och i settings
-        document.querySelector('#profilePic div').style.backgroundImage = `url("http://localhost:7001/${json.filePath}")`;
+        document.querySelector('#profilePic').style.backgroundImage = `url("http://localhost:7001/${json.filePath}")`;
         document.querySelector('#settingsChangePic div').style.backgroundImage = `url("http://localhost:7001/${json.filePath}")`;
     } else if (response.status == 406) {
-        changeProfilePicWindow.prepend(responseDiv("You're profile picture can't override 4Mb."));
+        responseDiv("You're profile picture can't override 4Mb.");
 
     } else if (response.status == 400) {
-        changeProfilePicWindow.prepend(responseDiv("Something went wrong. Try again!"));
+        responseDiv("Something went wrong. Try again!");
     }
 }
 
@@ -363,29 +363,11 @@ async function deleteAccount(userId) {
 }
 
 function responseDiv(message) {
-    let responseDiv = document.createElement('div');
-    responseDiv.id = "responseDiv";
-    let text = document.createElement('p');
-    text.textContent = message;
-
-    responseDiv.append(text);
-
-    // Transition in
-    setTimeout(() => {
-        responseDiv.style.opacity = '1';
-    }, 10);
-
-    // Transition ut
-    setTimeout(() => {
-        responseDiv.style.opacity = '0';
-    }, 1500);
-
-    // Ta bort fönster
-    setTimeout(() => {
-        responseDiv.remove();
-    }, 2000);
-
-    return responseDiv;
+    return new Promise((confirm) => { 
+        swal({
+            title: message
+        });
+    });
 }
 
 function errorInput(inputField, message) {
