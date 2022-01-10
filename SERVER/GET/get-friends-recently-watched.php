@@ -7,8 +7,6 @@
     require_once "../access-control.php";
     require_once "../functions.php";
 
-    $method = $_SERVER["REQUEST_METHOD"];
-
     checkMethod("GET");
     checkContentType();
     
@@ -22,9 +20,7 @@
         ], 400);
     }
 
-
-    //Ska vi ha denna? OBS den funkar inte
-    // if(empty($_GET["followingIDs"])){
+    // if($_GET["followingIDs"] == ""){
     //     sendJSON([
     //         "code" => 1,
     //         "message" => "You have to give me an ID"
