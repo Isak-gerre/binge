@@ -11,9 +11,10 @@ function makeUpperNav() {
   // navLeft.className = "navLeft";
   navMiddle.className = "navMiddle";
 
+  let ifMovieProfile = getParamFromUrl("movieID") ? "display: none;" : "";
   //content
   navMiddle.innerHTML = `<img src='../icons/back.svg' class ='navImg back' alt='Back'>`;
-  navMiddle.innerHTML += `<img src='../logos/b-circle.svg' class ='navImg logo' alt='Logo'>`;
+  navMiddle.innerHTML += `<img src='../logos/b-circle.svg' class ='navImg logo' alt='Logo' style="${ifMovieProfile}">`;
   navMiddle.innerHTML += `<img src='../icons/hamburger.svg' class ='navImg hamburger' alt='Home'>`;
 
   //append
@@ -53,8 +54,12 @@ window.addEventListener("scroll", () => {
   let winheight = window.scrollY;
   if (winheight > 10) {
     document.querySelector(".upperNav").style.backgroundColor = "#0F0B2E";
+    document.querySelector(".logo").style.display = "block";
   } else {
     document.querySelector(".upperNav").style.backgroundColor = "transparent";
+    let ifMovieProfile = getParamFromUrl("movieID") ? "none" : "";
+    document.querySelector(".logo").style.display = ifMovieProfile;
+    console.log(ifMovieProfile);
   }
 });
 makeUpperNav();
@@ -142,7 +147,6 @@ function makeLowerNav() {
 }
 
 async function makeHamburgerMenu() {
-
   // Black overlay
   let hamburgerBackground = document.createElement("div");
   hamburgerBackground.className = "hamburger-background";
@@ -189,7 +193,7 @@ async function makeHamburgerMenu() {
 
     genres.genres.forEach((genre) => {
       genresContainer.append(createGenreLinks(genre.name));
-    })
+    });
 
     // Create ABOUT-links-and-container
     let aboutContainer = document.createElement("div");
@@ -202,7 +206,7 @@ async function makeHamburgerMenu() {
     logout.addEventListener("click", () => {
       sessionStorage.clear();
       window.location.replace("http://localhost:2000");
-    })
+    });
 
     let tmdb = document.createElement("div");
     tmdb.className = "tmdb";
@@ -253,8 +257,7 @@ async function makeHamburgerMenu() {
         element.setAttribute("style", `opacity: 1; transition-delay: ${index * 0.1}s; transform: translateX(15px); `);
       }, 100);
     });
-
-  })
+  });
 }
 
 function hamburgerText(text) {
