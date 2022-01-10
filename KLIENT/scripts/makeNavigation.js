@@ -177,6 +177,7 @@ async function makeHamburgerMenu() {
   exit.classList.add("exitMenu");
 
   exit.addEventListener("click", () => {
+    document.body.style.overflow = "";
     document.querySelector(".hamburger-background").style.animation = "removeHamburgerBackground 0.4s ease-out";
     document.querySelector(".hamburger-menu").style.animation = "removeHamburgerMenu 0.4s ease-out";
     document.querySelectorAll(".hamburger-text").forEach((element) => {

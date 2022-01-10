@@ -377,7 +377,7 @@ svg:active,
 
 .hamburger-background {
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   background-color: black;
   width: 100%;
