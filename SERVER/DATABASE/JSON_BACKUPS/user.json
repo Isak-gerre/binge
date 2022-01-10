@@ -21,7 +21,11 @@
                 5
             ],
             "following": [
-                2
+                2,
+                5,
+                3,
+                4,
+                7
             ],
             "sessionId": "$2y$10$O3.WrewOFvw\/kzzBux9VuOYmYbL3nA0Ba2uYkfMJ77L4W3fEOrIBS",
             "id": 1
@@ -49,8 +53,7 @@
             ],
             "following": [
                 4,
-                5,
-                3
+                5
             ],
             "sessionId": "$2y$10$tySGNoLqUQT9JlE7UPibGel3v1PGfuN1z8mLQuDHZuviDNw.m2aCW",
             "id": 2
@@ -71,7 +74,7 @@
             },
             "followers": [
                 5,
-                2
+                1
             ],
             "following": [],
             "sessionId": "$2y$10$Znilyoeos1BWVcpslFMV3.IsfnD50zkz2BkYxYLZ9iGFSkUAjWoWu",
@@ -95,7 +98,8 @@
             },
             "followers": [
                 5,
-                2
+                2,
+                1
             ],
             "following": [],
             "sessionId": "$2y$10$T0HfOf8NVDOxFRQHdl3MKu6I6eJc\/V8\/f8HKPZwbK2zp3cZG4\/Tva",
@@ -125,7 +129,8 @@
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_8.png"
             },
             "followers": [
-                2
+                2,
+                1
             ],
             "following": [
                 1,
@@ -158,6 +163,24 @@
             "following": [],
             "sessionId": "$2y$10$73nblJRrg3DoGBsEvXIUnOi39nP3INulHlxmylxrJ3eci1dpISHCq",
             "id": 6
+        },
+        "7": {
+            "firstname": "Lisa",
+            "lastname": "Svensson",
+            "email": "lisa.s@live.se",
+            "password": "$2y$10$wEwtSpKYbaXUtHmk6J2O5OpQDmRCLeTvcHF0UlL9UpUujF81SXap.",
+            "region": "SE",
+            "username": "LisaSven",
+            "profile_picture": {
+                "filepath": "DATABASE\\\/IMAGES\\\/PROFILE\\\/d30c11c0db09db8441da62b3dd3021800135be1d224b8dad3a10f2545995fafd.jpg"
+            },
+            "active_streaming_services": [],
+            "followers": [
+                1
+            ],
+            "following": [],
+            "sessionId": "$2y$10$n7RV2P.m2oJdSe.O110gBeIexVdp9NxozsvA7taOsKvjy3aak1MFO",
+            "id": 7
         }
     }
 }

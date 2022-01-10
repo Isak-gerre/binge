@@ -200,6 +200,17 @@
   @include xSmallFont();
 }
 
+
+.animate {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce { 
+  0%, 20%, 40%, 60%, 80%, 100% {transform: translateY(0);}
+  50% {transform: translateY(-5px);}
+} 
+
+
 // Sign up
 #signUpForm {
   z-index: 20;
@@ -299,7 +310,7 @@
         gap: $betweenPadding;
 
         p {
-            margin: none;
+            margin: auto;
             @include smallTitleFont();
             grid-area: 1 / span 2;
         }
@@ -315,7 +326,7 @@
     }
 
     #uploadProfilePic {
-        @include flex(column, center, flex-start);
+        @include flex(column, center, center);
         gap: $betweenPadding;
         width: 100%;
 
@@ -326,6 +337,7 @@
         }
 
         #fileToUpload {
+            padding: $wrapperPadding;
             width: 100%;
             margin: auto;
 
@@ -351,4 +363,3 @@
     border: none;
     margin: auto;
   }
-

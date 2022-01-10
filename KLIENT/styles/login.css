@@ -292,6 +292,33 @@
   font-size: 12px;
 }
 
+.animate {
+  -webkit-animation: bounce 1s infinite;
+          animation: bounce 1s infinite;
+}
+
+@-webkit-keyframes bounce {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+  }
+}
+
 #signUpForm {
   z-index: 20;
   display: none;
@@ -448,7 +475,7 @@
 }
 
 #createUserP3 #avatars p, #updateProfilePic #avatars p {
-  margin: none;
+  margin: auto;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
   padding-bottom: 5px;
@@ -476,9 +503,9 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 10px;
   width: 100%;
   margin: 25px 0;
@@ -492,6 +519,7 @@
 }
 
 #createUserP3 #uploadProfilePic #fileToUpload, #updateProfilePic #uploadProfilePic #fileToUpload {
+  padding: 25px;
   width: 100%;
   margin: auto;
   font-family: "Mulish", sans-serif;

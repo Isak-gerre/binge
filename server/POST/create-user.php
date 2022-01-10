@@ -58,8 +58,8 @@ if (isset($_FILES["fileToUpload"])) {
     //Skapar ett unikt bildnamn
     $imgName = $_FILES["fileToUpload"]["name"];
     $time = (string) time();
-    $newImgName = hash("sha256", $imgName + $time);
-    inspect($newImgName);
+    $newImgName = hash("sha256", $imgName . $time);
+    
     //Kollar filtyp
     //OBS!!!!: INTE SÄKERT SÄTT ATT KOLLA FIL MEN BÄTTRE ÄN INGET
     if ($_FILES["fileToUpload"]["type"] === "image/jpeg") {

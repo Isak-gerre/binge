@@ -323,30 +323,27 @@ function changeProfilePic(user) {
 
 // Skickar formData om profilbild till servern som uppdaterar information
 async function patchProfilePic(data) {
-  const request = new Request("https://d.r101.wbsprt.com/api.bingy.se/POST/post-profile-picture.php", {
-    method: "POST",
-    body: data,
-  });
+    const request = new Request("https://d.r101.wbsprt.com/api.bingy.se/POST/post-profile-picture.php", {
+        method: "POST",
+        body: data,
+    });
 
-  let response = await fetch(request);
-  let json = await response.json();
+    let response = await fetch(request);
+    let json = await response.json();
 
-  // Om 'post' går bra visas ett meddelande
-  if (response.ok) {
-    changeProfilePicWindow.prepend(responseDiv("Your profile picture was updated"));
+    // Om 'post' går bra visas ett meddelande
+    if (response.ok) {
+        responseDiv("Your profile picture was updated");
 
-    // Uppdaterar profilbild på profilsida och i settings
-    document.querySelector(
-      "#profilePic div"
-    ).style.backgroundImage = `url("https://d.r101.wbsprt.com/api.bingy.se/${json.filePath}")`;
-    document.querySelector(
-      "#settingsChangePic div"
-    ).style.backgroundImage = `url("https://d.r101.wbsprt.com/api.bingy.se/${json.filePath}")`;
-  } else if (response.status == 406) {
-    changeProfilePicWindow.prepend(responseDiv("You're profile picture can't override 4Mb."));
-  } else if (response.status == 400) {
-    changeProfilePicWindow.prepend(responseDiv("Something went wrong. Try again!"));
-  }
+        // Uppdaterar profilbild på profilsida och i settings
+        document.querySelector('#profilePic').style.backgroundImage = `url("https://d.r101.wbsprt.com/api.bingy.se/${json.filePath}")`;
+        document.querySelector('#settingsChangePic div').style.backgroundImage = `url("https://d.r101.wbsprt.com/api.bingy.se/${json.filePath}")`;
+    } else if (response.status == 406) {
+        responseDiv("You're profile picture can't override 4Mb.");
+
+    } else if (response.status == 400) {
+        responseDiv("Something went wrong. Try again!");
+    }
 }
 
 async function deleteAccount(userId) {
@@ -368,29 +365,11 @@ async function deleteAccount(userId) {
 }
 
 function responseDiv(message) {
-  let responseDiv = document.createElement("div");
-  responseDiv.id = "responseDiv";
-  let text = document.createElement("p");
-  text.textContent = message;
-
-  responseDiv.append(text);
-
-  // Transition in
-  setTimeout(() => {
-    responseDiv.style.opacity = "1";
-  }, 10);
-
-  // Transition ut
-  setTimeout(() => {
-    responseDiv.style.opacity = "0";
-  }, 1500);
-
-  // Ta bort fönster
-  setTimeout(() => {
-    responseDiv.remove();
-  }, 2000);
-
-  return responseDiv;
+    return new Promise((confirm) => { 
+        swal({
+            title: message
+        });
+    });
 }
 
 function errorInput(inputField, message) {

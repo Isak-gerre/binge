@@ -2,7 +2,7 @@
 
 // Ta bort API-nyckel, lägg den i APIn
 let regionRQ = new Request(
-  "https://api.themoviedb.org/3/watch/providers/regions?api_key=f5c0e0db147d0e6434391f3ff153b6a8"
+  "http://localhost:7001/GET/get-regions.php"
 );
 //Hämtar hem alla regions
 fetch(regionRQ)
@@ -23,8 +23,9 @@ fetch(regionRQ)
 
     //Skapar en defult secelt som inte går att välja och inte har ett värde
     let opt = document.createElement("option");
-    opt.setAttribute("value", "");
+    opt.setAttribute("name", "");
     opt.innerHTML = "Select a region";
+    opt.value = "None";
     opt.setAttribute("disabled", "true");
     opt.setAttribute("selected", "true");
 
@@ -51,10 +52,11 @@ fetch(regionRQ)
 
     document.getElementById("next2").addEventListener("click", () => {
       let checkboxes = document.querySelectorAll("input[type=checkbox]:checked");
-      if (filter.value == "") {
+      if (filter.value == "Select a region") {
+        document.querySelector("#createUserP2 > p").innerHTML = "Please choose atleast one region";
         console.log("please choose a region");
       } else if (checkboxes.length == 0) {
-        console.log("please choose at least one provider");
+        document.querySelector("#createUserP2 > p").innerHTML = "Please choose at least one provider";
       } else {
         document.getElementById("createUserP2").style.display = "none";
         document.getElementById("createUserP3").style.display = "";
@@ -85,7 +87,7 @@ fetch(regionRQ)
       providerArray = [];
       // Ta bort API-nyckel, lägg den i APIn
       const provider = new Request(
-        `https://api.themoviedb.org/3/watch/providers/movie?watch_region=${filter.value}&api_key=f5c0e0db147d0e6434391f3ff153b6a8`
+        `http://localhost:7001/GET/get-regions.php?watch_region=${filter.value}`
       );
       fetch(provider)
         .then((response) => response.json())

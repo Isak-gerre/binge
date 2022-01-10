@@ -320,6 +320,8 @@
   background-color: #0f0b2e;
   width: 100%;
   padding: 25px;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
 #followContainer #usersWrapper {
@@ -444,10 +446,9 @@
   z-index: 10000;
   width: 30px;
   height: 30px;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  padding: 3px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 #profileWrapper {
@@ -836,13 +837,13 @@
   overflow: hidden;
 }
 
-#changeProfilePicWindow div {
+#changeProfilePicWindow #profilePicFormDiv {
   width: 100%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   position: relative;
-  top: 20px;
+  top: 50px;
   overflow: hidden;
   padding: 25px;
 }
