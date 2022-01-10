@@ -19,7 +19,6 @@
     box-sizing: border-box;
     @include flex(row, space-between, center);
     padding: 0 $wrapperPadding;
-
   }
 }
 input:focus {
@@ -212,7 +211,7 @@ svg:active,
 
 .search-container {
   top: -2px;
-  position: absolute;
+  position: fixed;
   z-index: 500;
   width: 100vw;
   min-height: 100vh;
@@ -456,10 +455,10 @@ svg:active,
     }
 
     .unfollow {
-      background:$activityColor;
+      background: $activityColor;
     }
     .follow {
-      background:$gradientPeach;
+      background: $gradientPeach;
     }
   }
 }

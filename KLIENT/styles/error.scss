@@ -1,0 +1,40 @@
+@import "variables.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $activityColor;
+  @include flex(column, center, center);
+  height: 100vh;
+  color: $lightFont;
+  font-family: $headerFont;
+
+  .errorDiv {
+    padding: 0 40px;
+    h1 {
+      margin: 40px 0;
+    }
+    p {
+      margin: 20px 0;
+    }
+    #errorBtn {
+      @include buttonMarked();
+      width: 40%;
+      height: 40px;
+      a {
+        text-decoration: none;
+        color: $lightFont;
+        margin: 10px auto;
+      }
+    }
+  }
+
+  .logoDiv {
+    opacity: 1;
+    top: 5vh;
+  }
+}

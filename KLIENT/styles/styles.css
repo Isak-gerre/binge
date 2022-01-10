@@ -2055,7 +2055,7 @@ svg:active,
 
 .search-container {
   top: -2px;
-  position: absolute;
+  position: fixed;
   z-index: 500;
   width: 100vw;
   min-height: 100vh;

@@ -1,5 +1,13 @@
 "use strict";
 
+async function checkServerState() {
+  let response = await fetch(`https://d.r101.wbsprt.com/api.bingy.se/GET/database_check.php`);
+  if (response.status != 200 && !window.location.href.includes("/error.php?error=1")) {
+    window.location.href = "/error.php?error=1";
+  }
+}
+checkServerState();
+
 document.addEventListener("DOMContentLoaded", function (event) {
   if (document.querySelector("#pWrapper") != null) {
     document.querySelector("#pWrapper").style.opacity = 1;
