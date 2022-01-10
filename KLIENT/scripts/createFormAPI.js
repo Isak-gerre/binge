@@ -2,7 +2,7 @@
 
 // Ta bort API-nyckel, lägg den i APIn
 let regionRQ = new Request(
-  "https://api.themoviedb.org/3/watch/providers/regions?api_key=f5c0e0db147d0e6434391f3ff153b6a8"
+  "http://localhost:7001/GET/get-regions.php"
 );
 //Hämtar hem alla regions
 fetch(regionRQ)
@@ -87,7 +87,7 @@ fetch(regionRQ)
       providerArray = [];
       // Ta bort API-nyckel, lägg den i APIn
       const provider = new Request(
-        `https://api.themoviedb.org/3/watch/providers/movie?watch_region=${filter.value}&api_key=f5c0e0db147d0e6434391f3ff153b6a8`
+        `http://localhost:7001/GET/get-regions.php?watch_region=${filter.value}`
       );
       fetch(provider)
         .then((response) => response.json())
