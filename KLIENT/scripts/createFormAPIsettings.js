@@ -4,9 +4,7 @@ function getProviders() {
   let titleProviders = document.createElement("p");
   titleProviders.textContent = "Change your region and streaming providers";
   // Ta bort API-nyckel, lägg den i APIn
-  let regionRQ = new Request(
-    "http://localhost:7001/GET/get-regions.php"
-  );
+  let regionRQ = new Request("https://d.r101.wbsprt.com/api.bingy.se/GET/get-regions.php");
   //Hämtar hem alla regions
   fetch(regionRQ)
     .then((response) => response.json())
@@ -51,7 +49,7 @@ function getProviders() {
         providerArray = [];
         // Ta bort API-nyckel, lägg den i APIn
         const response = await fetch(
-          `http://localhost:7001/GET/get-regions.php?watch_region=${filter.value}`
+          `https://d.r101.wbsprt.com/api.bingy.se/GET/get-regions.php?watch_region=${filter.value}`
         );
         const data = await response.json();
 
@@ -88,6 +86,7 @@ function getProviders() {
           });
         }
         providerArray.forEach((provider) => {
+          console.log(provider);
           if (!document.getElementById(`${provider.provider_name.split(" ").join("")}`)) {
             let selectProvider = document.createElement("input");
             let providerDiv = document.createElement("img");
