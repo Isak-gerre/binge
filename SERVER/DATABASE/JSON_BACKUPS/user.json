@@ -21,7 +21,11 @@
                 5
             ],
             "following": [
-                2
+                2,
+                5,
+                3,
+                4,
+                7
             ],
             "sessionId": "$2y$10$O3.WrewOFvw\/kzzBux9VuOYmYbL3nA0Ba2uYkfMJ77L4W3fEOrIBS",
             "id": 1
@@ -69,7 +73,8 @@
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_7.png"
             },
             "followers": [
-                5
+                5,
+                1
             ],
             "following": [],
             "sessionId": "$2y$10$Znilyoeos1BWVcpslFMV3.IsfnD50zkz2BkYxYLZ9iGFSkUAjWoWu",
@@ -93,7 +98,8 @@
             },
             "followers": [
                 5,
-                2
+                2,
+                1
             ],
             "following": [],
             "sessionId": "$2y$10$T0HfOf8NVDOxFRQHdl3MKu6I6eJc\/V8\/f8HKPZwbK2zp3cZG4\/Tva",
@@ -123,7 +129,8 @@
                 "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_8.png"
             },
             "followers": [
-                2
+                2,
+                1
             ],
             "following": [
                 1,
@@ -168,7 +175,9 @@
                 "filepath": "DATABASE\\\/IMAGES\\\/PROFILE\\\/d30c11c0db09db8441da62b3dd3021800135be1d224b8dad3a10f2545995fafd.jpg"
             },
             "active_streaming_services": [],
-            "followers": [],
+            "followers": [
+                1
+            ],
             "following": [],
             "sessionId": "$2y$10$n7RV2P.m2oJdSe.O110gBeIexVdp9NxozsvA7taOsKvjy3aak1MFO",
             "id": 7

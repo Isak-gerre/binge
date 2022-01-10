@@ -1040,6 +1040,8 @@ body button:active, #settingOrPlus:active {
   background-color: #0f0b2e;
   width: 100%;
   padding: 25px;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
 #followContainer #usersWrapper {
@@ -2484,6 +2486,7 @@ svg:active,
   -ms-grid-column-span: 3;
       grid-column-end: span 3;
   padding-top: 10px;
+  margin: auto;
 }
 
 .showMoreDiv button {

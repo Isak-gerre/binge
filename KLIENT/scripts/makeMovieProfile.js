@@ -365,6 +365,9 @@ async function makeMovieProfile(movieID) {
     if (relation.watched !== false) {
       deleteteActivity(relation.watched);
       watched.classList.remove("marked");
+      review.classList.remove("marked");
+      review.textContent = "Review";
+
 
       // TA BORT REVIEW knapp
       review.style.display = "none";

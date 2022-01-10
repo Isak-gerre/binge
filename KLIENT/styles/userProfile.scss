@@ -130,7 +130,9 @@
   background-color: $backgroundColor;
   width: 100%;
   padding: $wrapperPadding;
-
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  
   #usersWrapper {
     @include flex(column, flex-start, center);
     flex-grow: 1;

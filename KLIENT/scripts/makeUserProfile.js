@@ -350,7 +350,13 @@ async function showUsers(userId, type) {
             // Om inloggad anv. inte följer så..
             if (!isFollowed) {
                 isFollowed = true;
-                followOrUnfollow.textContent = "Unfollow";
+                followOrUnfollow.classList.add("unfollow");
+                followOrUnfollow.classList.remove("follow");
+
+                followOrUnfollow.innerHTML =
+                `<p>Unfollow</p>
+            <img src="../icons/remove_circle_black.svg" id="unfollow">`;
+
                 followOrUnfollow.id = "noGradient";
                 // Lägger till användare i followers
                 await followPatch(loggedInUserId, user.id);
@@ -363,8 +369,12 @@ async function showUsers(userId, type) {
                 // Om inloggad anv. följer så..
             } else if (isFollowed) {
                 isFollowed = false;
-                followOrUnfollow.textContent = "Follow";
+                followOrUnfollow.classList.add("follow");
+                followOrUnfollow.classList.remove("unfollow");
                 followOrUnfollow.removeAttribute("id");
+                followOrUnfollow.innerHTML =
+                `<p>Follow</p>
+                <img src="../icons/add_circle_black.svg" id="follow">`;
                 // Tar bort från followers
                 await followPatch(loggedInUserId, user.id);
 
@@ -430,13 +440,12 @@ function noActivitiesInfo(tab, name = null) {
         if (tab == "watched") {
             text.textContent = `${name} haven't watched any movies!`;
         } else if (tab == "watchlist") {
-            text.textContent = `${name} haven't added any movies to your watchlist.`;
+            text.textContent = `${name} haven't added any movies to the watchlist.`;
         } else if (tab == "stats") {
             text.textContent = `No stats since ${name} has no activities.`;
         }
 
         container.append(text);
     }
-
     wrapper.append(container);
 }
