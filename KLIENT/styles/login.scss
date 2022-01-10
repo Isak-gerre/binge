@@ -310,7 +310,7 @@
         gap: $betweenPadding;
 
         p {
-            margin: none;
+            margin: auto;
             @include smallTitleFont();
             grid-area: 1 / span 2;
         }
@@ -326,7 +326,7 @@
     }
 
     #uploadProfilePic {
-        @include flex(column, center, flex-start);
+        @include flex(column, center, center);
         gap: $betweenPadding;
         width: 100%;
 
@@ -337,6 +337,7 @@
         }
 
         #fileToUpload {
+            padding: $wrapperPadding;
             width: 100%;
             margin: auto;
 
