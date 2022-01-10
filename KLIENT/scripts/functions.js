@@ -609,7 +609,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
 
       if (obj.comment.length > 30) {
         let expandComment = document.createElement("img");
-        expandComment.setAttribute("src", "../icons/expand_more.svg");
+        expandComment.setAttribute("src", "../icons/expand_more_white.svg");
         expandComment.id = "expandComment";
 
         expandComment.addEventListener("click", () => {
@@ -622,7 +622,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
             comment.style.height = `${expandHeight}px`;
           } else {
             comment.removeAttribute("style");
-            expandComment.setAttribute("src", "../icons/expand_more.svg");
+            expandComment.setAttribute("src", "../icons/expand_more_white.svg");
             comment.textContent = `" ${obj.comment.substring(0, 30)}... " `;
           }
         });
