@@ -455,7 +455,7 @@
   width: 100%;
   z-index: 15;
   padding: 0px 25px;
-  padding-bottom: 90px;
+  padding-bottom: 200px;
   height: calc(100vh - 250px);
   -webkit-transition: height 1s;
   transition: height 1s;
@@ -619,11 +619,13 @@
   border: none;
 }
 
-#settingsForm #providersForm select, #settingsForm #providersForm option {
+#settingsForm #providersForm select,
+#settingsForm #providersForm option {
   color: #eeeeee;
 }
 
-#settingsForm #providersForm select, #settingsForm #providersForm .searchProvider {
+#settingsForm #providersForm select,
+#settingsForm #providersForm .searchProvider {
   width: 100%;
   height: 35px;
   padding: 5px;

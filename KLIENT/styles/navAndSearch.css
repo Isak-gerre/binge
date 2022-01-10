@@ -307,7 +307,7 @@ svg:active,
   overflow-x: hidden;
   max-height: calc(100vh - 170px);
   width: 100%;
-  padding-bottom: 130px;
+  padding-bottom: 250px;
   position: relative;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

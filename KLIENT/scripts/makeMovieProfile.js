@@ -296,9 +296,6 @@ async function makeMovieProfile(movieID) {
     }
   }
 
-  activities.sort((a, b) => b.date - a.date);
-  makeShowMoreForActis(makeShowMoreForActis, "movieProfile", "#movie-profile-reviews", activities, 1);
-
   if (activities.length == 0) {
     let message = document.createElement("p");
     message.className = "movie-p-message";
@@ -321,6 +318,10 @@ async function makeMovieProfile(movieID) {
   });
 
   middle.append(description, streamingservices, credits, reviews, similarMovies);
+
+  activities.sort((a, b) => b.date - a.date);
+  makeShowMoreForActis(makeShowMoreForActis, "movieProfile", "#movie-profile-reviews", activities, 1);
+
   // ______________________________________________________________________________________________________
   // Appends in overlay
   overlay.append(movieHeader, info, middle, drop1, drop2);
@@ -328,7 +329,6 @@ async function makeMovieProfile(movieID) {
   // ------------------------------------------------------------------------------------------------------
   // EVENT for the buttons
   watchLater.addEventListener("click", async function () {
-
     watchLater.disabled = true;
     relation = await getButtonRealtionStatus(loggedInUser, movieID);
 
@@ -344,7 +344,6 @@ async function makeMovieProfile(movieID) {
       watchLater.classList.remove("marked");
     }
     watchLater.disabled = false;
-
   });
 
   watched.addEventListener("click", async function () {
@@ -367,13 +366,11 @@ async function makeMovieProfile(movieID) {
       review.classList.remove("marked");
       review.textContent = "Review";
 
-
       // TA BORT REVIEW knapp
       review.style.display = "none";
     }
 
     watched.disabled = false;
-
   });
 
   review.addEventListener("click", async function (e) {

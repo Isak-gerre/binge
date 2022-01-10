@@ -350,6 +350,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
   let container = document.createElement("div");
   container.classList.add("container");
 
+  console.log(appendIn);
   document.querySelector(appendIn).append(container);
 
   // Top av aktivitets container, innehåller användarnamn + datum

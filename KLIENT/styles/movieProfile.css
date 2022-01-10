@@ -21,7 +21,7 @@
   position: absolute;
   top: 400px;
   left: 13%;
-  z-index: 100;
+  z-index: 120;
   width: 120px;
   height: 135px;
 }
@@ -34,7 +34,7 @@
   position: absolute;
   top: 360px;
   right: 0px;
-  z-index: 100;
+  z-index: 120;
   width: 120px;
   height: 135px;
   -webkit-transform: rotateY(180deg);
@@ -389,7 +389,7 @@
   padding-left: 25px;
   padding-right: 25px;
   padding-bottom: 10px;
-  z-index: 101;
+  z-index: 130;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 2fr;

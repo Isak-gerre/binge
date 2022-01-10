@@ -1,4 +1,5 @@
 "use strict";
+console.log("ny2");
 
 function makeUpperNav() {
   //create elements
@@ -11,11 +12,11 @@ function makeUpperNav() {
   // navLeft.className = "navLeft";
   navMiddle.className = "navMiddle";
 
+  let ifMovieProfile = getParamFromUrl("movieID") ? "display: none;" : "";
   //content
   navMiddle.innerHTML = `<img src='https://d.r101.wbsprt.com/bingy.se/icons/back.svg' class ='navImg back' alt='Back'>`;
-  navMiddle.innerHTML += `<img src='https://d.r101.wbsprt.com/bingy.se/logos/b-circle.svg' class ='navImg logo' alt='Logo'>`;
+  navMiddle.innerHTML += `<img src='https://d.r101.wbsprt.com/bingy.se/logos/b-circle.svg' class ='navImg logo' alt='Logo' style="${ifMovieProfile}">`;
   navMiddle.innerHTML += `<img src='https://d.r101.wbsprt.com/bingy.se/icons/hamburger.svg' class ='navImg hamburger' alt='Home'>`;
-
   //append
   upperNav.append(navMiddle);
   document.body.prepend(upperNav);
@@ -53,8 +54,12 @@ window.addEventListener("scroll", () => {
   let winheight = window.scrollY;
   if (winheight > 10) {
     document.querySelector(".upperNav").style.backgroundColor = "#0F0B2E";
+    document.querySelector(".logo").style.display = "block";
   } else {
     document.querySelector(".upperNav").style.backgroundColor = "transparent";
+    let ifMovieProfile = getParamFromUrl("movieID") ? "none" : "";
+    document.querySelector(".logo").style.display = ifMovieProfile;
+    console.log(ifMovieProfile);
   }
 });
 makeUpperNav();
@@ -204,7 +209,7 @@ async function makeHamburgerMenu() {
 
     genres.genres.forEach((genre) => {
       genresContainer.append(createGenreLinks(genre.name));
-    })
+    });
 
     // Create ABOUT-links-and-container
     let aboutContainer = document.createElement("div");
