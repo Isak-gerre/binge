@@ -687,6 +687,7 @@ svg:active,
   -ms-grid-column-span: 3;
       grid-column-end: span 3;
   padding-top: 10px;
+  margin: auto;
 }
 
 .showMoreDiv button {

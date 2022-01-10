@@ -677,7 +677,7 @@ body button:active, #settingOrPlus:active {
 }
 
 #createUserP3 #avatars p, #updateProfilePic #avatars p {
-  margin: none;
+  margin: auto;
   font-family: "Archivo", sans-serif;
   font-size: 16px;
   padding-bottom: 5px;
@@ -705,9 +705,9 @@ body button:active, #settingOrPlus:active {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 10px;
   width: 100%;
   margin: 25px 0;
@@ -721,6 +721,7 @@ body button:active, #settingOrPlus:active {
 }
 
 #createUserP3 #uploadProfilePic #fileToUpload, #updateProfilePic #uploadProfilePic #fileToUpload {
+  padding: 25px;
   width: 100%;
   margin: auto;
   font-family: "Mulish", sans-serif;
@@ -1067,6 +1068,8 @@ body button:active, #settingOrPlus:active {
   background-color: #0f0b2e;
   width: 100%;
   padding: 25px;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
 }
 
 #followContainer #usersWrapper {
@@ -1191,10 +1194,9 @@ body button:active, #settingOrPlus:active {
   z-index: 10000;
   width: 30px;
   height: 30px;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(63.8deg, #ef9d1a 10.76%, #fd047c 94.55%);
-  padding: 3px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 #profileWrapper {
@@ -1583,13 +1585,13 @@ body button:active, #settingOrPlus:active {
   overflow: hidden;
 }
 
-#changeProfilePicWindow div {
+#changeProfilePicWindow #profilePicFormDiv {
   width: 100%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   position: relative;
-  top: 20px;
+  top: 50px;
   overflow: hidden;
   padding: 25px;
 }
@@ -2511,6 +2513,7 @@ svg:active,
   -ms-grid-column-span: 3;
       grid-column-end: span 3;
   padding-top: 10px;
+  margin: auto;
 }
 
 .showMoreDiv button {

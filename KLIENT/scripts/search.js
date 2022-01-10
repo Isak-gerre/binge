@@ -568,7 +568,7 @@ async function searchFunction(searchBy) {
     let followText = document.createElement("p");
     followText.textContent = relationText;
 
-    followDiv.append(followImg, followText);
+    followDiv.append(followText, followImg);
 
     document.querySelector("#search-results").append(userDiv);
 

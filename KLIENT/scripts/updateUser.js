@@ -12,11 +12,9 @@ async function openSettings(userId) {
     }, 50);
 
     // Knapp som stänger fönstret
-    let closeTab = document.createElement('button');
+    let closeTab = document.createElement("div");
     closeTab.id = "closeTab";
-    let exit = document.createElement('img');
-    exit.src = "../icons/exit.svg";
-    closeTab.append(exit);
+    closeTab.style.backgroundImage = `url("../icons/exit.svg")`;
 
     // Snygg transition
     closeTab.addEventListener('click', () => {
@@ -227,12 +225,9 @@ function changeProfilePic(user) {
     }, 50);
 
     // Tillbaka-knapp som leder tillbaks till första settingsfönstret
-    let closeTab = document.createElement('button');
+    let closeTab = document.createElement("div");
     closeTab.id = "closeTab";
-
-    let back = document.createElement('img');
-    back.src = "../icons/back_2.svg";
-    closeTab.append(back);
+    closeTab.style.backgroundImage = `url("../icons/back_2.svg")`;
 
     closeTab.addEventListener('click', () => {
         let settingsWindow = document.getElementById('settingsWindow');
@@ -248,6 +243,7 @@ function changeProfilePic(user) {
 
     // Formulär för profilbild
     let formDiv = document.createElement('div');
+    formDiv.id = "profilePicFormDiv";
     let form = document.createElement('form');
     form.id = "updateProfilePic";
     form.method = "POST";
