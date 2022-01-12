@@ -68,17 +68,14 @@ document.querySelector("input[name=confirm_password]").addEventListener("keyup",
 
     if (value === check) {
         samePass = true;
+        document.querySelector("#createUserP1 div:nth-child(5) > label").textContent = "Confirm Password *";
         document.querySelector("input[name=confirm_password]").parentElement.removeAttribute("style");
         document.querySelector("input[name=confirm_password]").removeAttribute("style");
     }
     else {
         document.querySelector("input[name=confirm_password]").parentElement.style.border = "2px solid red";
-        document.querySelector("input[name=confirm_password]").placeholder = "Passwords do not match";
+        document.querySelector("#createUserP1 div:nth-child(5) > label").textContent = "Passwords do not match*";
         document.querySelector("input[name=confirm_password]").style.color = 'Red';
-        setTimeout(() => {
-            document.querySelector("input[name=confirm_password]").parentElement.removeAttribute("style");
-            document.querySelector("input[name=confirm_password]").removeAttribute("style");
-        }, 1000);
         samePass = false;
     }
 });

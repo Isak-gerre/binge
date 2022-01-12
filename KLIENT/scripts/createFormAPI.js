@@ -83,6 +83,14 @@ fetch(regionRQ)
     let providerArray = [];
     //Filtrerar baserat på vad du sökt
     filter.addEventListener("change", (e) => {
+      //Rensar fieldset varje gång man bytar land
+      if(document.getElementById("fieldSetProviders")){
+        document.getElementById("fieldSetProviders").innerHTML = "";
+      }
+      //Rensar filtreringen när man bytar region
+      if(document.querySelector("#createUserP2 > input")){
+        document.querySelector("#createUserP2 > input").value = "";
+      }
       //Gör en sökning efter varje provider från apin och laddar hem dem som är specifika till den regionen
       providerArray = [];
       // Ta bort API-nyckel, lägg den i APIn

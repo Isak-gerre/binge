@@ -12,28 +12,32 @@ document.getElementById("username1").addEventListener("keyup", () => {
   });
 
   fetch(userreq)
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      }
-      else {
-        throw new Error(response.json());
-      }
-    })
+    .then(response => response.json())
     .then(data => {
-      document.getElementById("username1").style.color = 'Green';
-      document.getElementById("username1").parentElement.style.border = "2px solid Green";
-      setTimeout(() => {
-        document.getElementById("username1").parentElement.removeAttribute("style");
-        document.getElementById("username1").removeAttribute("style");
-      }, 5000);
-    })
-    .catch(error => {
-      console.error(error);
-      document.getElementById("username1").style.color = 'Red';
-      document.getElementById("username1").parentElement.style.border = "2px solid red";
-    });
+      if(data.error != 0){
+        console.log(document.querySelector("#createUserP1 div:nth-child(3) > label"));
+        if (data.error == 1) {
+          document.querySelector("#createUserP1 div:nth-child(3) > label").textContent = "Username is already in use*";
+          document.getElementById("username1").style.color = 'Red';
+          document.getElementById("username1").parentElement.style.border = "2px solid red";
+        }
+        if (data.error == 2) {
+          document.querySelector("#createUserP1 div:nth-child(3) > label").textContent = "Username is too short*";
+          document.getElementById("username1").style.color = 'Red';
+          document.getElementById("username1").parentElement.style.border = "2px solid red";
+        } 
+      }
+      else{
+        document.querySelector("#createUserP1 div:nth-child(3) > label").textContent = "Username*";
+        document.getElementById("username1").style.color = 'Green';
+        document.getElementById("username1").parentElement.style.border = "2px solid Green";
+        setTimeout(() => {
+          document.getElementById("username1").parentElement.removeAttribute("style");
+          document.getElementById("username1").removeAttribute("style");
+        }, 5000);
+      }
 
+    })
 });
 
 let signUpForm = document.getElementById("signUpForm");

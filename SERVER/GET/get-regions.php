@@ -12,6 +12,7 @@ if($method != "GET"){
 $url = "http://api.themoviedb.org/3/watch/providers/regions?api_key=f5c0e0db147d0e6434391f3ff153b6a8";
 
 if(isset($_GET["watch_region"]) && $_GET["watch_region"] != ""){
+    $watch_region = $_GET["watch_region"];
     $url = "http://api.themoviedb.org/3/watch/providers/movie?watch_region=$watch_region&api_key=f5c0e0db147d0e6434391f3ff153b6a8";
 }
 
