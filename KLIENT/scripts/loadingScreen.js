@@ -5,7 +5,7 @@ function loadingScreen() {
 
   const loadingAnimaion = document.createElement("div");
   loadingAnimaion.id = "loadingAnimation";
-  loadingAnimaion.style.backgroundImage = "url('https://d.r101.wbsprt.com/bingy.se/logos/b-circle.svg')";
+  loadingAnimaion.style.backgroundImage = "url('icons/logos/b-circle.svg')";
 
   loadingScreen.append(loadingAnimaion);
 

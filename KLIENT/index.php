@@ -4,7 +4,7 @@ require "head.php";
 //Skapar formuläret för inlogg alternativt skapar konto 
 ?>
 <div id="startUpScreen">
-    <img id="logoStartUp" src="https://d.r101.wbsprt.com/bingy.se/logos/bingy-hela.svg">
+    <img id="logoStartUp" src="/logos/bingy-hela.svg">
 </div>
 
 <div class="previewWrapper">
@@ -40,7 +40,7 @@ require "head.php";
 </div>
 
 <form id="signUpForm" class="signInForm" action="index.php" method="POST">
-    <img class="backLogin" src="https://d.r101.wbsprt.com/bingy.se/icons/back_2.svg" />
+    <img class="backLogin" src="/icons/back_2.svg" />
     <div id="signUp">
         <h1>Sign Up</h1>
     </div>
@@ -85,35 +85,35 @@ require "head.php";
             <p>Choose an avatar</p>
             <label class="profileImgSelected">
                 <input style="display:none" name="profileImg" id="profileImg1" type="radio" value="profileImg1" checked>
-                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_1.png" width="100" height="100" alt="">
+                <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_1.png" width="100" height="100" alt="">
             </label>
             <label>
                 <input style="display:none" name="profileImg" id="profileImg2" type="radio" value="profileImg2">
-                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_2.png" width="100" height="100" alt="">
+                <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_2.png" width="100" height="100" alt="">
             </label>
             <label>
                 <input style="display:none" name="profileImg" id="profileImg3" type="radio" value="profileImg3">
-                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_3.png" width="100" height="100" alt="">
+                <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_3.png" width="100" height="100" alt="">
             </label>
             <label>
                 <input style="display:none" name="profileImg" id="profileImg4" type="radio" value="profileImg4">
-                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_4.png" width="100" height="100" alt="">
+                <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_4.png" width="100" height="100" alt="">
             </label>
             <label>
                 <input style="display:none" name="profileImg" id="profileImg1" type="radio" value="profileImg5">
-                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_5.png" width="100" height="100" alt="">
+                <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_5.png" width="100" height="100" alt="">
             </label>
             <label>
                 <input style="display:none" name="profileImg" id="profileImg2" type="radio" value="profileImg6">
-                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_6.png" width="100" height="100" alt="">
+                <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_6.png" width="100" height="100" alt="">
             </label>
             <label>
                 <input style="display:none" name="profileImg" id="profileImg3" type="radio" value="profileImg7">
-                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_7.png" width="100" height="100" alt="">
+                <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_7.png" width="100" height="100" alt="">
             </label>
             <label>
                 <input style="display:none" name="profileImg" id="profileImg4" type="radio" value="profileImg8">
-                <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_8.png" width="100" height="100" alt="">
+                <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_8.png" width="100" height="100" alt="">
             </label>
         </div>
         <div id="uploadProfilePic">

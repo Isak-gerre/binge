@@ -14,9 +14,9 @@ function makeUpperNav() {
 
   let ifMovieProfile = getParamFromUrl("movieID") ? "display: none;" : "";
   //content
-  navMiddle.innerHTML = `<img src='https://d.r101.wbsprt.com/bingy.se/icons/back.svg' class ='navImg back' alt='Back'>`;
-  navMiddle.innerHTML += `<img src='https://d.r101.wbsprt.com/bingy.se/logos/b-circle.svg' class ='navImg logo' alt='Logo' style="${ifMovieProfile}">`;
-  navMiddle.innerHTML += `<img src='https://d.r101.wbsprt.com/bingy.se/icons/hamburger.svg' class ='navImg hamburger' alt='Home'>`;
+  navMiddle.innerHTML = `<img src='/icons/back.svg' class ='navImg back' alt='Back'>`;
+  navMiddle.innerHTML += `<img src='/logos/b-circle.svg' class ='navImg logo' alt='Logo' style="${ifMovieProfile}">`;
+  navMiddle.innerHTML += `<img src='/icons/hamburger.svg' class ='navImg hamburger' alt='Home'>`;
   //append
   upperNav.append(navMiddle);
   document.body.prepend(upperNav);
@@ -67,7 +67,7 @@ makeUpperNav();
 function makeLowerNav() {
   let navRight = document.createElement("div");
   let searchImg = document.createElement("img");
-  searchImg.src = `https://d.r101.wbsprt.com/bingy.se/icons/search.svg`;
+  searchImg.src = `/icons/search.svg`;
   navRight.className = "navRight";
   searchImg.className = "navImg";
 
@@ -89,9 +89,9 @@ function makeLowerNav() {
   lowerNavRight.className = "lowerNavRight";
 
   //content
-  lowerNavLeft.innerHTML = `<img class="navImg" src="https://d.r101.wbsprt.com/bingy.se/icons/home.svg" alt="Home">`;
-  lowerNavMiddle.innerHTML = `<img class="navImg" src=" https://d.r101.wbsprt.com/bingy.se/icons/explore.svg" alt="Explore">`;
-  lowerNavRight.innerHTML = `<img class="navImg" src="https://d.r101.wbsprt.com/bingy.se/icons/profile.svg" alt="Profile">`;
+  lowerNavLeft.innerHTML = `<img class="navImg" src="/icons/home.svg" alt="Home">`;
+  lowerNavMiddle.innerHTML = `<img class="navImg" src=" /icons/explore.svg" alt="Explore">`;
+  lowerNavRight.innerHTML = `<img class="navImg" src="/icons/profile.svg" alt="Profile">`;
   searchImg.addEventListener("click", () => {
     if (document.querySelector(".search-container") == null) {
       document.body.style.overflow = "hidden";
@@ -132,7 +132,7 @@ function makeLowerNav() {
       }
       document
         .querySelector(".back")
-        .setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/back.svg alt='Back'");
+        .setAttribute("src", "/icons/back.svg alt='Back'");
       document.querySelector(".search-container").style.animation = "removeSearchBar 0.2s ease-out";
       setTimeout(() => {
         document.querySelector(".search-container").remove();
@@ -222,14 +222,14 @@ async function makeHamburgerMenu() {
 
     logout.addEventListener("click", () => {
       sessionStorage.clear();
-      window.location.replace("https://d.r101.wbsprt.com/bingy.se/index.php");
+      window.location.replace("/index.php");
     });
 
     let tmdb = document.createElement("div");
     tmdb.className = "tmdb";
 
     let tmdbLogo = document.createElement("img");
-    tmdbLogo.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/tmdb.svg");
+    tmdbLogo.setAttribute("src", "/icons/tmdb.svg");
     tmdbLogo.classList.add("tmdbLogo");
     tmdbLogo.textContent = "tmdbLogo";
 
@@ -243,7 +243,7 @@ async function makeHamburgerMenu() {
     git.classList.add("git");
 
     let gitLogo = document.createElement("img");
-    gitLogo.setAttribute("src", "https://d.r101.wbsprt.com/bingy.se/icons/github.svg");
+    gitLogo.setAttribute("src", "/icons/github.svg");
     gitLogo.classList.add("gitLogo");
     gitLogo.textContent = "gitLogo";
 

@@ -4,7 +4,7 @@ function getProviders() {
   let titleProviders = document.createElement("p");
   titleProviders.textContent = "Change your region and streaming providers";
   // Ta bort API-nyckel, lägg den i APIn
-  let regionRQ = new Request("https://d.r101.wbsprt.com/api.bingy.se/GET/get-regions.php");
+  let regionRQ = new Request("https://api.bingy.se/GET/get-regions.php");
   //Hämtar hem alla regions
   fetch(regionRQ)
     .then((response) => response.json())
@@ -50,7 +50,7 @@ function getProviders() {
         providerArray = [];
         // Ta bort API-nyckel, lägg den i APIn
         const response = await fetch(
-          `https://d.r101.wbsprt.com/api.bingy.se/GET/get-regions.php?watch_region=${filter.value}`
+          `https://api.bingy.se/GET/get-regions.php?watch_region=${filter.value}`
         );
         const data = await response.json();
 
@@ -129,7 +129,7 @@ function getProviders() {
       let userSession = sessionStorage.getItem("session");
       let id = JSON.parse(userSession).session.userID;
 
-      let userInfo = new Request(`https://d.r101.wbsprt.com/api.bingy.se/GET/get-users.php?ids=${id}`);
+      let userInfo = new Request(`https://api.bingy.se/GET/get-users.php?ids=${id}`);
 
       fetch(userInfo)
         .then((res) => res.json())

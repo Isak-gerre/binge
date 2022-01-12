@@ -14,7 +14,7 @@ async function openSettings(userId) {
   // Knapp som stänger fönstret
   let closeTab = document.createElement("div");
   closeTab.id = "closeTab";
-  closeTab.style.backgroundImage = `url("https://d.r101.wbsprt.com/bingy.se/icons/exit.svg")`;
+  closeTab.style.backgroundImage = `url("/icons/exit.svg")`;
 
   // Snygg transition
   closeTab.addEventListener("click", () => {
@@ -29,10 +29,10 @@ async function openSettings(userId) {
   changeProfilePicContainer.id = "settingsChangePic";
 
   let profilePicture = document.createElement("div");
-  profilePicture.style.backgroundImage = `url("https://d.r101.wbsprt.com/api.bingy.se/${user.profile_picture.filepath}")`;
+  profilePicture.style.backgroundImage = `url("https://api.bingy.se/${user.profile_picture.filepath}")`;
   let changePicDiv = document.createElement("div");
   let changePicIcon = document.createElement("img");
-  changePicIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/edit.svg";
+  changePicIcon.src = "/icons/edit.svg";
 
   changePicDiv.append(changePicIcon);
   changeProfilePicContainer.append(profilePicture, changePicDiv);
@@ -49,7 +49,7 @@ async function openSettings(userId) {
     // Jämför avatarer med nuvarande profilbild
     allAvatars.forEach((avatar) => {
       let avatarFilepath = avatar.childNodes[3].src.replace(
-        "https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/",
+        "https://api.bingy.se/DATABASE/IMAGES/AVATAR/",
         ""
       );
 
@@ -178,7 +178,7 @@ async function openSettings(userId) {
         formData.append("active_streaming_services[]", array[i]);
       }
 
-      const reqChangeUser = new Request("https://d.r101.wbsprt.com/api.bingy.se/POST/update-user.php", {
+      const reqChangeUser = new Request("https://api.bingy.se/POST/update-user.php", {
         method: "POST",
         body: formData,
       });
@@ -227,7 +227,7 @@ function changeProfilePic(user) {
   // Tillbaka-knapp som leder tillbaks till första settingsfönstret
   let closeTab = document.createElement("div");
   closeTab.id = "closeTab";
-  closeTab.style.backgroundImage = `url("https://d.r101.wbsprt.com/bingy.se/icons/back_2.svg")`;
+  closeTab.style.backgroundImage = `url("/icons/back_2.svg")`;
 
   closeTab.addEventListener("click", () => {
     let settingsWindow = document.getElementById("settingsWindow");
@@ -255,35 +255,35 @@ function changeProfilePic(user) {
         <p>Change avatar</p>
         <label>
             <input style="display:none" name="profileImg" id="profileImg1" type="radio" value="profileImg1">
-            <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_1.png" width="100" height="100" alt="">
+            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_1.png" width="100" height="100" alt="">
         </label>
         <label>
             <input style="display:none" name="profileImg" id="profileImg2" type="radio" value="profileImg2">
-            <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_2.png" width="100" height="100" alt="">
+            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_2.png" width="100" height="100" alt="">
         </label>
         <label>
             <input style="display:none" name="profileImg" id="profileImg3" type="radio" value="profileImg3">
-            <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_3.png" width="100" height="100" alt="">
+            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_3.png" width="100" height="100" alt="">
         </label>
         <label>
             <input style="display:none" name="profileImg" id="profileImg4" type="radio" value="profileImg4">
-            <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_4.png" width="100" height="100" alt="">
+            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_4.png" width="100" height="100" alt="">
         </label>
         <label>
             <input style="display:none" name="profileImg" id="profileImg5" type="radio" value="profileImg5">
-            <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_5.png" width="100" height="100" alt="">
+            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_5.png" width="100" height="100" alt="">
         </label>
         <label>
             <input style="display:none" name="profileImg" id="profileImg6" type="radio" value="profileImg6">
-            <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_6.png" width="100" height="100" alt="">
+            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_6.png" width="100" height="100" alt="">
         </label>
         <label>
             <input style="display:none" name="profileImg" id="profileImg7" type="radio" value="profileImg7">
-            <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_7.png" width="100" height="100" alt="">
+            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_7.png" width="100" height="100" alt="">
         </label>
         <label>
             <input style="display:none" name="profileImg" id="profileImg8" type="radio" value="profileImg8">
-            <img src="https://d.r101.wbsprt.com/api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_8.png" width="100" height="100" alt="">
+            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_8.png" width="100" height="100" alt="">
         </label>
     </div>
     <div id="uploadProfilePic">
@@ -319,7 +319,7 @@ function changeProfilePic(user) {
 
 // Skickar formData om profilbild till servern som uppdaterar information
 async function patchProfilePic(data) {
-  const request = new Request("https://d.r101.wbsprt.com/api.bingy.se/POST/post-profile-picture.php", {
+  const request = new Request("https://api.bingy.se/POST/post-profile-picture.php", {
     method: "POST",
     body: data,
   });
@@ -334,10 +334,10 @@ async function patchProfilePic(data) {
     // Uppdaterar profilbild på profilsida och i settings
     document.querySelector(
       "#profilePic"
-    ).style.backgroundImage = `url("https://d.r101.wbsprt.com/api.bingy.se/${json.filePath}")`;
+    ).style.backgroundImage = `url("https://api.bingy.se/${json.filePath}")`;
     document.querySelector(
       "#settingsChangePic div"
-    ).style.backgroundImage = `url("https://d.r101.wbsprt.com/api.bingy.se/${json.filePath}")`;
+    ).style.backgroundImage = `url("https://api.bingy.se/${json.filePath}")`;
   } else if (response.status == 406) {
     responseDiv("You're profile picture can't override 4Mb.");
   } else if (response.status == 400) {
@@ -347,7 +347,7 @@ async function patchProfilePic(data) {
 
 async function deleteAccount(userId) {
   const response = await fetch(
-    new Request("https://d.r101.wbsprt.com/api.bingy.se/DELETE/delete-user.php", {
+    new Request("https://api.bingy.se/DELETE/delete-user.php", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -374,7 +374,7 @@ function responseDiv(message) {
 function errorInput(inputField, message) {
   let errorIcon = document.createElement("img");
   errorIcon.id = "errorIcon";
-  errorIcon.src = "https://d.r101.wbsprt.com/bingy.se/icons/error_white_24dp.svg";
+  errorIcon.src = "/icons/error_white_24dp.svg";
 
   errorIcon.addEventListener("click", (event) => {
     event.stopPropagation();

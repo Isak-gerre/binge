@@ -83,7 +83,7 @@ form.addEventListener("submit", (event) => {
       object[key] = value;
     }
 
-    const req2 = new Request("https://d.r101.wbsprt.com/api.bingy.se/POST/log-in-verification.php", {
+    const req2 = new Request("https://api.bingy.se/POST/log-in-verification.php", {
       method: "POST",
       body: formData,
     });
@@ -98,7 +98,7 @@ form.addEventListener("submit", (event) => {
       })
       .then((data) => {
         saveToSession(data, "session");
-        window.location.replace("https://d.r101.wbsprt.com/bingy.se/feed.php");
+        window.location.replace("/feed.php");
       })
       .catch((error) => {
         document.getElementById("errorDiv").innerHTML = "Wrong combination of username and password";
