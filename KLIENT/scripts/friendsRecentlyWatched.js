@@ -46,7 +46,7 @@ async function getFriendsRecentlyWatched(movieID, user) {
 
   let profileImage = document.createElement("div");
   profileImage.className = "profile-image";
-  profileImage.style.backgroundImage = `url(https://api.bingy.se/${userInfo.profile_picture.filepath})`;
+  profileImage.style.backgroundImage = `url(${urlAPI}/${userInfo.profile_picture.filepath})`;
 
   let profileName = document.createElement("p");
   profileName.className = "profile-name";

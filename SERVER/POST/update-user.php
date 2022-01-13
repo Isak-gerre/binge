@@ -57,7 +57,7 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
     ];
     sendJSON($message);
 } else {
-    
+
     // Changes your own profile, firstname, lastname, username, email, birthday, location, bio, streaming services 
     $userID = $_POST["id"];
     $executing = false;
@@ -76,7 +76,7 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
 
 
             $alreadyTaken = alreadyTaken($users, "email", $email);
-    
+
             // Kollar om email redan är taget
             if ($alreadyTaken) {
                 $message["email"] = "Email already taken";
@@ -85,7 +85,7 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
             }
 
             // Kollar så att emailen innehåller "@" och "."
-            if (strpos($email, "@") == false or strpos($email, ".") == false ) {  
+            if (strpos($email, "@") == false or strpos($email, ".") == false) {
                 $message["emailError"] = "Email has to contain ''@'' and ''.''";
                 $executing = false;
                 $nothingChanged = false;
@@ -100,30 +100,30 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
         $message["email"] = "Email's emty";
     }
 
-    // Om BIRTHDAY är ifyllt och inte tomt
-    if (isset($_POST["birthday"]) && $_POST["birthday"] !== "") {
-        $birthday = $_POST["birthday"];
-        
-        if ( $birthday !== $users[$userID]["birthday"] ) {
-            $executing = true;
-            $nothingChanged = false;
-            
-            $birthdayInteger = intval($birthday);
-            
-            // Kollar så att det är ett rimligt år
-            if ($birthdayInteger < 1850 || $birthdayInteger > 2015) {
-                $message["birthdayError"] = "Insert a valid birthday";
-                $executing = false;
-            }
-            // Om inget fel upptäckts så ändra vi nyckeln
-            if ($executing) {
-                $users[$userID]["birthday"] = $_POST["birthday"];
-                $message["birthday"] = "You succeded changing your birthday";
-            }
-        }
-    } else {
-        $message["birthday"] = "Birthday's emty";
-    }
+    // // Om BIRTHDAY är ifyllt och inte tomt
+    // if (isset($_POST["birthday"]) && $_POST["birthday"] !== "") {
+    //     $birthday = $_POST["birthday"];
+
+    //     if ( $birthday !== $users[$userID]["birthday"] ) {
+    //         $executing = true;
+    //         $nothingChanged = false;
+
+    //         $birthdayInteger = intval($birthday);
+
+    //         // Kollar så att det är ett rimligt år
+    //         if ($birthdayInteger < 1850 || $birthdayInteger > 2015) {
+    //             $message["birthdayError"] = "Insert a valid birthday";
+    //             $executing = false;
+    //         }
+    //         // Om inget fel upptäckts så ändra vi nyckeln
+    //         if ($executing) {
+    //             $users[$userID]["birthday"] = $_POST["birthday"];
+    //             $message["birthday"] = "You succeded changing your birthday";
+    //         }
+    //     }
+    // } else {
+    //     $message["birthday"] = "Birthday's emty";
+    // }
 
     // Om FIRSTNAME är ifyllt och inte tomt
     if (isset($_POST["firstname"]) && $_POST["firstname"] !== "") {
@@ -145,7 +145,7 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
 
             $users[$userID]["lastname"] = $_POST["lastname"];
             $message["lastname"] = "You succeded changing your lastname";
-        } 
+        }
     } else {
         $message["lastname"] = "Lastname's empty";
     }
@@ -165,8 +165,8 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
 
     // Om PASSWORD är ifyllt och inte tomt
     if (isset($_POST["old_password"]) && $_POST["old_password"] !== "") {
-        if(password_verify($_POST["old_password"], $users[$userID]["password"])){
-            if(strlen($_POST["password"]) < 8){
+        if (password_verify($_POST["old_password"], $users[$userID]["password"])) {
+            if (strlen($_POST["password"]) < 8) {
                 sendJSON(["message" => "Passwords needs to be atleast 8 characters"], 409);
             }
             if ($_POST["password"] != $_POST["confirm_password"]) {
@@ -174,20 +174,18 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
             } else {
                 //Hashar lösenordet
                 $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                
+
                 $executing = true;
                 $nothingChanged = false;
 
                 $users[$userID]["password"] = $hashedPassword;
                 $message["password"] = "You succeded changing your password";
             }
-        }
-        else{
+        } else {
             $nothingChanged = false;
             sendJSON(["message" => "Wrong Password"], 409);
         }
-    } 
-    else {  
+    } else {
         $message["password"] = "Password's Empty";
     }
 

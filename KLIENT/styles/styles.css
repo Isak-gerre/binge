@@ -1213,7 +1213,7 @@ body button:active,
   position: absolute;
   z-index: 10000;
   width: 30px;
-  height: 30px;
+  height: 20px;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -1601,16 +1601,16 @@ body button:active,
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   gap: 10px;
   background-image: url("../icons/background-m-profile.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   overflow: scroll;
-  padding-bottom: 150px;
+  margin-bottom: 150px;
 }
 
 #changeProfilePicWindow #profilePicFormDiv {

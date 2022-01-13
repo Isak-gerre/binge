@@ -1,7 +1,7 @@
 "use strict";
 
 // Ta bort API-nyckel, lägg den i APIn
-let regionRQ = new Request("https://api.bingy.se/GET/get-regions.php");
+let regionRQ = new Request(`${urlAPI}/GET/get-regions.php`);
 //Hämtar hem alla regions
 fetch(regionRQ)
   .then((response) => response.json())
@@ -93,7 +93,7 @@ fetch(regionRQ)
       providerArray = [];
       // Ta bort API-nyckel, lägg den i APIn
       const provider = new Request(
-        `https://api.bingy.se/GET/get-regions.php?watch_region=${filter.value}`
+        `${urlAPI}/GET/get-regions.php?watch_region=${filter.value}`
       );
       fetch(provider)
         .then((response) => response.json())

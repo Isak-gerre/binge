@@ -288,7 +288,7 @@ async function makeMovieProfile(movieID) {
 
   async function getActivityByMovieID(movieID) {
     try {
-      let response = await fetch(`https://api.bingy.se/GET/get-activities.php?movieID=${movieID}`);
+      let response = await fetch(`${urlAPI}/GET/get-activities.php?movieID=${movieID}`);
       let data = await response.json();
       return data;
     } catch (error) {

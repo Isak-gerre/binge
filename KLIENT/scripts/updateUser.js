@@ -29,7 +29,7 @@ async function openSettings(userId) {
   changeProfilePicContainer.id = "settingsChangePic";
 
   let profilePicture = document.createElement("div");
-  profilePicture.style.backgroundImage = `url("https://api.bingy.se/${user.profile_picture.filepath}")`;
+  profilePicture.style.backgroundImage = `url("${urlAPI}/${user.profile_picture.filepath}")`;
   let changePicDiv = document.createElement("div");
   let changePicIcon = document.createElement("img");
   changePicIcon.src = "/icons/edit.svg";
@@ -48,10 +48,7 @@ async function openSettings(userId) {
 
     // Jämför avatarer med nuvarande profilbild
     allAvatars.forEach((avatar) => {
-      let avatarFilepath = avatar.childNodes[3].src.replace(
-        "https://api.bingy.se/DATABASE/IMAGES/AVATAR/",
-        ""
-      );
+      let avatarFilepath = avatar.childNodes[3].src.replace(`${urlAPI}/DATABASE/IMAGES/AVATAR/`, "");
 
       // Om nuvarande profilbild är densamma som avatar så ska avataren markeras som selected
       if (avatarFilepath == profilePicFilepath) {
@@ -87,10 +84,6 @@ async function openSettings(userId) {
         <div id="input" class="emailInput">
             <label>Email</label>
             <input class="signInInput" type="text" name="email" placeholder="Email">
-        </div>
-        <div id="input" class="birthdayInput">
-            <label>Birthday</label>
-            <input class="signInInput" type="date" name="birthday" placeholder="Birthday">
         </div>
     </fieldset>
     <fieldset id="providersForm"></fieldset>
@@ -178,7 +171,7 @@ async function openSettings(userId) {
         formData.append("active_streaming_services[]", array[i]);
       }
 
-      const reqChangeUser = new Request("https://api.bingy.se/POST/update-user.php", {
+      const reqChangeUser = new Request(`${urlAPI}/POST/update-user.php`, {
         method: "POST",
         body: formData,
       });
@@ -201,10 +194,6 @@ async function openSettings(userId) {
             let emailInput = document.querySelector(".emailInput");
 
             errorInput(emailInput, "Please enter a valid email");
-          } else if ("birthdayError" in data) {
-            let birthdayInput = document.querySelector(".birthdayInput");
-
-            errorInput(birthdayInput, "Please enter a valid date");
           } else {
             responseDiv("Your profile was updated!");
           }
@@ -255,35 +244,35 @@ function changeProfilePic(user) {
         <p>Change avatar</p>
         <label>
             <input style="display:none" name="profileImg" id="profileImg1" type="radio" value="profileImg1">
-            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_1.png" width="100" height="100" alt="">
+            <img src="${urlAPI}/DATABASE/IMAGES/AVATAR/avatar_1.png" width="100" height="100" alt="">
         </label>
         <label>
             <input style="display:none" name="profileImg" id="profileImg2" type="radio" value="profileImg2">
-            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_2.png" width="100" height="100" alt="">
+            <img src="${urlAPI}/DATABASE/IMAGES/AVATAR/avatar_2.png" width="100" height="100" alt="">
         </label>
         <label>
             <input style="display:none" name="profileImg" id="profileImg3" type="radio" value="profileImg3">
-            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_3.png" width="100" height="100" alt="">
+            <img src="${urlAPI}/DATABASE/IMAGES/AVATAR/avatar_3.png" width="100" height="100" alt="">
         </label>
         <label>
             <input style="display:none" name="profileImg" id="profileImg4" type="radio" value="profileImg4">
-            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_4.png" width="100" height="100" alt="">
+            <img src="${urlAPI}/DATABASE/IMAGES/AVATAR/avatar_4.png" width="100" height="100" alt="">
         </label>
         <label>
             <input style="display:none" name="profileImg" id="profileImg5" type="radio" value="profileImg5">
-            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_5.png" width="100" height="100" alt="">
+            <img src="${urlAPI}/DATABASE/IMAGES/AVATAR/avatar_5.png" width="100" height="100" alt="">
         </label>
         <label>
             <input style="display:none" name="profileImg" id="profileImg6" type="radio" value="profileImg6">
-            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_6.png" width="100" height="100" alt="">
+            <img src="${urlAPI}/DATABASE/IMAGES/AVATAR/avatar_6.png" width="100" height="100" alt="">
         </label>
         <label>
             <input style="display:none" name="profileImg" id="profileImg7" type="radio" value="profileImg7">
-            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_7.png" width="100" height="100" alt="">
+            <img src="${urlAPI}/DATABASE/IMAGES/AVATAR/avatar_7.png" width="100" height="100" alt="">
         </label>
         <label>
             <input style="display:none" name="profileImg" id="profileImg8" type="radio" value="profileImg8">
-            <img src="https://api.bingy.se/DATABASE/IMAGES/AVATAR/avatar_8.png" width="100" height="100" alt="">
+            <img src="${urlAPI}/DATABASE/IMAGES/AVATAR/avatar_8.png" width="100" height="100" alt="">
         </label>
     </div>
     <div id="uploadProfilePic">
@@ -319,7 +308,7 @@ function changeProfilePic(user) {
 
 // Skickar formData om profilbild till servern som uppdaterar information
 async function patchProfilePic(data) {
-  const request = new Request("https://api.bingy.se/POST/post-profile-picture.php", {
+  const request = new Request(`${urlAPI}/POST/post-profile-picture.php`, {
     method: "POST",
     body: data,
   });
@@ -332,12 +321,8 @@ async function patchProfilePic(data) {
     responseDiv("Your profile picture was updated");
 
     // Uppdaterar profilbild på profilsida och i settings
-    document.querySelector(
-      "#profilePic"
-    ).style.backgroundImage = `url("https://api.bingy.se/${json.filePath}")`;
-    document.querySelector(
-      "#settingsChangePic div"
-    ).style.backgroundImage = `url("https://api.bingy.se/${json.filePath}")`;
+    document.querySelector("#profilePic").style.backgroundImage = `url("${urlAPI}/${json.filePath}")`;
+    document.querySelector("#settingsChangePic div").style.backgroundImage = `url("${urlAPI}/${json.filePath}")`;
   } else if (response.status == 406) {
     responseDiv("You're profile picture can't override 4Mb.");
   } else if (response.status == 400) {
@@ -347,7 +332,7 @@ async function patchProfilePic(data) {
 
 async function deleteAccount(userId) {
   const response = await fetch(
-    new Request("https://api.bingy.se/DELETE/delete-user.php", {
+    new Request(`${urlAPI}/DELETE/delete-user.php`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

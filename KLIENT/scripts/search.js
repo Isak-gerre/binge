@@ -216,10 +216,12 @@ async function searchFunction(searchBy) {
     searchResults.forEach(async function (result) {
       addToMovies(result);
       let movieElement = makeMovieBannerFromMovie(result);
-      movieElement.setAttribute("name", result.title);
-      movieElement.setAttribute("actor", result.actor);
-      movieElement.classList.add("trending");
-      document.querySelector("#search-results").append(movieElement);
+      if (result["poster_path"] != null && result["backdrop_path"] != null) {
+        movieElement.setAttribute("name", result.title);
+        movieElement.setAttribute("actor", result.actor);
+        movieElement.classList.add("trending");
+        document.querySelector("#search-results").append(movieElement);
+      }
     });
 
     if (!document.getElementById("show-more-btn")) {
@@ -263,8 +265,10 @@ async function searchFunction(searchBy) {
       searchResults.results.forEach(async function (result) {
         addToMovies(result);
         let movieElement = makeMovieBannerFromMovie(result);
-        movieElement.setAttribute("name", result.title);
-        document.querySelector("#search-results").append(movieElement);
+        if (result["poster_path"] != null && result["backdrop_path"] != null) {
+          movieElement.setAttribute("name", result.title);
+          document.querySelector("#search-results").append(movieElement);
+        }
       });
 
       if (document.getElementById("show-more-btn-title")) {
@@ -321,8 +325,10 @@ async function searchFunction(searchBy) {
 
         for (let i = page - 1; i <= page + 19; i++) {
           let movieElement = makeMovieBannerFromMovie(searchResults[i]);
-          movieElement.setAttribute("genre", inputValue);
-          document.querySelector("#search-results").append(movieElement);
+          if (searchResults[i]["poster_path"] != null && searchResults[i]["backdrop_path"] != null) {
+            movieElement.setAttribute("genre", inputValue);
+            document.querySelector("#search-results").append(movieElement);
+          }
 
           let lastSearch = searchResults.length - 1;
           if (i == lastSearch) {
@@ -394,13 +400,15 @@ async function searchFunction(searchBy) {
         ) {
           result["known_for"].forEach((movie) => {
             if (!movie.adult) {
-              movie.actor = result.name;
-              addToMovies(movie, true);
+              if (movie["poster_path"] != null && movie["backdrop_path"] != null) {
+                movie.actor = result.name;
+                addToMovies(movie, true);
 
-              let movieElement = makeMovieBannerFromMovie(movie);
-              movieElement.setAttribute("name", movie.title);
-              movieElement.setAttribute("actor", movie.actor);
-              document.querySelector("#search-results").append(movieElement);
+                let movieElement = makeMovieBannerFromMovie(movie);
+                movieElement.setAttribute("name", movie.title);
+                movieElement.setAttribute("actor", movie.actor);
+                document.querySelector("#search-results").append(movieElement);
+              }
             }
           });
         }
@@ -534,7 +542,7 @@ async function searchFunction(searchBy) {
 
     let userImage = document.createElement("div");
     userImage.className = "userImage";
-    userImage.style.backgroundImage = `url('https://api.bingy.se/${user["profile_picture"].filepath}')`;
+    userImage.style.backgroundImage = `url('${urlAPI}/${user["profile_picture"].filepath}')`;
     userImage.addEventListener("click", () => {
       window.location.href = `/profile.php?userID=${user.id}`;
     });

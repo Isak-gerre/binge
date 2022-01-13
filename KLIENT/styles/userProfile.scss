@@ -177,7 +177,7 @@
   position: absolute;
   z-index: 10000;
   width: $iconButtonSz;
-  height: $iconButtonSz;
+  height: 20px;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -414,7 +414,7 @@
 #changeProfilePicWindow {
   @include transitionFromLeft();
   top: 0;
-  @include flex(column, flex-start, center);
+  @include flex(column, flex-start, flex-start);
   gap: $betweenPadding;
 
   background-image: url("../icons/background-m-profile.png");
@@ -423,7 +423,7 @@
   background-repeat: no-repeat;
 
   overflow: scroll;
-  padding-bottom: 150px;
+  margin-bottom: 150px;
 
   #profilePicFormDiv {
     width: 100%;

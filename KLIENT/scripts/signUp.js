@@ -6,7 +6,7 @@ document.getElementById("username1").addEventListener("keyup", () => {
 
   let json = JSON.stringify(userexists);
 
-  const userreq = new Request("https://api.bingy.se/POST/check-user-exists.php", {
+  const userreq = new Request(`${urlAPI}/POST/check-user-exists.php`, {
     method: "POST",
     body: json,
   });
@@ -64,7 +64,7 @@ signUpForm.addEventListener("submit", (event) => {
     formData.set("fileToUpload", image);
   }
 
-  const req = new Request("https://api.bingy.se/POST/create-user.php", {
+  const req = new Request(`${urlAPI}/POST/create-user.php`, {
     method: "POST",
     body: formData,
   });

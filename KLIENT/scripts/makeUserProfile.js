@@ -157,7 +157,7 @@ async function createProfileHeader(user, isFollowing, settings = null) {
   }
 
   // vi behöver ett url här va
-  proPicCont.style.backgroundImage = `url("https://api.bingy.se/${user.profile_picture.filepath}")`;
+  proPicCont.style.backgroundImage = `url("${urlAPI}/${user.profile_picture.filepath}")`;
   proPicCont.style.backgroundSize = "cover";
 
   let followers = user.followers;
@@ -308,7 +308,7 @@ async function showUsers(userId, type) {
 
     let userProfilePic = document.createElement("div");
     userProfilePic.className = "userProfilePic";
-    userProfilePic.style.backgroundImage = `url('https://api.bingy.se/${user.profile_picture.filepath}')`;
+    userProfilePic.style.backgroundImage = `url('${urlAPI}/${user.profile_picture.filepath}')`;
     userProfilePic.style.backgroundSize = "cover";
 
     username.addEventListener("click", () => {

@@ -1,7 +1,18 @@
 "use strict";
 
+const urlAPI = "https://api.bingy.se";
+const url = "https://bingy.se";
+
+async function checkHTTP() {
+  if (!window.location.href.includes("https")) {
+    sessionStorage.clear();
+    window.location.href = url;
+  }
+}
+checkHTTP();
+
 async function checkServerState() {
-  let response = await fetch(`https://api.bingy.se/GET/database_check.php`);
+  let response = await fetch(`${urlAPI}/GET/database_check.php`);
   if (response.status != 200 && !window.location.href.includes("/error.php?error=1")) {
     window.location.href = "/error.php?error=1";
   }
@@ -101,9 +112,7 @@ async function userVarification() {
   let userID = userSession.userID;
   let sessionID = userSession.sessionID;
   try {
-    let response = await fetch(
-      `https://api.bingy.se/GET/get-users.php?sessionID=${sessionID}&userID=${userID}`
-    );
+    let response = await fetch(`${urlAPI}/GET/get-users.php?sessionID=${sessionID}&userID=${userID}`);
     let data = await response.json();
     if (data.ok) {
       return true;
@@ -158,7 +167,7 @@ function addToMovies(movie, update = false) {
   }
 }
 async function saveMultipleMovies(array) {
-  let fetches = array.map((id) => fetch(`https://api.bingy.se/GET/get-movie-info.php?movieID=${id}`));
+  let fetches = array.map((id) => fetch(`${urlAPI}/GET/get-movie-info.php?movieID=${id}`));
   const resultArray = await Promise.all(fetches);
   resultArray.map(async function (resp) {
     let movie = await resp.json();
@@ -201,7 +210,7 @@ async function getMovieInfo(movieID) {
       return { message: savedMovie };
     }
     try {
-      let response = await fetch(`https://api.bingy.se/GET/get-movie-info.php?movieID=${movieID}`);
+      let response = await fetch(`${urlAPI}/GET/get-movie-info.php?movieID=${movieID}`);
       let data = await response.json();
       addToMovies(data.message, "movies");
       return data;
@@ -215,7 +224,7 @@ async function getMovieInfo(movieID) {
 async function getSearchResults(searchType, query, page = 1) {
   try {
     let response = await fetch(
-      `https://api.bingy.se/GET/get-search-results.php?searchtype=${searchType}&query=${query}&page=${page}`
+      `${urlAPI}/GET/get-search-results.php?searchtype=${searchType}&query=${query}&page=${page}`
     );
     let data = await response.json();
     return data;
@@ -226,7 +235,7 @@ async function getSearchResults(searchType, query, page = 1) {
 
 async function getProviders() {
   try {
-    let response = await fetch(`https://api.bingy.se/GET/get-watch-providers.php`);
+    let response = await fetch(`${urlAPI}/GET/get-watch-providers.php`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -236,7 +245,7 @@ async function getProviders() {
 
 async function getGenres() {
   try {
-    let response = await fetch(`https://api.bingy.se/GET/get-genres.php`);
+    let response = await fetch(`${urlAPI}/GET/get-genres.php`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -246,7 +255,7 @@ async function getGenres() {
 
 async function getMoviesByGenre(genre) {
   try {
-    let response = await fetch(`https://api.bingy.se/GET/get-movies-by-genre.php?genre=${genre}`);
+    let response = await fetch(`${urlAPI}/GET/get-movies-by-genre.php?genre=${genre}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -256,9 +265,7 @@ async function getMoviesByGenre(genre) {
 
 async function searchResultsByGenre(genre) {
   try {
-    let response = await fetch(
-      `https://api.bingy.se/GET/get-search-results-genres.php?genre=${genre}`
-    );
+    let response = await fetch(`${urlAPI}/GET/get-search-results-genres.php?genre=${genre}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -268,7 +275,7 @@ async function searchResultsByGenre(genre) {
 
 async function getTrending(page) {
   try {
-    let response = await fetch(`https://api.bingy.se/GET/get-trending.php?page=${page}`);
+    let response = await fetch(`${urlAPI}/GET/get-trending.php?page=${page}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -278,9 +285,7 @@ async function getTrending(page) {
 
 async function getButtonRealtionStatus(userID, movieID) {
   try {
-    let response = await fetch(
-      `https://api.bingy.se/GET/check-movie-user-relation.php?movieID=${movieID}&userID=${userID}`
-    );
+    let response = await fetch(`${urlAPI}/GET/check-movie-user-relation.php?movieID=${movieID}&userID=${userID}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -289,14 +294,14 @@ async function getButtonRealtionStatus(userID, movieID) {
 }
 
 async function getUserInfo(userId) {
-  const request = new Request(`https://api.bingy.se/GET/get-users.php?ids=${userId}`);
+  const request = new Request(`${urlAPI}/GET/get-users.php?ids=${userId}`);
   const response = await fetch(request);
   const userInfo = await response.json();
   return userInfo[0];
 }
 
 async function getUsers() {
-  const request = new Request(`https://api.bingy.se/GET/get-users.php`);
+  const request = new Request(`${urlAPI}/GET/get-users.php`);
   const response = await fetch(request);
   const users = await response.json();
 
@@ -305,7 +310,7 @@ async function getUsers() {
 
 async function getFollowing(id) {
   try {
-    let response = await fetch(`https://api.bingy.se/GET/get-users.php?ids=${id}`);
+    let response = await fetch(`${urlAPI}/GET/get-users.php?ids=${id}`);
     let loggedInUser = await response.json();
     return loggedInUser;
   } catch (err) {
@@ -319,7 +324,7 @@ async function getFriendsActivities(id) {
   let following = user[0].following;
 
   // Get following activities från db
-  let response = await fetch(`https://api.bingy.se/GET/get-activities.php?followingIDs=${following}`);
+  let response = await fetch(`${urlAPI}/GET/get-activities.php?followingIDs=${following}`);
   let data = await response.json();
 
   return data;
@@ -327,7 +332,7 @@ async function getFriendsActivities(id) {
 
 async function getActivityByMovieID(movieID) {
   try {
-    let response = await fetch(`https://api.bingy.se/GET/get-activities.php?movieID=${movieID}`);
+    let response = await fetch(`${urlAPI}/GET/get-activities.php?movieID=${movieID}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -362,7 +367,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
     // användarnamn
     let userPic = document.createElement("div");
     userPic.classList.add("userPic");
-    userPic.style.backgroundImage = `url('https://api.bingy.se/${userInfo.profile_picture.filepath}')`;
+    userPic.style.backgroundImage = `url('${urlAPI}/${userInfo.profile_picture.filepath}')`;
 
     userPic.addEventListener("click", () => {
       window.location.href = `profile.php?userID=${obj.userID}`;
@@ -647,7 +652,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
 }
 async function getUserActivities(id) {
   try {
-    let response = await fetch(`https://api.bingy.se/GET/get-activities.php?followingIDs=${id}`);
+    let response = await fetch(`${urlAPI}/GET/get-activities.php?followingIDs=${id}`);
     let activities = await response.json();
     return activities;
   } catch (err) {
@@ -657,7 +662,7 @@ async function getUserActivities(id) {
 
 async function getSimilar(movieID) {
   try {
-    let response = await fetch(`https://api.bingy.se/GET/get-similar-movies.php?movieID=${movieID}`);
+    let response = await fetch(`${urlAPI}/GET/get-similar-movies.php?movieID=${movieID}`);
     let data = await response.json();
     return data;
   } catch (error) {
@@ -668,9 +673,7 @@ async function getSimilar(movieID) {
 async function getAdditionalInfo(movieID) {
   try {
     // console.log(movieID);
-    let response = await fetch(
-      `https://api.bingy.se/GET/get-additional-movieInfo.php?movieID=${movieID}`
-    );
+    let response = await fetch(`${urlAPI}/GET/get-additional-movieInfo.php?movieID=${movieID}`);
     // console.log(response);
     let data = await response.json();
     return data;
@@ -697,7 +700,7 @@ async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
     rate: rate,
   };
 
-  let rqst = new Request("https://api.bingy.se/POST/create-activity.php", {
+  let rqst = new Request(`${urlAPI}/POST/create-activity.php`, {
     method: "POST",
     body: JSON.stringify(msg),
     headers: { "Content-type": "application/json" },
@@ -713,7 +716,7 @@ async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
 }
 
 async function patchActivity(activity) {
-  let rqst = new Request("https://api.bingy.se/PATCH/update-activity.php", {
+  let rqst = new Request(`${urlAPI}/PATCH/update-activity.php`, {
     method: "PATCH",
     body: JSON.stringify({ activity: activity }),
     headers: { "Content-type": "application/json" },
@@ -729,7 +732,7 @@ async function patchActivity(activity) {
 }
 
 async function deleteteActivity(activityID) {
-  let rqst = new Request("https://api.bingy.se/DELETE/delete-activity.php", {
+  let rqst = new Request(`${urlAPI}/DELETE/delete-activity.php`, {
     method: "DELETE",
     body: JSON.stringify({ id: activityID }),
     headers: { "Content-type": "application/json" },
@@ -746,7 +749,7 @@ async function deleteteActivity(activityID) {
 
 async function followPatch(mainUserID, friendsUserID) {
   const response = await fetch(
-    new Request("https://api.bingy.se/POST/update-user.php", {
+    new Request(`${urlAPI}/POST/update-user.php`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -758,7 +761,7 @@ async function followPatch(mainUserID, friendsUserID) {
 
 async function getAllActivites(userId) {
   // console.log(userId);
-  let response = await fetch(`https://api.bingy.se/GET/get-activities.php?followingIDs=${userId}`);
+  let response = await fetch(`${urlAPI}/GET/get-activities.php?followingIDs=${userId}`);
   let userActivites = await response.json();
   userActivites.sort((a, b) => b.date - a.date);
 

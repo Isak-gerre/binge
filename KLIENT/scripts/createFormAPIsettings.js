@@ -4,7 +4,7 @@ function getProviders() {
   let titleProviders = document.createElement("p");
   titleProviders.textContent = "Change your region and streaming providers";
   // Ta bort API-nyckel, lägg den i APIn
-  let regionRQ = new Request("https://api.bingy.se/GET/get-regions.php");
+  let regionRQ = new Request(`${urlAPI}/GET/get-regions.php`);
   //Hämtar hem alla regions
   fetch(regionRQ)
     .then((response) => response.json())
@@ -50,7 +50,7 @@ function getProviders() {
         providerArray = [];
         // Ta bort API-nyckel, lägg den i APIn
         const response = await fetch(
-          `https://api.bingy.se/GET/get-regions.php?watch_region=${filter.value}`
+          `${urlAPI}/GET/get-regions.php?watch_region=${filter.value}`
         );
         const data = await response.json();
 
@@ -129,7 +129,7 @@ function getProviders() {
       let userSession = sessionStorage.getItem("session");
       let id = JSON.parse(userSession).session.userID;
 
-      let userInfo = new Request(`https://api.bingy.se/GET/get-users.php?ids=${id}`);
+      let userInfo = new Request(`${urlAPI}/GET/get-users.php?ids=${id}`);
 
       fetch(userInfo)
         .then((res) => res.json())
@@ -137,7 +137,6 @@ function getProviders() {
           document.querySelector("input[name=firstname]").value = data[0].firstname;
           document.querySelector("input[name=lastname]").value = data[0].lastname;
           document.querySelector("input[name=email]").value = data[0].email;
-          document.querySelector("input[name=birthday]").value = data[0].birthday;
           document.querySelector(`option[id=${data[0].region}]`).setAttribute("selected", true);
 
           filter.value = document.querySelector(`option[id=${data[0].region}]`).value;
