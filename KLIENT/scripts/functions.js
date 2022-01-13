@@ -111,17 +111,15 @@ async function userVarification() {
   let userSession = getFromSession("session").session;
   let userID = userSession.userID;
   let sessionID = userSession.sessionID;
-  try {
-    let response = await fetch(`${urlAPI}/GET/get-users.php?sessionID=${sessionID}&userID=${userID}`);
-    let data = await response.json();
-    if (data.ok) {
-      return true;
-    } else {
-      return false;
-    }
-  } catch (error) {
-    // console.error(error);
+
+  let response = await fetch(`${urlAPI}/GET/get-users.php?sessionID=${sessionID}&userID=${userID}`);
+  let data = await response.json();
+  if (data.ok) {
+    return true;
+  } else {
+    return false;
   }
+
 }
 
 function removeLatestState() {
@@ -215,82 +213,65 @@ async function getMovieInfo(movieID) {
       addToMovies(data.message, "movies");
       return data;
     } catch (error) {
-      console.error(error);
       return false;
     }
   }
 }
 
 async function getSearchResults(searchType, query, page = 1) {
-  try {
-    let response = await fetch(
-      `${urlAPI}/GET/get-search-results.php?searchtype=${searchType}&query=${query}&page=${page}`
-    );
-    let data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+  let response = await fetch(
+    `${urlAPI}/GET/get-search-results.php?searchtype=${searchType}&query=${query}&page=${page}`
+  );
+  let data = await response.json();
+  return data;
+
 }
 
 async function getProviders() {
-  try {
-    let response = await fetch(`${urlAPI}/GET/get-watch-providers.php`);
-    let data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+
+  let response = await fetch(`${urlAPI}/GET/get-watch-providers.php`);
+  let data = await response.json();
+  return data;
+
 }
 
 async function getGenres() {
-  try {
-    let response = await fetch(`${urlAPI}/GET/get-genres.php`);
-    let data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+
+  let response = await fetch(`${urlAPI}/GET/get-genres.php`);
+  let data = await response.json();
+  return data;
+
 }
 
 async function getMoviesByGenre(genre) {
-  try {
-    let response = await fetch(`${urlAPI}/GET/get-movies-by-genre.php?genre=${genre}`);
-    let data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+
+  let response = await fetch(`${urlAPI}/GET/get-movies-by-genre.php?genre=${genre}`);
+  let data = await response.json();
+  return data;
+
 }
 
 async function searchResultsByGenre(genre) {
-  try {
-    let response = await fetch(`${urlAPI}/GET/get-search-results-genres.php?genre=${genre}`);
-    let data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+
+  let response = await fetch(`${urlAPI}/GET/get-search-results-genres.php?genre=${genre}`);
+  let data = await response.json();
+  return data;
+
 }
 
 async function getTrending(page) {
-  try {
-    let response = await fetch(`${urlAPI}/GET/get-trending.php?page=${page}`);
-    let data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+
+  let response = await fetch(`${urlAPI}/GET/get-trending.php?page=${page}`);
+  let data = await response.json();
+  return data;
+
 }
 
 async function getButtonRealtionStatus(userID, movieID) {
-  try {
-    let response = await fetch(`${urlAPI}/GET/check-movie-user-relation.php?movieID=${movieID}&userID=${userID}`);
-    let data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+
+  let response = await fetch(`${urlAPI}/GET/check-movie-user-relation.php?movieID=${movieID}&userID=${userID}`);
+  let data = await response.json();
+  return data;
 }
 
 async function getUserInfo(userId) {
@@ -309,13 +290,10 @@ async function getUsers() {
 }
 
 async function getFollowing(id) {
-  try {
-    let response = await fetch(`${urlAPI}/GET/get-users.php?ids=${id}`);
-    let loggedInUser = await response.json();
-    return loggedInUser;
-  } catch (err) {
-    console.error(err);
-  }
+  let response = await fetch(`${urlAPI}/GET/get-users.php?ids=${id}`);
+  let loggedInUser = await response.json();
+  return loggedInUser;
+
 }
 
 async function getFriendsActivities(id) {
@@ -331,13 +309,11 @@ async function getFriendsActivities(id) {
 }
 
 async function getActivityByMovieID(movieID) {
-  try {
-    let response = await fetch(`${urlAPI}/GET/get-activities.php?movieID=${movieID}`);
-    let data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+
+  let response = await fetch(`${urlAPI}/GET/get-activities.php?movieID=${movieID}`);
+  let data = await response.json();
+  return data;
+
 }
 
 function howManyDaysAgo(recievedDate) {
@@ -355,7 +331,6 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
   let container = document.createElement("div");
   container.classList.add("container");
 
-  console.log(appendIn);
   document.querySelector(appendIn).append(container);
 
   // Top av aktivitets container, innehåller användarnamn + datum
@@ -627,7 +602,6 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
           activityContainer.classList.toggle("open");
 
           if (activityContainer.classList.contains("open")) {
-            // console.log(activityContainer.scrollHeight);
             expandComment.setAttribute("src", "/icons/expand_less.svg");
             comment.textContent = `" ${obj.comment} " `;
             let expandHeight = comment.scrollHeight;
@@ -651,35 +625,22 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
   type.append(typeText, typeIcon);
 }
 async function getUserActivities(id) {
-  try {
-    let response = await fetch(`${urlAPI}/GET/get-activities.php?followingIDs=${id}`);
-    let activities = await response.json();
-    return activities;
-  } catch (err) {
-    console.error(err);
-  }
+  let response = await fetch(`${urlAPI}/GET/get-activities.php?followingIDs=${id}`);
+  let activities = await response.json();
+  return activities;
+
 }
 
 async function getSimilar(movieID) {
-  try {
-    let response = await fetch(`${urlAPI}/GET/get-similar-movies.php?movieID=${movieID}`);
-    let data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+  let response = await fetch(`${urlAPI}/GET/get-similar-movies.php?movieID=${movieID}`);
+  let data = await response.json();
+  return data;
 }
 
 async function getAdditionalInfo(movieID) {
-  try {
-    // console.log(movieID);
-    let response = await fetch(`${urlAPI}/GET/get-additional-movieInfo.php?movieID=${movieID}`);
-    // console.log(response);
-    let data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+  let response = await fetch(`${urlAPI}/GET/get-additional-movieInfo.php?movieID=${movieID}`);
+  let data = await response.json();
+  return data;
 }
 
 function getParamFromUrl(get) {
@@ -706,13 +667,9 @@ async function postNewActivity(movieID, userID, type, comment = "", rate = "") {
     headers: { "Content-type": "application/json" },
   });
 
-  try {
-    let response = await fetch(rqst);
-    let data = await response.json();
-    return data;
-  } catch (err) {
-    console.error(err);
-  }
+  let response = await fetch(rqst);
+  let data = await response.json();
+  return data;
 }
 
 async function patchActivity(activity) {
@@ -722,13 +679,11 @@ async function patchActivity(activity) {
     headers: { "Content-type": "application/json" },
   });
 
-  try {
-    let response = await fetch(rqst);
-    let data = await response.json();
-    return data;
-  } catch (err) {
-    console.error(err);
-  }
+
+  let response = await fetch(rqst);
+  let data = await response.json();
+  return data;
+
 }
 
 async function deleteteActivity(activityID) {
@@ -738,13 +693,11 @@ async function deleteteActivity(activityID) {
     headers: { "Content-type": "application/json" },
   });
 
-  try {
-    let response = await fetch(rqst);
-    let data = await response.json();
-    return data;
-  } catch (err) {
-    console.error(err);
-  }
+
+  let response = await fetch(rqst);
+  let data = await response.json();
+  return data;
+
 }
 
 async function followPatch(mainUserID, friendsUserID) {
@@ -760,7 +713,6 @@ async function followPatch(mainUserID, friendsUserID) {
 }
 
 async function getAllActivites(userId) {
-  // console.log(userId);
   let response = await fetch(`${urlAPI}/GET/get-activities.php?followingIDs=${userId}`);
   let userActivites = await response.json();
   userActivites.sort((a, b) => b.date - a.date);

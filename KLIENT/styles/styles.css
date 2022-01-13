@@ -1113,6 +1113,7 @@ body button:active,
   color: #eeeeee;
   gap: 10px;
   margin-top: 60px;
+  margin-bottom: 100px;
 }
 
 #followContainer #usersWrapper #userDiv {
@@ -3613,6 +3614,12 @@ svg:active,
 
 .movie-profile-middle .movie-profile-similarMovies div {
   margin: auto;
+}
+
+#imdb_svg {
+  width: 30px;
+  height: 1em;
+  margin: -2px 2px;
 }
 
 #wrapper {

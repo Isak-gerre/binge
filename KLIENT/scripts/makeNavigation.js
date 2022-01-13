@@ -1,5 +1,4 @@
 "use strict";
-console.log("ny2");
 
 function makeUpperNav() {
   //create elements
@@ -59,7 +58,6 @@ window.addEventListener("scroll", () => {
     document.querySelector(".upperNav").style.backgroundColor = "transparent";
     let ifMovieProfile = getParamFromUrl("movieID") ? "none" : "";
     document.querySelector(".logo").style.display = ifMovieProfile;
-    console.log(ifMovieProfile);
   }
 });
 makeUpperNav();

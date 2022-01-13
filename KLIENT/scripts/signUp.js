@@ -15,7 +15,6 @@ document.getElementById("username1").addEventListener("keyup", () => {
     .then(response => response.json())
     .then(data => {
       if(data.error != 0){
-        console.log(document.querySelector("#createUserP1 div:nth-child(3) > label"));
         if (data.error == 1) {
           document.querySelector("#createUserP1 div:nth-child(3) > label").textContent = "Username is already in use*";
           document.getElementById("username1").style.color = 'Red';
@@ -77,7 +76,7 @@ signUpForm.addEventListener("submit", (event) => {
         saveToSession(data, "session");
         window.location.replace("/explore.php");
       } else {
-        console.log("it went wrong");
+        alert("Sorry...something went wrong, please try again.");
       }
     });
 });

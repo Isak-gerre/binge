@@ -141,6 +141,7 @@
     color: $lightFont;
     gap: $betweenPadding;
     margin-top: 60px;
+    margin-bottom:100px;
 
     #userDiv {
       @include bodyFont();

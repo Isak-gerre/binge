@@ -49,6 +49,8 @@ async function trendingMovieBanners(page = 1) {
 trendingMovieBanners();
 
 const form = document.getElementById("loginForm");
+
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(form);
@@ -61,10 +63,6 @@ form.addEventListener("submit", (event) => {
       error += 2;
     }
   }
-
-  let errorDiv = document.createElement("div");
-  errorDiv.setAttribute("id", "errorDiv");
-  document.getElementById("loginForm").prepend(errorDiv);
 
   document.getElementById("errorDiv").classList.add("animate");
   setTimeout(function () {
@@ -103,7 +101,6 @@ form.addEventListener("submit", (event) => {
       .catch((error) => {
         document.getElementById("errorDiv").innerHTML = "Wrong combination of username and password";
         sessionStorage.clear();
-        console.error(error);
       });
   }
 });

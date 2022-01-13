@@ -24,7 +24,6 @@ function makeSearchOverlay(searchWord = "", searchBy = "Title") {
   } else if (page.includes("feed.php")) {
     document.querySelector("#wrapper").style.display = "none";
   }
-  console.log(window.location.href);
 
   document.body.style.overflow = "hidden";
   let searchContainer = document.createElement("div");

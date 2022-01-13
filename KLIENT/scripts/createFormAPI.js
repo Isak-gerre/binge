@@ -10,7 +10,10 @@ fetch(regionRQ)
     let selectRegion = document.createElement("select");
     selectRegion.setAttribute("id", "region");
     selectRegion.setAttribute("name", "region");
-    data.results.forEach((region) => {
+
+    let sortedData = data.results.sort((a,b) => a.english_name - b.english_name);
+
+    sortedData.forEach((region) => {
       //Varje option fylls med alla regions
       let opt = document.createElement("option");
       opt.setAttribute("name", `${region.english_name}`);
@@ -52,7 +55,6 @@ fetch(regionRQ)
       let checkboxes = document.querySelectorAll("input[type=checkbox]:checked");
       if (filter.value == "Select a region") {
         document.querySelector("#createUserP2 > p").innerHTML = "Please choose atleast one region";
-        console.log("please choose a region");
       } else if (checkboxes.length == 0) {
         document.querySelector("#createUserP2 > p").innerHTML = "Please choose at least one provider";
       } else {

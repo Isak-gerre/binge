@@ -285,7 +285,6 @@ async function showUsers(userId, type) {
 
   let usersInfo = await Promise.all(ids.map((id) => getUserInfo(id)));
   usersInfo.sort((a, b) => (a.username > b.username ? 1 : -1));
-  console.log(usersInfo);
 
   let followContainer = document.createElement("div");
   followContainer.id = "followContainer";

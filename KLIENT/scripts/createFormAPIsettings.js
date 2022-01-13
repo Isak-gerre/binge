@@ -87,7 +87,6 @@ function getProviders() {
           });
         }
         providerArray.forEach((provider) => {
-          console.log(provider);
           if (!document.getElementById(`${provider.provider_name.split(" ").join("")}`)) {
             let selectProvider = document.createElement("input");
             let providerDiv = document.createElement("img");

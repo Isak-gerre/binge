@@ -1023,4 +1023,10 @@
 .movie-profile-middle .movie-profile-similarMovies div {
   margin: auto;
 }
+
+#imdb_svg {
+  width: 30px;
+  height: 1em;
+  margin: -2px 2px;
+}
 /*# sourceMappingURL=movieProfile.css.map */
