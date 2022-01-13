@@ -166,6 +166,9 @@ if (isset($requestData["userID"], $requestData["friendsUserID"])) {
     // Om PASSWORD är ifyllt och inte tomt
     if (isset($_POST["old_password"]) && $_POST["old_password"] !== "") {
         if(password_verify($_POST["old_password"], $users[$userID]["password"])){
+            if(strlen($_POST["password"]) < 8){
+                sendJSON(["message" => "Passwords needs to be atleast 8 characters"], 409);
+            }
             if ($_POST["password"] != $_POST["confirm_password"]) {
                 sendJSON(["message" => "Passwords do not match"], 409);
             } else {

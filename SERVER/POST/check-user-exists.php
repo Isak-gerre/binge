@@ -15,13 +15,25 @@ if ( !isset($userData["userexists"]) ) {
 
 if(isset($userData["userexists"])){
     foreach($db["users"] as $key){
+        if(strlen($userData["userexists"]) < 4){
+            sendJSON(
+                [
+                    "message" => "Username is too short, it needs to be atleast for characters",
+                    "error" => 2,
+                ], 409);
+        } 
         if(strtolower($userData["userexists"]) === strtolower($key["username"])){
-            sendJSON(["message" => "Username is already in use"], 409);    
+            sendJSON(
+                [
+                    "message" => "Username is already in use",
+                    "error" => 1,
+                ], 409);    
         }
     }
-    if(strlen($userData["userexists"]) < 4){
-        sendJSON(["message" => "Username is too short, it needs to be atleast for characters"], 409);
-    } 
-    sendJSON(["message" => "Username is free to use"], 200);
+    sendJSON(
+        [
+        "message" => "Username is already in use",
+        "error" => 0,
+        ], 200);
 };
 ?>

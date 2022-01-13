@@ -27,7 +27,11 @@ foreach ($db["users"] as $key) {
     }
 }
 
+//Kollar att lösenordet inte är för kort
 //Kollar så att det är samma lösenord mellan password och confirm password
+if(strlen($_POST["password"]) < 8){
+    sendJSON(["message" => "Passwords needs to be atleast 8 characters"], 409);
+}
 if ($_POST["password"] != $_POST["confirm_password"]) {
     sendJSON(["message" => "Passwords do not match"], 409);
 } else {
