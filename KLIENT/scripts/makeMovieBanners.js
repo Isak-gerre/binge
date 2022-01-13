@@ -31,7 +31,7 @@ async function makeMovieBanner(movieID, activity) {
 
       zoomIn(allMovieBanner, e);
 
-      // Click-event på föräldern 
+      // Click-event på föräldern
       let wrapper = document.querySelector("#profileWrapper");
       wrapper.addEventListener("click", () => {
         zoomOut(allMovieBanner);
@@ -61,7 +61,7 @@ async function makeMovieBanner(movieID, activity) {
         let message = "You have successfully marked the movie as watched";
         setTimeout(() => {
           messageToUser(message);
-        }, 1000)
+        }, 1000);
       });
 
       // Remove from list - button
@@ -82,18 +82,18 @@ async function makeMovieBanner(movieID, activity) {
         let message = "You have succesfully deleted this from your watchlist";
         setTimeout(() => {
           messageToUser(message);
-        }, 1500)
-      })
+        }, 1500);
+      });
 
       // En delay på när knapparna skapas.
       let allActivities = await getAllActivites(activity.userID);
       let filter = allActivities.filter((acti) => acti.movieID == activity.movieID);
 
-      filter.forEach(element => {
+      filter.forEach((element) => {
         if (element.type == "watched") {
           markedAsWatched.style.display = "none";
         }
-      })
+      });
 
       options.append(markedAsWatched, removeFromList);
 
@@ -110,11 +110,11 @@ async function makeMovieBanner(movieID, activity) {
         allMovieBanner.forEach((movBan) => {
           if (movBan.className == "movieBanner") {
             movBan.style.filter = "blur(0px)";
-            movBan.style.pointerEvents = 'auto';
+            movBan.style.pointerEvents = "auto";
           } else {
             movBan.className = "movieBanner";
           }
-        })
+        });
       }
 
       function zoomIn(allMovieBanner, e) {
@@ -124,7 +124,7 @@ async function makeMovieBanner(movieID, activity) {
         allMovieBanner.forEach((movBan) => {
           if (movBan.className == "movieBanner") {
             movBan.style.filter = "blur(8px)";
-            movBan.style.pointerEvents = 'none';
+            movBan.style.pointerEvents = "none";
           }
         });
       }
@@ -140,7 +140,6 @@ async function makeMovieBanner(movieID, activity) {
         let messageDOM = document.createElement("div");
         messageDOM.className = "messageToUser";
 
-
         let p = document.createElement("p");
         p.textContent = message;
 
@@ -152,10 +151,9 @@ async function makeMovieBanner(movieID, activity) {
           messageDOM.style.animation = "fadeOut 1s";
           setTimeout(() => {
             messageDOM.remove();
-          }, 1000)
-        }, 2000)
+          }, 1000);
+        }, 2000);
       }
-
     });
   }
 

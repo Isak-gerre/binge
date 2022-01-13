@@ -20,6 +20,7 @@
 #profilePic {
   @include profilePicture(90px, 90px);
   overflow: hidden;
+  background-position: center;
 
   div {
     height: 100%;
