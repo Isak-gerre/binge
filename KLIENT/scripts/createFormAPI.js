@@ -10,8 +10,7 @@ fetch(regionRQ)
     let selectRegion = document.createElement("select");
     selectRegion.setAttribute("id", "region");
     selectRegion.setAttribute("name", "region");
-
-    let sortedData = data.results.sort((a,b) => a.english_name - b.english_name);
+    let sortedData = data.results.sort((a, b) => a.english_name - b.english_name);
 
     sortedData.forEach((region) => {
       //Varje option fylls med alla regions

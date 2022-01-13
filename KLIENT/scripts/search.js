@@ -381,6 +381,7 @@ async function searchFunction(searchBy) {
 
     if (inputValue != "") {
       let searchResults = await getSearchResults(searchType, inputValue, page);
+      console.log(searchResults);
 
       if (page == searchResults["total_pages"] || searchResults["total_pages"] == 0) {
         x = false;

@@ -2,7 +2,7 @@
 
 function getProviders() {
   let titleProviders = document.createElement("p");
-  titleProviders.textContent = "Change your region and streaming providers";
+  titleProviders.textContent = "Change region and streaming providers";
   // Ta bort API-nyckel, lägg den i APIn
   let regionRQ = new Request(`${urlAPI}/GET/get-regions.php`);
   //Hämtar hem alla regions
@@ -14,7 +14,8 @@ function getProviders() {
       selectRegion.setAttribute("id", "region");
       selectRegion.setAttribute("name", "region");
 
-      data.results.forEach((region) => {
+      let sortedData = data.results.sort((a, b) => a.english_name - b.english_name);
+      sortedData.forEach((region) => {
         //Varje option fylls med alla regions
         let opt = document.createElement("option");
         opt.setAttribute("name", `${region.english_name}`);

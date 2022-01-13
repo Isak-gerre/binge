@@ -69,10 +69,10 @@ require "head.php";
             <label>Email *</label>
             <input class="signInInput" type="text" name="email" placeholder="Email" required>
         </div>
-        <div id="input">
+        <!-- <div id="input">
             <label>Birthday</label>
             <input class="signInInput" type="date" name="birthday" placeholder="Birthday">
-        </div>
+        </div> -->
         <div class="buttonsSignUp">
             <button type="button" id="next1">Next</button>
         </div>
