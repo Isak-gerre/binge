@@ -236,7 +236,6 @@ async function getProviders() {
 }
 
 async function getGenres() {
-
   let response = await fetch(`${urlAPI}/GET/get-genres.php`);
   let data = await response.json();
   return data;

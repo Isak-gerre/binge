@@ -3,11 +3,11 @@
         "2": {
             "id": 2,
             "userID": 4,
-            "movieID": "634649",
-            "type": "watchlist",
-            "date": "202201071320",
-            "comment": "",
-            "rate": "",
+            "movieID": "11",
+            "type": "review",
+            "date": "202201071848",
+            "comment": "Greatest Movie Ever",
+            "rate": "5",
             "updated": false
         },
         "3": {

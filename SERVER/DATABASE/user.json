@@ -1,172 +1,5 @@
 {
     "users": {
-        "1": {
-            "firstname": "lina",
-            "lastname": "andersson",
-            "username": "linkis",
-            "password": "$2y$10$s2MUJA97X2XItTePWO7Yy.dywXjrnvcLl8QbtCawKu8Z2NsMSDj6m",
-            "email": "linkis@mau.se",
-            "birthday": "1999-06-16",
-            "region": "SE",
-            "active_streaming_services": [
-                "Netflix",
-                "Disney Plus",
-                "HBO Max",
-                "SVT"
-            ],
-            "profile_picture": {
-                "filepath": "DATABASE\\\/IMAGES\\\/PROFILE\\\/f421300d6fc2a3dcdba4d9c7bc1ce710797ed3b8cbdd4c55a8b7ce1cc3ca42d6.jpg"
-            },
-            "followers": [
-                5
-            ],
-            "following": [
-                2,
-                5,
-                3,
-                4,
-                7,
-                6
-            ],
-            "sessionId": "$2y$10$O3.WrewOFvw\/kzzBux9VuOYmYbL3nA0Ba2uYkfMJ77L4W3fEOrIBS",
-            "id": 1
-        },
-        "2": {
-            "firstname": "niklas",
-            "lastname": "stavnjak",
-            "username": "nickokicken",
-            "password": "$2y$10$VP2QpceePo4QD0mBs.Uqb.71tVjm09qA71w6UrrNEIzGpo.ERDIwq",
-            "email": "niko@mau.se",
-            "birthday": "1996-08-12",
-            "region": "SE",
-            "active_streaming_services": [
-                "Netflix",
-                "HBO Max",
-                "SVT",
-                "Viafree"
-            ],
-            "profile_picture": {
-                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_2.png"
-            },
-            "followers": [
-                5,
-                1
-            ],
-            "following": [
-                4,
-                5
-            ],
-            "sessionId": "$2y$10$tySGNoLqUQT9JlE7UPibGel3v1PGfuN1z8mLQuDHZuviDNw.m2aCW",
-            "id": 2
-        },
-        "3": {
-            "firstname": "elsa",
-            "lastname": "lindh",
-            "username": "eelsalindh",
-            "password": "$2y$10$pdEojCZ6WMfZGxpJ6UZ7VePJZpfsWnFSNiqW.7foPZQV1R9NrZ\/4S",
-            "email": "elsa@mau.se",
-            "birthday": "1999-01-14",
-            "region": "SE",
-            "active_streaming_services": [
-                "Netflix"
-            ],
-            "profile_picture": {
-                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_7.png"
-            },
-            "followers": [
-                5,
-                1
-            ],
-            "following": [],
-            "sessionId": "$2y$10$Znilyoeos1BWVcpslFMV3.IsfnD50zkz2BkYxYLZ9iGFSkUAjWoWu",
-            "id": 3
-        },
-        "4": {
-            "firstname": "isak",
-            "lastname": "gerre",
-            "username": "isak123",
-            "password": "$2y$10$yDlCvOrZLbMpp2\/g50BxRuqeSWZZNWkY87sPOBPTTC.TNhV8BV0am",
-            "email": "111",
-            "birthday": "",
-            "region": "SE",
-            "active_streaming_services": [
-                "Netflix",
-                "Disney Plus",
-                "HBO Max"
-            ],
-            "profile_picture": {
-                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_2.png"
-            },
-            "followers": [
-                5,
-                2,
-                1
-            ],
-            "following": [],
-            "sessionId": "$2y$10$T0HfOf8NVDOxFRQHdl3MKu6I6eJc\/V8\/f8HKPZwbK2zp3cZG4\/Tva",
-            "id": 4
-        },
-        "5": {
-            "firstname": "Mat",
-            "lastname": "Einar",
-            "username": "Mattis4life",
-            "password": "$2y$10$Xt8kBALk3RMpv90WozvFK.rSHQJoLeqCuBX7x7xX9W15baAHhH.fe",
-            "email": "matildaeinartupac@rapit.com",
-            "birthday": "1997-12-02",
-            "region": "SE",
-            "active_streaming_services": [
-                "Netflix",
-                "Disney Plus",
-                "C More",
-                "GuideDoc",
-                "Paramount Plus",
-                "Netflix Kids",
-                "HBO Max",
-                "Argo",
-                "Acorn TV",
-                "Rakuten TV"
-            ],
-            "profile_picture": {
-                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_8.png"
-            },
-            "followers": [
-                2,
-                1
-            ],
-            "following": [
-                1,
-                2,
-                3,
-                4
-            ],
-            "sessionId": "$2y$10$G5T5tJix2CN7XjD24Rl9zuYxxirpnxtXCd7p9GTHMLkcnIS\/IISx6",
-            "id": 5
-        },
-        "6": {
-            "firstname": "Matilda",
-            "lastname": "Einarsson",
-            "username": "matildaein",
-            "password": "$2y$10$tzuKczkejSrN0vlS1X5\/Y.KYdhMFs4LMyGHzsGy5UOVlKQqjHFxQ2",
-            "email": "matildaeinar@gmail.com",
-            "birthday": "1997-05-20",
-            "region": "SE",
-            "active_streaming_services": [
-                "Disney Plus",
-                "HBO Max",
-                "SVT",
-                "Viaplay",
-                "Comhem Play"
-            ],
-            "profile_picture": {
-                "filepath": "DATABASE\\\/IMAGES\\\/AVATAR\\\/avatar_1.png"
-            },
-            "followers": [
-                1
-            ],
-            "following": [],
-            "sessionId": "$2y$10$73nblJRrg3DoGBsEvXIUnOi39nP3INulHlxmylxrJ3eci1dpISHCq",
-            "id": 6
-        },
         "7": {
             "firstname": "Lisa",
             "lastname": "Svensson",
@@ -177,7 +10,13 @@
             "profile_picture": {
                 "filepath": "DATABASE\\\/IMAGES\\\/PROFILE\\\/d30c11c0db09db8441da62b3dd3021800135be1d224b8dad3a10f2545995fafd.jpg"
             },
-            "active_streaming_services": [],
+            "active_streaming_services": [
+                "Disney Plus",
+                "HBO Max",
+                "SVT",
+                "Viaplay",
+                "Comhem Play"
+            ],
             "followers": [
                 1
             ],
