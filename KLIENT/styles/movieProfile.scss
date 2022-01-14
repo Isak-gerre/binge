@@ -33,7 +33,7 @@
   background-repeat: no-repeat;
 
   position: absolute;
-  top: 360px;
+  top: 620px;
   right: 0px;
   z-index: 120;
 
@@ -412,6 +412,7 @@
       }
 
       p {
+        padding-bottom: $innerPadding;
         color: $lightFont;
         @include bodyFont();
         font-size: 12px;
@@ -502,8 +503,11 @@
     }
   }
 }
+
 #imdb_svg {
   width: 30px;
   height: 1em;
   margin: -2px 2px;
+  margin-left: 0px;
+  cursor: inherit;
 }

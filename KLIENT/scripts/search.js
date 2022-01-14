@@ -553,7 +553,12 @@ async function searchFunction(searchBy) {
     userDiv.append(userImage, userInfoDiv);
 
     let username = document.createElement("p");
-    username.textContent = `@${user.username}`;
+    let usernameCut = user.username.toLowerCase();
+    if (usernameCut.length > 7) {
+      username.textContent = `@${user.username.substring(0, 7)}...`;
+    } else {
+      username.textContent = "@" + user.username;
+    }
     username.setAttribute("id", "usernameP");
     username.addEventListener("click", () => {
       window.location.href = `/profile.php?userID=${user.id}`;

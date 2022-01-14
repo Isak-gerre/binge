@@ -32,7 +32,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
-  top: 360px;
+  top: 620px;
   right: 0px;
   z-index: 120;
   width: 120px;
@@ -606,6 +606,7 @@
 
 .movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid p,
 .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid p {
+  padding-bottom: 5px;
   color: #eeeeee;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
@@ -1028,5 +1029,7 @@
   width: 30px;
   height: 1em;
   margin: -2px 2px;
+  margin-left: 0px;
+  cursor: inherit;
 }
 /*# sourceMappingURL=movieProfile.css.map */

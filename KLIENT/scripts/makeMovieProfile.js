@@ -112,7 +112,13 @@ async function makeMovieProfile(movieID) {
     review.classList.add("marked");
   }
 
-  buttons.append(watchLater, watched, review);
+
+  let currenttime = moment().format("YYYY-MM-DD");
+  if(currenttime > movieInfo["release_date"]) {
+    buttons.append(watchLater, watched, review);
+  } else {
+    buttons.append(watchLater);
+  }
   infoText.append(movieRs, title, buttons);
 
   // Appends INFO part

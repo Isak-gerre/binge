@@ -413,6 +413,7 @@ body button:active,
   font-family: "Mulish", sans-serif;
   font-size: 12px;
   margin-left: 10px;
+  margin-top: 5px;
 }
 
 #loginForm #input input,
@@ -2631,7 +2632,7 @@ svg:active,
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
-  top: 360px;
+  top: 620px;
   right: 0px;
   z-index: 120;
   width: 120px;
@@ -3205,6 +3206,7 @@ svg:active,
 
 .movie-profile-middle .movie-profile-streamingservices .your-streaming-services-grid p,
 .movie-profile-middle .movie-profile-streamingservices .other-streaming-services-grid p {
+  padding-bottom: 5px;
   color: #eeeeee;
   font-family: "Mulish", sans-serif;
   font-size: 14px;
@@ -3627,6 +3629,8 @@ svg:active,
   width: 30px;
   height: 1em;
   margin: -2px 2px;
+  margin-left: 0px;
+  cursor: inherit;
 }
 
 #wrapper {

@@ -338,7 +338,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
   userContainer.classList.add("userContainer");
   container.append(userContainer);
 
-  if (page == "feed" || page == "movie") {
+  if (page == "feed" || page == "movieProfile") {
     // användarnamn
     let userPic = document.createElement("div");
     userPic.classList.add("userPic");
@@ -526,7 +526,7 @@ async function createActivities(obj, page, appendIn = "#wrapper") {
   //Appenda de två delarna till containern
   container.append(activityContainer);
 
-  if (page !== "movie") {
+  if (page !== "movieProfile") {
     activityContainer.append(activityContainerLeft, activityContainerRight);
   } else {
     activityContainer.append(activityContainerLeft);
@@ -729,7 +729,7 @@ async function makeShowMoreForActis(whatFunc, page, appendIn, actis, counter) {
   }
 
   for (let i = counter - 1; i <= counter + y; i++) {
-    if (i >= actis.length) {
+    if (i >= actis.length - 1) {
       if (document.querySelector(".showMoreDiv")) {
         document.querySelector(".showMoreDiv").remove();
       }

@@ -149,6 +149,8 @@
     label {
       @include xSmallFont();
       margin-left: $betweenPadding;
+      margin-top: $innerPadding;
+
     }
 
     input {
