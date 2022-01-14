@@ -734,7 +734,7 @@ async function makeShowMoreForActis(whatFunc, page, appendIn, actis, counter) {
         document.querySelector(".showMoreDiv").remove();
       }
       x = false;
-      break;
+      // break;
     }
 
     await createActivities(actis[i], page, appendIn);
