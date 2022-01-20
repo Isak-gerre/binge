@@ -309,6 +309,7 @@ async function showUsers(userId, type) {
     userProfilePic.className = "userProfilePic";
     userProfilePic.style.backgroundImage = `url('${urlAPI}/${user.profile_picture.filepath}')`;
     userProfilePic.style.backgroundSize = "cover";
+    userProfilePic.style.backgroundPosition = "center";
 
     username.addEventListener("click", () => {
       window.location.href = `profile.php?userID=${user.id}`;
@@ -335,13 +336,34 @@ async function showUsers(userId, type) {
             <img src="/icons/add_circle_black.svg" id="follow">`;
     }
 
+    // let followingCont = document.getElementById("following");
+
+    // followOrUnfollow.addEventListener("click", async function () {
+    //   // Om inloggad anv. inte följer så..
+    //   if (!isFollowed) {
+    //     isFollowed = true;
+    //     followOrUnfollow.textContent = "Unfollow";
+    //     followOrUnfollow.id = "noGradient";
+    //     // Lägger till användare i followers
+    //     await followPatch(loggedInUserId, user.id);
+
+    //     if (userId == loggedInUserId) {
+    //       following.push(user.id);
+    //       followingCont.textContent = ids.length;
+    //     }
+
     let followingCont = document.getElementById("following");
 
     followOrUnfollow.addEventListener("click", async function () {
       // Om inloggad anv. inte följer så..
       if (!isFollowed) {
         isFollowed = true;
-        followOrUnfollow.textContent = "Unfollow";
+        followOrUnfollow.classList.add("unfollow");
+        followOrUnfollow.classList.remove("follow");
+
+        followOrUnfollow.innerHTML = `<p>Unfollow</p>
+            <img src="/icons/remove_circle_black.svg" id="unfollow">`;
+
         followOrUnfollow.id = "noGradient";
         // Lägger till användare i followers
         await followPatch(loggedInUserId, user.id);
@@ -351,57 +373,36 @@ async function showUsers(userId, type) {
           followingCont.textContent = ids.length;
         }
 
-        let followingCont = document.getElementById("following");
-
-        followOrUnfollow.addEventListener("click", async function () {
-          // Om inloggad anv. inte följer så..
-          if (!isFollowed) {
-            isFollowed = true;
-            followOrUnfollow.classList.add("unfollow");
-            followOrUnfollow.classList.remove("follow");
-
-            followOrUnfollow.innerHTML = `<p>Unfollow</p>
-            <img src="/icons/remove_circle_black.svg" id="unfollow">`;
-
-            followOrUnfollow.id = "noGradient";
-            // Lägger till användare i followers
-            await followPatch(loggedInUserId, user.id);
-
-            if (userId == loggedInUserId) {
-              following.push(user.id);
-              followingCont.textContent = ids.length;
-            }
-
-            // Om inloggad anv. följer så..
-          } else if (isFollowed) {
-            isFollowed = false;
-            followOrUnfollow.classList.add("follow");
-            followOrUnfollow.classList.remove("unfollow");
-            followOrUnfollow.removeAttribute("id");
-            followOrUnfollow.innerHTML = `<p>Follow</p>
+        // Om inloggad anv. följer så..
+      } else if (isFollowed) {
+        isFollowed = false;
+        followOrUnfollow.classList.add("follow");
+        followOrUnfollow.classList.remove("unfollow");
+        followOrUnfollow.removeAttribute("id");
+        followOrUnfollow.innerHTML = `<p>Follow</p>
                 <img src="/icons/add_circle_black.svg" id="follow">`;
-            // Tar bort från followers
-            await followPatch(loggedInUserId, user.id);
+        // Tar bort från followers
+        await followPatch(loggedInUserId, user.id);
 
-            if (userId == loggedInUserId) {
-              let userIndex = ids.findIndex((id) => id == user.id);
-              following.splice(userIndex, 1);
-              followingCont.textContent = following.length;
-            }
-          }
-        });
-
-        followContainer.append(usersWrapper);
-        usersWrapper.append(userDiv);
-        userDiv.append(userProfilePic, username);
-        if (user.id !== loggedInUserId) {
-          userDiv.append(followOrUnfollow);
-        } else {
-          let emptyDiv = document.createElement("div");
-          userDiv.append(emptyDiv);
+        if (userId == loggedInUserId) {
+          let userIndex = ids.findIndex((id) => id == user.id);
+          following.splice(userIndex, 1);
+          followingCont.textContent = following.length;
         }
       }
     });
+
+    followContainer.append(usersWrapper);
+    usersWrapper.append(userDiv);
+    userDiv.append(userProfilePic, username);
+    if (user.id !== loggedInUserId) {
+      userDiv.append(followOrUnfollow);
+    } else {
+      let emptyDiv = document.createElement("div");
+      userDiv.append(emptyDiv);
+    }
+    //   }
+    // });
 
     followContainer.append(usersWrapper);
     usersWrapper.append(userDiv);
