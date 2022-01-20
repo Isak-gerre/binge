@@ -128,9 +128,7 @@ function makeLowerNav() {
       } else if (window.location.href.indexOf("profile") > -1) {
         lowerNavRight.style.borderBottom = "3px solid white";
       }
-      document
-        .querySelector(".back")
-        .setAttribute("src", "/icons/back.svg alt='Back'");
+      document.querySelector(".back").setAttribute("src", "/icons/back.svg");
       document.querySelector(".search-container").style.animation = "removeSearchBar 0.2s ease-out";
       setTimeout(() => {
         document.querySelector(".search-container").remove();
